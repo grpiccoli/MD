@@ -1,0 +1,41 @@
+﻿@model LoginVM
+
+@{
+    ViewData["Title"] = "PWA Test";
+}
+
+<div class="row" style="margin-bottom: 0;">
+    <div class="col m6 hide-on-small-only teal valign-wrapper" style="height: 100vh;">
+        <img src="~/img/logo.png" alt="MD" class="center-align" style="margin: auto;" />
+    </div>
+    <div class="col m6 s12" style="height: 100vh">
+        <form asp-action="DoctorDetail">
+            <h3 class="center-align">¡Bienvenido!</h3>
+            <p class="center-align">Ingresa tus datos</p>
+            <div class="input-field col s12">
+                <input asp-for="RUT" class="validate" />
+                <label asp-for="RUT"></label>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Password" class="validate" />
+                <label asp-for="Password"></label>
+            </div>
+            <p class="right-align">
+                <a asp-action="ForgotPassword">
+                    Olvidé mi contraseña
+                </a>
+            </p>
+            <input class="btn waves-effect waves-light white-text teal" type="submit" value="Ingresar" />
+            <p>Ingresar con redes sociales</p>
+            <div>
+                <a class="btn-floating waves-effect waves-light blue">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn-floating waves-effect waves-light red">
+                    <i class="fab fa-google-plus-g"></i>
+                </a>
+            </div>
+            <p class="center-align">No tienes cuenta? <a asp-action="SignUp">Registrarse</a></p>
+        </form>
+    </div>
+</div>

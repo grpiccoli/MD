@@ -1,0 +1,86 @@
+﻿@model List<string>
+@using ConsultaMD.Models.VM
+@using ConsultaMD.Services
+
+@{
+    var libs = Libman.LoadJson().libraries;
+}
+
+@foreach (var lib in Model)
+{
+    var l = new Lib();
+    if(libs.Any(m => m.library.StartsWith($"{lib}@") && m.files.Any()))
+    {
+        l = libs.Single(m => m.library.StartsWith($"{lib}@") && m.files.Any());
+    }
+    <environment include="Development">
+            @if (l.files != null)
+            {
+                foreach (var file in l.files)
+                {
+                    if (file.Contains(".css"))
+                    {
+                        @this.StyleBlock(@<link href="@($"{l.destination.Replace("wwwroot", "")}{file}")" rel="stylesheet" />)
+                    }
+                    else if (file.Contains(".js"))
+                    {
+                        @this.ScriptBlock(@<script src="@($"{l.destination.Replace("wwwroot", "")}{file}")"></script>)
+                    }
+                }
+            }
+            else
+            {
+                if (lib.Contains(".css"))
+                {
+                    @this.StyleBlock(@<link href="/css/@lib.Replace(".min", "")" rel="stylesheet" />)
+                }
+                else
+                {
+                    @this.ScriptBlock(@<script src="/js/@lib.Replace(".min", "")"></script>)
+                }
+            }
+        </environment>
+        <environment exclude="Development">
+    @if (l.files != null)
+    {
+        var url = "unpkg.com";
+        switch (l.provider)
+        {
+            case "cdnjs":
+                l.library = l.library.Replace("@", "/");
+                url = "cdnjs.cloudflare.com/ajax/libs";
+                break;
+            case "":
+            default:
+                l.provider = "unpkg";
+                break;
+        }
+        foreach (var file in l.files)
+        {
+            if (file.Contains(".css"))
+            {
+                @this.StyleBlock(@<link href="@($"{Context.Request.Scheme}://{url}/{l.library}/{file}")" rel="stylesheet"
+                                        asp-fallback-href="@($"{l.destination.Replace("wwwroot", "")}{file}")"
+                                        asp-subresource-integrity-href="@($"{l.destination.Replace("wwwroot", "")}{file}")" />)
+            }
+            else if (file.Contains(".js"))
+            {
+                @this.ScriptBlock(@<script src="@($"{Context.Request.Scheme}://{url}/{l.library}/{file}")"
+                                           asp-fallback-src="@($"{l.destination.Replace("wwwroot", "")}{file}")"
+                                           asp-subresource-integrity-src="@($"{l.destination.Replace("wwwroot", "")}{file}")"></script>)
+            }
+        }
+    }
+    else
+    {
+        if (lib.Contains(".css"))
+        {
+            @this.StyleBlock(@<link href="/css/@lib" rel="stylesheet" asp-append-version="true" />)
+        }
+        else
+        {
+            @this.ScriptBlock(@<script src="/js/@lib" asp-append-version="true"></script>)
+        }
+    }
+    </environment>
+}

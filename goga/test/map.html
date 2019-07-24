@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PWA Test | Marcelo</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PWA Test">
+  <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+  <link rel="manifest" href="manifest.json">
+  <!-- CSS Default-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- CSS Modulo-->
+  <link rel="stylesheet" href="css/doctor-detail.css">
+  <style>
+    :root {
+      --theme: #1d999e;
+      --themeHover: #0f4f51;
+    }
+
+    .btn-outline-success,
+    .btn-outline-success:active,
+    .btn-outline-success:visited {
+      border-color: var(--theme) !important;
+      color:var(--theme) !important;
+    }
+
+    .btn-success,
+    .btn-outline-success:hover {
+      background-color: var(--theme) !important;
+      color:white !important;
+    }
+
+    .btn-success:hover {
+      background-color: var(--themeHover) !important;
+      color:white !important;
+    }
+
+    .btn-sm {
+      border-radius: 20px !important;
+    }
+
+    body {
+      background: #f8f9fa;
+      font-size: 14px;
+      font-family: "Poppins", Helvetica, sans-serif;
+    }
+
+    h5 {
+      font-size: 18px;
+    }
+
+    hr {
+      margin: 0 15px;
+    }
+
+    .fa,
+    .far,
+    .fas {
+      color: var(--theme);
+      font-size: 20px;
+      padding: 10px;
+    }
+
+    ul,
+    li {
+      list-style: none;
+      padding-left: 0px;
+    }
+
+    .profile-picture {
+      border-radius: 50%;
+      padding: 20px;
+    }
+
+    .navbar-light .navbar-toggler {
+      border: none !important;
+    }
+
+    .grid-title {
+      margin-top: 15px;
+    }
+
+    .grid-content {
+      padding: 5px 20px !important;
+    }
+
+    .subtitle {
+      color: #999797;
+      font-size: 15px;
+      padding-bottom: 2px
+    }
+
+    .shadow {
+      -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!--Menu-->
+  <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="/pwa/img/logoFull.png" alt="logo" style="height: 2rem;">
+        </a>
+      </nav>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link disabled" href="#">Disabled</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!--Content-->
+  <div class="content">
+      <div id="map"></div>
+    <div class="container-fluid">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+
+  <!--Javascript-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&callback=initMap" async defer></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/5daccbb539.js"></script>
+  
+  <script>
+      $(document).ready(function(){
+      })
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat: -34.397, lng: 150.644},
+          mapTypeId: google.maps.MapTypeId.SATELLITE,
+          zoomControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          streetViewControl: false,
+          rotateControl: false,
+          fullscreenControl: false
+      });
+      }
+    </script>
+</body>
+
+</html>

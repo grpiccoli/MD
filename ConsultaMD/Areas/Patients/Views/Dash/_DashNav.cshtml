@@ -1,0 +1,45 @@
+﻿@model string
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" asp-for="Index"><img src="~/images/logo.png" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" disabled="@(Model == "index")" href="#">Buscador Médico</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" disabled="@(Model == "services")" href="#">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" disabled="@(Model == "payments")" href="#">Mis pagos</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Juan Perez
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Mi Perfil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Mis Citas</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Mis doctores favoritos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Sala de espera</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Notificaciones</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ayuda</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Salir</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

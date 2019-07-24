@@ -1,0 +1,8 @@
+.carousel {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.carousel-item {
+    height: 100%;
+}
