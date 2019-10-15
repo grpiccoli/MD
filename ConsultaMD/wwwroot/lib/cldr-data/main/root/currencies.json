@@ -3,8 +3,11 @@
     "root": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10712 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-01 12:07:43 -0500 (Fri, 01 Aug 2014) $"
         },
         "language": "root"
       },
@@ -25,10 +28,6 @@
           "AFN": {
             "displayName": "AFN",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "ALL",
@@ -238,14 +237,10 @@
             "displayName": "BYB",
             "symbol": "BYB"
           },
-          "BYN": {
-            "displayName": "BYN",
-            "symbol": "BYN",
-            "symbol-alt-narrow": "р."
-          },
           "BYR": {
             "displayName": "BYR",
-            "symbol": "BYR"
+            "symbol": "BYR",
+            "symbol-alt-narrow": "р."
           },
           "BZD": {
             "displayName": "BZD",
@@ -285,14 +280,6 @@
             "displayName": "CLP",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "CNH",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "CNY",
@@ -442,8 +429,7 @@
           },
           "GEL": {
             "displayName": "GEL",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "GHC",
@@ -538,10 +524,6 @@
             "displayName": "ILP",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
             "displayName": "ILS",
             "symbol": "₪",
@@ -559,10 +541,6 @@
           "IRR": {
             "displayName": "IRR",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "ISK",
@@ -754,10 +732,6 @@
             "displayName": "MRO",
             "symbol": "MRO"
           },
-          "MRU": {
-            "displayName": "MRU",
-            "symbol": "MRU"
-          },
           "MTL": {
             "displayName": "MTL",
             "symbol": "MTL"
@@ -770,10 +744,6 @@
             "displayName": "MUR",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "MVR",
@@ -917,8 +887,7 @@
           },
           "RON": {
             "displayName": "RON",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "RSD",
@@ -927,7 +896,7 @@
           "RUB": {
             "displayName": "RUB",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "RUR",
@@ -1011,11 +980,7 @@
           },
           "STD": {
             "displayName": "STD",
-            "symbol": "STD"
-          },
-          "STN": {
-            "displayName": "STN",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1087,7 +1052,7 @@
           "TWD": {
             "displayName": "TWD",
             "symbol": "NT$",
-            "symbol-alt-narrow": "$"
+            "symbol-alt-narrow": "NT$"
           },
           "TZS": {
             "displayName": "TZS",
@@ -1136,10 +1101,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "UZS",
             "symbol": "UZS"
@@ -1152,10 +1113,6 @@
             "displayName": "VEF",
             "symbol": "VEF",
             "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
-            "displayName": "VES",
-            "symbol": "VES"
           },
           "VND": {
             "displayName": "VND",
@@ -1257,7 +1214,7 @@
           },
           "XXX": {
             "displayName": "XXX",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "YDD",

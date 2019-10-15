@@ -3,20 +3,17 @@
     "hu": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "hu"
       },
       "dates": {
         "fields": {
           "era": {
-            "displayName": "éra"
-          },
-          "era-short": {
-            "displayName": "éra"
-          },
-          "era-narrow": {
             "displayName": "éra"
           },
           "year": {
@@ -63,9 +60,9 @@
           },
           "quarter": {
             "displayName": "negyedév",
-            "relative-type--1": "előző negyedév",
-            "relative-type-0": "ez a negyedév",
-            "relative-type-1": "következő negyedév",
+            "relative-type--1": "last quarter",
+            "relative-type-0": "this quarter",
+            "relative-type-1": "next quarter",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} negyedév múlva",
               "relativeTimePattern-count-other": "{0} negyedév múlva"
@@ -76,10 +73,10 @@
             }
           },
           "quarter-short": {
-            "displayName": "n.év",
-            "relative-type--1": "előző negyedév",
-            "relative-type-0": "ez a negyedév",
-            "relative-type-1": "következő negyedév",
+            "displayName": "negyedév",
+            "relative-type--1": "last quarter",
+            "relative-type-0": "this quarter",
+            "relative-type-1": "next quarter",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} negyedév múlva",
               "relativeTimePattern-count-other": "{0} negyedév múlva"
@@ -90,13 +87,13 @@
             }
           },
           "quarter-narrow": {
-            "displayName": "n.év",
-            "relative-type--1": "előző negyedév",
-            "relative-type-0": "ez a negyedév",
-            "relative-type-1": "következő negyedév",
+            "displayName": "negyedév",
+            "relative-type--1": "last quarter",
+            "relative-type-0": "this quarter",
+            "relative-type-1": "next quarter",
             "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} n.év múlva",
-              "relativeTimePattern-count-other": "{0} n.év múlva"
+              "relativeTimePattern-count-one": "{0} negyedév múlva",
+              "relativeTimePattern-count-other": "{0} negyedév múlva"
             },
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "{0} negyedévvel ezelőtt",
@@ -157,8 +154,7 @@
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "{0} héttel ezelőtt",
               "relativeTimePattern-count-other": "{0} héttel ezelőtt"
-            },
-            "relativePeriod": "{0} hete"
+            }
           },
           "week-short": {
             "displayName": "hét",
@@ -172,8 +168,7 @@
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "{0} héttel ezelőtt",
               "relativeTimePattern-count-other": "{0} héttel ezelőtt"
-            },
-            "relativePeriod": "{0} hete"
+            }
           },
           "week-narrow": {
             "displayName": "hét",
@@ -187,22 +182,12 @@
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "{0} héttel ezelőtt",
               "relativeTimePattern-count-other": "{0} héttel ezelőtt"
-            },
-            "relativePeriod": "{0} hete"
-          },
-          "weekOfMonth": {
-            "displayName": "hónap hete"
-          },
-          "weekOfMonth-short": {
-            "displayName": "hónap hete"
-          },
-          "weekOfMonth-narrow": {
-            "displayName": "hónap hete"
+            }
           },
           "day": {
             "displayName": "nap",
-            "relative-type--2": "tegnapelőtt",
             "relative-type--1": "tegnap",
+            "relative-type--2": "tegnapelőtt",
             "relative-type-0": "ma",
             "relative-type-1": "holnap",
             "relative-type-2": "holnapután",
@@ -217,8 +202,8 @@
           },
           "day-short": {
             "displayName": "nap",
-            "relative-type--2": "tegnapelőtt",
             "relative-type--1": "tegnap",
+            "relative-type--2": "tegnapelőtt",
             "relative-type-0": "ma",
             "relative-type-1": "holnap",
             "relative-type-2": "holnapután",
@@ -233,8 +218,8 @@
           },
           "day-narrow": {
             "displayName": "nap",
-            "relative-type--2": "tegnapelőtt",
             "relative-type--1": "tegnap",
+            "relative-type--2": "tegnapelőtt",
             "relative-type-0": "ma",
             "relative-type-1": "holnap",
             "relative-type-2": "holnapután",
@@ -247,318 +232,119 @@
               "relativeTimePattern-count-other": "{0} napja"
             }
           },
-          "dayOfYear": {
-            "displayName": "év napja"
-          },
-          "dayOfYear-short": {
-            "displayName": "év napja"
-          },
-          "dayOfYear-narrow": {
-            "displayName": "év napja"
-          },
           "weekday": {
             "displayName": "hét napja"
-          },
-          "weekday-short": {
-            "displayName": "hét napja"
-          },
-          "weekday-narrow": {
-            "displayName": "hét napja"
-          },
-          "weekdayOfMonth": {
-            "displayName": "hónap hétköznapja"
-          },
-          "weekdayOfMonth-short": {
-            "displayName": "hónap hétköznapja"
-          },
-          "weekdayOfMonth-narrow": {
-            "displayName": "hónap hétköznapja"
           },
           "sun": {
             "relative-type--1": "előző vasárnap",
             "relative-type-0": "ez a vasárnap",
-            "relative-type-1": "következő vasárnap",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} vasárnap múlva",
-              "relativeTimePattern-count-other": "{0} vasárnap múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} vasárnappal ezelőtt",
-              "relativeTimePattern-count-other": "{0} vasárnappal ezelőtt"
-            }
+            "relative-type-1": "következő vasárnap"
           },
           "sun-short": {
             "relative-type--1": "előző vasárnap",
             "relative-type-0": "ez a vasárnap",
-            "relative-type-1": "következő vasárnap",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} vasárnap múlva",
-              "relativeTimePattern-count-other": "{0} vasárnap múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} vasárnappal ezelőtt",
-              "relativeTimePattern-count-other": "{0} vasárnappal ezelőtt"
-            }
+            "relative-type-1": "következő vasárnap"
           },
           "sun-narrow": {
             "relative-type--1": "előző vasárnap",
             "relative-type-0": "ez a vasárnap",
-            "relative-type-1": "következő vasárnap",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} vasárnap múlva",
-              "relativeTimePattern-count-other": "{0} vasárnap múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} vasárnappal ezelőtt",
-              "relativeTimePattern-count-other": "{0} vasárnappal ezelőtt"
-            }
+            "relative-type-1": "következő vasárnap"
           },
           "mon": {
             "relative-type--1": "előző hétfő",
             "relative-type-0": "ez a hétfő",
-            "relative-type-1": "következő hétfő",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} hétfő múlva",
-              "relativeTimePattern-count-other": "{0} hétfő múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} hétfővel ezelőtt",
-              "relativeTimePattern-count-other": "{0} hétfővel ezelőtt"
-            }
+            "relative-type-1": "következő hétfő"
           },
           "mon-short": {
             "relative-type--1": "előző hétfő",
             "relative-type-0": "ez a hétfő",
-            "relative-type-1": "következő hétfő",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} hétfő múlva",
-              "relativeTimePattern-count-other": "{0} hétfő múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} hétfővel ezelőtt",
-              "relativeTimePattern-count-other": "{0} hétfővel ezelőtt"
-            }
+            "relative-type-1": "következő hétfő"
           },
           "mon-narrow": {
             "relative-type--1": "előző hétfő",
             "relative-type-0": "ez a hétfő",
-            "relative-type-1": "következő hétfő",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} hétfő múlva",
-              "relativeTimePattern-count-other": "{0} hétfő múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} hétfővel ezelőtt",
-              "relativeTimePattern-count-other": "{0} hétfővel ezelőtt"
-            }
+            "relative-type-1": "következő hétfő"
           },
           "tue": {
             "relative-type--1": "előző kedd",
             "relative-type-0": "ez a kedd",
-            "relative-type-1": "következő kedd",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} kedd múlva",
-              "relativeTimePattern-count-other": "{0} kedd múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} keddel ezelőtt",
-              "relativeTimePattern-count-other": "{0} keddel ezelőtt"
-            }
+            "relative-type-1": "következő kedd"
           },
           "tue-short": {
             "relative-type--1": "előző kedd",
             "relative-type-0": "ez a kedd",
-            "relative-type-1": "következő kedd",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} kedd múlva",
-              "relativeTimePattern-count-other": "{0} kedd múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} keddel ezelőtt",
-              "relativeTimePattern-count-other": "{0} keddel ezelőtt"
-            }
+            "relative-type-1": "következő kedd"
           },
           "tue-narrow": {
             "relative-type--1": "előző kedd",
             "relative-type-0": "ez a kedd",
-            "relative-type-1": "következő kedd",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} kedd múlva",
-              "relativeTimePattern-count-other": "{0} kedd múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} keddel ezelőtt",
-              "relativeTimePattern-count-other": "{0} keddel ezelőtt"
-            }
+            "relative-type-1": "következő kedd"
           },
           "wed": {
             "relative-type--1": "előző szerda",
             "relative-type-0": "ez a szerda",
-            "relative-type-1": "következő szerda",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} szerda múlva",
-              "relativeTimePattern-count-other": "{0} szerda múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} szerdával ezelőtt",
-              "relativeTimePattern-count-other": "{0} szerdával ezelőtt"
-            }
+            "relative-type-1": "következő szerda"
           },
           "wed-short": {
             "relative-type--1": "előző szerda",
             "relative-type-0": "ez a szerda",
-            "relative-type-1": "következő szerda",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} szerda múlva",
-              "relativeTimePattern-count-other": "{0} szerda múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} szerdával ezelőtt",
-              "relativeTimePattern-count-other": "{0} szerdával ezelőtt"
-            }
+            "relative-type-1": "következő szerda"
           },
           "wed-narrow": {
             "relative-type--1": "előző szerda",
             "relative-type-0": "ez a szerda",
-            "relative-type-1": "következő szerda",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} szerda múlva",
-              "relativeTimePattern-count-other": "{0} szerda múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} szerdával ezelőtt",
-              "relativeTimePattern-count-other": "{0} szerdával ezelőtt"
-            }
+            "relative-type-1": "következő szerda"
           },
           "thu": {
             "relative-type--1": "előző csütörtök",
             "relative-type-0": "ez a csütörtök",
-            "relative-type-1": "következő csütörtök",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} csütörtök múlva",
-              "relativeTimePattern-count-other": "{0} csütörtök múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} csütörtökkel ezelőtt",
-              "relativeTimePattern-count-other": "{0} csütörtökkel ezelőtt"
-            }
+            "relative-type-1": "következő csütörtök"
           },
           "thu-short": {
             "relative-type--1": "előző csütörtök",
             "relative-type-0": "ez a csütörtök",
-            "relative-type-1": "következő csütörtök",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} csütörtök múlva",
-              "relativeTimePattern-count-other": "{0} csütörtök múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} csütörtökkel ezelőtt",
-              "relativeTimePattern-count-other": "{0} csütörtökkel ezelőtt"
-            }
+            "relative-type-1": "következő csütörtök"
           },
           "thu-narrow": {
             "relative-type--1": "előző csütörtök",
             "relative-type-0": "ez a csütörtök",
-            "relative-type-1": "következő csütörtök",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} csütörtök múlva",
-              "relativeTimePattern-count-other": "{0} csütörtök múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} csütörtökkel ezelőtt",
-              "relativeTimePattern-count-other": "{0} csütörtökkel ezelőtt"
-            }
+            "relative-type-1": "következő csütörtök"
           },
           "fri": {
             "relative-type--1": "előző péntek",
             "relative-type-0": "ez a péntek",
-            "relative-type-1": "következő péntek",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} péntek múlva",
-              "relativeTimePattern-count-other": "{0} péntek múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} péntekkel ezelőtt",
-              "relativeTimePattern-count-other": "{0} péntekkel ezelőtt"
-            }
+            "relative-type-1": "következő péntek"
           },
           "fri-short": {
             "relative-type--1": "előző péntek",
             "relative-type-0": "ez a péntek",
-            "relative-type-1": "következő péntek",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} péntek múlva",
-              "relativeTimePattern-count-other": "{0} péntek múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} péntekkel ezelőtt",
-              "relativeTimePattern-count-other": "{0} péntekkel ezelőtt"
-            }
+            "relative-type-1": "következő péntek"
           },
           "fri-narrow": {
             "relative-type--1": "előző péntek",
             "relative-type-0": "ez a péntek",
-            "relative-type-1": "következő péntek",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} péntek múlva",
-              "relativeTimePattern-count-other": "{0} péntek múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} péntekkel ezelőtt",
-              "relativeTimePattern-count-other": "{0} péntekkel ezelőtt"
-            }
+            "relative-type-1": "következő péntek"
           },
           "sat": {
             "relative-type--1": "előző szombat",
             "relative-type-0": "ez a szombat",
-            "relative-type-1": "következő szombat",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} szombat múlva",
-              "relativeTimePattern-count-other": "{0} szombat múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} szombattal ezelőtt",
-              "relativeTimePattern-count-other": "{0} szombattal ezelőtt"
-            }
+            "relative-type-1": "következő szombat"
           },
           "sat-short": {
             "relative-type--1": "előző szombat",
             "relative-type-0": "ez a szombat",
-            "relative-type-1": "következő szombat",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} szombat múlva",
-              "relativeTimePattern-count-other": "{0} szombat múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} szombattal ezelőtt",
-              "relativeTimePattern-count-other": "{0} szombattal ezelőtt"
-            }
+            "relative-type-1": "következő szombat"
           },
           "sat-narrow": {
             "relative-type--1": "előző szombat",
             "relative-type-0": "ez a szombat",
-            "relative-type-1": "következő szombat",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "{0} szombat múlva",
-              "relativeTimePattern-count-other": "{0} szombat múlva"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "{0} szombattal ezelőtt",
-              "relativeTimePattern-count-other": "{0} szombattal ezelőtt"
-            }
-          },
-          "dayperiod-short": {
-            "displayName": "napszak"
+            "relative-type-1": "következő szombat"
           },
           "dayperiod": {
             "displayName": "napszak"
           },
-          "dayperiod-narrow": {
-            "displayName": "napszak"
-          },
           "hour": {
             "displayName": "óra",
-            "relative-type-0": "ebben az órában",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} óra múlva",
               "relativeTimePattern-count-other": "{0} óra múlva"
@@ -570,7 +356,6 @@
           },
           "hour-short": {
             "displayName": "óra",
-            "relative-type-0": "ebben az órában",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} óra múlva",
               "relativeTimePattern-count-other": "{0} óra múlva"
@@ -582,7 +367,6 @@
           },
           "hour-narrow": {
             "displayName": "óra",
-            "relative-type-0": "ebben az órában",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} óra múlva",
               "relativeTimePattern-count-other": "{0} óra múlva"
@@ -594,7 +378,6 @@
           },
           "minute": {
             "displayName": "perc",
-            "relative-type-0": "ebben a percben",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} perc múlva",
               "relativeTimePattern-count-other": "{0} perc múlva"
@@ -606,7 +389,6 @@
           },
           "minute-short": {
             "displayName": "perc",
-            "relative-type-0": "ebben a percben",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} perc múlva",
               "relativeTimePattern-count-other": "{0} perc múlva"
@@ -618,7 +400,6 @@
           },
           "minute-narrow": {
             "displayName": "perc",
-            "relative-type-0": "ebben a percben",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "{0} perc múlva",
               "relativeTimePattern-count-other": "{0} perc múlva"
@@ -665,12 +446,6 @@
             }
           },
           "zone": {
-            "displayName": "időzóna"
-          },
-          "zone-short": {
-            "displayName": "időzóna"
-          },
-          "zone-narrow": {
             "displayName": "időzóna"
           }
         }

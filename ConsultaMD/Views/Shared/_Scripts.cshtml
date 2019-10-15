@@ -1,0 +1,24 @@
+﻿@model (string[], string)
+@{
+    var style = Model.Item2 + "Styles";
+    var script = Model.Item2 + "Scripts";
+    bool dev = true;
+    <environment exclude="Development">
+        @(dev = false)
+    </environment>
+    @foreach (var lib in Model.Item1)
+    {
+        var css = WebpackChunkNamer.GetJsFile(lib, "css");
+        if (!string.IsNullOrEmpty(css))
+        {
+            this.Block(@<link charset="utf-8" href="~/dist/@css" rel="stylesheet"
+                              asp-append-version="@dev" />, style);
+        }
+        var js = WebpackChunkNamer.GetJsFile(lib, "js");
+        if (!string.IsNullOrEmpty(js))
+        {
+            this.Block(@<script charset="utf-8" src="~/dist/@js"
+                                asp-append-version="@dev"></script>, script);
+        }
+    }
+}

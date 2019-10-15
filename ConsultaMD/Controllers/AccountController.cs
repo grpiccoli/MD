@@ -18,6 +18,8 @@ using System.Linq;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Newtonsoft.Json;
+using ConsultaMD.Models.Entities;
+using ConsultaMD.Areas.Identity.Pages.Account;
 
 namespace ConsultaMD.Controllers
 {
@@ -25,15 +27,15 @@ namespace ConsultaMD.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
 
         public AccountController(
-            UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ILogger<AccountController> logger,
             IConfiguration configuration)
@@ -47,6 +49,15 @@ namespace ConsultaMD.Controllers
 
         [TempData]
         public string ErrorMessage { get; set; }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult PhoneVerification(string area, string returnUrl = null)
+        {
+            // Clear the existing external cookie to ensure a clean login process
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
 
         [HttpGet]
         [AllowAnonymous]
@@ -244,7 +255,7 @@ namespace ConsultaMD.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new AppUser
+                var user = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
@@ -444,7 +455,7 @@ namespace ConsultaMD.Controllers
                 {
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
-                var user = new AppUser { UserName = model.Email, Name = model.Name, Last = model.Last, Email = model.Email, ProfileImageUrl = model.ProfileImageUrl };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -605,10 +616,12 @@ namespace ConsultaMD.Controllers
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    byte[] bytes = new byte[stream.Length];
-                    stream.Read(bytes, 0, (int)stream.Length);
-                    return bytes;
+                    using(var stream = await response.Content.ReadAsStreamAsync())
+                    {
+                        byte[] bytes = new byte[stream.Length];
+                        stream.Read(bytes, 0, (int)stream.Length);
+                        return bytes;
+                    }
                 }
                 else
                     return null;

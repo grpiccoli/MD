@@ -3,10 +3,13 @@
     "vi": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "vi"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "localeDisplayNames": {
         "localeDisplayPattern": {
@@ -16,145 +19,78 @@
         },
         "keys": {
           "calendar": "Lịch",
-          "cf": "Định dạng tiền tệ",
           "colAlternate": "Bỏ qua sắp xếp biểu tượng",
           "colBackwards": "Sắp xếp dấu trọng âm đảo ngược",
           "colCaseFirst": "Sắp xếp chữ hoa/chữ thường",
           "colCaseLevel": "Sắp xếp phân biệt chữ hoa/chữ thường",
-          "collation": "Thứ tự sắp xếp",
+          "colHiraganaQuaternary": "Sắp xếp chữ Kana",
           "colNormalization": "Sắp xếp theo chuẩn hóa",
           "colNumeric": "Sắp xếp theo số",
           "colStrength": "Cường độ sắp xếp",
+          "collation": "Thứ tự sắp xếp",
           "currency": "Tiền tệ",
-          "hc": "Chu kỳ giờ (12 vs 24)",
-          "lb": "Kiểu xuống dòng",
-          "ms": "Hệ thống đo lường",
           "numbers": "Số",
           "timezone": "Múi giờ",
           "va": "Biến thể ngôn ngữ",
+          "variableTop": "Sắp xếp dưới dạng biểu tượng",
           "x": "Sử dụng cá nhân"
         },
         "types": {
-          "calendar": {
-            "buddhist": "Lịch Phật Giáo",
-            "chinese": "Lịch Trung Quốc",
-            "coptic": "Lịch Copts",
-            "dangi": "Lịch Dangi",
-            "ethiopic": "Lịch Ethiopia",
-            "ethiopic-amete-alem": "Lịch Ethiopic Amete Alem",
-            "gregorian": "Lịch Gregory",
-            "hebrew": "Lịch Do Thái",
-            "indian": "Lịch Quốc gia Ấn Độ",
-            "islamic": "Lịch Hồi Giáo",
-            "islamic-civil": "Lịch Islamic-Civil",
-            "islamic-rgsa": "Lịch Hồi Giáo - Ả Rập Xê-út",
-            "islamic-tbla": "Lịch Hồi Giáo - Thiên văn",
-            "islamic-umalqura": "Lịch Hồi Giáo - Umm al-Qura",
-            "iso8601": "Lịch ISO-8601",
-            "japanese": "Lịch Nhật Bản",
-            "persian": "Lịch Ba Tư",
-            "roc": "Lịch Trung Hoa Dân Quốc"
-          },
-          "cf": {
-            "account": "Định dạng tiền tệ kế toán",
-            "standard": "Định dạng tiền tệ chuẩn"
-          },
-          "colAlternate": {
-            "non-ignorable": "Sắp xếp biểu tượng",
-            "shifted": "Sắp xếp biểu tượng bỏ qua"
-          },
-          "colBackwards": {
-            "no": "Sắp xếp dấu trọng âm bình thường",
-            "yes": "Sắp xếp dấu trọng âm đảo ngược"
-          },
-          "colCaseFirst": {
-            "lower": "Sắp xếp chữ thường đầu tiên",
-            "no": "Sắp xếp thứ tự chữ cái bình thường",
-            "upper": "Sắp xếp chữ hoa đầu tiên"
-          },
-          "colCaseLevel": {
-            "no": "Sắp xếp không phân biệt chữ hoa/chữ thường",
-            "yes": "Sắp xếp phân biệt chữ hoa/chữ thường"
-          },
-          "collation": {
-            "big5han": "Thứ tự sắp xếp theo tiếng Trung phồn thể - Big5",
-            "compat": "Thứ tự sắp xếp trước đây, để tương thích",
-            "dictionary": "Thứ tự sắp xếp theo từ điển",
-            "ducet": "Thứ tự sắp xếp unicode mặc định",
-            "emoji": "Thứ tự sắp xếp biểu tượng",
-            "eor": "Quy tắc sắp xếp Châu Âu",
-            "gb2312han": "Thứ tự sắp xếp theo tiếng Trung giản thể - GB2312",
-            "phonebook": "Thứ tự sắp xếp theo danh bạ điện thoại",
-            "phonetic": "Thứ tự sắp xếp theo ngữ âm",
-            "pinyin": "Thứ tự sắp xếp theo bính âm",
-            "reformed": "Thứ tự sắp xếp đã sửa đổi",
-            "search": "Tìm kiếm mục đích chung",
-            "searchjl": "Tìm kiếm theo Phụ âm Đầu Hangul",
-            "standard": "Thứ tự sắp xếp chuẩn",
-            "stroke": "Thứ tự sắp xếp theo nét chữ",
-            "traditional": "Thứ tự sắp xếp truyền thống",
-            "unihan": "Trình tự sắp xếp theo bộ-nét",
-            "zhuyin": "Thứ tự sắp xếp Zhuyin"
-          },
-          "colNormalization": {
-            "no": "Sắp xếp không theo chuẩn hóa",
-            "yes": "Sắp xếp unicode được chuẩn hóa"
-          },
-          "colNumeric": {
-            "no": "Sắp xếp từng chữ số",
-            "yes": "Sắp xếp chữ số theo số"
-          },
-          "colStrength": {
-            "identical": "Sắp xếp tất cả",
-            "primary": "Chỉ sắp xếp chữ cái cơ sở",
-            "quaternary": "Sắp xếp dấu trọng âm/chữ cái/độ rộng/chữ Kana",
-            "secondary": "Sắp xếp dấu trọng âm",
-            "tertiary": "Sắp xếp dấu trọng âm/chữ cái/độ rộng"
-          },
-          "d0": {
-            "fwidth": "Độ rộng tối đa",
-            "hwidth": "Nửa độ rộng",
-            "npinyin": "Số"
-          },
-          "hc": {
-            "h11": "Hệ thống 12 giờ (0–11)",
-            "h12": "Hệ thống 12 giờ (1–12)",
-            "h23": "Hệ thống 24 giờ (0–23)",
-            "h24": "Hệ thống 24 giờ (1–24)"
-          },
-          "lb": {
-            "loose": "Kiểu xuống dòng thoáng",
-            "normal": "Kiểu xuống dòng thường",
-            "strict": "Kiểu xuống dòng hẹp"
-          },
-          "m0": {
-            "bgn": "Chuyển tự US BGN",
-            "ungegn": "Chuyển tự UN GEGN"
-          },
-          "ms": {
-            "metric": "Hệ mét",
-            "uksystem": "Hệ đo lường Anh",
-            "ussystem": "Hệ đo lường Mỹ"
-          },
           "numbers": {
-            "ahom": "Chữ số Ahom",
             "arab": "Chữ số Ả Rập - Ấn Độ",
             "arabext": "Chữ số Ả Rập - Ấn Độ mở rộng",
             "armn": "Chữ số Armenia",
             "armnlow": "Chữ số Armenia viết thường",
             "bali": "Chữ số Bali",
-            "beng": "Chữ số Bangladesh",
-            "brah": "Chữ số Brahmi",
+            "beng": "Chữ số Bangladesh"
+          },
+          "collation": {
+            "big5han": "Thứ tự sắp xếp theo tiếng Trung phồn thể - Big5"
+          },
+          "numbers": {
+            "brah": "Chữ số Brahmi"
+          },
+          "calendar": {
+            "buddhist": "Lịch Phật Giáo"
+          },
+          "numbers": {
             "cakm": "Chữ số Chakma",
-            "cham": "Chữ số Chăm",
-            "cyrl": "Số Kirin",
-            "deva": "Chữ số Devanagari",
-            "ethi": "Chữ số Ethiopia",
+            "cham": "Chữ số Chăm"
+          },
+          "calendar": {
+            "chinese": "Lịch Trung Quốc",
+            "coptic": "Lịch Copts",
+            "dangi": "Lịch Dangi"
+          },
+          "numbers": {
+            "deva": "Chữ số Devanagari"
+          },
+          "collation": {
+            "dictionary": "Thứ tự sắp xếp theo từ điển",
+            "ducet": "Thứ tự sắp xếp unicode mặc định",
+            "eor": "eor"
+          },
+          "numbers": {
+            "ethi": "Chữ số Ethiopia"
+          },
+          "calendar": {
+            "ethiopic": "Lịch Ethiopia",
+            "ethiopic-amete-alem": "Lịch Ethiopic Amete Alem"
+          },
+          "numbers": {
             "finance": "Chữ số dùng trong tài chính",
-            "fullwide": "Chữ số có độ rộng đầy đủ",
-            "geor": "Chữ số Gruzia",
-            "gong": "Chữ số Gong",
-            "gonm": "Chữ số Gonm",
+            "fullwide": "Chữ số có độ rộng đầy đủ"
+          },
+          "collation": {
+            "gb2312han": "Thứ tự sắp xếp theo tiếng Trung giản thể - GB2312"
+          },
+          "numbers": {
+            "geor": "Chữ số Gruzia"
+          },
+          "calendar": {
+            "gregorian": "Lịch Gregory"
+          },
+          "numbers": {
             "grek": "Chữ số Hy Lạp",
             "greklow": "Chữ số Hy Lạp viết thường",
             "gujr": "Chữ số Gujarati",
@@ -164,9 +100,25 @@
             "hansfin": "Chữ số dùng trong tài chính của tiếng Trung giản thể",
             "hant": "Chữ số tiếng Trung phồn thể",
             "hantfin": "Chữ số dùng trong tài chính của tiếng Trung phồn thể",
-            "hebr": "Chữ số Do Thái",
-            "hmng": "Chữ số Hmng",
-            "hmnp": "Chữ số Hmnp",
+            "hebr": "Chữ số Do Thái"
+          },
+          "calendar": {
+            "hebrew": "Lịch Do Thái"
+          },
+          "colStrength": {
+            "identical": "Sắp xếp tất cả"
+          },
+          "calendar": {
+            "indian": "Lịch Quốc gia Ấn Độ",
+            "islamic": "Lịch Hồi Giáo",
+            "islamic-civil": "Lịch Islamic-Civil",
+            "islamic-rgsa": "Lịch Hồi Giáo - Ả Rập Xê-út",
+            "islamic-tbla": "Lịch Hồi Giáo - Thiên văn",
+            "islamic-umalqura": "Lịch Hồi Giáo - Umm al-Qura",
+            "iso8601": "Lịch ISO-8601",
+            "japanese": "Lịch Nhật Bản"
+          },
+          "numbers": {
             "java": "Chữ số Java",
             "jpan": "Chữ số Nhật Bản",
             "jpanfin": "Chữ số dùng trong tài chính của tiếng Nhật",
@@ -178,46 +130,134 @@
             "laoo": "Chữ số Lào",
             "latn": "Chữ số phương Tây",
             "lepc": "Chữ số Lepcha",
-            "limb": "Chữ số Limbu",
-            "mathbold": "Chữ số Mathbold",
-            "mathdbl": "Chữ số Mathdbl",
-            "mathmono": "Chữ số Mathmono",
-            "mathsanb": "Chữ số Mathsanb",
-            "mathsans": "Chữ số Mathsans",
+            "limb": "Chữ số Limbu"
+          },
+          "colCaseFirst": {
+            "lower": "Sắp xếp chữ thường đầu tiên"
+          },
+          "numbers": {
             "mlym": "Chữ số Malayalam",
-            "modi": "Chữ số Modi",
             "mong": "Chữ số Mông Cổ",
-            "mroo": "Chữ số Mroo",
             "mtei": "Chữ số Meetei Mayek",
             "mymr": "Chữ số Myanma",
             "mymrshan": "Chữ số Myanmar Shan",
-            "mymrtlng": "Chữ số Mymrtlng",
             "native": "Chữ số tự nhiên",
-            "nkoo": "Chữ số N’Ko",
+            "nkoo": "Chữ số N’Ko"
+          },
+          "colBackwards": {
+            "no": "Sắp xếp dấu trọng âm bình thường"
+          },
+          "colCaseFirst": {
+            "no": "Sắp xếp thứ tự chữ cái bình thường"
+          },
+          "colCaseLevel": {
+            "no": "Sắp xếp không phân biệt chữ hoa/chữ thường"
+          },
+          "colHiraganaQuaternary": {
+            "no": "Sắp xếp chữ Kana riêng biệt"
+          },
+          "colNormalization": {
+            "no": "Sắp xếp không theo chuẩn hóa"
+          },
+          "colNumeric": {
+            "no": "Sắp xếp từng chữ số"
+          },
+          "colAlternate": {
+            "non-ignorable": "Sắp xếp biểu tượng"
+          },
+          "numbers": {
             "olck": "Chữ số Ol Chiki",
-            "orya": "Chữ số Odia",
-            "osma": "Chữ số Osmanya",
-            "rohg": "Chữ số Rohg",
+            "orya": "Chữ số Oriya",
+            "osma": "Chữ số Osmanya"
+          },
+          "calendar": {
+            "persian": "Lịch Ba Tư"
+          },
+          "collation": {
+            "phonebook": "Thứ tự sắp xếp theo danh bạ điện thoại",
+            "phonetic": "Thứ tự sắp xếp theo ngữ âm",
+            "pinyin": "Thứ tự sắp xếp theo bính âm"
+          },
+          "colStrength": {
+            "primary": "Chỉ sắp xếp chữ cái cơ sở",
+            "quaternary": "Sắp xếp dấu trọng âm/chữ cái/độ rộng/chữ Kana"
+          },
+          "collation": {
+            "reformed": "Thứ tự sắp xếp đã sửa đổi"
+          },
+          "calendar": {
+            "roc": "Lịch Trung Hoa Dân Quốc"
+          },
+          "numbers": {
             "roman": "Chữ số La mã",
             "romanlow": "Chữ số La Mã viết thường",
-            "saur": "Chữ số Saurashtra",
+            "saur": "Chữ số Saurashtra"
+          },
+          "collation": {
+            "search": "Tìm kiếm mục đích chung",
+            "searchjl": "Tìm kiếm theo Phụ âm Đầu Hangul"
+          },
+          "colStrength": {
+            "secondary": "Sắp xếp dấu trọng âm"
+          },
+          "colAlternate": {
+            "shifted": "Sắp xếp biểu tượng bỏ qua"
+          },
+          "numbers": {
             "shrd": "Chữ số Sharada",
-            "sind": "Chữ số Sind",
-            "sinh": "Chữ số Sinh",
-            "sora": "Chữ số Sora Sompeng",
+            "sora": "Chữ số Sora Sompeng"
+          },
+          "collation": {
+            "standard": "Thứ tự sắp xếp chuẩn",
+            "stroke": "Thứ tự sắp xếp theo nét chữ"
+          },
+          "numbers": {
             "sund": "Chữ số Sudan",
             "takr": "Chữ số Takri",
             "talu": "Chữ số Thái Lặc mới",
             "taml": "Chữ số Tamil Truyền thống",
             "tamldec": "Chữ số Tamil",
-            "telu": "Chữ số Telugu",
+            "telu": "Chữ số Telugu"
+          },
+          "colStrength": {
+            "tertiary": "Sắp xếp dấu trọng âm/chữ cái/độ rộng"
+          },
+          "numbers": {
             "thai": "Chữ số Thái",
-            "tibt": "Chữ số Tây Tạng",
-            "tirh": "Chữ số Tirh",
-            "traditional": "Số truyền thống",
-            "vaii": "Chữ số Vai",
-            "wara": "Chữ số Wara",
-            "wcho": "Chữ số Wancho"
+            "tibt": "Chữ số Tây Tạng"
+          },
+          "collation": {
+            "traditional": "Thứ tự sắp xếp truyền thống"
+          },
+          "numbers": {
+            "traditional": "Số truyền thống"
+          },
+          "collation": {
+            "unihan": "Trình tự sắp xếp theo bộ-nét"
+          },
+          "colCaseFirst": {
+            "upper": "Sắp xếp chữ hoa đầu tiên"
+          },
+          "numbers": {
+            "vaii": "Chữ số Vai"
+          },
+          "colBackwards": {
+            "yes": "Sắp xếp dấu trọng âm đảo ngược"
+          },
+          "colCaseLevel": {
+            "yes": "Sắp xếp phân biệt chữ hoa/chữ thường"
+          },
+          "colHiraganaQuaternary": {
+            "yes": "Sắp xếp chữ Kana khác nhau"
+          },
+          "colNormalization": {
+            "yes": "Sắp xếp unicode được chuẩn hóa"
+          },
+          "colNumeric": {
+            "yes": "Sắp xếp chữ số theo số"
+          },
+          "collation": {
+            "zhuyin": "Thứ tự sắp xếp Zhuyin"
           }
         },
         "codePatterns": {

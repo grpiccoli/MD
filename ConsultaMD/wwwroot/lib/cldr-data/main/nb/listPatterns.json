@@ -3,43 +3,16 @@
     "nb": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "nb"
       },
       "listPatterns": {
         "listPattern-type-standard": {
-          "start": "{0}, {1}",
-          "middle": "{0}, {1}",
-          "end": "{0} og {1}",
-          "2": "{0} og {1}"
-        },
-        "listPattern-type-or": {
-          "start": "{0}, {1}",
-          "middle": "{0}, {1}",
-          "end": "{0} eller {1}",
-          "2": "{0} eller {1}"
-        },
-        "listPattern-type-or-narrow": {
-          "start": "{0}, {1}",
-          "middle": "{0}, {1}",
-          "end": "{0} eller {1}",
-          "2": "{0} eller {1}"
-        },
-        "listPattern-type-or-short": {
-          "start": "{0}, {1}",
-          "middle": "{0}, {1}",
-          "end": "{0} eller {1}",
-          "2": "{0} eller {1}"
-        },
-        "listPattern-type-standard-narrow": {
-          "start": "{0}, {1}",
-          "middle": "{0}, {1}",
-          "end": "{0} og {1}",
-          "2": "{0} og {1}"
-        },
-        "listPattern-type-standard-short": {
           "start": "{0}, {1}",
           "middle": "{0}, {1}",
           "end": "{0} og {1}",

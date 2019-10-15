@@ -1,0 +1,175 @@
+﻿@model PaymentVM
+
+@{
+    ViewData["Title"] = "Confirmar Pago";
+}
+
+<partial name="_Libs" model='new List<string>{ "simplebar" }' />
+
+@section Styles{
+    <style>
+        .row .col {
+            padding: 0 30px;
+        }
+
+        label, input{
+            color: black!important;
+        }
+
+        .btn {
+            border-radius: 20px !important;
+            background-image: linear-gradient(to right, #18adb3, #11686b);
+        }
+
+        .brand-logo img {
+            width: 60%;
+        }
+
+        .profile-picture {
+            width: 100%;
+            padding: 25px;
+        }
+
+        .container-fluid .fa,
+        .container-fluid .far,
+        .container-fluid .fas {
+            font-size: 20px;
+        }
+
+        .icon_detail {
+            width: 10%;
+        }
+
+        /* Sidebar CSS */
+        .sidenav {
+            background-color: var(--theme) !important;
+            width: 300px;
+        }
+
+            .sidenav li > a {
+                color: white !important;
+            }
+
+        .clinic {
+            padding-bottom: 20px !important;
+        }
+
+
+        tr {
+            border: none !important;
+        }
+        .h-75v{
+            height:75vh;
+        }
+        @@media only screen and (max-width:600px){
+            .h-55vm{
+                height:55vh;
+            }
+        }
+        td{
+            padding:0;
+        }
+    </style>
+}
+
+<div class="row">
+    <div class="col s12 m4 l3 p-0">
+        <div class="row m-0">
+            <div class="col s5 m12">
+                <img src="/img/doc/@(Model.RutDoctor).min.jpg" 
+                     onerror="this.onerror=null; this.src='/img/doc/default.min.jpg'" 
+                     class="circle p-25p" style="max-height:150px;"
+                     asp-append-version="true"/>
+            </div>
+            <div class="col s7 m12">
+                <h5 class="clinic-text m-0">Dr. @Model.NombreDoctor</h5>
+                <h6>@Model.Especialidad</h6>
+                @Model.Lugar
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4 l9 h-55vm h-75v">
+            <div class="h-55vm h-75v" data-simplebar>
+                <form id="reservationForm" asp-action="ReservationSummary" method="post">
+                    <h6 class="clinic-text">Detalles del Paciente</h6>
+                    <div class="input-field col s12">
+                        <input asp-for="RutCliente" readonly />
+                        <label asp-for="RutCliente"></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input asp-for="NombreCliente" readonly />
+                        <label asp-for="NombreCliente"></label>
+                    </div>
+                    <h6 class="clinic-text">Detalles de Reserva</h6>
+                    <div class="input-field col s12">
+                        <input asp-for="Dia" type="Date" readonly />
+                        <label asp-for="Dia"></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input asp-for="Hora" type="time" readonly />
+                        <label asp-for="Hora"></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input asp-for="Direccion" readonly />
+                        <label asp-for="Direccion"></label>
+                    </div>
+                    <h6 class="clinic-text">Detalles del Doctor</h6>
+                    <div class="input-field col s12">
+                        <input asp-for="RutDoctor" readonly />
+                        <label asp-for="RutDoctor"></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input asp-for="NombreDoctor" readonly />
+                        <label asp-for="NombreDoctor"></label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input asp-for="Especialidad" readonly />
+                        <label asp-for="Especialidad"></label>
+                    </div>
+                    <input asp-for="PaymentType" class="hide" readonly />
+                    <input asp-for="EspecialidadId" class="hide" readonly />
+                </form>
+            </div>
+            <div class="input-field col s12 center">
+                <button data-target="modal1" class="btn waves-effect modal-trigger waves-light">
+                    Confirmar y Pagar
+                    <i class="material-icons right">done</i>
+                </button>
+            </div>
+        </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <partial name="PaymentMode" />
+</div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function(){
+            $('#modal1').modal();
+            $('#Dia').datepicker({
+                format: 'dd mmmm, yyyy',
+                i18n: {
+                    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                    weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                    weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                    weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
+                    cancel: 'Cancelar',
+                    clear: 'Limpar',
+                    done: 'Ok'
+                },
+                onOpen: function () {
+                    $(this).close();
+                }
+            });
+            $(".paymentType").on('change', function () {
+                var type = $(this).val();
+                $("#PaymentType").val(type);
+            });
+        });
+    </script>
+}

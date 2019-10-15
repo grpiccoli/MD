@@ -1,0 +1,38 @@
+﻿@model DependentVM
+@{
+    ViewData["Title"] = "Cargas";
+    var action = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+<partial name="_MenuPartial" model='action'/>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    url: "https://localhost:44350/Patients/Tmp/AddedDependantsData",
+                    dataType: "json"
+                })
+                    .done((data) => {
+                        $.each(data, function (index, value) {
+                            $("#cargas").append(
+                                `<div class="col m3 s12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <span class="card-title">${value.nombre}</span>
+                                            <p>${value.rut}</p>
+                                        </div>
+                                    </div>
+                                </div>`);
+                        })
+                    })
+            });
+        })
+    </script>
+}
+<div class="container">
+    <h3 class="clinic-text">Listado de Cargas</h3>
+    <div class="row" id="cargas"></div>
+</div>

@@ -3,20 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using ConsultaMD.Models;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ConsultaMD.Patients.Controllers
+namespace ConsultaMD.Areas.Patients.Controllers
 {
     [Area("Patients")]
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Map", "Search", new { area = "Patients" });
         }
-        public IActionResult Index2()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();

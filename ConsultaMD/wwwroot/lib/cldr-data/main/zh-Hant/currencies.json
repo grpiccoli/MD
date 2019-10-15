@@ -3,10 +3,13 @@
     "zh-Hant": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10895 $"
         },
-        "language": "zh",
+        "generation": {
+          "_date": "$Date: 2014-09-01 13:57:54 -0500 (Mon, 01 Sep 2014) $"
+        },
+        "language": "root",
         "script": "Hant"
       },
       "numbers": {
@@ -293,16 +296,11 @@
             "displayName-count-other": "白俄羅斯新盧布 (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "白俄羅斯盧布",
             "displayName-count-other": "白俄羅斯盧布",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "白俄羅斯盧布 (2000–2016)",
-            "displayName-count-other": "白俄羅斯盧布 (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "貝里斯元",
@@ -352,13 +350,7 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "人民幣（離岸）",
-            "displayName-count-other": "人民幣（離岸）",
-            "symbol": "CNH"
-          },
           "CNX": {
-            "displayName": "CNX",
             "symbol": "CNX"
           },
           "CNY": {
@@ -543,9 +535,7 @@
           "GEL": {
             "displayName": "喬治亞拉里",
             "displayName-count-other": "喬治亞拉里",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "迦納賽地 (1979–2007)",
@@ -744,8 +734,8 @@
             "symbol-alt-narrow": "CF"
           },
           "KPW": {
-            "displayName": "北韓元",
-            "displayName-count-other": "北韓元",
+            "displayName": "北韓圓",
+            "displayName-count-other": "北韓圓",
             "symbol": "KPW",
             "symbol-alt-narrow": "₩"
           },
@@ -760,8 +750,8 @@
             "symbol": "KRO"
           },
           "KRW": {
-            "displayName": "韓元",
-            "displayName-count-other": "韓元",
+            "displayName": "韓圓",
+            "displayName-count-other": "韓圓",
             "symbol": "￦",
             "symbol-alt-narrow": "₩"
           },
@@ -777,8 +767,8 @@
             "symbol-alt-narrow": "$"
           },
           "KZT": {
-            "displayName": "哈薩克堅戈",
-            "displayName-count-other": "哈薩克堅戈",
+            "displayName": "卡扎克斯坦坦吉",
+            "displayName-count-other": "卡扎克斯坦坦吉",
             "symbol": "KZT",
             "symbol-alt-narrow": "₸"
           },
@@ -922,14 +912,9 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "茅利塔尼亞烏吉亞 (1973–2017)",
-            "displayName-count-other": "茅利塔尼亞烏吉亞 (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "茅利塔尼亞烏吉亞",
             "displayName-count-other": "茅利塔尼亞烏吉亞",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "馬爾他里拉",
@@ -942,8 +927,8 @@
             "symbol": "MTP"
           },
           "MUR": {
-            "displayName": "模里西斯盧比",
-            "displayName-count-other": "模里西斯盧比",
+            "displayName": "模里西斯盧布",
+            "displayName-count-other": "模里西斯盧布",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
           },
@@ -1046,8 +1031,8 @@
             "symbol-alt-narrow": "$"
           },
           "OMR": {
-            "displayName": "阿曼里亞爾",
-            "displayName-count-other": "阿曼里亞爾",
+            "displayName": "阿曼里奧",
+            "displayName-count-other": "阿曼里奧",
             "symbol": "OMR"
           },
           "PAB": {
@@ -1061,13 +1046,13 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "秘魯太陽幣",
-            "displayName-count-other": "秘魯太陽幣",
+            "displayName": "秘魯新太陽幣",
+            "displayName-count-other": "秘魯新太陽幣",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "秘魯太陽幣 (1863–1965)",
-            "displayName-count-other": "秘魯太陽幣 (1863–1965)",
+            "displayName": "秘魯索爾 (1863–1965)",
+            "displayName-count-other": "秘魯索爾 (1863–1965)",
             "symbol": "PES"
           },
           "PGK": {
@@ -1110,8 +1095,8 @@
             "symbol-alt-narrow": "₲"
           },
           "QAR": {
-            "displayName": "卡達里亞爾",
-            "displayName-count-other": "卡達里亞爾",
+            "displayName": "卡達爾里亞爾",
+            "displayName-count-other": "卡達爾里亞爾",
             "symbol": "QAR"
           },
           "RHD": {
@@ -1127,8 +1112,7 @@
           "RON": {
             "displayName": "羅馬尼亞列伊",
             "displayName-count-other": "羅馬尼亞列伊",
-            "symbol": "RON",
-            "symbol-alt-narrow": "L"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "塞爾維亞戴納",
@@ -1139,7 +1123,7 @@
             "displayName": "俄羅斯盧布",
             "displayName-count-other": "俄羅斯盧布",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "俄羅斯盧布 (1991–1998)",
@@ -1154,8 +1138,8 @@
             "symbol-alt-narrow": "RF"
           },
           "SAR": {
-            "displayName": "沙烏地里亞爾",
-            "displayName-count-other": "沙烏地里亞爾",
+            "displayName": "沙烏地里雅",
+            "displayName-count-other": "沙烏地里雅",
             "symbol": "SAR"
           },
           "SBD": {
@@ -1240,14 +1224,9 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "聖多美島和普林西比島多布拉 (1977–2017)",
-            "displayName-count-other": "聖多美島和普林西比島多布拉 (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "聖多美島和普林西比島多布拉",
             "displayName-count-other": "聖多美島和普林西比島多布拉",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1274,7 +1253,7 @@
           "THB": {
             "displayName": "泰銖",
             "displayName-count-other": "泰銖",
-            "symbol": "THB",
+            "symbol": "฿",
             "symbol-alt-narrow": "฿"
           },
           "TJR": {
@@ -1332,11 +1311,10 @@
             "symbol-alt-narrow": "$"
           },
           "TWD": {
-            "displayName": "新台幣",
-            "displayName-count-other": "新台幣",
-            "symbol": "$",
-            "symbol-alt-formal": "NT$",
-            "symbol-alt-narrow": "$"
+            "displayName": "新臺幣",
+            "displayName-count-other": "新臺幣",
+            "symbol": "NT$",
+            "symbol-alt-narrow": "NT$"
           },
           "TZS": {
             "displayName": "坦尚尼亞先令",
@@ -1367,7 +1345,7 @@
           "USD": {
             "displayName": "美元",
             "displayName-count-other": "美元",
-            "symbol": "US$",
+            "symbol": "$",
             "symbol-alt-narrow": "$"
           },
           "USN": {
@@ -1396,10 +1374,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "烏茲別克索姆",
             "displayName-count-other": "烏茲別克索姆",
@@ -1411,15 +1385,10 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "委內瑞拉玻利瓦 (2008–2018)",
-            "displayName-count-other": "委內瑞拉玻利瓦 (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "委內瑞拉玻利瓦",
             "displayName-count-other": "委內瑞拉玻利瓦",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "越南盾",
@@ -1545,7 +1514,7 @@
           },
           "XXX": {
             "displayName": "未知貨幣",
-            "displayName-count-other": "（未知貨幣）",
+            "displayName-count-other": "未知貨幣",
             "symbol": "XXX"
           },
           "YDD": {
@@ -1554,8 +1523,8 @@
             "symbol": "YDD"
           },
           "YER": {
-            "displayName": "葉門里亞爾",
-            "displayName-count-other": "葉門里亞爾",
+            "displayName": "葉門里雅",
+            "displayName-count-other": "葉門里雅",
             "symbol": "YER"
           },
           "YUD": {

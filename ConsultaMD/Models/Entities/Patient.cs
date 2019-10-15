@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using static ConsultaMD.Data.InsuranceData;
 
 namespace ConsultaMD.Models.Entities
 {
-    public class Patient : Natural
+    public class Patient
     {
-        public int UserInsuranceId { get; set; }
-        public virtual UserInsurance UserInsurance { get; set; }
-        public string Password { get; set; }
-        public int MobilePhone { get; set; }
-        public string Email { get; set; }
-        public List<Natural> Dependants { get; set; }
-        public List<Appointment> Appointments { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int NaturalId { get; set; }
+        public Natural Natural { get; set; }
+        public Insurance Insurance { get; set; }
+        public string InsurancePassword { get; set; }
+        public virtual ICollection<Dependency> Dependants { get; set; }
+        public virtual ICollection<TimeSlot> TimeSlotAppointments { get; set; }
     }
 }

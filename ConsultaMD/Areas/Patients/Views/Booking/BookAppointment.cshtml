@@ -1,0 +1,47 @@
+﻿@model PaymentVM
+
+@{
+    ViewData["Title"] = "Confirmar Pago";
+    ViewData["Message"] = "Hello";
+    ViewData["NumTimes"] = 150;
+}
+
+@section Styles{
+    <style>
+
+        .card-profile {
+            max-width: 30%;
+        }
+
+            .card-profile img {
+                max-width: 100%;
+                padding: 10px;
+                border-radius: 50%;
+            }
+    </style>
+}
+
+<div class="row">
+    @for (int i = 0; i < (int)ViewData["NumTimes"]; i++)
+    {
+        <div class="col s12 m6 l3">
+            <div class="card horizontal">
+                <div class="card-profile">
+                    <img src="~/img/doc3.png" class="img-fluid circle" asp-append-version="true" />
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>@ViewData["Message"]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{
+
+    <script>
+
+    </script>
+}

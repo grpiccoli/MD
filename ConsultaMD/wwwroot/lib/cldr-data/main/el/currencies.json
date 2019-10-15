@@ -3,8 +3,11 @@
     "el": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "el"
       },
@@ -31,12 +34,12 @@
           "AFN": {
             "displayName": "Αφγάνι Αφγανιστάν",
             "displayName-count-one": "αφγάνι Αφγανιστάν",
-            "displayName-count-other": "αφγάνια Αφγανιστάν",
+            "displayName-count-other": "αφγάνι Αφγανιστάν",
             "symbol": "AFN"
           },
           "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
+            "displayName-count-one": "Παλαιό λεκ Αλβανίας",
+            "displayName-count-other": "Παλαιά λεκ Αλβανίας"
           },
           "ALL": {
             "displayName": "Λεκ Αλβανίας",
@@ -59,7 +62,7 @@
           "AOA": {
             "displayName": "Κουάνζα Ανγκόλας",
             "displayName-count-one": "κουάνζα Ανγκόλας",
-            "displayName-count-other": "κουάνζα Ανγκόλας",
+            "displayName-count-other": "κουάνζες Ανγκόλας",
             "symbol": "AOA",
             "symbol-alt-narrow": "Kz"
           },
@@ -87,6 +90,8 @@
           },
           "ARL": {
             "displayName": "ARL",
+            "displayName-count-one": "Πέσο λέι Αργετινής",
+            "displayName-count-other": "Πέσο λέι Αργετινής",
             "symbol": "ARL"
           },
           "ARM": {
@@ -120,9 +125,9 @@
             "symbol-alt-narrow": "$"
           },
           "AWG": {
-            "displayName": "Φλορίνι Αρούμπας",
-            "displayName-count-one": "φλορίνι Αρούμπας",
-            "displayName-count-other": "φλορίνια Αρούμπας",
+            "displayName": "Φλορίνι Αρούμπα",
+            "displayName-count-one": "φλορίνι Αρούμπα",
+            "displayName-count-other": "φλορίνια Αρούμπα",
             "symbol": "AWG"
           },
           "AZM": {
@@ -152,12 +157,14 @@
           },
           "BAN": {
             "displayName": "BAN",
+            "displayName-count-one": "Νέο δινάριο Βοσνίας-Ερζεγοβίνης",
+            "displayName-count-other": "Νέα δινάρια Βοσνίας-Ερζεγοβίνης",
             "symbol": "BAN"
           },
           "BBD": {
-            "displayName": "Δολάριο Μπαρμπέιντος",
-            "displayName-count-one": "δολάριο Μπαρμπέιντος",
-            "displayName-count-other": "δολάρια Μπαρμπέιντος",
+            "displayName": "Δολάριο Μπαρμπάντος",
+            "displayName-count-one": "δολάριο Μπαρμπάντος",
+            "displayName-count-other": "δολάρια Μπαρμπάντος",
             "symbol": "BBD",
             "symbol-alt-narrow": "$"
           },
@@ -194,6 +201,8 @@
           },
           "BGM": {
             "displayName": "BGM",
+            "displayName-count-one": "Σοσιαλιστικό λεβ Βουλγαρίας",
+            "displayName-count-other": "Σοσιαλιστικά λεβ Βουλγαρίας",
             "symbol": "BGM"
           },
           "BGN": {
@@ -204,6 +213,8 @@
           },
           "BGO": {
             "displayName": "BGO",
+            "displayName-count-one": "Παλαιό λεβ Βουλγαρίας",
+            "displayName-count-other": "Παλαιά λεβ Βουλγαρίας",
             "symbol": "BGO"
           },
           "BHD": {
@@ -241,6 +252,8 @@
           },
           "BOL": {
             "displayName": "BOL",
+            "displayName-count-one": "Παλαιό βολιβιάνο Βολιβίας",
+            "displayName-count-other": "Παλαιά βολιβιάνο Βολιβίας",
             "symbol": "BOL"
           },
           "BOP": {
@@ -294,12 +307,14 @@
           },
           "BRZ": {
             "displayName": "BRZ",
+            "displayName-count-one": "Παλαιό κρουζέιρο Βραζιλίας",
+            "displayName-count-other": "Παλαιά κρουζέιρο Βραζιλίας",
             "symbol": "BRZ"
           },
           "BSD": {
-            "displayName": "Δολάριο Μπαχαμών",
-            "displayName-count-one": "δολάριο Μπαχαμών",
-            "displayName-count-other": "δολάρια Μπαχαμών",
+            "displayName": "Δολάριο Μπαχάμες",
+            "displayName-count-one": "δολάριο Μπαχάμες",
+            "displayName-count-other": "δολάρια Μπαχάμες",
             "symbol": "BSD",
             "symbol-alt-narrow": "$"
           },
@@ -328,18 +343,12 @@
             "displayName-count-other": "νέα ρούβλια Λευκορωσίας (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "Ρούβλι Λευκορωσίας",
             "displayName-count-one": "ρούβλι Λευκορωσίας",
             "displayName-count-other": "ρούβλια Λευκορωσίας",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "Ρούβλι Λευκορωσίας (2000–2016)",
-            "displayName-count-one": "ρούβλι Λευκορωσίας (2000–2016)",
-            "displayName-count-other": "ρούβλια Λευκορωσίας (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "Δολάριο Μπελίζ",
@@ -380,7 +389,9 @@
             "symbol": "CHW"
           },
           "CLE": {
-            "displayName": "CLE",
+            "displayName": "Εσκούδο Χιλής",
+            "displayName-count-one": "Εσκούδο Χιλής",
+            "displayName-count-other": "Εσκούδο Χιλής",
             "symbol": "CLE"
           },
           "CLF": {
@@ -396,15 +407,9 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "Γουάν Κίνας (υπεράκτιο)",
-            "displayName-count-one": "γουάν Κίνας (υπεράκτιο)",
-            "displayName-count-other": "γουάν Κίνας (υπεράκτια)",
-            "symbol": "CNH"
-          },
           "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
+            "displayName-count-one": "Δολάριο Λαϊκής Τράπεζας Κίνας",
+            "displayName-count-other": "Δολάρια Λαϊκής Τράπεζας Κίνας"
           },
           "CNY": {
             "displayName": "Γουάν Κίνας",
@@ -589,9 +594,9 @@
             "symbol-alt-narrow": "$"
           },
           "FKP": {
-            "displayName": "Λίρα Νήσων Φόκλαντ",
-            "displayName-count-one": "λίρα Νήσων Φόκλαντ",
-            "displayName-count-other": "λίρες Νήσων Φόκλαντ",
+            "displayName": "Λίρα Νησιών Φώκλαντ",
+            "displayName-count-one": "λίρα Νησιών Φώκλαντ",
+            "displayName-count-other": "λίρες Νησιών Φώκλαντ",
             "symbol": "FKP",
             "symbol-alt-narrow": "£"
           },
@@ -618,9 +623,7 @@
             "displayName": "Λάρι Γεωργίας",
             "displayName-count-one": "λάρι Γεωργίας",
             "displayName-count-other": "λάρι Γεωργίας",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "Σέντι Γκάνας (1979–2007)",
@@ -763,8 +766,7 @@
           "ILR": {
             "displayName": "παλιό σεκέλ Ισραήλ",
             "displayName-count-one": "παλιό σεκέλ Ισραήλ",
-            "displayName-count-other": "παλιά σεκέλ Ισραήλ",
-            "symbol": "ILR"
+            "displayName-count-other": "παλιά σεκέλ Ισραήλ"
           },
           "ILS": {
             "displayName": "Νέο Σέκελ Ισραήλ",
@@ -795,8 +797,7 @@
           "ISJ": {
             "displayName": "Παλιά κορόνα Ισλανδίας",
             "displayName-count-one": "Παλιά κορόνα Ισλανδίας",
-            "displayName-count-other": "παλιές κορόνες Ισλανδίας",
-            "symbol": "ISJ"
+            "displayName-count-other": "παλιές κορόνες Ισλανδίας"
           },
           "ISK": {
             "displayName": "Κορόνα Ισλανδίας",
@@ -870,6 +871,8 @@
           },
           "KRO": {
             "displayName": "KRO",
+            "displayName-count-one": "Παλιό γον Νότιας Κορέας",
+            "displayName-count-other": "Παλιά γον Νότιας Κορέας",
             "symbol": "KRO"
           },
           "KRW": {
@@ -886,9 +889,9 @@
             "symbol": "KWD"
           },
           "KYD": {
-            "displayName": "Δολάριο Νήσων Κέιμαν",
-            "displayName-count-one": "δολάριο Νήσων Κέιμαν",
-            "displayName-count-other": "δολάρια Νήσων Κέιμαν",
+            "displayName": "Δολάριο Νήσων Κάιμαν",
+            "displayName-count-one": "δολάριο Νήσων Κάιμαν",
+            "displayName-count-other": "δολάρια Νήσων Κάιμαν",
             "symbol": "KYD",
             "symbol-alt-narrow": "$"
           },
@@ -993,10 +996,14 @@
           },
           "MCF": {
             "displayName": "MCF",
+            "displayName-count-one": "Φράγκο Μονακό",
+            "displayName-count-other": "Φράγκα Μονακό",
             "symbol": "MCF"
           },
           "MDC": {
             "displayName": "MDC",
+            "displayName-count-one": "Κούπον Μολδαβίας",
+            "displayName-count-other": "Κούπον Μολδαβίας",
             "symbol": "MDC"
           },
           "MDL": {
@@ -1019,13 +1026,15 @@
             "symbol": "MGF"
           },
           "MKD": {
-            "displayName": "Δηνάριο ΠΓΔΜ",
-            "displayName-count-one": "δηνάριο ΠΓΔΜ",
-            "displayName-count-other": "δηνάρια ΠΓΔΜ",
+            "displayName": "Δηνάριο Π.Γ.Δ.Μ.",
+            "displayName-count-one": "δηνάριο Π.Γ.Δ.Μ.",
+            "displayName-count-other": "δηνάρια Π.Γ.Δ.Μ.",
             "symbol": "MKD"
           },
           "MKN": {
             "displayName": "MKN",
+            "displayName-count-one": "Παλιό δηνάριο ΠΓΔΜ",
+            "displayName-count-other": "Παλιά δηνάρια ΠΓΔΜ",
             "symbol": "MKN"
           },
           "MLF": {
@@ -1035,9 +1044,9 @@
             "symbol": "MLF"
           },
           "MMK": {
-            "displayName": "Κιάτ Μιανμάρ",
-            "displayName-count-one": "κιάτ Μιανμάρ",
-            "displayName-count-other": "κιάτ Μιανμάρ",
+            "displayName": "Κυάτ Μιανμάρ",
+            "displayName-count-one": "κυάτ Μιανμάρ",
+            "displayName-count-other": "κυάτ Μιανμάρ",
             "symbol": "MMK",
             "symbol-alt-narrow": "K"
           },
@@ -1055,16 +1064,10 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "Ουγκίγια Μαυριτανίας (1973–2017)",
-            "displayName-count-one": "ουγκίγια Μαυριτανίας (1973–2017)",
-            "displayName-count-other": "ουγκίγια Μαυριτανίας (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "Ουγκίγια Μαυριτανίας",
             "displayName-count-one": "ουγκίγια Μαυριτανίας",
             "displayName-count-other": "ουγκίγια Μαυριτανίας",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "Λιρέτα Μάλτας",
@@ -1085,14 +1088,10 @@
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
           },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
-          },
           "MVR": {
             "displayName": "Ρουφίγια Μαλδίβων",
             "displayName-count-one": "ρουφίγια Μαλδίβων",
-            "displayName-count-other": "ρουφίγιες Μαλδίβων",
+            "displayName-count-other": "ρουφίγια Μαλδίβων",
             "symbol": "MVR"
           },
           "MWK": {
@@ -1144,9 +1143,9 @@
             "symbol": "MZN"
           },
           "NAD": {
-            "displayName": "Δολάριο Ναμίμπιας",
-            "displayName-count-one": "δολάριο Ναμίμπιας",
-            "displayName-count-other": "δολάρια Ναμίμπιας",
+            "displayName": "Δολάριο Ναμίμπια",
+            "displayName-count-one": "δολάριο Ναμίμπια",
+            "displayName-count-other": "δολάρια Ναμίμπια",
             "symbol": "NAD",
             "symbol-alt-narrow": "$"
           },
@@ -1216,21 +1215,21 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "Σολ Περού",
-            "displayName-count-one": "σολ Περού",
-            "displayName-count-other": "σολ Περού",
+            "displayName": "Νέο Σολ Περού",
+            "displayName-count-one": "νέο σολ Περού",
+            "displayName-count-other": "νέα Σολ Περού",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "Σολ Περού (1863–1965)",
-            "displayName-count-one": "σολ Περού (1863–1965)",
-            "displayName-count-other": "σολ Περού (1863–1965)",
+            "displayName": "Σολ Περού",
+            "displayName-count-one": "σολ Περού",
+            "displayName-count-other": "σολ Περού",
             "symbol": "PES"
           },
           "PGK": {
-            "displayName": "Κίνα Παπούας Νέας Γουινέας",
-            "displayName-count-one": "κίνα Παπούας Νέας Γουινέας",
-            "displayName-count-other": "κίνα Παπούας Νέας Γουινέας",
+            "displayName": "Κίνα Παπούα Νέα Γουινέα",
+            "displayName-count-one": "κίνα Παπούα Νέα Γουινέα",
+            "displayName-count-other": "κίνα Παπούα Νέα Γουινέα",
             "symbol": "PGK"
           },
           "PHP": {
@@ -1295,8 +1294,7 @@
             "displayName": "Λέου Ρουμανίας",
             "displayName-count-one": "λέου Ρουμανίας",
             "displayName-count-other": "λέου Ρουμανίας",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "Δηνάριο Σερβίας",
@@ -1309,7 +1307,7 @@
             "displayName-count-one": "ρούβλι Ρωσίας",
             "displayName-count-other": "ρούβλια Ρωσίας",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "Ρούβλι Ρωσίας (1991–1998)",
@@ -1428,16 +1426,10 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "Ντόμπρα Σάο Τομέ και Πρίνσιπε (1977–2017)",
-            "displayName-count-one": "ντόμπρα Σάο Τομέ και Πρίνσιπε (1977–2017)",
-            "displayName-count-other": "ντόμπρα Σάο Τομέ και Πρίνσιπε (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "Ντόμπρα Σάο Τομέ και Πρίνσιπε",
-            "displayName-count-one": "ντόμπρα Σάο Τομέ και Πρίνσιπε",
-            "displayName-count-other": "ντόμπρα Σάο Τομέ και Πρίνσιπε",
-            "symbol": "STN",
+            "displayName-count-one": "ντόμπρα Σάο Τόμε και Πρίνσιπε",
+            "displayName-count-other": "ντόμπρα Σάο Τόμε και Πρίνσιπε",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1503,9 +1495,9 @@
             "symbol": "TND"
           },
           "TOP": {
-            "displayName": "Παάγκα Τόνγκα",
-            "displayName-count-one": "παάγκα Τόνγκα",
-            "displayName-count-other": "παάγκα Τόνγκα",
+            "displayName": "Παάγκα νήσων Τόγκα",
+            "displayName-count-one": "παάγκα νήσων Τόγκα",
+            "displayName-count-other": "παάγκα νήσων Τόγκα",
             "symbol": "TOP",
             "symbol-alt-narrow": "T$"
           },
@@ -1522,9 +1514,9 @@
             "symbol": "TRL"
           },
           "TRY": {
-            "displayName": "Λίρα Τουρκίας",
-            "displayName-count-one": "λίρα Τουρκίας",
-            "displayName-count-other": "λίρες Τουρκίας",
+            "displayName": "Τουρκική Λίρα",
+            "displayName-count-one": "τουρκική λίρα",
+            "displayName-count-other": "τουρκικές λίρες",
             "symbol": "TRY",
             "symbol-alt-narrow": "₺",
             "symbol-alt-variant": "TL"
@@ -1541,7 +1533,7 @@
             "displayName-count-one": "νέο δολάριο Ταϊβάν",
             "displayName-count-other": "νέα δολάρια Ταϊβάν",
             "symbol": "NT$",
-            "symbol-alt-narrow": "$"
+            "symbol-alt-narrow": "NT$"
           },
           "TZS": {
             "displayName": "Σελίνι Τανζανίας",
@@ -1610,10 +1602,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "Σομ Ουζμπεκιστάν",
             "displayName-count-one": "σομ Ουζμπεκιστάν",
@@ -1627,17 +1615,11 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "Μπολιβάρ Βενεζουέλας (2008–2018)",
-            "displayName-count-one": "μπολιβάρ Βενεζουέλας (2008–2018)",
-            "displayName-count-other": "μπολιβάρ Βενεζουέλας (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "Μπολιβάρ Βενεζουέλας",
             "displayName-count-one": "μπολιβάρ Βενεζουέλας",
             "displayName-count-other": "μπολιβάρ Βενεζουέλας",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "Ντονγκ Βιετνάμ",
@@ -1648,6 +1630,8 @@
           },
           "VNN": {
             "displayName": "VNN",
+            "displayName-count-one": "Παλαιό ντονγκ Βιετνάμ",
+            "displayName-count-other": "Παλαιά ντονγκ Βιετνάμ",
             "symbol": "VNN"
           },
           "VUV": {
@@ -1663,9 +1647,9 @@
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "Φράγκο CFA Κεντρικής Αφρικής",
-            "displayName-count-one": "φράγκο CFA Κεντρικής Αφρικής",
-            "displayName-count-other": "φράγκα CFA Κεντρικής Αφρικής",
+            "displayName": "Φράγκο CFA Κεντρικής Αφρικής (BEAC)",
+            "displayName-count-one": "φράγκο CFA Κεντρικής Αφρικής (BEAC)",
+            "displayName-count-other": "φράγκα CFA Κεντρικής Αφρικής (BEAC)",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1732,9 +1716,9 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "Φράγκο CFA Δυτικής Αφρικής",
-            "displayName-count-one": "φράγκο CFA Δυτικής Αφρικής",
-            "displayName-count-other": "φράγκα CFA Δυτικής Αφρικής",
+            "displayName": "Φράγκο CFA Δυτικής Αφρικής (BCEAO)",
+            "displayName-count-one": "φράγκο CFA Δυτικής Αφρικής (BCEAO)",
+            "displayName-count-other": "φράγκα CFA Δυτικής Αφρικής (BCEAO)",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1753,6 +1737,8 @@
           },
           "XRE": {
             "displayName": "XRE",
+            "displayName-count-one": "Ταμείο RINET",
+            "displayName-count-other": "Ταμείο RINET",
             "symbol": "XRE"
           },
           "XSU": {
@@ -1771,7 +1757,7 @@
             "displayName": "Άγνωστο νόμισμα",
             "displayName-count-one": "(άγνωστο νόμισμα)",
             "displayName-count-other": "(άγνωστο νόμισμα)",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "Δηνάριο Υεμένης",
@@ -1805,6 +1791,8 @@
           },
           "YUR": {
             "displayName": "YUR",
+            "displayName-count-one": "Αναμορφωμένο δηνάριο Γιουγκοσλαβίας",
+            "displayName-count-other": "Αναμορφωμένα δηνάρια Γιουγκοσλαβίας",
             "symbol": "YUR"
           },
           "ZAL": {
@@ -1859,6 +1847,8 @@
           },
           "ZWR": {
             "displayName": "ZWR",
+            "displayName-count-one": "Δολάριο Ζιμπάμπουε (2008)",
+            "displayName-count-other": "Δολάρια Ζιμπάμπουε (2008)",
             "symbol": "ZWR"
           }
         }

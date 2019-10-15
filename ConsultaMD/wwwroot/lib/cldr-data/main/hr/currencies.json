@@ -3,8 +3,11 @@
     "hr": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "hr"
       },
@@ -19,7 +22,7 @@
           },
           "AED": {
             "displayName": "UAE dirham",
-            "displayName-count-one": "UAE dirham",
+            "displayName-count-one": "UAE diram",
             "displayName-count-few": "UAE dirhama",
             "displayName-count-other": "UAE dirhama",
             "symbol": "AED"
@@ -357,7 +360,10 @@
             "symbol": "BRR"
           },
           "BRZ": {
-            "displayName": "BRZ",
+            "displayName": "stari brazilski kruzeiro",
+            "displayName-count-one": "stari brazilski kruzeiro",
+            "displayName-count-few": "stara brazilska kruzeira",
+            "displayName-count-other": "starih brazilskih kruzeira",
             "symbol": "BRZ"
           },
           "BSD": {
@@ -397,20 +403,13 @@
             "displayName-count-other": "bjeloruskih novih rublji (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "bjeloruska rublja",
             "displayName-count-one": "bjeloruska rublja",
             "displayName-count-few": "bjeloruske rublje",
             "displayName-count-other": "bjeloruskih rublji",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "bjeloruska rublja (2000–2016)",
-            "displayName-count-one": "bjeloruska rublja (2000–2016)",
-            "displayName-count-few": "bjeloruske rublje (2000–2016)",
-            "displayName-count-other": "bjeloruskih rublji (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "belizeanski dolar",
@@ -477,13 +476,6 @@
             "displayName-count-other": "čileanskih peza",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "kineski juan (offshore)",
-            "displayName-count-one": "kineski juan (offshore)",
-            "displayName-count-few": "kineska juana (offshore)",
-            "displayName-count-other": "kineskih juana (offshore)",
-            "symbol": "CNH"
           },
           "CNX": {
             "displayName": "kineski narodni dolar",
@@ -742,9 +734,7 @@
             "displayName-count-one": "gruzijski lar",
             "displayName-count-few": "gruzijska lara",
             "displayName-count-other": "gruzijskih lara",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "ganski cedi (1979.–2007.)",
@@ -1179,7 +1169,10 @@
             "symbol": "MAF"
           },
           "MCF": {
-            "displayName": "MCF",
+            "displayName": "monegaški franak",
+            "displayName-count-one": "monegaški franak",
+            "displayName-count-few": "monegaška franka",
+            "displayName-count-other": "monegaških franaka",
             "symbol": "MCF"
           },
           "MDC": {
@@ -1256,18 +1249,11 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "mauritanijska ouguja (1973. – 2017.)",
-            "displayName-count-one": "mauritanijska ouguja (1973. – 2017.)",
-            "displayName-count-few": "mauritanijske ouguje (1973. – 2017.)",
-            "displayName-count-other": "mauritanijskih ouguja (1973. – 2017.)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "mauritanijska ouguja",
             "displayName-count-one": "mauritanijska ouguja",
             "displayName-count-few": "mauritanijske ouguje",
             "displayName-count-other": "mauritanijskih ouguja",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "malteška lira",
@@ -1447,17 +1433,17 @@
             "symbol": "PEI"
           },
           "PEN": {
+            "displayName": "peruanski novi sol",
+            "displayName-count-one": "peruanski novi sol",
+            "displayName-count-few": "peruanska nova sola",
+            "displayName-count-other": "peruanskih novih sola",
+            "symbol": "PEN"
+          },
+          "PES": {
             "displayName": "peruanski sol",
             "displayName-count-one": "peruanski sol",
             "displayName-count-few": "peruanska sola",
             "displayName-count-other": "peruanskih sola",
-            "symbol": "PEN"
-          },
-          "PES": {
-            "displayName": "peruanski sol (1863–1965)",
-            "displayName-count-one": "peruanski sol (1863–1965)",
-            "displayName-count-few": "peruanska sola (1863–1965)",
-            "displayName-count-other": "peruanskih sola (1863–1965)",
             "symbol": "PES"
           },
           "PGK": {
@@ -1539,8 +1525,7 @@
             "displayName-count-one": "rumunjski lej",
             "displayName-count-few": "rumunjska leja",
             "displayName-count-other": "rumunjskih leja",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "srpski dinar",
@@ -1555,7 +1540,7 @@
             "displayName-count-few": "ruske rublje",
             "displayName-count-other": "ruskih rublji",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "ruska rublja (1991.–1998.)",
@@ -1692,18 +1677,11 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "dobra Svetog Tome i Principa (1977–2017)",
-            "displayName-count-one": "dobra Svetog Tome i Principa (1977–2017)",
-            "displayName-count-few": "dobre Svetog Tome i Principa (1977–2017)",
-            "displayName-count-other": "dobri Svetog Tome i Principa (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "dobra Svetog Tome i Principa",
             "displayName-count-one": "dobra Svetog Tome i Principa",
             "displayName-count-few": "dobre Svetog Tome i Principa",
             "displayName-count-other": "dobri Svetog Tome i Principa",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1905,10 +1883,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "uzbekistanski som",
             "displayName-count-one": "uzbekistanski som",
@@ -1924,19 +1898,12 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "venezuelanski bolivar (2008. – 2018.)",
-            "displayName-count-one": "venezuelanski bolivar (2008. – 2018.)",
-            "displayName-count-few": "venezuelanska bolivara (2008. – 2018.)",
-            "displayName-count-other": "venezuelanskih bolivara (2008. – 2018.)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "venezuelanski bolivar",
             "displayName-count-one": "venezuelanski bolivar",
             "displayName-count-few": "venezuelanska bolivara",
             "displayName-count-other": "venezuelanskih bolivara",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "vijetnamski dong",
@@ -1954,7 +1921,7 @@
             "symbol": "VNN"
           },
           "VUV": {
-            "displayName": "vanuatski vatu",
+            "displayName": "vanuatuški vatu",
             "displayName-count-one": "vanuatski vatu",
             "displayName-count-few": "vanuatska vatua",
             "displayName-count-other": "vanuatskih vatua",

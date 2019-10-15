@@ -4,7 +4,6 @@ namespace ConsultaMD.Models.Entities
 {
     public class Region : Locality
     {
-        public List<Provincia> Provincias { get; set; }
         public string ToRomanNumeral()
         {
             var number = Id;
@@ -22,5 +21,6 @@ namespace ConsultaMD.Models.Entities
         }
         public static List<string> romanNumerals = new List<string>() { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
         public static List<int> numerals = new List<int>() { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        public virtual ICollection<Province> Provinces { get; set; }
     }
 }

@@ -3,8 +3,11 @@
     "root": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10712 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-01 12:07:43 -0500 (Fri, 01 Aug 2014) $"
         },
         "language": "root"
       },
@@ -16,92 +19,65 @@
         },
         "keys": {
           "calendar": "calendar",
-          "cf": "cf",
           "collation": "collation",
           "currency": "currency",
-          "hc": "hc",
-          "lb": "lb",
-          "ms": "ms",
           "numbers": "numbers"
         },
         "types": {
-          "calendar": {
-            "buddhist": "buddhist",
-            "chinese": "chinese",
-            "coptic": "coptic",
-            "dangi": "dangi",
-            "ethiopic": "ethiopic",
-            "ethiopic-amete-alem": "ethiopic-amete-alem",
-            "gregorian": "gregorian",
-            "hebrew": "hebrew",
-            "indian": "indian",
-            "islamic": "islamic",
-            "islamic-civil": "islamic-civil",
-            "islamic-rgsa": "islamic-rgsa",
-            "islamic-tbla": "islamic-tbla",
-            "islamic-umalqura": "islamic-umalqura",
-            "iso8601": "iso8601",
-            "japanese": "japanese",
-            "persian": "persian",
-            "roc": "roc"
-          },
-          "cf": {
-            "account": "account",
-            "standard": "standard"
-          },
-          "collation": {
-            "big5han": "big5han",
-            "compat": "compat",
-            "dictionary": "dictionary",
-            "ducet": "ducet",
-            "emoji": "emoji",
-            "eor": "eor",
-            "gb2312han": "gb2312han",
-            "phonebook": "phonebook",
-            "pinyin": "pinyin",
-            "reformed": "reformed",
-            "search": "search",
-            "searchjl": "searchjl",
-            "standard": "standard",
-            "stroke": "stroke",
-            "traditional": "traditional",
-            "unihan": "unihan",
-            "zhuyin": "zhuyin"
-          },
-          "hc": {
-            "h11": "h11",
-            "h12": "h12",
-            "h23": "h23",
-            "h24": "h24"
-          },
-          "lb": {
-            "loose": "loose",
-            "normal": "normal",
-            "strict": "strict"
-          },
-          "ms": {
-            "metric": "metric",
-            "uksystem": "uksystem",
-            "ussystem": "ussystem"
-          },
           "numbers": {
-            "ahom": "ahom",
             "arab": "arab",
             "arabext": "arabext",
             "armn": "armn",
             "armnlow": "armnlow",
             "bali": "bali",
-            "beng": "beng",
-            "brah": "brah",
+            "beng": "beng"
+          },
+          "collation": {
+            "big5han": "big5han"
+          },
+          "numbers": {
+            "brah": "brah"
+          },
+          "calendar": {
+            "buddhist": "buddhist"
+          },
+          "numbers": {
             "cakm": "cakm",
-            "cham": "cham",
-            "cyrl": "cyrl",
-            "deva": "deva",
-            "ethi": "ethi",
-            "fullwide": "fullwide",
-            "geor": "geor",
-            "gong": "gong",
-            "gonm": "gonm",
+            "cham": "cham"
+          },
+          "calendar": {
+            "chinese": "chinese",
+            "coptic": "coptic",
+            "dangi": "dangi"
+          },
+          "numbers": {
+            "deva": "deva"
+          },
+          "collation": {
+            "dictionary": "dictionary",
+            "ducet": "ducet",
+            "eor": "eor"
+          },
+          "numbers": {
+            "ethi": "ethi"
+          },
+          "calendar": {
+            "ethiopic": "ethiopic",
+            "ethiopic-amete-alem": "ethiopic-amete-alem"
+          },
+          "numbers": {
+            "fullwide": "fullwide"
+          },
+          "collation": {
+            "gb2312han": "gb2312han"
+          },
+          "numbers": {
+            "geor": "geor"
+          },
+          "calendar": {
+            "gregorian": "gregorian"
+          },
+          "numbers": {
             "grek": "grek",
             "greklow": "greklow",
             "gujr": "gujr",
@@ -111,9 +87,20 @@
             "hansfin": "hansfin",
             "hant": "hant",
             "hantfin": "hantfin",
-            "hebr": "hebr",
-            "hmng": "hmng",
-            "hmnp": "hmnp",
+            "hebr": "hebr"
+          },
+          "calendar": {
+            "hebrew": "hebrew",
+            "indian": "indian",
+            "islamic": "islamic",
+            "islamic-civil": "islamic-civil",
+            "islamic-rgsa": "islamic-rgsa",
+            "islamic-tbla": "islamic-tbla",
+            "islamic-umalqura": "islamic-umalqura",
+            "iso8601": "iso8601",
+            "japanese": "japanese"
+          },
+          "numbers": {
             "java": "java",
             "jpan": "jpan",
             "jpanfin": "jpanfin",
@@ -126,31 +113,45 @@
             "latn": "latn",
             "lepc": "lepc",
             "limb": "limb",
-            "mathbold": "mathbold",
-            "mathdbl": "mathdbl",
-            "mathmono": "mathmono",
-            "mathsanb": "mathsanb",
-            "mathsans": "mathsans",
             "mlym": "mlym",
-            "modi": "modi",
             "mong": "mong",
-            "mroo": "mroo",
             "mtei": "mtei",
             "mymr": "mymr",
             "mymrshan": "mymrshan",
-            "mymrtlng": "mymrtlng",
             "nkoo": "nkoo",
             "olck": "olck",
             "orya": "orya",
-            "osma": "osma",
-            "rohg": "rohg",
+            "osma": "osma"
+          },
+          "calendar": {
+            "persian": "persian"
+          },
+          "collation": {
+            "phonebook": "phonebook",
+            "pinyin": "pinyin",
+            "reformed": "reformed"
+          },
+          "calendar": {
+            "roc": "roc"
+          },
+          "numbers": {
             "roman": "roman",
             "romanlow": "romanlow",
-            "saur": "saur",
+            "saur": "saur"
+          },
+          "collation": {
+            "search": "search",
+            "searchjl": "searchjl"
+          },
+          "numbers": {
             "shrd": "shrd",
-            "sind": "sind",
-            "sinh": "sinh",
-            "sora": "sora",
+            "sora": "sora"
+          },
+          "collation": {
+            "standard": "standard",
+            "stroke": "stroke"
+          },
+          "numbers": {
             "sund": "sund",
             "takr": "takr",
             "talu": "talu",
@@ -158,11 +159,17 @@
             "tamldec": "tamldec",
             "telu": "telu",
             "thai": "thai",
-            "tibt": "tibt",
-            "tirh": "tirh",
-            "vaii": "vaii",
-            "wara": "wara",
-            "wcho": "wcho"
+            "tibt": "tibt"
+          },
+          "collation": {
+            "traditional": "traditional",
+            "unihan": "unihan"
+          },
+          "numbers": {
+            "vaii": "vaii"
+          },
+          "collation": {
+            "zhuyin": "zhuyin"
           }
         },
         "codePatterns": {

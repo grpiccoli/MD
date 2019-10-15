@@ -3,8 +3,11 @@
     "pl": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10895 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-09-01 13:57:54 -0500 (Mon, 01 Sep 2014) $"
         },
         "language": "pl"
       },
@@ -16,145 +19,78 @@
         },
         "keys": {
           "calendar": "kalendarz",
-          "cf": "format waluty",
           "colAlternate": "Sortowanie ignorujące symbole",
           "colBackwards": "Odwrotne sortowanie ze znakami akcentowanymi",
           "colCaseFirst": "Porządek wielkie/małe litery",
           "colCaseLevel": "Sortowanie uwzględniające wielkość liter",
-          "collation": "porządek sortowania",
+          "colHiraganaQuaternary": "Sortowanie Kana",
           "colNormalization": "Sortowanie znormalizowane",
           "colNumeric": "Sortowanie numeryczne",
           "colStrength": "Siła sortowania",
+          "collation": "Porządek sortowania",
           "currency": "waluta",
-          "hc": "cykl (12- lub 24-godzinny)",
-          "lb": "styl podziału wiersza",
-          "ms": "układ miar",
           "numbers": "cyfry",
           "timezone": "Strefa czasowa",
           "va": "Wariant regionalny",
+          "variableTop": "Sortuj jak symbole",
           "x": "Do prywatnego użytku"
         },
         "types": {
-          "calendar": {
-            "buddhist": "kalendarz buddyjski",
-            "chinese": "kalendarz chiński",
-            "coptic": "Kalendarz koptyjski",
-            "dangi": "kalendarz dangi",
-            "ethiopic": "kalendarz etiopski",
-            "ethiopic-amete-alem": "Kalendarz etiopski Amete Alem",
-            "gregorian": "kalendarz gregoriański",
-            "hebrew": "kalendarz hebrajski",
-            "indian": "narodowy kalendarz hinduski",
-            "islamic": "kalendarz islamski (metoda wzrokowa)",
-            "islamic-civil": "kalendarz islamski (metoda obliczeniowa)",
-            "islamic-rgsa": "kalendarz islamski (Arabia Saudyjska, metoda wzrokowa)",
-            "islamic-tbla": "kalendarz islamski (metoda obliczeniowa, epoka astronomiczna)",
-            "islamic-umalqura": "kalendarz islamski (Umm al-Kura)",
-            "iso8601": "kalendarz ISO-8601",
-            "japanese": "kalendarz japoński",
-            "persian": "kalendarz perski",
-            "roc": "kalendarz Republiki Chińskiej"
-          },
-          "cf": {
-            "account": "księgowy format waluty",
-            "standard": "standardowy format waluty"
-          },
-          "colAlternate": {
-            "non-ignorable": "Sortowanie symboli",
-            "shifted": "Sortowanie ignorujące symbole"
-          },
-          "colBackwards": {
-            "no": "Zwykłe sortowanie znaków akcentowanych",
-            "yes": "Sortowanie znaków akcentowanych w odwróconej kolejności"
-          },
-          "colCaseFirst": {
-            "lower": "Sortowanie od małych liter",
-            "no": "Sortowanie z zachowaniem zwykłej kolejności wielkości liter",
-            "upper": "Sortowanie od wielkich liter"
-          },
-          "colCaseLevel": {
-            "no": "Sortowanie bez rozróżniania wielkości liter",
-            "yes": "Sortowanie z rozróżnianiem wielkości liter"
-          },
-          "collation": {
-            "big5han": "chiński tradycyjny porządek sortowania - Big5",
-            "compat": "poprzedni porządek sortowania, dla zgodności",
-            "dictionary": "sortowanie słownikowe",
-            "ducet": "domyślne sortowanie Unicode",
-            "emoji": "emoji",
-            "eor": "europejskie reguły określania kolejności",
-            "gb2312han": "chiński uproszczony porządek sortowania - GB2312",
-            "phonebook": "porządek sortowania książki telefonicznej",
-            "phonetic": "sortowanie fonetyczne",
-            "pinyin": "porządek sortowania pinyin",
-            "reformed": "sortowanie zreformowane",
-            "search": "wyszukiwanie ogólnego użytku",
-            "searchjl": "Wyszukiwanie według początkowej spółgłoski hangul",
-            "standard": "sortowanie standardowe",
-            "stroke": "porządek akcentów",
-            "traditional": "tradycyjny porządek sortowania",
-            "unihan": "sortowanie wg kluczy i ich liczby kresek",
-            "zhuyin": "zhuyin"
-          },
-          "colNormalization": {
-            "no": "Sortowanie bez normalizacji",
-            "yes": "Sortowanie z normalizacją unicode"
-          },
-          "colNumeric": {
-            "no": "Oddzielne sortowanie cyfr",
-            "yes": "Numeryczne sortowanie cyfr"
-          },
-          "colStrength": {
-            "identical": "Sortuj wszystko",
-            "primary": "Sortowanie tylko liter podstawowych",
-            "quaternary": "Sortowanie znaków akcentowanych/wielkości liter/szerokości/kana",
-            "secondary": "Sortowanie znaków akcentowanych",
-            "tertiary": "Sortowanie znaków akcentowanych/wielkości liter/szerokości"
-          },
-          "d0": {
-            "fwidth": "pełna szerokość",
-            "hwidth": "połowa szerokości",
-            "npinyin": "Liczbowe"
-          },
-          "hc": {
-            "h11": "system 12-godzinny (0–11)",
-            "h12": "system 12-godzinny (1–12)",
-            "h23": "system 24-godzinny (0–23)",
-            "h24": "system 24-godzinny (1–24)"
-          },
-          "lb": {
-            "loose": "luźny styl podziału wiersza",
-            "normal": "normalny styl podziału wiersza",
-            "strict": "ścisły styl podziału wiersza"
-          },
-          "m0": {
-            "bgn": "BGN",
-            "ungegn": "UNGEGN"
-          },
-          "ms": {
-            "metric": "system metryczny",
-            "uksystem": "imperialny system miar",
-            "ussystem": "amerykański system miar"
-          },
           "numbers": {
-            "ahom": "ahom",
             "arab": "cyfry arabsko-indyjskie",
             "arabext": "rozszerzone cyfry arabsko-indyjskie",
             "armn": "cyfry ormiańskie",
             "armnlow": "cyfry ormiańskie (małe litery)",
             "bali": "bali",
-            "beng": "cyfry bengalskie",
-            "brah": "brah",
+            "beng": "cyfry bengalskie"
+          },
+          "collation": {
+            "big5han": "chiński tradycyjny porządek sortowania - Big5"
+          },
+          "numbers": {
+            "brah": "brah"
+          },
+          "calendar": {
+            "buddhist": "kalendarz buddyjski"
+          },
+          "numbers": {
             "cakm": "cakm",
-            "cham": "cham",
-            "cyrl": "cyrl",
-            "deva": "cyfry dewanagari",
-            "ethi": "cyfry etiopskie",
+            "cham": "cham"
+          },
+          "calendar": {
+            "chinese": "kalendarz chiński",
+            "coptic": "Kalendarz koptyjski",
+            "dangi": "kalendarz dangi"
+          },
+          "numbers": {
+            "deva": "cyfry dewanagari"
+          },
+          "collation": {
+            "dictionary": "sortowanie słownikowe",
+            "ducet": "Domyślna kolejność sortowania Unicode",
+            "eor": "europejskie reguły określania kolejności"
+          },
+          "numbers": {
+            "ethi": "cyfry etiopskie"
+          },
+          "calendar": {
+            "ethiopic": "Kalendarz etiopski",
+            "ethiopic-amete-alem": "Kalendarz etiopski Amete Alem"
+          },
+          "numbers": {
             "finance": "Liczebniki księgowe",
-            "fullwide": "cyfry o pełnej szerokości",
-            "geor": "cyfry gruzińskie",
-            "gong": "gong",
-            "gonm": "gonm",
+            "fullwide": "cyfry o pełnej szerokości"
+          },
+          "collation": {
+            "gb2312han": "chiński uproszczony porządek sortowania - GB2312"
+          },
+          "numbers": {
+            "geor": "cyfry gruzińskie"
+          },
+          "calendar": {
+            "gregorian": "kalendarz gregoriański"
+          },
+          "numbers": {
             "grek": "cyfry greckie",
             "greklow": "cyfry greckie (małe litery)",
             "gujr": "cyfry gudżarati",
@@ -164,9 +100,25 @@
             "hansfin": "uproszczone chińskie cyfry księgowe",
             "hant": "tradycyjne cyfry chińskie",
             "hantfin": "tradycyjne chińskie cyfry księgowe",
-            "hebr": "cyfry hebrajskie",
-            "hmng": "hmng",
-            "hmnp": "hmnp",
+            "hebr": "cyfry hebrajskie"
+          },
+          "calendar": {
+            "hebrew": "kalendarz hebrajski"
+          },
+          "colStrength": {
+            "identical": "Sortuj wszystko"
+          },
+          "calendar": {
+            "indian": "narodowy kalendarz hinduski",
+            "islamic": "kalendarz islamski (metoda wzrokowa)",
+            "islamic-civil": "kalendarz islamski (metoda obliczeniowa)",
+            "islamic-rgsa": "kalendarz islamski (Arabia Saudyjska, metoda wzrokowa)",
+            "islamic-tbla": "kalendarz islamski (metoda obliczeniowa, epoka astronomiczna)",
+            "islamic-umalqura": "kalendarz islamski (Umm al-Kura)",
+            "iso8601": "kalendarz ISO-8601",
+            "japanese": "kalendarz japoński"
+          },
+          "numbers": {
             "java": "java",
             "jpan": "cyfry japońskie",
             "jpanfin": "japońskie cyfry księgowe",
@@ -178,46 +130,134 @@
             "laoo": "cyfry laotańskie",
             "latn": "cyfry arabskie",
             "lepc": "lepc",
-            "limb": "limb",
-            "mathbold": "mathbold",
-            "mathdbl": "mathdbl",
-            "mathmono": "mathmono",
-            "mathsanb": "mathsanb",
-            "mathsans": "mathsans",
+            "limb": "limb"
+          },
+          "colCaseFirst": {
+            "lower": "Sortowanie od małych liter"
+          },
+          "numbers": {
             "mlym": "cyfry malajalam",
-            "modi": "modi",
             "mong": "Cyfry mongolskie",
-            "mroo": "mroo",
             "mtei": "mtei",
             "mymr": "cyfry birmańskie",
             "mymrshan": "mymrshan",
-            "mymrtlng": "mymrtlng",
             "native": "Cyfry macierzyste",
-            "nkoo": "nkoo",
+            "nkoo": "nkoo"
+          },
+          "colBackwards": {
+            "no": "Zwykłe sortowanie znaków akcentowanych"
+          },
+          "colCaseFirst": {
+            "no": "Sortowanie z zachowaniem zwykłej kolejności wielkości liter"
+          },
+          "colCaseLevel": {
+            "no": "Sortowanie bez rozróżniania wielkości liter"
+          },
+          "colHiraganaQuaternary": {
+            "no": "Osobne sortowanie kana"
+          },
+          "colNormalization": {
+            "no": "Sortowanie bez normalizacji"
+          },
+          "colNumeric": {
+            "no": "Oddzielne sortowanie cyfr"
+          },
+          "colAlternate": {
+            "non-ignorable": "Sortowanie symboli"
+          },
+          "numbers": {
             "olck": "olck",
             "orya": "cyfry orija",
-            "osma": "osma",
-            "rohg": "rohg",
+            "osma": "osma"
+          },
+          "calendar": {
+            "persian": "Kalendarz perski"
+          },
+          "collation": {
+            "phonebook": "porządek sortowania książki telefonicznej",
+            "phonetic": "sortowanie fonetyczne",
+            "pinyin": "porządek sortowania pinyin"
+          },
+          "colStrength": {
+            "primary": "Sortowanie tylko liter podstawowych",
+            "quaternary": "Sortowanie znaków akcentowanych/wielkości liter/szerokości/kana"
+          },
+          "collation": {
+            "reformed": "sortowanie zreformowane"
+          },
+          "calendar": {
+            "roc": "kalendarz Republiki Chińskiej"
+          },
+          "numbers": {
             "roman": "cyfry rzymskie",
             "romanlow": "cyfry rzymskie (małe litery)",
-            "saur": "saur",
+            "saur": "saur"
+          },
+          "collation": {
+            "search": "uniwersalny porządek sortowania",
+            "searchjl": "Wyszukiwanie według początkowej spółgłoski hangul"
+          },
+          "colStrength": {
+            "secondary": "Sortowanie znaków akcentowanych"
+          },
+          "colAlternate": {
+            "shifted": "Sortowanie ignorujące symbole"
+          },
+          "numbers": {
             "shrd": "shrd",
-            "sind": "sind",
-            "sinh": "sinh",
-            "sora": "sora",
+            "sora": "sora"
+          },
+          "collation": {
+            "standard": "sortowanie standardowe",
+            "stroke": "porządek akcentów"
+          },
+          "numbers": {
             "sund": "sund",
             "takr": "takr",
             "talu": "talu",
-            "taml": "tradycyjne cyfry tamilskie",
+            "taml": "cyfry tamilskie",
             "tamldec": "cyfry tamilskie",
-            "telu": "cyfry telugu",
+            "telu": "cyfry telugu"
+          },
+          "colStrength": {
+            "tertiary": "Sortowanie znaków akcentowanych/wielkości liter/szerokości"
+          },
+          "numbers": {
             "thai": "cyfry tajskie",
-            "tibt": "cyfry tybetańskie",
-            "tirh": "tirh",
-            "traditional": "Liczebniki tradycyjne",
-            "vaii": "Cyfry vai",
-            "wara": "wara",
-            "wcho": "wcho"
+            "tibt": "cyfry tybetańskie"
+          },
+          "collation": {
+            "traditional": "tradycyjny porządek sortowania"
+          },
+          "numbers": {
+            "traditional": "Liczebniki tradycyjne"
+          },
+          "collation": {
+            "unihan": "sortowanie wg kluczy i ich liczby kresek"
+          },
+          "colCaseFirst": {
+            "upper": "Sortowanie od wielkich liter"
+          },
+          "numbers": {
+            "vaii": "Cyfry vai"
+          },
+          "colBackwards": {
+            "yes": "Sortowanie znaków akcentowanych w odwróconej kolejności"
+          },
+          "colCaseLevel": {
+            "yes": "Sortowanie z rozróżnianiem wielkości liter"
+          },
+          "colHiraganaQuaternary": {
+            "yes": "Inne sortowanie kana"
+          },
+          "colNormalization": {
+            "yes": "Sortowanie z normalizacją unicode"
+          },
+          "colNumeric": {
+            "yes": "Numeryczne sortowanie cyfr"
+          },
+          "collation": {
+            "zhuyin": "zhuyin"
           }
         },
         "codePatterns": {

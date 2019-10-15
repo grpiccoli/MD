@@ -3,10 +3,13 @@
     "zh-Hant": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10895 $"
         },
-        "language": "zh",
+        "generation": {
+          "_date": "$Date: 2014-09-01 13:57:54 -0500 (Mon, 01 Sep 2014) $"
+        },
+        "language": "root",
         "script": "Hant"
       },
       "delimiters": {

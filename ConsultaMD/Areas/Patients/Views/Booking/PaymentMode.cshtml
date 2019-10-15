@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Método de Pago";
+}
+
+<h4 class="clinic-text">Método de Pago</h4>
+
+<div class="row">
+    <div class="col m5 s12">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        Valor:
+                    </td>
+                    <td></td>
+                    <td align="right">$</td>
+                    <td align="right">
+                        35.000 CLP
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Bono Consalud:
+                    </td>
+                    <td style="border-bottom: 1px solid #AAAA"><i class="material-icons">remove</i></td>
+                    <td style="border-bottom: 1px solid #AAAA" align="right">$</td>
+                    <td style="border-bottom: 1px solid #AAAA" align="right">
+                        32.100 CLP
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Total:</h4>
+                    </td>
+                    <td></td>
+                    <td align="right">$</td>
+                    <td align="right">
+                        <h4>2.900</h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col m7 s12">
+            <p>
+                <label>
+                    <input class="paymentType" type="radio" value="0" checked />
+                    <span>
+                        Pagar con remanente Consalud
+                        <img src="~/img/Consalud-horizontal.png" style="height:30px;" asp-append-version="true" />
+                    </span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="paymentType" type="radio" value="1" />
+                    <span>
+                        Tarjetas de Crédito
+                        <img src="~/img/cards_Credit.png" style="height:35px;" asp-append-version="true" />
+                    </span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="paymentType" type="radio" value="2" />
+                    <span>
+                        <img src="~/img/webpay.png" style="height:30px;" asp-append-version="true" />
+                        <img src="~/img/card_debitcard.png" style="height:30px;" asp-append-version="true" />
+                    </span>
+                </label>
+            </p>
+            <buttom onclick="$('form').submit()" class="btn clinic-desc">Pagar</buttom>
+    </div>
+</div>

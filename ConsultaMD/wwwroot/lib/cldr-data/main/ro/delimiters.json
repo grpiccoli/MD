@@ -3,13 +3,16 @@
     "ro": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "ro"
       },
       "delimiters": {
-        "quotationStart": "„",
+        "quotationStart": "“",
         "quotationEnd": "”",
         "alternateQuotationStart": "«",
         "alternateQuotationEnd": "»"

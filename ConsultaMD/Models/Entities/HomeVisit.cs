@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ConsultaMD.Models.Entities
+﻿namespace ConsultaMD.Models.Entities
 {
-    public class HomeVisit : MedicalAttention
+    public class HomeVisit : MedicalAttentionMedium
     {
-        public int ComunaId { get; set; }
-        public virtual Comuna Comuna { get; set; }
+        public int? CommuneId { get; set; }
+        public virtual Commune Commune { get; set; }
     }
 }

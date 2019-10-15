@@ -1,0 +1,62 @@
+﻿[
+  {
+    "outputFile": "src/styles/bootstrap.css",
+    "inputFile": "src/styles/bootstrap.scss"
+  },
+  {
+    "outputFile": "src/styles/cal.css",
+    "inputFile": "src/styles/cal.scss"
+  },
+  {
+    "outputFile": "src/styles/center-image.css",
+    "inputFile": "src/styles/center-image.scss"
+  },
+  {
+    "outputFile": "src/styles/doctor-details.css",
+    "inputFile": "src/styles/doctor-details.scss"
+  },
+  {
+    "outputFile": "src/styles/splash.css",
+    "inputFile": "src/styles/splash.scss"
+  },
+  {
+    "outputFile": "src/styles/fixMSelectiOS.css",
+    "inputFile": "src/styles/fixMSelectiOS.scss"
+  },
+  {
+    "outputFile": "src/styles/gmapsClear.css",
+    "inputFile": "src/styles/gmapsClear.scss"
+  },
+  {
+    "outputFile": "src/styles/index.css",
+    "inputFile": "src/styles/index.scss"
+  },
+  {
+    "outputFile": "src/styles/loading.css",
+    "inputFile": "src/styles/loading.scss"
+  },
+  {
+    "outputFile": "src/styles/map.css",
+    "inputFile": "src/styles/map.scss"
+  },
+  {
+    "outputFile": "src/styles/confirmPhone.css",
+    "inputFile": "src/styles/confirmPhone.scss"
+  },
+  {
+    "outputFile": "src/styles/site.css",
+    "inputFile": "src/styles/site.scss"
+  },
+  {
+    "outputFile": "src/styles/loader.css",
+    "inputFile": "src/styles/loader.scss"
+  },
+  {
+    "outputFile": "src/styles/sidenav.css",
+    "inputFile": "src/styles/sidenav.scss"
+  },
+  {
+    "outputFile": "src/styles/select2mcss.css",
+    "inputFile": "src/styles/select2mcss.scss"
+  }
+]

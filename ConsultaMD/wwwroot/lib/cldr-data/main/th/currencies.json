@@ -3,10 +3,13 @@
     "th": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "th"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "numbers": {
         "currencies": {
@@ -27,10 +30,6 @@
             "displayName": "อัฟกานิอัฟกานิสถาน",
             "displayName-count-other": "อัฟกานิอัฟกานิสถาน",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "เลกแอลเบเนีย",
@@ -261,16 +260,11 @@
             "displayName": "นิวรูเบิลเบลารุส (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "รูเบิลเบลารุส",
             "displayName-count-other": "รูเบิลเบลารุส",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "รูเบิลเบลารุส (2000–2016)",
-            "displayName-count-other": "รูเบิลเบลารุส (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "ดอลลาร์เบลีซ",
@@ -315,15 +309,6 @@
             "displayName-count-other": "เปโซชิลี",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "หยวน",
-            "displayName-count-other": "หยวน",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "หยวนจีน",
@@ -492,9 +477,7 @@
           "GEL": {
             "displayName": "ลารีจอร์เจีย",
             "displayName-count-other": "ลารีจอร์เจีย",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "เซดีกานา (1979–2007)",
@@ -601,10 +584,6 @@
             "displayName": "ปอนด์อิสราเอล",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
             "displayName": "นิวเชเกลอิสราเอล",
             "displayName-count-other": "นิวเชเกลอิสราเอล",
@@ -626,10 +605,6 @@
             "displayName": "เรียลอิหร่าน",
             "displayName-count-other": "เรียลอิหร่าน",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "โครนาไอซ์แลนด์",
@@ -659,8 +634,8 @@
             "symbol-alt-narrow": "¥"
           },
           "KES": {
-            "displayName": "ชิลลิงเคนยา",
-            "displayName-count-other": "ชิลลิงเคนยา",
+            "displayName": "ชิลลิ่งเคนยา",
+            "displayName-count-other": "ชิลลิ่งเคนยา",
             "symbol": "KES"
           },
           "KGS": {
@@ -845,14 +820,9 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "อูกียามอริเตเนีย (1973–2017)",
-            "displayName-count-other": "อูกียามอริเตเนีย (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "อูกียามอริเตเนีย",
             "displayName-count-other": "อูกียามอริเตเนีย",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "ลีรามอลตา",
@@ -867,10 +837,6 @@
             "displayName-count-other": "รูปีมอริเชียส",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "รูฟิยามัลดีฟส์",
@@ -974,13 +940,12 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "ซอลเปรู",
-            "displayName-count-other": "ซอลเปรู",
+            "displayName": "นูโวซอลเปรู",
+            "displayName-count-other": "นูโวซอลเปรู",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "ซอลเปรู (1863–1965)",
-            "displayName-count-other": "ซอลเปรู(1863–1965)",
+            "displayName": "ซอลเปรู",
             "symbol": "PES"
           },
           "PGK": {
@@ -1036,8 +1001,7 @@
           "RON": {
             "displayName": "ลิวโรมาเนีย",
             "displayName-count-other": "ลิวโรมาเนีย",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "ดีนาร์เซอร์เบีย",
@@ -1048,7 +1012,6 @@
             "displayName": "รูเบิลรัสเซีย",
             "displayName-count-other": "รูเบิลรัสเซีย",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽",
             "symbol-alt-variant": "₽"
           },
           "RUR": {
@@ -1144,14 +1107,9 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "ดอบราเซาตูเมและปรินซิปี (1977–2017)",
-            "displayName-count-other": "ดอบราเซาตูเมและปรินซิปี (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "ดอบราเซาตูเมและปรินซิปี",
             "displayName-count-other": "ดอบราเซาตูเมและปรินซิปี",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1174,9 +1132,9 @@
             "symbol": "SZL"
           },
           "THB": {
-            "displayName": "บาท",
+            "displayName": "บาทไทย",
             "displayName-count-other": "บาทไทย",
-            "symbol": "฿",
+            "symbol": "THB",
             "symbol-alt-narrow": "฿"
           },
           "TJR": {
@@ -1289,10 +1247,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "ซอมอุซเบกิสถาน",
             "displayName-count-other": "ซอมอุซเบกิสถาน",
@@ -1307,11 +1261,6 @@
             "displayName-count-other": "โบลิวาร์เวเนซุเอลา",
             "symbol": "VEF",
             "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
-            "displayName": "โบลีวาร์เวเนซุเอลา",
-            "displayName-count-other": "โบลีวาร์แห่งเวเนซุเอลา",
-            "symbol": "VES"
           },
           "VND": {
             "displayName": "ดองเวียดนาม",
@@ -1419,8 +1368,8 @@
             "symbol": "XUA"
           },
           "XXX": {
-            "displayName": "ไม่ทราบชื่อสกุลเงิน",
-            "displayName-count-other": "(ไม่ทราบชื่อสกุลเงิน)",
+            "displayName": "สกุลเงินที่ไม่รู้จัก",
+            "displayName-count-other": "(สกุลเงินที่ไม่รู้จัก)",
             "symbol": "XXX"
           },
           "YDD": {

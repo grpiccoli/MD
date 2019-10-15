@@ -10,9 +10,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResetPasswordConfirmationModel : PageModel
     {
+        public string LoginUrl { get; set; }
         public void OnGet()
         {
-
+            LoginUrl = "./Login";
         }
     }
 }

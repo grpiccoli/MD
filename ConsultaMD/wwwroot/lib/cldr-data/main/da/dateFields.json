@@ -3,24 +3,21 @@
     "da": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10962 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-09-10 11:30:49 -0500 (Wed, 10 Sep 2014) $"
         },
         "language": "da"
       },
       "dates": {
         "fields": {
           "era": {
-            "displayName": "æra"
-          },
-          "era-short": {
-            "displayName": "æra"
-          },
-          "era-narrow": {
-            "displayName": "æra"
+            "displayName": "Æra"
           },
           "year": {
-            "displayName": "år",
+            "displayName": "År",
             "relative-type--1": "sidste år",
             "relative-type-0": "i år",
             "relative-type-1": "næste år",
@@ -62,10 +59,10 @@
             }
           },
           "quarter": {
-            "displayName": "kvartal",
-            "relative-type--1": "sidste kvartal",
-            "relative-type-0": "dette kvartal",
-            "relative-type-1": "næste kvartal",
+            "displayName": "Kvartal",
+            "relative-type--1": "last quarter",
+            "relative-type-0": "this quarter",
+            "relative-type-1": "next quarter",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} kvartal",
               "relativeTimePattern-count-other": "om {0} kvartaler"
@@ -77,9 +74,9 @@
           },
           "quarter-short": {
             "displayName": "kvt.",
-            "relative-type--1": "sidste kvt.",
-            "relative-type-0": "dette kvt.",
-            "relative-type-1": "næste kvt.",
+            "relative-type--1": "last quarter",
+            "relative-type-0": "this quarter",
+            "relative-type-1": "next quarter",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} kvt.",
               "relativeTimePattern-count-other": "om {0} kvt."
@@ -91,9 +88,9 @@
           },
           "quarter-narrow": {
             "displayName": "kvt.",
-            "relative-type--1": "sidste kvt.",
-            "relative-type-0": "dette kvt.",
-            "relative-type-1": "næste kvt.",
+            "relative-type--1": "last quarter",
+            "relative-type-0": "this quarter",
+            "relative-type-1": "next quarter",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} kvt.",
               "relativeTimePattern-count-other": "om {0} kvt."
@@ -104,7 +101,7 @@
             }
           },
           "month": {
-            "displayName": "måned",
+            "displayName": "Måned",
             "relative-type--1": "sidste måned",
             "relative-type-0": "denne måned",
             "relative-type-1": "næste måned",
@@ -119,34 +116,34 @@
           },
           "month-short": {
             "displayName": "md.",
-            "relative-type--1": "sidste md.",
-            "relative-type-0": "denne md.",
-            "relative-type-1": "næste md.",
+            "relative-type--1": "sidste måned",
+            "relative-type-0": "denne måned",
+            "relative-type-1": "næste måned",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} md.",
-              "relativeTimePattern-count-other": "om {0} mdr."
+              "relativeTimePattern-count-other": "om {0} md."
             },
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "for {0} md. siden",
-              "relativeTimePattern-count-other": "for {0} mdr. siden"
+              "relativeTimePattern-count-other": "for {0} md. siden"
             }
           },
           "month-narrow": {
             "displayName": "md.",
-            "relative-type--1": "sidste md.",
-            "relative-type-0": "denne md.",
-            "relative-type-1": "næste md.",
+            "relative-type--1": "sidste måned",
+            "relative-type-0": "denne måned",
+            "relative-type-1": "næste måned",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} md.",
-              "relativeTimePattern-count-other": "om {0} mdr."
+              "relativeTimePattern-count-other": "om {0} md."
             },
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "for {0} md. siden",
-              "relativeTimePattern-count-other": "for {0} mdr. siden"
+              "relativeTimePattern-count-other": "for {0} md. siden"
             }
           },
           "week": {
-            "displayName": "uge",
+            "displayName": "Uge",
             "relative-type--1": "sidste uge",
             "relative-type-0": "denne uge",
             "relative-type-1": "næste uge",
@@ -157,8 +154,7 @@
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "for {0} uge siden",
               "relativeTimePattern-count-other": "for {0} uger siden"
-            },
-            "relativePeriod": "i ugen med {0}"
+            }
           },
           "week-short": {
             "displayName": "uge",
@@ -172,8 +168,7 @@
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "for {0} uge siden",
               "relativeTimePattern-count-other": "for {0} uger siden"
-            },
-            "relativePeriod": "i ugen med {0}"
+            }
           },
           "week-narrow": {
             "displayName": "uge",
@@ -187,22 +182,12 @@
             "relativeTime-type-past": {
               "relativeTimePattern-count-one": "for {0} uge siden",
               "relativeTimePattern-count-other": "for {0} uger siden"
-            },
-            "relativePeriod": "i ugen med {0}"
-          },
-          "weekOfMonth": {
-            "displayName": "uge i måneden"
-          },
-          "weekOfMonth-short": {
-            "displayName": "uge i md."
-          },
-          "weekOfMonth-narrow": {
-            "displayName": "uge i md."
+            }
           },
           "day": {
-            "displayName": "dag",
-            "relative-type--2": "i forgårs",
+            "displayName": "Dag",
             "relative-type--1": "i går",
+            "relative-type--2": "i forgårs",
             "relative-type-0": "i dag",
             "relative-type-1": "i morgen",
             "relative-type-2": "i overmorgen",
@@ -217,8 +202,8 @@
           },
           "day-short": {
             "displayName": "dag",
-            "relative-type--2": "i forgårs",
             "relative-type--1": "i går",
+            "relative-type--2": "i forgårs",
             "relative-type-0": "i dag",
             "relative-type-1": "i morgen",
             "relative-type-2": "i overmorgen",
@@ -233,8 +218,8 @@
           },
           "day-narrow": {
             "displayName": "dag",
-            "relative-type--2": "i forgårs",
             "relative-type--1": "i går",
+            "relative-type--2": "i forgårs",
             "relative-type-0": "i dag",
             "relative-type-1": "i morgen",
             "relative-type-2": "i overmorgen",
@@ -247,318 +232,119 @@
               "relativeTimePattern-count-other": "for {0} dage siden"
             }
           },
-          "dayOfYear": {
-            "displayName": "dag i året"
-          },
-          "dayOfYear-short": {
-            "displayName": "dag i året"
-          },
-          "dayOfYear-narrow": {
-            "displayName": "dag i året"
-          },
           "weekday": {
-            "displayName": "ugedag"
-          },
-          "weekday-short": {
-            "displayName": "ugedag"
-          },
-          "weekday-narrow": {
-            "displayName": "ugedag"
-          },
-          "weekdayOfMonth": {
-            "displayName": "ugedag i måneden"
-          },
-          "weekdayOfMonth-short": {
-            "displayName": "ugedag i md."
-          },
-          "weekdayOfMonth-narrow": {
-            "displayName": "ugedag i md."
+            "displayName": "Ugedag"
           },
           "sun": {
             "relative-type--1": "sidste søndag",
-            "relative-type-0": "på søndag",
-            "relative-type-1": "næste søndag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} søndag",
-              "relativeTimePattern-count-other": "om {0} søndage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} søndag siden",
-              "relativeTimePattern-count-other": "for {0} søndage siden"
-            }
+            "relative-type-0": "denne søndag",
+            "relative-type-1": "næste søndag"
           },
           "sun-short": {
             "relative-type--1": "sidste søn.",
-            "relative-type-0": "på søn.",
-            "relative-type-1": "næste søn.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} søndag",
-              "relativeTimePattern-count-other": "om {0} søndage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} søndag siden",
-              "relativeTimePattern-count-other": "for {0} søndage siden"
-            }
+            "relative-type-0": "denne søn.",
+            "relative-type-1": "næste sø."
           },
           "sun-narrow": {
             "relative-type--1": "sidste sø.",
-            "relative-type-0": "på sø.",
-            "relative-type-1": "næste sø.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} søndag",
-              "relativeTimePattern-count-other": "om {0} søndage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} søndag siden",
-              "relativeTimePattern-count-other": "for {0} søndage siden"
-            }
+            "relative-type-0": "denne sø.",
+            "relative-type-1": "næste sø."
           },
           "mon": {
             "relative-type--1": "sidste mandag",
-            "relative-type-0": "på mandag",
-            "relative-type-1": "næste mandag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} mandag",
-              "relativeTimePattern-count-other": "om {0} mandage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} mandag siden",
-              "relativeTimePattern-count-other": "for {0} mandage siden"
-            }
+            "relative-type-0": "denne mandag",
+            "relative-type-1": "næste mandag"
           },
           "mon-short": {
             "relative-type--1": "sidste man.",
-            "relative-type-0": "på man.",
-            "relative-type-1": "næste man.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} mandag",
-              "relativeTimePattern-count-other": "om {0} mandage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} mandag siden",
-              "relativeTimePattern-count-other": "for {0} mandage siden"
-            }
+            "relative-type-0": "denne man.",
+            "relative-type-1": "næste man."
           },
           "mon-narrow": {
             "relative-type--1": "sidste ma.",
-            "relative-type-0": "på ma.",
-            "relative-type-1": "næste ma.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} mandag",
-              "relativeTimePattern-count-other": "om {0} mandage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} mandag siden",
-              "relativeTimePattern-count-other": "for {0} mandage siden"
-            }
+            "relative-type-0": "denne ma.",
+            "relative-type-1": "næste ma."
           },
           "tue": {
             "relative-type--1": "sidste tirsdag",
-            "relative-type-0": "på tirsdag",
-            "relative-type-1": "næste tirsdag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} tirsdag",
-              "relativeTimePattern-count-other": "om {0} tirsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} tirsdag siden",
-              "relativeTimePattern-count-other": "for {0} tirsdage siden"
-            }
+            "relative-type-0": "denne tirsdag",
+            "relative-type-1": "næste tirsdag"
           },
           "tue-short": {
             "relative-type--1": "sidste tir.",
-            "relative-type-0": "på tir.",
-            "relative-type-1": "næste tir.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} tirsdag",
-              "relativeTimePattern-count-other": "om {0} tirsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} tirsdag siden",
-              "relativeTimePattern-count-other": "for {0} tirsdage siden"
-            }
+            "relative-type-0": "denne tir.",
+            "relative-type-1": "næste tir."
           },
           "tue-narrow": {
             "relative-type--1": "sidste ti.",
-            "relative-type-0": "på ti.",
-            "relative-type-1": "næste ti.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} tirsdag",
-              "relativeTimePattern-count-other": "om {0} tirsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} tirsdag siden",
-              "relativeTimePattern-count-other": "for {0} tirsdage siden"
-            }
+            "relative-type-0": "denne ti.",
+            "relative-type-1": "næste ti."
           },
           "wed": {
             "relative-type--1": "sidste onsdag",
-            "relative-type-0": "på onsdag",
-            "relative-type-1": "næste onsdag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} onsdag",
-              "relativeTimePattern-count-other": "om {0} onsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} onsdag siden",
-              "relativeTimePattern-count-other": "for {0} onsdage siden"
-            }
+            "relative-type-0": "denne onsdag",
+            "relative-type-1": "næste onsdag"
           },
           "wed-short": {
             "relative-type--1": "sidste ons.",
-            "relative-type-0": "på ons.",
-            "relative-type-1": "næste ons.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} onsdag",
-              "relativeTimePattern-count-other": "om {0} onsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} onsdag siden",
-              "relativeTimePattern-count-other": "for {0} onsdage siden"
-            }
+            "relative-type-0": "denne ons.",
+            "relative-type-1": "næste ons."
           },
           "wed-narrow": {
             "relative-type--1": "sidste on.",
-            "relative-type-0": "på on.",
-            "relative-type-1": "næste on.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} onsdag",
-              "relativeTimePattern-count-other": "om {0} onsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} onsdag siden",
-              "relativeTimePattern-count-other": "for {0} onsdage siden"
-            }
+            "relative-type-0": "denne on.",
+            "relative-type-1": "næste on."
           },
           "thu": {
             "relative-type--1": "sidste torsdag",
-            "relative-type-0": "på torsdag",
-            "relative-type-1": "næste torsdag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} torsdag",
-              "relativeTimePattern-count-other": "om {0} torsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} torsdag siden",
-              "relativeTimePattern-count-other": "for {0} torsdage siden"
-            }
+            "relative-type-0": "denne torsdag",
+            "relative-type-1": "næste torsdag"
           },
           "thu-short": {
             "relative-type--1": "sidste tor.",
-            "relative-type-0": "på tor.",
-            "relative-type-1": "næste tor.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} torsdag",
-              "relativeTimePattern-count-other": "om {0} torsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} torsdag siden",
-              "relativeTimePattern-count-other": "for {0} torsdage siden"
-            }
+            "relative-type-0": "denne tor.",
+            "relative-type-1": "næste tor."
           },
           "thu-narrow": {
             "relative-type--1": "sidste to.",
-            "relative-type-0": "på to.",
-            "relative-type-1": "næste to.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} torsdag",
-              "relativeTimePattern-count-other": "om {0} torsdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} torsdag siden",
-              "relativeTimePattern-count-other": "for {0} torsdage siden"
-            }
+            "relative-type-0": "denne to.",
+            "relative-type-1": "næste to."
           },
           "fri": {
             "relative-type--1": "sidste fredag",
-            "relative-type-0": "på fredag",
-            "relative-type-1": "næste fredag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} fredag",
-              "relativeTimePattern-count-other": "om {0} fredage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} fredag siden",
-              "relativeTimePattern-count-other": "for {0} fredage siden"
-            }
+            "relative-type-0": "denne fredag",
+            "relative-type-1": "næste fredag"
           },
           "fri-short": {
             "relative-type--1": "sidste fre.",
-            "relative-type-0": "på fre.",
-            "relative-type-1": "næste fre.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} fredag",
-              "relativeTimePattern-count-other": "om {0} fredage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} fredag siden",
-              "relativeTimePattern-count-other": "for {0} fredage siden"
-            }
+            "relative-type-0": "denne fre.",
+            "relative-type-1": "næste fre."
           },
           "fri-narrow": {
             "relative-type--1": "sidste fr.",
-            "relative-type-0": "på fr.",
-            "relative-type-1": "næste fr.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} fredag",
-              "relativeTimePattern-count-other": "om {0} fredage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} fredag siden",
-              "relativeTimePattern-count-other": "for {0} fredage siden"
-            }
+            "relative-type-0": "denne fr.",
+            "relative-type-1": "næste fr."
           },
           "sat": {
             "relative-type--1": "sidste lørdag",
-            "relative-type-0": "på lørdag",
-            "relative-type-1": "næste lørdag",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} lørdag",
-              "relativeTimePattern-count-other": "om {0} lørdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} lørdag siden",
-              "relativeTimePattern-count-other": "for {0} lørdage siden"
-            }
+            "relative-type-0": "denne lørdag",
+            "relative-type-1": "næste lørdag"
           },
           "sat-short": {
             "relative-type--1": "sidste lør.",
-            "relative-type-0": "på lør.",
-            "relative-type-1": "næste lør.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} lørdag",
-              "relativeTimePattern-count-other": "om {0} lørdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} lørdag siden",
-              "relativeTimePattern-count-other": "for {0} lørdage siden"
-            }
+            "relative-type-0": "denne lør.",
+            "relative-type-1": "næste lør."
           },
           "sat-narrow": {
             "relative-type--1": "sidste lø.",
-            "relative-type-0": "på lø.",
-            "relative-type-1": "næste lø.",
-            "relativeTime-type-future": {
-              "relativeTimePattern-count-one": "om {0} lørdag",
-              "relativeTimePattern-count-other": "om {0} lørdage"
-            },
-            "relativeTime-type-past": {
-              "relativeTimePattern-count-one": "for {0} lørdag siden",
-              "relativeTimePattern-count-other": "for {0} lørdage siden"
-            }
-          },
-          "dayperiod-short": {
-            "displayName": "AM/PM"
+            "relative-type-0": "denne lø.",
+            "relative-type-1": "næste lø."
           },
           "dayperiod": {
             "displayName": "AM/PM"
           },
-          "dayperiod-narrow": {
-            "displayName": "AM/PM"
-          },
           "hour": {
-            "displayName": "time",
-            "relative-type-0": "i den kommende time",
+            "displayName": "Time",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} time",
               "relativeTimePattern-count-other": "om {0} timer"
@@ -570,7 +356,6 @@
           },
           "hour-short": {
             "displayName": "t.",
-            "relative-type-0": "i den kommende time",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} time",
               "relativeTimePattern-count-other": "om {0} timer"
@@ -581,8 +366,7 @@
             }
           },
           "hour-narrow": {
-            "displayName": "t.",
-            "relative-type-0": "i den kommende time",
+            "displayName": "t",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} time",
               "relativeTimePattern-count-other": "om {0} timer"
@@ -593,8 +377,7 @@
             }
           },
           "minute": {
-            "displayName": "minut",
-            "relative-type-0": "i det kommende minut",
+            "displayName": "Minut",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} minut",
               "relativeTimePattern-count-other": "om {0} minutter"
@@ -606,7 +389,6 @@
           },
           "minute-short": {
             "displayName": "min.",
-            "relative-type-0": "i det kommende minut",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} min.",
               "relativeTimePattern-count-other": "om {0} min."
@@ -617,8 +399,7 @@
             }
           },
           "minute-narrow": {
-            "displayName": "min.",
-            "relative-type-0": "i det kommende minut",
+            "displayName": "min",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} min.",
               "relativeTimePattern-count-other": "om {0} min."
@@ -629,7 +410,7 @@
             }
           },
           "second": {
-            "displayName": "sekund",
+            "displayName": "Sekund",
             "relative-type-0": "nu",
             "relativeTime-type-future": {
               "relativeTimePattern-count-one": "om {0} sekund",
@@ -665,13 +446,7 @@
             }
           },
           "zone": {
-            "displayName": "tidszone"
-          },
-          "zone-short": {
-            "displayName": "zone"
-          },
-          "zone-narrow": {
-            "displayName": "zone"
+            "displayName": "Tidszone"
           }
         }
       }

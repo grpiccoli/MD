@@ -1,0 +1,28 @@
+﻿@{
+    var action = this.ViewContext.RouteData.Values["action"].ToString();
+}
+
+<li class="@(action == "Map" ? "active" : "")">
+    <a class="white-text"
+       asp-controller="Search" asp-action="Map">
+        <i class="material-icons left">search</i>Buscar Cita
+    </a>
+</li>
+<li class="@(action == "WaitingRoom" ? "active" : "")">
+    <a class="white-text"
+       asp-controller="Date" asp-action="WaitingRoom">
+        <i class="material-icons left">hourglass_empty</i>Sala de Espera
+    </a>
+</li>
+<li class="@(action == "BookAppointment" ? "active" : "")">
+    <a class="white-text"
+       asp-controller="Booking" asp-action="BookAppointment">
+        <i class="material-icons left">schedule</i>Mis Citas
+    </a>
+</li>
+<li>
+    <a class="white-text"
+       asp-area="MDs" asp-controller="Home" asp-action="Index">
+        <i class="material-icons left">schedule</i>Doctor
+    </a>
+</li>

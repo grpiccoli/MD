@@ -1,0 +1,195 @@
+﻿@model DoctorDetailsVM
+
+@{
+    ViewData["Title"] = "Detalle Doctor";
+}
+
+<partial name="_Libs" model='(new string[]{
+    "simplebar", "moment", "doctor-details" },"")' />
+
+<div id="Booking">
+    <div id="map-view" style="height:100%;width:100%;">
+        <div id="map" style="height:100%;"></div>
+    </div>
+    <div id="date-view" style="display:none;height:100%;">
+        <div class="row" style="height:100%;">
+            <div class="col m4 s12 offset-m4 hide-on-small-only" style="height:100%;">
+                <h5 class="clinic-text">Mañana (AM)</h5>
+                <div style="height:100%;" data-simplebar>
+                    <section class="BookingMorning"></section>
+                </div>
+            </div>
+            <div class="col m4 s12 hide-on-small-only" style="height:100%;">
+                <h5 class="clinic-text">Tarde (PM)</h5>
+                <div style="height:100%;" data-simplebar>
+                    <section class="BookingAfternoon"></section>
+                </div>
+            </div>
+            <div class="col s12 hide-on-med-and-up" style="height:100%" data-simplebar>
+                <h5 class="clinic-text">Horarios Disponibles</h5>
+                <section class="BookingMorning"></section>
+                <section class="BookingAfternoon"></section>
+            </div>
+        </div>
+    </div>
+    <div id="floating-menu" class="fixed-action-btn hide-on-med-and-up">
+        <a data-target="clinic-bg" href="#" class="sidenav-trigger btn-floating btn-large clinic-desc scale-transition">
+            <img src="/img/doc/@(Model.DocVM.NaturalId).min.jpg" 
+                 class="circle" style="max-height:60px;"
+                 asp-append-version="true"/>
+        </a>
+    </div>
+</div>
+
+<ul id="sidenav-details">
+    <li>
+        <div class="row m-0">
+            <div class="col s6 m4 p-0">
+                <img src="/img/doc/@(Model.DocVM.NaturalId).min.jpg" class="circle" asp-append-version="true" />
+            </div>
+            <div class="col s6 m8 p-0">
+                <h5 class="white-text" id="nombre-data">@Model.Title@Model.DocVM.Natural.FullNameFirst</h5>
+                <span>@(Model.DocVM.Specialty.HasValue ? Model.DocVM.Specialty.Value.ToString() + ", " + @Model.DocVM.YearSpecialty : "")</span>
+            </div>
+        </div>
+    </li>
+    <li class="white-text active input-field m-0">
+        <form id="BookForm" method="post">
+            <i class="clinic-text material-icons prefix">location_on</i>
+            <select class="white-text " asp-for="PlaceId" asp-items="Model.PlacesList"></select>
+            <input id="date-btn" type="button" class="btn clinic-desc datepicker sidenav-close" value="Seleccionar Fecha y Hora" />
+            <span class="hide">
+                <input asp-for="Date" />
+                <input asp-for="DocVM.Id" />
+                <input asp-for="DocVM.NaturalId" />
+                <input asp-for="Time" />
+                <input asp-for="DocVM.Specialty" />
+                <input asp-for="Last" />
+            </span>
+        </form>
+    </li>
+    <li id="details">
+        <ul class="h-100" data-simplebar>
+            <li class="white-text">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                Detalles
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Convenios
+                            </td>
+                            <td id="insuranceList">
+                                @*@foreach(var img in Model.PlaceInsurances[Model.PlaceId])
+                {
+                    <img alt="@img" href="/img/mi/@img-icon.min.png" />
+                }*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tarifa Particular
+                            </td>
+                            <td>
+                                <i class="material-icons left">attach_money</i> 35.000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Título
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => m.DocVM.Title)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Año titulación
+                            </td>
+                            <td>
+                                @Model.DocVM.YearTitle
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Años de Experiencia
+                            </td>
+                            <td>
+                                @Model.DocVM.GetYearsExperience()
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Acreditado por
+                            </td>
+                            <td>
+                                @Model.DocVM.Institution
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Certificado de Registro
+                            </td>
+                            <td>
+                                <a target="_blank"
+                                   href="https://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/CertificadoRegistro?openform&pid=@Model.DocVM.SisId">
+                                    <i class="material-icons left">file_download</i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                N° Registro Médico
+                            </td>
+                            <td>
+                                @Model.DocVM.Id
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Fecha de Registro
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => m.DocVM.RegistryDate)
+                            </td>
+                        </tr>
+                        @*<tr>
+            <td>
+                Especialidad
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.DocVM.Specialty)
+            </td>
+        </tr>*@
+                        <tr>
+                            <td>
+                                Nacionalidad
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => m.DocVM.Nationality)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Género
+                            </td>
+                            <td>
+                                @(Model.DocVM.Sex ? "Masculino" : "Femenino")
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </li>
+        </ul>
+    </li>
+</ul>
+
+@section Scripts{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&libraries=places&language=es&region=CL&callback=initDetails" async defer></script>
+}

@@ -8,6 +8,8 @@ using System.Net;
 using SendGrid.Helpers.Mail;
 using SendGrid;
 using Microsoft.Extensions.Configuration;
+using Attachment = SendGrid.Helpers.Mail.Attachment;
+using System.IO;
 
 namespace ConsultaMD.Services
 {
@@ -23,21 +25,24 @@ namespace ConsultaMD.Services
 
         public IConfiguration Configuration { get; }
 
-        public Task SendEmailAsync(string email, string subject, string message)
+        public Task<Response> SendEmailAsync(string email, string subject, string message, string logo = null)
         {
-            return Execute(Configuration.GetValue<string>("SG_KEY"), subject, message, email);
+            return Execute("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", subject, message, email, logo);
         }
 
-        public Task Execute(string apiKey, string subject, string message, string email)
+        public Task<Response> Execute(string apiKey, string subject, string message, string email, string logo = null)
         {
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("no-responder@email.bibliomit.cl", "BiblioMit"),
+                From = new EmailAddress("no-responder@consultamd.cl", "ConsultaMD"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
             };
+            var bytes = File.ReadAllBytes(logo);
+            var file = Convert.ToBase64String(bytes);
+            msg.AddAttachment("logo.png", file, "image/png", "inline", "logo");
             msg.AddTo(new EmailAddress(email));
             return client.SendEmailAsync(msg);
         }

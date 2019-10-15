@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ConsultaMD.Models.Entities
 {
-    public class RemoteAppointment : MedicalAttention
+    public class RemoteAppointment : MedicalAttentionMedium
     {
     }
 }

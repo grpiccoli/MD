@@ -4,31 +4,124 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>aspnet-ConsultaMD-35791A7D-6EDA-458B-88E6-9D9091ED2D7E</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.6</TypeScriptToolsVersion>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.12.1" />
+    <Compile Remove="Migrations\20191005225053_Initial.cs" />
+    <Compile Remove="Migrations\20191005225053_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191006033215_Initial.cs" />
+    <Compile Remove="Migrations\20191006033215_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191007205834_Initial.cs" />
+    <Compile Remove="Migrations\20191007205834_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191007212843_Initial.cs" />
+    <Compile Remove="Migrations\20191007212843_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010154230_Initial.cs" />
+    <Compile Remove="Migrations\20191010154230_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010155824_Initial.cs" />
+    <Compile Remove="Migrations\20191010155824_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010170032_Initial.cs" />
+    <Compile Remove="Migrations\20191010170032_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010173839_Initial.cs" />
+    <Compile Remove="Migrations\20191010173839_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010174049_Initial.cs" />
+    <Compile Remove="Migrations\20191010174049_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010180225_Initial.cs" />
+    <Compile Remove="Migrations\20191010180225_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010181434_Initial.cs" />
+    <Compile Remove="Migrations\20191010181434_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010205436_Initial.cs" />
+    <Compile Remove="Migrations\20191010205436_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010212425_Initial.cs" />
+    <Compile Remove="Migrations\20191010212425_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010214348_Initial.cs" />
+    <Compile Remove="Migrations\20191010214348_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191010222316_Initial.cs" />
+    <Compile Remove="Migrations\20191010222316_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191013054817_Initial.cs" />
+    <Compile Remove="Migrations\20191013054817_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191013172839_Initial.cs" />
+    <Compile Remove="Migrations\20191013172839_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191013180005_Initial.cs" />
+    <Compile Remove="Migrations\20191013180005_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191013215759_Initial.cs" />
+    <Compile Remove="Migrations\20191013215759_Initial.Designer.cs" />
+    <Content Remove="compilerconfig.json" />
+    <Compile Remove="wwwroot\js\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Compile Remove="node_modules\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <TypeScriptCompile Remove="wwwroot\js\**" />
+    <TypeScriptCompile Remove="wwwroot\lib\**" />
+    <TypeScriptCompile Include="src\scripts\doctor-details.ts.bak1">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\scripts\jquery.validate.hooks.js" />
+    <TypeScriptCompile Include="src\scripts\map.ts.bak1">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\scripts\map.ts.bak2">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <None Remove=".babelrc" />
+    <None Remove="package_webpack.json_bak" />
+    <None Remove="src\scripts\add_rut_carnet_validation.ts" />
+    <None Remove="src\scripts\confirmPhone.ts" />
+    <None Remove="src\scripts\debounce.ts" />
+    <None Remove="src\scripts\doctor-details.ts" />
+    <None Remove="src\scripts\doctor-details.ts.bak1" />
+    <None Remove="src\scripts\jquery.validate.hooks.js" />
+    <None Remove="src\scripts\loader.ts" />
+    <None Remove="src\scripts\map.ts" />
+    <None Remove="src\scripts\map.ts.bak1" />
+    <None Remove="src\scripts\map.ts.bak2" />
+    <None Remove="src\types\choicesjs\index.d.ts" />
+    <None Remove="src\types\consultamd\index.d.ts" />
+    <None Remove="src\types\globalize\index.d.ts" />
+    <None Remove="src\types\jquery.validate.hooks\index.d.ts" />
+    <None Remove="src\types\markerclustererplus\index.d.ts" />
+    <None Remove="src\types\markerclusterer\index.d.ts" />
+    <Content Include="package_webpack.json_bak" />
+    <None Include="compilerconfig.json" />
+    <Folder Include="src\types\lighterhtml\" />
+    <Folder Include="src\types\nouislider\" />
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.13.0" />
     <PackageReference Include="AspNetCore.IServiceCollection.AddIUrlHelper" Version="1.1.0" />
-    <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="3.1.0" />
-    <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
+    <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="3.2.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.0.415" />
+    <PackageReference Condition="'$(OS)' == 'Windows_NT'" Include="BuildWebCompiler" Version="1.12.394" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.8" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.12" />
+    <PackageReference Include="LocalizationProvider.AspNetCore" Version="5.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Proxy" Version="0.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.5.3">
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.48" />
+    <PackageReference Include="morelinq" Version="3.2.0" />
+    <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />
     <PackageReference Include="Schema.NET" Version="4.3.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="Sendgrid" Version="9.11.0" />
-    <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.49" />
+    <PackageReference Include="Sendgrid" Version="9.12.0" />
+    <PackageReference Include="Stripe.net" Version="29.1.0" />
+    <PackageReference Include="Tesseract" Version="3.3.0" />
+    <PackageReference Include="Twilio" Version="5.33.0" />
+    <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.59" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.6.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,8 +134,36 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Models\VM\MDsVM\" />
+    <Compile Update="Resources\ValidationMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ValidationMessages.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Resources\ValidationMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties wwwroot_4manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2015</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>E:\WebProjects\ConsultaMD\ConsultaMD\src\types</TypeScriptSourceRoot>
+    <TypeScriptSourceRoot>E:\WebProjects\ConsultaMD\ConsultaMD\node_modules</TypeScriptSourceRoot>
+    <TypeScriptSourceRoot>E:\WebProjects\ConsultaMD\ConsultaMD\node_modules\@types</TypeScriptSourceRoot>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
 
 </Project>

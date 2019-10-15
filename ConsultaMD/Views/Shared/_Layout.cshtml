@@ -2,16 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="MSThemeCompatible" content="Yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
     <title>@ViewData["Title"] - ConsultaMD</title>
     <meta name="author" content="EPIC Solutions" />
     <meta name="description" content="Consulta Médica" />
-    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <open-graph-website site-name="ConsultaMD"
                         title="@ViewData["Title"]"
                         main-image="@(new OpenGraphImage(
-        Url.Content("~/android-chrome-512x512.png"),
+        new Uri($"{Context.Request.Scheme}://{Context.Request.Host}/android-chrome-512x512.png"),
         "image/png",
         1200,
         630))"
@@ -35,35 +37,46 @@
     CreatorUsername = "@guille_arp",
     SiteUsername = "@guille_arp"
 })
-    <environment include="Development">
-    </environment>
-    <environment exclude="Development">
-    </environment>
+    @*<script data-main="js/main" src="https://unpkg.com/requirejs@2.3.6/require.js"
+        asp-fallback-src="~/lib/requirejs/require.js"
+        asp-subresource-integrity-src="~/lib/requirejs/require.js"></script>*@
     <partial name="_Favicons" />
-    <partial name="_LO_Libs" model='new List<string> { "jquery", "bootstrap", "@fortawesome/fontawesome-free", "site.min.css", "site.min.js", "modal-action.min.js", "load-sw.min.js" }' />
-    @this.LO_WriteStyleBlocks()
-    @this.WriteStyleBlocks()
+    @*"@fortawesome/fontawesome-free",*@
+    @*<link href="<%= htmlWebpackPlugin.files.chunks[chunk].css %>" rel="stylesheet" />*@
+    <partial name="_Libs" model='(new string[]{"jquery", "materialize-css", "main"}, "TOP")' />
+    @*<partial name="_Scripts" model='(new string[]{"jquery", "materialize-css", "main", "runtime"}, "-TOP_")' />*@
+    @this.WriteBlocks("TOPStyles")
+    @this.WriteBlocks("Styles")
     @RenderSection("Styles", required: false)
 </head>
-<body>
+<body data-controller="@ViewContext.RouteData.Values["Controller"]" data-action="@ViewContext.RouteData.Values["Action"]">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <!-- descomentar cuando esté terminado -->
     <header>
+        @this.WriteBlocks("Menu")
     </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - ConsultaMD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    @this.LO_WriteScriptBlocks()
-    @RenderSection("ScripTop", required: false)
-    @this.WriteScriptBlocks()
+    }
+<main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
+    @*<partial name="_Loader" />*@
+    @RenderBody()
+    @if (User.Identity.IsAuthenticated)
+    {
+        @this.WriteBlocks("SideNav")
+    }
+</main>
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2019 - ConsultaMD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    @*<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>*@
+    @this.WriteBlocks("TOPScripts")
+    @this.WriteBlocks("ValidationScripts")
+    @this.WriteBlocks("Scripts")
     @RenderSection("Scripts", required: false)
+    @this.WriteBlocks("DWNScripts")
 </body>
 </html>

@@ -1,0 +1,14 @@
+﻿@model ConsultaMD.Models.ModalFooter
+
+    <div class="modal-footer">
+        @if (Model.CancelButton)
+        {
+            <button data-dismiss="modal" id="@Model.CancelButtonId" class="btn btn-default" type="button">@Model.CancelButtonText</button>
+        }
+        @if (Model.SubmitButton)
+        {
+            <button class="btn btn-success" id="@Model.SubmitButtonId" type="submit">
+                @Model.SubmitButtonText
+            </button>
+        }
+    </div>

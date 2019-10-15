@@ -3,10 +3,13 @@
     "ru": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "ru"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "numbers": {
         "currencies": {
@@ -14,12 +17,12 @@
             "displayName": "Андоррская песета",
             "displayName-count-one": "андоррская песета",
             "displayName-count-few": "андоррские песеты",
-            "displayName-count-many": "андоррских песет",
+            "displayName-count-many": "андоррская песета",
             "displayName-count-other": "андоррских песет",
             "symbol": "ADP"
           },
           "AED": {
-            "displayName": "дирхам ОАЭ",
+            "displayName": "Дирхам ОАЭ",
             "displayName-count-one": "дирхам ОАЭ",
             "displayName-count-few": "дирхама ОАЭ",
             "displayName-count-many": "дирхамов ОАЭ",
@@ -31,27 +34,23 @@
             "symbol": "AFA"
           },
           "AFN": {
-            "displayName": "афгани",
-            "displayName-count-one": "афгани",
-            "displayName-count-few": "афгани",
-            "displayName-count-many": "афгани",
-            "displayName-count-other": "афгани",
+            "displayName": "Афганский афгани",
+            "displayName-count-one": "афганский афгани",
+            "displayName-count-few": "афганских афгани",
+            "displayName-count-many": "афганских афгани",
+            "displayName-count-other": "афганского афгани",
             "symbol": "AFN"
           },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
-          },
           "ALL": {
-            "displayName": "албанский лек",
+            "displayName": "Албанский лек",
             "displayName-count-one": "албанский лек",
             "displayName-count-few": "албанских лека",
             "displayName-count-many": "албанских леков",
-            "displayName-count-other": "албанского лека",
+            "displayName-count-other": "албанских леков",
             "symbol": "ALL"
           },
           "AMD": {
-            "displayName": "армянский драм",
+            "displayName": "Армянский драм",
             "displayName-count-one": "армянский драм",
             "displayName-count-few": "армянских драма",
             "displayName-count-many": "армянских драмов",
@@ -59,7 +58,7 @@
             "symbol": "AMD"
           },
           "ANG": {
-            "displayName": "нидерландский антильский гульден",
+            "displayName": "Нидерландский антильский гульден",
             "displayName-count-one": "нидерландский антильский гульден",
             "displayName-count-few": "нидерландских антильских гульдена",
             "displayName-count-many": "нидерландских антильских гульденов",
@@ -67,7 +66,7 @@
             "symbol": "ANG"
           },
           "AOA": {
-            "displayName": "ангольская кванза",
+            "displayName": "Ангольская кванза",
             "displayName-count-one": "ангольская кванза",
             "displayName-count-few": "ангольские кванзы",
             "displayName-count-many": "ангольских кванз",
@@ -112,8 +111,8 @@
             "symbol": "ARP"
           },
           "ARS": {
-            "displayName": "аргентинский песо",
-            "displayName-count-one": "аргентинский песо",
+            "displayName": "Аргентинское песо",
+            "displayName-count-one": "аргентинское песо",
             "displayName-count-few": "аргентинских песо",
             "displayName-count-many": "аргентинских песо",
             "displayName-count-other": "аргентинского песо",
@@ -125,7 +124,7 @@
             "symbol": "ATS"
           },
           "AUD": {
-            "displayName": "австралийский доллар",
+            "displayName": "Австралийский доллар",
             "displayName-count-one": "австралийский доллар",
             "displayName-count-few": "австралийских доллара",
             "displayName-count-many": "австралийских долларов",
@@ -134,7 +133,7 @@
             "symbol-alt-narrow": "$"
           },
           "AWG": {
-            "displayName": "арубанский флорин",
+            "displayName": "Арубанский флорин",
             "displayName-count-one": "арубанский флорин",
             "displayName-count-few": "арубанских флорина",
             "displayName-count-many": "арубанских флоринов",
@@ -146,7 +145,7 @@
             "symbol": "AZM"
           },
           "AZN": {
-            "displayName": "азербайджанский манат",
+            "displayName": "Азербайджанский манат",
             "displayName-count-one": "азербайджанский манат",
             "displayName-count-few": "азербайджанских маната",
             "displayName-count-many": "азербайджанских манатов",
@@ -158,7 +157,7 @@
             "symbol": "BAD"
           },
           "BAM": {
-            "displayName": "конвертируемая марка Боснии и Герцеговины",
+            "displayName": "Конвертируемая марка Боснии и Герцеговины",
             "displayName-count-one": "конвертируемая марка Боснии и Герцеговины",
             "displayName-count-few": "конвертируемые марки Боснии и Герцеговины",
             "displayName-count-many": "конвертируемых марок Боснии и Герцеговины",
@@ -171,7 +170,7 @@
             "symbol": "BAN"
           },
           "BBD": {
-            "displayName": "барбадосский доллар",
+            "displayName": "Барбадосский доллар",
             "displayName-count-one": "барбадосский доллар",
             "displayName-count-few": "барбадосских доллара",
             "displayName-count-many": "барбадосских долларов",
@@ -180,9 +179,9 @@
             "symbol-alt-narrow": "$"
           },
           "BDT": {
-            "displayName": "бангладешская така",
+            "displayName": "Бангладешская така",
             "displayName-count-one": "бангладешская така",
-            "displayName-count-few": "бангладешские таки",
+            "displayName-count-few": "бангладешских таки",
             "displayName-count-many": "бангладешских так",
             "displayName-count-other": "бангладешской таки",
             "symbol": "BDT",
@@ -209,7 +208,7 @@
             "symbol": "BGM"
           },
           "BGN": {
-            "displayName": "болгарский лев",
+            "displayName": "Болгарский лев",
             "displayName-count-one": "болгарский лев",
             "displayName-count-few": "болгарских лева",
             "displayName-count-many": "болгарских левов",
@@ -221,7 +220,7 @@
             "symbol": "BGO"
           },
           "BHD": {
-            "displayName": "бахрейнский динар",
+            "displayName": "Бахрейнский динар",
             "displayName-count-one": "бахрейнский динар",
             "displayName-count-few": "бахрейнских динара",
             "displayName-count-many": "бахрейнских динаров",
@@ -229,7 +228,7 @@
             "symbol": "BHD"
           },
           "BIF": {
-            "displayName": "бурундийский франк",
+            "displayName": "Бурундийский франк",
             "displayName-count-one": "бурундийский франк",
             "displayName-count-few": "бурундийских франка",
             "displayName-count-many": "бурундийских франков",
@@ -237,7 +236,7 @@
             "symbol": "BIF"
           },
           "BMD": {
-            "displayName": "бермудский доллар",
+            "displayName": "Бермудский доллар",
             "displayName-count-one": "бермудский доллар",
             "displayName-count-few": "бермудских доллара",
             "displayName-count-many": "бермудских долларов",
@@ -246,7 +245,7 @@
             "symbol-alt-narrow": "$"
           },
           "BND": {
-            "displayName": "брунейский доллар",
+            "displayName": "Брунейский доллар",
             "displayName-count-one": "брунейский доллар",
             "displayName-count-few": "брунейских доллара",
             "displayName-count-many": "брунейских долларов",
@@ -255,7 +254,7 @@
             "symbol-alt-narrow": "$"
           },
           "BOB": {
-            "displayName": "боливийский боливиано",
+            "displayName": "Боливийский боливиано",
             "displayName-count-one": "боливийский боливиано",
             "displayName-count-few": "боливийских боливиано",
             "displayName-count-many": "боливийских боливиано",
@@ -288,7 +287,7 @@
             "symbol": "BRE"
           },
           "BRL": {
-            "displayName": "бразильский реал",
+            "displayName": "Бразильский реал",
             "displayName-count-one": "бразильский реал",
             "displayName-count-few": "бразильских реала",
             "displayName-count-many": "бразильских реалов",
@@ -309,7 +308,7 @@
             "symbol": "BRZ"
           },
           "BSD": {
-            "displayName": "багамский доллар",
+            "displayName": "Багамский доллар",
             "displayName-count-one": "багамский доллар",
             "displayName-count-few": "багамских доллара",
             "displayName-count-many": "багамских долларов",
@@ -318,7 +317,7 @@
             "symbol-alt-narrow": "$"
           },
           "BTN": {
-            "displayName": "бутанский нгултрум",
+            "displayName": "Бутанский нгултрум",
             "displayName-count-one": "бутанский нгултрум",
             "displayName-count-few": "бутанских нгултрума",
             "displayName-count-many": "бутанских нгултрумов",
@@ -330,9 +329,9 @@
             "symbol": "BUK"
           },
           "BWP": {
-            "displayName": "ботсванская пула",
+            "displayName": "Ботсванская пула",
             "displayName-count-one": "ботсванская пула",
-            "displayName-count-few": "ботсванские пулы",
+            "displayName-count-few": "ботсванских пулы",
             "displayName-count-many": "ботсванских пул",
             "displayName-count-other": "ботсванской пулы",
             "symbol": "BWP",
@@ -342,25 +341,17 @@
             "displayName": "Белорусский рубль (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
-            "displayName": "белорусский рубль",
+          "BYR": {
+            "displayName": "Белорусский рубль",
             "displayName-count-one": "белорусский рубль",
             "displayName-count-few": "белорусских рубля",
             "displayName-count-many": "белорусских рублей",
             "displayName-count-other": "белорусского рубля",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
           },
-          "BYR": {
-            "displayName": "Белорусский рубль (2000–2016)",
-            "displayName-count-one": "белорусский рубль (2000–2016)",
-            "displayName-count-few": "белорусских рубля (2000–2016)",
-            "displayName-count-many": "белорусских рублей (2000–2016)",
-            "displayName-count-other": "белорусского рубля (2000–2016)",
-            "symbol": "BYR"
-          },
           "BZD": {
-            "displayName": "белизский доллар",
+            "displayName": "Белизский доллар",
             "displayName-count-one": "белизский доллар",
             "displayName-count-few": "белизских доллара",
             "displayName-count-many": "белизских долларов",
@@ -369,7 +360,7 @@
             "symbol-alt-narrow": "$"
           },
           "CAD": {
-            "displayName": "канадский доллар",
+            "displayName": "Канадский доллар",
             "displayName-count-one": "канадский доллар",
             "displayName-count-few": "канадских доллара",
             "displayName-count-many": "канадских долларов",
@@ -378,7 +369,7 @@
             "symbol-alt-narrow": "$"
           },
           "CDF": {
-            "displayName": "конголезский франк",
+            "displayName": "Конголезский франк",
             "displayName-count-one": "конголезский франк",
             "displayName-count-few": "конголезских франка",
             "displayName-count-many": "конголезских франков",
@@ -390,7 +381,7 @@
             "symbol": "CHE"
           },
           "CHF": {
-            "displayName": "швейцарский франк",
+            "displayName": "Швейцарский франк",
             "displayName-count-one": "швейцарский франк",
             "displayName-count-few": "швейцарских франка",
             "displayName-count-many": "швейцарских франков",
@@ -410,28 +401,16 @@
             "symbol": "CLF"
           },
           "CLP": {
-            "displayName": "чилийский песо",
-            "displayName-count-one": "чилийский песо",
+            "displayName": "Чилийское песо",
+            "displayName-count-one": "чилийское песо",
             "displayName-count-few": "чилийских песо",
             "displayName-count-many": "чилийских песо",
             "displayName-count-other": "чилийского песо",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "китайский офшорный юань",
-            "displayName-count-one": "китайский офшорный юань",
-            "displayName-count-few": "китайских офшорных юаня",
-            "displayName-count-many": "китайских офшорных юаней",
-            "displayName-count-other": "китайского офшорного юаня",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
-          },
           "CNY": {
-            "displayName": "китайский юань",
+            "displayName": "Китайский юань",
             "displayName-count-one": "китайский юань",
             "displayName-count-few": "китайских юаня",
             "displayName-count-many": "китайских юаней",
@@ -440,8 +419,8 @@
             "symbol-alt-narrow": "¥"
           },
           "COP": {
-            "displayName": "колумбийский песо",
-            "displayName-count-one": "колумбийский песо",
+            "displayName": "Колумбийское песо",
+            "displayName-count-one": "колумбийское песо",
             "displayName-count-few": "колумбийских песо",
             "displayName-count-many": "колумбийских песо",
             "displayName-count-other": "колумбийского песо",
@@ -453,7 +432,7 @@
             "symbol": "COU"
           },
           "CRC": {
-            "displayName": "костариканский колон",
+            "displayName": "Костариканский колон",
             "displayName-count-one": "костариканский колон",
             "displayName-count-few": "костариканских колона",
             "displayName-count-many": "костариканских колонов",
@@ -470,8 +449,8 @@
             "symbol": "CSK"
           },
           "CUC": {
-            "displayName": "кубинский конвертируемый песо",
-            "displayName-count-one": "кубинский конвертируемый песо",
+            "displayName": "Кубинское конвертируемое песо",
+            "displayName-count-one": "кубинское конвертируемое песо",
             "displayName-count-few": "кубинских конвертируемых песо",
             "displayName-count-many": "кубинских конвертируемых песо",
             "displayName-count-other": "кубинского конвертируемого песо",
@@ -479,8 +458,8 @@
             "symbol-alt-narrow": "$"
           },
           "CUP": {
-            "displayName": "кубинский песо",
-            "displayName-count-one": "кубинский песо",
+            "displayName": "Кубинское песо",
+            "displayName-count-one": "кубинское песо",
             "displayName-count-few": "кубинских песо",
             "displayName-count-many": "кубинских песо",
             "displayName-count-other": "кубинского песо",
@@ -488,7 +467,7 @@
             "symbol-alt-narrow": "$"
           },
           "CVE": {
-            "displayName": "эскудо Кабо-Верде",
+            "displayName": "Эскудо Кабо-Верде",
             "displayName-count-one": "эскудо Кабо-Верде",
             "displayName-count-few": "эскудо Кабо-Верде",
             "displayName-count-many": "эскудо Кабо-Верде",
@@ -500,7 +479,7 @@
             "symbol": "CYP"
           },
           "CZK": {
-            "displayName": "чешская крона",
+            "displayName": "Чешская крона",
             "displayName-count-one": "чешская крона",
             "displayName-count-few": "чешские кроны",
             "displayName-count-many": "чешских крон",
@@ -517,7 +496,7 @@
             "symbol": "DEM"
           },
           "DJF": {
-            "displayName": "франк Джибути",
+            "displayName": "Франк Джибути",
             "displayName-count-one": "франк Джибути",
             "displayName-count-few": "франка Джибути",
             "displayName-count-many": "франков Джибути",
@@ -525,7 +504,7 @@
             "symbol": "DJF"
           },
           "DKK": {
-            "displayName": "датская крона",
+            "displayName": "Датская крона",
             "displayName-count-one": "датская крона",
             "displayName-count-few": "датские кроны",
             "displayName-count-many": "датских крон",
@@ -534,8 +513,8 @@
             "symbol-alt-narrow": "kr"
           },
           "DOP": {
-            "displayName": "доминиканский песо",
-            "displayName-count-one": "доминиканский песо",
+            "displayName": "Доминиканское песо",
+            "displayName-count-one": "доминиканское песо",
             "displayName-count-few": "доминиканских песо",
             "displayName-count-many": "доминиканских песо",
             "displayName-count-other": "доминиканского песо",
@@ -543,7 +522,7 @@
             "symbol-alt-narrow": "$"
           },
           "DZD": {
-            "displayName": "алжирский динар",
+            "displayName": "Алжирский динар",
             "displayName-count-one": "алжирский динар",
             "displayName-count-few": "алжирских динара",
             "displayName-count-many": "алжирских динаров",
@@ -563,7 +542,7 @@
             "symbol": "EEK"
           },
           "EGP": {
-            "displayName": "египетский фунт",
+            "displayName": "Египетский фунт",
             "displayName-count-one": "египетский фунт",
             "displayName-count-few": "египетских фунта",
             "displayName-count-many": "египетских фунтов",
@@ -572,7 +551,7 @@
             "symbol-alt-narrow": "E£"
           },
           "ERN": {
-            "displayName": "эритрейская накфа",
+            "displayName": "Накфа",
             "displayName-count-one": "эритрейская накфа",
             "displayName-count-few": "эритрейские накфы",
             "displayName-count-many": "эритрейских накф",
@@ -593,7 +572,7 @@
             "symbol-alt-narrow": "₧"
           },
           "ETB": {
-            "displayName": "эфиопский быр",
+            "displayName": "Эфиопский быр",
             "displayName-count-one": "эфиопский быр",
             "displayName-count-few": "эфиопских быра",
             "displayName-count-many": "эфиопских быров",
@@ -601,7 +580,7 @@
             "symbol": "ETB"
           },
           "EUR": {
-            "displayName": "евро",
+            "displayName": "Евро",
             "displayName-count-one": "евро",
             "displayName-count-few": "евро",
             "displayName-count-many": "евро",
@@ -614,7 +593,7 @@
             "symbol": "FIM"
           },
           "FJD": {
-            "displayName": "доллар Фиджи",
+            "displayName": "Доллар Фиджи",
             "displayName-count-one": "доллар Фиджи",
             "displayName-count-few": "доллара Фиджи",
             "displayName-count-many": "долларов Фиджи",
@@ -623,7 +602,7 @@
             "symbol-alt-narrow": "$"
           },
           "FKP": {
-            "displayName": "фунт Фолклендских островов",
+            "displayName": "Фунт Фолклендских островов",
             "displayName-count-one": "фунт Фолклендских островов",
             "displayName-count-few": "фунта Фолклендских островов",
             "displayName-count-many": "фунтов Фолклендских островов",
@@ -636,11 +615,11 @@
             "symbol": "FRF"
           },
           "GBP": {
-            "displayName": "британский фунт стерлингов",
-            "displayName-count-one": "британский фунт стерлингов",
-            "displayName-count-few": "британских фунта стерлингов",
-            "displayName-count-many": "британских фунтов стерлингов",
-            "displayName-count-other": "британского фунта стерлингов",
+            "displayName": "Английский фунт стерлингов",
+            "displayName-count-one": "английский фунт стерлингов",
+            "displayName-count-few": "английских фунта стерлингов",
+            "displayName-count-many": "английских фунтов стерлингов",
+            "displayName-count-other": "английского фунта стерлингов",
             "symbol": "£",
             "symbol-alt-narrow": "£"
           },
@@ -649,21 +628,19 @@
             "symbol": "GEK"
           },
           "GEL": {
-            "displayName": "грузинский лари",
+            "displayName": "Грузинский лари",
             "displayName-count-one": "грузинский лари",
             "displayName-count-few": "грузинских лари",
             "displayName-count-many": "грузинских лари",
             "displayName-count-other": "грузинского лари",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "ლ",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "Ганский седи (1979–2007)",
             "symbol": "GHC"
           },
           "GHS": {
-            "displayName": "ганский седи",
+            "displayName": "Ганский седи",
             "displayName-count-one": "ганский седи",
             "displayName-count-few": "ганских седи",
             "displayName-count-many": "ганских седи",
@@ -671,7 +648,7 @@
             "symbol": "GHS"
           },
           "GIP": {
-            "displayName": "гибралтарский фунт",
+            "displayName": "Гибралтарский фунт",
             "displayName-count-one": "гибралтарский фунт",
             "displayName-count-few": "гибралтарских фунта",
             "displayName-count-many": "гибралтарских фунтов",
@@ -680,7 +657,7 @@
             "symbol-alt-narrow": "£"
           },
           "GMD": {
-            "displayName": "гамбийский даласи",
+            "displayName": "Гамбийский даласи",
             "displayName-count-one": "гамбийский даласи",
             "displayName-count-few": "гамбийских даласи",
             "displayName-count-many": "гамбийских даласи",
@@ -688,7 +665,7 @@
             "symbol": "GMD"
           },
           "GNF": {
-            "displayName": "гвинейский франк",
+            "displayName": "Гвинейский франк",
             "displayName-count-one": "гвинейский франк",
             "displayName-count-few": "гвинейских франка",
             "displayName-count-many": "гвинейских франков",
@@ -709,7 +686,7 @@
             "symbol": "GRD"
           },
           "GTQ": {
-            "displayName": "гватемальский кетсаль",
+            "displayName": "Гватемальский кетсаль",
             "displayName-count-one": "гватемальский кетсаль",
             "displayName-count-few": "гватемальских кетсаля",
             "displayName-count-many": "гватемальских кетсалей",
@@ -726,7 +703,7 @@
             "symbol": "GWP"
           },
           "GYD": {
-            "displayName": "гайанский доллар",
+            "displayName": "Гайанский доллар",
             "displayName-count-one": "гайанский доллар",
             "displayName-count-few": "гайанских доллара",
             "displayName-count-many": "гайанских долларов",
@@ -735,7 +712,7 @@
             "symbol-alt-narrow": "$"
           },
           "HKD": {
-            "displayName": "гонконгский доллар",
+            "displayName": "Гонконгский доллар",
             "displayName-count-one": "гонконгский доллар",
             "displayName-count-few": "гонконгских доллара",
             "displayName-count-many": "гонконгских долларов",
@@ -744,7 +721,7 @@
             "symbol-alt-narrow": "$"
           },
           "HNL": {
-            "displayName": "гондурасская лемпира",
+            "displayName": "Гондурасская лемпира",
             "displayName-count-one": "гондурасская лемпира",
             "displayName-count-few": "гондурасские лемпиры",
             "displayName-count-many": "гондурасских лемпир",
@@ -757,16 +734,16 @@
             "symbol": "HRD"
           },
           "HRK": {
-            "displayName": "хорватская куна",
+            "displayName": "Хорватская куна",
             "displayName-count-one": "хорватская куна",
-            "displayName-count-few": "хорватские куны",
+            "displayName-count-few": "хорватских куны",
             "displayName-count-many": "хорватских кун",
             "displayName-count-other": "хорватской куны",
             "symbol": "HRK",
             "symbol-alt-narrow": "kn"
           },
           "HTG": {
-            "displayName": "гаитянский гурд",
+            "displayName": "Гаитянский гурд",
             "displayName-count-one": "гаитянский гурд",
             "displayName-count-few": "гаитянских гурда",
             "displayName-count-many": "гаитянских гурдов",
@@ -774,7 +751,7 @@
             "symbol": "HTG"
           },
           "HUF": {
-            "displayName": "венгерский форинт",
+            "displayName": "Венгерский форинт",
             "displayName-count-one": "венгерский форинт",
             "displayName-count-few": "венгерских форинта",
             "displayName-count-many": "венгерских форинтов",
@@ -783,7 +760,7 @@
             "symbol-alt-narrow": "Ft"
           },
           "IDR": {
-            "displayName": "индонезийская рупия",
+            "displayName": "Индонезийская рупия",
             "displayName-count-one": "индонезийская рупия",
             "displayName-count-few": "индонезийские рупии",
             "displayName-count-many": "индонезийских рупий",
@@ -799,12 +776,8 @@
             "displayName": "Израильский фунт",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
-            "displayName": "новый израильский шекель",
+            "displayName": "Новый израильский шекель",
             "displayName-count-one": "новый израильский шекель",
             "displayName-count-few": "новых израильских шекеля",
             "displayName-count-many": "новых израильских шекелей",
@@ -813,7 +786,7 @@
             "symbol-alt-narrow": "₪"
           },
           "INR": {
-            "displayName": "индийская рупия",
+            "displayName": "Индийская рупия",
             "displayName-count-one": "индийская рупия",
             "displayName-count-few": "индийские рупии",
             "displayName-count-many": "индийских рупий",
@@ -822,7 +795,7 @@
             "symbol-alt-narrow": "₹"
           },
           "IQD": {
-            "displayName": "иракский динар",
+            "displayName": "Иракский динар",
             "displayName-count-one": "иракский динар",
             "displayName-count-few": "иракских динара",
             "displayName-count-many": "иракских динаров",
@@ -830,19 +803,15 @@
             "symbol": "IQD"
           },
           "IRR": {
-            "displayName": "иранский риал",
+            "displayName": "Иранский риал",
             "displayName-count-one": "иранский риал",
             "displayName-count-few": "иранских риала",
             "displayName-count-many": "иранских риалов",
             "displayName-count-other": "иранского риала",
             "symbol": "IRR"
           },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
-          },
           "ISK": {
-            "displayName": "исландская крона",
+            "displayName": "Исландская крона",
             "displayName-count-one": "исландская крона",
             "displayName-count-few": "исландские кроны",
             "displayName-count-many": "исландских крон",
@@ -855,7 +824,7 @@
             "symbol": "ITL"
           },
           "JMD": {
-            "displayName": "ямайский доллар",
+            "displayName": "Ямайский доллар",
             "displayName-count-one": "ямайский доллар",
             "displayName-count-few": "ямайских доллара",
             "displayName-count-many": "ямайских долларов",
@@ -864,7 +833,7 @@
             "symbol-alt-narrow": "$"
           },
           "JOD": {
-            "displayName": "иорданский динар",
+            "displayName": "Иорданский динар",
             "displayName-count-one": "иорданский динар",
             "displayName-count-few": "иорданских динара",
             "displayName-count-many": "иорданских динаров",
@@ -872,7 +841,7 @@
             "symbol": "JOD"
           },
           "JPY": {
-            "displayName": "японская иена",
+            "displayName": "Японская иена",
             "displayName-count-one": "японская иена",
             "displayName-count-few": "японские иены",
             "displayName-count-many": "японских иен",
@@ -881,7 +850,7 @@
             "symbol-alt-narrow": "¥"
           },
           "KES": {
-            "displayName": "кенийский шиллинг",
+            "displayName": "Кенийский шиллинг",
             "displayName-count-one": "кенийский шиллинг",
             "displayName-count-few": "кенийских шиллинга",
             "displayName-count-many": "кенийских шиллингов",
@@ -889,15 +858,15 @@
             "symbol": "KES"
           },
           "KGS": {
-            "displayName": "киргизский сом",
+            "displayName": "Киргизский сом",
             "displayName-count-one": "киргизский сом",
             "displayName-count-few": "киргизских сома",
-            "displayName-count-many": "киргизских сомов",
+            "displayName-count-many": "киргизских сома",
             "displayName-count-other": "киргизского сома",
             "symbol": "KGS"
           },
           "KHR": {
-            "displayName": "камбоджийский риель",
+            "displayName": "Камбоджийский риель",
             "displayName-count-one": "камбоджийский риель",
             "displayName-count-few": "камбоджийских риеля",
             "displayName-count-many": "камбоджийских риелей",
@@ -906,16 +875,16 @@
             "symbol-alt-narrow": "៛"
           },
           "KMF": {
-            "displayName": "коморский франк",
-            "displayName-count-one": "коморский франк",
-            "displayName-count-few": "коморских франка",
-            "displayName-count-many": "коморских франков",
-            "displayName-count-other": "коморского франка",
+            "displayName": "Франк Коморских островов",
+            "displayName-count-one": "франк Коморских островов",
+            "displayName-count-few": "франка Коморских островов",
+            "displayName-count-many": "франков Коморских островов",
+            "displayName-count-other": "франка Коморских островов",
             "symbol": "KMF",
             "symbol-alt-narrow": "CF"
           },
           "KPW": {
-            "displayName": "северокорейская вона",
+            "displayName": "Северокорейская вона",
             "displayName-count-one": "северокорейская вона",
             "displayName-count-few": "северокорейские воны",
             "displayName-count-many": "северокорейских вон",
@@ -932,7 +901,7 @@
             "symbol": "KRO"
           },
           "KRW": {
-            "displayName": "южнокорейская вона",
+            "displayName": "Южнокорейская вона",
             "displayName-count-one": "южнокорейская вона",
             "displayName-count-few": "южнокорейские воны",
             "displayName-count-many": "южнокорейских вон",
@@ -941,7 +910,7 @@
             "symbol-alt-narrow": "₩"
           },
           "KWD": {
-            "displayName": "кувейтский динар",
+            "displayName": "Кувейтский динар",
             "displayName-count-one": "кувейтский динар",
             "displayName-count-few": "кувейтских динара",
             "displayName-count-many": "кувейтских динаров",
@@ -949,16 +918,16 @@
             "symbol": "KWD"
           },
           "KYD": {
-            "displayName": "доллар Островов Кайман",
-            "displayName-count-one": "доллар Островов Кайман",
-            "displayName-count-few": "доллара Островов Кайман",
-            "displayName-count-many": "долларов Островов Кайман",
-            "displayName-count-other": "доллара Островов Кайман",
+            "displayName": "Доллар Каймановых островов",
+            "displayName-count-one": "доллар Каймановых островов",
+            "displayName-count-few": "доллара Каймановых островов",
+            "displayName-count-many": "долларов Каймановых островов",
+            "displayName-count-other": "доллара Каймановых островов",
             "symbol": "KYD",
             "symbol-alt-narrow": "$"
           },
           "KZT": {
-            "displayName": "казахский тенге",
+            "displayName": "Казахский тенге",
             "displayName-count-one": "казахский тенге",
             "displayName-count-few": "казахских тенге",
             "displayName-count-many": "казахских тенге",
@@ -967,7 +936,7 @@
             "symbol-alt-narrow": "₸"
           },
           "LAK": {
-            "displayName": "лаосский кип",
+            "displayName": "Лаосский кип",
             "displayName-count-one": "лаосский кип",
             "displayName-count-few": "лаосских кипа",
             "displayName-count-many": "лаосских кипов",
@@ -976,7 +945,7 @@
             "symbol-alt-narrow": "₭"
           },
           "LBP": {
-            "displayName": "ливанский фунт",
+            "displayName": "Ливанский фунт",
             "displayName-count-one": "ливанский фунт",
             "displayName-count-few": "ливанских фунта",
             "displayName-count-many": "ливанских фунтов",
@@ -985,7 +954,7 @@
             "symbol-alt-narrow": "L£"
           },
           "LKR": {
-            "displayName": "шри-ланкийская рупия",
+            "displayName": "Шри-Ланкийская рупия",
             "displayName-count-one": "шри-ланкийская рупия",
             "displayName-count-few": "шри-ланкийские рупии",
             "displayName-count-many": "шри-ланкийских рупий",
@@ -994,7 +963,7 @@
             "symbol-alt-narrow": "Rs"
           },
           "LRD": {
-            "displayName": "либерийский доллар",
+            "displayName": "Либерийский доллар",
             "displayName-count-one": "либерийский доллар",
             "displayName-count-few": "либерийских доллара",
             "displayName-count-many": "либерийских долларов",
@@ -1045,7 +1014,7 @@
             "symbol": "LVR"
           },
           "LYD": {
-            "displayName": "ливийский динар",
+            "displayName": "Ливийский динар",
             "displayName-count-one": "ливийский динар",
             "displayName-count-few": "ливийских динара",
             "displayName-count-many": "ливийских динаров",
@@ -1053,7 +1022,7 @@
             "symbol": "LYD"
           },
           "MAD": {
-            "displayName": "марокканский дирхам",
+            "displayName": "Марокканский дирхам",
             "displayName-count-one": "марокканский дирхам",
             "displayName-count-few": "марокканских дирхама",
             "displayName-count-many": "марокканских дирхамов",
@@ -1073,7 +1042,7 @@
             "symbol": "MDC"
           },
           "MDL": {
-            "displayName": "молдавский лей",
+            "displayName": "Молдавский лей",
             "displayName-count-one": "молдавский лей",
             "displayName-count-few": "молдавских лея",
             "displayName-count-many": "молдавских леев",
@@ -1081,7 +1050,7 @@
             "symbol": "MDL"
           },
           "MGA": {
-            "displayName": "малагасийский ариари",
+            "displayName": "Малагасийский ариари",
             "displayName-count-one": "малагасийский ариари",
             "displayName-count-few": "малагасийских ариари",
             "displayName-count-many": "малагасийских ариари",
@@ -1094,11 +1063,11 @@
             "symbol": "MGF"
           },
           "MKD": {
-            "displayName": "македонский денар",
-            "displayName-count-one": "македонский денар",
-            "displayName-count-few": "македонских денара",
-            "displayName-count-many": "македонских денаров",
-            "displayName-count-other": "македонского денара",
+            "displayName": "Македонский динар",
+            "displayName-count-one": "македонский динар",
+            "displayName-count-few": "македонских динара",
+            "displayName-count-many": "македонских динаров",
+            "displayName-count-other": "македонского динара",
             "symbol": "MKD"
           },
           "MKN": {
@@ -1110,7 +1079,7 @@
             "symbol": "MLF"
           },
           "MMK": {
-            "displayName": "мьянманский кьят",
+            "displayName": "Мьянманский кьят",
             "displayName-count-one": "мьянманский кьят",
             "displayName-count-few": "мьянманских кьята",
             "displayName-count-many": "мьянманских кьятов",
@@ -1119,7 +1088,7 @@
             "symbol-alt-narrow": "K"
           },
           "MNT": {
-            "displayName": "монгольский тугрик",
+            "displayName": "Монгольский тугрик",
             "displayName-count-one": "монгольский тугрик",
             "displayName-count-few": "монгольских тугрика",
             "displayName-count-many": "монгольских тугриков",
@@ -1128,7 +1097,7 @@
             "symbol-alt-narrow": "₮"
           },
           "MOP": {
-            "displayName": "патака Макао",
+            "displayName": "Патака Макао",
             "displayName-count-one": "патака Макао",
             "displayName-count-few": "патаки Макао",
             "displayName-count-many": "патак Макао",
@@ -1136,20 +1105,12 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "мавританская угия (1973–2017)",
-            "displayName-count-one": "мавританская угия (1973–2017)",
-            "displayName-count-few": "мавританские угии (1973–2017)",
-            "displayName-count-many": "мавританских угий (1973–2017)",
-            "displayName-count-other": "мавританской угии (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
-            "displayName": "мавританская угия",
+            "displayName": "Мавританская угия",
             "displayName-count-one": "мавританская угия",
             "displayName-count-few": "мавританские угии",
             "displayName-count-many": "мавританских угий",
             "displayName-count-other": "мавританской угии",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "Мальтийская лира",
@@ -1160,7 +1121,7 @@
             "symbol": "MTP"
           },
           "MUR": {
-            "displayName": "маврикийская рупия",
+            "displayName": "Маврикийская рупия",
             "displayName-count-one": "маврикийская рупия",
             "displayName-count-few": "маврикийские рупии",
             "displayName-count-many": "маврикийских рупий",
@@ -1168,12 +1129,8 @@
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
           },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
-          },
           "MVR": {
-            "displayName": "мальдивская руфия",
+            "displayName": "Мальдивская руфия",
             "displayName-count-one": "мальдивская руфия",
             "displayName-count-few": "мальдивские руфии",
             "displayName-count-many": "мальдивских руфий",
@@ -1181,7 +1138,7 @@
             "symbol": "MVR"
           },
           "MWK": {
-            "displayName": "малавийская квача",
+            "displayName": "Малавийская квача",
             "displayName-count-one": "малавийская квача",
             "displayName-count-few": "малавийские квачи",
             "displayName-count-many": "малавийских квач",
@@ -1189,8 +1146,8 @@
             "symbol": "MWK"
           },
           "MXN": {
-            "displayName": "мексиканский песо",
-            "displayName-count-one": "мексиканский песо",
+            "displayName": "Мексиканское песо",
+            "displayName-count-one": "мексиканское песо",
             "displayName-count-few": "мексиканских песо",
             "displayName-count-many": "мексиканских песо",
             "displayName-count-other": "мексиканского песо",
@@ -1206,7 +1163,7 @@
             "symbol": "MXV"
           },
           "MYR": {
-            "displayName": "малайзийский ринггит",
+            "displayName": "Малайзийский ринггит",
             "displayName-count-one": "малайзийский ринггит",
             "displayName-count-few": "малайзийских ринггита",
             "displayName-count-many": "малайзийских ринггитов",
@@ -1223,7 +1180,7 @@
             "symbol": "MZM"
           },
           "MZN": {
-            "displayName": "мозамбикский метикал",
+            "displayName": "Мозамбикский метикал",
             "displayName-count-one": "мозамбикский метикал",
             "displayName-count-few": "мозамбикских метикала",
             "displayName-count-many": "мозамбикских метикалов",
@@ -1231,7 +1188,7 @@
             "symbol": "MZN"
           },
           "NAD": {
-            "displayName": "доллар Намибии",
+            "displayName": "Доллар Намибии",
             "displayName-count-one": "доллар Намибии",
             "displayName-count-few": "доллара Намибии",
             "displayName-count-many": "долларов Намибии",
@@ -1240,7 +1197,7 @@
             "symbol-alt-narrow": "$"
           },
           "NGN": {
-            "displayName": "нигерийская найра",
+            "displayName": "Нигерийская найра",
             "displayName-count-one": "нигерийская найра",
             "displayName-count-few": "нигерийские найры",
             "displayName-count-many": "нигерийских найр",
@@ -1253,7 +1210,7 @@
             "symbol": "NIC"
           },
           "NIO": {
-            "displayName": "никарагуанская кордоба",
+            "displayName": "Никарагуанская кордоба",
             "displayName-count-one": "никарагуанская кордоба",
             "displayName-count-few": "никарагуанские кордобы",
             "displayName-count-many": "никарагуанских кордоб",
@@ -1266,7 +1223,7 @@
             "symbol": "NLG"
           },
           "NOK": {
-            "displayName": "норвежская крона",
+            "displayName": "Норвежская крона",
             "displayName-count-one": "норвежская крона",
             "displayName-count-few": "норвежские кроны",
             "displayName-count-many": "норвежских крон",
@@ -1275,7 +1232,7 @@
             "symbol-alt-narrow": "kr"
           },
           "NPR": {
-            "displayName": "непальская рупия",
+            "displayName": "Непальская рупия",
             "displayName-count-one": "непальская рупия",
             "displayName-count-few": "непальские рупии",
             "displayName-count-many": "непальских рупий",
@@ -1284,7 +1241,7 @@
             "symbol-alt-narrow": "Rs"
           },
           "NZD": {
-            "displayName": "новозеландский доллар",
+            "displayName": "Новозеландский доллар",
             "displayName-count-one": "новозеландский доллар",
             "displayName-count-few": "новозеландских доллара",
             "displayName-count-many": "новозеландских долларов",
@@ -1293,7 +1250,7 @@
             "symbol-alt-narrow": "$"
           },
           "OMR": {
-            "displayName": "оманский риал",
+            "displayName": "Оманский риал",
             "displayName-count-one": "оманский риал",
             "displayName-count-few": "оманских риала",
             "displayName-count-many": "оманских риалов",
@@ -1301,7 +1258,7 @@
             "symbol": "OMR"
           },
           "PAB": {
-            "displayName": "панамский бальбоа",
+            "displayName": "Панамское бальбоа",
             "displayName-count-one": "панамский бальбоа",
             "displayName-count-few": "панамских бальбоа",
             "displayName-count-many": "панамских бальбоа",
@@ -1313,32 +1270,28 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "перуанский соль",
-            "displayName-count-one": "перуанский соль",
-            "displayName-count-few": "перуанских соля",
-            "displayName-count-many": "перуанских солей",
-            "displayName-count-other": "перуанского соля",
+            "displayName": "Перуанский новый соль",
+            "displayName-count-one": "перуанский новый соль",
+            "displayName-count-few": "перуанских новых соля",
+            "displayName-count-many": "перуанских новый солей",
+            "displayName-count-other": "перуанского нового соля",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "Перуанский соль (1863–1965)",
-            "displayName-count-one": "перуанский соль (1863–1965)",
-            "displayName-count-few": "перуанских соля (1863–1965)",
-            "displayName-count-many": "перуанских солей (1863–1965)",
-            "displayName-count-other": "перуанского соля (1863–1965)",
+            "displayName": "Перуанский соль",
             "symbol": "PES"
           },
           "PGK": {
-            "displayName": "кина Папуа – Новой Гвинеи",
-            "displayName-count-one": "кина Папуа – Новой Гвинеи",
-            "displayName-count-few": "кины Папуа – Новой Гвинеи",
-            "displayName-count-many": "кин Папуа – Новой Гвинеи",
-            "displayName-count-other": "кины Папуа – Новой Гвинеи",
+            "displayName": "Кина Папуа — Новой Гвинеи",
+            "displayName-count-one": "кина Папуа — Новой Гвинеи",
+            "displayName-count-few": "кины Папуа — Новой Гвинеи",
+            "displayName-count-many": "кин Папуа — Новой Гвинеи",
+            "displayName-count-other": "кины Папуа — Новой Гвинеи",
             "symbol": "PGK"
           },
           "PHP": {
-            "displayName": "филиппинский песо",
-            "displayName-count-one": "филиппинский песо",
+            "displayName": "Филиппинское песо",
+            "displayName-count-one": "филиппинское песо",
             "displayName-count-few": "филиппинских песо",
             "displayName-count-many": "филиппинских песо",
             "displayName-count-other": "филиппинского песо",
@@ -1346,7 +1299,7 @@
             "symbol-alt-narrow": "₱"
           },
           "PKR": {
-            "displayName": "пакистанская рупия",
+            "displayName": "Пакистанская рупия",
             "displayName-count-one": "пакистанская рупия",
             "displayName-count-few": "пакистанские рупии",
             "displayName-count-many": "пакистанских рупий",
@@ -1355,7 +1308,7 @@
             "symbol-alt-narrow": "Rs"
           },
           "PLN": {
-            "displayName": "польский злотый",
+            "displayName": "Польский злотый",
             "displayName-count-one": "польский злотый",
             "displayName-count-few": "польских злотых",
             "displayName-count-many": "польских злотых",
@@ -1372,7 +1325,7 @@
             "symbol": "PTE"
           },
           "PYG": {
-            "displayName": "парагвайский гуарани",
+            "displayName": "Парагвайский гуарани",
             "displayName-count-one": "парагвайский гуарани",
             "displayName-count-few": "парагвайских гуарани",
             "displayName-count-many": "парагвайских гуарани",
@@ -1381,7 +1334,7 @@
             "symbol-alt-narrow": "₲"
           },
           "QAR": {
-            "displayName": "катарский риал",
+            "displayName": "Катарский риал",
             "displayName-count-one": "катарский риал",
             "displayName-count-few": "катарских риала",
             "displayName-count-many": "катарских риалов",
@@ -1397,16 +1350,15 @@
             "symbol": "ROL"
           },
           "RON": {
-            "displayName": "румынский лей",
+            "displayName": "Румынский лей",
             "displayName-count-one": "румынский лей",
             "displayName-count-few": "румынских лея",
             "displayName-count-many": "румынских леев",
             "displayName-count-other": "румынского лея",
-            "symbol": "RON",
-            "symbol-alt-narrow": "L"
+            "symbol": "RON"
           },
           "RSD": {
-            "displayName": "сербский динар",
+            "displayName": "Сербский динар",
             "displayName-count-one": "сербский динар",
             "displayName-count-few": "сербских динара",
             "displayName-count-many": "сербских динаров",
@@ -1414,13 +1366,13 @@
             "symbol": "RSD"
           },
           "RUB": {
-            "displayName": "российский рубль",
+            "displayName": "Российский рубль",
             "displayName-count-one": "российский рубль",
             "displayName-count-few": "российских рубля",
             "displayName-count-many": "российских рублей",
             "displayName-count-other": "российского рубля",
-            "symbol": "₽",
-            "symbol-alt-narrow": "₽"
+            "symbol": "руб.",
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "Российский рубль (1991–1998)",
@@ -1428,7 +1380,7 @@
             "symbol-alt-narrow": "р."
           },
           "RWF": {
-            "displayName": "франк Руанды",
+            "displayName": "Франк Руанды",
             "displayName-count-one": "франк Руанды",
             "displayName-count-few": "франка Руанды",
             "displayName-count-many": "франков Руанды",
@@ -1437,24 +1389,24 @@
             "symbol-alt-narrow": "RF"
           },
           "SAR": {
-            "displayName": "саудовский риял",
-            "displayName-count-one": "саудовский риял",
-            "displayName-count-few": "саудовских рияла",
-            "displayName-count-many": "саудовских риялов",
-            "displayName-count-other": "саудовского рияла",
+            "displayName": "Саудовский риал",
+            "displayName-count-one": "саудовский риал",
+            "displayName-count-few": "саудовских риала",
+            "displayName-count-many": "саудовских риалов",
+            "displayName-count-other": "саудовского риала",
             "symbol": "SAR"
           },
           "SBD": {
-            "displayName": "доллар Соломоновых Островов",
-            "displayName-count-one": "доллар Соломоновых Островов",
-            "displayName-count-few": "доллара Соломоновых Островов",
-            "displayName-count-many": "долларов Соломоновых Островов",
-            "displayName-count-other": "доллара Соломоновых Островов",
+            "displayName": "Доллар Соломоновых островов",
+            "displayName-count-one": "доллар Соломоновых островов",
+            "displayName-count-few": "доллара Соломоновых островов",
+            "displayName-count-many": "долларов Соломоновых островов",
+            "displayName-count-other": "доллара Соломоновых островов",
             "symbol": "SBD",
             "symbol-alt-narrow": "$"
           },
           "SCR": {
-            "displayName": "сейшельская рупия",
+            "displayName": "Сейшельская рупия",
             "displayName-count-one": "сейшельская рупия",
             "displayName-count-few": "сейшельские рупии",
             "displayName-count-many": "сейшельских рупий",
@@ -1466,7 +1418,7 @@
             "symbol": "SDD"
           },
           "SDG": {
-            "displayName": "суданский фунт",
+            "displayName": "Суданский фунт",
             "displayName-count-one": "суданский фунт",
             "displayName-count-few": "суданских фунта",
             "displayName-count-many": "суданских фунтов",
@@ -1478,7 +1430,7 @@
             "symbol": "SDP"
           },
           "SEK": {
-            "displayName": "шведская крона",
+            "displayName": "Шведская крона",
             "displayName-count-one": "шведская крона",
             "displayName-count-few": "шведские кроны",
             "displayName-count-many": "шведских крон",
@@ -1487,7 +1439,7 @@
             "symbol-alt-narrow": "kr"
           },
           "SGD": {
-            "displayName": "сингапурский доллар",
+            "displayName": "Сингапурский доллар",
             "displayName-count-one": "сингапурский доллар",
             "displayName-count-few": "сингапурских доллара",
             "displayName-count-many": "сингапурских долларов",
@@ -1496,7 +1448,7 @@
             "symbol-alt-narrow": "$"
           },
           "SHP": {
-            "displayName": "фунт острова Святой Елены",
+            "displayName": "Фунт острова Святой Елены",
             "displayName-count-one": "фунт острова Святой Елены",
             "displayName-count-few": "фунта острова Святой Елены",
             "displayName-count-many": "фунтов острова Святой Елены",
@@ -1513,7 +1465,7 @@
             "symbol": "SKK"
           },
           "SLL": {
-            "displayName": "леоне",
+            "displayName": "Леоне",
             "displayName-count-one": "леоне",
             "displayName-count-few": "леоне",
             "displayName-count-many": "леоне",
@@ -1521,7 +1473,7 @@
             "symbol": "SLL"
           },
           "SOS": {
-            "displayName": "сомалийский шиллинг",
+            "displayName": "Сомалийский шиллинг",
             "displayName-count-one": "сомалийский шиллинг",
             "displayName-count-few": "сомалийских шиллинга",
             "displayName-count-many": "сомалийских шиллингов",
@@ -1529,7 +1481,7 @@
             "symbol": "SOS"
           },
           "SRD": {
-            "displayName": "суринамский доллар",
+            "displayName": "Суринамский доллар",
             "displayName-count-one": "суринамский доллар",
             "displayName-count-few": "суринамских доллара",
             "displayName-count-many": "суринамских долларов",
@@ -1542,7 +1494,7 @@
             "symbol": "SRG"
           },
           "SSP": {
-            "displayName": "южносуданский фунт",
+            "displayName": "Южносуданский фунт",
             "displayName-count-one": "южносуданский фунт",
             "displayName-count-few": "южносуданских фунта",
             "displayName-count-many": "южносуданских фунтов",
@@ -1551,20 +1503,12 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "добра Сан-Томе и Принсипи (1977–2017)",
-            "displayName-count-one": "добра Сан-Томе и Принсипи (1977–2017)",
-            "displayName-count-few": "добры Сан-Томе и Принсипи (1977–2017)",
-            "displayName-count-many": "добр Сан-Томе и Принсипи (1977–2017)",
-            "displayName-count-other": "добры Сан-Томе и Принсипи (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
-            "displayName": "добра Сан-Томе и Принсипи",
+            "displayName": "Добра Сант-Томе и Принсипи",
             "displayName-count-one": "добра Сан-Томе и Принсипи",
             "displayName-count-few": "добры Сан-Томе и Принсипи",
             "displayName-count-many": "добр Сан-Томе и Принсипи",
             "displayName-count-other": "добры Сан-Томе и Принсипи",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1576,7 +1520,7 @@
             "symbol": "SVC"
           },
           "SYP": {
-            "displayName": "сирийский фунт",
+            "displayName": "Сирийский фунт",
             "displayName-count-one": "сирийский фунт",
             "displayName-count-few": "сирийских фунта",
             "displayName-count-many": "сирийских фунтов",
@@ -1585,15 +1529,15 @@
             "symbol-alt-narrow": "£"
           },
           "SZL": {
-            "displayName": "свазилендский лилангени",
+            "displayName": "Свазилендский лилангени",
             "displayName-count-one": "свазилендский лилангени",
-            "displayName-count-few": "свазилендских лилангени",
+            "displayName-count-few": "свазилендских эмалангени",
             "displayName-count-many": "свазилендских лилангени",
             "displayName-count-other": "свазилендского лилангени",
             "symbol": "SZL"
           },
           "THB": {
-            "displayName": "таиландский бат",
+            "displayName": "Таиландский бат",
             "displayName-count-one": "таиландский бат",
             "displayName-count-few": "таиландских бата",
             "displayName-count-many": "таиландских батов",
@@ -1606,7 +1550,7 @@
             "symbol": "TJR"
           },
           "TJS": {
-            "displayName": "таджикский сомони",
+            "displayName": "Таджикский сомони",
             "displayName-count-one": "таджикский сомони",
             "displayName-count-few": "таджикских сомони",
             "displayName-count-many": "таджикских сомони",
@@ -1618,15 +1562,15 @@
             "symbol": "TMM"
           },
           "TMT": {
-            "displayName": "новый туркменский манат",
-            "displayName-count-one": "новый туркменский манат",
-            "displayName-count-few": "новых туркменских маната",
-            "displayName-count-many": "новых туркменских манатов",
-            "displayName-count-other": "нового туркменского маната",
+            "displayName": "Туркменский новый манат",
+            "displayName-count-one": "туркменский новый манат",
+            "displayName-count-few": "туркменских новых маната",
+            "displayName-count-many": "туркменских новых манатов",
+            "displayName-count-other": "туркменского нового маната",
             "symbol": "ТМТ"
           },
           "TND": {
-            "displayName": "тунисский динар",
+            "displayName": "Тунисский динар",
             "displayName-count-one": "тунисский динар",
             "displayName-count-few": "тунисских динара",
             "displayName-count-many": "тунисских динаров",
@@ -1634,9 +1578,9 @@
             "symbol": "TND"
           },
           "TOP": {
-            "displayName": "тонганская паанга",
+            "displayName": "Тонганская паанга",
             "displayName-count-one": "тонганская паанга",
-            "displayName-count-few": "тонганские паанги",
+            "displayName-count-few": "тонганских паанги",
             "displayName-count-many": "тонганских паанг",
             "displayName-count-other": "тонганской паанги",
             "symbol": "TOP",
@@ -1655,8 +1599,8 @@
             "symbol": "TRL"
           },
           "TRY": {
-            "displayName": "турецкая лира",
-            "displayName-count-one": "турецкая лира",
+            "displayName": "Турецкая лира",
+            "displayName-count-one": "новая турецкая лира",
             "displayName-count-few": "турецкие лиры",
             "displayName-count-many": "турецких лир",
             "displayName-count-other": "турецкой лиры",
@@ -1665,7 +1609,7 @@
             "symbol-alt-variant": "TL"
           },
           "TTD": {
-            "displayName": "доллар Тринидада и Тобаго",
+            "displayName": "Доллар Тринидада и Тобаго",
             "displayName-count-one": "доллар Тринидада и Тобаго",
             "displayName-count-few": "доллара Тринидада и Тобаго",
             "displayName-count-many": "долларов Тринидада и Тобаго",
@@ -1674,7 +1618,7 @@
             "symbol-alt-narrow": "$"
           },
           "TWD": {
-            "displayName": "новый тайваньский доллар",
+            "displayName": "Новый тайваньский доллар",
             "displayName-count-one": "новый тайваньский доллар",
             "displayName-count-few": "новых тайваньских доллара",
             "displayName-count-many": "новых тайваньских долларов",
@@ -1683,7 +1627,7 @@
             "symbol-alt-narrow": "NT$"
           },
           "TZS": {
-            "displayName": "танзанийский шиллинг",
+            "displayName": "Танзанийский шиллинг",
             "displayName-count-one": "танзанийский шиллинг",
             "displayName-count-few": "танзанийских шиллинга",
             "displayName-count-many": "танзанийских шиллингов",
@@ -1691,14 +1635,13 @@
             "symbol": "TZS"
           },
           "UAH": {
-            "displayName": "украинская гривна",
+            "displayName": "Украинская гривна",
             "displayName-count-one": "украинская гривна",
             "displayName-count-few": "украинские гривны",
             "displayName-count-many": "украинских гривен",
             "displayName-count-other": "украинской гривны",
             "symbol": "₴",
-            "symbol-alt-narrow": "₴",
-            "symbol-alt-variant": "грн."
+            "symbol-alt-narrow": "₴"
           },
           "UAK": {
             "displayName": "Карбованец (украинский)",
@@ -1709,7 +1652,7 @@
             "symbol": "UGS"
           },
           "UGX": {
-            "displayName": "угандийский шиллинг",
+            "displayName": "Угандийский шиллинг",
             "displayName-count-one": "угандийский шиллинг",
             "displayName-count-few": "угандийских шиллинга",
             "displayName-count-many": "угандийских шиллингов",
@@ -1717,7 +1660,7 @@
             "symbol": "UGX"
           },
           "USD": {
-            "displayName": "доллар США",
+            "displayName": "Доллар США",
             "displayName-count-one": "доллар США",
             "displayName-count-few": "доллара США",
             "displayName-count-many": "долларов США",
@@ -1742,20 +1685,16 @@
             "symbol": "UYP"
           },
           "UYU": {
-            "displayName": "уругвайский песо",
-            "displayName-count-one": "уругвайский песо",
+            "displayName": "Уругвайское песо",
+            "displayName-count-one": "уругвайское песо",
             "displayName-count-few": "уругвайских песо",
             "displayName-count-many": "уругвайских песо",
             "displayName-count-other": "уругвайского песо",
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
-            "displayName": "узбекский сум",
+            "displayName": "Узбекский сум",
             "displayName-count-one": "узбекский сум",
             "displayName-count-few": "узбекских сума",
             "displayName-count-many": "узбекских сумов",
@@ -1767,24 +1706,16 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "венесуэльский боливар (2008–2018)",
-            "displayName-count-one": "венесуэльский боливар (2008–2018)",
-            "displayName-count-few": "венесуэльских боливара (2008–2018)",
-            "displayName-count-many": "венесуэльских боливаров (2008–2018)",
-            "displayName-count-other": "венесуэльского боливара (2008–2018)",
+            "displayName": "Венесуэльский боливар",
+            "displayName-count-one": "венесуэльский боливар",
+            "displayName-count-few": "венесуэльских боливара",
+            "displayName-count-many": "венесуэльских боливара",
+            "displayName-count-other": "венесуэльского боливара",
             "symbol": "VEF",
             "symbol-alt-narrow": "Bs"
           },
-          "VES": {
-            "displayName": "венесуэльский боливар",
-            "displayName-count-one": "венесуэльский боливар",
-            "displayName-count-few": "венесуэльских боливара",
-            "displayName-count-many": "венесуэльских боливаров",
-            "displayName-count-other": "венесуэльского боливара",
-            "symbol": "VES"
-          },
           "VND": {
-            "displayName": "вьетнамский донг",
+            "displayName": "Вьетнамский донг",
             "displayName-count-one": "вьетнамский донг",
             "displayName-count-few": "вьетнамских донга",
             "displayName-count-many": "вьетнамских донгов",
@@ -1797,7 +1728,7 @@
             "symbol": "VNN"
           },
           "VUV": {
-            "displayName": "вату Вануату",
+            "displayName": "Вату Вануату",
             "displayName-count-one": "вату Вануату",
             "displayName-count-few": "вату Вануату",
             "displayName-count-many": "вату Вануату",
@@ -1805,15 +1736,15 @@
             "symbol": "VUV"
           },
           "WST": {
-            "displayName": "самоанская тала",
+            "displayName": "Самоанская тала",
             "displayName-count-one": "самоанская тала",
-            "displayName-count-few": "самоанские талы",
+            "displayName-count-few": "самоанских талы",
             "displayName-count-many": "самоанских тал",
             "displayName-count-other": "самоанской талы",
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "франк КФА BEAC",
+            "displayName": "Франк КФА ВЕАС",
             "displayName-count-one": "франк КФА ВЕАС",
             "displayName-count-few": "франка КФА ВЕАС",
             "displayName-count-many": "франков КФА ВЕАС",
@@ -1845,10 +1776,10 @@
             "symbol": "XBD"
           },
           "XCD": {
-            "displayName": "восточно-карибский доллар",
+            "displayName": "Восточно-карибский доллар",
             "displayName-count-one": "восточно-карибский доллар",
             "displayName-count-few": "восточно-карибских доллара",
-            "displayName-count-many": "восточно-карибских долларов",
+            "displayName-count-many": "восточно-карибских доллара",
             "displayName-count-other": "восточно-карибского доллара",
             "symbol": "EC$",
             "symbol-alt-narrow": "$"
@@ -1870,11 +1801,11 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "франк КФА ВСЕАО",
-            "displayName-count-one": "франк КФА ВСЕАО",
-            "displayName-count-few": "франка КФА ВСЕАО",
-            "displayName-count-many": "франков КФА ВСЕАО",
-            "displayName-count-other": "франка КФА ВСЕАО",
+            "displayName": "Франк КФА ВСЕАО",
+            "displayName-count-one": "франк КФА ВСЕА",
+            "displayName-count-few": "франка КФА ВСЕА",
+            "displayName-count-many": "франков КФА ВСЕА",
+            "displayName-count-other": "франка КФА ВСЕА",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1882,7 +1813,7 @@
             "symbol": "XPD"
           },
           "XPF": {
-            "displayName": "французский тихоокеанский франк",
+            "displayName": "Французский тихоокеанский франк",
             "displayName-count-one": "французский тихоокеанский франк",
             "displayName-count-few": "французских тихоокеанских франка",
             "displayName-count-many": "французских тихоокеанских франков",
@@ -1910,11 +1841,11 @@
             "symbol": "XUA"
           },
           "XXX": {
-            "displayName": "неизвестная валюта",
-            "displayName-count-one": "единица неизвестной валюты",
-            "displayName-count-few": "единицы неизвестной валюты",
-            "displayName-count-many": "единиц неизвестной валюты",
-            "displayName-count-other": "единицы неизвестной валюты",
+            "displayName": "Неизвестная или недействительная валюта",
+            "displayName-count-one": "неизвестная или недействительная валюта",
+            "displayName-count-few": "неизвестная или недействительная валюта",
+            "displayName-count-many": "неизвестная или недействительная валюта",
+            "displayName-count-other": "неизвестная или недействительная валюта",
             "symbol": "XXXX"
           },
           "YDD": {
@@ -1922,7 +1853,7 @@
             "symbol": "YDD"
           },
           "YER": {
-            "displayName": "йеменский риал",
+            "displayName": "Йеменский риал",
             "displayName-count-one": "йеменский риал",
             "displayName-count-few": "йеменских риала",
             "displayName-count-many": "йеменских риалов",
@@ -1950,7 +1881,7 @@
             "symbol": "ZAL"
           },
           "ZAR": {
-            "displayName": "южноафриканский рэнд",
+            "displayName": "Южноафриканский рэнд",
             "displayName-count-one": "южноафриканский рэнд",
             "displayName-count-few": "южноафриканских рэнда",
             "displayName-count-many": "южноафриканских рэндов",
@@ -1967,7 +1898,7 @@
             "symbol": "ZMK"
           },
           "ZMW": {
-            "displayName": "замбийская квача",
+            "displayName": "Замбийская квача",
             "displayName-count-one": "замбийская квача",
             "displayName-count-few": "замбийские квачи",
             "displayName-count-many": "замбийских квач",

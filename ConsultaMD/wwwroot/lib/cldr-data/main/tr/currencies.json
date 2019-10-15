@@ -3,10 +3,13 @@
     "tr": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "tr"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "numbers": {
         "currencies": {
@@ -37,8 +40,7 @@
           "ALK": {
             "displayName": "Arnavutluk Leki (1946–1965)",
             "displayName-count-one": "Arnavutluk leki (1946–1965)",
-            "displayName-count-other": "Arnavutluk leki (1946–1965)",
-            "symbol": "ALK"
+            "displayName-count-other": "Arnavutluk leki (1946–1965)"
           },
           "ALL": {
             "displayName": "Arnavutluk Leki",
@@ -340,18 +342,12 @@
             "displayName-count-other": "Yeni Beyaz Rusya Rublesi (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
-            "displayName": "Belarus Rublesi",
-            "displayName-count-one": "Belarus rublesi",
-            "displayName-count-other": "Belarus rublesi",
-            "symbol": "BYN",
-            "symbol-alt-narrow": "р."
-          },
           "BYR": {
-            "displayName": "Beyaz Rusya Rublesi (2000–2016)",
-            "displayName-count-one": "Beyaz Rusya rublesi (2000–2016)",
-            "displayName-count-other": "Beyaz Rusya rublesi (2000–2016)",
-            "symbol": "BYR"
+            "displayName": "Beyaz Rusya Rublesi",
+            "displayName-count-one": "Beyaz Rusya rublesi",
+            "displayName-count-other": "Beyaz Rusya rublesi",
+            "symbol": "BYR",
+            "symbol-alt-narrow": "р."
           },
           "BZD": {
             "displayName": "Belize Doları",
@@ -410,17 +406,10 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "Çin Yuanı (offshore)",
-            "displayName-count-one": "Çin yuanı (offshore)",
-            "displayName-count-other": "Çin yuanı (offshore)",
-            "symbol": "CNH"
-          },
           "CNX": {
             "displayName": "Çin Halk Cumhuriyeti Merkez Bankası Doları",
             "displayName-count-one": "Çin Halk Cumhuriyeti Merkez Bankası doları",
-            "displayName-count-other": "Çin Halk Cumhuriyeti Merkez Bankası doları",
-            "symbol": "CNX"
+            "displayName-count-other": "Çin Halk Cumhuriyeti Merkez Bankası doları"
           },
           "CNY": {
             "displayName": "Çin Yuanı",
@@ -638,9 +627,7 @@
             "displayName": "Gürcistan Larisi",
             "displayName-count-one": "Gürcistan larisi",
             "displayName-count-other": "Gürcistan larisi",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "Gana Sedisi (1979–2007)",
@@ -770,8 +757,7 @@
           "ILR": {
             "displayName": "İsrail Şekeli (1980–1985)",
             "displayName-count-one": "İsrail şekeli (1980–1985)",
-            "displayName-count-other": "İsrail şekeli (1980–1985)",
-            "symbol": "ILR"
+            "displayName-count-other": "İsrail şekeli (1980–1985)"
           },
           "ILS": {
             "displayName": "Yeni İsrail Şekeli",
@@ -802,8 +788,7 @@
           "ISJ": {
             "displayName": "İzlanda Kronu (1918–1981)",
             "displayName-count-one": "İzlanda kronu (1918–1981)",
-            "displayName-count-other": "İzlanda kronu (1918–1981)",
-            "symbol": "ISJ"
+            "displayName-count-other": "İzlanda kronu (1918–1981)"
           },
           "ISK": {
             "displayName": "İzlanda Kronu",
@@ -1068,16 +1053,10 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "Moritanya Ugiyası (1973–2017)",
-            "displayName-count-one": "Moritanya ugiyası (1973–2017)",
-            "displayName-count-other": "Moritanya ugiyası (1973–2017)",
+            "displayName": "Moritanya Ouguiyası",
+            "displayName-count-one": "Moritanya ouguiyası",
+            "displayName-count-other": "Moritanya ouguiyası",
             "symbol": "MRO"
-          },
-          "MRU": {
-            "displayName": "Moritanya Ugiyası",
-            "displayName-count-one": "Moritanya ugiyası",
-            "displayName-count-other": "Moritanya ugiyası",
-            "symbol": "MRU"
           },
           "MTL": {
             "displayName": "Malta Lirası",
@@ -1101,8 +1080,7 @@
           "MVP": {
             "displayName": "Maldiv Rupisi",
             "displayName-count-one": "Maldiv rupisi",
-            "displayName-count-other": "Maldiv rupisi",
-            "symbol": "MVP"
+            "displayName-count-other": "Maldiv rupisi"
           },
           "MVR": {
             "displayName": "Maldiv Rufiyaası",
@@ -1229,15 +1207,15 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "Peru Solü",
-            "displayName-count-one": "Peru solü",
-            "displayName-count-other": "Peru solü",
+            "displayName": "Peru Nuevo Solü",
+            "displayName-count-one": "Peru nuevo solü",
+            "displayName-count-other": "Peru nuevo solü",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "Peru Solü (1863–1965)",
-            "displayName-count-one": "Peru Solü (1863–1965)",
-            "displayName-count-other": "Peru Solü (1863–1965)",
+            "displayName": "Peru Solu",
+            "displayName-count-one": "Peru Solu",
+            "displayName-count-other": "Peru Solu",
             "symbol": "PES"
           },
           "PGK": {
@@ -1306,8 +1284,7 @@
             "displayName": "Romen Leyi",
             "displayName-count-one": "Romen leyi",
             "displayName-count-other": "Romen leyi",
-            "symbol": "RON",
-            "symbol-alt-narrow": "L"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "Sırp Dinarı",
@@ -1320,7 +1297,7 @@
             "displayName-count-one": "Rus rublesi",
             "displayName-count-other": "Rus rublesi",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "Rus Rublesi (1991–1998)",
@@ -1435,16 +1412,10 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "São Tomé ve Príncipe Dobrası (1977–2017)",
-            "displayName-count-one": "São Tomé ve Príncipe dobrası (1977–2017)",
-            "displayName-count-other": "São Tomé ve Príncipe dobrası (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "São Tomé ve Príncipe Dobrası",
             "displayName-count-one": "São Tomé ve Príncipe dobrası",
             "displayName-count-other": "São Tomé ve Príncipe dobrası",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1618,10 +1589,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "Özbekistan Somu",
             "displayName-count-one": "Özbekistan somu",
@@ -1635,17 +1602,11 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "Venezuela Bolivarı (2008–2018)",
-            "displayName-count-one": "Venezuela bolivarı (2008–2018)",
-            "displayName-count-other": "Venezuela bolivarı (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "Venezuela Bolivarı",
             "displayName-count-one": "Venezuela bolivarı",
             "displayName-count-other": "Venezuela bolivarı",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "Vietnam Dongu",
@@ -1779,7 +1740,7 @@
             "displayName": "Bilinmeyen Para Birimi",
             "displayName-count-one": "(bilinmeyen para birimi)",
             "displayName-count-other": "(bilinmeyen para birimi)",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "Yemen Dinarı",

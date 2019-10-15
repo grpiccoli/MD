@@ -3,8 +3,11 @@
     "ko": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10931 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-09-03 21:52:43 -0500 (Wed, 03 Sep 2014) $"
         },
         "language": "ko"
       },
@@ -27,10 +30,6 @@
             "displayName": "아프가니스탄 아프가니",
             "displayName-count-other": "아프가니스탄 아프가니",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "알바니아 레크",
@@ -261,16 +260,11 @@
             "displayName": "벨라루스 신권 루블 (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "벨라루스 루블",
             "displayName-count-other": "벨라루스 루블",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "벨라루스 루블 (2000–2016)",
-            "displayName-count-other": "벨라루스 루블 (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "벨리즈 달러",
@@ -316,18 +310,9 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "중국 위안화(역외)",
-            "displayName-count-other": "중국 위안화(역외)",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
-          },
           "CNY": {
             "displayName": "중국 위안화",
-            "displayName-count-other": "중국 위안화",
+            "displayName-count-other": "중국 위안 인민폐",
             "symbol": "CN¥",
             "symbol-alt-narrow": "¥"
           },
@@ -449,8 +434,8 @@
             "symbol-alt-narrow": "₧"
           },
           "ETB": {
-            "displayName": "에티오피아 비르",
-            "displayName-count-other": "에티오피아 비르",
+            "displayName": "이디오피아 비르",
+            "displayName-count-other": "이디오피아 비르",
             "symbol": "ETB"
           },
           "EUR": {
@@ -492,9 +477,7 @@
           "GEL": {
             "displayName": "조지아 라리",
             "displayName-count-other": "조지아 라리",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "가나 시디 (1979–2007)",
@@ -601,10 +584,6 @@
             "displayName": "이스라엘 파운드",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
             "displayName": "이스라엘 신권 세켈",
             "displayName-count-other": "이스라엘 신권 세켈",
@@ -626,10 +605,6 @@
             "displayName": "이란 리얄",
             "displayName-count-other": "이란 리얄",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "아이슬란드 크로나",
@@ -845,14 +820,9 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "모리타니 우기야 (1973–2017)",
-            "displayName-count-other": "모리타니 우기야 (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "모리타니 우기야",
             "displayName-count-other": "모리타니 우기야",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "몰타 리라",
@@ -867,10 +837,6 @@
             "displayName-count-other": "모리셔스 루피",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "몰디브 제도 루피아",
@@ -974,12 +940,12 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "페루 솔",
-            "displayName-count-other": "페루 솔",
+            "displayName": "페루 누에보 솔",
+            "displayName-count-other": "페루 누에보 솔",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "페루 솔 (1863–1965)",
+            "displayName": "페루 솔",
             "symbol": "PES"
           },
           "PGK": {
@@ -1035,8 +1001,7 @@
           "RON": {
             "displayName": "루마니아 레우",
             "displayName-count-other": "루마니아 레우",
-            "symbol": "RON",
-            "symbol-alt-narrow": "L"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "세르비아 디나르",
@@ -1047,7 +1012,7 @@
             "displayName": "러시아 루블",
             "displayName-count-other": "러시아 루블",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "러시아 루블 (1991–1998)",
@@ -1142,14 +1107,9 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "상투메 프린시페 도브라 (1977–2017)",
-            "displayName-count-other": "상투메 프린시페 도브라 (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "상투메 프린시페 도브라",
             "displayName-count-other": "상투메 프린시페 도브라",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1174,7 +1134,7 @@
           "THB": {
             "displayName": "태국 바트",
             "displayName-count-other": "태국 바트",
-            "symbol": "THB",
+            "symbol": "฿",
             "symbol-alt-narrow": "฿"
           },
           "TJR": {
@@ -1285,10 +1245,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "우즈베키스탄 숨",
             "displayName-count-other": "우즈베키스탄 숨",
@@ -1299,15 +1255,10 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "베네수엘라 볼리바르 (2008–2018)",
-            "displayName-count-other": "베네수엘라 볼리바르 (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "베네수엘라 볼리바르",
             "displayName-count-other": "베네수엘라 볼리바르",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "베트남 동",
@@ -1330,8 +1281,8 @@
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "중앙아프리카 CFA 프랑",
-            "displayName-count-other": "중앙아프리카 CFA 프랑",
+            "displayName": "CFA 프랑 BEAC",
+            "displayName-count-other": "CFA 프랑 BEAC",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1381,8 +1332,8 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "서아프리카 CFA 프랑",
-            "displayName-count-other": "서아프리카 CFA 프랑",
+            "displayName": "CFA 프랑 BCEAO",
+            "displayName-count-other": "CFA 프랑 BCEAO",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1415,9 +1366,9 @@
             "symbol": "XUA"
           },
           "XXX": {
-            "displayName": "알 수 없는 통화 단위",
-            "displayName-count-other": "(알 수 없는 통화 단위)",
-            "symbol": "¤"
+            "displayName": "알 수 없는 통화단위",
+            "displayName-count-other": "알 수 없는 통화단위",
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "예멘 디나르",

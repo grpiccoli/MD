@@ -1,1861 +1,1038 @@
 {
   "supplemental": {
     "version": {
-      "_number": "$Revision: 14755 $",
-      "_unicodeVersion": "12.1.0",
-      "_cldrVersion": "35.1"
+      "_cldrVersion": "26",
+      "_number": "$Revision: 10803 $"
+    },
+    "generation": {
+      "_date": "$Date: 2014-08-14 13:28:48 -0500 (Thu, 14 Aug 2014) $"
     },
     "languageMatching": {
       "written": [
         {
-          "nb": {
-            "_percent": "99"
+          "languageMatch": {
+            "_percent": "100",
+            "_supported": "nb",
+            "_desired": "no"
           }
         },
         {
-          "bs": {
-            "_percent": "96"
-          }
-        },
-        {
-          "bs": {
-            "_percent": "96"
-          }
-        },
-        {
-          "hr": {
-            "_percent": "96"
-          }
-        },
-        {
-          "sr": {
-            "_percent": "96"
-          }
-        },
-        {
-          "aa": {
-            "_percent": "96"
-          }
-        },
-        {
-          "de": {
+          "languageMatch": {
             "_percent": "96",
-            "_oneway": "true"
+            "_supported": "nb",
+            "_desired": "nn"
           }
         },
         {
-          "de": {
+          "languageMatch": {
             "_percent": "96",
-            "_oneway": "true"
+            "_supported": "no",
+            "_desired": "nn"
           }
         },
         {
-          "no": {
-            "_percent": "92"
-          }
-        },
-        {
-          "nb": {
-            "_percent": "92"
-          }
-        },
-        {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "nl": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "es": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
+          "languageMatch": {
             "_percent": "90",
-            "_oneway": "true"
+            "_supported": "no",
+            "_desired": "da"
           }
         },
         {
-          "hi": {
+          "languageMatch": {
             "_percent": "90",
-            "_oneway": "true"
+            "_supported": "nb",
+            "_desired": "da"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "bs",
+            "_desired": "hr"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "bs",
+            "_desired": "sh"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "bs",
+            "_desired": "sr"
           }
         },
         {
-          "fil": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "hr",
+            "_desired": "sh"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "hr",
+            "_desired": "sr"
           }
         },
         {
-          "ar": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "sr",
+            "_desired": "sh"
           }
         },
         {
-          "fr": {
+          "languageMatch": {
             "_percent": "90",
-            "_oneway": "true"
+            "_supported": "id",
+            "_desired": "ms"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "aa",
+            "_desired": "ssy"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "de",
+            "_oneway": "true",
+            "_desired": "gsw"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "de",
+            "_oneway": "true",
+            "_desired": "lb"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "ab"
           }
         },
         {
-          "fi": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ach"
           }
         },
         {
-          "es": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "nl",
+            "_oneway": "true",
+            "_desired": "af"
           }
         },
         {
-          "da": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ak"
           }
         },
         {
-          "nl": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "am"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "es",
+            "_oneway": "true",
+            "_desired": "ay"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "az"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "be"
           }
         },
         {
-          "es": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "bem"
           }
         },
         {
-          "es": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "hi",
+            "_oneway": "true",
+            "_desired": "bh"
           }
         },
         {
-          "hi": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "bn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "br"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fil",
+            "_oneway": "true",
+            "_desired": "ceb"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "chr"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ar",
+            "_oneway": "true",
+            "_desired": "ckb"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "co"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "crs"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "cy"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ee"
           }
         },
         {
-          "id": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "eo"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "es-419",
+            "_oneway": "true",
+            "_desired": "es-MX"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fi",
+            "_oneway": "true",
+            "_desired": "et"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "es",
+            "_oneway": "true",
+            "_desired": "eu"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "da",
+            "_oneway": "true",
+            "_desired": "fo"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "nl",
+            "_oneway": "true",
+            "_desired": "fy"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ga"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "gaa"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "gd"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "es",
+            "_oneway": "true",
+            "_desired": "gl"
           }
         },
         {
-          "tr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "es",
+            "_oneway": "true",
+            "_desired": "gn"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "hi",
+            "_oneway": "true",
+            "_desired": "gu"
           }
         },
         {
-          "it": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ha"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "haw"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "ht"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "hy"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ia"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ig"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "is"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "id",
+            "_oneway": "true",
+            "_desired": "jv"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ka"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "kg"
           }
         },
         {
-          "bg": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "kk"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "km"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "kn"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "kri"
           }
         },
         {
-          "hi": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "tr",
+            "_oneway": "true",
+            "_desired": "ku"
           }
         },
         {
-          "id": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "ky"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "it",
+            "_oneway": "true",
+            "_desired": "la"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "lg"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "ln"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "lo"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "loz"
           }
         },
         {
-          "nb": {
-            "_percent": "90"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "lua"
           }
         },
         {
-          "no": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "mfe"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "mg"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "mi"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "bg",
+            "_oneway": "true",
+            "_desired": "mk"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ml"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "mn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "hi",
+            "_oneway": "true",
+            "_desired": "mr"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "id",
+            "_oneway": "true",
+            "_desired": "ms"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "mt"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "my"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ne"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "nb",
+            "_oneway": "true",
+            "_desired": "nn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "nso"
           }
         },
         {
-          "es": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ny"
           }
         },
         {
-          "de": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "nyn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "oc"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "om"
           }
         },
         {
-          "hi": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "or"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "pa"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "pcm"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ps"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "es",
+            "_oneway": "true",
+            "_desired": "qu"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "de",
+            "_oneway": "true",
+            "_desired": "rm"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "rn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "rw"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "hi",
+            "_oneway": "true",
+            "_desired": "sa"
           }
         },
         {
-          "id": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "sd"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "si"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "sn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "so"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "sq"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "st"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "id",
+            "_oneway": "true",
+            "_desired": "su"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "sw"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ta"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "te"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "tg"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ti"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "tk"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "tlh"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "tn"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "to"
           }
         },
         {
-          "zh": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "tt"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "tum"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "zh",
+            "_oneway": "true",
+            "_desired": "ug"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "ur"
           }
         },
         {
-          "ru": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "ru",
+            "_oneway": "true",
+            "_desired": "uz"
           }
         },
         {
-          "fr": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "fr",
+            "_oneway": "true",
+            "_desired": "wo"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "xh"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "yi"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "yo"
           }
         },
         {
-          "en": {
-            "_percent": "90",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "10",
+            "_supported": "en",
+            "_oneway": "true",
+            "_desired": "zu"
           }
         },
         {
-          "en": {
+          "languageMatch": {
             "_percent": "90",
-            "_oneway": "true"
-          }
-        },
-        {
-          "sr": {
-            "_percent": "95"
+            "_supported": "sr-Cyrl",
+            "_desired": "sr-Latn"
           }
         },
         {
-          "zh": {
+          "languageMatch": {
             "_percent": "85",
-            "_oneway": "true"
+            "_supported": "*-Hant",
+            "_oneway": "true",
+            "_desired": "*-Hans"
           }
         },
         {
-          "zh": {
-            "_percent": "81",
-            "_oneway": "true"
+          "languageMatch": {
+            "_percent": "75",
+            "_supported": "*-Hans",
+            "_oneway": "true",
+            "_desired": "*-Hant"
           }
         },
         {
-          "zh": {
-            "_percent": "97"
+          "languageMatch": {
+            "_percent": "97",
+            "_supported": "en-*-*",
+            "_desired": "en-*-US"
           }
         },
         {
-          "pt": {
-            "_percent": "96"
+          "languageMatch": {
+            "_percent": "99",
+            "_supported": "en-*-*",
+            "_desired": "en-*-*"
           }
         },
         {
-          "pt": {
-            "_percent": "92"
+          "languageMatch": {
+            "_percent": "97",
+            "_supported": "es-*-*",
+            "_desired": "es-*-ES"
           }
         },
         {
-          "pt": {
-            "_percent": "92"
+          "languageMatch": {
+            "_percent": "99",
+            "_supported": "es-*-*",
+            "_desired": "es-*-419"
           }
         },
         {
-          "pt": {
-            "_percent": "96"
+          "languageMatch": {
+            "_percent": "98",
+            "_supported": "es-*-*",
+            "_desired": "es-*-*"
           }
         },
         {
-          "en": {
-            "_percent": "94"
+          "languageMatch": {
+            "_percent": "1",
+            "_supported": "*",
+            "_desired": "*"
           }
         },
         {
-          "en": {
-            "_percent": "96"
+          "languageMatch": {
+            "_percent": "20",
+            "_supported": "*-*",
+            "_desired": "*-*"
           }
         },
         {
-          "en": {
-            "_percent": "96"
-          }
-        },
-        {
-          "en": {
-            "_percent": "95"
-          }
-        },
-        {
-          "es": {
-            "_percent": "92"
-          }
-        },
-        {
-          "es": {
-            "_percent": "96"
-          }
-        },
-        {
-          "es": {
-            "_percent": "95"
-          }
-        },
-        {
-          "*": {
-            "_percent": "20"
-          }
-        },
-        {
-          "*": {
-            "_percent": "60"
-          }
-        },
-        {
-          "*": {
-            "_percent": "96"
-          }
-        }
-      ],
-      "written-new": [
-        {
-          "paradigmLocales": {
-            "_locales": "en en-GB es es-419 pt-BR pt-PT"
-          }
-        },
-        {
-          "$americas": {
-            "_value": "019"
-          }
-        },
-        {
-          "$cnsar": {
-            "_value": "HK+MO"
-          }
-        },
-        {
-          "$enUS": {
-            "_value": "AS+GU+MH+MP+PR+UM+US+VI"
-          }
-        },
-        {
-          "$maghreb": {
-            "_value": "MA+DZ+TN+LY+MR+EH"
-          }
-        },
-        {
-          "nb": {
-            "_distance": "1"
-          }
-        },
-        {
-          "bs": {
-            "_distance": "4"
-          }
-        },
-        {
-          "bs": {
-            "_distance": "4"
-          }
-        },
-        {
-          "hr": {
-            "_distance": "4"
-          }
-        },
-        {
-          "sr": {
-            "_distance": "4"
-          }
-        },
-        {
-          "aa": {
-            "_distance": "4"
-          }
-        },
-        {
-          "de": {
-            "_distance": "4",
-            "_oneway": "true"
-          }
-        },
-        {
-          "de": {
-            "_distance": "4",
-            "_oneway": "true"
-          }
-        },
-        {
-          "no": {
-            "_distance": "8"
-          }
-        },
-        {
-          "nb": {
-            "_distance": "8"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "nl": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "es": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "hi": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fil": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ar": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fi": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "es": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "da": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "nl": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "es": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "es": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "hi": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "id": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "tr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "it": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "bg": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "hi": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "id": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "nb": {
-            "_distance": "10"
-          }
-        },
-        {
-          "no": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "es": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "de": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "hi": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "id": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "zh": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "fr": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "*": {
-            "_distance": "80"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "ru": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "en": {
-            "_distance": "10",
-            "_oneway": "true"
-          }
-        },
-        {
-          "sr": {
-            "_distance": "5"
-          }
-        },
-        {
-          "zh": {
-            "_distance": "15",
-            "_oneway": "true"
-          }
-        },
-        {
-          "zh": {
-            "_distance": "19",
-            "_oneway": "true"
-          }
-        },
-        {
-          "*": {
-            "_distance": "50"
-          }
-        },
-        {
-          "ar": {
-            "_distance": "4"
-          }
-        },
-        {
-          "ar": {
-            "_distance": "4"
-          }
-        },
-        {
-          "ar": {
-            "_distance": "5"
-          }
-        },
-        {
-          "en": {
-            "_distance": "4"
-          }
-        },
-        {
-          "en": {
-            "_distance": "3"
-          }
-        },
-        {
-          "en": {
-            "_distance": "4"
-          }
-        },
-        {
-          "en": {
-            "_distance": "5"
-          }
-        },
-        {
-          "es": {
-            "_distance": "4"
-          }
-        },
-        {
-          "es": {
-            "_distance": "4"
-          }
-        },
-        {
-          "es": {
-            "_distance": "5"
-          }
-        },
-        {
-          "pt": {
-            "_distance": "4"
-          }
-        },
-        {
-          "pt": {
-            "_distance": "4"
-          }
-        },
-        {
-          "pt": {
-            "_distance": "5"
-          }
-        },
-        {
-          "zh": {
-            "_distance": "4"
-          }
-        },
-        {
-          "zh": {
-            "_distance": "4"
-          }
-        },
-        {
-          "zh": {
-            "_distance": "5"
-          }
-        },
-        {
-          "*": {
-            "_distance": "4"
+          "languageMatch": {
+            "_percent": "96",
+            "_supported": "*-*-*",
+            "_desired": "*-*-*"
           }
         }
       ]

@@ -1,0 +1,26 @@
+﻿@page
+@model VerifyPhoneModel
+@{
+    ViewData["Title"] = "Verifica tu Celular";
+}
+
+<partial name="_Libs" model='(new string[]{ "libphonenumber-js", "verifyphone" }, "")' />
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='"Patient"' />
+    <div class="col m6 s12 h-100v">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+            <h3 class="center-align">@ViewData["Title"]</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-field col s12">
+                <span class="prefix" style="font-size:22px;">+56</span>
+                <input asp-for="PhoneNumber" class="validate" autocomplete="tel-national" />
+                <label asp-for="PhoneNumber"></label>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn waves-effect waves-light white-text teal pill">Enviar código de verificación</button>
+        </form>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

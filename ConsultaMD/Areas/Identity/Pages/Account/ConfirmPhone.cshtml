@@ -1,0 +1,82 @@
+﻿@page
+@model ConfirmPhoneModel
+@{
+    ViewData["Title"] = "Confirmar Teléfono Móvil";
+}
+
+<partial name="_Libs" model='(new string[]{ "cleave.js", "moment", "confirmPhone" }, "")' />
+
+<div id="wrapper" class="row mb-0">
+    <partial name="_LeftIconTile" model='"Patient"' />
+    <div id="dialog" class="col m6 s12 h-100v">
+        <h5 class="center-align">Por favor ingrese el código de verificación de 6 dígitos enviado por SMS:</h5>
+        @*<span>(necesitamos verificar que podemos comunicarnos)</span>*@
+        @*<p>
+            We have sent a confirmation code to (@Model.Input.DialingCode) @Model.PhoneNumber
+            Enter the code you receive to confirm your phone number.
+        </p>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="Input.DialingCode" type="hidden" />
+        <input asp-for="Input.PhoneNumber" type="hidden" />*@
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VerificationCode"></label>
+                <input asp-for="VerificationCode" class="form-control" />
+                <span asp-validation-for="VerificationCode" class="text-danger"></span>
+            </div>
+            <div class="row center-align">
+                <div class="col s6 offset-s3">
+                    <button type="submit" class="btn btn-large waves-effect waves-light white-text teal pill">Confirmar</button>
+                </div>
+            </div>
+            @*<div class="input-field col s12">
+                <span class="prefix" style="font-size:22px;">+56</span>
+                <input asp-for="Input.PhoneNumber" class="validate" autocomplete="tel-national" />
+                <label asp-for="Input.PhoneNumber"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>*@
+        </form>
+        <br />
+        <div class="row center-align">
+            <div class="row">
+                <h6>¿No has recibido tu código?</h6>
+            </div>
+            <div id="clock" style="display:none;">
+                <h5 class="center-align">Espera:</h5>
+                <div id="clockdiv" class="col s10 m8 l6 xl4 offset-s1 offset-m2 offset-l3 offset-xl4">
+                    <div class="col s5 counter offset-s1">
+                        <span class="minutes col s12"></span>
+                        <div class="smalltext">Minutos</div>
+                    </div>
+                    <div class="col s5 counter offset-s1">
+                        <span class="seconds col s12"></span>
+                        <div class="smalltext">Segundos</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <form asp-page="VerifyPhone" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <button id="resend" type="submit" 
+                        class="btn btn-small waves-effect waves-light white-text teal accent-4 @(Model.Wait > DateTime.Now ? "disabled": "")">
+                    Enviar código nuevamente
+                    </button>
+                </form>
+            </div>
+            <div class="row">
+                o
+            </div>
+            <div class="row">
+                <form asp-page="VerifyPhone" asp-route-returnUrl="@Model.ReturnUrl" method="get">
+                    <button id="resend" type="submit"
+                            class="btn btn-small waves-effect waves-light blue darken-1 @(Model.Wait > DateTime.Now ? "disabled": "")">
+                        Cambiar número de teléfono
+                    </button>
+                </form>
+            </div>
+            <input asp-for="Wait" class="hide" readonly="readonly" disabled="disabled" />
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

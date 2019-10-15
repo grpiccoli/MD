@@ -3,8 +3,11 @@
     "nl": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "nl"
       },
@@ -297,7 +300,7 @@
             "symbol-alt-narrow": "R$"
           },
           "BRN": {
-            "displayName": "Braziliaanse nieuwe cruzado (1989–1990)",
+            "displayName": "Braziliaanse cruzado novo",
             "displayName-count-one": "Braziliaanse cruzado novo",
             "displayName-count-other": "Braziliaanse cruzado novo",
             "symbol": "BRN"
@@ -346,18 +349,12 @@
             "displayName-count-other": "Wit-Russische nieuwe roebel (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "Wit-Russische roebel",
             "displayName-count-one": "Wit-Russische roebel",
             "displayName-count-other": "Wit-Russische roebel",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "Wit-Russische roebel (2000–2016)",
-            "displayName-count-one": "Wit-Russische roebel (2000–2016)",
-            "displayName-count-other": "Wit-Russische roebel (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "Belizaanse dollar",
@@ -416,12 +413,6 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "Chinese renminbi (offshore)",
-            "displayName-count-one": "Chinese yuan (offshore)",
-            "displayName-count-other": "Chinese yuan (offshore)",
-            "symbol": "CNH"
-          },
           "CNX": {
             "displayName": "dollar van de Chinese Volksbank",
             "displayName-count-one": "dollar van de Chinese Volksbank",
@@ -429,9 +420,9 @@
             "symbol": "CNX"
           },
           "CNY": {
-            "displayName": "Chinese yuan",
-            "displayName-count-one": "Chinese yuan",
-            "displayName-count-other": "Chinese yuan",
+            "displayName": "Chinese yuan renminbi",
+            "displayName-count-one": "Chinese renminbi",
+            "displayName-count-other": "Chinese renminbi",
             "symbol": "CN¥",
             "symbol-alt-narrow": "¥"
           },
@@ -628,9 +619,9 @@
             "symbol": "FRF"
           },
           "GBP": {
-            "displayName": "Brits pond",
-            "displayName-count-one": "Brits pond",
-            "displayName-count-other": "Brits pond",
+            "displayName": "Brits pond sterling",
+            "displayName-count-one": "Brits pond sterling",
+            "displayName-count-other": "Brits pond sterling",
             "symbol": "£",
             "symbol-alt-narrow": "£"
           },
@@ -644,9 +635,7 @@
             "displayName": "Georgische lari",
             "displayName-count-one": "Georgische lari",
             "displayName-count-other": "Georgische lari",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "ლ"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "Ghanese cedi (1979–2007)",
@@ -674,9 +663,9 @@
             "symbol": "GMD"
           },
           "GNF": {
-            "displayName": "Guinese frank",
-            "displayName-count-one": "Guinese frank",
-            "displayName-count-other": "Guinese frank",
+            "displayName": "Guinese franc",
+            "displayName-count-one": "Guinese franc",
+            "displayName-count-other": "Guinese franc",
             "symbol": "GNF",
             "symbol-alt-narrow": "FG"
           },
@@ -913,9 +902,9 @@
             "symbol": "KWD"
           },
           "KYD": {
-            "displayName": "Kaaimaneilandse dollar",
-            "displayName-count-one": "Kaaimaneilandse dollar",
-            "displayName-count-other": "Kaaimaneilandse dollar",
+            "displayName": "Caymaneilandse dollar",
+            "displayName-count-one": "Caymaneilandse dollar",
+            "displayName-count-other": "Caymaneilandse dollar",
             "symbol": "KYD",
             "symbol-alt-narrow": "$"
           },
@@ -1092,16 +1081,10 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "Mauritaanse ouguiya (1973–2017)",
-            "displayName-count-one": "Mauritaanse ouguiya (1973–2017)",
-            "displayName-count-other": "Mauritaanse ouguiya (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "Mauritaanse ouguiya",
             "displayName-count-one": "Mauritaanse ouguiya",
             "displayName-count-other": "Mauritaanse ouguiya",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "Maltese lire",
@@ -1257,15 +1240,15 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "Peruaanse sol",
-            "displayName-count-one": "Peruaanse sol",
-            "displayName-count-other": "Peruaanse sol",
+            "displayName": "Peruaanse nieuwe sol",
+            "displayName-count-one": "Peruaanse nieuwe sol",
+            "displayName-count-other": "Peruaanse nieuwe sol",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "Peruaanse sol (1863–1965)",
-            "displayName-count-one": "Peruaanse sol (1863–1965)",
-            "displayName-count-other": "Peruaanse sol (1863–1965)",
+            "displayName": "Peruaanse sol",
+            "displayName-count-one": "Peruaanse sol",
+            "displayName-count-other": "Peruaanse sol",
             "symbol": "PES"
           },
           "PGK": {
@@ -1336,8 +1319,7 @@
             "displayName": "Roemeense leu",
             "displayName-count-one": "Roemeense leu",
             "displayName-count-other": "Roemeense leu",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "Servische dinar",
@@ -1350,7 +1332,7 @@
             "displayName-count-one": "Russische roebel",
             "displayName-count-other": "Russische roebel",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "Russische roebel (1991–1998)",
@@ -1469,16 +1451,10 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "Santomese dobra (1977–2017)",
-            "displayName-count-one": "Santomese dobra (1977–2017)",
-            "displayName-count-other": "Santomese dobra (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "Santomese dobra",
             "displayName-count-one": "Santomese dobra",
             "displayName-count-other": "Santomese dobra",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1653,12 +1629,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "Uruguayaanse nominale salarisindexeenheid",
-            "displayName-count-one": "Uruguayaanse nominale salarisindexeenheid",
-            "displayName-count-other": "Uruguayaanse nominale salarisindexeenheid",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "Oezbeekse sum",
             "displayName-count-one": "Oezbeekse sum",
@@ -1672,17 +1642,11 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "Venezolaanse bolivar (2008–2018)",
-            "displayName-count-one": "Venezolaanse bolivar (2008–2018)",
-            "displayName-count-other": "Venezolaanse bolivar (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "Venezolaanse bolivar",
             "displayName-count-one": "Venezolaanse bolivar",
             "displayName-count-other": "Venezolaanse bolivar",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "Vietnamese dong",
@@ -1692,9 +1656,9 @@
             "symbol-alt-narrow": "₫"
           },
           "VNN": {
-            "displayName": "Vietnamese dong (1978–1985)",
-            "displayName-count-one": "Vietnamese dong (1978–1985)",
-            "displayName-count-other": "Vietnamese dong (1978–1985)",
+            "displayName": "Oude Vietnamese dong (1978–1985)",
+            "displayName-count-one": "oude Vietnamese dong (1978–1985)",
+            "displayName-count-other": "oude Vietnamese dong (1978–1985)",
             "symbol": "VNN"
           },
           "VUV": {
@@ -1795,8 +1759,8 @@
             "symbol": "XPD"
           },
           "XPF": {
-            "displayName": "CFP-frank",
-            "displayName-count-one": "CFP-frank",
+            "displayName": "CFP-franc",
+            "displayName-count-one": "CFP-franc",
             "displayName-count-other": "CFP-frank",
             "symbol": "XPF"
           },

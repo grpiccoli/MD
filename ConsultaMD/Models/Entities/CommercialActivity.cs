@@ -1,8 +1,13 @@
-﻿namespace ConsultaMD.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ConsultaMD.Models.Entities
 {
     public class CommercialActivity
     {
-        public int Code { get; set; }
+        //Code
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

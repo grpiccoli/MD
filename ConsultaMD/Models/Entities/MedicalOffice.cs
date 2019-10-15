@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ConsultaMD.Models.Entities
 {
-    public class MedicalOffice : MedicalAttention
+    public class MedicalOffice : MedicalAttentionMedium
     {
-        public int OfficeAddressId { get; set; }
-        public virtual Address Office { get; set; }
-        public string ParkingAddressId { get; set; }
-        public virtual Address Parking { get; set; }
-        public int ComunaId { get; set; }
-        public virtual Comuna Comuna { get; set; }
-        public List<string> Photos { get; set; }
+        public string PlaceId { get; set; }
+        public virtual Place Place { get; set; }
+        public string Block { get; set; }
+        public string Floor { get; set; }
+        public string Appartment { get; set; }
+        public string Office { get; set; }
     }
 }

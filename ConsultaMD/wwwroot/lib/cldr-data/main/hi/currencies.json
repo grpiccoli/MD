@@ -3,8 +3,11 @@
     "hi": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "hi"
       },
@@ -29,10 +32,6 @@
             "displayName-count-one": "अफ़गान अफ़गानी",
             "displayName-count-other": "अफ़गान अफ़गानी",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "अल्बानियाई लेक",
@@ -88,9 +87,9 @@
             "symbol": "ARP"
           },
           "ARS": {
-            "displayName": "अर्जेंटीनी पेसो",
-            "displayName-count-one": "अर्जेंटीनी पेसो",
-            "displayName-count-other": "अर्जेंटीनी पेसो",
+            "displayName": "अर्जेंटीनी पीसो",
+            "displayName-count-one": "अर्जेंटीनी पीसो",
+            "displayName-count-other": "अर्जेंटीनी पीसो",
             "symbol": "ARS",
             "symbol-alt-narrow": "$"
           },
@@ -284,18 +283,12 @@
             "displayName": "BYB",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "बेलारूसी रूबल",
             "displayName-count-one": "बेलारूसी रूबल",
             "displayName-count-other": "बेलारूसी रूबल",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "बेलारूसी रूबल (2000–2016)",
-            "displayName-count-one": "बेलारूसी रूबल (2000–2016)",
-            "displayName-count-other": "बेलारूसी रूबल (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "बेलीज़ डॉलर",
@@ -340,21 +333,11 @@
             "symbol": "CLF"
           },
           "CLP": {
-            "displayName": "चिली पेसो",
-            "displayName-count-one": "चिली पेसो",
-            "displayName-count-other": "चिली पेसो",
+            "displayName": "चिली पीसो",
+            "displayName-count-one": "चिली पीसो",
+            "displayName-count-other": "चिली पीसो",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "चीनी यूआन",
-            "displayName-count-one": "चीनी यूआन",
-            "displayName-count-other": "चीनी यूआन",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "चीनी युआन",
@@ -364,9 +347,9 @@
             "symbol-alt-narrow": "¥"
           },
           "COP": {
-            "displayName": "कोलंबियाई पेसो",
-            "displayName-count-one": "कोलंबियाई पेसो",
-            "displayName-count-other": "कोलंबियाई पेसो",
+            "displayName": "कोलंबियाई पीसो",
+            "displayName-count-one": "कोलंबियाई पीसो",
+            "displayName-count-other": "कोलंबियाई पीसो",
             "symbol": "COP",
             "symbol-alt-narrow": "$"
           },
@@ -390,16 +373,16 @@
             "symbol": "CSK"
           },
           "CUC": {
-            "displayName": "क्यूबाई परिवर्तनीय पेसो",
-            "displayName-count-one": "क्यूबाई परिवर्तनीय पेसो",
-            "displayName-count-other": "क्यूबाई परिवर्तनीय पेसो",
+            "displayName": "क्यूबाई परिवर्तनीय पीसो",
+            "displayName-count-one": "क्यूबाई परिवर्तनीय पीसो",
+            "displayName-count-other": "क्यूबाई परिवर्तनीय पीसो",
             "symbol": "CUC",
             "symbol-alt-narrow": "$"
           },
           "CUP": {
-            "displayName": "क्यूबाई पेसो",
-            "displayName-count-one": "क्यूबाई पेसो",
-            "displayName-count-other": "क्यूबाई पेसो",
+            "displayName": "क्यूबाई पीसो",
+            "displayName-count-one": "क्यूबाई पीसो",
+            "displayName-count-other": "क्यूबाई पीसो",
             "symbol": "CUP",
             "symbol-alt-narrow": "$"
           },
@@ -442,9 +425,9 @@
             "symbol-alt-narrow": "kr"
           },
           "DOP": {
-            "displayName": "डोमिनिकन पेसो",
-            "displayName-count-one": "डोमिनिकन पेसो",
-            "displayName-count-other": "डोमिनिकन पेसो",
+            "displayName": "डोमिनिकन पीसो",
+            "displayName-count-one": "डोमिनिकन पीसो",
+            "displayName-count-other": "डोमिनिकन पीसो",
             "symbol": "DOP",
             "symbol-alt-narrow": "$"
           },
@@ -542,9 +525,7 @@
             "displayName": "जॉर्जियन लारी",
             "displayName-count-one": "जॉर्जियन लारी",
             "displayName-count-other": "जॉर्जियन लारी",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "ლ"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "GHC",
@@ -663,10 +644,6 @@
             "displayName": "ILP",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
             "displayName": "इज़राइली न्यू शेकेल",
             "displayName-count-one": "इज़राइली न्यू शेकेल",
@@ -692,10 +669,6 @@
             "displayName-count-one": "ईरानी रियाल",
             "displayName-count-other": "ईरानी रियाल",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "आइसलैंडिक क्रोना",
@@ -938,16 +911,10 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "मॉरीटेनियन ओगुइया (1973–2017)",
-            "displayName-count-one": "मॉरीटेनियन ओगुइया (1973–2017)",
-            "displayName-count-other": "मॉरीटेनियन ओगुइया (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "मॉरीटेनियन ओगुइया",
             "displayName-count-one": "मॉरीटेनियन ओगुइया",
             "displayName-count-other": "मॉरीटेनियन ओगुइया",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "MTL",
@@ -964,10 +931,6 @@
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
           },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
-          },
           "MVR": {
             "displayName": "मालदीवी रुफ़िया",
             "displayName-count-one": "मालदीवी रुफ़िया",
@@ -981,9 +944,9 @@
             "symbol": "MWK"
           },
           "MXN": {
-            "displayName": "मैक्सिकन पेसो",
-            "displayName-count-one": "मैक्सिकन पेसो",
-            "displayName-count-other": "मैक्सिकन पेसो",
+            "displayName": "मैक्सिकन पीसो",
+            "displayName-count-one": "मैक्सिकन पीसो",
+            "displayName-count-other": "मैक्सिकन पीसो",
             "symbol": "MX$",
             "symbol-alt-narrow": "$"
           },
@@ -1083,9 +1046,9 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "पेरूवियन सोल",
-            "displayName-count-one": "पेरूवियन सोल",
-            "displayName-count-other": "पेरूवियन सोल",
+            "displayName": "पेरूवियन नुएवो सोल",
+            "displayName-count-one": "पेरूवियन नुएवो सोल",
+            "displayName-count-other": "पेरूवियन नुएवो सोल",
             "symbol": "PEN"
           },
           "PES": {
@@ -1099,9 +1062,9 @@
             "symbol": "PGK"
           },
           "PHP": {
-            "displayName": "फ़िलिपीनी पेसो",
-            "displayName-count-one": "फ़िलिपीनी पेसो",
-            "displayName-count-other": "फ़िलिपीनी पेसो",
+            "displayName": "फ़िलिपीनी पीसो",
+            "displayName-count-one": "फ़िलिपीनी पीसो",
+            "displayName-count-other": "फ़िलिपीनी पीसो",
             "symbol": "PHP",
             "symbol-alt-narrow": "₱"
           },
@@ -1152,8 +1115,7 @@
             "displayName": "रोमानियाई ल्यू",
             "displayName-count-one": "रोमानियाई ल्यू",
             "displayName-count-other": "रोमानियाई ल्यू",
-            "symbol": "RON",
-            "symbol-alt-narrow": "लेई"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "सर्बियन दिनार",
@@ -1166,7 +1128,7 @@
             "displayName-count-one": "रूसी रूबल",
             "displayName-count-other": "रूसी रूबल",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "RUR",
@@ -1273,16 +1235,10 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "साओ तोम और प्रिंसिपे डोबरा (1977–2017)",
-            "displayName-count-one": "साओ तोम और प्रिंसिपे डोबरा (1977–2017)",
-            "displayName-count-other": "साओ तोम और प्रिंसिपे डोबरा (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
-            "displayName": "साओ टोम और प्रिंसिपे डोबरा",
-            "displayName-count-one": "साओ टोम और प्रिंसिपे डोबरा",
-            "displayName-count-other": "साओ टोम और प्रिंसिपे डोबरा",
-            "symbol": "STN",
+            "displayName": "साओ तोम और प्रिंसिपे डोबरा",
+            "displayName-count-one": "साओ तोम और प्रिंसिपे डोबरा",
+            "displayName-count-other": "साओ तोम और प्रिंसिपे डोबरा",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1427,15 +1383,11 @@
             "symbol": "UYP"
           },
           "UYU": {
-            "displayName": "उरुग्वियन पेसो",
-            "displayName-count-one": "उरुग्वियन पेसो",
-            "displayName-count-other": "उरुग्वियन पेसो",
+            "displayName": "उरुग्वियन पीसो",
+            "displayName-count-one": "उरुग्वियन पीसो",
+            "displayName-count-other": "उरुग्वियन पीसो",
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
-          },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
           },
           "UZS": {
             "displayName": "उज़्बेकिस्तान सोम",
@@ -1448,17 +1400,11 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "वेनेज़ुएला बोलिवर (2008–2018)",
-            "displayName-count-one": "वेनेज़ुएला बोलिवर (2008–2018)",
-            "displayName-count-other": "वेनेज़ुएला बोलिवर (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "वेनेज़ुएला बोलिवर",
             "displayName-count-one": "वेनेज़ुएला बोलिवर",
             "displayName-count-other": "वेनेज़ुएला बोलिवर",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "वियतनामी डोंग",
@@ -1484,9 +1430,9 @@
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "केंद्रीय अफ़्रीकी CFA फ़्रैंक",
-            "displayName-count-one": "केंद्रीय अफ़्रीकी CFA फ़्रैंक",
-            "displayName-count-other": "केंद्रीय अफ़्रीकी CFA फ़्रैंक",
+            "displayName": "[CFA] फ़्रैंक [BEAC]",
+            "displayName-count-one": "[CFA] फ़्रैंक [BEAC]",
+            "displayName-count-other": "[CFA] फ़्रैंक [BEAC]",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1537,9 +1483,9 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "पश्चिमी अफ़्रीकी CFA फ़्रैंक",
-            "displayName-count-one": "पश्चिमी अफ़्रीकी CFA फ़्रैंक",
-            "displayName-count-other": "पश्चिमी अफ़्रीकी CFA फ़्रैंक",
+            "displayName": "[CFA] फ़्रैंक [BCEAO]",
+            "displayName-count-one": "[CFA] फ़्रैंक [BCEAO]",
+            "displayName-count-other": "[CFA] फ़्रैंक [BCEAO]",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1576,7 +1522,7 @@
             "displayName": "अज्ञात मुद्रा",
             "displayName-count-one": "(मुद्रा की अज्ञात इकाई)",
             "displayName-count-other": "(अज्ञात मुद्रा)",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "YDD",

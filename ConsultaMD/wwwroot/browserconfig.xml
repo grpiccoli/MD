@@ -3,7 +3,12 @@
     <msapplication>
         <tile>
             <square150x150logo src="/mstile-150x150.png"/>
-            <TileColor>#00aba9</TileColor>
+            <TileColor>#169d99</TileColor>
         </tile>
     </msapplication>
+  <notification>
+    <polling-uri src=""></polling-uri>
+    <frequency>30</frequency>
+    <cycle>1</cycle>
+  </notification>
 </browserconfig>

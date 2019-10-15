@@ -3,8 +3,11 @@
     "ar": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "ar"
       },
@@ -38,10 +41,6 @@
             "displayName-count-other": "أفغاني أفغانستاني",
             "symbol": "AFN"
           },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
-          },
           "ALL": {
             "displayName": "ليك ألباني",
             "displayName-count-zero": "ليك ألباني",
@@ -63,7 +62,7 @@
             "symbol": "AMD"
           },
           "ANG": {
-            "displayName": "غيلدر أنتيلي هولندي",
+            "displayName": "غيلدر هولندي أنتيلي",
             "displayName-count-zero": "غيلدر أنتيلي هولندي",
             "displayName-count-one": "غيلدر أنتيلي هولندي",
             "displayName-count-two": "غيلدر أنتيلي هولندي",
@@ -73,13 +72,13 @@
             "symbol": "ANG"
           },
           "AOA": {
-            "displayName": "كوانزا أنغولي",
-            "displayName-count-zero": "كوانزا أنغولي",
-            "displayName-count-one": "كوانزا أنغولي",
-            "displayName-count-two": "كوانزا أنغولي",
-            "displayName-count-few": "كوانزا أنغولي",
-            "displayName-count-many": "كوانزا أنغولي",
-            "displayName-count-other": "كوانزا أنغولي",
+            "displayName": "كوانزا أنجولي",
+            "displayName-count-zero": "كوانزا أنجولي",
+            "displayName-count-one": "كوانزا أنجولي",
+            "displayName-count-two": "كوانزا أنجولي",
+            "displayName-count-few": "كوانزا أنجولي",
+            "displayName-count-many": "كوانزا أنجولي",
+            "displayName-count-other": "كوانزا أنجولي",
             "symbol": "AOA",
             "symbol-alt-narrow": "Kz"
           },
@@ -97,6 +96,12 @@
           },
           "ARA": {
             "displayName": "استرال أرجنتيني",
+            "displayName-count-zero": "أسترال أرجنتيني",
+            "displayName-count-one": "أسترال أرجنتيني",
+            "displayName-count-two": "أسترال أرجنتيني",
+            "displayName-count-few": "أسترال أرجنتيني",
+            "displayName-count-many": "أسترال أرجنتيني",
+            "displayName-count-other": "أسترال أرجنتيني",
             "symbol": "ARA"
           },
           "ARL": {
@@ -149,16 +154,16 @@
           },
           "AZM": {
             "displayName": "مانات أذريبجاني",
+            "displayName-count-zero": "مانات أذريبجاني",
+            "displayName-count-one": "مانات أذريبجاني",
+            "displayName-count-two": "مانات أذريبجاني",
+            "displayName-count-few": "مانات أذريبجاني",
+            "displayName-count-many": "مانات أذريبجاني",
+            "displayName-count-other": "مانات أذريبجاني",
             "symbol": "AZM"
           },
           "AZN": {
             "displayName": "مانات أذربيجان",
-            "displayName-count-zero": "مانت أذربيجاني",
-            "displayName-count-one": "مانت أذربيجاني",
-            "displayName-count-two": "مانت أذربيجاني",
-            "displayName-count-few": "مانت أذربيجاني",
-            "displayName-count-many": "مانت أذربيجاني",
-            "displayName-count-other": "مانت أذربيجاني",
             "symbol": "AZN"
           },
           "BAD": {
@@ -192,13 +197,13 @@
             "symbol-alt-narrow": "BB$"
           },
           "BDT": {
-            "displayName": "تاكا بنغلاديشي",
-            "displayName-count-zero": "تاكا بنغلاديشي",
-            "displayName-count-one": "تاكا بنغلاديشي",
-            "displayName-count-two": "تاكا بنغلاديشي",
-            "displayName-count-few": "تاكا بنغلاديشي",
-            "displayName-count-many": "تاكا بنغلاديشي",
-            "displayName-count-other": "تاكا بنغلاديشي",
+            "displayName": "تاكا بنجلاديشي",
+            "displayName-count-zero": "تاكا بنجلاديشي",
+            "displayName-count-one": "تاكا بنجلاديشي",
+            "displayName-count-two": "تاكا بنجلاديشي",
+            "displayName-count-few": "تاكا بنجلاديشي",
+            "displayName-count-many": "تاكا بنجلاديشي",
+            "displayName-count-other": "تاكا بنجلاديشي",
             "symbol": "BDT",
             "symbol-alt-narrow": "৳"
           },
@@ -208,6 +213,12 @@
           },
           "BEF": {
             "displayName": "فرنك بلجيكي",
+            "displayName-count-zero": "فرنك بلجيكي",
+            "displayName-count-one": "فرنك بلجيكي",
+            "displayName-count-two": "فرنك بلجيكي",
+            "displayName-count-few": "فرنك بلجيكي",
+            "displayName-count-many": "فرنك بلجيكي",
+            "displayName-count-other": "فرنك بلجيكي",
             "symbol": "BEF"
           },
           "BEL": {
@@ -295,6 +306,12 @@
           },
           "BOP": {
             "displayName": "بيزو بوليفي",
+            "displayName-count-zero": "بيزو بوليفي",
+            "displayName-count-one": "بيزو بوليفي",
+            "displayName-count-two": "بيزو بوليفي",
+            "displayName-count-few": "بيزو بوليفي",
+            "displayName-count-many": "بيزو بوليفي",
+            "displayName-count-other": "بيزو بوليفي",
             "symbol": "BOP"
           },
           "BOV": {
@@ -376,7 +393,7 @@
             "displayName": "روبل بيلاروسي جديد - 1994-1999",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "روبل بيلاروسي",
             "displayName-count-zero": "روبل بيلاروسي",
             "displayName-count-one": "روبل بيلاروسي",
@@ -384,24 +401,14 @@
             "displayName-count-few": "روبل بيلاروسي",
             "displayName-count-many": "روبل بيلاروسي",
             "displayName-count-other": "روبل بيلاروسي",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "displayName-count-zero": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "displayName-count-one": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "displayName-count-two": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "displayName-count-few": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "displayName-count-many": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "displayName-count-other": "روبل بيلاروسي (٢٠٠٠–٢٠١٦)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "دولار بليزي",
             "displayName-count-zero": "دولار بليزي",
             "displayName-count-one": "دولار بليزي",
-            "displayName-count-two": "دولاران بليزيان",
+            "displayName-count-two": "دولار بليزي",
             "displayName-count-few": "دولار بليزي",
             "displayName-count-many": "دولار بليزي",
             "displayName-count-other": "دولار بليزي",
@@ -456,29 +463,15 @@
             "symbol": "CLF"
           },
           "CLP": {
-            "displayName": "بيزو تشيلي",
-            "displayName-count-zero": "بيزو تشيلي",
-            "displayName-count-one": "بيزو تشيلي",
-            "displayName-count-two": "بيزو تشيلي",
-            "displayName-count-few": "بيزو تشيلي",
-            "displayName-count-many": "بيزو تشيلي",
-            "displayName-count-other": "بيزو تشيلي",
+            "displayName": "بيزو شيلي",
+            "displayName-count-zero": "بيزو شيلي",
+            "displayName-count-one": "بيزو شيلي",
+            "displayName-count-two": "بيزو شيلي",
+            "displayName-count-few": "بيزو شيلي",
+            "displayName-count-many": "بيزو شيلي",
+            "displayName-count-other": "بيزو شيلي",
             "symbol": "CLP",
             "symbol-alt-narrow": "CL$"
-          },
-          "CNH": {
-            "displayName": "يوان صيني (في الخارج)",
-            "displayName-count-zero": "يوان صيني (في الخارج)",
-            "displayName-count-one": "يوان صيني (في الخارج)",
-            "displayName-count-two": "يوان صيني (في الخارج)",
-            "displayName-count-few": "يوان صيني (في الخارج)",
-            "displayName-count-many": "يوان صيني (في الخارج)",
-            "displayName-count-other": "يوان صيني (في الخارج)",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "يوان صيني",
@@ -488,7 +481,7 @@
             "displayName-count-few": "يوان صيني",
             "displayName-count-many": "يوان صيني",
             "displayName-count-other": "يوان صيني",
-            "symbol": "CN¥",
+            "symbol": "ي.ص",
             "symbol-alt-narrow": "CN¥"
           },
           "COP": {
@@ -507,13 +500,13 @@
             "symbol": "COU"
           },
           "CRC": {
-            "displayName": "كولن كوستاريكي",
-            "displayName-count-zero": "كولن كوستاريكي",
-            "displayName-count-one": "كولن كوستاريكي",
-            "displayName-count-two": "كولن كوستاريكي",
-            "displayName-count-few": "كولن كوستاريكي",
-            "displayName-count-many": "كولن كوستاريكي",
-            "displayName-count-other": "كولن كوستاريكي",
+            "displayName": "كولن كوستا ريكي",
+            "displayName-count-zero": "كولن كوستا ريكي",
+            "displayName-count-one": "كولن كوستا ريكي",
+            "displayName-count-two": "كولن كوستا ريكي",
+            "displayName-count-few": "كولن كوستا ريكي",
+            "displayName-count-many": "كولن كوستا ريكي",
+            "displayName-count-other": "كولن كوستا ريكي",
             "symbol": "CRC",
             "symbol-alt-narrow": "₡"
           },
@@ -527,12 +520,6 @@
           },
           "CUC": {
             "displayName": "بيزو كوبي قابل للتحويل",
-            "displayName-count-zero": "بيزو كوبي قابل للتحويل",
-            "displayName-count-one": "بيزو كوبي قابل للتحويل",
-            "displayName-count-two": "بيزو كوبي قابل للتحويل",
-            "displayName-count-few": "بيزو كوبي قابل للتحويل",
-            "displayName-count-many": "بيزو كوبي قابل للتحويل",
-            "displayName-count-other": "بيزو كوبي قابل للتحويل",
             "symbol": "CUC",
             "symbol-alt-narrow": "$"
           },
@@ -548,17 +535,23 @@
             "symbol-alt-narrow": "CU$"
           },
           "CVE": {
-            "displayName": "اسكودو الرأس الأخضر",
-            "displayName-count-zero": "اسكودو الرأس الأخضر",
-            "displayName-count-one": "اسكودو الرأس الأخضر",
-            "displayName-count-two": "اسكودو الرأس الأخضر",
-            "displayName-count-few": "اسكودو الرأس الأخضر",
-            "displayName-count-many": "اسكودو الرأس الأخضر",
-            "displayName-count-other": "اسكودو الرأس الأخضر",
+            "displayName": "اسكودو الرأس الخضراء",
+            "displayName-count-zero": "اسكودو الرأس الخضراء",
+            "displayName-count-one": "اسكودو الرأس الخضراء",
+            "displayName-count-two": "اسكودو الرأس الخضراء",
+            "displayName-count-few": "اسكودو الرأس الخضراء",
+            "displayName-count-many": "اسكودو الرأس الخضراء",
+            "displayName-count-other": "اسكودو الرأس الخضراء",
             "symbol": "CVE"
           },
           "CYP": {
             "displayName": "جنيه قبرصي",
+            "displayName-count-zero": "جنيه قبرصي",
+            "displayName-count-one": "جنيه قبرصي",
+            "displayName-count-two": "جنيه قبرصي",
+            "displayName-count-few": "جنيه قبرصي",
+            "displayName-count-many": "جنيه قبرصي",
+            "displayName-count-other": "جنيه قبرصي",
             "symbol": "CYP"
           },
           "CZK": {
@@ -578,6 +571,12 @@
           },
           "DEM": {
             "displayName": "مارك ألماني",
+            "displayName-count-zero": "مارك ألماني",
+            "displayName-count-one": "مارك ألماني",
+            "displayName-count-two": "مارك ألماني",
+            "displayName-count-few": "مارك ألماني",
+            "displayName-count-many": "مارك ألماني",
+            "displayName-count-other": "مارك ألماني",
             "symbol": "DEM"
           },
           "DJF": {
@@ -591,13 +590,13 @@
             "symbol": "DJF"
           },
           "DKK": {
-            "displayName": "كرونة دنماركية",
-            "displayName-count-zero": "كرونة دنماركية",
-            "displayName-count-one": "كرونة دنماركية",
-            "displayName-count-two": "كرونة دنماركية",
-            "displayName-count-few": "كرونة دنماركية",
-            "displayName-count-many": "كرونة دنماركية",
-            "displayName-count-other": "كرونة دنماركية",
+            "displayName": "كرونة دانماركي",
+            "displayName-count-zero": "كرونة دانماركي",
+            "displayName-count-one": "كرونة دانماركي",
+            "displayName-count-two": "كرونة دانماركي",
+            "displayName-count-few": "كرونة دانماركي",
+            "displayName-count-many": "كرونة دانماركي",
+            "displayName-count-other": "كرونة دانماركي",
             "symbol": "DKK",
             "symbol-alt-narrow": "kr"
           },
@@ -616,9 +615,9 @@
             "displayName": "دينار جزائري",
             "displayName-count-zero": "دينار جزائري",
             "displayName-count-one": "دينار جزائري",
-            "displayName-count-two": "ديناران جزائريان",
-            "displayName-count-few": "دينارات جزائرية",
-            "displayName-count-many": "دينارًا جزائريًا",
+            "displayName-count-two": "دينار جزائري",
+            "displayName-count-few": "دينار جزائري",
+            "displayName-count-many": "دينار جزائري",
             "displayName-count-other": "دينار جزائري",
             "symbol": "د.ج.‏"
           },
@@ -632,15 +631,21 @@
           },
           "EEK": {
             "displayName": "كرونة استونية",
+            "displayName-count-zero": "كرونة أستونية",
+            "displayName-count-one": "كرونة أستونية",
+            "displayName-count-two": "كرونة أستونية",
+            "displayName-count-few": "كرونة أستونية",
+            "displayName-count-many": "كرونة أستونية",
+            "displayName-count-other": "كرونة أستونية",
             "symbol": "EEK"
           },
           "EGP": {
             "displayName": "جنيه مصري",
             "displayName-count-zero": "جنيه مصري",
             "displayName-count-one": "جنيه مصري",
-            "displayName-count-two": "جنيهان مصريان",
-            "displayName-count-few": "جنيهات مصرية",
-            "displayName-count-many": "جنيهًا مصريًا",
+            "displayName-count-two": "جنيه مصري",
+            "displayName-count-few": "جنيه مصري",
+            "displayName-count-many": "جنيه مصري",
             "displayName-count-other": "جنيه مصري",
             "symbol": "ج.م.‏",
             "symbol-alt-narrow": "E£"
@@ -665,6 +670,12 @@
           },
           "ESP": {
             "displayName": "بيزيتا إسباني",
+            "displayName-count-zero": "بيزيتا إسباني",
+            "displayName-count-one": "بيزيتا إسباني",
+            "displayName-count-two": "بيزيتا إسباني",
+            "displayName-count-few": "بيزيتا إسباني",
+            "displayName-count-many": "بيزيتا إسباني",
+            "displayName-count-other": "بيزيتا إسباني",
             "symbol": "ESP",
             "symbol-alt-narrow": "₧"
           },
@@ -691,6 +702,12 @@
           },
           "FIM": {
             "displayName": "ماركا فنلندي",
+            "displayName-count-zero": "ماركا فنلندي",
+            "displayName-count-one": "ماركا فنلندي",
+            "displayName-count-two": "ماركا فنلندي",
+            "displayName-count-few": "ماركا فنلندي",
+            "displayName-count-many": "ماركا فنلندي",
+            "displayName-count-other": "ماركا فنلندي",
             "symbol": "FIM"
           },
           "FJD": {
@@ -717,6 +734,12 @@
           },
           "FRF": {
             "displayName": "فرنك فرنسي",
+            "displayName-count-zero": "فرنك فرنسي",
+            "displayName-count-one": "فرنك فرنسي",
+            "displayName-count-two": "فرنك فرنسي",
+            "displayName-count-few": "فرنك فرنسي",
+            "displayName-count-many": "فرنك فرنسي",
+            "displayName-count-other": "فرنك فرنسي",
             "symbol": "FRF"
           },
           "GBP": {
@@ -742,22 +765,20 @@
             "displayName-count-few": "لاري جورجي",
             "displayName-count-many": "لاري جورجي",
             "displayName-count-other": "لاري جورجي",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "سيدي غاني",
+            "displayName-count-zero": "سيدي غاني",
+            "displayName-count-one": "سيدي غاني",
+            "displayName-count-two": "سيدي غاني",
+            "displayName-count-few": "سيدي غاني",
+            "displayName-count-many": "سيدي غاني",
+            "displayName-count-other": "سيدي غاني",
             "symbol": "GHC"
           },
           "GHS": {
             "displayName": "سيدي غانا",
-            "displayName-count-zero": "سيدي غانا",
-            "displayName-count-one": "سيدي غانا",
-            "displayName-count-two": "سيدي غانا",
-            "displayName-count-few": "سيدي غانا",
-            "displayName-count-many": "سيدي غانا",
-            "displayName-count-other": "سيدي غانا",
             "symbol": "GHS"
           },
           "GIP": {
@@ -772,13 +793,13 @@
             "symbol-alt-narrow": "£"
           },
           "GMD": {
-            "displayName": "دلاسي غامبي",
-            "displayName-count-zero": "دلاسي غامبي",
-            "displayName-count-one": "دلاسي غامبي",
-            "displayName-count-two": "دلاسي غامبي",
-            "displayName-count-few": "دلاسي غامبي",
-            "displayName-count-many": "دلاسي غامبي",
-            "displayName-count-other": "دلاسي غامبي",
+            "displayName": "دلاسي جامبي",
+            "displayName-count-zero": "دلاسي جامبي",
+            "displayName-count-one": "دلاسي جامبي",
+            "displayName-count-two": "دلاسي جامبي",
+            "displayName-count-few": "دلاسي جامبي",
+            "displayName-count-many": "دلاسي جامبي",
+            "displayName-count-other": "دلاسي جامبي",
             "symbol": "GMD"
           },
           "GNF": {
@@ -802,16 +823,22 @@
           },
           "GRD": {
             "displayName": "دراخما يوناني",
+            "displayName-count-zero": "دراخما يوناني",
+            "displayName-count-one": "دراخما يوناني",
+            "displayName-count-two": "دراخما يوناني",
+            "displayName-count-few": "دراخما يوناني",
+            "displayName-count-many": "دراخما يوناني",
+            "displayName-count-other": "دراخما يوناني",
             "symbol": "GRD"
           },
           "GTQ": {
-            "displayName": "كوتزال غواتيمالا",
-            "displayName-count-zero": "كوتزال غواتيمالا",
-            "displayName-count-one": "كوتزال غواتيمالا",
-            "displayName-count-two": "كوتزال غواتيمالا",
-            "displayName-count-few": "كوتزال غواتيمالا",
-            "displayName-count-many": "كوتزال غواتيمالا",
-            "displayName-count-other": "كوتزال غواتيمالا",
+            "displayName": "كوتزال جواتيمالا",
+            "displayName-count-zero": "كوتزال جواتيمالا",
+            "displayName-count-one": "كوتزال جواتيمالا",
+            "displayName-count-two": "كوتزال جواتيمالا",
+            "displayName-count-few": "كوتزال جواتيمالا",
+            "displayName-count-many": "كوتزال جواتيمالا",
+            "displayName-count-other": "كوتزال جواتيمالا",
             "symbol": "GTQ",
             "symbol-alt-narrow": "Q"
           },
@@ -835,13 +862,13 @@
             "symbol-alt-narrow": "GY$"
           },
           "HKD": {
-            "displayName": "دولار هونغ كونغ",
-            "displayName-count-zero": "دولار هونغ كونغ",
-            "displayName-count-one": "دولار هونغ كونغ",
-            "displayName-count-two": "دولار هونغ كونغ",
-            "displayName-count-few": "دولار هونغ كونغ",
-            "displayName-count-many": "دولار هونغ كونغ",
-            "displayName-count-other": "دولار هونغ كونغ",
+            "displayName": "دولار هونج كونج",
+            "displayName-count-zero": "دولار هونج كونج",
+            "displayName-count-one": "دولار هونج كونج",
+            "displayName-count-two": "دولار هونج كونج",
+            "displayName-count-few": "دولار هونج كونج",
+            "displayName-count-many": "دولار هونج كونج",
+            "displayName-count-other": "دولار هونج كونج",
             "symbol": "HK$",
             "symbol-alt-narrow": "HK$"
           },
@@ -882,38 +909,46 @@
             "symbol": "HTG"
           },
           "HUF": {
-            "displayName": "فورينت هنغاري",
-            "displayName-count-zero": "فورينت هنغاري",
-            "displayName-count-one": "فورينت هنغاري",
-            "displayName-count-two": "فورينت هنغاري",
-            "displayName-count-few": "فورينت هنغاري",
-            "displayName-count-many": "فورينت هنغاري",
-            "displayName-count-other": "فورينت هنغاري",
+            "displayName": "فورينت مجري",
+            "displayName-count-zero": "فورينت مجري",
+            "displayName-count-one": "فورينت مجري",
+            "displayName-count-two": "فورينت مجري",
+            "displayName-count-few": "فورينت مجري",
+            "displayName-count-many": "فورينت مجري",
+            "displayName-count-other": "فورينت مجري",
             "symbol": "HUF",
             "symbol-alt-narrow": "Ft"
           },
           "IDR": {
             "displayName": "روبية إندونيسية",
-            "displayName-count-zero": "روبية إندونيسية",
-            "displayName-count-one": "روبية إندونيسية",
-            "displayName-count-two": "روبية إندونيسية",
-            "displayName-count-few": "روبية إندونيسية",
-            "displayName-count-many": "روبية إندونيسية",
-            "displayName-count-other": "روبية إندونيسية",
-            "symbol": "IDR",
+            "displayName-count-zero": "روبيه إندونيسية",
+            "displayName-count-one": "روبيه إندونيسية",
+            "displayName-count-two": "روبيه إندونيسية",
+            "displayName-count-few": "روبيه إندونيسية",
+            "displayName-count-many": "روبيه إندونيسية",
+            "displayName-count-other": "روبيه إندونيسية",
+            "symbol": "ر.إن.",
             "symbol-alt-narrow": "Rp"
           },
           "IEP": {
             "displayName": "جنيه إيرلندي",
+            "displayName-count-zero": "جنيه إيرلندي",
+            "displayName-count-one": "جنيه إيرلندي",
+            "displayName-count-two": "جنيه إيرلندي",
+            "displayName-count-few": "جنيه إيرلندي",
+            "displayName-count-many": "جنيه إيرلندي",
+            "displayName-count-other": "جنيه إيرلندي",
             "symbol": "IEP"
           },
           "ILP": {
             "displayName": "جنيه إسرائيلي",
+            "displayName-count-zero": "جنيه إسرائيلي",
+            "displayName-count-one": "جنيه إسرائيلي",
+            "displayName-count-two": "جنيه إسرائيلي",
+            "displayName-count-few": "جنيه إسرائيلي",
+            "displayName-count-many": "جنيه إسرائيلي",
+            "displayName-count-other": "جنيه إسرائيلي",
             "symbol": "ILP"
-          },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
           },
           "ILS": {
             "displayName": "شيكل إسرائيلي جديد",
@@ -927,14 +962,14 @@
             "symbol-alt-narrow": "₪"
           },
           "INR": {
-            "displayName": "روبية هندي",
+            "displayName": "روبيه هندي",
             "displayName-count-zero": "روبية هندي",
             "displayName-count-one": "روبية هندي",
             "displayName-count-two": "روبية هندي",
             "displayName-count-few": "روبية هندي",
             "displayName-count-many": "روبية هندي",
             "displayName-count-other": "روبية هندي",
-            "symbol": "₹",
+            "symbol": "ر.ه.‏",
             "symbol-alt-narrow": "₹"
           },
           "IQD": {
@@ -957,23 +992,25 @@
             "displayName-count-other": "ريال إيراني",
             "symbol": "ر.إ."
           },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
-          },
           "ISK": {
-            "displayName": "كرونة أيسلندية",
-            "displayName-count-zero": "كرونة أيسلندية",
-            "displayName-count-one": "كرونة أيسلندية",
-            "displayName-count-two": "كرونة أيسلندية",
-            "displayName-count-few": "كرونة أيسلندية",
-            "displayName-count-many": "كرونة أيسلندية",
-            "displayName-count-other": "كرونة أيسلندية",
+            "displayName": "كرونه أيسلندي",
+            "displayName-count-zero": "كرونه أيسلندي",
+            "displayName-count-one": "كرونه أيسلندي",
+            "displayName-count-two": "كرونه أيسلندي",
+            "displayName-count-few": "كرونه أيسلندي",
+            "displayName-count-many": "كرونه أيسلندي",
+            "displayName-count-other": "كرونه أيسلندي",
             "symbol": "ISK",
             "symbol-alt-narrow": "kr"
           },
           "ITL": {
             "displayName": "ليرة إيطالية",
+            "displayName-count-zero": "ليرة إيطالية",
+            "displayName-count-one": "ليرة إيطالية",
+            "displayName-count-two": "ليرة إيطالية",
+            "displayName-count-few": "ليرة إيطالية",
+            "displayName-count-many": "ليرة إيطالية",
+            "displayName-count-other": "ليرة إيطالية",
             "symbol": "ITL"
           },
           "JMD": {
@@ -1047,7 +1084,7 @@
             "displayName-count-few": "فرنك جزر القمر",
             "displayName-count-many": "فرنك جزر القمر",
             "displayName-count-other": "فرنك جزر القمر",
-            "symbol": "KMF",
+            "symbol": "ف.ج.ق.‏",
             "symbol-alt-narrow": "CF"
           },
           "KPW": {
@@ -1124,13 +1161,13 @@
             "symbol-alt-narrow": "₭"
           },
           "LBP": {
-            "displayName": "جنيه لبناني",
-            "displayName-count-zero": "جنيه لبناني",
-            "displayName-count-one": "جنيه لبناني",
-            "displayName-count-two": "جنيه لبناني",
-            "displayName-count-few": "جنيه لبناني",
-            "displayName-count-many": "جنيه لبناني",
-            "displayName-count-other": "جنيه لبناني",
+            "displayName": "جنية لبناني",
+            "displayName-count-zero": "جنية لبناني",
+            "displayName-count-one": "جنية لبناني",
+            "displayName-count-two": "جنية لبناني",
+            "displayName-count-few": "جنية لبناني",
+            "displayName-count-many": "جنية لبناني",
+            "displayName-count-other": "جنية لبناني",
             "symbol": "ل.ل.‏",
             "symbol-alt-narrow": "L£"
           },
@@ -1149,15 +1186,21 @@
             "displayName": "دولار ليبيري",
             "displayName-count-zero": "دولار ليبيري",
             "displayName-count-one": "دولار ليبيري",
-            "displayName-count-two": "دولاران ليبيريان",
-            "displayName-count-few": "دولارات ليبيرية",
-            "displayName-count-many": "دولارًا ليبيريًا",
+            "displayName-count-two": "دولار ليبيري",
+            "displayName-count-few": "دولار ليبيري",
+            "displayName-count-many": "دولار ليبيري",
             "displayName-count-other": "دولار ليبيري",
             "symbol": "LRD",
             "symbol-alt-narrow": "$"
           },
           "LSL": {
             "displayName": "لوتي ليسوتو",
+            "displayName-count-zero": "لوتي ليسوتو",
+            "displayName-count-one": "لوتي ليسوتو",
+            "displayName-count-two": "لوتي ليسوتو",
+            "displayName-count-few": "لوتي ليسوتو",
+            "displayName-count-many": "لوتي ليسوتو",
+            "displayName-count-other": "لوتي ليسوتو",
             "symbol": "LSL"
           },
           "LTL": {
@@ -1206,9 +1249,9 @@
             "displayName": "دينار ليبي",
             "displayName-count-zero": "دينار ليبي",
             "displayName-count-one": "دينار ليبي",
-            "displayName-count-two": "ديناران ليبيان",
-            "displayName-count-few": "دينارات ليبية",
-            "displayName-count-many": "دينارًا ليبيًا",
+            "displayName-count-two": "دينار ليبي",
+            "displayName-count-few": "دينار ليبي",
+            "displayName-count-many": "دينار ليبي",
             "displayName-count-other": "دينار ليبي",
             "symbol": "د.ل.‏"
           },
@@ -1216,9 +1259,9 @@
             "displayName": "درهم مغربي",
             "displayName-count-zero": "درهم مغربي",
             "displayName-count-one": "درهم مغربي",
-            "displayName-count-two": "درهمان مغربيان",
-            "displayName-count-few": "دراهم مغربية",
-            "displayName-count-many": "درهمًا مغربيًا",
+            "displayName-count-two": "درهم مغربي",
+            "displayName-count-few": "درهم مغربي",
+            "displayName-count-many": "درهم مغربي",
             "displayName-count-other": "درهم مغربي",
             "symbol": "د.م.‏"
           },
@@ -1263,9 +1306,9 @@
             "displayName": "دينار مقدوني",
             "displayName-count-zero": "دينار مقدوني",
             "displayName-count-one": "دينار مقدوني",
-            "displayName-count-two": "ديناران مقدونيان",
-            "displayName-count-few": "دينارات مقدونية",
-            "displayName-count-many": "دينارًا مقدونيًا",
+            "displayName-count-two": "دينار مقدوني",
+            "displayName-count-few": "دينار مقدوني",
+            "displayName-count-many": "دينار مقدوني",
             "displayName-count-other": "دينار مقدوني",
             "symbol": "MKD"
           },
@@ -1310,16 +1353,6 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "أوقية موريتانية - 1973-2017",
-            "displayName-count-zero": "أوقية موريتانية - 1973-2017",
-            "displayName-count-one": "أوقية موريتانية - 1973-2017",
-            "displayName-count-two": "أوقية موريتانية - 1973-2017",
-            "displayName-count-few": "أوقية موريتانية - 1973-2017",
-            "displayName-count-many": "أوقية موريتانية - 1973-2017",
-            "displayName-count-other": "أوقية موريتانية - 1973-2017",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "أوقية موريتانية",
             "displayName-count-zero": "أوقية موريتانية",
             "displayName-count-one": "أوقية موريتانية",
@@ -1327,30 +1360,38 @@
             "displayName-count-few": "أوقية موريتانية",
             "displayName-count-many": "أوقية موريتانية",
             "displayName-count-other": "أوقية موريتانية",
-            "symbol": "أ.م."
+            "symbol": "أ.م.‏"
           },
           "MTL": {
             "displayName": "ليرة مالطية",
+            "displayName-count-zero": "ليرة مالطية",
+            "displayName-count-one": "ليرة مالطية",
+            "displayName-count-two": "ليرة مالطية",
+            "displayName-count-few": "ليرة مالطية",
+            "displayName-count-many": "ليرة مالطية",
+            "displayName-count-other": "ليرة مالطية",
             "symbol": "MTL"
           },
           "MTP": {
             "displayName": "جنيه مالطي",
+            "displayName-count-zero": "جنيه مالطي",
+            "displayName-count-one": "جنيه مالطي",
+            "displayName-count-two": "جنيه مالطي",
+            "displayName-count-few": "جنيه مالطي",
+            "displayName-count-many": "جنيه مالطي",
+            "displayName-count-other": "جنيه مالطي",
             "symbol": "MTP"
           },
           "MUR": {
             "displayName": "روبية موريشيوسية",
-            "displayName-count-zero": "روبية موريشيوسية",
-            "displayName-count-one": "روبية موريشيوسية",
-            "displayName-count-two": "روبية موريشيوسية",
-            "displayName-count-few": "روبية موريشيوسية",
-            "displayName-count-many": "روبية موريشيوسية",
-            "displayName-count-other": "روبية موريشيوسية",
+            "displayName-count-zero": "روبي موريشي",
+            "displayName-count-one": "روبي موريشي",
+            "displayName-count-two": "روبي موريشي",
+            "displayName-count-few": "روبي موريشي",
+            "displayName-count-many": "روبي موريشي",
+            "displayName-count-other": "روبي موريشي",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "روفيه جزر المالديف",
@@ -1385,6 +1426,12 @@
           },
           "MXP": {
             "displayName": "بيزو فضي مكسيكي - 1861-1992",
+            "displayName-count-zero": "بيزو فضي مكسيكي",
+            "displayName-count-one": "بيزو فضي مكسيكي",
+            "displayName-count-two": "بيزو فضي مكسيكي",
+            "displayName-count-few": "بيزو فضي مكسيكي",
+            "displayName-count-many": "بيزو فضي مكسيكي",
+            "displayName-count-other": "بيزو فضي مكسيكي",
             "symbol": "MXP"
           },
           "MXV": {
@@ -1422,12 +1469,12 @@
           },
           "NAD": {
             "displayName": "دولار ناميبي",
-            "displayName-count-zero": "دولار ناميبي",
-            "displayName-count-one": "دولار ناميبي",
-            "displayName-count-two": "دولار ناميبي",
-            "displayName-count-few": "دولار ناميبي",
-            "displayName-count-many": "دولار ناميبي",
-            "displayName-count-other": "دولار ناميبي",
+            "displayName-count-zero": "دولار نامبيا",
+            "displayName-count-one": "دولار نامبيا",
+            "displayName-count-two": "دولار نامبيا",
+            "displayName-count-few": "دولار نامبيا",
+            "displayName-count-many": "دولار نامبيا",
+            "displayName-count-other": "دولار نامبيا",
             "symbol": "NAD",
             "symbol-alt-narrow": "$"
           },
@@ -1459,6 +1506,12 @@
           },
           "NLG": {
             "displayName": "جلدر هولندي",
+            "displayName-count-zero": "جلدر هولندي",
+            "displayName-count-one": "جلدر هولندي",
+            "displayName-count-two": "جلدر هولندي",
+            "displayName-count-few": "جلدر هولندي",
+            "displayName-count-many": "جلدر هولندي",
+            "displayName-count-other": "جلدر هولندي",
             "symbol": "NLG"
           },
           "NOK": {
@@ -1519,13 +1572,7 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "سول بيروفي",
-            "displayName-count-zero": "سول بيروفي",
-            "displayName-count-one": "سول بيروفي",
-            "displayName-count-two": "سول بيروفي",
-            "displayName-count-few": "سول بيروفي",
-            "displayName-count-many": "سول بيروفي",
-            "displayName-count-other": "سول بيروفي",
+            "displayName": "سول جديد البيرو",
             "symbol": "PEN"
           },
           "PES": {
@@ -1561,7 +1608,7 @@
             "displayName-count-few": "روبية باكستاني",
             "displayName-count-many": "روبية باكستاني",
             "displayName-count-other": "روبية باكستاني",
-            "symbol": "PKR",
+            "symbol": "ر.ب.",
             "symbol-alt-narrow": "Rs"
           },
           "PLN": {
@@ -1581,16 +1628,22 @@
           },
           "PTE": {
             "displayName": "اسكود برتغالي",
+            "displayName-count-zero": "أسكود برتغالي",
+            "displayName-count-one": "أسكود برتغالي",
+            "displayName-count-two": "أسكود برتغالي",
+            "displayName-count-few": "أسكود برتغالي",
+            "displayName-count-many": "أسكود برتغالي",
+            "displayName-count-other": "أسكود برتغالي",
             "symbol": "PTE"
           },
           "PYG": {
-            "displayName": "غواراني باراغواي",
-            "displayName-count-zero": "غواراني باراغواي",
-            "displayName-count-one": "غواراني باراغواي",
-            "displayName-count-two": "غواراني باراغواي",
-            "displayName-count-few": "غواراني باراغواي",
-            "displayName-count-many": "غواراني باراغواي",
-            "displayName-count-other": "غواراني باراغواي",
+            "displayName": "جواراني باراجواي",
+            "displayName-count-zero": "جواراني باراجواي",
+            "displayName-count-one": "جواراني باراجواي",
+            "displayName-count-two": "جواراني باراجواي",
+            "displayName-count-few": "جواراني باراجواي",
+            "displayName-count-many": "جواراني باراجواي",
+            "displayName-count-other": "جواراني باراجواي",
             "symbol": "PYG",
             "symbol-alt-narrow": "₲"
           },
@@ -1606,10 +1659,22 @@
           },
           "RHD": {
             "displayName": "دولار روديسي",
+            "displayName-count-zero": "دولار روديسي",
+            "displayName-count-one": "دولار روديسي",
+            "displayName-count-two": "دولار روديسي",
+            "displayName-count-few": "دولار روديسي",
+            "displayName-count-many": "دولار روديسي",
+            "displayName-count-other": "دولار روديسي",
             "symbol": "RHD"
           },
           "ROL": {
             "displayName": "ليو روماني قديم",
+            "displayName-count-zero": "ليو روماني قديم",
+            "displayName-count-one": "ليو روماني قديم",
+            "displayName-count-two": "ليو روماني قديم",
+            "displayName-count-few": "ليو روماني قديم",
+            "displayName-count-many": "ليو روماني قديم",
+            "displayName-count-other": "ليو روماني قديم",
             "symbol": "ROL"
           },
           "RON": {
@@ -1620,17 +1685,10 @@
             "displayName-count-few": "ليو روماني",
             "displayName-count-many": "ليو روماني",
             "displayName-count-other": "ليو روماني",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "دينار صربي",
-            "displayName-count-zero": "دينار صربي",
-            "displayName-count-one": "دينار صربي",
-            "displayName-count-two": "ديناران صربيان",
-            "displayName-count-few": "دينارات صربية",
-            "displayName-count-many": "دينارًا صربيًا",
-            "displayName-count-other": "دينار صربي",
             "symbol": "RSD"
           },
           "RUB": {
@@ -1642,7 +1700,7 @@
             "displayName-count-many": "روبل روسي",
             "displayName-count-other": "روبل روسي",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "روبل روسي - 1991-1998",
@@ -1693,6 +1751,12 @@
           },
           "SDD": {
             "displayName": "دينار سوداني",
+            "displayName-count-zero": "دينار سوداني قديم",
+            "displayName-count-one": "دينار سوداني قديم",
+            "displayName-count-two": "دينار سوداني قديم",
+            "displayName-count-few": "دينار سوداني قديم",
+            "displayName-count-many": "دينار سوداني قديم",
+            "displayName-count-other": "دينار سوداني قديم",
             "symbol": "د.س.‏"
           },
           "SDG": {
@@ -1700,13 +1764,19 @@
             "displayName-count-zero": "جنيه سوداني",
             "displayName-count-one": "جنيه سوداني",
             "displayName-count-two": "جنيه سوداني",
-            "displayName-count-few": "جنيهات سودانية",
-            "displayName-count-many": "جنيهًا سودانيًا",
+            "displayName-count-few": "جنيه سوداني",
+            "displayName-count-many": "جنيه سوداني",
             "displayName-count-other": "جنيه سوداني",
             "symbol": "ج.س."
           },
           "SDP": {
             "displayName": "جنيه سوداني قديم",
+            "displayName-count-zero": "جنيه سوداني قديم",
+            "displayName-count-one": "جنيه سوداني قديم",
+            "displayName-count-two": "جنيه سوداني قديم",
+            "displayName-count-few": "جنيه سوداني قديم",
+            "displayName-count-many": "جنيه سوداني قديم",
+            "displayName-count-other": "جنيه سوداني قديم",
             "symbol": "SDP"
           },
           "SEK": {
@@ -1748,6 +1818,12 @@
           },
           "SKK": {
             "displayName": "كرونة سلوفاكية",
+            "displayName-count-zero": "كرونة سلوفاكية",
+            "displayName-count-one": "كرونة سلوفاكية",
+            "displayName-count-two": "كرونة سلوفاكية",
+            "displayName-count-few": "كرونة سلوفاكية",
+            "displayName-count-many": "كرونة سلوفاكية",
+            "displayName-count-other": "كرونة سلوفاكية",
             "symbol": "SKK"
           },
           "SLL": {
@@ -1783,30 +1859,26 @@
           },
           "SRG": {
             "displayName": "جلدر سورينامي",
+            "displayName-count-zero": "جلدر سورينامي",
+            "displayName-count-one": "جلدر سورينامي",
+            "displayName-count-two": "جلدر سورينامي",
+            "displayName-count-few": "جلدر سورينامي",
+            "displayName-count-many": "جلدر سورينامي",
+            "displayName-count-other": "جلدر سورينامي",
             "symbol": "SRG"
           },
           "SSP": {
             "displayName": "جنيه جنوب السودان",
             "displayName-count-zero": "جنيه جنوب السودان",
             "displayName-count-one": "جنيه جنوب السودان",
-            "displayName-count-two": "جنيهان جنوب السودان",
-            "displayName-count-few": "جنيهات جنوب السودان",
-            "displayName-count-many": "جنيهًا جنوب السودان",
+            "displayName-count-two": "جنيه جنوب السودان",
+            "displayName-count-few": "جنيه جنوب السودان",
+            "displayName-count-many": "جنيه جنوب السودان",
             "displayName-count-other": "جنيه جنوب السودان",
-            "symbol": "SSP",
-            "symbol-alt-narrow": "£"
+            "symbol": "ج.ج.س.",
+            "symbol-alt-narrow": "ج.ج.س."
           },
           "STD": {
-            "displayName": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "displayName-count-zero": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "displayName-count-one": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "displayName-count-two": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "displayName-count-few": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "displayName-count-many": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "displayName-count-other": "دوبرا ساو تومي وبرينسيبي - 1977-2017",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "دوبرا ساو تومي وبرينسيبي",
             "displayName-count-zero": "دوبرا ساو تومي وبرينسيبي",
             "displayName-count-one": "دوبرا ساو تومي وبرينسيبي",
@@ -1814,7 +1886,7 @@
             "displayName-count-few": "دوبرا ساو تومي وبرينسيبي",
             "displayName-count-many": "دوبرا ساو تومي وبرينسيبي",
             "displayName-count-other": "دوبرا ساو تومي وبرينسيبي",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1823,6 +1895,12 @@
           },
           "SVC": {
             "displayName": "كولون سلفادوري",
+            "displayName-count-zero": "كولون سلفادوري",
+            "displayName-count-one": "كولون سلفادوري",
+            "displayName-count-two": "كولون سلفادوري",
+            "displayName-count-few": "كولون سلفادوري",
+            "displayName-count-many": "كولون سلفادوري",
+            "displayName-count-other": "كولون سلفادوري",
             "symbol": "SVC"
           },
           "SYP": {
@@ -1873,36 +1951,30 @@
           },
           "TMM": {
             "displayName": "مانات تركمنستاني",
+            "displayName-count-zero": "مانات تركمنستاني",
+            "displayName-count-one": "مانات تركمنستاني",
+            "displayName-count-two": "مانات تركمنستاني",
+            "displayName-count-few": "مانات تركمنستاني",
+            "displayName-count-many": "مانات تركمنستاني",
+            "displayName-count-other": "مانات تركمنستاني",
             "symbol": "TMM"
           },
           "TMT": {
             "displayName": "مانات تركمانستان",
-            "displayName-count-zero": "مانات تركمانستان",
-            "displayName-count-one": "مانات تركمانستان",
-            "displayName-count-two": "مانات تركمانستان",
-            "displayName-count-few": "مانات تركمانستان",
-            "displayName-count-many": "مانات تركمانستان",
-            "displayName-count-other": "مانات تركمانستان",
             "symbol": "TMT"
           },
           "TND": {
-            "displayName": "دينار تونسي",
-            "displayName-count-zero": "دينار تونسي",
-            "displayName-count-one": "دينار تونسي",
-            "displayName-count-two": "ديناران تونسيان",
-            "displayName-count-few": "دينارات تونسية",
-            "displayName-count-many": "دينارًا تونسيًا",
-            "displayName-count-other": "دينار تونسي",
+            "displayName": "دينارتونسي",
+            "displayName-count-zero": "دينارتونسي",
+            "displayName-count-one": "دينارتونسي",
+            "displayName-count-two": "دينارتونسي",
+            "displayName-count-few": "دينارتونسي",
+            "displayName-count-many": "دينارتونسي",
+            "displayName-count-other": "دينارتونسي",
             "symbol": "د.ت.‏"
           },
           "TOP": {
             "displayName": "بانغا تونغا",
-            "displayName-count-zero": "بانغا تونغا",
-            "displayName-count-one": "بانغا تونغا",
-            "displayName-count-two": "بانغا تونغا",
-            "displayName-count-few": "بانغا تونغا",
-            "displayName-count-many": "بانغا تونغا",
-            "displayName-count-other": "بانغا تونغا",
             "symbol": "TOP",
             "symbol-alt-narrow": "T$"
           },
@@ -1912,6 +1984,12 @@
           },
           "TRL": {
             "displayName": "ليرة تركي",
+            "displayName-count-zero": "ليرة تركي",
+            "displayName-count-one": "ليرة تركي",
+            "displayName-count-two": "ليرة تركي",
+            "displayName-count-few": "ليرة تركي",
+            "displayName-count-many": "ليرة تركي",
+            "displayName-count-other": "ليرة تركي",
             "symbol": "TRL"
           },
           "TRY": {
@@ -1922,18 +2000,18 @@
             "displayName-count-few": "ليرة تركية",
             "displayName-count-many": "ليرة تركية",
             "displayName-count-other": "ليرة تركية",
-            "symbol": "TRY",
+            "symbol": "ل.ت.",
             "symbol-alt-narrow": "₺",
             "symbol-alt-variant": "TL"
           },
           "TTD": {
-            "displayName": "دولار ترينداد وتوباغو",
-            "displayName-count-zero": "دولار ترينداد وتوباغو",
-            "displayName-count-one": "دولار ترينداد وتوباغو",
-            "displayName-count-two": "دولار ترينداد وتوباغو",
-            "displayName-count-few": "دولار ترينداد وتوباغو",
-            "displayName-count-many": "دولار ترينداد وتوباغو",
-            "displayName-count-other": "دولار ترينداد وتوباغو",
+            "displayName": "دولار ترينداد وتوباجو",
+            "displayName-count-zero": "دولار ترينداد وتوباجو",
+            "displayName-count-one": "دولار ترينداد وتوباجو",
+            "displayName-count-two": "دولار ترينداد وتوباجو",
+            "displayName-count-few": "دولار ترينداد وتوباجو",
+            "displayName-count-many": "دولار ترينداد وتوباجو",
+            "displayName-count-other": "دولار ترينداد وتوباجو",
             "symbol": "TTD",
             "symbol-alt-narrow": "TT$"
           },
@@ -2016,18 +2094,8 @@
           },
           "UYU": {
             "displayName": "بيزو اوروغواي",
-            "displayName-count-zero": "بيزو اوروغواي",
-            "displayName-count-one": "بيزو اوروغواي",
-            "displayName-count-two": "بيزو اوروغواي",
-            "displayName-count-few": "بيزو اوروغواي",
-            "displayName-count-many": "بيزو اوروغواي",
-            "displayName-count-other": "بيزو اوروغواي",
             "symbol": "UYU",
             "symbol-alt-narrow": "UY$"
-          },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
           },
           "UZS": {
             "displayName": "سوم أوزبكستاني",
@@ -2044,25 +2112,9 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "بوليفار فنزويلي - 2008–2018",
-            "displayName-count-zero": "بوليفار فنزويلي - 2008–2018",
-            "displayName-count-one": "بوليفار فنزويلي - 2008–2018",
-            "displayName-count-two": "بوليفار فنزويلي - 2008–2018",
-            "displayName-count-few": "بوليفار فنزويلي - 2008–2018",
-            "displayName-count-many": "بوليفار فنزويلي - 2008–2018",
-            "displayName-count-other": "بوليفار فنزويلي - 2008–2018",
+            "displayName": "بوليفار فنزويلي",
             "symbol": "VEF",
             "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
-            "displayName": "بوليفار فنزويلي",
-            "displayName-count-zero": "بوليفار فنزويلي",
-            "displayName-count-one": "بوليفار فنزويلي",
-            "displayName-count-two": "بوليفار فنزويلي",
-            "displayName-count-few": "بوليفار فنزويلي",
-            "displayName-count-many": "بوليفار فنزويلي",
-            "displayName-count-other": "بوليفار فنزويلي",
-            "symbol": "VES"
           },
           "VND": {
             "displayName": "دونج فيتنامي",
@@ -2081,56 +2133,80 @@
           },
           "VUV": {
             "displayName": "فاتو فانواتو",
-            "displayName-count-zero": "فاتو فانواتو",
-            "displayName-count-one": "فاتو فانواتو",
-            "displayName-count-two": "فاتو فانواتو",
-            "displayName-count-few": "فاتو فانواتو",
-            "displayName-count-many": "فاتو فانواتو",
-            "displayName-count-other": "فاتو فانواتو",
             "symbol": "VUV"
           },
           "WST": {
             "displayName": "تالا ساموا",
-            "displayName-count-zero": "تالا ساموا",
-            "displayName-count-one": "تالا ساموا",
-            "displayName-count-two": "تالا ساموا",
-            "displayName-count-few": "تالا ساموا",
-            "displayName-count-many": "تالا ساموا",
-            "displayName-count-other": "تالا ساموا",
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "فرنك وسط أفريقي",
-            "displayName-count-zero": "فرنك وسط أفريقي",
-            "displayName-count-one": "فرنك وسط أفريقي",
-            "displayName-count-two": "فرنك وسط أفريقي",
-            "displayName-count-few": "فرنك وسط أفريقي",
-            "displayName-count-many": "فرنك وسط أفريقي",
-            "displayName-count-other": "فرنك وسط أفريقي",
+            "displayName": "فرنك أفريقي",
+            "displayName-count-zero": "فرنك أفريقي",
+            "displayName-count-one": "فرنك أفريقي",
+            "displayName-count-two": "فرنك أفريقي",
+            "displayName-count-few": "فرنك أفريقي",
+            "displayName-count-many": "فرنك أفريقي",
+            "displayName-count-other": "فرنك أفريقي",
             "symbol": "FCFA"
           },
           "XAG": {
             "displayName": "فضة",
+            "displayName-count-zero": "فضة",
+            "displayName-count-one": "فضة",
+            "displayName-count-two": "فضة",
+            "displayName-count-few": "فضة",
+            "displayName-count-many": "فضة",
+            "displayName-count-other": "فضة",
             "symbol": "XAG"
           },
           "XAU": {
             "displayName": "ذهب",
+            "displayName-count-zero": "ذهب",
+            "displayName-count-one": "ذهب",
+            "displayName-count-two": "ذهب",
+            "displayName-count-few": "ذهب",
+            "displayName-count-many": "ذهب",
+            "displayName-count-other": "ذهب",
             "symbol": "XAU"
           },
           "XBA": {
             "displayName": "الوحدة الأوروبية المركبة",
+            "displayName-count-zero": "الوحدة الأوروبية المركبة",
+            "displayName-count-one": "الوحدة الأوروبية المركبة",
+            "displayName-count-two": "الوحدة الأوروبية المركبة",
+            "displayName-count-few": "الوحدة الأوروبية المركبة",
+            "displayName-count-many": "الوحدة الأوروبية المركبة",
+            "displayName-count-other": "الوحدة الأوروبية المركبة",
             "symbol": "XBA"
           },
           "XBB": {
             "displayName": "الوحدة المالية الأوروبية",
+            "displayName-count-zero": "الوحدة المالية الأوروبية",
+            "displayName-count-one": "الوحدة المالية الأوروبية",
+            "displayName-count-two": "الوحدة المالية الأوروبية",
+            "displayName-count-few": "الوحدة المالية الأوروبية",
+            "displayName-count-many": "الوحدة المالية الأوروبية",
+            "displayName-count-other": "الوحدة المالية الأوروبية",
             "symbol": "XBB"
           },
           "XBC": {
             "displayName": "الوحدة الحسابية الأوروبية",
+            "displayName-count-zero": "الوحدة الحسابية الأوروبية",
+            "displayName-count-one": "الوحدة الحسابية الأوروبية",
+            "displayName-count-two": "الوحدة الحسابية الأوروبية",
+            "displayName-count-few": "الوحدة الحسابية الأوروبية",
+            "displayName-count-many": "الوحدة الحسابية الأوروبية",
+            "displayName-count-other": "الوحدة الحسابية الأوروبية",
             "symbol": "XBC"
           },
           "XBD": {
             "displayName": "(XBD)وحدة الحساب الأوروبية",
+            "displayName-count-zero": "وحدة الحساب الأوروبية",
+            "displayName-count-one": "وحدة الحساب الأوروبية",
+            "displayName-count-two": "وحدة الحساب الأوروبية",
+            "displayName-count-few": "وحدة الحساب الأوروبية",
+            "displayName-count-many": "وحدة الحساب الأوروبية",
+            "displayName-count-other": "وحدة الحساب الأوروبية",
             "symbol": "XBD"
           },
           "XCD": {
@@ -2146,6 +2222,12 @@
           },
           "XDR": {
             "displayName": "حقوق السحب الخاصة",
+            "displayName-count-zero": "حقوق السحب الخاصة",
+            "displayName-count-one": "حقوق السحب الخاصة",
+            "displayName-count-two": "حقوق السحب الخاصة",
+            "displayName-count-few": "حقوق السحب الخاصة",
+            "displayName-count-many": "حقوق السحب الخاصة",
+            "displayName-count-other": "حقوق السحب الخاصة",
             "symbol": "XDR"
           },
           "XEU": {
@@ -2154,20 +2236,26 @@
           },
           "XFO": {
             "displayName": "فرنك فرنسي ذهبي",
+            "displayName-count-zero": "فرنك فرنسي ذهبي",
+            "displayName-count-one": "فرنك فرنسي ذهبي",
+            "displayName-count-two": "فرنك فرنسي ذهبي",
+            "displayName-count-few": "فرنك فرنسي ذهبي",
+            "displayName-count-many": "فرنك فرنسي ذهبي",
+            "displayName-count-other": "فرنك فرنسي ذهبي",
             "symbol": "XFO"
           },
           "XFU": {
             "displayName": "(UIC)فرنك فرنسي",
+            "displayName-count-zero": "(UIC)فرنك فرنسي",
+            "displayName-count-one": "(UIC)فرنك فرنسي",
+            "displayName-count-two": "(UIC)فرنك فرنسي",
+            "displayName-count-few": "(UIC)فرنك فرنسي",
+            "displayName-count-many": "(UIC)فرنك فرنسي",
+            "displayName-count-other": "(UIC)فرنك فرنسي",
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "فرنك غرب أفريقي",
-            "displayName-count-zero": "فرنك غرب أفريقي",
-            "displayName-count-one": "فرنك غرب أفريقي",
-            "displayName-count-two": "فرنك غرب أفريقي",
-            "displayName-count-few": "فرنك غرب أفريقي",
-            "displayName-count-many": "فرنك غرب أفريقي",
-            "displayName-count-other": "فرنك غرب أفريقي",
+            "displayName": "فرنك سي إف إيه غرب إفريقيا",
             "symbol": "CFA"
           },
           "XPD": {
@@ -2176,16 +2264,16 @@
           },
           "XPF": {
             "displayName": "فرنك سي إف بي",
-            "displayName-count-zero": "فرنك سي إف بي",
-            "displayName-count-one": "فرنك سي إف بي",
-            "displayName-count-two": "فرنك سي إف بي",
-            "displayName-count-few": "فرنك سي إف بي",
-            "displayName-count-many": "فرنك سي إف بي",
-            "displayName-count-other": "فرنك سي إف بي",
             "symbol": "CFPF"
           },
           "XPT": {
             "displayName": "البلاتين",
+            "displayName-count-zero": "البلاتين",
+            "displayName-count-one": "البلاتين",
+            "displayName-count-two": "البلاتين",
+            "displayName-count-few": "البلاتين",
+            "displayName-count-many": "البلاتين",
+            "displayName-count-other": "البلاتين",
             "symbol": "XPT"
           },
           "XRE": {
@@ -2198,6 +2286,12 @@
           },
           "XTS": {
             "displayName": "كود اختبار العملة",
+            "displayName-count-zero": "كود اختبار العملة",
+            "displayName-count-one": "كود اختبار العملة",
+            "displayName-count-two": "كود اختبار العملة",
+            "displayName-count-few": "كود اختبار العملة",
+            "displayName-count-many": "كود اختبار العملة",
+            "displayName-count-other": "كود اختبار العملة",
             "symbol": "XTS"
           },
           "XUA": {
@@ -2206,12 +2300,12 @@
           },
           "XXX": {
             "displayName": "عملة غير معروفة",
-            "displayName-count-zero": "(عملة غير معروفة)",
-            "displayName-count-one": "(عملة غير معروفة)",
-            "displayName-count-two": "(عملة غير معروفة)",
-            "displayName-count-few": "(عملة غير معروفة)",
-            "displayName-count-many": "(عملة غير معروفة)",
-            "displayName-count-other": "(عملة غير معروفة)",
+            "displayName-count-zero": "عملة غير معروفة",
+            "displayName-count-one": "عملة غير معروفة",
+            "displayName-count-two": "عملة غير معروفة",
+            "displayName-count-few": "عملة غير معروفة",
+            "displayName-count-many": "عملة غير معروفة",
+            "displayName-count-other": "عملة غير معروفة",
             "symbol": "***"
           },
           "YDD": {
@@ -2282,14 +2376,32 @@
           },
           "ZRN": {
             "displayName": "زائير زائيري جديد",
+            "displayName-count-zero": "زائير زائيري جديد",
+            "displayName-count-one": "زائير زائيري جديد",
+            "displayName-count-two": "زائير زائيري جديد",
+            "displayName-count-few": "زائير زائيري جديد",
+            "displayName-count-many": "زائير زائيري جديد",
+            "displayName-count-other": "زائير زائيري جديد",
             "symbol": "ZRN"
           },
           "ZRZ": {
             "displayName": "زائير زائيري",
+            "displayName-count-zero": "زائير زائيري",
+            "displayName-count-one": "زائير زائيري",
+            "displayName-count-two": "زائير زائيري",
+            "displayName-count-few": "زائير زائيري",
+            "displayName-count-many": "زائير زائيري",
+            "displayName-count-other": "زائير زائيري",
             "symbol": "ZRZ"
           },
           "ZWD": {
             "displayName": "دولار زمبابوي",
+            "displayName-count-zero": "دولار زمبابوي",
+            "displayName-count-one": "دولار زمبابوي",
+            "displayName-count-two": "دولار زمبابوي",
+            "displayName-count-few": "دولار زمبابوي",
+            "displayName-count-many": "دولار زمبابوي",
+            "displayName-count-other": "دولار زمبابوي",
             "symbol": "ZWD"
           },
           "ZWL": {

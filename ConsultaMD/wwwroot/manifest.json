@@ -1,8 +1,8 @@
 {
-  "short_name": "PWA-Test",
-  "name": "PWA-Test",
-  "description": "PWA-Test",
-  //"scope": ".",
+  "name": "ConsultaMD",
+  "short_name": "MD",
+  "description": "Busca un médico, reserva tu cita médica y compra tu bono, así de simple",
+  "scope": ".",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -27,7 +27,7 @@
     {
       "src": "img/launcher-icon-8x.png",
       "type": "image/png",
-      "sizes": "256x256"
+      "sizes": "192x192"
     },
     {
       "src": "img/launcher-icon-16x.png",

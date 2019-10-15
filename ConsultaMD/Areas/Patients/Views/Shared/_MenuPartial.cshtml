@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ConsultaMD.Models.Entities
+@using ConsultaMD.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject ApplicationDbContext DbContext
+
+@{
+    var action = this.ViewContext.RouteData.Values["action"].ToString();
+    var controller = this.ViewContext.RouteData.Values["controller"].ToString();
+    var names = new Dictionary<string, Dictionary<string, (string name, string icon)>>
+{
+        { "Search", new Dictionary<string, (string name, string icon)>{
+        { "Map" , ("Buscar Cita", "search")}} },
+        { "Date", new Dictionary<string, (string name, string icon)>{
+        { "WaitingRoom", ("Sala de Espera", "hourglass_empty") } } },
+        { "Booking", new Dictionary<string, (string name, string icon)>{
+        { "BookAppointment", ("Mis Citas", "schedule") } } }
+    };
+    var user = await UserManager.GetUserAsync(User);
+    var person = DbContext.Naturals.FirstOrDefault(p => p.Id == user.PersonId);
+}
+
+<partial name="_Libs" model='(new string[]{ "sidenav" }, "")' />
+
+@this.Block(
+    @<nav>
+        <div class="nav-wrapper clinic">
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger brand-logo left">
+                <i class="material-icons">menu</i>
+                <img src="~/img/logo.png" alt="logo" id="menu-logo"
+                     asp-append-version="true" class="hide-on-small-and-down" />
+            </a>
+            <ul class="center">
+                @((string)ViewData["Title"])
+            </ul>
+        </div>
+    </nav>, "Menu")
+
+@this.Block(
+    @<ul id="nav-mobile" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view" style="line-height:2rem;">
+                <div class="background">
+                    <img class="image" src="~/img/background-aero.png" asp-append-version="true">
+                </div>
+                <a href="#user" class="details"><img class="circle" src="~/img/doc/@((string)ViewData["run"]).png" asp-append-version="true"></a>
+                <a href="#name" class="details"><span class="white-text name">@person.FullNameFirst</span></a>
+                <a href="#rut" class="details">
+                <span class="white-text">
+                    <i class="material-icons left">person_pin</i>@User.Identity.Name</span>
+                </a>
+                <a href="#phone" class="details">
+                    <span class="@(user.PhoneNumberConfirmed ? "white-text" : "orange-text") phone">
+                    <i class="material-icons left">phone</i>@user.PhoneNumber.Replace("+569","9 ").Insert(6, " ")</span>
+                </a>
+                <a href="#email" class="details">
+                    <span class="white-text email">
+                        <span><i class="material-icons left">mail</i>@user.Email</span>
+                        @*<span>@(user.EmailConfirmed ? "" : "correo no confirmado")</span>*@
+                    </span>
+                </a>
+            </div>
+        </li>
+        <li><a class="subheader">Páginas</a></li>
+        @foreach (KeyValuePair<string, Dictionary<string, (string name, string icon)>> control in names)
+                    {
+                        foreach (KeyValuePair<string, (string name, string icon)> act in control.Value)
+                        {
+                <li class="@(action == act.Key ? "active" : "")">
+                    <a asp-controller="@control.Key" asp-action="@act.Key">
+                        <i class="material-icons left">@act.Value.icon</i>@act.Value.name
+                    </a>
+                </li>
+                        }
+                    }
+    @if (person.DoctorId != 0)
+    { 
+        <li>
+            <a asp-area="MDs" asp-controller="Home" asp-action="Index">
+                <i class="material-icons left">schedule</i>Doctor
+            </a>
+        </li>
+    }
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Sesión</a></li>
+        <li>
+            <a href="#" onclick="document.getElementById('logout').submit();">
+                <i class="material-icons left">exit_to_app</i>Salir
+            </a>
+            <form id="logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
+            </form>
+        </li>
+    </ul>, "Menu")

@@ -3,31 +3,30 @@
     "pt": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "pt"
       },
       "contextTransforms": {
         "day-format-except-narrow": {
-          "stand-alone": "titlecase-firstword",
-          "uiListOrMenu": "titlecase-firstword"
+          "uiListOrMenu": "titlecase-firstword",
+          "stand-alone": "titlecase-firstword"
         },
         "day-standalone-except-narrow": {
-          "stand-alone": "titlecase-firstword",
-          "uiListOrMenu": "titlecase-firstword"
+          "uiListOrMenu": "titlecase-firstword",
+          "stand-alone": "titlecase-firstword"
         },
         "languages": {
-          "stand-alone": "titlecase-firstword",
-          "uiListOrMenu": "titlecase-firstword"
+          "uiListOrMenu": "titlecase-firstword",
+          "stand-alone": "titlecase-firstword"
         },
         "relative": {
-          "stand-alone": "titlecase-firstword",
-          "uiListOrMenu": "titlecase-firstword"
-        },
-        "typographicNames": {
-          "stand-alone": "titlecase-firstword",
-          "uiListOrMenu": "titlecase-firstword"
+          "uiListOrMenu": "titlecase-firstword",
+          "stand-alone": "titlecase-firstword"
         }
       }
     }

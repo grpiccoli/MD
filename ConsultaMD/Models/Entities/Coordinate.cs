@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ConsultaMD.Models.Entities
 {
-    public class Coordinate
+    public abstract class Coordinate
     {
-        public int Id { get; set; }
-        public int PolygonId { get; set; }
-        public virtual Polygon Polygon { get; set; }
+        [Display(Name = "Latitud")]
+        [Range(-90, -17)]
         public double Latitude { get; set; }
+        [Display(Name = "Longitud")]
+        [Range(-110, -60)]
         public double Longitude { get; set; }
-        public int Vertex { get; set; }
     }
 }

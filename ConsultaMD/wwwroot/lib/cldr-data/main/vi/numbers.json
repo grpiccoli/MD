@@ -3,10 +3,13 @@
     "vi": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "vi"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "numbers": {
         "defaultNumberingSystem": "latn",
@@ -82,37 +85,13 @@
               "insertBetween": " "
             }
           },
-          "standard": "#,##0.00 ¤",
           "accounting": "#,##0.00 ¤",
-          "short": {
-            "standard": {
-              "1000-count-other": "0 N ¤",
-              "10000-count-other": "00 N ¤",
-              "100000-count-other": "000 N ¤",
-              "1000000-count-other": "0 Tr ¤",
-              "10000000-count-other": "00 Tr ¤",
-              "100000000-count-other": "000 Tr ¤",
-              "1000000000-count-other": "0 T ¤",
-              "10000000000-count-other": "00 T ¤",
-              "100000000000-count-other": "000 T ¤",
-              "1000000000000-count-other": "0 NT ¤",
-              "10000000000000-count-other": "00 NT ¤",
-              "100000000000000-count-other": "000 NT ¤"
-            }
-          },
+          "standard": "#,##0.00 ¤",
           "unitPattern-count-other": "{0} {1}"
         },
         "miscPatterns-numberSystem-latn": {
-          "approximately": "~{0}",
           "atLeast": "{0}+",
-          "atMost": "≤{0}",
           "range": "{0}-{1}"
-        },
-        "minimalPairs": {
-          "pluralMinimalPairs-count-one": "Rẽ vào lối rẽ thứ nhất bên phải.",
-          "pluralMinimalPairs-count-other": "Rẽ vào lối rẽ thứ {0} bên phải.",
-          "one": "Rẽ vào lối rẽ thứ nhất bên phải.",
-          "other": "Rẽ vào lối rẽ thứ {0} bên phải."
         }
       }
     }

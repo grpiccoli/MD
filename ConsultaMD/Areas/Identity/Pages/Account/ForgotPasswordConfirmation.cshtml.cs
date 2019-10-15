@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
@@ -9,8 +6,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ForgotPasswordConfirmation : PageModel
     {
-        public void OnGet()
+        public string Email { get; set; }
+        public void OnGet(string maskedEmail = null)
         {
+            Email = maskedEmail;
         }
     }
 }

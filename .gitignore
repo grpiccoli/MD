@@ -59,6 +59,11 @@ artifacts/
 # StyleCop
 StyleCopReport.xml
 
+# build and backup folders
+obj/
+bin/
+BU/
+
 # Files built by Visual Studio
 *_i.c
 *_p.c

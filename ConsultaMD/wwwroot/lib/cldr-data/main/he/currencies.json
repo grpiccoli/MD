@@ -3,8 +3,11 @@
     "he": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "he"
       },
@@ -33,10 +36,6 @@
             "displayName-count-many": "אפגני אפגני",
             "displayName-count-other": "אפגני אפגני",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "לק אלבני",
@@ -134,11 +133,11 @@
             "symbol": "AZM"
           },
           "AZN": {
-            "displayName": "מאנאט אזרבייג׳ני",
-            "displayName-count-one": "מאנאט אזרבייג׳ני",
-            "displayName-count-two": "מאנאט אזרבייג׳ני",
-            "displayName-count-many": "מאנאט אזרבייג׳ני",
-            "displayName-count-other": "מאנאט אזרבייג׳ני",
+            "displayName": "מאנאט אזרביג׳ני",
+            "displayName-count-one": "מאנאט אזרביג׳ני",
+            "displayName-count-two": "מאנאט אזרביג׳ני",
+            "displayName-count-many": "מאנאט אזרביג׳ני",
+            "displayName-count-other": "מאנאט אזרביג׳ני",
             "symbol": "AZN"
           },
           "BAD": {
@@ -146,11 +145,11 @@
             "symbol": "BAD"
           },
           "BAM": {
-            "displayName": "מארק סחיר של בוסניה והרצגובינה",
-            "displayName-count-one": "מארק סחיר של בוסניה והרצגובינה",
-            "displayName-count-two": "מארק סחיר של בוסניה והרצגובינה",
-            "displayName-count-many": "מארק סחיר של בוסניה והרצגובינה",
-            "displayName-count-other": "מארק סחיר של בוסניה והרצגובינה",
+            "displayName": "מארק בר המרה של בוסניה־הרצגובינה",
+            "displayName-count-one": "מארק בר המרה של בוסניה־הרצגובינה",
+            "displayName-count-two": "מארק בר המרה של בוסניה־הרצגובינה",
+            "displayName-count-many": "מארק בר המרה של בוסניה־הרצגובינה",
+            "displayName-count-other": "מארק בר המרה של בוסניה־הרצגובינה",
             "symbol": "BAM",
             "symbol-alt-narrow": "KM"
           },
@@ -318,11 +317,11 @@
             "symbol": "BUK"
           },
           "BWP": {
-            "displayName": "פולה בוטסואני",
-            "displayName-count-one": "פולה בוטסואני",
-            "displayName-count-two": "פולה בוטסואני",
-            "displayName-count-many": "פולה בוטסואני",
-            "displayName-count-other": "פולה בוטסואני",
+            "displayName": "פולה בוצוואני",
+            "displayName-count-one": "פולה בוצוואני",
+            "displayName-count-two": "פולה בוצוואני",
+            "displayName-count-many": "פולה בוצוואני",
+            "displayName-count-other": "פולה בוצוואני",
             "symbol": "BWP",
             "symbol-alt-narrow": "P"
           },
@@ -330,22 +329,14 @@
             "displayName": "BYB",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "רובל בלרוסי",
             "displayName-count-one": "רובל בלרוסי",
             "displayName-count-two": "רובל בלרוסי",
             "displayName-count-many": "רובל בלרוסי",
             "displayName-count-other": "רובל בלרוסי",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "רובל בלרוסי (2000–2016)",
-            "displayName-count-one": "רובל בלרוסי (2000–2016)",
-            "displayName-count-two": "רובל בלרוסי (2000–2016)",
-            "displayName-count-many": "רובל בלרוסי (2000–2016)",
-            "displayName-count-other": "רובל בלרוסי (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "דולר בליזי",
@@ -406,25 +397,13 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "יואן סיני (CNH)",
-            "displayName-count-one": "יואן סיני (CNH)",
-            "displayName-count-two": "יואן סיני (CNH)",
-            "displayName-count-many": "יואן סיני (CNH)",
-            "displayName-count-other": "יואן סיני (CNH)",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
-          },
           "CNY": {
             "displayName": "יואן סיני",
             "displayName-count-one": "יואן סיני",
             "displayName-count-two": "יואן סיני",
             "displayName-count-many": "יואן סיני",
             "displayName-count-other": "יואן סיני",
-            "symbol": "‎CN¥‎",
+            "symbol": "CN¥",
             "symbol-alt-narrow": "¥"
           },
           "COP": {
@@ -568,11 +547,11 @@
             "symbol": "ERN"
           },
           "ESA": {
-            "displayName": "ESA",
+            "displayName": "פזטה [ESA]",
             "symbol": "ESA"
           },
           "ESB": {
-            "displayName": "ESB",
+            "displayName": "פזטה [ESB]",
             "symbol": "ESB"
           },
           "ESP": {
@@ -637,14 +616,12 @@
             "symbol": "GEK"
           },
           "GEL": {
-            "displayName": "לארי גאורגי",
-            "displayName-count-one": "לארי גאורגי",
-            "displayName-count-two": "לארי גאורגי",
-            "displayName-count-many": "לארי גאורגי",
-            "displayName-count-other": "לארי גאורגי",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "displayName": "לרי גאורגי",
+            "displayName-count-one": "לרי גאורגי",
+            "displayName-count-two": "לרי גאורגי",
+            "displayName-count-many": "לרי גאורגי",
+            "displayName-count-other": "לרי גאורגי",
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "GHC",
@@ -668,11 +645,11 @@
             "symbol-alt-narrow": "£"
           },
           "GMD": {
-            "displayName": "דלסי גמבי",
-            "displayName-count-one": "דלסי גמבי",
-            "displayName-count-two": "דלסי גמבי",
-            "displayName-count-many": "דלסי גמבי",
-            "displayName-count-other": "דלסי גמבי",
+            "displayName": "דלאסי גמבי",
+            "displayName-count-one": "דלאסי גמבי",
+            "displayName-count-two": "דלאסי גמבי",
+            "displayName-count-many": "דלאסי גמבי",
+            "displayName-count-other": "דלאסי גמבי",
             "symbol": "GMD"
           },
           "GNF": {
@@ -697,11 +674,11 @@
             "symbol": "GRD"
           },
           "GTQ": {
-            "displayName": "קצאל גואטמלי",
-            "displayName-count-one": "קצאל גואטמלי",
-            "displayName-count-two": "קצאל גואטמלי",
-            "displayName-count-many": "קצאל גואטמלי",
-            "displayName-count-other": "קצאל גואטמלי",
+            "displayName": "קצל גואטמלי",
+            "displayName-count-one": "קצל גואטמלי",
+            "displayName-count-two": "קצל גואטמלי",
+            "displayName-count-many": "קצל גואטמלי",
+            "displayName-count-other": "קצל גואטמלי",
             "symbol": "GTQ",
             "symbol-alt-narrow": "Q"
           },
@@ -787,13 +764,9 @@
             "displayName": "לירה ישראלית",
             "symbol": "ל״י"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
-            "displayName": "שקל חדש",
-            "displayName-count-one": "שקל חדש",
+            "displayName": "ש״ח",
+            "displayName-count-one": "שקלים חדשים",
             "displayName-count-two": "שקלים חדשים",
             "displayName-count-many": "שקלים חדשים",
             "displayName-count-other": "שקלים חדשים",
@@ -810,11 +783,11 @@
             "symbol-alt-narrow": "₹"
           },
           "IQD": {
-            "displayName": "דינר עיראקי",
-            "displayName-count-one": "דינר עיראקי",
-            "displayName-count-two": "דינר עיראקי",
-            "displayName-count-many": "דינר עיראקי",
-            "displayName-count-other": "דינר עיראקי",
+            "displayName": "דינר עירקי",
+            "displayName-count-one": "דינר עירקי",
+            "displayName-count-two": "דינר עירקי",
+            "displayName-count-many": "דינר עירקי",
+            "displayName-count-other": "דינר עירקי",
             "symbol": "IQD"
           },
           "IRR": {
@@ -825,16 +798,12 @@
             "displayName-count-other": "ריאל איראני",
             "symbol": "IRR"
           },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
-          },
           "ISK": {
-            "displayName": "כתר איסלנדי",
-            "displayName-count-one": "כתר איסלנדי",
-            "displayName-count-two": "כתר איסלנדי",
-            "displayName-count-many": "כתר איסלנדי",
-            "displayName-count-other": "כתר איסלנדי",
+            "displayName": "קרונה איסלנדית",
+            "displayName-count-one": "קרונה איסלנדית",
+            "displayName-count-two": "קרונה איסלנדית",
+            "displayName-count-many": "קרונה איסלנדית",
+            "displayName-count-other": "קרונה איסלנדית",
             "symbol": "ISK",
             "symbol-alt-narrow": "kr"
           },
@@ -865,15 +834,15 @@
             "displayName-count-two": "ין יפני",
             "displayName-count-many": "ין יפני",
             "displayName-count-other": "ין יפני",
-            "symbol": "¥",
+            "symbol": "JP¥",
             "symbol-alt-narrow": "¥"
           },
           "KES": {
-            "displayName": "שילינג קנייתי",
-            "displayName-count-one": "שילינג קנייתי",
-            "displayName-count-two": "שילינג קנייתי",
-            "displayName-count-many": "שילינג קנייתי",
-            "displayName-count-other": "שילינג קנייתי",
+            "displayName": "שילינג קנייאתי",
+            "displayName-count-one": "שילינג קנייאתי",
+            "displayName-count-two": "שילינג קנייאתי",
+            "displayName-count-many": "שילינג קנייאתי",
+            "displayName-count-other": "שילינג קנייאתי",
             "symbol": "KES"
           },
           "KGS": {
@@ -903,11 +872,11 @@
             "symbol-alt-narrow": "CF"
           },
           "KPW": {
-            "displayName": "וון צפון קוריאני",
-            "displayName-count-one": "וון צפון קוריאני",
-            "displayName-count-two": "וון צפון קוריאני",
-            "displayName-count-many": "וון צפון קוריאני",
-            "displayName-count-other": "וון צפון קוריאני",
+            "displayName": "וון צפון-קוריאני",
+            "displayName-count-one": "וון צפון-קוריאני",
+            "displayName-count-two": "וון צפון-קוריאני",
+            "displayName-count-many": "וון צפון-קוריאני",
+            "displayName-count-other": "וון צפון-קוריאני",
             "symbol": "KPW",
             "symbol-alt-narrow": "₩"
           },
@@ -920,11 +889,11 @@
             "symbol": "KRO"
           },
           "KRW": {
-            "displayName": "וון דרום קוריאני",
-            "displayName-count-one": "וון דרום קוריאני",
-            "displayName-count-two": "וון דרום קוריאני",
-            "displayName-count-many": "וון דרום קוריאני",
-            "displayName-count-other": "וון דרום קוריאני",
+            "displayName": "וון דרום-קוריאני",
+            "displayName-count-one": "וון דרום-קוריאני",
+            "displayName-count-two": "וון דרום-קוריאני",
+            "displayName-count-many": "וון דרום-קוריאני",
+            "displayName-count-other": "וון דרום-קוריאני",
             "symbol": "₩",
             "symbol-alt-narrow": "₩"
           },
@@ -937,11 +906,11 @@
             "symbol": "KWD"
           },
           "KYD": {
-            "displayName": "דולר קיימני",
-            "displayName-count-one": "דולר קיימני",
-            "displayName-count-two": "דולר קיימני",
-            "displayName-count-many": "דולר קיימני",
-            "displayName-count-other": "דולר קיימני",
+            "displayName": "דולר קיימאני",
+            "displayName-count-one": "דולר קיימאני",
+            "displayName-count-two": "דולר קיימאני",
+            "displayName-count-many": "דולר קיימאני",
+            "displayName-count-other": "דולר קיימאני",
             "symbol": "KYD",
             "symbol-alt-narrow": "$"
           },
@@ -1057,11 +1026,11 @@
             "symbol": "MDC"
           },
           "MDL": {
-            "displayName": "לאו מולדובני",
-            "displayName-count-one": "לאו מולדובני",
-            "displayName-count-two": "לאו מולדובני",
-            "displayName-count-many": "לאו מולדובני",
-            "displayName-count-other": "לאו מולדובני",
+            "displayName": "ליאו מולדובני",
+            "displayName-count-one": "ליאו מולדובני",
+            "displayName-count-two": "ליאו מולדובני",
+            "displayName-count-many": "ליאו מולדובני",
+            "displayName-count-other": "ליאו מולדובני",
             "symbol": "MDL"
           },
           "MGA": {
@@ -1103,11 +1072,11 @@
             "symbol-alt-narrow": "K"
           },
           "MNT": {
-            "displayName": "טוגרוג מונגולי",
-            "displayName-count-one": "טוגרוג מונגולי",
-            "displayName-count-two": "טוגרוג מונגולי",
-            "displayName-count-many": "טוגרוג מונגולי",
-            "displayName-count-other": "טוגרוג מונגולי",
+            "displayName": "טוגריק מונגולי",
+            "displayName-count-one": "טוגריק מונגולי",
+            "displayName-count-two": "טוגריק מונגולי",
+            "displayName-count-many": "טוגריק מונגולי",
+            "displayName-count-other": "טוגריק מונגולי",
             "symbol": "MNT",
             "symbol-alt-narrow": "₮"
           },
@@ -1120,20 +1089,12 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "אואוגויה מאוריטני (1973–2017)",
-            "displayName-count-one": "אואוגויה מאוריטני (1973–2017)",
-            "displayName-count-two": "אואוגויה מאוריטני (1973–2017)",
-            "displayName-count-many": "אואוגויה מאוריטני (1973–2017)",
-            "displayName-count-other": "אואוגויה מאוריטני (1973–2017)",
+            "displayName": "אוגוויה מאוריטני",
+            "displayName-count-one": "אוגוויה מאוריטני",
+            "displayName-count-two": "אוגוויה מאוריטני",
+            "displayName-count-many": "אוגוויה מאוריטני",
+            "displayName-count-other": "אוגוויה מאוריטני",
             "symbol": "MRO"
-          },
-          "MRU": {
-            "displayName": "אואוגויה מאוריטני",
-            "displayName-count-one": "אואוגויה מאוריטני",
-            "displayName-count-two": "אואוגויה מאוריטני",
-            "displayName-count-many": "אואוגויה מאוריטני",
-            "displayName-count-other": "אואוגויה מאוריטני",
-            "symbol": "MRU"
           },
           "MTL": {
             "displayName": "לירה מלטית",
@@ -1152,10 +1113,6 @@
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
           },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
-          },
           "MVR": {
             "displayName": "רופיה מלדיבית",
             "displayName-count-one": "רופיה מלדיבית",
@@ -1165,11 +1122,11 @@
             "symbol": "MVR"
           },
           "MWK": {
-            "displayName": "קואצ׳ה מלאווי",
-            "displayName-count-one": "קואצ׳ה מלאווי",
-            "displayName-count-two": "קואצ׳ה מלאווי",
-            "displayName-count-many": "קואצ׳ה מלאווי",
-            "displayName-count-other": "קואצ׳ה מלאווי",
+            "displayName": "קואצ׳ה מלאוי",
+            "displayName-count-one": "קואצ׳ה מלאוי",
+            "displayName-count-two": "קואצ׳ה מלאוי",
+            "displayName-count-many": "קואצ׳ה מלאוי",
+            "displayName-count-other": "קואצ׳ה מלאוי",
             "symbol": "MWK"
           },
           "MXN": {
@@ -1241,11 +1198,11 @@
             "symbol": "NIC"
           },
           "NIO": {
-            "displayName": "קורדובה ניקרגואה",
-            "displayName-count-one": "קורדובה ניקרגואה",
-            "displayName-count-two": "קורדובה ניקרגואה",
-            "displayName-count-many": "קורדובה ניקרגואה",
-            "displayName-count-other": "קורדובה ניקרגואה",
+            "displayName": "קורדובה ניקראגי",
+            "displayName-count-one": "קורדובה ניקראגי",
+            "displayName-count-two": "קורדובה ניקראגי",
+            "displayName-count-many": "קורדובה ניקראגי",
+            "displayName-count-other": "קורדובה ניקראגי",
             "symbol": "NIO",
             "symbol-alt-narrow": "C$"
           },
@@ -1254,11 +1211,11 @@
             "symbol": "NLG"
           },
           "NOK": {
-            "displayName": "כתר נורווגי",
-            "displayName-count-one": "כתר נורווגי",
-            "displayName-count-two": "כתר נורווגי",
-            "displayName-count-many": "כתר נורווגי",
-            "displayName-count-other": "כתר נורווגי",
+            "displayName": "כתר נורבגי",
+            "displayName-count-one": "כתר נורבגי",
+            "displayName-count-two": "כתר נורבגי",
+            "displayName-count-many": "כתר נורבגי",
+            "displayName-count-other": "כתר נורבגי",
             "symbol": "NOK",
             "symbol-alt-narrow": "kr"
           },
@@ -1301,11 +1258,11 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "סול פרואני",
-            "displayName-count-one": "סול פרואני",
-            "displayName-count-two": "סול פרואני",
-            "displayName-count-many": "סול פרואני",
-            "displayName-count-other": "סול פרואני",
+            "displayName": "סול פרואני חדש",
+            "displayName-count-one": "סול פרואני חדש",
+            "displayName-count-two": "סול פרואני חדש",
+            "displayName-count-many": "סול פרואני חדש",
+            "displayName-count-other": "סול פרואני חדש",
             "symbol": "PEN"
           },
           "PES": {
@@ -1348,7 +1305,7 @@
             "symbol-alt-narrow": "zł"
           },
           "PLZ": {
-            "displayName": "PLZ",
+            "displayName": "זלוטי (1950 – 1995)",
             "symbol": "PLZ"
           },
           "PTE": {
@@ -1356,11 +1313,11 @@
             "symbol": "PTE"
           },
           "PYG": {
-            "displayName": "גוארני פרגוואי",
-            "displayName-count-one": "גוארני פרגוואי",
-            "displayName-count-two": "גוארני פרגוואי",
-            "displayName-count-many": "גוארני פרגוואי",
-            "displayName-count-other": "גוארני פרגוואי",
+            "displayName": "גוורני פראגוואי",
+            "displayName-count-one": "גוורני פראגוואי",
+            "displayName-count-two": "גוורני פראגוואי",
+            "displayName-count-many": "גוורני פראגוואי",
+            "displayName-count-other": "גוורני פראגוואי",
             "symbol": "PYG",
             "symbol-alt-narrow": "₲"
           },
@@ -1386,8 +1343,7 @@
             "displayName-count-two": "לאו רומני",
             "displayName-count-many": "לאו רומני",
             "displayName-count-other": "לאו רומני",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "דינר סרבי",
@@ -1404,7 +1360,6 @@
             "displayName-count-many": "רובל רוסי",
             "displayName-count-other": "רובל רוסי",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽",
             "symbol-alt-variant": "₽"
           },
           "RUR": {
@@ -1506,11 +1461,11 @@
             "symbol": "SLL"
           },
           "SOS": {
-            "displayName": "שילינג סומלי",
-            "displayName-count-one": "שילינג סומלי",
-            "displayName-count-two": "שילינג סומלי",
-            "displayName-count-many": "שילינג סומלי",
-            "displayName-count-other": "שילינג סומלי",
+            "displayName": "שילינג סומאלי",
+            "displayName-count-one": "שילינג סומאלי",
+            "displayName-count-two": "שילינג סומאלי",
+            "displayName-count-many": "שילינג סומאלי",
+            "displayName-count-other": "שילינג סומאלי",
             "symbol": "SOS"
           },
           "SRD": {
@@ -1536,20 +1491,12 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "דוברה של סן טומה ופרינסיפה (1977–2017)",
-            "displayName-count-one": "דוברה של סן טומה ופרינסיפה (1977–2017)",
-            "displayName-count-two": "דוברה של סן טומה ופרינסיפה (1977–2017)",
-            "displayName-count-many": "דוברה של סן טומה ופרינסיפה (1977–2017)",
-            "displayName-count-other": "דוברה של סן טומה ופרינסיפה (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "דוברה של סן טומה ופרינסיפה",
             "displayName-count-one": "דוברה של סן טומה ופרינסיפה",
             "displayName-count-two": "דוברה של סן טומה ופרינסיפה",
             "displayName-count-many": "דוברה של סן טומה ופרינסיפה",
             "displayName-count-other": "דוברה של סן טומה ופרינסיפה",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1574,11 +1521,11 @@
             "symbol-alt-narrow": "£"
           },
           "SZL": {
-            "displayName": "לילנגני סווזילנדי",
-            "displayName-count-one": "לילנגני סווזילנדי",
-            "displayName-count-two": "לילנגני סווזילנדי",
-            "displayName-count-many": "לילנגני סווזילנדי",
-            "displayName-count-other": "לילנגני סווזילנדי",
+            "displayName": "לילנגני סווזי",
+            "displayName-count-one": "לילנגני סווזי",
+            "displayName-count-two": "לילנגני סווזי",
+            "displayName-count-many": "לילנגני סווזי",
+            "displayName-count-other": "לילנגני סווזי",
             "symbol": "SZL"
           },
           "THB": {
@@ -1676,11 +1623,11 @@
             "symbol": "TZS"
           },
           "UAH": {
-            "displayName": "הריבנה אוקראיני",
-            "displayName-count-one": "הריבנה אוקראיני",
-            "displayName-count-two": "הריבנה אוקראיני",
-            "displayName-count-many": "הריבנה אוקראיני",
-            "displayName-count-other": "הריבנה אוקראיני",
+            "displayName": "גריבנה אוקראיני",
+            "displayName-count-one": "גריבנה אוקראיני",
+            "displayName-count-two": "גריבנה אוקראיני",
+            "displayName-count-many": "גריבנה אוקראיני",
+            "displayName-count-other": "גריבנה אוקראיני",
             "symbol": "UAH",
             "symbol-alt-narrow": "₴"
           },
@@ -1734,10 +1681,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "סום אוזבקי",
             "displayName-count-one": "סום אוזבקי",
@@ -1751,21 +1694,13 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "בוליבר ונצואלי (2008–2018)",
-            "displayName-count-one": "בוליבר ונצואלי (2008–2018)",
-            "displayName-count-two": "בוליבר ונצואלי (2008–2018)",
-            "displayName-count-many": "בוליבר ונצואלי (2008–2018)",
-            "displayName-count-other": "בוליבר ונצואלי (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "בוליבר ונצואלי",
             "displayName-count-one": "בוליבר ונצואלי",
             "displayName-count-two": "בוליבר ונצואלי",
             "displayName-count-many": "בוליבר ונצואלי",
             "displayName-count-other": "בוליבר ונצואלי",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "דונג וייטנאמי",
@@ -1797,11 +1732,11 @@
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "פרנק CFA מרכז אפריקני",
-            "displayName-count-one": "פרנק CFA מרכז אפריקני",
-            "displayName-count-two": "פרנק CFA מרכז אפריקני",
-            "displayName-count-many": "פרנק CFA מרכז אפריקני",
-            "displayName-count-other": "פרנק CFA מרכז אפריקני",
+            "displayName": "פרנק CFA BEAC",
+            "displayName-count-one": "פרנק CFA BEAC",
+            "displayName-count-two": "פרנק CFA BEAC",
+            "displayName-count-many": "פרנק CFA BEAC",
+            "displayName-count-other": "פרנק CFA BEAC",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1854,11 +1789,11 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "פרנק CFA מערב אפריקני",
-            "displayName-count-one": "פרנק CFA מערב אפריקני",
-            "displayName-count-two": "פרנק CFA מערב אפריקני",
-            "displayName-count-many": "פרנק CFA מערב אפריקני",
-            "displayName-count-other": "פרנק CFA מערב אפריקני",
+            "displayName": "פרנק CFA BCEAO",
+            "displayName-count-one": "פרנק CFA BCEAO",
+            "displayName-count-two": "פרנק CFA BCEAO",
+            "displayName-count-many": "פרנק CFA BCEAO",
+            "displayName-count-other": "פרנק CFA BCEAO",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1899,7 +1834,7 @@
             "displayName-count-two": "(מטבע שאינו ידוע)",
             "displayName-count-many": "(מטבע שאינו ידוע)",
             "displayName-count-other": "(מטבע שאינו ידוע)",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "דינר תימני",
@@ -1914,11 +1849,11 @@
             "symbol": "YER"
           },
           "YUD": {
-            "displayName": "YUD",
+            "displayName": "דינר יגוסלבי חדש",
             "symbol": "YUD"
           },
           "YUM": {
-            "displayName": "YUM",
+            "displayName": "דינר יגוסלבי",
             "symbol": "YUM"
           },
           "YUN": {
@@ -1947,11 +1882,11 @@
             "symbol": "ZMK"
           },
           "ZMW": {
-            "displayName": "קוואצ׳ה זמבי",
-            "displayName-count-one": "קוואצ׳ה זמבי",
-            "displayName-count-two": "קוואצ׳ה זמבי",
-            "displayName-count-many": "קוואצ׳ה זמבי",
-            "displayName-count-other": "קוואצ׳ה זמבי",
+            "displayName": "קוואצ׳ה זמבית",
+            "displayName-count-one": "קוואצ׳ה זמבית",
+            "displayName-count-two": "קוואצ׳ה זמבית",
+            "displayName-count-many": "קוואצ׳ה זמבית",
+            "displayName-count-other": "קוואצ׳ה זמבית",
             "symbol": "ZMW",
             "symbol-alt-narrow": "ZK"
           },

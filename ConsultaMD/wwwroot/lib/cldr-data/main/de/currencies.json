@@ -3,8 +3,11 @@
     "de": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "de"
       },
@@ -37,8 +40,7 @@
           "ALK": {
             "displayName": "Albanischer Lek (1946–1965)",
             "displayName-count-one": "Albanischer Lek (1946–1965)",
-            "displayName-count-other": "Albanische Lek (1946–1965)",
-            "symbol": "ALK"
+            "displayName-count-other": "Albanische Lek (1946–1965)"
           },
           "ALL": {
             "displayName": "Albanischer Lek",
@@ -247,8 +249,8 @@
             "symbol-alt-narrow": "$"
           },
           "BOB": {
-            "displayName": "Bolivianischer Boliviano",
-            "displayName-count-one": "Bolivianischer Boliviano",
+            "displayName": "Bolivanischer Boliviano",
+            "displayName-count-one": "Bolivanischer Boliviano",
             "displayName-count-other": "Bolivianische Bolivianos",
             "symbol": "BOB",
             "symbol-alt-narrow": "Bs"
@@ -346,18 +348,12 @@
             "displayName-count-other": "Belarus-Rubel (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "Weißrussischer Rubel",
             "displayName-count-one": "Weißrussischer Rubel",
             "displayName-count-other": "Weißrussische Rubel",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "Weißrussischer Rubel (2000–2016)",
-            "displayName-count-one": "Weißrussischer Rubel (2000–2016)",
-            "displayName-count-other": "Weißrussische Rubel (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "Belize-Dollar",
@@ -416,12 +412,6 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "Renminbi Yuan (Off–Shore)",
-            "displayName-count-one": "Renminbi Yuan (Off–Shore)",
-            "displayName-count-other": "Renminbi Yuan (Off–Shore)",
-            "symbol": "CNH"
-          },
           "CNX": {
             "displayName": "Dollar der Chinesischen Volksbank",
             "displayName-count-one": "Dollar der Chinesischen Volksbank",
@@ -472,7 +462,7 @@
             "displayName-count-one": "Kubanischer Peso (konvertibel)",
             "displayName-count-other": "Kubanische Pesos (konvertibel)",
             "symbol": "CUC",
-            "symbol-alt-narrow": "Cub$"
+            "symbol-alt-narrow": "$"
           },
           "CUP": {
             "displayName": "Kubanischer Peso",
@@ -482,9 +472,9 @@
             "symbol-alt-narrow": "$"
           },
           "CVE": {
-            "displayName": "Cabo-Verde-Escudo",
-            "displayName-count-one": "Cabo-Verde-Escudo",
-            "displayName-count-other": "Cabo-Verde-Escudos",
+            "displayName": "Kap-Verde-Escudo",
+            "displayName-count-one": "Kap-Verde-Escudo",
+            "displayName-count-other": "Kap-Verde-Escudos",
             "symbol": "CVE"
           },
           "CYP": {
@@ -619,7 +609,7 @@
             "displayName-count-one": "Falkland-Pfund",
             "displayName-count-other": "Falkland-Pfund",
             "symbol": "FKP",
-            "symbol-alt-narrow": "Fl£"
+            "symbol-alt-narrow": "£"
           },
           "FRF": {
             "displayName": "Französischer Franc",
@@ -628,9 +618,9 @@
             "symbol": "FRF"
           },
           "GBP": {
-            "displayName": "Britisches Pfund",
-            "displayName-count-one": "Britisches Pfund",
-            "displayName-count-other": "Britische Pfund",
+            "displayName": "Britisches Pfund Sterling",
+            "displayName-count-one": "Britisches Pfund Sterling",
+            "displayName-count-other": "Britische Pfund Sterling",
             "symbol": "£",
             "symbol-alt-narrow": "£"
           },
@@ -644,9 +634,7 @@
             "displayName": "Georgischer Lari",
             "displayName-count-one": "Georgischer Lari",
             "displayName-count-other": "Georgische Lari",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "Ghanaischer Cedi (1979–2007)",
@@ -663,7 +651,7 @@
           "GIP": {
             "displayName": "Gibraltar-Pfund",
             "displayName-count-one": "Gibraltar-Pfund",
-            "displayName-count-other": "Gibraltar-Pfund",
+            "displayName-count-other": "Gibraltar Pfund",
             "symbol": "GIP",
             "symbol-alt-narrow": "£"
           },
@@ -678,7 +666,7 @@
             "displayName-count-one": "Guinea-Franc",
             "displayName-count-other": "Guinea-Franc",
             "symbol": "GNF",
-            "symbol-alt-narrow": "F.G."
+            "symbol-alt-narrow": "FG"
           },
           "GNS": {
             "displayName": "Guineischer Syli",
@@ -786,8 +774,7 @@
           "ILR": {
             "displayName": "Israelischer Schekel (1980–1985)",
             "displayName-count-one": "Israelischer Schekel (1980–1985)",
-            "displayName-count-other": "Israelische Schekel (1980–1985)",
-            "symbol": "ILR"
+            "displayName-count-other": "Israelische Schekel (1980–1985)"
           },
           "ILS": {
             "displayName": "Israelischer Neuer Schekel",
@@ -818,8 +805,7 @@
           "ISJ": {
             "displayName": "Isländische Krone (1918–1981)",
             "displayName-count-one": "Isländische Krone (1918–1981)",
-            "displayName-count-other": "Isländische Kronen (1918–1981)",
-            "symbol": "ISJ"
+            "displayName-count-other": "Isländische Kronen (1918–1981)"
           },
           "ISK": {
             "displayName": "Isländische Krone",
@@ -878,7 +864,7 @@
             "displayName-count-one": "Komoren-Franc",
             "displayName-count-other": "Komoren-Francs",
             "symbol": "KMF",
-            "symbol-alt-narrow": "FC"
+            "symbol-alt-narrow": "CF"
           },
           "KPW": {
             "displayName": "Nordkoreanischer Won",
@@ -1092,16 +1078,10 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "Mauretanischer Ouguiya (1973–2017)",
-            "displayName-count-one": "Mauretanischer Ouguiya (1973–2017)",
-            "displayName-count-other": "Mauretanische Ouguiya (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "Mauretanischer Ouguiya",
             "displayName-count-one": "Mauretanischer Ouguiya",
             "displayName-count-other": "Mauretanische Ouguiya",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "Maltesische Lira",
@@ -1125,8 +1105,7 @@
           "MVP": {
             "displayName": "Malediven-Rupie (alt)",
             "displayName-count-one": "Malediven-Rupie (alt)",
-            "displayName-count-other": "Malediven-Rupien (alt)",
-            "symbol": "MVP"
+            "displayName-count-other": "Malediven-Rupien (alt)"
           },
           "MVR": {
             "displayName": "Malediven-Rufiyaa",
@@ -1257,9 +1236,9 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "Peruanischer Sol",
-            "displayName-count-one": "Peruanischer Sol",
-            "displayName-count-other": "Peruanische Sol",
+            "displayName": "Peruanischer Neuer Sol",
+            "displayName-count-one": "Peruanischer Neuer Sol",
+            "displayName-count-other": "Peruanische Neue Sol",
             "symbol": "PEN"
           },
           "PES": {
@@ -1336,8 +1315,7 @@
             "displayName": "Rumänischer Leu",
             "displayName-count-one": "Rumänischer Leu",
             "displayName-count-other": "Rumänische Leu",
-            "symbol": "RON",
-            "symbol-alt-narrow": "L"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "Serbischer Dinar",
@@ -1350,7 +1328,7 @@
             "displayName-count-one": "Russischer Rubel",
             "displayName-count-other": "Russische Rubel",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "Russischer Rubel (1991–1998)",
@@ -1364,7 +1342,7 @@
             "displayName-count-one": "Ruanda-Franc",
             "displayName-count-other": "Ruanda-Francs",
             "symbol": "RWF",
-            "symbol-alt-narrow": "F.Rw"
+            "symbol-alt-narrow": "RF"
           },
           "SAR": {
             "displayName": "Saudi-Rial",
@@ -1469,16 +1447,10 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "São-toméischer Dobra (1977–2017)",
-            "displayName-count-one": "São-toméischer Dobra (1977–2017)",
-            "displayName-count-other": "São-toméische Dobra (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "São-toméischer Dobra",
             "displayName-count-one": "São-toméischer Dobra",
-            "displayName-count-other": "São-toméische Dobras",
-            "symbol": "STN",
+            "displayName-count-other": "São-toméische Dobra",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1498,7 +1470,7 @@
             "displayName-count-one": "Syrisches Pfund",
             "displayName-count-other": "Syrische Pfund",
             "symbol": "SYP",
-            "symbol-alt-narrow": "SYP"
+            "symbol-alt-narrow": "£"
           },
           "SZL": {
             "displayName": "Swasiländischer Lilangeni",
@@ -1653,10 +1625,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "Usbekistan-Sum",
             "displayName-count-one": "Usbekistan-Sum",
@@ -1670,17 +1638,11 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "Venezolanischer Bolívar (2008–2018)",
-            "displayName-count-one": "Venezolanischer Bolívar (2008–2018)",
-            "displayName-count-other": "Venezolanische Bolívares (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "Venezolanischer Bolívar",
             "displayName-count-one": "Venezolanischer Bolívar",
             "displayName-count-other": "Venezolanische Bolívares",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "Vietnamesischer Dong",
@@ -1894,7 +1856,7 @@
             "displayName-count-one": "Kwacha",
             "displayName-count-other": "Kwacha",
             "symbol": "ZMW",
-            "symbol-alt-narrow": "K"
+            "symbol-alt-narrow": "ZK"
           },
           "ZRN": {
             "displayName": "Zaire-Neuer Zaïre (1993–1998)",

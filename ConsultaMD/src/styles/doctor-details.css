@@ -1,0 +1,89 @@
+﻿.row .col {
+  padding: 0 30px; }
+
+.brand-logo img {
+  width: 60%; }
+
+.profile-picture {
+  width: 80%;
+  padding: 25px; }
+
+.container-fluid .fa,
+.container-fluid .far,
+.container-fluid .fas {
+  font-size: 20px;
+  padding: 10px; }
+
+#clinic-row::before {
+  opacity: 0.5; }
+
+#clinic-bg {
+  /*background-image: url(/img/clinic-images.png);*/
+  /*background-position: center;*/
+  /* Center the image */
+  /*background-repeat: no-repeat;*/
+  /* Do not repeat the image */
+  /*background-size: cover;*/
+  /* Resize the background image to cover the entire container */
+  margin-top: 64px;
+  width: 30vw !important;
+  padding: 10px;
+  background-color: #000000;
+  height: 100%;
+  width: 100%; }
+
+#Booking {
+  height: 100%;
+  width: 100vw; }
+
+.clinic-col {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.col-info {
+  height: 50vh; }
+
+.info-doc {
+  padding-bottom: 15px; }
+
+.hr-btn {
+  background-color: white;
+  color: teal; }
+
+.hr-btn:hover {
+  background-color: teal;
+  color: white; }
+
+#nav-mobile {
+  background: black;
+  opacity: 0.85;
+  width: 500px;
+  height: calc(100vh-0.5rem);
+  padding: 0.5rem; }
+  #nav-mobile #sidenav-details {
+    height: 100vh; }
+    #nav-mobile #sidenav-details .select-dropdown {
+      color: white; }
+    #nav-mobile #sidenav-details img {
+      max-height: 20vh; }
+    #nav-mobile #sidenav-details #details {
+      font-size: 1rem;
+      height: calc(100vh - 227px); }
+      #nav-mobile #sidenav-details #details tr {
+        border-bottom: 1pt solid gray; }
+        #nav-mobile #sidenav-details #details tr th, #nav-mobile #sidenav-details #details tr td {
+          line-height: 1.5rem;
+          padding: 10px 5px; }
+          #nav-mobile #sidenav-details #details tr th img, #nav-mobile #sidenav-details #details tr td img {
+            width: 25px;
+            height: 25px; }
+      #nav-mobile #sidenav-details #details i {
+        line-height: inherit; }
+
+body header, body main, body footer {
+  padding-left: 500px;
+  overflow: hidden; }
+
+@media only screen and (max-width: 600px) {
+  #clinic-bg {
+    width: 80vw !important;
+    margin-top: 56px; } }

@@ -1,86 +1,93 @@
-﻿@model List<string>
-@using ConsultaMD.Models.VM
+﻿@model (string[], string)
 @using ConsultaMD.Services
 
 @{
-    var libs = Libman.LoadJson().libraries;
-}
-
-@foreach (var lib in Model)
-{
-    var l = new Lib();
-    if(libs.Any(m => m.library.StartsWith($"{lib}@") && m.files.Any()))
-    {
-        l = libs.Single(m => m.library.StartsWith($"{lib}@") && m.files.Any());
-    }
-    <environment include="Development">
-            @if (l.files != null)
-            {
-                foreach (var file in l.files)
-                {
-                    if (file.Contains(".css"))
-                    {
-                        @this.StyleBlock(@<link href="@($"{l.destination.Replace("wwwroot", "")}{file}")" rel="stylesheet" />)
-                    }
-                    else if (file.Contains(".js"))
-                    {
-                        @this.ScriptBlock(@<script src="@($"{l.destination.Replace("wwwroot", "")}{file}")"></script>)
-                    }
-                }
-            }
-            else
-            {
-                if (lib.Contains(".css"))
-                {
-                    @this.StyleBlock(@<link href="/css/@lib.Replace(".min", "")" rel="stylesheet" />)
-                }
-                else
-                {
-                    @this.ScriptBlock(@<script src="/js/@lib.Replace(".min", "")"></script>)
-                }
-            }
-        </environment>
-        <environment exclude="Development">
-    @if (l.files != null)
-    {
-        var url = "unpkg.com";
-        switch (l.provider)
-        {
-            case "cdnjs":
-                l.library = l.library.Replace("@", "/");
-                url = "cdnjs.cloudflare.com/ajax/libs";
-                break;
-            case "":
-            default:
-                l.provider = "unpkg";
-                break;
+    var style = $"{Model.Item2}Styles";
+    var script = $"{Model.Item2}Scripts";
+    bool dev = true;
+    <environment exclude="Development">
+        @{
+            dev = false;
         }
-        foreach (var file in l.files)
+    </environment>
+    foreach (var lib in Model.Item1)
+    {
+        var continuar = false;
+        foreach (var bundle in Bundler.GetBundles(lib))
         {
+            var file = bundle.outputFileName.Replace("wwwroot", "~");
             if (file.Contains(".css"))
             {
-                @this.StyleBlock(@<link href="@($"{Context.Request.Scheme}://{url}/{l.library}/{file}")" rel="stylesheet"
-                                        asp-fallback-href="@($"{l.destination.Replace("wwwroot", "")}{file}")"
-                                        asp-subresource-integrity-href="@($"{l.destination.Replace("wwwroot", "")}{file}")" />)
-            }
-            else if (file.Contains(".js"))
-            {
-                @this.ScriptBlock(@<script src="@($"{Context.Request.Scheme}://{url}/{l.library}/{file}")"
-                                           asp-fallback-src="@($"{l.destination.Replace("wwwroot", "")}{file}")"
-                                           asp-subresource-integrity-src="@($"{l.destination.Replace("wwwroot", "")}{file}")"></script>)
-            }
-        }
-    }
-    else
-    {
-        if (lib.Contains(".css"))
-        {
-            @this.StyleBlock(@<link href="/css/@lib" rel="stylesheet" asp-append-version="true" />)
-        }
-        else
-        {
-            @this.ScriptBlock(@<script src="/js/@lib" asp-append-version="true"></script>)
-        }
-    }
-    </environment>
+                if (dev)
+                {
+                    foreach (var input in bundle.inputFiles)
+                    {
+                        this.Block(@<link href="@input.Insert(0, "~/")" rel="stylesheet" asp-append-version="true" />, style);
+}
+}
+else
+{
+this.Block(@<link href="@file" rel="stylesheet" asp-append-version="true" />, style);
+}
+}
+else
+{
+if (dev)
+{
+foreach (var input in bundle.inputFiles)
+{
+this.Block(@<script src="@input.Insert(0, "~/")" asp-append-version="true"></script>, script);
+}
+}
+else
+{
+this.Block(@<script src="@file" asp-append-version="true"></script>, script);
+}
+}
+continuar = true;
+}
+if (continuar) { continue; }
+var l = Libman.GetLibs(lib);
+foreach (var file in l?.files)
+{
+if (dev)
+{
+if (file.Contains(".css"))
+{
+this.Block(@<link href="@($"{l.destination.Replace("wwwroot", "")}{file}")" rel="stylesheet" />, style);
+}
+else if (file.Contains(".js"))
+{
+this.Block(@<script src="@($"{l.destination.Replace("wwwroot", "")}{file}")"></script>, script);
+}
+}
+else
+{
+var url = "unpkg.com";
+switch (l.provider)
+{
+case "cdnjs":
+l.library = l.library.Replace("@", "/");
+url = "cdnjs.cloudflare.com/ajax/libs";
+break;
+case "":
+default:
+l.provider = "unpkg";
+break;
+}
+if (file.Contains(".css"))
+{
+this.Block(@<link href="@($"{Context.Request.Scheme}://{url}/{l.library}/{file}")" rel="stylesheet"
+                  asp-fallback-href="@($"{l.destination.Replace("wwwroot", "")}{file}")"
+                  asp-subresource-integrity-href="@($"{l.destination.Replace("wwwroot", "")}{file}")" />, style);
+}
+else if (file.Contains(".js"))
+{
+this.Block(@<script src="@($"{Context.Request.Scheme}://{url}/{l.library}/{file}")"
+                    asp-fallback-src="@($"{l.destination.Replace("wwwroot", "")}{file}")"
+                    asp-subresource-integrity-src="@($"{l.destination.Replace("wwwroot", "")}{file}")"></script>, script);
+}
+}
+}
+}
 }

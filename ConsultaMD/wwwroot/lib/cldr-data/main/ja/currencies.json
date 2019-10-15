@@ -3,8 +3,11 @@
     "ja": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "ja"
       },
@@ -17,7 +20,7 @@
           },
           "AED": {
             "displayName": "アラブ首長国連邦ディルハム",
-            "displayName-count-other": "UAE ディルハム",
+            "displayName-count-other": "アラブ首長国連邦ディルハム",
             "symbol": "AED"
           },
           "AFA": {
@@ -26,8 +29,8 @@
             "symbol": "AFA"
           },
           "AFN": {
-            "displayName": "アフガニスタン アフガニー",
-            "displayName-count-other": "アフガニスタン アフガニー",
+            "displayName": "アフガニー",
+            "displayName-count-other": "アフガニー",
             "symbol": "AFN"
           },
           "ALK": {
@@ -51,8 +54,8 @@
             "symbol": "ANG"
           },
           "AOA": {
-            "displayName": "アンゴラ クワンザ",
-            "displayName-count-other": "アンゴラ クワンザ",
+            "displayName": "クワンザ",
+            "displayName-count-other": "クワンザ",
             "symbol": "AOA",
             "symbol-alt-narrow": "Kz"
           },
@@ -77,13 +80,13 @@
             "symbol": "ARA"
           },
           "ARL": {
-            "displayName": "アルゼンチン・ペソ・レイ（1970–1983）",
-            "displayName-count-other": "アルゼンチン・ペソ・レイ（1970–1983）",
+            "displayName": "アルゼンチン・ペソ・レイ（1970-1983）",
+            "displayName-count-other": "アルゼンチン・ペソ・レイ（1970-1983）",
             "symbol": "ARL"
           },
           "ARM": {
-            "displayName": "アルゼンチン・ペソ（1881–1970）",
-            "displayName-count-other": "アルゼンチン・ペソ（1881–1970）",
+            "displayName": "アルゼンチン・ペソ（1881-1970）",
+            "displayName-count-other": "アルゼンチン・ペソ（1881-1970）",
             "symbol": "ARM"
           },
           "ARP": {
@@ -105,7 +108,7 @@
           "AUD": {
             "displayName": "オーストラリア ドル",
             "displayName-count-other": "オーストラリア ドル",
-            "symbol": "A$",
+            "symbol": "AU$",
             "symbol-alt-narrow": "$"
           },
           "AWG": {
@@ -129,14 +132,14 @@
             "symbol": "BAD"
           },
           "BAM": {
-            "displayName": "ボスニア・ヘルツェゴビナ 兌換マルク (BAM)",
-            "displayName-count-other": "ボスニア・ヘルツェゴビナ 兌換マルク (BAM)",
+            "displayName": "ボスニア マルク (BAM)",
+            "displayName-count-other": "ボスニア マルク (BAM)",
             "symbol": "BAM",
             "symbol-alt-narrow": "KM"
           },
           "BAN": {
-            "displayName": "ボスニア・ヘルツェゴビナ 新ディナール（1994–1997）",
-            "displayName-count-other": "ボスニア・ヘルツェゴビナ 新ディナール（1994–1997）",
+            "displayName": "ボスニア・ヘルツェゴビナ 新ディナール（1994-1997）",
+            "displayName-count-other": "ボスニア・ヘルツェゴビナ 新ディナール（1994-1997）",
             "symbol": "BAN"
           },
           "BBD": {
@@ -182,8 +185,8 @@
             "symbol": "BGN"
           },
           "BGO": {
-            "displayName": "ブルガリア レフ（1879–1952）",
-            "displayName-count-other": "ブルガリア レフ（1879–1952）",
+            "displayName": "ブルガリア レフ（1879-1952）",
+            "displayName-count-other": "ブルガリア レフ（1879-1952）",
             "symbol": "BGO"
           },
           "BHD": {
@@ -261,8 +264,8 @@
             "symbol": "BRR"
           },
           "BRZ": {
-            "displayName": "ブラジル クルゼイロ（1942–1967）",
-            "displayName-count-other": "ブラジル クルゼイロ（1942–1967）",
+            "displayName": "ブラジル クルゼイロ（1942-1967）",
+            "displayName-count-other": "ブラジル クルゼイロ（1942-1967）",
             "symbol": "BRZ"
           },
           "BSD": {
@@ -292,16 +295,11 @@
             "displayName-count-other": "ベラルーシ 新ルーブル (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "ベラルーシ ルーブル",
             "displayName-count-other": "ベラルーシ ルーブル",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "ベラルーシ ルーブル (2000–2016)",
-            "displayName-count-other": "ベラルーシ ルーブル (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "ベリーズ ドル",
@@ -350,11 +348,6 @@
             "displayName-count-other": "チリ ペソ",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "中国人民元(オフショア)",
-            "displayName-count-other": "中国人民元(オフショア)",
-            "symbol": "CNH"
           },
           "CNX": {
             "displayName": "中国人民銀行ドル",
@@ -513,8 +506,8 @@
             "symbol": "FIM"
           },
           "FJD": {
-            "displayName": "フィジー ドル",
-            "displayName-count-other": "フィジー ドル",
+            "displayName": "フィジー諸島 ドル",
+            "displayName-count-other": "フィジー諸島 ドル",
             "symbol": "FJD",
             "symbol-alt-narrow": "$"
           },
@@ -536,16 +529,14 @@
             "symbol-alt-narrow": "£"
           },
           "GEK": {
-            "displayName": "ジョージア クーポン ラリ",
-            "displayName-count-other": "ジョージア クーポン ラリ",
+            "displayName": "グルジア クーポン ラリ",
+            "displayName-count-other": "グルジア クーポン ラリ",
             "symbol": "GEK"
           },
           "GEL": {
-            "displayName": "ジョージア ラリ",
-            "displayName-count-other": "ジョージア ラリ",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "displayName": "グルジア ラリ",
+            "displayName-count-other": "グルジア ラリ",
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "ガーナ セディ (1979–2007)",
@@ -727,8 +718,8 @@
             "symbol": "KES"
           },
           "KGS": {
-            "displayName": "キルギス ソム",
-            "displayName-count-other": "キルギス ソム",
+            "displayName": "キルギスタン ソム",
+            "displayName-count-other": "キルギスタン ソム",
             "symbol": "KGS"
           },
           "KHR": {
@@ -744,25 +735,25 @@
             "symbol-alt-narrow": "CF"
           },
           "KPW": {
-            "displayName": "北朝鮮ウォン",
-            "displayName-count-other": "北朝鮮ウォン",
+            "displayName": "北朝鮮 ウォン",
+            "displayName-count-other": "北朝鮮 ウォン",
             "symbol": "KPW",
             "symbol-alt-narrow": "₩"
           },
           "KRH": {
-            "displayName": "韓国 ファン（1953–1962）",
-            "displayName-count-other": "韓国 ファン（1953–1962）",
+            "displayName": "韓国 ファン（1953-1962）",
+            "displayName-count-other": "韓国 ファン（1953-1962）",
             "symbol": "KRH"
           },
           "KRO": {
-            "displayName": "韓国 ウォン（1945–1953）",
-            "displayName-count-other": "韓国 ウォン（1945–1953）",
+            "displayName": "韓国 ウォン（1945-1953）",
+            "displayName-count-other": "韓国 ウォン（1945-1953）",
             "symbol": "KRO"
           },
           "KRW": {
-            "displayName": "韓国ウォン",
-            "displayName-count-other": "韓国ウォン",
-            "symbol": "₩",
+            "displayName": "韓国 ウォン",
+            "displayName-count-other": "韓国 ウォン",
+            "symbol": "￦",
             "symbol-alt-narrow": "₩"
           },
           "KWD": {
@@ -895,8 +886,8 @@
             "symbol": "MKD"
           },
           "MKN": {
-            "displayName": "マケドニア ディナール（1992–1993）",
-            "displayName-count-other": "マケドニア ディナール（1992–1993）",
+            "displayName": "マケドニア ディナール（1992-1993）",
+            "displayName-count-other": "マケドニア ディナール（1992-1993）",
             "symbol": "MKN"
           },
           "MLF": {
@@ -922,14 +913,9 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "モーリタニア ウギア (1973–2017)",
-            "displayName-count-other": "モーリタニア ウギア (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "モーリタニア ウギア",
             "displayName-count-other": "モーリタニア ウギア",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "マルタ リラ",
@@ -953,8 +939,8 @@
             "symbol": "MVP"
           },
           "MVR": {
-            "displayName": "モルディブ ルフィア",
-            "displayName-count-other": "モルディブ ルフィア",
+            "displayName": "モルディブ諸島 ルフィア",
+            "displayName-count-other": "モルディブ諸島 ルフィア",
             "symbol": "MVR"
           },
           "MWK": {
@@ -1061,8 +1047,8 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "ペルー ソル",
-            "displayName-count-other": "ペルー ソル",
+            "displayName": "ペルー 新ソル",
+            "displayName-count-other": "ペルー 新ソル",
             "symbol": "PEN"
           },
           "PES": {
@@ -1127,8 +1113,7 @@
           "RON": {
             "displayName": "ルーマニア レイ",
             "displayName-count-other": "ルーマニア レイ",
-            "symbol": "RON",
-            "symbol-alt-narrow": "レイ"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "ディナール (セルビア)",
@@ -1139,7 +1124,7 @@
             "displayName": "ロシア ルーブル",
             "displayName-count-other": "ロシア ルーブル",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "ロシア ルーブル (1991–1998)",
@@ -1197,8 +1182,8 @@
             "symbol-alt-narrow": "$"
           },
           "SHP": {
-            "displayName": "セントヘレナ ポンド",
-            "displayName-count-other": "セントヘレナ ポンド",
+            "displayName": "セントヘレナ島 ポンド",
+            "displayName-count-other": "セントヘレナ島 ポンド",
             "symbol": "SHP",
             "symbol-alt-narrow": "£"
           },
@@ -1234,20 +1219,15 @@
             "symbol": "SRG"
           },
           "SSP": {
-            "displayName": "南スーダン ポンド",
-            "displayName-count-other": "南スーダン ポンド",
+            "displayName": "南スーダン・ポンド",
+            "displayName-count-other": "南スーダン・ポンド",
             "symbol": "SSP",
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "サントメ・プリンシペ ドブラ (1977–2017)",
-            "displayName-count-other": "サントメ・プリンシペ ドブラ (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "サントメ・プリンシペ ドブラ",
             "displayName-count-other": "サントメ・プリンシペ ドブラ",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1274,7 +1254,7 @@
           "THB": {
             "displayName": "タイ バーツ",
             "displayName-count-other": "タイ バーツ",
-            "symbol": "THB",
+            "symbol": "฿",
             "symbol-alt-narrow": "฿"
           },
           "TJR": {
@@ -1326,8 +1306,8 @@
             "symbol-alt-variant": "TL"
           },
           "TTD": {
-            "displayName": "トリニダード・トバゴ ドル",
-            "displayName-count-other": "トリニダード・トバゴ ドル",
+            "displayName": "トリニダードトバゴ ドル",
+            "displayName-count-other": "トリニダードトバゴ ドル",
             "symbol": "TTD",
             "symbol-alt-narrow": "$"
           },
@@ -1335,7 +1315,7 @@
             "displayName": "新台湾ドル",
             "displayName-count-other": "新台湾ドル",
             "symbol": "NT$",
-            "symbol-alt-narrow": "$"
+            "symbol-alt-narrow": "NT$"
           },
           "TZS": {
             "displayName": "タンザニア シリング",
@@ -1395,10 +1375,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "ウズベキスタン スム",
             "displayName-count-other": "ウズベキスタン スム",
@@ -1410,15 +1386,10 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "ベネズエラ ボリバル (2008–2018)",
-            "displayName-count-other": "ベネズエラ ボリバル (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "ベネズエラ ボリバル",
             "displayName-count-other": "ベネズエラ ボリバル",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "ベトナム ドン",
@@ -1427,8 +1398,8 @@
             "symbol-alt-narrow": "₫"
           },
           "VNN": {
-            "displayName": "ベトナム ドン（1978–1985）",
-            "displayName-count-other": "ベトナム ドン（1978–1985）",
+            "displayName": "ベトナム ドン（1978-1985）",
+            "displayName-count-other": "ベトナム ドン（1978-1985）",
             "symbol": "VNN"
           },
           "VUV": {
@@ -1442,8 +1413,8 @@
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "中央アフリカ CFA フラン",
-            "displayName-count-other": "中央アフリカ CFA フラン",
+            "displayName": "CFA フラン（BEAC）",
+            "displayName-count-other": "CFA フラン（BEAC）",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1503,8 +1474,8 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "西アフリカ CFA フラン",
-            "displayName-count-other": "西アフリカ CFA フラン",
+            "displayName": "CFA フラン（BCEAO）",
+            "displayName-count-other": "CFA フラン（BCEAO）",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1573,8 +1544,8 @@
             "symbol": "YUN"
           },
           "YUR": {
-            "displayName": "ユーゴスラビア 改革ディナール（1992–1993）",
-            "displayName-count-other": "ユーゴスラビア 改革ディナール（1992–1993）",
+            "displayName": "ユーゴスラビア 改革ディナール（1992-1993）",
+            "displayName-count-other": "ユーゴスラビア 改革ディナール（1992-1993）",
             "symbol": "YUR"
           },
           "ZAL": {

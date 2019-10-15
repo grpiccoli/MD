@@ -3,8 +3,11 @@
     "hu": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "hu"
       },
@@ -33,10 +36,6 @@
             "displayName-count-one": "afgán afghani",
             "displayName-count-other": "afgán afghani",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "albán lek",
@@ -326,18 +325,12 @@
             "displayName": "Fehérorosz új rubel (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "fehérorosz rubel",
             "displayName-count-one": "fehérorosz rubel",
             "displayName-count-other": "fehérorosz rubel",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "fehérorosz rubel (2000–2016)",
-            "displayName-count-one": "fehérorosz rubel (2000–2016)",
-            "displayName-count-other": "fehérorosz rubel (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "belize-i dollár",
@@ -387,16 +380,6 @@
             "displayName-count-other": "chilei peso",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "kínai jüan (offshore)",
-            "displayName-count-one": "kínai jüan (offshore)",
-            "displayName-count-other": "kínai jüan (offshore)",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "kínai jüan",
@@ -570,9 +553,9 @@
             "symbol": "FRF"
           },
           "GBP": {
-            "displayName": "angol font",
-            "displayName-count-one": "angol font",
-            "displayName-count-other": "angol font",
+            "displayName": "brit font sterling",
+            "displayName-count-one": "brit font sterling",
+            "displayName-count-other": "brit font sterling",
             "symbol": "GBP",
             "symbol-alt-narrow": "£"
           },
@@ -584,9 +567,7 @@
             "displayName": "grúz lari",
             "displayName-count-one": "grúz lari",
             "displayName-count-other": "grúz lari",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "Ghánai cedi (1979–2007)",
@@ -689,7 +670,7 @@
             "displayName": "magyar forint",
             "displayName-count-one": "magyar forint",
             "displayName-count-other": "magyar forint",
-            "symbol": "Ft",
+            "symbol": "HUF",
             "symbol-alt-narrow": "Ft"
           },
           "IDR": {
@@ -706,10 +687,6 @@
           "ILP": {
             "displayName": "Izraeli font",
             "symbol": "ILP"
-          },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
           },
           "ILS": {
             "displayName": "izraeli új sékel",
@@ -736,10 +713,6 @@
             "displayName-count-one": "iráni rial",
             "displayName-count-other": "iráni rial",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "izlandi korona",
@@ -982,16 +955,10 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "mauritániai ouguiya (1973–2017)",
-            "displayName-count-one": "mauritániai ouguiya (1973–2017)",
-            "displayName-count-other": "mauritániai ouguiya (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "mauritániai ouguiya",
             "displayName-count-one": "mauritániai ouguiya",
             "displayName-count-other": "mauritániai ouguiya",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "Máltai líra",
@@ -1007,10 +974,6 @@
             "displayName-count-other": "mauritiusi rúpia",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "maldív-szigeteki rufiyaa",
@@ -1123,17 +1086,17 @@
             "symbol": "PAB"
           },
           "PEI": {
-            "displayName": "perui inti",
+            "displayName": "Perui inti",
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "perui sol",
-            "displayName-count-one": "perui sol",
-            "displayName-count-other": "perui sol",
+            "displayName": "perui sol nuevo",
+            "displayName-count-one": "perui sol nuevo",
+            "displayName-count-other": "perui sol nuevo",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "perui sol (1863–1965)",
+            "displayName": "Perui sol",
             "symbol": "PES"
           },
           "PGK": {
@@ -1200,8 +1163,7 @@
             "displayName": "román lej",
             "displayName-count-one": "román lej",
             "displayName-count-other": "román lej",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "szerb dínár",
@@ -1214,7 +1176,7 @@
             "displayName-count-one": "orosz rubel",
             "displayName-count-other": "orosz rubel",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "orosz rubel (1991–1998)",
@@ -1327,16 +1289,10 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "São Tomé és Príncipe-i dobra (1977–2017)",
-            "displayName-count-one": "São Tomé és Príncipe-i dobra (1977–2017)",
-            "displayName-count-other": "São Tomé és Príncipe-i dobra (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "São Tomé és Príncipe-i dobra",
             "displayName-count-one": "São Tomé és Príncipe-i dobra",
             "displayName-count-other": "São Tomé és Príncipe-i dobra",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1497,10 +1453,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "üzbegisztáni szum",
             "displayName-count-one": "üzbegisztáni szum",
@@ -1514,17 +1466,11 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "venezuelai bolivar (2008–2018)",
-            "displayName-count-one": "venezuelai bolivar (2008–2018)",
-            "displayName-count-other": "venezuelai bolivar (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "venezuelai bolivar",
             "displayName-count-one": "venezuelai bolivar",
             "displayName-count-other": "venezuelai bolivar",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "vietnami dong",
@@ -1656,7 +1602,7 @@
             "displayName": "ismeretlen pénznem",
             "displayName-count-one": "(ismeretlen pénznem)",
             "displayName-count-other": "(ismeretlen pénznem)",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "Jemeni dínár",

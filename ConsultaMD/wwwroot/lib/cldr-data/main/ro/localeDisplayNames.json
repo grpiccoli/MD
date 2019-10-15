@@ -3,8 +3,11 @@
     "ro": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "ro"
       },
@@ -16,145 +19,78 @@
         },
         "keys": {
           "calendar": "calendar",
-          "cf": "Format monedă",
           "colAlternate": "Ordonare cu simbolurile ignorate",
           "colBackwards": "Ordonare inversă după accent",
           "colCaseFirst": "Ordonare după majuscule/minuscule",
           "colCaseLevel": "Ordonare care ține seama de majuscule/minuscule",
-          "collation": "ordine de sortare",
+          "colHiraganaQuaternary": "Ordonare după kana",
           "colNormalization": "Ordonare normalizată",
           "colNumeric": "Ordonare numerică",
           "colStrength": "Puterea ordonării",
+          "collation": "ordine de sortare",
           "currency": "monedă",
-          "hc": "ciclu orar (12 sau 24)",
-          "lb": "stil de întrerupere a liniei",
-          "ms": "sistem de unități de măsură",
           "numbers": "numere",
           "timezone": "Fusul orar",
           "va": "Varianta locală",
+          "variableTop": "Ordonați ca simboluri",
           "x": "Utilizare privată"
         },
         "types": {
-          "calendar": {
-            "buddhist": "calendar budist",
-            "chinese": "calendar chinezesc",
-            "coptic": "calendar copt",
-            "dangi": "calendar dangi",
-            "ethiopic": "calendar etiopian",
-            "ethiopic-amete-alem": "Calendarul etiopian amete alem",
-            "gregorian": "calendar gregorian",
-            "hebrew": "calendar ebraic",
-            "indian": "calendar național indian",
-            "islamic": "calendar islamic",
-            "islamic-civil": "calendar islamic civil",
-            "islamic-rgsa": "islamic-rgsa",
-            "islamic-tbla": "islamic-tbla",
-            "islamic-umalqura": "calendar islamic (Umm al-Qura)",
-            "iso8601": "calendar ISO-8601",
-            "japanese": "calendar japonez",
-            "persian": "calendar persan",
-            "roc": "calendarul Republicii Chineze"
-          },
-          "cf": {
-            "account": "Format monedă contabilitate",
-            "standard": "Format monedă standard"
-          },
-          "colAlternate": {
-            "non-ignorable": "Ordonați simbolurile",
-            "shifted": "Ordonați ignorând simbolurile"
-          },
-          "colBackwards": {
-            "no": "Ordonați accentele în mod normal",
-            "yes": "Ordonați după accente în ordine inversă"
-          },
-          "colCaseFirst": {
-            "lower": "Ordonați întâi minusculele",
-            "no": "Ordonați după dimensiunea normală a literei",
-            "upper": "Ordonați mai întâi majusculele"
-          },
-          "colCaseLevel": {
-            "no": "Ordonați neținând seama de diferența dintre majuscule/minuscule",
-            "yes": "Ordonați ținând seama de diferența dintre majuscule/minuscule"
-          },
-          "collation": {
-            "big5han": "sortare pentru chineza tradițională - Big5",
-            "compat": "ordine de sortare anterioară, pentru compatibilitate",
-            "dictionary": "Ordine de sortare a dicționarului",
-            "ducet": "ordine de sortare Unicode implicită",
-            "emoji": "emoji",
-            "eor": "regulile europene de sortare",
-            "gb2312han": "sortare pentru chineza simplificată - GB2312",
-            "phonebook": "sortare după cartea de telefon",
-            "phonetic": "Tip de ordonare fonetică",
-            "pinyin": "sortare pinyin",
-            "reformed": "Ordine de sortare reformată",
-            "search": "căutare cu scop general",
-            "searchjl": "Căutați în funcție de consoana inițială hangul",
-            "standard": "ordine de sortare standard",
-            "stroke": "ordine de sortare după trasare",
-            "traditional": "sortare tradițională",
-            "unihan": "Ordine de sortare a liniilor ideogramelor",
-            "zhuyin": "zhuyin"
-          },
-          "colNormalization": {
-            "no": "Ordonați fără normalizare",
-            "yes": "Ordonați caracterele unicode normalizat"
-          },
-          "colNumeric": {
-            "no": "Ordonați cifrele individual",
-            "yes": "Ordonați cifrele în ordine numerică"
-          },
-          "colStrength": {
-            "identical": "Ordonați-le pe toate",
-            "primary": "Ordonați numai literele de bază",
-            "quaternary": "Ordonați după accente/dimensiunea literei/lățime/kana",
-            "secondary": "Ordonați după accent",
-            "tertiary": "Ordonați după accente/dimensiunea literei/lățime"
-          },
-          "d0": {
-            "fwidth": "Cu lățime întreagă",
-            "hwidth": "Cu jumătate de lățime",
-            "npinyin": "Numeric"
-          },
-          "hc": {
-            "h11": "sistem cu 12 ore (0–11)",
-            "h12": "sistem cu 12 ore (1–12)",
-            "h23": "sistem cu 24 de ore (0–23)",
-            "h24": "sistem cu 24 de ore (1–24)"
-          },
-          "lb": {
-            "loose": "stil liber de întrerupere a liniei",
-            "normal": "stil normal de întrerupere a liniei",
-            "strict": "stil strict de întrerupere a liniei"
-          },
-          "m0": {
-            "bgn": "transliterare BGN SUA",
-            "ungegn": "transliterare GEGN ONU"
-          },
-          "ms": {
-            "metric": "sistemul metric",
-            "uksystem": "sistemul imperial de unități de măsură",
-            "ussystem": "sistemul american de unități de măsură"
-          },
           "numbers": {
-            "ahom": "ahom",
             "arab": "cifre indo-arabe",
             "arabext": "cifre indo-arabe extinse",
             "armn": "numerale armenești",
             "armnlow": "numerale armenești cu minuscule",
             "bali": "bali",
-            "beng": "cifre bengaleze",
-            "brah": "brah",
+            "beng": "cifre bengaleze"
+          },
+          "collation": {
+            "big5han": "sortare pentru chineza tradițională - Big5"
+          },
+          "numbers": {
+            "brah": "brah"
+          },
+          "calendar": {
+            "buddhist": "calendar budist"
+          },
+          "numbers": {
             "cakm": "cakm",
-            "cham": "cham",
-            "cyrl": "cyrl",
-            "deva": "cifre devanagari",
-            "ethi": "numerale etiopiene",
+            "cham": "cham"
+          },
+          "calendar": {
+            "chinese": "calendar chinezesc",
+            "coptic": "calendar copt",
+            "dangi": "calendar dangi"
+          },
+          "numbers": {
+            "deva": "cifre devanagari"
+          },
+          "collation": {
+            "dictionary": "Ordine de sortare a dicționarului",
+            "ducet": "ordine de sortare Unicode implicită",
+            "eor": "regulile europene de sortare"
+          },
+          "numbers": {
+            "ethi": "numerale etiopiene"
+          },
+          "calendar": {
+            "ethiopic": "calendar etiopian",
+            "ethiopic-amete-alem": "Calendarul etiopian amete alem"
+          },
+          "numbers": {
             "finance": "Sistemul numeric financiar",
-            "fullwide": "cifre cu lățimea întreagă",
-            "geor": "numerale georgiene",
-            "gong": "gong",
-            "gonm": "gonm",
+            "fullwide": "cifre cu lățimea întreagă"
+          },
+          "collation": {
+            "gb2312han": "sortare pentru chineza simplificată - GB2312"
+          },
+          "numbers": {
+            "geor": "numerale georgiene"
+          },
+          "calendar": {
+            "gregorian": "calendar gregorian"
+          },
+          "numbers": {
             "grek": "numerale grecești",
             "greklow": "numerale grecești cu minuscule",
             "gujr": "cifre gujarati",
@@ -164,9 +100,25 @@
             "hansfin": "numerale financiare chinezești simplificate",
             "hant": "numerale chinezești tradiționale",
             "hantfin": "numerale financiare chinezești tradiționale",
-            "hebr": "numerale ebraice",
-            "hmng": "hmng",
-            "hmnp": "hmnp",
+            "hebr": "numerale ebraice"
+          },
+          "calendar": {
+            "hebrew": "calendar ebraic"
+          },
+          "colStrength": {
+            "identical": "Ordonați-le pe toate"
+          },
+          "calendar": {
+            "indian": "calendar național indian",
+            "islamic": "calendar islamic",
+            "islamic-civil": "calendar islamic civil",
+            "islamic-rgsa": "islamic-rgsa",
+            "islamic-tbla": "islamic-tbla",
+            "islamic-umalqura": "islamic-umalqura",
+            "iso8601": "calendar ISO-8601",
+            "japanese": "calendar japonez"
+          },
+          "numbers": {
             "java": "java",
             "jpan": "numerale japoneze",
             "jpanfin": "numerale financiare japoneze",
@@ -178,46 +130,134 @@
             "laoo": "cifre laoțiene",
             "latn": "cifre occidentale",
             "lepc": "lepc",
-            "limb": "limb",
-            "mathbold": "mathbold",
-            "mathdbl": "mathdbl",
-            "mathmono": "mathmono",
-            "mathsanb": "mathsanb",
-            "mathsans": "mathsans",
+            "limb": "limb"
+          },
+          "colCaseFirst": {
+            "lower": "Ordonați întâi minusculele"
+          },
+          "numbers": {
             "mlym": "cifre malayalam",
-            "modi": "modi",
             "mong": "Cifre mongole",
-            "mroo": "mroo",
             "mtei": "mtei",
             "mymr": "cifre birmaneze",
             "mymrshan": "mymrshan",
-            "mymrtlng": "mymrtlng",
             "native": "Cifre native",
-            "nkoo": "nkoo",
+            "nkoo": "nkoo"
+          },
+          "colBackwards": {
+            "no": "Ordonați accentele în mod normal"
+          },
+          "colCaseFirst": {
+            "no": "Ordonați după dimensiunea normală a literei"
+          },
+          "colCaseLevel": {
+            "no": "Ordonați neținând seama de diferența dintre majuscule/minuscule"
+          },
+          "colHiraganaQuaternary": {
+            "no": "Ordonați caracterele kana separat"
+          },
+          "colNormalization": {
+            "no": "Ordonați fără normalizare"
+          },
+          "colNumeric": {
+            "no": "Ordonați cifrele individual"
+          },
+          "colAlternate": {
+            "non-ignorable": "Ordonați simbolurile"
+          },
+          "numbers": {
             "olck": "olck",
             "orya": "cifre oriya",
-            "osma": "osma",
-            "rohg": "rohg",
+            "osma": "osma"
+          },
+          "calendar": {
+            "persian": "calendar persan"
+          },
+          "collation": {
+            "phonebook": "sortare după cartea de telefon",
+            "phonetic": "Tip de ordonare fonetică",
+            "pinyin": "sortare pinyin"
+          },
+          "colStrength": {
+            "primary": "Ordonați numai literele de bază",
+            "quaternary": "Ordonați după accente/dimensiunea literei/lățime/kana"
+          },
+          "collation": {
+            "reformed": "Ordine de sortare reformată"
+          },
+          "calendar": {
+            "roc": "calendarul Republicii Chineze"
+          },
+          "numbers": {
             "roman": "numerale romane",
             "romanlow": "numerale romane cu minuscule",
-            "saur": "saur",
+            "saur": "saur"
+          },
+          "collation": {
+            "search": "căutare cu scop general",
+            "searchjl": "Căutați în funcție de consoana inițială hangul"
+          },
+          "colStrength": {
+            "secondary": "Ordonați după accent"
+          },
+          "colAlternate": {
+            "shifted": "Ordonați ignorând simbolurile"
+          },
+          "numbers": {
             "shrd": "shrd",
-            "sind": "sind",
-            "sinh": "sinh",
-            "sora": "sora",
+            "sora": "sora"
+          },
+          "collation": {
+            "standard": "ordine de sortare standard",
+            "stroke": "ordine de sortare după trasare"
+          },
+          "numbers": {
             "sund": "sund",
             "takr": "takr",
             "talu": "talu",
-            "taml": "numerale tradiționale tamile",
+            "taml": "numerale tradiționale tamilă",
             "tamldec": "cifre tamile",
-            "telu": "cifre telugu",
+            "telu": "cifre telugu"
+          },
+          "colStrength": {
+            "tertiary": "Ordonați după accente/dimensiunea literei/lățime"
+          },
+          "numbers": {
             "thai": "cifre thailandeze",
-            "tibt": "cifre tibetane",
-            "tirh": "tirh",
-            "traditional": "Numere tradiționale",
-            "vaii": "Cifre Vai",
-            "wara": "wara",
-            "wcho": "wcho"
+            "tibt": "cifre tibetane"
+          },
+          "collation": {
+            "traditional": "sortare tradițională"
+          },
+          "numbers": {
+            "traditional": "Numere tradiționale"
+          },
+          "collation": {
+            "unihan": "Ordine de sortare a liniilor ideogramelor"
+          },
+          "colCaseFirst": {
+            "upper": "Ordonați mai întâi majusculele"
+          },
+          "numbers": {
+            "vaii": "Cifre Vai"
+          },
+          "colBackwards": {
+            "yes": "Ordonați după accente în ordine inversă"
+          },
+          "colCaseLevel": {
+            "yes": "Ordonați ținând seama de diferența dintre majuscule/minuscule"
+          },
+          "colHiraganaQuaternary": {
+            "yes": "Ordonați kana diferențiat"
+          },
+          "colNormalization": {
+            "yes": "Ordonați caracterele unicode normalizat"
+          },
+          "colNumeric": {
+            "yes": "Ordonați cifrele în ordine numerică"
+          },
+          "collation": {
+            "zhuyin": "zhuyin"
           }
         },
         "codePatterns": {

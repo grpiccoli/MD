@@ -3,10 +3,13 @@
     "sl": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "sl"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "dates": {
         "timeZoneNames": {
@@ -14,8 +17,8 @@
           "gmtFormat": "GMT{0}",
           "gmtZeroFormat": "GMT",
           "regionFormat": "{0} čas",
-          "regionFormat-type-daylight": "{0} poletni čas",
-          "regionFormat-type-standard": "{0} standardni čas",
+          "regionFormat-type-standard": "{0} (+0)",
+          "regionFormat-type-daylight": "{0} (+1)",
           "fallbackFormat": "{1} ({0})",
           "zone": {
             "America": {
@@ -26,7 +29,7 @@
                 "exemplarCity": "Anchorage"
               },
               "Anguilla": {
-                "exemplarCity": "Angvila"
+                "exemplarCity": "Anguilla"
               },
               "Antigua": {
                 "exemplarCity": "Antigua"
@@ -35,26 +38,26 @@
                 "exemplarCity": "Araguaina"
               },
               "Argentina": {
-                "Rio_Gallegos": {
-                  "exemplarCity": "Rio Gallegos"
-                },
-                "San_Juan": {
-                  "exemplarCity": "San Juan"
-                },
-                "Ushuaia": {
-                  "exemplarCity": "Ushuaia"
-                },
                 "La_Rioja": {
                   "exemplarCity": "La Rioja"
                 },
-                "San_Luis": {
-                  "exemplarCity": "San Luis"
+                "Rio_Gallegos": {
+                  "exemplarCity": "Rio Gallegos"
                 },
                 "Salta": {
                   "exemplarCity": "Salta"
                 },
+                "San_Juan": {
+                  "exemplarCity": "San Juan"
+                },
+                "San_Luis": {
+                  "exemplarCity": "San Luis"
+                },
                 "Tucuman": {
                   "exemplarCity": "Tucuman"
+                },
+                "Ushuaia": {
+                  "exemplarCity": "Ushuaia"
                 }
               },
               "Aruba": {
@@ -124,7 +127,7 @@
                 "exemplarCity": "Atikokan"
               },
               "Cordoba": {
-                "exemplarCity": "Cordoba"
+                "exemplarCity": "Kordova"
               },
               "Costa_Rica": {
                 "exemplarCity": "Kostarika"
@@ -165,9 +168,6 @@
               "El_Salvador": {
                 "exemplarCity": "Salvador"
               },
-              "Fort_Nelson": {
-                "exemplarCity": "Fort Nelson"
-              },
               "Fortaleza": {
                 "exemplarCity": "Fortaleza"
               },
@@ -187,7 +187,7 @@
                 "exemplarCity": "Grenada"
               },
               "Guadeloupe": {
-                "exemplarCity": "Guadeloupe"
+                "exemplarCity": "Gvadelup"
               },
               "Guatemala": {
                 "exemplarCity": "Gvatemala"
@@ -208,8 +208,11 @@
                 "exemplarCity": "Hermosillo"
               },
               "Indiana": {
-                "Vincennes": {
-                  "exemplarCity": "Vincennes, Indiana"
+                "Knox": {
+                  "exemplarCity": "Knox, Indiana"
+                },
+                "Marengo": {
+                  "exemplarCity": "Marengo, Indiana"
                 },
                 "Petersburg": {
                   "exemplarCity": "Petersburg, Indiana"
@@ -217,17 +220,14 @@
                 "Tell_City": {
                   "exemplarCity": "Tell City, Indiana"
                 },
-                "Knox": {
-                  "exemplarCity": "Knox, Indiana"
+                "Vevay": {
+                  "exemplarCity": "Vevay, Indiana"
+                },
+                "Vincennes": {
+                  "exemplarCity": "Vincennes, Indiana"
                 },
                 "Winamac": {
                   "exemplarCity": "Winamac, Indiana"
-                },
-                "Marengo": {
-                  "exemplarCity": "Marengo, Indiana"
-                },
-                "Vevay": {
-                  "exemplarCity": "Vevay, Indiana"
                 }
               },
               "Indianapolis": {
@@ -305,7 +305,7 @@
                 "exemplarCity": "Metlakatla"
               },
               "Mexico_City": {
-                "exemplarCity": "Ciudad de Mexico"
+                "exemplarCity": "Ciudad Mexico"
               },
               "Miquelon": {
                 "exemplarCity": "Miquelon"
@@ -341,11 +341,11 @@
                 "Beulah": {
                   "exemplarCity": "Beulah, North Dakota"
                 },
-                "New_Salem": {
-                  "exemplarCity": "New Salem, Severna Dakota"
-                },
                 "Center": {
                   "exemplarCity": "Center, Severna Dakota"
+                },
+                "New_Salem": {
+                  "exemplarCity": "New Salem, Severna Dakota"
                 }
               },
               "Ojinaga": {
@@ -374,9 +374,6 @@
               },
               "Puerto_Rico": {
                 "exemplarCity": "Portoriko"
-              },
-              "Punta_Arenas": {
-                "exemplarCity": "Punta Arenas"
               },
               "Rainy_River": {
                 "exemplarCity": "Rainy River"
@@ -511,9 +508,6 @@
               "Andorra": {
                 "exemplarCity": "Andora"
               },
-              "Astrakhan": {
-                "exemplarCity": "Astrahan"
-              },
               "Athens": {
                 "exemplarCity": "Atene"
               },
@@ -546,7 +540,7 @@
               },
               "Dublin": {
                 "long": {
-                  "daylight": "irski standardni čas"
+                  "daylight": "irski poletni čas"
                 },
                 "exemplarCity": "Dublin"
               },
@@ -573,9 +567,6 @@
               },
               "Kiev": {
                 "exemplarCity": "Kijev"
-              },
-              "Kirov": {
-                "exemplarCity": "Kirov"
               },
               "Lisbon": {
                 "exemplarCity": "Lizbona"
@@ -637,9 +628,6 @@
               "Sarajevo": {
                 "exemplarCity": "Sarajevo"
               },
-              "Saratov": {
-                "exemplarCity": "Saratov"
-              },
               "Simferopol": {
                 "exemplarCity": "Simferopol"
               },
@@ -657,9 +645,6 @@
               },
               "Tirane": {
                 "exemplarCity": "Tirana"
-              },
-              "Ulyanovsk": {
-                "exemplarCity": "Uljanovsk"
               },
               "Uzhgorod": {
                 "exemplarCity": "Užgorod"
@@ -870,10 +855,7 @@
                 "exemplarCity": "Aktobe"
               },
               "Ashgabat": {
-                "exemplarCity": "Ašhabad"
-              },
-              "Atyrau": {
-                "exemplarCity": "Atyrau"
+                "exemplarCity": "Ašgabat"
               },
               "Baghdad": {
                 "exemplarCity": "Bagdad"
@@ -886,9 +868,6 @@
               },
               "Bangkok": {
                 "exemplarCity": "Bangkok"
-              },
-              "Barnaul": {
-                "exemplarCity": "Barnaul"
               },
               "Beirut": {
                 "exemplarCity": "Bejrut"
@@ -903,10 +882,13 @@
                 "exemplarCity": "Kolkata"
               },
               "Chita": {
-                "exemplarCity": "Čita"
+                "exemplarCity": "Chita"
               },
               "Choibalsan": {
                 "exemplarCity": "Čojbalsan"
+              },
+              "Chongqing": {
+                "exemplarCity": "Čongčing"
               },
               "Colombo": {
                 "exemplarCity": "Colombo"
@@ -926,11 +908,11 @@
               "Dushanbe": {
                 "exemplarCity": "Dušanbe"
               },
-              "Famagusta": {
-                "exemplarCity": "Famagusta"
-              },
               "Gaza": {
                 "exemplarCity": "Gaza"
+              },
+              "Harbin": {
+                "exemplarCity": "Harbin"
               },
               "Hebron": {
                 "exemplarCity": "Hebron"
@@ -961,6 +943,9 @@
               },
               "Karachi": {
                 "exemplarCity": "Karači"
+              },
+              "Kashgar": {
+                "exemplarCity": "Kašgar"
               },
               "Katmandu": {
                 "exemplarCity": "Katmandu"
@@ -1022,9 +1007,6 @@
               "Qatar": {
                 "exemplarCity": "Katar"
               },
-              "Qostanay": {
-                "exemplarCity": "Qostanay"
-              },
               "Qyzylorda": {
                 "exemplarCity": "Kizlorda"
               },
@@ -1047,13 +1029,13 @@
                 "exemplarCity": "Seul"
               },
               "Shanghai": {
-                "exemplarCity": "Šanghaj"
+                "exemplarCity": "Šangaj"
               },
               "Singapore": {
                 "exemplarCity": "Singapur"
               },
               "Srednekolymsk": {
-                "exemplarCity": "Srednekolimsk"
+                "exemplarCity": "Srednekolymsk"
               },
               "Taipei": {
                 "exemplarCity": "Tajpej"
@@ -1068,13 +1050,10 @@
                 "exemplarCity": "Teheran"
               },
               "Thimphu": {
-                "exemplarCity": "Timpu"
+                "exemplarCity": "Thimphu"
               },
               "Tokyo": {
                 "exemplarCity": "Tokio"
-              },
-              "Tomsk": {
-                "exemplarCity": "Tomsk"
               },
               "Ulaanbaatar": {
                 "exemplarCity": "Ulan Bator"
@@ -1180,9 +1159,6 @@
               },
               "Auckland": {
                 "exemplarCity": "Auckland"
-              },
-              "Bougainville": {
-                "exemplarCity": "Bougainville"
               },
               "Chatham": {
                 "exemplarCity": "Chatham"
@@ -1334,16 +1310,89 @@
               }
             },
             "Etc": {
-              "UTC": {
-                "long": {
-                  "standard": "univerzalni koordinirani čas"
-                },
-                "short": {
-                  "standard": "UTC"
-                }
+              "GMT": {
+                "exemplarCity": "GMT"
+              },
+              "GMT1": {
+                "exemplarCity": "GMT+1"
+              },
+              "GMT10": {
+                "exemplarCity": "GMT+10"
+              },
+              "GMT11": {
+                "exemplarCity": "GMT+11"
+              },
+              "GMT12": {
+                "exemplarCity": "GMT+12"
+              },
+              "GMT2": {
+                "exemplarCity": "GMT+2"
+              },
+              "GMT3": {
+                "exemplarCity": "GMT+3"
+              },
+              "GMT4": {
+                "exemplarCity": "GMT+4"
+              },
+              "GMT5": {
+                "exemplarCity": "GMT+5"
+              },
+              "GMT6": {
+                "exemplarCity": "GMT+6"
+              },
+              "GMT7": {
+                "exemplarCity": "GMT+7"
+              },
+              "GMT8": {
+                "exemplarCity": "GMT+8"
+              },
+              "GMT9": {
+                "exemplarCity": "GMT+9"
+              },
+              "GMT-1": {
+                "exemplarCity": "GMT-1"
+              },
+              "GMT-10": {
+                "exemplarCity": "GMT-10"
+              },
+              "GMT-11": {
+                "exemplarCity": "GMT-11"
+              },
+              "GMT-12": {
+                "exemplarCity": "GMT-12"
+              },
+              "GMT-13": {
+                "exemplarCity": "GMT-13"
+              },
+              "GMT-14": {
+                "exemplarCity": "GMT-14"
+              },
+              "GMT-2": {
+                "exemplarCity": "GMT-2"
+              },
+              "GMT-3": {
+                "exemplarCity": "GMT-3"
+              },
+              "GMT-4": {
+                "exemplarCity": "GMT-4"
+              },
+              "GMT-5": {
+                "exemplarCity": "GMT-5"
+              },
+              "GMT-6": {
+                "exemplarCity": "GMT-6"
+              },
+              "GMT-7": {
+                "exemplarCity": "GMT-7"
+              },
+              "GMT-8": {
+                "exemplarCity": "GMT-8"
+              },
+              "GMT-9": {
+                "exemplarCity": "GMT-9"
               },
               "Unknown": {
-                "exemplarCity": "neznano mesto"
+                "exemplarCity": "neznano"
               }
             }
           },
@@ -1685,6 +1734,11 @@
                 "standard": "Francoski južni in antarktični čas"
               }
             },
+            "GMT": {
+              "long": {
+                "standard": "Greenwiški srednji čas"
+              }
+            },
             "Galapagos": {
               "long": {
                 "standard": "Galapaški čas"
@@ -1705,11 +1759,6 @@
             "Gilbert_Islands": {
               "long": {
                 "standard": "Čas: Gilbertovi otoki"
-              }
-            },
-            "GMT": {
-              "long": {
-                "standard": "Greenwiški srednji čas"
               }
             },
             "Greenland_Eastern": {
@@ -1796,9 +1845,9 @@
             },
             "Irkutsk": {
               "long": {
-                "generic": "Irkutski čas",
-                "standard": "Irkutski standardni čas",
-                "daylight": "Irkutski poletni čas"
+                "generic": "Irkutški čas",
+                "standard": "Irkutški standardni čas",
+                "daylight": "Irkutški poletni čas"
               }
             },
             "Israel": {
@@ -1846,9 +1895,9 @@
             },
             "Krasnoyarsk": {
               "long": {
-                "generic": "Krasnojarski čas",
-                "standard": "Krasnojarski standardni čas",
-                "daylight": "Krasnojarski poletni čas"
+                "generic": "Krasnojarški čas",
+                "standard": "Krasnojarški standardni čas",
+                "daylight": "Krasnojarški poletni čas"
               }
             },
             "Kyrgystan": {
@@ -1914,16 +1963,16 @@
             },
             "Mexico_Northwest": {
               "long": {
-                "generic": "Mehiški severozahodni čas",
-                "standard": "Mehiški severozahodni standardni čas",
-                "daylight": "Mehiški severozahodni poletni čas"
+                "generic": "Čas: severozahod Mehike",
+                "standard": "Standardni čas: severozahod Mehike",
+                "daylight": "Poletni čas: severozahod Mehike"
               }
             },
             "Mexico_Pacific": {
               "long": {
-                "generic": "Mehiški pacifiški čas",
-                "standard": "Mehiški pacifiški standardni čas",
-                "daylight": "Mehiški pacifiški poletni čas"
+                "generic": "Čas: pacifiška obala Mehike",
+                "standard": "Standardni čas: pacifiška obala Mehike",
+                "daylight": "Poletni čas: pacifiška obala Mehike"
               }
             },
             "Mongolia": {
@@ -1995,16 +2044,16 @@
             },
             "Novosibirsk": {
               "long": {
-                "generic": "Novosibirski čas",
-                "standard": "Novosibirski standardni čas",
-                "daylight": "Novosibirski poletni čas"
+                "generic": "Novosibirški čas",
+                "standard": "Novosibirški standardni čas",
+                "daylight": "Novosibirški poletni čas"
               }
             },
             "Omsk": {
               "long": {
-                "generic": "Omski čas",
-                "standard": "Omski standardni čas",
-                "daylight": "Omski poletni čas"
+                "generic": "Omški čas",
+                "standard": "Omški standardni čas",
+                "daylight": "Omški poletni čas"
               }
             },
             "Pakistan": {
@@ -2065,11 +2114,6 @@
             "Ponape": {
               "long": {
                 "standard": "Ponapski čas"
-              }
-            },
-            "Pyongyang": {
-              "long": {
-                "standard": "Pjongjanški čas"
               }
             },
             "Reunion": {
@@ -2221,7 +2265,7 @@
             },
             "Vostok": {
               "long": {
-                "standard": "Vostoški čas"
+                "standard": "Čas: Vostok"
               }
             },
             "Wake": {

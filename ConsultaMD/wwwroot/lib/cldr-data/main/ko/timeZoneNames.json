@@ -3,8 +3,11 @@
     "ko": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10931 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-09-03 21:52:43 -0500 (Wed, 03 Sep 2014) $"
         },
         "language": "ko"
       },
@@ -14,8 +17,8 @@
           "gmtFormat": "GMT{0}",
           "gmtZeroFormat": "GMT",
           "regionFormat": "{0} 시간",
-          "regionFormat-type-daylight": "{0} 하계 표준시",
           "regionFormat-type-standard": "{0} 표준시",
+          "regionFormat-type-daylight": "{0} 하계 표준시",
           "fallbackFormat": "{1}({0})",
           "zone": {
             "America": {
@@ -35,26 +38,26 @@
                 "exemplarCity": "아라과이나"
               },
               "Argentina": {
-                "Rio_Gallegos": {
-                  "exemplarCity": "리오 가예고스"
-                },
-                "San_Juan": {
-                  "exemplarCity": "산후안"
-                },
-                "Ushuaia": {
-                  "exemplarCity": "우수아이아"
-                },
                 "La_Rioja": {
                   "exemplarCity": "라 리오하"
                 },
-                "San_Luis": {
-                  "exemplarCity": "산루이스"
+                "Rio_Gallegos": {
+                  "exemplarCity": "리오 가예고스"
                 },
                 "Salta": {
                   "exemplarCity": "살타"
                 },
+                "San_Juan": {
+                  "exemplarCity": "산후안"
+                },
+                "San_Luis": {
+                  "exemplarCity": "산루이스"
+                },
                 "Tucuman": {
-                  "exemplarCity": "투쿠만"
+                  "exemplarCity": "뚜꾸만"
+                },
+                "Ushuaia": {
+                  "exemplarCity": "우수아이아"
                 }
               },
               "Aruba": {
@@ -165,9 +168,6 @@
               "El_Salvador": {
                 "exemplarCity": "엘살바도르"
               },
-              "Fort_Nelson": {
-                "exemplarCity": "포트 넬슨"
-              },
               "Fortaleza": {
                 "exemplarCity": "포르탈레자"
               },
@@ -208,8 +208,11 @@
                 "exemplarCity": "에르모시요"
               },
               "Indiana": {
-                "Vincennes": {
-                  "exemplarCity": "인디아나주, 뱅센"
+                "Knox": {
+                  "exemplarCity": "인디애나주 녹스"
+                },
+                "Marengo": {
+                  "exemplarCity": "인디애나주, 마렝고"
                 },
                 "Petersburg": {
                   "exemplarCity": "인디애나주, 피츠버그"
@@ -217,17 +220,14 @@
                 "Tell_City": {
                   "exemplarCity": "인디아나주, 텔시티"
                 },
-                "Knox": {
-                  "exemplarCity": "인디애나주 녹스"
+                "Vevay": {
+                  "exemplarCity": "비비"
+                },
+                "Vincennes": {
+                  "exemplarCity": "인디아나주, 뱅센"
                 },
                 "Winamac": {
                   "exemplarCity": "인디아나주, 워너맥"
-                },
-                "Marengo": {
-                  "exemplarCity": "인디애나주, 마렝고"
-                },
-                "Vevay": {
-                  "exemplarCity": "비비"
                 }
               },
               "Indianapolis": {
@@ -341,11 +341,11 @@
                 "Beulah": {
                   "exemplarCity": "노스다코타주, 베라"
                 },
-                "New_Salem": {
-                  "exemplarCity": "노스 다코타주, 뉴살렘"
-                },
                 "Center": {
                   "exemplarCity": "중부, 노스다코타"
+                },
+                "New_Salem": {
+                  "exemplarCity": "노스 다코타주, 뉴살렘"
                 }
               },
               "Ojinaga": {
@@ -370,13 +370,10 @@
                 "exemplarCity": "포트오브스페인"
               },
               "Porto_Velho": {
-                "exemplarCity": "포르토벨료"
+                "exemplarCity": "포르투벨류"
               },
               "Puerto_Rico": {
                 "exemplarCity": "푸에르토리코"
-              },
-              "Punta_Arenas": {
-                "exemplarCity": "푼타아레나스"
               },
               "Rainy_River": {
                 "exemplarCity": "레이니강"
@@ -409,7 +406,7 @@
                 "exemplarCity": "산토도밍고"
               },
               "Sao_Paulo": {
-                "exemplarCity": "상파울루"
+                "exemplarCity": "상파울로"
               },
               "Scoresbysund": {
                 "exemplarCity": "스코레스바이선드"
@@ -511,9 +508,6 @@
               "Andorra": {
                 "exemplarCity": "안도라"
               },
-              "Astrakhan": {
-                "exemplarCity": "아스트라한"
-              },
               "Athens": {
                 "exemplarCity": "아테네"
               },
@@ -546,7 +540,7 @@
               },
               "Dublin": {
                 "long": {
-                  "daylight": "아일랜드 표준시"
+                  "daylight": "아일랜드 시간"
                 },
                 "exemplarCity": "더블린"
               },
@@ -574,9 +568,6 @@
               "Kiev": {
                 "exemplarCity": "키예프"
               },
-              "Kirov": {
-                "exemplarCity": "키로프"
-              },
               "Lisbon": {
                 "exemplarCity": "리스본"
               },
@@ -585,7 +576,7 @@
               },
               "London": {
                 "long": {
-                  "daylight": "영국 하계 표준시"
+                  "daylight": "영국 일광 절약 시간"
                 },
                 "exemplarCity": "런던"
               },
@@ -637,9 +628,6 @@
               "Sarajevo": {
                 "exemplarCity": "사라예보"
               },
-              "Saratov": {
-                "exemplarCity": "사라토프"
-              },
               "Simferopol": {
                 "exemplarCity": "심페로폴"
               },
@@ -657,9 +645,6 @@
               },
               "Tirane": {
                 "exemplarCity": "티라나"
-              },
-              "Ulyanovsk": {
-                "exemplarCity": "울리야노프스크"
               },
               "Uzhgorod": {
                 "exemplarCity": "우주고로트"
@@ -872,9 +857,6 @@
               "Ashgabat": {
                 "exemplarCity": "아슈하바트"
               },
-              "Atyrau": {
-                "exemplarCity": "아티라우"
-              },
               "Baghdad": {
                 "exemplarCity": "바그다드"
               },
@@ -886,9 +868,6 @@
               },
               "Bangkok": {
                 "exemplarCity": "방콕"
-              },
-              "Barnaul": {
-                "exemplarCity": "바르나울"
               },
               "Beirut": {
                 "exemplarCity": "베이루트"
@@ -903,10 +882,13 @@
                 "exemplarCity": "콜카타"
               },
               "Chita": {
-                "exemplarCity": "치타"
+                "exemplarCity": "Chita"
               },
               "Choibalsan": {
                 "exemplarCity": "초이발산"
+              },
+              "Chongqing": {
+                "exemplarCity": "충칭"
               },
               "Colombo": {
                 "exemplarCity": "콜롬보"
@@ -926,11 +908,11 @@
               "Dushanbe": {
                 "exemplarCity": "두샨베"
               },
-              "Famagusta": {
-                "exemplarCity": "파마구스타"
-              },
               "Gaza": {
                 "exemplarCity": "가자"
+              },
+              "Harbin": {
+                "exemplarCity": "하얼빈"
               },
               "Hebron": {
                 "exemplarCity": "헤브론"
@@ -961,6 +943,9 @@
               },
               "Karachi": {
                 "exemplarCity": "카라치"
+              },
+              "Kashgar": {
+                "exemplarCity": "카슈가르"
               },
               "Katmandu": {
                 "exemplarCity": "카트만두"
@@ -1022,9 +1007,6 @@
               "Qatar": {
                 "exemplarCity": "카타르"
               },
-              "Qostanay": {
-                "exemplarCity": "코스타나이"
-              },
               "Qyzylorda": {
                 "exemplarCity": "키질로르다"
               },
@@ -1053,7 +1035,7 @@
                 "exemplarCity": "싱가포르"
               },
               "Srednekolymsk": {
-                "exemplarCity": "스레드네콜림스크"
+                "exemplarCity": "Srednekolymsk"
               },
               "Taipei": {
                 "exemplarCity": "타이베이"
@@ -1072,9 +1054,6 @@
               },
               "Tokyo": {
                 "exemplarCity": "도쿄"
-              },
-              "Tomsk": {
-                "exemplarCity": "톰스크"
               },
               "Ulaanbaatar": {
                 "exemplarCity": "울란바토르"
@@ -1180,9 +1159,6 @@
               },
               "Auckland": {
                 "exemplarCity": "오클랜드"
-              },
-              "Bougainville": {
-                "exemplarCity": "부갱빌"
               },
               "Chatham": {
                 "exemplarCity": "채텀"
@@ -1334,13 +1310,86 @@
               }
             },
             "Etc": {
-              "UTC": {
-                "long": {
-                  "standard": "협정 세계시"
-                },
-                "short": {
-                  "standard": "UTC"
-                }
+              "GMT": {
+                "exemplarCity": "GMT"
+              },
+              "GMT1": {
+                "exemplarCity": "GMT+1"
+              },
+              "GMT10": {
+                "exemplarCity": "GMT+10"
+              },
+              "GMT11": {
+                "exemplarCity": "GMT+11"
+              },
+              "GMT12": {
+                "exemplarCity": "GMT+12"
+              },
+              "GMT2": {
+                "exemplarCity": "GMT+2"
+              },
+              "GMT3": {
+                "exemplarCity": "GMT+3"
+              },
+              "GMT4": {
+                "exemplarCity": "GMT+4"
+              },
+              "GMT5": {
+                "exemplarCity": "GMT+5"
+              },
+              "GMT6": {
+                "exemplarCity": "GMT+6"
+              },
+              "GMT7": {
+                "exemplarCity": "GMT+7"
+              },
+              "GMT8": {
+                "exemplarCity": "GMT+8"
+              },
+              "GMT9": {
+                "exemplarCity": "GMT+9"
+              },
+              "GMT-1": {
+                "exemplarCity": "GMT-1"
+              },
+              "GMT-10": {
+                "exemplarCity": "GMT-10"
+              },
+              "GMT-11": {
+                "exemplarCity": "GMT-11"
+              },
+              "GMT-12": {
+                "exemplarCity": "GMT-12"
+              },
+              "GMT-13": {
+                "exemplarCity": "GMT-13"
+              },
+              "GMT-14": {
+                "exemplarCity": "GMT-14"
+              },
+              "GMT-2": {
+                "exemplarCity": "GMT-2"
+              },
+              "GMT-3": {
+                "exemplarCity": "GMT-3"
+              },
+              "GMT-4": {
+                "exemplarCity": "GMT-4"
+              },
+              "GMT-5": {
+                "exemplarCity": "GMT-5"
+              },
+              "GMT-6": {
+                "exemplarCity": "GMT-6"
+              },
+              "GMT-7": {
+                "exemplarCity": "GMT-7"
+              },
+              "GMT-8": {
+                "exemplarCity": "GMT-8"
+              },
+              "GMT-9": {
+                "exemplarCity": "GMT-9"
               },
               "Unknown": {
                 "exemplarCity": "알 수 없는 장소"
@@ -1393,7 +1442,7 @@
               "long": {
                 "generic": "알마티 표준 시간",
                 "standard": "알마티 표준 표준시",
-                "daylight": "알마티 하계 표준시"
+                "daylight": "알마티 서머 타임"
               }
             },
             "Amazon": {
@@ -1435,7 +1484,7 @@
               "long": {
                 "generic": "아나디리 시간",
                 "standard": "아나디리 표준시",
-                "daylight": "아나디리 하계 표준시"
+                "daylight": "아나디리 서머 타임"
               }
             },
             "Apia": {
@@ -1449,14 +1498,14 @@
               "long": {
                 "generic": "악타우 표준 시간",
                 "standard": "악타우 표준 표준시",
-                "daylight": "악타우 하계 표준시"
+                "daylight": "악타우 서머 타임"
               }
             },
             "Aqtobe": {
               "long": {
                 "generic": "악퇴베 표준 시간",
                 "standard": "악퇴베 표준 표준시",
-                "daylight": "악퇴베 하계 표준시"
+                "daylight": "악퇴베 서머 타임"
               }
             },
             "Arabian": {
@@ -1491,12 +1540,12 @@
               "long": {
                 "generic": "대서양 시간",
                 "standard": "대서양 표준시",
-                "daylight": "대서양 하계 표준시"
+                "daylight": "미 대서양 하계 표준시"
               }
             },
             "Australia_Central": {
               "long": {
-                "generic": "오스트레일리아 중부 시간",
+                "generic": "중앙 오스트레일리아 시간",
                 "standard": "오스트레일리아 중부 표준시",
                 "daylight": "오스트레일리아 중부 하계 표준시"
               }
@@ -1510,14 +1559,14 @@
             },
             "Australia_Eastern": {
               "long": {
-                "generic": "오스트레일리아 동부 시간",
+                "generic": "동부 오스트레일리아 시간",
                 "standard": "오스트레일리아 동부 표준시",
                 "daylight": "오스트레일리아 동부 하계 표준시"
               }
             },
             "Australia_Western": {
               "long": {
-                "generic": "오스트레일리아 서부 시간",
+                "generic": "서부 오스트레일리아 시간",
                 "standard": "오스트레일리아 서부 표준시",
                 "daylight": "오스트레일리아 서부 하계 표준시"
               }
@@ -1631,7 +1680,7 @@
               "long": {
                 "generic": "쿡 제도 시간",
                 "standard": "쿡 제도 표준시",
-                "daylight": "쿡 제도 절반 하계 표준시"
+                "daylight": "쿡 제도 절반 서머 타임"
               }
             },
             "Cuba": {
@@ -1672,14 +1721,14 @@
               "long": {
                 "generic": "중부 유럽 시간",
                 "standard": "중부 유럽 표준시",
-                "daylight": "중부 유럽 하계 표준시"
+                "daylight": "중부유럽 하계 표준시"
               }
             },
             "Europe_Eastern": {
               "long": {
-                "generic": "동유럽 시간",
-                "standard": "동유럽 표준시",
-                "daylight": "동유럽 하계 표준시"
+                "generic": "동부유럽 시간",
+                "standard": "동부유럽 표준시",
+                "daylight": "동부유럽 하계 표준시"
               }
             },
             "Europe_Further_Eastern": {
@@ -1691,21 +1740,21 @@
               "long": {
                 "generic": "서유럽 시간",
                 "standard": "서유럽 표준시",
-                "daylight": "서유럽 하계 표준시"
+                "daylight": "서유럽 서머 타임"
               }
             },
             "Falkland": {
               "long": {
-                "generic": "포클랜드 제도 시간",
+                "generic": "포클랜드 시간",
                 "standard": "포클랜드 제도 표준시",
-                "daylight": "포클랜드 제도 하계 표준시"
+                "daylight": "포클랜드 하계 표준시"
               }
             },
             "Fiji": {
               "long": {
                 "generic": "피지 시간",
                 "standard": "피지 표준시",
-                "daylight": "피지 하계 표준시"
+                "daylight": "피지 서머 타임"
               }
             },
             "French_Guiana": {
@@ -1716,6 +1765,11 @@
             "French_Southern": {
               "long": {
                 "standard": "프랑스령 남부 식민지 및 남극 시간"
+              }
+            },
+            "GMT": {
+              "long": {
+                "standard": "그리니치 표준시"
               }
             },
             "Galapagos": {
@@ -1730,19 +1784,14 @@
             },
             "Georgia": {
               "long": {
-                "generic": "조지아 시간",
-                "standard": "조지아 표준시",
-                "daylight": "조지아 하계 표준시"
+                "generic": "그루지아 시간",
+                "standard": "그루지아 표준시",
+                "daylight": "그루지아 하계 표준시"
               }
             },
             "Gilbert_Islands": {
               "long": {
                 "standard": "길버트 제도 시간"
-              }
-            },
-            "GMT": {
-              "long": {
-                "standard": "그리니치 표준시"
               }
             },
             "Greenland_Eastern": {
@@ -1757,6 +1806,11 @@
                 "generic": "그린란드 서부 시간",
                 "standard": "그린란드 서부 표준시",
                 "daylight": "그린란드 서부 하계 표준시"
+              }
+            },
+            "Guam": {
+              "long": {
+                "standard": "괌 표준 시간"
               }
             },
             "Gulf": {
@@ -1852,7 +1906,7 @@
               "long": {
                 "generic": "페트로파블롭스크-캄차츠키 시간",
                 "standard": "페트로파블롭스크-캄차츠키 표준시",
-                "daylight": "페트로파블롭스크-캄차츠키 하계 표준시"
+                "daylight": "페트로파블롭스크-캄차츠키 서머 타임"
               }
             },
             "Kazakhstan_Eastern": {
@@ -1889,6 +1943,11 @@
                 "standard": "키르기스스탄 시간"
               }
             },
+            "Lanka": {
+              "long": {
+                "standard": "랑카 표준 시간"
+              }
+            },
             "Line_Islands": {
               "long": {
                 "standard": "라인 제도 시간"
@@ -1905,7 +1964,7 @@
               "long": {
                 "generic": "마카오 시간",
                 "standard": "마카오 표준 시간",
-                "daylight": "마카오 하계 표준시"
+                "daylight": "마카오 서머 타임"
               }
             },
             "Macquarie": {
@@ -1999,7 +2058,7 @@
               "long": {
                 "generic": "뉴칼레도니아 시간",
                 "standard": "뉴칼레도니아 표준시",
-                "daylight": "뉴칼레도니아 하계 표준시"
+                "daylight": "뉴 칼레도니아 하계 표준시"
               }
             },
             "New_Zealand": {
@@ -2033,6 +2092,11 @@
                 "daylight": "페르난도 데 노로냐 하계 표준시"
               }
             },
+            "North_Mariana": {
+              "long": {
+                "standard": "북마리아나 제도 표준 시간"
+              }
+            },
             "Novosibirsk": {
               "long": {
                 "generic": "노보시비르스크 시간",
@@ -2051,7 +2115,7 @@
               "long": {
                 "generic": "파키스탄 시간",
                 "standard": "파키스탄 표준시",
-                "daylight": "파키스탄 하계 표준시"
+                "daylight": "파키스탄 서머 타임"
               }
             },
             "Palau": {
@@ -2107,16 +2171,11 @@
                 "standard": "포나페 시간"
               }
             },
-            "Pyongyang": {
-              "long": {
-                "standard": "평양 시간"
-              }
-            },
             "Qyzylorda": {
               "long": {
                 "generic": "키질로르다 시간",
                 "standard": "키질로르다 표준 시간",
-                "daylight": "키질로르다 하계 표준시"
+                "daylight": "키질로르다 서머 타임"
               }
             },
             "Reunion": {
@@ -2140,7 +2199,7 @@
               "long": {
                 "generic": "사마라 시간",
                 "standard": "사마라 표준시",
-                "daylight": "사마라 하계 표준시"
+                "daylight": "사마라 서머 타임"
               }
             },
             "Samoa": {
@@ -2206,7 +2265,7 @@
               "long": {
                 "generic": "통가 시간",
                 "standard": "통가 표준시",
-                "daylight": "통가 하계 표준시"
+                "daylight": "통가 서머 타임"
               }
             },
             "Truk": {
@@ -2244,7 +2303,7 @@
               "long": {
                 "generic": "바누아투 시간",
                 "standard": "바누아투 표준시",
-                "daylight": "바누아투 하계 표준시"
+                "daylight": "바누아투 서머 타임"
               }
             },
             "Venezuela": {

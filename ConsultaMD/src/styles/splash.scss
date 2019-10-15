@@ -1,0 +1,37 @@
+﻿@import 'theme';
+
+.teal {
+    position: relative;
+}
+
+.tile-gradient {
+    background-image: linear-gradient(to bottom right, $dark, $theme);
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+.splash {
+    height: 100vh;
+    /*display: none;
+    opacity: 0;
+    transition: all 2s linear;*/
+}
+
+.owl-stage-outer {
+    max-width: 1000px;
+    width: 100%;
+    max-height: 100vh !important;
+    overflow: hidden;
+
+    .owl-stage {
+        display: flex;
+    }
+}
+
+.valign-wraper {
+    padding-left: 20px;
+}

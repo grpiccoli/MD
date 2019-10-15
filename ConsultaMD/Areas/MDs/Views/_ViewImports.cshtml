@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Web
+@using ConsultaMD
+@using ConsultaMD.Models.VM.MDsVM
+@using ConsultaMD.Extensions
+@using ConsultaMD.Services
+@*@using ConsultaMD.Models.AccountViewModels*@
+@*@using ConsultaMD.Models.ManageViewModels*@
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@using ConsultaMD.Areas.MDs.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Boxed.AspNetCore.TagHelpers
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@*@inject UserManager<AppUser> UserManager*@
+@*@inject SignInManager<AppUser> SignInManager*@
+@using Boxed.AspNetCore.TagHelpers.OpenGraph
+@using Boxed.AspNetCore.TagHelpers.Twitter
+@using Schema.NET

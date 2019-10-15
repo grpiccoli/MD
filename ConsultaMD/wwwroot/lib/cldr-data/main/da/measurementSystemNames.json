@@ -3,16 +3,19 @@
     "da": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10962 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-09-10 11:30:49 -0500 (Wed, 10 Sep 2014) $"
         },
         "language": "da"
       },
       "localeDisplayNames": {
         "measurementSystemNames": {
-          "metric": "det metriske system",
-          "UK": "de britiske målesystemer",
-          "US": "de amerikanske målesystemer"
+          "US": "De amerikanske målesystemer",
+          "metric": "Det metriske system",
+          "UK": "De britiske målesystemer"
         }
       }
     }

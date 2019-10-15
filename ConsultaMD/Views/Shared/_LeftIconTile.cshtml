@@ -1,0 +1,40 @@
+﻿@model string
+
+@*<partial name="_Scripts" model='(new string[]{"splash"}, "")' />*@
+
+<partial name="_Libs" model='(new string[] { "animate.css", "owl.carousel", "splash" }, "")' />
+
+@{
+    (string, string, string)[] images;
+    switch (Model)
+    {
+        case "MD":
+            images = new (string, string, string)[]
+            {
+                ( "white-logo-sq.min", "Atención", "Tu administración médica en 3 pasos" ),
+                ($"02_{Model}", "Agenda", "Administra tu agenda y sala de espera"),
+                ($"03_{Model}", "Pagos", "Recibe tus pagos directo a tu cuenta"),
+                ($"04_{Model}", "Contabilidad", "Emite boletas y facturas automáticamente")
+                    };
+            break;
+        case "Patient":
+        default:
+            images = new (string, string, string)[]
+            {
+                ( "white-logo-sq.min", "Consulta", "Tu atención médica a 3 pasos" ),
+                ($"02_{Model}", "Primero", "Busca tu médico"),
+                ($"03_{Model}", "Segundo", "Agenda tu hora"),
+                ($"04_{Model}", "Tercero", "Compra tu bono")
+                    };
+            break;
+    }
+}
+<div class="col m6 hide-on-small-only h-100v tile-gradient" style="padding:0 !important">
+    <div class="splasher">
+        @foreach (var i in images)
+        {
+            <partial name="_CarouselItem" model='i' />
+        }
+        <partial name="_CarouselItem" model='images[0]' />
+    </div>
+</div>

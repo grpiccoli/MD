@@ -3,10 +3,13 @@
     "zh": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "zh"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "numbers": {
         "currencies": {
@@ -108,8 +111,8 @@
             "symbol-alt-narrow": "$"
           },
           "AWG": {
-            "displayName": "阿鲁巴弗罗林",
-            "displayName-count-other": "阿鲁巴弗罗林",
+            "displayName": "阿鲁巴基尔德元",
+            "displayName-count-other": "阿鲁巴基尔德元",
             "symbol": "AWG"
           },
           "AZM": {
@@ -176,7 +179,7 @@
             "symbol": "BGM"
           },
           "BGN": {
-            "displayName": "保加利亚列弗",
+            "displayName": "保加利亚新列弗",
             "displayName-count-other": "保加利亚新列弗",
             "symbol": "BGN"
           },
@@ -290,16 +293,11 @@
             "displayName-count-other": "白俄罗斯新卢布 (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "白俄罗斯卢布",
             "displayName-count-other": "白俄罗斯卢布",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "白俄罗斯卢布 (2000–2016)",
-            "displayName-count-other": "白俄罗斯卢布 (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "伯利兹元",
@@ -349,15 +347,6 @@
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
           },
-          "CNH": {
-            "displayName": "人民币（离岸）",
-            "displayName-count-other": "人民币（离岸）",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
-          },
           "CNY": {
             "displayName": "人民币",
             "displayName-count-other": "人民币",
@@ -387,8 +376,8 @@
             "symbol": "CSD"
           },
           "CSK": {
-            "displayName": "捷克硬克朗",
-            "displayName-count-other": "捷克硬克朗",
+            "displayName": "捷克硬克郎",
+            "displayName-count-other": "捷克硬克郎",
             "symbol": "CSK"
           },
           "CUC": {
@@ -414,8 +403,8 @@
             "symbol": "CYP"
           },
           "CZK": {
-            "displayName": "捷克克朗",
-            "displayName-count-other": "捷克克朗",
+            "displayName": "捷克克郎",
+            "displayName-count-other": "捷克克郎",
             "symbol": "CZK",
             "symbol-alt-narrow": "Kč"
           },
@@ -540,9 +529,7 @@
           "GEL": {
             "displayName": "格鲁吉亚拉里",
             "displayName-count-other": "格鲁吉亚拉里",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "加纳塞第",
@@ -912,19 +899,14 @@
             "symbol-alt-narrow": "₮"
           },
           "MOP": {
-            "displayName": "澳门币",
+            "displayName": "澳门元",
             "displayName-count-other": "澳门元",
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "毛里塔尼亚乌吉亚 (1973–2017)",
-            "displayName-count-other": "毛里塔尼亚乌吉亚 (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "毛里塔尼亚乌吉亚",
             "displayName-count-other": "毛里塔尼亚乌吉亚",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "马耳他里拉",
@@ -941,11 +923,6 @@
             "displayName-count-other": "毛里求斯卢比",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "马尔代夫卢比(1947–1981)",
-            "displayName-count-other": "马尔代夫卢比(1947–1981)",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "马尔代夫卢菲亚",
@@ -1012,7 +989,7 @@
             "symbol": "NIC"
           },
           "NIO": {
-            "displayName": "尼加拉瓜科多巴",
+            "displayName": "尼加拉瓜金科多巴",
             "displayName-count-other": "尼加拉瓜金科多巴",
             "symbol": "NIO",
             "symbol-alt-narrow": "C$"
@@ -1056,8 +1033,8 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "秘鲁索尔",
-            "displayName-count-other": "秘鲁索尔",
+            "displayName": "秘鲁新索尔",
+            "displayName-count-other": "秘鲁新索尔",
             "symbol": "PEN"
           },
           "PES": {
@@ -1122,8 +1099,7 @@
           "RON": {
             "displayName": "罗马尼亚列伊",
             "displayName-count-other": "罗马尼亚列伊",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "塞尔维亚第纳尔",
@@ -1134,7 +1110,7 @@
             "displayName": "俄罗斯卢布",
             "displayName-count-other": "俄罗斯卢布",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "俄国卢布 (1991–1998)",
@@ -1235,14 +1211,9 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "圣多美和普林西比多布拉 (1977–2017)",
-            "displayName-count-other": "圣多美和普林西比多布拉 (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "圣多美和普林西比多布拉",
             "displayName-count-other": "圣多美和普林西比多布拉",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1269,7 +1240,7 @@
           "THB": {
             "displayName": "泰铢",
             "displayName-count-other": "泰铢",
-            "symbol": "THB",
+            "symbol": "฿",
             "symbol-alt-narrow": "฿"
           },
           "TJR": {
@@ -1389,11 +1360,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "乌拉圭票面工资指数单位",
-            "displayName-count-other": "乌拉圭票面工资指数单位",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "乌兹别克斯坦苏姆",
             "displayName-count-other": "乌兹别克斯坦苏姆",
@@ -1405,15 +1371,10 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "委内瑞拉玻利瓦尔 (2008–2018)",
-            "displayName-count-other": "委内瑞拉玻利瓦尔 (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "委内瑞拉玻利瓦尔",
             "displayName-count-other": "委内瑞拉玻利瓦尔",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "越南盾",
@@ -1436,8 +1397,8 @@
             "symbol": "WST"
           },
           "XAF": {
-            "displayName": "中非法郎",
-            "displayName-count-other": "中非法郎",
+            "displayName": "中非金融合作法郎",
+            "displayName-count-other": "中非金融合作法郎",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1488,8 +1449,8 @@
             "symbol": "XFU"
           },
           "XOF": {
-            "displayName": "西非法郎",
-            "displayName-count-other": "西非法郎",
+            "displayName": "非洲金融共同体法郎",
+            "displayName-count-other": "非洲金融共同体法郎",
             "symbol": "CFA"
           },
           "XPD": {
@@ -1510,8 +1471,7 @@
             "symbol": "XRE"
           },
           "XSU": {
-            "displayName": "苏克雷",
-            "displayName-count-other": "苏克雷",
+            "displayName": "XSU",
             "symbol": "XSU"
           },
           "XTS": {
@@ -1519,8 +1479,7 @@
             "symbol": "XTS"
           },
           "XUA": {
-            "displayName": "非洲开发银行记账单位",
-            "displayName-count-other": "非洲开发银行记账单位",
+            "displayName": "XUA",
             "symbol": "XUA"
           },
           "XXX": {

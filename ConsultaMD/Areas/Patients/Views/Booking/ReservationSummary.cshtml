@@ -1,0 +1,77 @@
+﻿@model PaymentVM
+
+@{
+    ViewData["Title"] = "Resumen de Reserva";
+}
+
+<partial name="_Libs" model='new List<string>{ "simplebar" }' />
+
+<div class="container" style="height:100vh;">
+    <h1 class="clinic-text">Pago Exitoso</h1>
+    <div class="row" style="height:80vh;" data-simplebar>
+        <div class="col m6 s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Resumen Paciente</span>
+                    <table>
+                        <tr>
+                            <th class="clinic-text">Rut Titular</th>
+                            <td>@Model.RutCliente</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Nombre</th>
+                            <td>@Model.NombreCliente</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Rut Paciente</th>
+                            <td>@Model.RutCliente</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Nombre</th>
+                            <td>@Model.RutCliente</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Rut Doctor</th>
+                            <td>@Model.RutDoctor</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Nombre</th>
+                            <td>@Model.NombreDoctor</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col m6 s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-action">
+                        <span class="card-title">Resumen de Reserva</span>
+                        <a href="~/bonopdf.pdf" class="btn waves-effect clinic-desc">Descargar Bono</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th class="clinic-text">Previsión</th>
+                            <td>Consalud</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Total</th>
+                            <td>$ 35.000</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Valor Bono</th>
+                            <td>$ 32.100</td>
+                        </tr>
+                        <tr>
+                            <th class="clinic-text">Co-Pago</th>
+                            <td>$ 2.900</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card-action">
+                    <a asp-controller="Search" asp-action="Map" class="btn waves-effect clinic-desc">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

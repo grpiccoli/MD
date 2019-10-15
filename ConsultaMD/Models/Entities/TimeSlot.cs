@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ConsultaMD.Models.Entities
 {
@@ -10,7 +7,10 @@ namespace ConsultaMD.Models.Entities
         public int Id { get; set; }
         public int AgendaId { get; set; }
         public virtual Agenda Agenda { get; set; }
-        public DateTime StarTime { get; set; }
+        public int? PatientId { get; set; }
+        public virtual Patient Patient { get; set; }
+        public bool Taken { get; set; }
+        public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
     }
 }

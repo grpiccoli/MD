@@ -1,0 +1,20 @@
+﻿@page
+@model ConfirmPhoneSuccessModel
+@{
+    ViewData["Title"] = "Teléfono Confirmado";
+}
+
+<partial name="_Libs" model='(new string[]{ "simplebar" }, "")' />
+
+@section Styles{
+    <meta http-equiv="refresh" content="2;url=@Model.ReturnUrl" />
+}
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='"Patient"' />
+    <div class="col m6 s12 h-100v" data-simplebar>
+        <h3 class="header">@ViewData["Title"]</h3>
+        <h5>Redireccionando en 3 segundos ...</h5>
+        <partial name="_SimpleCard" model='(icon: "email", msg: "¡Gracias por confirmar su teléfono!")' />
+    </div>
+</div>

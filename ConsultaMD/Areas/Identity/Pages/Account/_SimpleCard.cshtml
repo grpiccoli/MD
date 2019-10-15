@@ -1,0 +1,12 @@
+﻿@model (string icon, string msg)
+
+<div class="card horizontal">
+    <div class="card-image"
+         style="min-width:50px;background-image:url('/img/background.png');overflow:hidden;background-size:cover;">
+    </div>
+    <div class="card-stacked">
+        <div class="card-content">
+            <p style="font-size:2rem;"><i class="material-icons left medium">@Model.icon</i>@Html.Raw(Model.msg)</p>
+        </div>
+    </div>
+</div>

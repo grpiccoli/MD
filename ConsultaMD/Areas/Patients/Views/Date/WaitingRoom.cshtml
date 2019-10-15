@@ -1,0 +1,30 @@
+﻿@model PaymentVM
+
+@{
+    ViewData["Title"] = "Sala de Espera";
+}
+
+<div class="row">
+    <div class="col s12 m4 l3">
+        <h5 class="clinic-text">Sala de Espera</h5>
+        <div>
+            <img src="~/img/clinic-images.png" class="img-fluid" style="width: 100%;" asp-append-version="true"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m5">
+        <div class="card-panel">
+            <h6 class="clinic-text">Espera de Atencion</h6>
+            <span>
+                Usted es el Paciente 44 en la Fila
+            </span>
+        </div>
+        <div class="card-panel">
+            <h6 class="clinic-text">Tiempo Aproximado</h6>
+            <span>
+                <i class="far fa-clock clinic-text"></i> 1 Hora 45 Minutos
+            </span>
+        </div>
+    </div>
+</div>

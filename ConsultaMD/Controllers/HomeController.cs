@@ -7,16 +7,9 @@ namespace ConsultaMD.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
-
-        public HomeController(IHostingEnvironment hostingEnvironment)
-        {
-            _hostingEnvironment = hostingEnvironment;
-        }
-
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home", new { area = "Patients" });
         }
 
         public IActionResult Privacy()

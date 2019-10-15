@@ -3,16 +3,19 @@
     "sl": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
         },
-        "language": "sl"
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
+        },
+        "language": "root"
       },
       "localeDisplayNames": {
         "measurementSystemNames": {
+          "US": "imperialni",
           "metric": "metrični",
-          "UK": "angleški",
-          "US": "imperialni"
+          "UK": "Angleški"
         }
       }
     }

@@ -3,8 +3,11 @@
     "nl": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "nl"
       },
@@ -14,8 +17,8 @@
           "gmtFormat": "GMT{0}",
           "gmtZeroFormat": "GMT",
           "regionFormat": "{0}-tijd",
-          "regionFormat-type-daylight": "zomertijd {0}",
           "regionFormat-type-standard": "standaardtijd {0}",
+          "regionFormat-type-daylight": "zomertijd {0}",
           "fallbackFormat": "{1} ({0})",
           "zone": {
             "America": {
@@ -35,26 +38,26 @@
                 "exemplarCity": "Araguaina"
               },
               "Argentina": {
-                "Rio_Gallegos": {
-                  "exemplarCity": "Río Gallegos"
-                },
-                "San_Juan": {
-                  "exemplarCity": "San Juan"
-                },
-                "Ushuaia": {
-                  "exemplarCity": "Ushuaia"
-                },
                 "La_Rioja": {
                   "exemplarCity": "La Rioja"
                 },
-                "San_Luis": {
-                  "exemplarCity": "San Luis"
+                "Rio_Gallegos": {
+                  "exemplarCity": "Río Gallegos"
                 },
                 "Salta": {
                   "exemplarCity": "Salta"
                 },
+                "San_Juan": {
+                  "exemplarCity": "San Juan"
+                },
+                "San_Luis": {
+                  "exemplarCity": "San Luis"
+                },
                 "Tucuman": {
                   "exemplarCity": "Tucumán"
+                },
+                "Ushuaia": {
+                  "exemplarCity": "Ushuaia"
                 }
               },
               "Aruba": {
@@ -165,9 +168,6 @@
               "El_Salvador": {
                 "exemplarCity": "El Salvador"
               },
-              "Fort_Nelson": {
-                "exemplarCity": "Fort Nelson"
-              },
               "Fortaleza": {
                 "exemplarCity": "Fortaleza"
               },
@@ -208,8 +208,11 @@
                 "exemplarCity": "Hermosillo"
               },
               "Indiana": {
-                "Vincennes": {
-                  "exemplarCity": "Vincennes, Indiana"
+                "Knox": {
+                  "exemplarCity": "Knox, Indiana"
+                },
+                "Marengo": {
+                  "exemplarCity": "Marengo, Indiana"
                 },
                 "Petersburg": {
                   "exemplarCity": "Petersburg, Indiana"
@@ -217,17 +220,14 @@
                 "Tell_City": {
                   "exemplarCity": "Tell City, Indiana"
                 },
-                "Knox": {
-                  "exemplarCity": "Knox, Indiana"
+                "Vevay": {
+                  "exemplarCity": "Vevay, Indiana"
+                },
+                "Vincennes": {
+                  "exemplarCity": "Vincennes, Indiana"
                 },
                 "Winamac": {
                   "exemplarCity": "Winamac, Indiana"
-                },
-                "Marengo": {
-                  "exemplarCity": "Marengo, Indiana"
-                },
-                "Vevay": {
-                  "exemplarCity": "Vevay, Indiana"
                 }
               },
               "Indianapolis": {
@@ -341,11 +341,11 @@
                 "Beulah": {
                   "exemplarCity": "Beulah, Noord-Dakota"
                 },
-                "New_Salem": {
-                  "exemplarCity": "New Salem, Noord-Dakota"
-                },
                 "Center": {
                   "exemplarCity": "Center, Noord-Dakota"
+                },
+                "New_Salem": {
+                  "exemplarCity": "New Salem, Noord-Dakota"
                 }
               },
               "Ojinaga": {
@@ -374,9 +374,6 @@
               },
               "Puerto_Rico": {
                 "exemplarCity": "Puerto Rico"
-              },
-              "Punta_Arenas": {
-                "exemplarCity": "Punta Arenas"
               },
               "Rainy_River": {
                 "exemplarCity": "Rainy River"
@@ -511,9 +508,6 @@
               "Andorra": {
                 "exemplarCity": "Andorra"
               },
-              "Astrakhan": {
-                "exemplarCity": "Astrakhan"
-              },
               "Athens": {
                 "exemplarCity": "Athene"
               },
@@ -546,7 +540,7 @@
               },
               "Dublin": {
                 "long": {
-                  "daylight": "Ierse standaardtijd"
+                  "daylight": "Ierse zomertijd"
                 },
                 "exemplarCity": "Dublin"
               },
@@ -573,9 +567,6 @@
               },
               "Kiev": {
                 "exemplarCity": "Kiev"
-              },
-              "Kirov": {
-                "exemplarCity": "Kirov"
               },
               "Lisbon": {
                 "exemplarCity": "Lissabon"
@@ -637,9 +628,6 @@
               "Sarajevo": {
                 "exemplarCity": "Sarajevo"
               },
-              "Saratov": {
-                "exemplarCity": "Saratov"
-              },
               "Simferopol": {
                 "exemplarCity": "Simferopol"
               },
@@ -657,9 +645,6 @@
               },
               "Tirane": {
                 "exemplarCity": "Tirana"
-              },
-              "Ulyanovsk": {
-                "exemplarCity": "Ulyanovsk"
               },
               "Uzhgorod": {
                 "exemplarCity": "Oezjhorod"
@@ -872,9 +857,6 @@
               "Ashgabat": {
                 "exemplarCity": "Asjchabad"
               },
-              "Atyrau": {
-                "exemplarCity": "Atıraw"
-              },
               "Baghdad": {
                 "exemplarCity": "Bagdad"
               },
@@ -886,9 +868,6 @@
               },
               "Bangkok": {
                 "exemplarCity": "Bangkok"
-              },
-              "Barnaul": {
-                "exemplarCity": "Barnaul"
               },
               "Beirut": {
                 "exemplarCity": "Beiroet"
@@ -906,7 +885,10 @@
                 "exemplarCity": "Chita"
               },
               "Choibalsan": {
-                "exemplarCity": "Tsjojbalsan"
+                "exemplarCity": "Choibalsan"
+              },
+              "Chongqing": {
+                "exemplarCity": "Chongqing"
               },
               "Colombo": {
                 "exemplarCity": "Colombo"
@@ -926,11 +908,11 @@
               "Dushanbe": {
                 "exemplarCity": "Doesjanbe"
               },
-              "Famagusta": {
-                "exemplarCity": "Famagusta"
-              },
               "Gaza": {
                 "exemplarCity": "Gaza"
+              },
+              "Harbin": {
+                "exemplarCity": "Harbin"
               },
               "Hebron": {
                 "exemplarCity": "Hebron"
@@ -961,6 +943,9 @@
               },
               "Karachi": {
                 "exemplarCity": "Karachi"
+              },
+              "Kashgar": {
+                "exemplarCity": "Kashgar"
               },
               "Katmandu": {
                 "exemplarCity": "Kathmandu"
@@ -1022,9 +1007,6 @@
               "Qatar": {
                 "exemplarCity": "Qatar"
               },
-              "Qostanay": {
-                "exemplarCity": "Qostanay"
-              },
               "Qyzylorda": {
                 "exemplarCity": "Qyzylorda"
               },
@@ -1072,9 +1054,6 @@
               },
               "Tokyo": {
                 "exemplarCity": "Tokio"
-              },
-              "Tomsk": {
-                "exemplarCity": "Tomsk"
               },
               "Ulaanbaatar": {
                 "exemplarCity": "Ulaanbaatar"
@@ -1181,9 +1160,6 @@
               "Auckland": {
                 "exemplarCity": "Auckland"
               },
-              "Bougainville": {
-                "exemplarCity": "Bougainville"
-              },
               "Chatham": {
                 "exemplarCity": "Chatham"
               },
@@ -1218,11 +1194,6 @@
                 "exemplarCity": "Guam"
               },
               "Honolulu": {
-                "short": {
-                  "generic": "HST",
-                  "standard": "HST",
-                  "daylight": "HDT"
-                },
                 "exemplarCity": "Honolulu"
               },
               "Johnston": {
@@ -1339,13 +1310,86 @@
               }
             },
             "Etc": {
-              "UTC": {
-                "long": {
-                  "standard": "Gecoördineerde wereldtijd"
-                },
-                "short": {
-                  "standard": "UTC"
-                }
+              "GMT": {
+                "exemplarCity": "GMT"
+              },
+              "GMT1": {
+                "exemplarCity": "GMT+1"
+              },
+              "GMT10": {
+                "exemplarCity": "GMT+10"
+              },
+              "GMT11": {
+                "exemplarCity": "GMT+11"
+              },
+              "GMT12": {
+                "exemplarCity": "GMT+12"
+              },
+              "GMT2": {
+                "exemplarCity": "GMT+2"
+              },
+              "GMT3": {
+                "exemplarCity": "GMT+3"
+              },
+              "GMT4": {
+                "exemplarCity": "GMT+4"
+              },
+              "GMT5": {
+                "exemplarCity": "GMT+5"
+              },
+              "GMT6": {
+                "exemplarCity": "GMT+6"
+              },
+              "GMT7": {
+                "exemplarCity": "GMT+7"
+              },
+              "GMT8": {
+                "exemplarCity": "GMT+8"
+              },
+              "GMT9": {
+                "exemplarCity": "GMT+9"
+              },
+              "GMT-1": {
+                "exemplarCity": "GMT-1"
+              },
+              "GMT-10": {
+                "exemplarCity": "GMT-10"
+              },
+              "GMT-11": {
+                "exemplarCity": "GMT-11"
+              },
+              "GMT-12": {
+                "exemplarCity": "GMT-12"
+              },
+              "GMT-13": {
+                "exemplarCity": "GMT-13"
+              },
+              "GMT-14": {
+                "exemplarCity": "GMT-14"
+              },
+              "GMT-2": {
+                "exemplarCity": "GMT-2"
+              },
+              "GMT-3": {
+                "exemplarCity": "GMT-3"
+              },
+              "GMT-4": {
+                "exemplarCity": "GMT-4"
+              },
+              "GMT-5": {
+                "exemplarCity": "GMT-5"
+              },
+              "GMT-6": {
+                "exemplarCity": "GMT-6"
+              },
+              "GMT-7": {
+                "exemplarCity": "GMT-7"
+              },
+              "GMT-8": {
+                "exemplarCity": "GMT-8"
+              },
+              "GMT-9": {
+                "exemplarCity": "GMT-9"
               },
               "Unknown": {
                 "exemplarCity": "onbekende stad"
@@ -1392,11 +1436,6 @@
                 "generic": "Alaska-tijd",
                 "standard": "Alaska-standaardtijd",
                 "daylight": "Alaska-zomertijd"
-              },
-              "short": {
-                "generic": "AKT",
-                "standard": "AKST",
-                "daylight": "AKDT"
               }
             },
             "Almaty": {
@@ -1418,11 +1457,6 @@
                 "generic": "Central-tijd",
                 "standard": "Central-standaardtijd",
                 "daylight": "Central-zomertijd"
-              },
-              "short": {
-                "generic": "CT",
-                "standard": "CST",
-                "daylight": "CDT"
               }
             },
             "America_Eastern": {
@@ -1430,11 +1464,6 @@
                 "generic": "Eastern-tijd",
                 "standard": "Eastern-standaardtijd",
                 "daylight": "Eastern-zomertijd"
-              },
-              "short": {
-                "generic": "ET",
-                "standard": "EST",
-                "daylight": "EDT"
               }
             },
             "America_Mountain": {
@@ -1442,11 +1471,6 @@
                 "generic": "Mountain-tijd",
                 "standard": "Mountain-standaardtijd",
                 "daylight": "Mountain-zomertijd"
-              },
-              "short": {
-                "generic": "MT",
-                "standard": "MST",
-                "daylight": "MDT"
               }
             },
             "America_Pacific": {
@@ -1454,11 +1478,6 @@
                 "generic": "Pacific-tijd",
                 "standard": "Pacific-standaardtijd",
                 "daylight": "Pacific-zomertijd"
-              },
-              "short": {
-                "generic": "PT",
-                "standard": "PST",
-                "daylight": "PDT"
               }
             },
             "Anadyr": {
@@ -1522,11 +1541,6 @@
                 "generic": "Atlantic-tijd",
                 "standard": "Atlantic-standaardtijd",
                 "daylight": "Atlantic-zomertijd"
-              },
-              "short": {
-                "generic": "AT",
-                "standard": "AST",
-                "daylight": "ADT"
               }
             },
             "Australia_Central": {
@@ -1619,9 +1633,9 @@
             },
             "Chatham": {
               "long": {
-                "generic": "Chatham-tijd",
-                "standard": "Chatham-standaardtijd",
-                "daylight": "Chatham-zomertijd"
+                "generic": "Chatham tijd",
+                "standard": "Chatham standaardtijd",
+                "daylight": "Chatham zomertijd"
               }
             },
             "Chile": {
@@ -1640,9 +1654,9 @@
             },
             "Choibalsan": {
               "long": {
-                "generic": "Tsjojbalsan-tijd",
-                "standard": "Tsjojbalsan-standaardtijd",
-                "daylight": "Tsjojbalsan-zomertijd"
+                "generic": "Tsjojbalsan tijd",
+                "standard": "Tsjojbalsan standaardtijd",
+                "daylight": "Tsjojbalsan zomertijd"
               }
             },
             "Christmas": {
@@ -1678,12 +1692,12 @@
             },
             "Davis": {
               "long": {
-                "standard": "Davis-tijd"
+                "standard": "Davis tijd"
               }
             },
             "DumontDUrville": {
               "long": {
-                "standard": "Dumont-d’Urville-tijd"
+                "standard": "Dumont-d’Urville tijd"
               }
             },
             "East_Timor": {
@@ -1768,9 +1782,14 @@
                 "standard": "Franse zuidelijke en Antarctische tijd"
               }
             },
+            "GMT": {
+              "long": {
+                "standard": "Greenwich Mean Time"
+              }
+            },
             "Galapagos": {
               "long": {
-                "standard": "Galapagoseilandse standaardtijd"
+                "standard": "Galapagoseilandse tijd"
               }
             },
             "Gambier": {
@@ -1788,14 +1807,6 @@
             "Gilbert_Islands": {
               "long": {
                 "standard": "Gilberteilandse tijd"
-              }
-            },
-            "GMT": {
-              "long": {
-                "standard": "Greenwich Mean Time"
-              },
-              "short": {
-                "standard": "GMT"
               }
             },
             "Greenland_Eastern": {
@@ -1819,7 +1830,7 @@
             },
             "Gulf": {
               "long": {
-                "standard": "Golf-standaardtijd"
+                "standard": "Golf standaardtijd"
               }
             },
             "Guyana": {
@@ -1832,11 +1843,6 @@
                 "generic": "Hawaii-Aleoetische tijd",
                 "standard": "Hawaii-Aleoetische standaardtijd",
                 "daylight": "Hawaii-Aleoetische zomertijd"
-              },
-              "short": {
-                "generic": "HAT",
-                "standard": "HAST",
-                "daylight": "HADT"
               }
             },
             "Hong_Kong": {
@@ -1848,9 +1854,9 @@
             },
             "Hovd": {
               "long": {
-                "generic": "Hovd-tijd",
-                "standard": "Hovd-standaardtijd",
-                "daylight": "Hovd-zomertijd"
+                "generic": "Hovd tijd",
+                "standard": "Hovd standaardtijd",
+                "daylight": "Hovd zomertijd"
               }
             },
             "India": {
@@ -2017,7 +2023,7 @@
             },
             "Mawson": {
               "long": {
-                "standard": "Mawson-tijd"
+                "standard": "Mawson tijd"
               }
             },
             "Mexico_Northwest": {
@@ -2036,9 +2042,9 @@
             },
             "Mongolia": {
               "long": {
-                "generic": "Ulaanbaatar-tijd",
-                "standard": "Ulaanbaatar-standaardtijd",
-                "daylight": "Ulaanbaatar-zomertijd"
+                "generic": "Ulaanbaatar tijd",
+                "standard": "Ulaanbaatar standaardtijd",
+                "daylight": "Ulaanbaatar zomertijd"
               }
             },
             "Moscow": {
@@ -2177,12 +2183,7 @@
             },
             "Ponape": {
               "long": {
-                "standard": "Pohnpei-tijd"
-              }
-            },
-            "Pyongyang": {
-              "long": {
-                "standard": "Pyongyang-tijd"
+                "standard": "Pohnpei tijd"
               }
             },
             "Qyzylorda": {
@@ -2199,7 +2200,7 @@
             },
             "Rothera": {
               "long": {
-                "standard": "Rothera-tijd"
+                "standard": "Rothera tijd"
               }
             },
             "Sakhalin": {
@@ -2250,7 +2251,7 @@
             },
             "Syowa": {
               "long": {
-                "standard": "Syowa-tijd"
+                "standard": "Syowa tijd"
               }
             },
             "Tahiti": {
@@ -2260,9 +2261,9 @@
             },
             "Taipei": {
               "long": {
-                "generic": "Taipei-tijd",
-                "standard": "Taipei-standaardtijd",
-                "daylight": "Taipei-zomertijd"
+                "generic": "Taipei tijd",
+                "standard": "Taipei standaardtijd",
+                "daylight": "Taipei zomertijd"
               }
             },
             "Tajikistan": {
@@ -2341,7 +2342,7 @@
             },
             "Vostok": {
               "long": {
-                "standard": "Vostok-tijd"
+                "standard": "Vostok tijd"
               }
             },
             "Wake": {

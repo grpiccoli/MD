@@ -3,8 +3,11 @@
     "root": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10712 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-01 12:07:43 -0500 (Fri, 01 Aug 2014) $"
         },
         "language": "root"
       },
@@ -39,7 +42,6 @@
           "151": "151",
           "154": "154",
           "155": "155",
-          "202": "202",
           "419": "419",
           "AC": "AC",
           "AD": "AD",
@@ -102,7 +104,6 @@
           "CX": "CX",
           "CY": "CY",
           "CZ": "CZ",
-          "CZ-alt-variant": "CZ",
           "DE": "DE",
           "DG": "DG",
           "DJ": "DJ",
@@ -119,7 +120,6 @@
           "ES": "ES",
           "ET": "ET",
           "EU": "EU",
-          "EZ": "EZ",
           "FI": "FI",
           "FJ": "FJ",
           "FK": "FK",
@@ -272,7 +272,6 @@
           "SX": "SX",
           "SY": "SY",
           "SZ": "SZ",
-          "SZ-alt-variant": "SZ",
           "TA": "TA",
           "TC": "TC",
           "TD": "TD",
@@ -294,7 +293,6 @@
           "UA": "UA",
           "UG": "UG",
           "UM": "UM",
-          "UN": "UN",
           "US": "US",
           "US-alt-short": "US",
           "UY": "UY",
@@ -308,8 +306,6 @@
           "VU": "VU",
           "WF": "WF",
           "WS": "WS",
-          "XA": "XA",
-          "XB": "XB",
           "XK": "XK",
           "YE": "YE",
           "YT": "YT",

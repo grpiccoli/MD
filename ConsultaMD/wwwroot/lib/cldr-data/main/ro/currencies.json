@@ -3,8 +3,11 @@
     "ro": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "ro"
       },
@@ -34,10 +37,6 @@
             "displayName-count-few": "afgani afgani",
             "displayName-count-other": "afgani afgani",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "leka albaneză",
@@ -160,10 +159,10 @@
             "symbol": "BAN"
           },
           "BBD": {
-            "displayName": "dolar din Barbados",
-            "displayName-count-one": "dolar din Barbados",
-            "displayName-count-few": "dolari din Barbados",
-            "displayName-count-other": "dolari din Barbados",
+            "displayName": "dolar Barbados",
+            "displayName-count-one": "dolar Barbados",
+            "displayName-count-few": "dolari Barbados",
+            "displayName-count-other": "dolari Barbados",
             "symbol": "BBD",
             "symbol-alt-narrow": "$"
           },
@@ -321,9 +320,9 @@
           },
           "BWP": {
             "displayName": "pula Botswana",
-            "displayName-count-one": "pula Botswana",
-            "displayName-count-few": "pula Botswana",
-            "displayName-count-other": "pula Botswana",
+            "displayName-count-one": "pulă Botswana",
+            "displayName-count-few": "pule Botswana",
+            "displayName-count-other": "pule Botswana",
             "symbol": "BWP",
             "symbol-alt-narrow": "P"
           },
@@ -331,20 +330,13 @@
             "displayName": "BYB",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "rublă belarusă",
             "displayName-count-one": "rublă belarusă",
             "displayName-count-few": "ruble belaruse",
             "displayName-count-other": "ruble belaruse",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "rublă belarusă (2000–2016)",
-            "displayName-count-one": "rublă belarusă (2000–2016)",
-            "displayName-count-few": "ruble belaruse (2000–2016)",
-            "displayName-count-other": "ruble belaruse (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "dolar din Belize",
@@ -399,17 +391,6 @@
             "displayName-count-other": "pesos chilieni",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "yuan chinezesc (offshore)",
-            "displayName-count-one": "yuan chinezesc (offshore)",
-            "displayName-count-few": "yuani chinezești (offshore)",
-            "displayName-count-other": "yuani chinezești (offshore)",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "yuan chinezesc",
@@ -640,9 +621,7 @@
             "displayName-count-one": "lari georgian",
             "displayName-count-few": "lari georgieni",
             "displayName-count-other": "lari georgieni",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "cedi Ghana (1979–2007)",
@@ -788,10 +767,6 @@
             "displayName-count-other": "lire israeliene",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
             "displayName": "șechel israelian nou",
             "displayName-count-one": "șechel israelian nou",
@@ -821,10 +796,6 @@
             "displayName-count-few": "riali iranieni",
             "displayName-count-other": "riali iranieni",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "coroană islandeză",
@@ -958,10 +929,10 @@
             "symbol-alt-narrow": "L£"
           },
           "LKR": {
-            "displayName": "rupie srilankeză",
-            "displayName-count-one": "rupie srilankeză",
-            "displayName-count-few": "rupii srilankeze",
-            "displayName-count-other": "rupii srilankeze",
+            "displayName": "rupie din Sri Lanka",
+            "displayName-count-one": "rupie din Sri Lanka",
+            "displayName-count-few": "rupii din Sri Lanka",
+            "displayName-count-other": "rupii Sri Lanka",
             "symbol": "LKR",
             "symbol-alt-narrow": "Rs"
           },
@@ -1118,18 +1089,11 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "ouguiya mauritană (1973–2017)",
-            "displayName-count-one": "ouguiya mauritană (1973–2017)",
-            "displayName-count-few": "ouguiya mauritane (1973–2017)",
-            "displayName-count-other": "ouguiya mauritane (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "ouguiya mauritană",
             "displayName-count-one": "ouguiya mauritană",
             "displayName-count-few": "ouguiya mauritane",
             "displayName-count-other": "ouguiya mauritane",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "liră malteză",
@@ -1149,10 +1113,6 @@
             "displayName-count-other": "rupii mauritiene",
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
-          },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
           },
           "MVR": {
             "displayName": "rufiyaa maldiviană",
@@ -1288,17 +1248,17 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "sol peruvian",
-            "displayName-count-one": "sol peruvian",
-            "displayName-count-few": "soli peruvieni",
-            "displayName-count-other": "soli peruvieni",
+            "displayName": "sol nou peruvian",
+            "displayName-count-one": "sol nou peruvian",
+            "displayName-count-few": "soli noi peruvieni",
+            "displayName-count-other": "soli noi peruvieni",
             "symbol": "PEN"
           },
           "PES": {
             "displayName": "sol peruvian (1863–1965)",
             "displayName-count-one": "sol peruvian (1863–1965)",
-            "displayName-count-few": "soli peruvieni (1863–1965)",
-            "displayName-count-other": "soli peruvieni (1863–1965)",
+            "displayName-count-few": "soli Peru (1863–1965)",
+            "displayName-count-other": "soli Peru (1863–1965)",
             "symbol": "PES"
           },
           "PGK": {
@@ -1377,8 +1337,7 @@
             "displayName-count-one": "leu românesc",
             "displayName-count-few": "lei românești",
             "displayName-count-other": "lei românești",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lei"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "dinar sârbesc",
@@ -1393,7 +1352,7 @@
             "displayName-count-few": "ruble rusești",
             "displayName-count-other": "ruble rusești",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "RUR",
@@ -1460,10 +1419,10 @@
             "symbol-alt-narrow": "kr"
           },
           "SGD": {
-            "displayName": "dolar singaporez",
-            "displayName-count-one": "dolar singaporez",
-            "displayName-count-few": "dolari singaporezi",
-            "displayName-count-other": "dolari singaporezi",
+            "displayName": "dolar Singapore",
+            "displayName-count-one": "dolar Singapore",
+            "displayName-count-few": "dolari Singapore",
+            "displayName-count-other": "dolari Singapore",
             "symbol": "SGD",
             "symbol-alt-narrow": "$"
           },
@@ -1519,26 +1478,19 @@
             "symbol": "SRG"
           },
           "SSP": {
-            "displayName": "liră din Sudanul de Sud",
-            "displayName-count-one": "liră din Sudanul de Sud",
-            "displayName-count-few": "lire din Sudanul de Sud",
-            "displayName-count-other": "lire din Sudanul de Sud",
+            "displayName": "liră sud-sudaneză",
+            "displayName-count-one": "liră sud-sudaneză",
+            "displayName-count-few": "lire sud-sudaneze",
+            "displayName-count-other": "lire sud-sudaneze",
             "symbol": "SSP",
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "dobra Sao Tome și Principe (1977–2017)",
-            "displayName-count-one": "dobra Sao Tome și Principe (1977–2017)",
-            "displayName-count-few": "dobre Sao Tome și Principe (1977–2017)",
-            "displayName-count-other": "dobre Sao Tome și Principe (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "dobra Sao Tome și Principe",
             "displayName-count-one": "dobra Sao Tome și Principe",
             "displayName-count-few": "dobre Sao Tome și Principe",
             "displayName-count-other": "dobre Sao Tome și Principe",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1734,10 +1686,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "sum Uzbekistan",
             "displayName-count-one": "sum Uzbekistan",
@@ -1753,19 +1701,12 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "bolivar venezuelean (2008–2018)",
-            "displayName-count-one": "bolivar venezuelean (2008–2018)",
-            "displayName-count-few": "bolivari venezueleni (2008–2018)",
-            "displayName-count-other": "bolivari venezueleni (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "bolivar venezuelean",
             "displayName-count-one": "bolivar venezuelean",
             "displayName-count-few": "bolivari venezueleni",
             "displayName-count-other": "bolivari venezueleni",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "dong vietnamez",
@@ -1797,7 +1738,7 @@
             "displayName": "franc CFA BEAC",
             "displayName-count-one": "franc CFA BEAC",
             "displayName-count-few": "franci CFA BEAC",
-            "displayName-count-other": "franci CFA central-africani",
+            "displayName-count-other": "franci Comunitatea Financiară",
             "symbol": "FCFA"
           },
           "XAG": {
@@ -1894,7 +1835,7 @@
             "displayName-count-one": "(unitate monetară necunoscută)",
             "displayName-count-few": "(monedă necunoscută)",
             "displayName-count-other": "(monedă necunoscută)",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "dinar Yemen",

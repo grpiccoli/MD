@@ -3,8 +3,11 @@
     "pl": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10895 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-09-01 13:57:54 -0500 (Mon, 01 Sep 2014) $"
         },
         "language": "pl"
       },
@@ -41,10 +44,6 @@
             "displayName-count-many": "afgani",
             "displayName-count-other": "afgani",
             "symbol": "AFN"
-          },
-          "ALK": {
-            "displayName": "ALK",
-            "symbol": "ALK"
           },
           "ALL": {
             "displayName": "lek albański",
@@ -253,7 +252,7 @@
             "displayName-count-one": "dinar bahrański",
             "displayName-count-few": "dinary bahrańskie",
             "displayName-count-many": "dinarów bahrańskich",
-            "displayName-count-other": "dinara bahrańskiego",
+            "displayName-count-other": "dinara barhańskiego",
             "symbol": "BHD"
           },
           "BIF": {
@@ -370,22 +369,14 @@
             "displayName": "rubel białoruski (1994–1999)",
             "symbol": "BYB"
           },
-          "BYN": {
+          "BYR": {
             "displayName": "rubel białoruski",
             "displayName-count-one": "rubel białoruski",
             "displayName-count-few": "ruble białoruskie",
             "displayName-count-many": "rubli białoruskich",
             "displayName-count-other": "rubla białoruskiego",
-            "symbol": "BYN",
+            "symbol": "BYR",
             "symbol-alt-narrow": "р."
-          },
-          "BYR": {
-            "displayName": "rubel białoruski (2000–2016)",
-            "displayName-count-one": "rubel białoruski (2000–2016)",
-            "displayName-count-few": "ruble białoruskie (2000–2016)",
-            "displayName-count-many": "rubli białoruskich (2000–2016)",
-            "displayName-count-other": "rubla białoruskiego (2000–2016)",
-            "symbol": "BYR"
           },
           "BZD": {
             "displayName": "dolar belizeński",
@@ -445,18 +436,6 @@
             "displayName-count-other": "peso chilijskiego",
             "symbol": "CLP",
             "symbol-alt-narrow": "$"
-          },
-          "CNH": {
-            "displayName": "juan chiński (rynek zewnętrzny)",
-            "displayName-count-one": "juan chiński (rynek zewnętrzny)",
-            "displayName-count-few": "juany chińskie (rynek zewnętrzny)",
-            "displayName-count-many": "juanów chińskich (rynek zewnętrzny)",
-            "displayName-count-other": "juana chińskiego (rynek zewnętrzny)",
-            "symbol": "CNH"
-          },
-          "CNX": {
-            "displayName": "CNX",
-            "symbol": "CNX"
           },
           "CNY": {
             "displayName": "juan chiński",
@@ -658,7 +637,7 @@
             "symbol": "FIM"
           },
           "FJD": {
-            "displayName": "dolar fidżyjski",
+            "displayName": "dolar fidżi",
             "displayName-count-one": "dolar fidżyjski",
             "displayName-count-few": "dolary fidżyjskie",
             "displayName-count-many": "dolarów fidżyjskich",
@@ -702,9 +681,7 @@
             "displayName-count-few": "lari gruzińskie",
             "displayName-count-many": "lari gruzińskich",
             "displayName-count-other": "lari gruzińskiego",
-            "symbol": "GEL",
-            "symbol-alt-narrow": "₾",
-            "symbol-alt-variant": "₾"
+            "symbol": "GEL"
           },
           "GHC": {
             "displayName": "cedi ghańskie (1979–2007)",
@@ -847,10 +824,6 @@
             "displayName": "funt izraelski",
             "symbol": "ILP"
           },
-          "ILR": {
-            "displayName": "ILR",
-            "symbol": "ILR"
-          },
           "ILS": {
             "displayName": "nowy szekel izraelski",
             "displayName-count-one": "nowy szekel izraelski",
@@ -884,10 +857,6 @@
             "displayName-count-many": "riali irańskich",
             "displayName-count-other": "riala irańskiego",
             "symbol": "IRR"
-          },
-          "ISJ": {
-            "displayName": "ISJ",
-            "symbol": "ISJ"
           },
           "ISK": {
             "displayName": "korona islandzka",
@@ -1188,20 +1157,12 @@
             "symbol": "MOP"
           },
           "MRO": {
-            "displayName": "ouguiya mauretańska (1973–2017)",
-            "displayName-count-one": "ouguiya mauretańska (1973–2017)",
-            "displayName-count-few": "ouguiya mauretańskie (1973–2017)",
-            "displayName-count-many": "ouguiya mauretańskich (1973–2017)",
-            "displayName-count-other": "ouguiya mauretańskiej (1973–2017)",
-            "symbol": "MRO"
-          },
-          "MRU": {
             "displayName": "ouguiya mauretańska",
             "displayName-count-one": "ouguiya mauretańska",
             "displayName-count-few": "ouguiya mauretańskie",
             "displayName-count-many": "ouguiya mauretańskich",
             "displayName-count-other": "ouguiya mauretańskiej",
-            "symbol": "MRU"
+            "symbol": "MRO"
           },
           "MTL": {
             "displayName": "lira maltańska",
@@ -1220,10 +1181,6 @@
             "symbol": "MUR",
             "symbol-alt-narrow": "Rs"
           },
-          "MVP": {
-            "displayName": "MVP",
-            "symbol": "MVP"
-          },
           "MVR": {
             "displayName": "rupia malediwska",
             "displayName-count-one": "rupia malediwska",
@@ -1233,11 +1190,11 @@
             "symbol": "MVR"
           },
           "MWK": {
-            "displayName": "kwacha malawijska",
-            "displayName-count-one": "kwacha malawijska",
-            "displayName-count-few": "kwacha malawijskie",
-            "displayName-count-many": "kwacha malawijskich",
-            "displayName-count-other": "kwacha malawijskiej",
+            "displayName": "kwacha malawska",
+            "displayName-count-one": "kwacha malawska",
+            "displayName-count-few": "kwacha malawskie",
+            "displayName-count-many": "kwacha malawskich",
+            "displayName-count-other": "kwacha malawskiej",
             "symbol": "MWK"
           },
           "MXN": {
@@ -1276,10 +1233,10 @@
           },
           "MZN": {
             "displayName": "metical mozambicki",
-            "displayName-count-one": "metical mozambicki",
-            "displayName-count-few": "meticale mozambickie",
-            "displayName-count-many": "meticali mozambickich",
-            "displayName-count-other": "meticala mozambickiego",
+            "displayName-count-one": "metical mozambijski",
+            "displayName-count-few": "meticale mozambijskie",
+            "displayName-count-many": "meticali mozambijskich",
+            "displayName-count-other": "meticala mozambijskiego",
             "symbol": "MZN"
           },
           "NAD": {
@@ -1369,19 +1326,15 @@
             "symbol": "PEI"
           },
           "PEN": {
-            "displayName": "sol peruwiański",
-            "displayName-count-one": "sol peruwiański",
-            "displayName-count-few": "sole peruwiańskie",
-            "displayName-count-many": "soli peruwiańskich",
-            "displayName-count-other": "sola peruwiańskiego",
+            "displayName": "nowy sol peruwiański",
+            "displayName-count-one": "nowy sol peruwiański",
+            "displayName-count-few": "nowe sole peruwiańskie",
+            "displayName-count-many": "nowych soli peruwiańskich",
+            "displayName-count-other": "nowego sola peruwiańskiego",
             "symbol": "PEN"
           },
           "PES": {
-            "displayName": "sol peruwiański (1863–1965)",
-            "displayName-count-one": "sol peruwiański (1863–1965)",
-            "displayName-count-few": "sole peruwiańskie (1863–1965)",
-            "displayName-count-many": "soli peruwiańskich (1863–1965)",
-            "displayName-count-other": "sola peruwiańskiego (1863–1965)",
+            "displayName": "sol peruwiański",
             "symbol": "PES"
           },
           "PGK": {
@@ -1466,8 +1419,7 @@
             "displayName-count-few": "leje rumuńskie",
             "displayName-count-many": "lejów rumuńskich",
             "displayName-count-other": "leja rumuńskiego",
-            "symbol": "RON",
-            "symbol-alt-narrow": "lej"
+            "symbol": "RON"
           },
           "RSD": {
             "displayName": "dinar serbski",
@@ -1484,7 +1436,7 @@
             "displayName-count-many": "rubli rosyjskich",
             "displayName-count-other": "rubla rosyjskiego",
             "symbol": "RUB",
-            "symbol-alt-narrow": "₽"
+            "symbol-alt-variant": "₽"
           },
           "RUR": {
             "displayName": "rubel rosyjski (1991–1998)",
@@ -1631,20 +1583,12 @@
             "symbol-alt-narrow": "£"
           },
           "STD": {
-            "displayName": "dobra Wysp Świętego Tomasza i Książęcej (1977–2017)",
-            "displayName-count-one": "dobra Wysp Świętego Tomasza i Książęcej (1977–2017)",
-            "displayName-count-few": "dobry Wysp Świętego Tomasza i Książęcej (1977–2017)",
-            "displayName-count-many": "dobr Wysp Świętego Tomasza i Książęcej (1977–2017)",
-            "displayName-count-other": "dobry Wysp Świętego Tomasza i Książęcej (1977–2017)",
-            "symbol": "STD"
-          },
-          "STN": {
             "displayName": "dobra Wysp Świętego Tomasza i Książęcej",
             "displayName-count-one": "dobra Wysp Świętego Tomasza i Książęcej",
             "displayName-count-few": "dobry Wysp Świętego Tomasza i Książęcej",
             "displayName-count-many": "dobr Wysp Świętego Tomasza i Książęcej",
             "displayName-count-other": "dobry Wysp Świętego Tomasza i Książęcej",
-            "symbol": "STN",
+            "symbol": "STD",
             "symbol-alt-narrow": "Db"
           },
           "SUR": {
@@ -1841,10 +1785,6 @@
             "symbol": "UYU",
             "symbol-alt-narrow": "$"
           },
-          "UYW": {
-            "displayName": "UYW",
-            "symbol": "UYW"
-          },
           "UZS": {
             "displayName": "som uzbecki",
             "displayName-count-one": "som uzbecki",
@@ -1862,21 +1802,13 @@
             "symbol": "VEB"
           },
           "VEF": {
-            "displayName": "boliwar wenezuelski (2008–2018)",
-            "displayName-count-one": "boliwar wenezuelski (2008–2018)",
-            "displayName-count-few": "boliwary wenezuelskie (2008–2018)",
-            "displayName-count-many": "boliwarów wenezuelskich (2008–2018)",
-            "displayName-count-other": "boliwara wenezuelskiego (2008–2018)",
-            "symbol": "VEF",
-            "symbol-alt-narrow": "Bs"
-          },
-          "VES": {
             "displayName": "boliwar wenezuelski",
             "displayName-count-one": "boliwar wenezuelski",
             "displayName-count-few": "boliwary wenezuelskie",
             "displayName-count-many": "boliwarów wenezuelskich",
             "displayName-count-other": "boliwara wenezuelskiego",
-            "symbol": "VES"
+            "symbol": "VEF",
+            "symbol-alt-narrow": "Bs"
           },
           "VND": {
             "displayName": "dong wietnamski",
@@ -1892,15 +1824,15 @@
             "symbol": "VNN"
           },
           "VUV": {
-            "displayName": "vatu wanuackie",
-            "displayName-count-one": "vatu wanuackie",
-            "displayName-count-few": "vatu wanuackie",
-            "displayName-count-many": "vatu wanuackich",
-            "displayName-count-other": "vatu wanuackiego",
+            "displayName": "vatu Vanuatu",
+            "displayName-count-one": "vatu vanuatuańskie",
+            "displayName-count-few": "vatu vanuatuańskie",
+            "displayName-count-many": "vatu vanuatuańskich",
+            "displayName-count-other": "vatu vanuatuańskiego",
             "symbol": "VUV"
           },
           "WST": {
-            "displayName": "tala samoańskie",
+            "displayName": "tala samoańska",
             "displayName-count-one": "tala samoańskie",
             "displayName-count-few": "tala samoańskie",
             "displayName-count-many": "tala samoańskich",
@@ -1924,11 +1856,11 @@
             "symbol": "XAU"
           },
           "XBA": {
-            "displayName": "XBA",
+            "displayName": "jednostka emisji euroobligacji",
             "symbol": "XBA"
           },
           "XBB": {
-            "displayName": "XBB",
+            "displayName": "europejska jednostka monetarna",
             "symbol": "XBB"
           },
           "XBC": {
@@ -2010,7 +1942,7 @@
             "displayName-count-few": "nieznanej waluty",
             "displayName-count-many": "nieznanej waluty",
             "displayName-count-other": "nieznanej waluty",
-            "symbol": "¤"
+            "symbol": "XXX"
           },
           "YDD": {
             "displayName": "dinar jemeński",

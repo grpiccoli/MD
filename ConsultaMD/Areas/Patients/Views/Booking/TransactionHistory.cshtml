@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "index";
+}
+
+<div class="container">
+
+    <h1 class="clinic-text">Historial De Pagos</h1>
+    <div class="row" id="transaction-list"></div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "Tmp/TransactionHistoryList",
+                dataType: "json"
+            })
+                .done((data) => {
+                    $.each(data, function (index, value) {
+                        $('#transaction-list').append(
+                            `<div class="col s12 m6">
+                                <h5 class="header clinic-text">ID:${value.id}</h5>
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img src="/img/doc3.png" class="img-fluid profile-picture circle">
+                                    </div>
+                                    <div class="card-stacked">
+                                    <div class="card-content">
+                                        <span class="card-title clinic-text">${value.doctor}</span>
+                                        <strong>Experiencia: </strong><span>${value.experiencia}</span></br>
+                                        <strong>Método de Pago: </strong><span>${value.pago}</span></br>
+                                        <strong>Abono: </strong><span>${value.abono}</span></br>
+                                        <strong>Reembolso: </strong><span>${value.reembolso}</span>
+                                    </div>
+                                    <div class="card-action">
+                                        <p class="right-align ${value.estado == "Aprobado" ? "clinic-text" : "red-text"}">${value.estado}</p>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>`
+                        );
+                    });
+                });
+        });
+    </script>
+}
+

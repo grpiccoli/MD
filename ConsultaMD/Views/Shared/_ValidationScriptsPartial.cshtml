@@ -1,5 +1,8 @@
-<partial name="_Libs" model='new List<string> { "jquery-validation", "jquery-validation-unobtrusive", 
-         "cldrjs", "globalize", "jquery-validation-unobtrusive-extensions" }' />
+@*<partial name="_Scripts" model='(new string[]{"jquery-validation", "jquery-validation-unobtrusive", 
+         "cldrjs", "globalize", "jquery-validation-unobtrusive-extensions", "validation"}, "-Validation_")' />*@
+
+<partial name="_Libs" model='(new string[]{"jquery-validation", "jquery-validation-unobtrusive", 
+         "cldrjs", "globalize", "jquery-validation-unobtrusive-extensions", "validation"}, "Validation")' />
 
 @inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnvironment
 @{
@@ -7,7 +10,7 @@
     {
         const string localePattern = "lib\\cldr-data\\main\\{0}";
         var currentCulture = System.Globalization.CultureInfo.CurrentCulture;
-        var cultureToUse = Localizer["es-CL"].ToString(); //Default regionalisation to use
+        var cultureToUse = Localizer["es-CL"].Value; //Default regionalisation to use
 
         if (System.IO.Directory.Exists(System.IO.Path.Combine(HostingEnvironment.WebRootPath, string.Format(localePattern, currentCulture.Name))))
             cultureToUse = currentCulture.Name;
@@ -18,24 +21,4 @@
     }
 }
 
-@this.ScriptBlock(@<script>
-    (function ($) {
-        var culture = "@GetDefaultLocale()";
-        $.when(
-            $.get("/lib/cldr-data/supplemental/likelySubtags.json"),
-            $.get("/lib/cldr-data/main/" + culture + "/numbers.json"),
-            $.get("/lib/cldr-data/supplemental/numberingSystems.json"),
-            $.get("/lib/cldr-data/main/" + culture + "/ca-gregorian.json"),
-            $.get("/lib/cldr-data/main/" + culture + "/timeZoneNames.json"),
-            $.get("/lib/cldr-data/supplemental/timeData.json"),
-            $.get("/lib/cldr-data/supplemental/weekData.json")
-        ).then(function () {
-            // Normalize $.get results, we only need the JSON, not the request statuses.
-            return [].slice.apply(arguments, [0]).map(function (result) {
-                return result[0];
-            });
-        }).then(Globalize.load).then(function () {
-            Globalize.locale(culture);
-        });
-    })(jQuery);
-</script>)
+@this.Block(@<script>window.localStorage.setItem('Locale', '@GetDefaultLocale()')</script>, "-TOP_Scripts")

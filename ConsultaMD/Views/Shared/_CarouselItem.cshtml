@@ -1,0 +1,16 @@
+﻿@model (string, string, string)
+<div class="splash center white-text h-100v" href="#@Model.Item1">
+    <div class="valign-wrapper w-100 h-100">
+        <div class="row w-100">
+            <h1 class="col s12 white-text mb-0">@Model.Item2</h1>
+            <table class="wrapper">
+                <tr>
+                    <td>
+                        <img class="h-35v" src="~/img/splash/@(Model.Item1).png" alt="@Model.Item2" asp-append-version="true" />
+                    </td>
+                </tr>
+            </table>
+            <h5 class="col s12 white-text">@Model.Item3</h5>
+        </div>
+    </div>
+</div>

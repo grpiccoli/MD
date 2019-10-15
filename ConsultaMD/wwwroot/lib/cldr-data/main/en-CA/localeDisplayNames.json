@@ -3,8 +3,11 @@
     "en-CA": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14786 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10819 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 22:53:08 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "en",
         "territory": "CA"
@@ -17,276 +20,81 @@
         },
         "keys": {
           "calendar": "Calendar",
-          "cf": "Currency Format",
           "colAlternate": "Ignore Symbols Sorting",
           "colBackwards": "Reversed Accent Sorting",
           "colCaseFirst": "Uppercase/Lowercase Ordering",
-          "colCaseLevel": "Case-Sensitive Sorting",
-          "collation": "Sort Order",
-          "colNormalization": "Normalised Sorting",
+          "colCaseLevel": "Case Sensitive Sorting",
+          "colHiraganaQuaternary": "Kana Sorting",
+          "colNormalization": "Normalized Sorting",
           "colNumeric": "Numeric Sorting",
           "colReorder": "Script/Block Reordering",
           "colStrength": "Sorting Strength",
+          "collation": "Sort Order",
           "currency": "Currency",
-          "d0": "Transform Destination",
-          "em": "Emoji Presentation Style",
-          "fw": "First day of week",
-          "h0": "Mixed-in",
-          "hc": "Hour Cycle (12 vs 24)",
-          "i0": "Input Method",
-          "k0": "Keyboard",
           "kv": "Highest Ignored",
-          "lb": "Line Break Style",
-          "lw": "Line Breaks In Words Setting",
-          "m0": "Transform Rules",
-          "ms": "Measurement System",
           "numbers": "Numbers",
-          "rg": "Region For Supplemental Data",
-          "s0": "Transform Source",
-          "sd": "Region Subdivision",
-          "ss": "Sentence Break Suppressions Type",
-          "t": "Transform",
-          "t0": "Machine Translated",
           "timezone": "Time Zone",
           "va": "Locale Variant",
-          "x": "Private-Use",
-          "x0": "Private-Use Transform"
+          "variableTop": "Sort As Symbols",
+          "x": "Private-Use"
         },
         "types": {
-          "calendar": {
-            "buddhist": "Buddhist Calendar",
-            "chinese": "Chinese Calendar",
-            "coptic": "Coptic Calendar",
-            "dangi": "Korean Calendar",
-            "ethiopic": "Ethiopian Calendar",
-            "ethiopic-amete-alem": "Ethiopic Amete Alem Calendar",
-            "gregorian": "Gregorian Calendar",
-            "hebrew": "Hebrew Calendar",
-            "indian": "Indian National Calendar",
-            "islamic": "Islamic Calendar",
-            "islamic-civil": "Islamic Calendar (tabular, civil epoch)",
-            "islamic-rgsa": "Islamic Calendar (Saudi Arabia, sighting)",
-            "islamic-tbla": "Islamic Calendar (tabular, astronomical epoch)",
-            "islamic-umalqura": "Islamic Calendar (Umm al-Qura)",
-            "iso8601": "ISO-8601 Calendar",
-            "japanese": "Japanese Calendar",
-            "persian": "Persian Calendar",
-            "roc": "Minguo Calendar"
-          },
-          "cf": {
-            "account": "Accounting Currency Format",
-            "standard": "Standard Currency Format"
-          },
-          "colAlternate": {
-            "non-ignorable": "Sort Symbols",
-            "shifted": "Sort Ignoring Symbols"
-          },
-          "colBackwards": {
-            "no": "Sort Accents Normally",
-            "yes": "Sort Accents Reversed"
-          },
-          "colCaseFirst": {
-            "lower": "Sort Lowercase First",
-            "no": "Sort Normal Case Order",
-            "upper": "Sort Uppercase First"
-          },
-          "colCaseLevel": {
-            "no": "Sort Case Insensitive",
-            "yes": "Sort Case Sensitive"
-          },
-          "collation": {
-            "big5han": "Traditional Chinese Sort Order - Big5",
-            "compat": "Previous Sort Order, for compatibility",
-            "dictionary": "Dictionary Sort Order",
-            "ducet": "Default Unicode Sort Order",
-            "emoji": "Emoji Sort Order",
-            "eor": "European Ordering Rules",
-            "gb2312han": "Simplified Chinese Sort Order - GB2312",
-            "phonebook": "Phonebook Sort Order",
-            "phonetic": "Phonetic Sort Order",
-            "pinyin": "Pinyin Sort Order",
-            "reformed": "Reformed Sort Order",
-            "search": "General-Purpose Search",
-            "searchjl": "Search By Hangul Initial Consonant",
-            "standard": "Standard Sort Order",
-            "stroke": "Stroke Sort Order",
-            "traditional": "Traditional Sort Order",
-            "unihan": "Radical-Stroke Sort Order",
-            "zhuyin": "Zhuyin Sort Order"
-          },
-          "colNormalization": {
-            "no": "Sort Without Normalisation",
-            "yes": "Sort Unicode Normalised"
-          },
-          "colNumeric": {
-            "no": "Sort Digits Individually",
-            "yes": "Sort Digits Numerically"
-          },
-          "colStrength": {
-            "identical": "Sort All",
-            "primary": "Sort Base Letters Only",
-            "quaternary": "Sort Accents/Case/Width/Kana",
-            "secondary": "Sort Accents",
-            "tertiary": "Sort Accents/Case/Width"
-          },
-          "d0": {
-            "accents": "To Accented Characters From ASCII Sequence",
-            "ascii": "To ASCII",
-            "casefold": "To Casefolded",
-            "charname": "To Unicode Character Names",
-            "digit": "To Digit Form Of Accent",
-            "fcc": "To Unicode FCC",
-            "fcd": "To Unicode FCD",
-            "fwidth": "To Full Width",
-            "hex": "To Hexadecimal Codes",
-            "hwidth": "To Half Width",
-            "lower": "To Lower Case",
-            "nfc": "To Unicode NFC",
-            "nfd": "To Unicode NFD",
-            "nfkc": "To Unicode NFKC",
-            "nfkd": "To Unicode NFKD",
-            "npinyin": "To Pinyin With Numeric Tones",
-            "null": "No Change",
-            "publish": "To Publishing Characters From ASCII",
-            "remove": "To Empty String",
-            "title": "To Title Case",
-            "upper": "To Upper Case",
-            "zawgyi": "To Zawgyi Myanmar Encoding"
-          },
-          "em": {
-            "default": "Use Default Presentation For Emoji Characters",
-            "emoji": "Prefer Emoji Presentation For Emoji Characters",
-            "text": "Prefer Text Presentation For Emoji Characters"
-          },
-          "fw": {
-            "fri": "First Day of Week Is Friday",
-            "mon": "First Day of Week Is Monday",
-            "sat": "First Day of Week Is Saturday",
-            "sun": "First Day of Week Is Sunday",
-            "thu": "First Day of Week Is Thursday",
-            "tue": "First Day of Week Is Tuesday",
-            "wed": "First Day of Week Is Wednesday"
-          },
-          "h0": {
-            "hybrid": "Hybrid"
-          },
-          "hc": {
-            "h11": "12-Hour System (0–11)",
-            "h12": "12-Hour System (1–12)",
-            "h23": "24-Hour System (0–23)",
-            "h24": "24-Hour System (1–24)"
-          },
-          "i0": {
-            "handwrit": "Handwriting Input Method",
-            "pinyin": "Pinyin Input Method",
-            "und": "Unspecified Input Method",
-            "wubi": "Wubi Input Method"
-          },
-          "k0": {
-            "101key": "101-Key Keyboard",
-            "102key": "102-Key Keyboard",
-            "600dpi": "600 dpi Keyboard",
-            "768dpi": "768 dpi Keyboard",
-            "android": "Android Keyboard",
-            "azerty": "AZERTY-Based Keyboard",
-            "chromeos": "ChromeOS Keyboard",
-            "colemak": "Colemak Keyboard",
-            "dvorak": "Dvorak Keyboard",
-            "dvorakl": "Dvorak Left-Handed Keyboard",
-            "dvorakr": "Dvorak Right-Handed Keyboard",
-            "el220": "Greek 220 Keyboard",
-            "el319": "Greek 319 Keyboard",
-            "extended": "Keyboard With Many Extra Characters",
-            "googlevk": "Google Virtual Keyboard",
-            "isiri": "Persian ISIRI Keyboard",
-            "legacy": "Legacy Keyboard",
-            "lt1205": "Lithuanian LST 1205 Keyboard",
-            "lt1582": "Lithuanian LST 1582 Keyboard",
-            "nutaaq": "Inuktitut Nutaaq Keyboard",
-            "osx": "macOS Keyboard",
-            "patta": "Thai Pattachote Keyboard",
-            "qwerty": "QWERTY-Based Keyboard",
-            "qwertz": "QWERTZ-Based Keyboard",
-            "ta99": "Tamil 99 Keyboard",
-            "und": "Unspecified Keyboard",
-            "var": "Keyboard Variant",
-            "viqr": "Vietnamese VIQR Keyboard",
-            "windows": "Windows Keyboard"
-          },
-          "kr": {
-            "currency": "Currency",
-            "digit": "Digits",
-            "punct": "Punctuation",
-            "space": "Whitespace",
-            "symbol": "Symbol"
-          },
-          "kv": {
-            "currency": "Ignore Symbols affects spaces, punctuation, all symbols",
-            "punct": "Ignore Symbols affects spaces and punctuation only",
-            "space": "Ignore Symbols affects spaces only",
-            "symbol": "Ignore Symbols affects spaces, punctuation, non-currency symbols"
-          },
-          "lb": {
-            "loose": "Loose Line Break Style",
-            "normal": "Normal Line Break Style",
-            "strict": "Strict Line Break Style"
-          },
-          "lw": {
-            "breakall": "Allow Line Breaks In All Words",
-            "keepall": "Prevent Line Breaks In All Words",
-            "normal": "Normal Line Breaks For Words"
-          },
-          "m0": {
-            "alaloc": "US ALA-LOC Transliteration",
-            "bgn": "US BGN Transliteration",
-            "buckwalt": "Buckwalter Arabic Transliteration",
-            "c11": "Hex transform using C11 syntax",
-            "css": "Hex transform using CSS syntax",
-            "din": "German DIN Transliteration",
-            "ewts": "Extended Wylie Transliteration Scheme",
-            "gost": "CIS GOST Transliteration",
-            "iast": "International Alphabet of Sanskrit Transliteration",
-            "iso": "ISO Transliteration",
-            "java": "Hex transform using Java syntax",
-            "mcst": "Korean MCST Transliteration",
-            "mns": "Mongolian National Standard Transliteration",
-            "percent": "Hex transform using percent syntax",
-            "perl": "Hex transform using Perl syntax",
-            "plain": "Hex transform with no surrounding syntax",
-            "prprname": "Personal name transliteration variant",
-            "satts": "Standard Arabic Technical Transliteration",
-            "ungegn": "UN GEGN Transliteration",
-            "unicode": "Hex transform using Unicode syntax",
-            "xml": "Hex transform using XML syntax",
-            "xml10": "Hex transform using XML decimal syntax"
-          },
-          "ms": {
-            "metric": "Metric System",
-            "uksystem": "Imperial Measurement System",
-            "ussystem": "US Measurement System"
-          },
           "numbers": {
-            "adlm": "Adlam Digits",
-            "ahom": "Ahom Digits",
             "arab": "Arabic-Indic Digits",
             "arabext": "Extended Arabic-Indic Digits",
             "arabext-alt-short": "X Arabic-Indic Digits",
             "armn": "Armenian Numerals",
             "armnlow": "Armenian Lowercase Numerals",
             "bali": "Balinese Digits",
-            "beng": "Bangla Digits",
-            "bhks": "Bhaiksuki Digits",
-            "brah": "Brahmi Digits",
+            "beng": "Bengali Digits"
+          },
+          "collation": {
+            "big5han": "Traditional Chinese Sort Order - Big5"
+          },
+          "numbers": {
+            "brah": "Brahmi Digits"
+          },
+          "calendar": {
+            "buddhist": "Buddhist Calendar"
+          },
+          "numbers": {
             "cakm": "Chakma Digits",
-            "cham": "Cham Digits",
-            "cyrl": "Cyrillic Numerals",
-            "deva": "Devanagari Digits",
-            "ethi": "Ethiopic Numerals",
+            "cham": "Cham Digits"
+          },
+          "calendar": {
+            "chinese": "Chinese Calendar",
+            "coptic": "Coptic Calendar",
+            "dangi": "Dangi Calendar"
+          },
+          "numbers": {
+            "deva": "Devanagari Digits"
+          },
+          "collation": {
+            "dictionary": "Dictionary Sort Order",
+            "ducet": "Default Unicode Sort Order",
+            "eor": "European Ordering Rules"
+          },
+          "numbers": {
+            "ethi": "Ethiopic Numerals"
+          },
+          "calendar": {
+            "ethiopic": "Ethiopic Calendar",
+            "ethiopic-amete-alem": "Ethiopic Amete Alem Calendar"
+          },
+          "numbers": {
             "finance": "Financial Numerals",
-            "fullwide": "Full-Width Digits",
-            "geor": "Georgian Numerals",
-            "gong": "Gunjala Gondi digits",
-            "gonm": "Masaram Gondi digits",
+            "fullwide": "Full Width Digits"
+          },
+          "collation": {
+            "gb2312han": "Simplified Chinese Sort Order - GB2312"
+          },
+          "numbers": {
+            "geor": "Georgian Numerals"
+          },
+          "calendar": {
+            "gregorian": "Gregorian Calendar"
+          },
+          "numbers": {
             "grek": "Greek Numerals",
             "greklow": "Greek Lowercase Numerals",
             "gujr": "Gujarati Digits",
@@ -297,13 +105,28 @@
             "hansfin": "Simplified Chinese Financial Numerals",
             "hant": "Traditional Chinese Numerals",
             "hantfin": "Traditional Chinese Financial Numerals",
-            "hebr": "Hebrew Numerals",
-            "hmng": "Pahawh Hmong Digits",
-            "hmnp": "Nyiakeng Puachue Hmong Digits",
+            "hebr": "Hebrew Numerals"
+          },
+          "calendar": {
+            "hebrew": "Hebrew Calendar"
+          },
+          "colStrength": {
+            "identical": "Sort All"
+          },
+          "calendar": {
+            "indian": "Indian National Calendar",
+            "islamic": "Islamic Calendar",
+            "islamic-civil": "Islamic Calendar (tabular, civil epoch)",
+            "islamic-rgsa": "Islamic Calendar (Saudi Arabia, sighting)",
+            "islamic-tbla": "Islamic Calendar (tabular, astronomical epoch)",
+            "islamic-umalqura": "Islamic Calendar (Umm al-Qura)",
+            "iso8601": "ISO-8601 Calendar",
+            "japanese": "Japanese Calendar"
+          },
+          "numbers": {
             "java": "Javanese Digits",
             "jpan": "Japanese Numerals",
             "jpanfin": "Japanese Financial Numerals",
-            "jpanyear": "Japanese Calendar Gannen Year Numerals",
             "kali": "Kayah Li Digits",
             "khmr": "Khmer Digits",
             "knda": "Kannada Digits",
@@ -312,65 +135,137 @@
             "laoo": "Lao Digits",
             "latn": "Western Digits",
             "lepc": "Lepcha Digits",
-            "limb": "Limbu Digits",
-            "mathbold": "Mathematical Bold Digits",
-            "mathdbl": "Mathematical Double-Struck Digits",
-            "mathmono": "Mathematical Monospace Digits",
-            "mathsanb": "Mathematical Sans-Serif Bold Digits",
-            "mathsans": "Mathematical Sans-Serif Digits",
+            "limb": "Limbu Digits"
+          },
+          "colCaseFirst": {
+            "lower": "Sort Lowercase First"
+          },
+          "numbers": {
             "mlym": "Malayalam Digits",
-            "modi": "Modi Digits",
             "mong": "Mongolian Digits",
-            "mroo": "Mro Digits",
             "mtei": "Meetei Mayek Digits",
             "mymr": "Myanmar Digits",
             "mymrshan": "Myanmar Shan Digits",
-            "mymrtlng": "Myanmar Tai Laing Digits",
             "native": "Native Digits",
-            "newa": "Newa Digits",
-            "nkoo": "N’Ko Digits",
+            "nkoo": "N’Ko Digits"
+          },
+          "colBackwards": {
+            "no": "Sort Accents Normally"
+          },
+          "colCaseFirst": {
+            "no": "Sort Normal Case Order"
+          },
+          "colCaseLevel": {
+            "no": "Sort Case Insensitive"
+          },
+          "colHiraganaQuaternary": {
+            "no": "Sort Kana Separately"
+          },
+          "colNormalization": {
+            "no": "Sort Without Normalization"
+          },
+          "colNumeric": {
+            "no": "Sort Digits Individually"
+          },
+          "colAlternate": {
+            "non-ignorable": "Sort Symbols"
+          },
+          "numbers": {
             "olck": "Ol Chiki Digits",
-            "orya": "Odia Digits",
-            "osma": "Osmanya Digits",
-            "rohg": "Hanifi Rohingya digits",
+            "orya": "Oriya Digits",
+            "osma": "Osmanya Digits"
+          },
+          "calendar": {
+            "persian": "Persian Calendar"
+          },
+          "collation": {
+            "phonebook": "Phonebook Sort Order",
+            "phonetic": "Phonetic Sort Order",
+            "pinyin": "Pinyin Sort Order"
+          },
+          "va": {
+            "posix": "POSIX Compliant Locale"
+          },
+          "colStrength": {
+            "primary": "Sort Base Letters Only",
+            "quaternary": "Sort Accents/Case/Width/Kana"
+          },
+          "collation": {
+            "reformed": "Reformed Sort Order"
+          },
+          "calendar": {
+            "roc": "Minguo Calendar"
+          },
+          "numbers": {
             "roman": "Roman Numerals",
             "romanlow": "Roman Lowercase Numerals",
-            "saur": "Saurashtra Digits",
+            "saur": "Saurashtra Digits"
+          },
+          "collation": {
+            "search": "General-Purpose Search",
+            "searchjl": "Search By Hangul Initial Consonant"
+          },
+          "colStrength": {
+            "secondary": "Sort Accents"
+          },
+          "colAlternate": {
+            "shifted": "Sort Ignoring Symbols"
+          },
+          "numbers": {
             "shrd": "Sharada Digits",
-            "sind": "Khudawadi Digits",
-            "sinh": "Sinhala Lith Digits",
-            "sora": "Sora Sompeng Digits",
+            "sora": "Sora Sompeng Digits"
+          },
+          "collation": {
+            "standard": "Standard Sort Order",
+            "stroke": "Stroke Sort Order"
+          },
+          "numbers": {
             "sund": "Sundanese Digits",
             "takr": "Takri Digits",
             "talu": "New Tai Lue Digits",
             "taml": "Traditional Tamil Numerals",
             "tamldec": "Tamil Digits",
-            "telu": "Telugu Digits",
+            "telu": "Telugu Digits"
+          },
+          "colStrength": {
+            "tertiary": "Sort Accents/Case/Width"
+          },
+          "numbers": {
             "thai": "Thai Digits",
-            "tibt": "Tibetan Digits",
-            "tirh": "Tirhuta Digits",
-            "traditional": "Traditional Numerals",
-            "vaii": "Vai Digits",
-            "wara": "Warang Citi Digits",
-            "wcho": "Wancho Digits"
+            "tibt": "Tibetan Digits"
           },
-          "s0": {
-            "accents": "From Accented Characters To ASCII Sequence",
-            "ascii": "From ASCII",
-            "hex": "From Hexadecimal Codes",
-            "npinyin": "From Pinyin With Numeric Tones",
-            "publish": "From Publishing Punctuation To ASCII",
-            "zawgyi": "From Zawgyi Myanmar Encoding"
+          "collation": {
+            "traditional": "Traditional Sort Order"
           },
-          "ss": {
-            "none": "Sentence Breaks Without Abbreviation Handling",
-            "standard": "Suppress Sentence Breaks After Standard Abbreviations"
+          "numbers": {
+            "traditional": "Traditional Numerals"
           },
-          "t0": {
-            "und": "Unspecified Machine Translation"
+          "collation": {
+            "unihan": "Radical-Stroke Sort Order"
           },
-          "va": {
-            "posix": "POSIX Compliant Locale"
+          "colCaseFirst": {
+            "upper": "Sort Uppercase First"
+          },
+          "numbers": {
+            "vaii": "Vai Digits"
+          },
+          "colBackwards": {
+            "yes": "Sort Accents Reversed"
+          },
+          "colCaseLevel": {
+            "yes": "Sort Case Sensitive"
+          },
+          "colHiraganaQuaternary": {
+            "yes": "Sort Kana Differently"
+          },
+          "colNormalization": {
+            "yes": "Sort Unicode Normalized"
+          },
+          "colNumeric": {
+            "yes": "Sort Digits Numerically"
+          },
+          "collation": {
+            "zhuyin": "Zhuyin Sort Order"
           }
         },
         "codePatterns": {

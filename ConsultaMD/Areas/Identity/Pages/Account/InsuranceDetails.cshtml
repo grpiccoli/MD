@@ -1,0 +1,66 @@
+﻿@page
+@model InsuranceDetailsModel
+@{
+    ViewData["Title"] = "Previsión";
+}
+
+<partial name="_Libs" model='(new string[]{ "insurance", "jquery.rut", "simplebar" }, "")' />
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='"Patient"' />
+    <div class="col m6 s12 h-100v" data-simplebar>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+            <h3 class="center-align header">Elige tu Previsión</h3>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="input-field col s12">
+                <input asp-for="Input.RUT" class="validate valid" readonly="readonly" autocomplete="username" />
+                <label asp-for="Input.RUT"></label>
+                <span asp-validation-for="Input.RUT" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <select asp-for="Input.Insurance" asp-items="Model.Input.InsuranceList" class="validate"></select>
+                <label asp-for="Input.Insurance"></label>
+                <span asp-validation-for="Input.Insurance" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12" style="display: none;">
+                <input asp-for="Input.InsurancePassword" class="validate" autocomplete="current-password" />
+                <label asp-for="Input.InsurancePassword"></label>
+                <span asp-validation-for="Input.InsurancePassword" class="text-danger"></span>
+                <div class="collection">
+                    <a id="recoverpass" href="#" class="collection-item" target="_blank">
+                        <span class="badge">
+                            <img id="recovery" src="" />
+                        </span>
+                        ¿Olvidó la contraseña de su previsión?
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <button type="submit" class="btn waves-effect waves-light white-text teal pill">
+                        <i class="material-icons right">arrow_forward</i>Continuar
+                    </button>
+                </div>
+            </div>
+            <div id="info" class="col s12">
+                <div class="card horizontal">
+                    <div class="card-image"
+                         style="min-width:50px;background-image:url('/img/background.png');overflow:hidden;background-size:cover;">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p style="font-size:1rem;"><i class="material-icons left">info</i>Elije una previsión donde tú seas <b>titular</b></p>
+                        </div>
+                        <div class="card-action">
+                            <p style="font-size:0.7rem;">
+                                Si eres carga de otro titular <a asp-page="Login" style="margin-right:0!important">ingresa</a> o <a asp-page="Register" style="margin-right:0!important">registrate</a> con el RUT del <b>titular</b> para acceder a su previsión
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

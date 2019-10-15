@@ -3,8 +3,11 @@
     "hu": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "hu"
       },
@@ -16,145 +19,78 @@
         },
         "keys": {
           "calendar": "Naptár",
-          "cf": "Pénznemformátum",
           "colAlternate": "Szimbólumokat figyelmen kívül hagyó rendezés",
           "colBackwards": "Ékezetek fordított rendezése",
           "colCaseFirst": "Rendezés nagy- vagy kisbetűk szerint",
           "colCaseLevel": "Kisbetű-nagybetű érzékeny rendezés",
-          "collation": "Rendezési sorrend",
+          "colHiraganaQuaternary": "Kanák szerinti rendezés",
           "colNormalization": "Normalizált rendezés",
           "colNumeric": "Numerikus rendezés",
           "colStrength": "Rendezés erőssége",
+          "collation": "Rendezési sorrend",
           "currency": "Pénznem",
-          "hc": "Óraformátum (12 – 24)",
-          "lb": "Sortörés stílusa",
-          "ms": "Mértékegységrendszer",
           "numbers": "Számok",
           "timezone": "Időzóna",
           "va": "Földrajzi helyvariáns",
+          "variableTop": "Rendezés szimbólumok szerint",
           "x": "Privát használatra"
         },
         "types": {
-          "calendar": {
-            "buddhist": "Buddhista naptár",
-            "chinese": "Kínai naptár",
-            "coptic": "Kopt naptár",
-            "dangi": "Dangi naptár",
-            "ethiopic": "Etióp naptár",
-            "ethiopic-amete-alem": "Etióp amete alem naptár",
-            "gregorian": "Gergely-naptár",
-            "hebrew": "Héber naptár",
-            "indian": "Indiai nemzeti naptár",
-            "islamic": "Iszlám naptár",
-            "islamic-civil": "Iszlám civil naptár",
-            "islamic-rgsa": "islamic-rgsa",
-            "islamic-tbla": "islamic-tbla",
-            "islamic-umalqura": "Iszlám Umm al-Qura naptár",
-            "iso8601": "ISO-8601 naptár",
-            "japanese": "Japán naptár",
-            "persian": "Perzsa naptár",
-            "roc": "Kínai köztársasági naptár"
-          },
-          "cf": {
-            "account": "Könyvelési pénznemformátum",
-            "standard": "Normál pénznemformátum"
-          },
-          "colAlternate": {
-            "non-ignorable": "Szimbólumok rendezése",
-            "shifted": "Rendezés szimbólumok figyelmen kívül hagyásával"
-          },
-          "colBackwards": {
-            "no": "Ékezetek normál rendezése",
-            "yes": "Ékezetek szerinti fordított rendezés"
-          },
-          "colCaseFirst": {
-            "lower": "Kisbetűs szavak rendezése előre",
-            "no": "Kisbetűs-nagybetűs szavak normál rendezése",
-            "upper": "Nagybetűs szavak rendezése előre"
-          },
-          "colCaseLevel": {
-            "no": "Kis- és nagybetűket meg nem különböztető rendezés",
-            "yes": "Rendezés kisbetű-nagybetű szerint"
-          },
-          "collation": {
-            "big5han": "Hagyományos kínai sorrend - Big5",
-            "compat": "Előző rendezési sorrend a kompatibilitás érdekében",
-            "dictionary": "Szótári rendezési sorrend",
-            "ducet": "Alapértelmezett Unicode rendezési sorrend",
-            "emoji": "emoji",
-            "eor": "Európai rendezési szabályok",
-            "gb2312han": "Egyszerűsített kínai sorrend - GB2312",
-            "phonebook": "Telefonkönyv sorrend",
-            "phonetic": "Fonetikus rendezési sorrend",
-            "pinyin": "Pinyin sorrend",
-            "reformed": "Átalakított rendezési elv",
-            "search": "Általános célú keresés",
-            "searchjl": "Keresés hangul kezdő mássalhangzó szerint",
-            "standard": "Normál rendezési sorrend",
-            "stroke": "Vonássorrend",
-            "traditional": "Hagyományos",
-            "unihan": "Szótővonás rendezési sorrend",
-            "zhuyin": "zhuyin"
-          },
-          "colNormalization": {
-            "no": "Rendezés normalizálás nélkül",
-            "yes": "Unicode szerinti normalizált rendezés"
-          },
-          "colNumeric": {
-            "no": "Számjegyek egyedi rendezése",
-            "yes": "Számjegyek numerikus rendezése"
-          },
-          "colStrength": {
-            "identical": "Összes rendezése",
-            "primary": "Csak az alapbetűk rendezése",
-            "quaternary": "Ékezetek/kisbetű-nagybetű/szélesség/kanák rendezése",
-            "secondary": "Ékezetek rendezése",
-            "tertiary": "Ékezetek/kisbetű-nagybetű/szélesség rendezése"
-          },
-          "d0": {
-            "fwidth": "Teljes szélesség",
-            "hwidth": "Fél szélesség",
-            "npinyin": "Szám"
-          },
-          "hc": {
-            "h11": "12 órás rendszer (0–11)",
-            "h12": "12 órás rendszer (0–12)",
-            "h23": "24 órás rendszer (0–23)",
-            "h24": "24 órás rendszer (0–24)"
-          },
-          "lb": {
-            "loose": "Tág stílusú sortörés",
-            "normal": "Normál stílusú sortörés",
-            "strict": "Szűk stílusú sortörés"
-          },
-          "m0": {
-            "bgn": "BGN",
-            "ungegn": "UNGEGN"
-          },
-          "ms": {
-            "metric": "Méterrendszer",
-            "uksystem": "Angolszász mértékegységrendszer",
-            "ussystem": "Amerikai mértékegységrendszer"
-          },
           "numbers": {
-            "ahom": "ahom",
             "arab": "Arab-indiai számjegyek",
             "arabext": "Kibővített arab-indiai számjegyek",
             "armn": "Örmény számok",
             "armnlow": "Örmény kisbetűs számok",
             "bali": "bali",
-            "beng": "Bengáli számjegyek",
-            "brah": "brah",
+            "beng": "Bengáli számjegyek"
+          },
+          "collation": {
+            "big5han": "Hagyományos kínai sorrend - Big5"
+          },
+          "numbers": {
+            "brah": "brah"
+          },
+          "calendar": {
+            "buddhist": "Buddhista naptár"
+          },
+          "numbers": {
             "cakm": "cakm",
-            "cham": "cham",
-            "cyrl": "cyrl",
-            "deva": "Dévanágari számjegyek",
-            "ethi": "Etióp számok",
+            "cham": "cham"
+          },
+          "calendar": {
+            "chinese": "Kínai naptár",
+            "coptic": "Kopt naptár",
+            "dangi": "Dangi naptár"
+          },
+          "numbers": {
+            "deva": "Dévanágari számjegyek"
+          },
+          "collation": {
+            "dictionary": "Szótári rendezési sorrend",
+            "ducet": "Alapértelmezett Unicode rendezési sorrend",
+            "eor": "eor"
+          },
+          "numbers": {
+            "ethi": "Etióp számok"
+          },
+          "calendar": {
+            "ethiopic": "Etióp naptár",
+            "ethiopic-amete-alem": "Etióp amete alem naptár"
+          },
+          "numbers": {
             "finance": "Pénzügyi számok",
-            "fullwide": "Teljes szélességű számjegyek",
-            "geor": "Grúz számok",
-            "gong": "gong",
-            "gonm": "gonm",
+            "fullwide": "Teljes szélességű számjegyek"
+          },
+          "collation": {
+            "gb2312han": "Egyszerűsített kínai sorrend - GB2312"
+          },
+          "numbers": {
+            "geor": "Grúz számok"
+          },
+          "calendar": {
+            "gregorian": "Gergely-naptár"
+          },
+          "numbers": {
             "grek": "Görög számok",
             "greklow": "Görög kisbetűs számok",
             "gujr": "Gudzsaráti számjegyek",
@@ -164,9 +100,25 @@
             "hansfin": "Egyszerűsített kínai pénzügyi számok",
             "hant": "Hagyományos kínai számok",
             "hantfin": "Hagyományos kínai pénzügyi számok",
-            "hebr": "Héber számok",
-            "hmng": "hmng",
-            "hmnp": "hmnp",
+            "hebr": "Héber számok"
+          },
+          "calendar": {
+            "hebrew": "Héber naptár"
+          },
+          "colStrength": {
+            "identical": "Összes rendezése"
+          },
+          "calendar": {
+            "indian": "Indiai nemzeti naptár",
+            "islamic": "Iszlám naptár",
+            "islamic-civil": "Iszlám civil naptár",
+            "islamic-rgsa": "islamic-rgsa",
+            "islamic-tbla": "islamic-tbla",
+            "islamic-umalqura": "islamic-umalqura",
+            "iso8601": "ISO-8601 naptár",
+            "japanese": "Japán naptár"
+          },
+          "numbers": {
             "java": "java",
             "jpan": "Japán számok",
             "jpanfin": "Japán pénzügyi számok",
@@ -178,46 +130,134 @@
             "laoo": "Lao számjegyek",
             "latn": "Nyugati számjegyek",
             "lepc": "lepc",
-            "limb": "limb",
-            "mathbold": "mathbold",
-            "mathdbl": "mathdbl",
-            "mathmono": "mathmono",
-            "mathsanb": "mathsanb",
-            "mathsans": "mathsans",
+            "limb": "limb"
+          },
+          "colCaseFirst": {
+            "lower": "Kisbetűs szavak rendezése előre"
+          },
+          "numbers": {
             "mlym": "Malajálam számjegyek",
-            "modi": "modi",
             "mong": "Mongol számjegyek",
-            "mroo": "mroo",
             "mtei": "mtei",
             "mymr": "Mianmari számjegyek",
             "mymrshan": "mymrshan",
-            "mymrtlng": "mymrtlng",
             "native": "Natív számjegyek",
-            "nkoo": "nkoo",
+            "nkoo": "nkoo"
+          },
+          "colBackwards": {
+            "no": "Ékezetek normál rendezése"
+          },
+          "colCaseFirst": {
+            "no": "Kisbetűs-nagybetűs szavak normál rendezése"
+          },
+          "colCaseLevel": {
+            "no": "Kis- és nagybetűket meg nem különböztető rendezés"
+          },
+          "colHiraganaQuaternary": {
+            "no": "Kanák rendezése külön"
+          },
+          "colNormalization": {
+            "no": "Rendezés normalizálás nélkül"
+          },
+          "colNumeric": {
+            "no": "Számjegyek egyedi rendezése"
+          },
+          "colAlternate": {
+            "non-ignorable": "Szimbólumok rendezése"
+          },
+          "numbers": {
             "olck": "olck",
             "orya": "Orija számjegyek",
-            "osma": "osma",
-            "rohg": "rohg",
+            "osma": "osma"
+          },
+          "calendar": {
+            "persian": "Perzsa naptár"
+          },
+          "collation": {
+            "phonebook": "Telefonkönyv sorrend",
+            "phonetic": "Fonetikus rendezési sorrend",
+            "pinyin": "Pinyin sorrend"
+          },
+          "colStrength": {
+            "primary": "Csak az alapbetűk rendezése",
+            "quaternary": "Ékezetek/kisbetű-nagybetű/szélesség/kanák rendezése"
+          },
+          "collation": {
+            "reformed": "Átalakított rendezési elv"
+          },
+          "calendar": {
+            "roc": "Kínai köztársasági naptár"
+          },
+          "numbers": {
             "roman": "Római számok",
             "romanlow": "Római kisbetűs számok",
-            "saur": "saur",
+            "saur": "saur"
+          },
+          "collation": {
+            "search": "Általános célú keresés",
+            "searchjl": "Keresés hangul kezdő mássalhangzó szerint"
+          },
+          "colStrength": {
+            "secondary": "Ékezetek rendezése"
+          },
+          "colAlternate": {
+            "shifted": "Rendezés szimbólumok figyelmen kívül hagyásával"
+          },
+          "numbers": {
             "shrd": "shrd",
-            "sind": "sind",
-            "sinh": "sinh",
-            "sora": "sora",
+            "sora": "sora"
+          },
+          "collation": {
+            "standard": "Normál rendezési sorrend",
+            "stroke": "Vonássorrend"
+          },
+          "numbers": {
             "sund": "sund",
             "takr": "takr",
             "talu": "talu",
-            "taml": "Hagyományos tamil számjegyek",
+            "taml": "Tamil hagyományos számok",
             "tamldec": "Tamil számjegyek",
-            "telu": "Telugu számjegyek",
+            "telu": "Telugu számjegyek"
+          },
+          "colStrength": {
+            "tertiary": "Ékezetek/kisbetű-nagybetű/szélesség rendezése"
+          },
+          "numbers": {
             "thai": "Thai számjegyek",
-            "tibt": "Tibeti számjegyek",
-            "tirh": "tirh",
-            "traditional": "Hagyományos számok",
-            "vaii": "Vai számjegyek",
-            "wara": "wara",
-            "wcho": "wcho"
+            "tibt": "Tibeti számjegyek"
+          },
+          "collation": {
+            "traditional": "Hagyományos"
+          },
+          "numbers": {
+            "traditional": "Hagyományos számok"
+          },
+          "collation": {
+            "unihan": "Szótővonás rendezési sorrend"
+          },
+          "colCaseFirst": {
+            "upper": "Nagybetűs szavak rendezése előre"
+          },
+          "numbers": {
+            "vaii": "Vai számjegyek"
+          },
+          "colBackwards": {
+            "yes": "Ékezetek szerinti fordított rendezés"
+          },
+          "colCaseLevel": {
+            "yes": "Rendezés kisbetű-nagybetű szerint"
+          },
+          "colHiraganaQuaternary": {
+            "yes": "Kanák megkülönböztető rendezése"
+          },
+          "colNormalization": {
+            "yes": "Unicode szerinti normalizált rendezés"
+          },
+          "colNumeric": {
+            "yes": "Számjegyek numerikus rendezése"
+          },
+          "collation": {
+            "zhuyin": "zhuyin"
           }
         },
         "codePatterns": {

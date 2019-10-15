@@ -1,0 +1,9 @@
+﻿#loading {
+  background: url("/images/eye_gif.gif") no-repeat fixed center;
+  position: absolute;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999; }

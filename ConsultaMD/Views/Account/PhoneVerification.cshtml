@@ -1,0 +1,90 @@
+﻿@page
+@model PhoneVerification
+@{
+    ViewData["Title"] = "Verificación Celular";
+}
+
+<partial name="_Libs" model='(new string[]{ "jquery.rut", "libphonenumber-js", "simplebar", "cleave.js", "register" }, "")' />
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='@Model.Area' />
+    <div class="col m6 s12 h-100v" data-simplebar>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+            <h3 class="center-align">¡Regístrate!</h3>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @*<div class="input-field col s12">
+                <input asp-for="Input.RUT" class="validate" autocomplete="username" />
+                <label asp-for="Input.RUT"></label>
+                <span asp-validation-for="Input.RUT" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12" style="display:none;">
+                <input asp-for="Input.Name" class="validate" autocomplete="cc-name" />
+                <label asp-for="Input.Name"></label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12" style="display:none;">
+                <input asp-for="Input.CarnetId" class="validate" />
+                <label asp-for="Input.CarnetId"></label>
+                <span asp-validation-for="Input.CarnetId" class="text-danger"></span>
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">help</i>¿Qué es esto?</div>
+                        <div class="collapsible-body">
+                            <div id="carnet-img" class="card">
+                                <div class="card-image">
+                                    <img src="~/img/std/CI_nuevo_1.png" alt="Número de documento cédula chilena"
+                                         class="activator"
+                                         style="height:150px;width:auto;" />
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Número de Documento Cédula de Identidad Chilena</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="input-field col s12" style="display:none;">
+                <input asp-for="Input.Nationality" />
+                <label asp-for="Input.Nationality"></label>
+            </div>
+            <div class="input-field col s12">
+                <select asp-for="Input.Insurance" asp-items="Model.Input.InsuranceList" class="validate"></select>
+            </div>
+            <div class="input-field col s12" style="display: none;">
+                <input asp-for="Input.InsurancePassword" class="validate" autocomplete="current-password" />
+                <label asp-for="Input.InsurancePassword"></label>
+                <span asp-validation-for="Input.InsurancePassword" class="text-danger"></span>
+                <a id="recoverpass" href="#" target="_blank">¿Olvidó la contraseña de su previsión?</a>
+            </div>
+            <div class="input-field col s12">
+                <span class="prefix" style="font-size:22px;">+56</span>
+                <input asp-for="Input.Phone" class="validate" autocomplete="tel-national" />
+                <label asp-for="Input.Phone"></label>
+                <span asp-validation-for="Input.Phone" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.Email" class="validate" autocomplete="email" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.Password" class="validate" autocomplete="new-password" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.ConfirmPassword" class="validate" autocomplete="new-password" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>*@
+            <div class="row">
+                <div class="col s6">
+                    <button type="submit" class="btn waves-effect waves-light white-text teal">Registrarse</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

@@ -3,19 +3,22 @@
     "ar": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14982 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "ar"
       },
       "dates": {
         "timeZoneNames": {
           "hourFormat": "+HH:mm;-HH:mm",
-          "gmtFormat": "غرينتش{0}",
-          "gmtZeroFormat": "غرينتش",
+          "gmtFormat": "جرينتش{0}",
+          "gmtZeroFormat": "جرينتش",
           "regionFormat": "توقيت {0}",
-          "regionFormat-type-daylight": "توقيت {0} الصيفي",
           "regionFormat-type-standard": "توقيت {0} الرسمي",
+          "regionFormat-type-daylight": "توقيت {0} الصيفي",
           "fallbackFormat": "{1} ({0})",
           "zone": {
             "America": {
@@ -26,7 +29,7 @@
                 "exemplarCity": "أنشوراج"
               },
               "Anguilla": {
-                "exemplarCity": "أنغويلا"
+                "exemplarCity": "أنغيلا"
               },
               "Antigua": {
                 "exemplarCity": "أنتيغوا"
@@ -35,26 +38,26 @@
                 "exemplarCity": "أروجوانيا"
               },
               "Argentina": {
-                "Rio_Gallegos": {
-                  "exemplarCity": "ريو جالييوس"
-                },
-                "San_Juan": {
-                  "exemplarCity": "سان خوان"
-                },
-                "Ushuaia": {
-                  "exemplarCity": "أشوا"
-                },
                 "La_Rioja": {
                   "exemplarCity": "لا ريوجا"
                 },
-                "San_Luis": {
-                  "exemplarCity": "سان لويس"
+                "Rio_Gallegos": {
+                  "exemplarCity": "ريو جالييوس"
                 },
                 "Salta": {
                   "exemplarCity": "سالطا"
                 },
+                "San_Juan": {
+                  "exemplarCity": "سان خوان"
+                },
+                "San_Luis": {
+                  "exemplarCity": "سان لويس"
+                },
                 "Tucuman": {
                   "exemplarCity": "تاكمان"
+                },
+                "Ushuaia": {
+                  "exemplarCity": "أشوا"
                 }
               },
               "Aruba": {
@@ -112,7 +115,7 @@
                 "exemplarCity": "كايين"
               },
               "Cayman": {
-                "exemplarCity": "كايمان"
+                "exemplarCity": "كيمان"
               },
               "Chicago": {
                 "exemplarCity": "شيكاغو"
@@ -136,7 +139,7 @@
                 "exemplarCity": "كيابا"
               },
               "Curacao": {
-                "exemplarCity": "كوراساو"
+                "exemplarCity": "كوراكاو"
               },
               "Danmarkshavn": {
                 "exemplarCity": "دانمرك شافن"
@@ -164,9 +167,6 @@
               },
               "El_Salvador": {
                 "exemplarCity": "السلفادور"
-              },
-              "Fort_Nelson": {
-                "exemplarCity": "فورت نيلسون"
               },
               "Fortaleza": {
                 "exemplarCity": "فورتاليزا"
@@ -208,8 +208,11 @@
                 "exemplarCity": "هيرموسيلو"
               },
               "Indiana": {
-                "Vincennes": {
-                  "exemplarCity": "فينسينس"
+                "Knox": {
+                  "exemplarCity": "كونكس"
+                },
+                "Marengo": {
+                  "exemplarCity": "مارنجو"
                 },
                 "Petersburg": {
                   "exemplarCity": "بيترسبرغ"
@@ -217,17 +220,14 @@
                 "Tell_City": {
                   "exemplarCity": "مدينة تل، إنديانا"
                 },
-                "Knox": {
-                  "exemplarCity": "كونكس"
+                "Vevay": {
+                  "exemplarCity": "فيفاي"
+                },
+                "Vincennes": {
+                  "exemplarCity": "فينسينس"
                 },
                 "Winamac": {
                   "exemplarCity": "ويناماك"
-                },
-                "Marengo": {
-                  "exemplarCity": "مارنجو"
-                },
-                "Vevay": {
-                  "exemplarCity": "فيفاي"
                 }
               },
               "Indianapolis": {
@@ -305,10 +305,10 @@
                 "exemplarCity": "ميتلاكاتلا"
               },
               "Mexico_City": {
-                "exemplarCity": "مكسيكو سيتي"
+                "exemplarCity": "مدينة المكسيك"
               },
               "Miquelon": {
-                "exemplarCity": "مكويلون"
+                "exemplarCity": "ميكولن"
               },
               "Moncton": {
                 "exemplarCity": "وينكتون"
@@ -341,11 +341,11 @@
                 "Beulah": {
                   "exemplarCity": "بيولا، داكوتا الشمالية"
                 },
-                "New_Salem": {
-                  "exemplarCity": "نيو ساليم"
-                },
                 "Center": {
                   "exemplarCity": "سنتر"
+                },
+                "New_Salem": {
+                  "exemplarCity": "نيو ساليم"
                 }
               },
               "Ojinaga": {
@@ -374,9 +374,6 @@
               },
               "Puerto_Rico": {
                 "exemplarCity": "بورتوريكو"
-              },
-              "Punta_Arenas": {
-                "exemplarCity": "بونتا أريناز"
               },
               "Rainy_River": {
                 "exemplarCity": "راني ريفر"
@@ -511,9 +508,6 @@
               "Andorra": {
                 "exemplarCity": "أندورا"
               },
-              "Astrakhan": {
-                "exemplarCity": "أستراخان"
-              },
               "Athens": {
                 "exemplarCity": "أثينا"
               },
@@ -554,7 +548,7 @@
                 "exemplarCity": "جبل طارق"
               },
               "Guernsey": {
-                "exemplarCity": "غيرنزي"
+                "exemplarCity": "غيرنسي"
               },
               "Helsinki": {
                 "exemplarCity": "هلسنكي"
@@ -573,9 +567,6 @@
               },
               "Kiev": {
                 "exemplarCity": "كييف"
-              },
-              "Kirov": {
-                "exemplarCity": "كيروف"
               },
               "Lisbon": {
                 "exemplarCity": "لشبونة"
@@ -637,9 +628,6 @@
               "Sarajevo": {
                 "exemplarCity": "سراييفو"
               },
-              "Saratov": {
-                "exemplarCity": "ساراتوف"
-              },
               "Simferopol": {
                 "exemplarCity": "سيمفروبول"
               },
@@ -657,9 +645,6 @@
               },
               "Tirane": {
                 "exemplarCity": "تيرانا"
-              },
-              "Ulyanovsk": {
-                "exemplarCity": "أوليانوفسك"
               },
               "Uzhgorod": {
                 "exemplarCity": "أوزجرود"
@@ -872,9 +857,6 @@
               "Ashgabat": {
                 "exemplarCity": "عشق آباد"
               },
-              "Atyrau": {
-                "exemplarCity": "أتيراو"
-              },
               "Baghdad": {
                 "exemplarCity": "بغداد"
               },
@@ -886,9 +868,6 @@
               },
               "Bangkok": {
                 "exemplarCity": "بانكوك"
-              },
-              "Barnaul": {
-                "exemplarCity": "بارناول"
               },
               "Beirut": {
                 "exemplarCity": "بيروت"
@@ -903,10 +882,13 @@
                 "exemplarCity": "كالكتا"
               },
               "Chita": {
-                "exemplarCity": "تشيتا"
+                "exemplarCity": "Chita"
               },
               "Choibalsan": {
                 "exemplarCity": "تشوبالسان"
+              },
+              "Chongqing": {
+                "exemplarCity": "تشونجكينج"
               },
               "Colombo": {
                 "exemplarCity": "كولومبو"
@@ -926,11 +908,11 @@
               "Dushanbe": {
                 "exemplarCity": "دوشانبي"
               },
-              "Famagusta": {
-                "exemplarCity": "فاماغوستا"
-              },
               "Gaza": {
                 "exemplarCity": "غزة"
+              },
+              "Harbin": {
+                "exemplarCity": "هاربين"
               },
               "Hebron": {
                 "exemplarCity": "هيبرون (مدينة الخليل)"
@@ -961,6 +943,9 @@
               },
               "Karachi": {
                 "exemplarCity": "كراتشي"
+              },
+              "Kashgar": {
+                "exemplarCity": "كاشجار"
               },
               "Katmandu": {
                 "exemplarCity": "كاتماندو"
@@ -1022,9 +1007,6 @@
               "Qatar": {
                 "exemplarCity": "قطر"
               },
-              "Qostanay": {
-                "exemplarCity": "قوستاناي"
-              },
               "Qyzylorda": {
                 "exemplarCity": "كيزيلوردا"
               },
@@ -1053,7 +1035,7 @@
                 "exemplarCity": "سنغافورة"
               },
               "Srednekolymsk": {
-                "exemplarCity": "سريدنكوليمسك"
+                "exemplarCity": "Srednekolymsk"
               },
               "Taipei": {
                 "exemplarCity": "تايبيه"
@@ -1072,9 +1054,6 @@
               },
               "Tokyo": {
                 "exemplarCity": "طوكيو"
-              },
-              "Tomsk": {
-                "exemplarCity": "تومسك"
               },
               "Ulaanbaatar": {
                 "exemplarCity": "آلانباتار"
@@ -1180,9 +1159,6 @@
               },
               "Auckland": {
                 "exemplarCity": "أوكلاند"
-              },
-              "Bougainville": {
-                "exemplarCity": "بوغانفيل"
               },
               "Chatham": {
                 "exemplarCity": "تشاثام"
@@ -1334,13 +1310,86 @@
               }
             },
             "Etc": {
-              "UTC": {
-                "long": {
-                  "standard": "التوقيت العالمي المنسق"
-                },
-                "short": {
-                  "standard": "UTC"
-                }
+              "GMT": {
+                "exemplarCity": "GMT"
+              },
+              "GMT1": {
+                "exemplarCity": "GMT+1"
+              },
+              "GMT10": {
+                "exemplarCity": "GMT+10"
+              },
+              "GMT11": {
+                "exemplarCity": "GMT+11"
+              },
+              "GMT12": {
+                "exemplarCity": "GMT+12"
+              },
+              "GMT2": {
+                "exemplarCity": "GMT+2"
+              },
+              "GMT3": {
+                "exemplarCity": "GMT+3"
+              },
+              "GMT4": {
+                "exemplarCity": "GMT+4"
+              },
+              "GMT5": {
+                "exemplarCity": "GMT+5"
+              },
+              "GMT6": {
+                "exemplarCity": "GMT+6"
+              },
+              "GMT7": {
+                "exemplarCity": "GMT+7"
+              },
+              "GMT8": {
+                "exemplarCity": "GMT+8"
+              },
+              "GMT9": {
+                "exemplarCity": "GMT+9"
+              },
+              "GMT-1": {
+                "exemplarCity": "GMT-1"
+              },
+              "GMT-10": {
+                "exemplarCity": "GMT-10"
+              },
+              "GMT-11": {
+                "exemplarCity": "GMT-11"
+              },
+              "GMT-12": {
+                "exemplarCity": "GMT-12"
+              },
+              "GMT-13": {
+                "exemplarCity": "GMT-13"
+              },
+              "GMT-14": {
+                "exemplarCity": "GMT-14"
+              },
+              "GMT-2": {
+                "exemplarCity": "GMT-2"
+              },
+              "GMT-3": {
+                "exemplarCity": "GMT-3"
+              },
+              "GMT-4": {
+                "exemplarCity": "GMT-4"
+              },
+              "GMT-5": {
+                "exemplarCity": "GMT-5"
+              },
+              "GMT-6": {
+                "exemplarCity": "GMT-6"
+              },
+              "GMT-7": {
+                "exemplarCity": "GMT-7"
+              },
+              "GMT-8": {
+                "exemplarCity": "GMT-8"
+              },
+              "GMT-9": {
+                "exemplarCity": "GMT-9"
               },
               "Unknown": {
                 "exemplarCity": "مدينة غير معروفة"
@@ -1510,9 +1559,9 @@
             },
             "Bangladesh": {
               "long": {
-                "generic": "توقيت بنغلاديش",
-                "standard": "توقيت بنغلاديش الرسمي",
-                "daylight": "توقيت بنغلاديش الصيفي"
+                "generic": "توقيت بنجلاديش",
+                "standard": "توقيت بنجلاديش الرسمي",
+                "daylight": "توقيت بنجلاديش الصيفي"
               }
             },
             "Bhutan": {
@@ -1558,9 +1607,9 @@
             },
             "Chile": {
               "long": {
-                "generic": "توقيت تشيلي",
-                "standard": "توقيت تشيلي الرسمي",
-                "daylight": "توقيت تشيلي الصيفي"
+                "generic": "توقيت شيلي",
+                "standard": "توقيت شيلي الرسمي",
+                "daylight": "توقيت شيلي الصيفي"
               }
             },
             "China": {
@@ -1597,8 +1646,8 @@
             "Cook": {
               "long": {
                 "generic": "توقيت جزر كووك",
-                "standard": "توقيت جزر كوك الرسمي",
-                "daylight": "توقيت جزر كوك الصيفي"
+                "standard": "توقيت جزر كووك الرسمي",
+                "daylight": "توقيت جزر كووك الصيفي"
               }
             },
             "Cuba": {
@@ -1677,12 +1726,17 @@
             },
             "French_Guiana": {
               "long": {
-                "standard": "توقيت غويانا الفرنسية"
+                "standard": "توقيت غايانا الفرنسية"
               }
             },
             "French_Southern": {
               "long": {
                 "standard": "توقيت المقاطعات الفرنسية الجنوبية والأنتارتيكية"
+              }
+            },
+            "GMT": {
+              "long": {
+                "standard": "توقيت غرينتش"
               }
             },
             "Galapagos": {
@@ -1707,11 +1761,6 @@
                 "standard": "توقيت جزر جيلبرت"
               }
             },
-            "GMT": {
-              "long": {
-                "standard": "توقيت غرينتش"
-              }
-            },
             "Greenland_Eastern": {
               "long": {
                 "generic": "توقيت شرق غرينلاند",
@@ -1734,9 +1783,6 @@
             "Gulf": {
               "long": {
                 "standard": "توقيت الخليج"
-              },
-              "short": {
-                "standard": "GST"
               }
             },
             "Guyana": {
@@ -1861,7 +1907,7 @@
             },
             "Kyrgystan": {
               "long": {
-                "standard": "توقيت قيرغيزستان"
+                "standard": "توقيت قرغيزستان"
               }
             },
             "Line_Islands": {
@@ -1895,7 +1941,7 @@
             },
             "Maldives": {
               "long": {
-                "standard": "توقيت جزر المالديف"
+                "standard": "توقيت الـمالديف"
               }
             },
             "Marquesas": {
@@ -2080,14 +2126,9 @@
                 "standard": "توقيت بونابي"
               }
             },
-            "Pyongyang": {
-              "long": {
-                "standard": "توقيت بيونغ يانغ"
-              }
-            },
             "Reunion": {
               "long": {
-                "standard": "توقيت روينيون"
+                "standard": "توقيت ريونيون"
               }
             },
             "Rothera": {
@@ -2194,9 +2235,9 @@
             },
             "Uruguay": {
               "long": {
-                "generic": "توقيت أوروغواي",
-                "standard": "توقيت أوروغواي الرسمي",
-                "daylight": "توقيت أوروغواي الصيفي"
+                "generic": "توقيت أورغواي",
+                "standard": "توقيت أورغواي الرسمي",
+                "daylight": "توقيت أورغواي الصيفي"
               }
             },
             "Uzbekistan": {

@@ -3,19 +3,22 @@
     "he": {
       "identity": {
         "version": {
-          "_number": "$Revision: 14842 $",
-          "_cldrVersion": "35.1"
+          "_cldrVersion": "26",
+          "_number": "$Revision: 10809 $"
+        },
+        "generation": {
+          "_date": "$Date: 2014-08-14 15:10:07 -0500 (Thu, 14 Aug 2014) $"
         },
         "language": "he"
       },
       "dates": {
         "timeZoneNames": {
-          "hourFormat": "‎+HH:mm;-HH:mm‎",
-          "gmtFormat": "GMT{0}‎",
+          "hourFormat": "+HH:mm;-HH:mm",
+          "gmtFormat": "GMT{0}",
           "gmtZeroFormat": "GMT",
           "regionFormat": "שעון {0}",
-          "regionFormat-type-daylight": "שעון {0} (קיץ)",
           "regionFormat-type-standard": "שעון {0} (חורף)",
+          "regionFormat-type-daylight": "שעון {0} (קיץ)",
           "fallbackFormat": "{1} ({0})",
           "zone": {
             "America": {
@@ -35,26 +38,26 @@
                 "exemplarCity": "אראגואינה"
               },
               "Argentina": {
-                "Rio_Gallegos": {
-                  "exemplarCity": "ריו גאייגוס"
-                },
-                "San_Juan": {
-                  "exemplarCity": "סן חואן"
-                },
-                "Ushuaia": {
-                  "exemplarCity": "אושוואיה"
-                },
                 "La_Rioja": {
                   "exemplarCity": "לה ריוחה"
                 },
-                "San_Luis": {
-                  "exemplarCity": "סן לואיס"
+                "Rio_Gallegos": {
+                  "exemplarCity": "ריו גאייגוס"
                 },
                 "Salta": {
                   "exemplarCity": "סלטה"
                 },
+                "San_Juan": {
+                  "exemplarCity": "סן חואן"
+                },
+                "San_Luis": {
+                  "exemplarCity": "סן לואיס"
+                },
                 "Tucuman": {
                   "exemplarCity": "טוקומן"
+                },
+                "Ushuaia": {
+                  "exemplarCity": "אושוואיה"
                 }
               },
               "Aruba": {
@@ -64,7 +67,7 @@
                 "exemplarCity": "אסונסיון"
               },
               "Bahia": {
-                "exemplarCity": "באהיה"
+                "exemplarCity": "בהיאה"
               },
               "Bahia_Banderas": {
                 "exemplarCity": "באהיה בנדרס"
@@ -165,9 +168,6 @@
               "El_Salvador": {
                 "exemplarCity": "אל סלבדור"
               },
-              "Fort_Nelson": {
-                "exemplarCity": "פורט נלסון"
-              },
               "Fortaleza": {
                 "exemplarCity": "פורטאלזה"
               },
@@ -208,8 +208,11 @@
                 "exemplarCity": "הרמוסיו"
               },
               "Indiana": {
-                "Vincennes": {
-                  "exemplarCity": "וינסנס, אינדיאנה"
+                "Knox": {
+                  "exemplarCity": "נוקס, אינדיאנה"
+                },
+                "Marengo": {
+                  "exemplarCity": "מרנגו, אינדיאנה"
                 },
                 "Petersburg": {
                   "exemplarCity": "פיטרסבורג, אינדיאנה"
@@ -217,17 +220,14 @@
                 "Tell_City": {
                   "exemplarCity": "טל סיטי, אינדיאנה"
                 },
-                "Knox": {
-                  "exemplarCity": "נוקס, אינדיאנה"
+                "Vevay": {
+                  "exemplarCity": "ויוואיי, אינדיאנה"
+                },
+                "Vincennes": {
+                  "exemplarCity": "וינסנס, אינדיאנה"
                 },
                 "Winamac": {
                   "exemplarCity": "וינמאק, אינדיאנה"
-                },
-                "Marengo": {
-                  "exemplarCity": "מרנגו, אינדיאנה"
-                },
-                "Vevay": {
-                  "exemplarCity": "ויוואיי, אינדיאנה"
                 }
               },
               "Indianapolis": {
@@ -272,7 +272,7 @@
                 "exemplarCity": "לואוור פרינסס קוורטר"
               },
               "Maceio": {
-                "exemplarCity": "מסייאו"
+                "exemplarCity": "מאסיו"
               },
               "Managua": {
                 "exemplarCity": "מנגואה"
@@ -335,17 +335,17 @@
                 "exemplarCity": "נום"
               },
               "Noronha": {
-                "exemplarCity": "נורוניה"
+                "exemplarCity": "נורונהה"
               },
               "North_Dakota": {
                 "Beulah": {
                   "exemplarCity": "ביולה, צפון דקוטה"
                 },
-                "New_Salem": {
-                  "exemplarCity": "ניו סיילם, צפון דקוטה"
-                },
                 "Center": {
                   "exemplarCity": "סנטר, צפון דקוטה"
+                },
+                "New_Salem": {
+                  "exemplarCity": "ניו סיילם, צפון דקוטה"
                 }
               },
               "Ojinaga": {
@@ -370,13 +370,10 @@
                 "exemplarCity": "פורט אוף ספיין"
               },
               "Porto_Velho": {
-                "exemplarCity": "פורטו וליו"
+                "exemplarCity": "פורטו וולהו"
               },
               "Puerto_Rico": {
                 "exemplarCity": "פוארטו ריקו"
-              },
-              "Punta_Arenas": {
-                "exemplarCity": "פונטה ארנס"
               },
               "Rainy_River": {
                 "exemplarCity": "רייני ריבר"
@@ -397,7 +394,7 @@
                 "exemplarCity": "ריו ברנקו"
               },
               "Santa_Isabel": {
-                "exemplarCity": "סנטה איזבל"
+                "exemplarCity": "סנטה איסבל"
               },
               "Santarem": {
                 "exemplarCity": "סנטרם"
@@ -442,7 +439,7 @@
                 "exemplarCity": "טגוסיגלפה"
               },
               "Thule": {
-                "exemplarCity": "תולה"
+                "exemplarCity": "טולה"
               },
               "Thunder_Bay": {
                 "exemplarCity": "ת׳אנדר ביי"
@@ -495,7 +492,7 @@
                 "exemplarCity": "רייקיאוויק"
               },
               "South_Georgia": {
-                "exemplarCity": "דרום ג׳ורג׳יה"
+                "exemplarCity": "דרום גיאורגיה"
               },
               "St_Helena": {
                 "exemplarCity": "סנט הלנה"
@@ -510,9 +507,6 @@
               },
               "Andorra": {
                 "exemplarCity": "אנדורה"
-              },
-              "Astrakhan": {
-                "exemplarCity": "אסטרחן"
               },
               "Athens": {
                 "exemplarCity": "אתונה"
@@ -536,7 +530,7 @@
                 "exemplarCity": "בודפשט"
               },
               "Busingen": {
-                "exemplarCity": "ביזינגן"
+                "exemplarCity": "בוזינגן"
               },
               "Chisinau": {
                 "exemplarCity": "קישינב"
@@ -546,7 +540,7 @@
               },
               "Dublin": {
                 "long": {
-                  "daylight": "שעון קיץ אירלנד"
+                  "daylight": "שעון קיץ אירי"
                 },
                 "exemplarCity": "דבלין"
               },
@@ -566,16 +560,13 @@
                 "exemplarCity": "איסטנבול"
               },
               "Jersey": {
-                "exemplarCity": "ג׳רזי"
+                "exemplarCity": "ג׳רסי"
               },
               "Kaliningrad": {
                 "exemplarCity": "קלינינגרד"
               },
               "Kiev": {
                 "exemplarCity": "קייב"
-              },
-              "Kirov": {
-                "exemplarCity": "קירוב"
               },
               "Lisbon": {
                 "exemplarCity": "ליסבון"
@@ -585,7 +576,7 @@
               },
               "London": {
                 "long": {
-                  "daylight": "שעון קיץ בריטניה"
+                  "daylight": "שעון קיץ בריטי"
                 },
                 "exemplarCity": "לונדון"
               },
@@ -599,7 +590,7 @@
                 "exemplarCity": "מלטה"
               },
               "Mariehamn": {
-                "exemplarCity": "מרייהאמן"
+                "exemplarCity": "מריהמן"
               },
               "Minsk": {
                 "exemplarCity": "מינסק"
@@ -617,7 +608,7 @@
                 "exemplarCity": "פריז"
               },
               "Podgorica": {
-                "exemplarCity": "פודגוריצה"
+                "exemplarCity": "פודגוריקה"
               },
               "Prague": {
                 "exemplarCity": "פראג"
@@ -637,9 +628,6 @@
               "Sarajevo": {
                 "exemplarCity": "סרייבו"
               },
-              "Saratov": {
-                "exemplarCity": "סראטוב"
-              },
               "Simferopol": {
                 "exemplarCity": "סימפרופול"
               },
@@ -653,19 +641,16 @@
                 "exemplarCity": "שטוקהולם"
               },
               "Tallinn": {
-                "exemplarCity": "טאלין"
+                "exemplarCity": "טלין"
               },
               "Tirane": {
-                "exemplarCity": "טירנה"
-              },
-              "Ulyanovsk": {
-                "exemplarCity": "אוליאנובסק"
+                "exemplarCity": "טיראנה"
               },
               "Uzhgorod": {
                 "exemplarCity": "אוז׳הורוד"
               },
               "Vaduz": {
-                "exemplarCity": "ואדוץ"
+                "exemplarCity": "ואדוז"
               },
               "Vatican": {
                 "exemplarCity": "הוותיקן"
@@ -686,7 +671,7 @@
                 "exemplarCity": "זאגרב"
               },
               "Zaporozhye": {
-                "exemplarCity": "זפורוז׳יה"
+                "exemplarCity": "זפוריז׳יה"
               },
               "Zurich": {
                 "exemplarCity": "ציריך"
@@ -811,7 +796,7 @@
                 "exemplarCity": "מסרו"
               },
               "Mbabane": {
-                "exemplarCity": "מבבנה"
+                "exemplarCity": "אמבאבאנה"
               },
               "Mogadishu": {
                 "exemplarCity": "מוגדישו"
@@ -872,9 +857,6 @@
               "Ashgabat": {
                 "exemplarCity": "אשגבט"
               },
-              "Atyrau": {
-                "exemplarCity": "אטיראו"
-              },
               "Baghdad": {
                 "exemplarCity": "בגדד"
               },
@@ -886,9 +868,6 @@
               },
               "Bangkok": {
                 "exemplarCity": "בנגקוק"
-              },
-              "Barnaul": {
-                "exemplarCity": "ברנאול"
               },
               "Beirut": {
                 "exemplarCity": "ביירות"
@@ -903,10 +882,13 @@
                 "exemplarCity": "קולקטה"
               },
               "Chita": {
-                "exemplarCity": "צ׳יטה"
+                "exemplarCity": "Chita"
               },
               "Choibalsan": {
-                "exemplarCity": "צ׳ויבלסן"
+                "exemplarCity": "צ׳ואיבלסאן"
+              },
+              "Chongqing": {
+                "exemplarCity": "צ׳ונגקינג"
               },
               "Colombo": {
                 "exemplarCity": "קולומבו"
@@ -926,11 +908,11 @@
               "Dushanbe": {
                 "exemplarCity": "דושנבה"
               },
-              "Famagusta": {
-                "exemplarCity": "פמגוסטה"
-              },
               "Gaza": {
                 "exemplarCity": "עזה"
+              },
+              "Harbin": {
+                "exemplarCity": "חרבין"
               },
               "Hebron": {
                 "exemplarCity": "חברון"
@@ -960,7 +942,10 @@
                 "exemplarCity": "קמצ׳טקה"
               },
               "Karachi": {
-                "exemplarCity": "קראצ׳י"
+                "exemplarCity": "קרצ׳י"
+              },
+              "Kashgar": {
+                "exemplarCity": "קשגר"
               },
               "Katmandu": {
                 "exemplarCity": "קטמנדו"
@@ -1022,9 +1007,6 @@
               "Qatar": {
                 "exemplarCity": "קטאר"
               },
-              "Qostanay": {
-                "exemplarCity": "קוסטנאי"
-              },
               "Qyzylorda": {
                 "exemplarCity": "קיזילורדה"
               },
@@ -1047,13 +1029,13 @@
                 "exemplarCity": "סיאול"
               },
               "Shanghai": {
-                "exemplarCity": "שנחאי"
+                "exemplarCity": "אסיה/שנחאי"
               },
               "Singapore": {
                 "exemplarCity": "סינגפור"
               },
               "Srednekolymsk": {
-                "exemplarCity": "סרדנייקולימסק"
+                "exemplarCity": "Srednekolymsk"
               },
               "Taipei": {
                 "exemplarCity": "טאיפיי"
@@ -1068,13 +1050,10 @@
                 "exemplarCity": "טהרן"
               },
               "Thimphu": {
-                "exemplarCity": "טהימפהו"
+                "exemplarCity": "ת׳ימפו"
               },
               "Tokyo": {
                 "exemplarCity": "טוקיו"
-              },
-              "Tomsk": {
-                "exemplarCity": "טומסק"
               },
               "Ulaanbaatar": {
                 "exemplarCity": "אולאאנבטאר"
@@ -1109,7 +1088,7 @@
                 "exemplarCity": "צ׳אגוס"
               },
               "Christmas": {
-                "exemplarCity": "האי כריסטמס"
+                "exemplarCity": "אי חג המולד"
               },
               "Cocos": {
                 "exemplarCity": "קוקוס"
@@ -1162,7 +1141,7 @@
                 "exemplarCity": "לינדמן"
               },
               "Lord_Howe": {
-                "exemplarCity": "אי הלורד האו"
+                "exemplarCity": "לורד האו"
               },
               "Melbourne": {
                 "exemplarCity": "מלבורן"
@@ -1180,9 +1159,6 @@
               },
               "Auckland": {
                 "exemplarCity": "אוקלנד"
-              },
-              "Bougainville": {
-                "exemplarCity": "בוגנוויל"
               },
               "Chatham": {
                 "exemplarCity": "צ׳אטהאם"
@@ -1209,7 +1185,7 @@
                 "exemplarCity": "גלפאגוס"
               },
               "Gambier": {
-                "exemplarCity": "איי גמבייה"
+                "exemplarCity": "איי גמביר"
               },
               "Guadalcanal": {
                 "exemplarCity": "גוודלקנאל"
@@ -1245,7 +1221,7 @@
                 "exemplarCity": "נאורו"
               },
               "Niue": {
-                "exemplarCity": "ניואה"
+                "exemplarCity": "ניווה"
               },
               "Norfolk": {
                 "exemplarCity": "נורפוק"
@@ -1263,7 +1239,7 @@
                 "exemplarCity": "פיטקרן"
               },
               "Ponape": {
-                "exemplarCity": "פונפיי"
+                "exemplarCity": "פונפה"
               },
               "Port_Moresby": {
                 "exemplarCity": "פורט מורסבי"
@@ -1272,7 +1248,7 @@
                 "exemplarCity": "רארוטונגה"
               },
               "Saipan": {
-                "exemplarCity": "סאיפאן"
+                "exemplarCity": "סייפן"
               },
               "Tahiti": {
                 "exemplarCity": "טהיטי"
@@ -1281,13 +1257,13 @@
                 "exemplarCity": "טאראווה"
               },
               "Tongatapu": {
-                "exemplarCity": "טונגטאפו"
+                "exemplarCity": "טונגטפו"
               },
               "Truk": {
-                "exemplarCity": "צ׳וק"
+                "exemplarCity": "טרוק"
               },
               "Wake": {
-                "exemplarCity": "וייק"
+                "exemplarCity": "וואק"
               },
               "Wallis": {
                 "exemplarCity": "ווליס"
@@ -1295,7 +1271,7 @@
             },
             "Arctic": {
               "Longyearbyen": {
-                "exemplarCity": "לונגיירבין"
+                "exemplarCity": "לונגיירביאן"
               }
             },
             "Antarctica": {
@@ -1303,19 +1279,19 @@
                 "exemplarCity": "קאסיי"
               },
               "Davis": {
-                "exemplarCity": "דיוויס"
+                "exemplarCity": "דייויס"
               },
               "DumontDUrville": {
-                "exemplarCity": "דומון ד׳אורוויל"
+                "exemplarCity": "דומון ד׳אורווי"
               },
               "Macquarie": {
                 "exemplarCity": "מקרי"
               },
               "Mawson": {
-                "exemplarCity": "מוסון"
+                "exemplarCity": "מאוסון"
               },
               "McMurdo": {
-                "exemplarCity": "מק-מרדו"
+                "exemplarCity": "מקמרדו"
               },
               "Palmer": {
                 "exemplarCity": "פאלמר"
@@ -1324,7 +1300,7 @@
                 "exemplarCity": "רות׳רה"
               },
               "Syowa": {
-                "exemplarCity": "סיוואה"
+                "exemplarCity": "שויה"
               },
               "Troll": {
                 "exemplarCity": "טרול"
@@ -1334,13 +1310,86 @@
               }
             },
             "Etc": {
-              "UTC": {
-                "long": {
-                  "standard": "זמן אוניברסלי מתואם"
-                },
-                "short": {
-                  "standard": "UTC"
-                }
+              "GMT": {
+                "exemplarCity": "GMT"
+              },
+              "GMT1": {
+                "exemplarCity": "GMT+1"
+              },
+              "GMT10": {
+                "exemplarCity": "GMT+10"
+              },
+              "GMT11": {
+                "exemplarCity": "GMT+11"
+              },
+              "GMT12": {
+                "exemplarCity": "GMT+12"
+              },
+              "GMT2": {
+                "exemplarCity": "GMT+2"
+              },
+              "GMT3": {
+                "exemplarCity": "GMT+3"
+              },
+              "GMT4": {
+                "exemplarCity": "GMT+4"
+              },
+              "GMT5": {
+                "exemplarCity": "GMT+5"
+              },
+              "GMT6": {
+                "exemplarCity": "GMT+6"
+              },
+              "GMT7": {
+                "exemplarCity": "GMT+7"
+              },
+              "GMT8": {
+                "exemplarCity": "GMT+8"
+              },
+              "GMT9": {
+                "exemplarCity": "GMT+9"
+              },
+              "GMT-1": {
+                "exemplarCity": "GMT-1"
+              },
+              "GMT-10": {
+                "exemplarCity": "GMT-10"
+              },
+              "GMT-11": {
+                "exemplarCity": "GMT-11"
+              },
+              "GMT-12": {
+                "exemplarCity": "GMT-12"
+              },
+              "GMT-13": {
+                "exemplarCity": "GMT-13"
+              },
+              "GMT-14": {
+                "exemplarCity": "GMT-14"
+              },
+              "GMT-2": {
+                "exemplarCity": "GMT-2"
+              },
+              "GMT-3": {
+                "exemplarCity": "GMT-3"
+              },
+              "GMT-4": {
+                "exemplarCity": "GMT-4"
+              },
+              "GMT-5": {
+                "exemplarCity": "GMT-5"
+              },
+              "GMT-6": {
+                "exemplarCity": "GMT-6"
+              },
+              "GMT-7": {
+                "exemplarCity": "GMT-7"
+              },
+              "GMT-8": {
+                "exemplarCity": "GMT-8"
+              },
+              "GMT-9": {
+                "exemplarCity": "GMT-9"
               },
               "Unknown": {
                 "exemplarCity": "עיר לא ידועה"
@@ -1382,13 +1431,6 @@
                 "daylight": "שעון אלסקה (קיץ)"
               }
             },
-            "Almaty": {
-              "long": {
-                "generic": "שעון אלמטי",
-                "standard": "שעון אלמטי (חורף)",
-                "daylight": "שעון אלמטי (קיץ)"
-              }
-            },
             "Amazon": {
               "long": {
                 "generic": "שעון אמזונס",
@@ -1419,9 +1461,9 @@
             },
             "America_Pacific": {
               "long": {
-                "generic": "שעון מערב ארה״ב",
-                "standard": "שעון מערב ארה״ב (חורף)",
-                "daylight": "שעון מערב ארה״ב (קיץ)"
+                "generic": "שעון מערב ארה״ב (לוס אנג׳לס)",
+                "standard": "שעון רגיל האוקיינוס השקט",
+                "daylight": "שעון קיץ, מערב ארה״ב (לוס אנג׳לס)"
               }
             },
             "Anadyr": {
@@ -1436,20 +1478,6 @@
                 "generic": "שעון אפיה",
                 "standard": "שעון אפיה (חורף)",
                 "daylight": "שעון אפיה (קיץ)"
-              }
-            },
-            "Aqtau": {
-              "long": {
-                "generic": "שעון אקטאו",
-                "standard": "שעון אקטאו (חורף)",
-                "daylight": "שעון אקטאו (קיץ)"
-              }
-            },
-            "Aqtobe": {
-              "long": {
-                "generic": "שעון אקטובה",
-                "standard": "שעון אוקטובה (חורף)",
-                "daylight": "שעון אוקטובה (קיץ)"
               }
             },
             "Arabian": {
@@ -1525,15 +1553,15 @@
             "Azores": {
               "long": {
                 "generic": "שעון האיים האזוריים",
-                "standard": "שעון האיים האזוריים (חורף)",
+                "standard": "האיים האזוריים (חורף)",
                 "daylight": "שעון האיים האזוריים (קיץ)"
               }
             },
             "Bangladesh": {
               "long": {
                 "generic": "שעון בנגלדש",
-                "standard": "שעון בנגלדש (חורף)",
-                "daylight": "שעון בנגלדש (קיץ)"
+                "standard": "שעון רגיל בנגלדש",
+                "daylight": "שעון קיץ בנגלדש"
               }
             },
             "Bhutan": {
@@ -1600,7 +1628,7 @@
             },
             "Christmas": {
               "long": {
-                "standard": "שעון האי כריסטמס"
+                "standard": "שעון אי חג המולד"
               }
             },
             "Cocos": {
@@ -1703,7 +1731,12 @@
             },
             "French_Southern": {
               "long": {
-                "standard": "שעון הארצות הדרומיות והאנטארקטיות של צרפת"
+                "standard": "שעון דרום צרפת ואנטארקטיקה"
+              }
+            },
+            "GMT": {
+              "long": {
+                "standard": "שעון גריניץ׳‏"
               }
             },
             "Galapagos": {
@@ -1713,7 +1746,7 @@
             },
             "Gambier": {
               "long": {
-                "standard": "שעון איי גמבייה"
+                "standard": "שעון גאמבייר"
               }
             },
             "Georgia": {
@@ -1726,11 +1759,6 @@
             "Gilbert_Islands": {
               "long": {
                 "standard": "שעון איי גילברט"
-              }
-            },
-            "GMT": {
-              "long": {
-                "standard": "שעון גריניץ׳‏"
               }
             },
             "Greenland_Eastern": {
@@ -1747,11 +1775,6 @@
                 "daylight": "שעון מערב גרינלנד (קיץ)"
               }
             },
-            "Guam": {
-              "long": {
-                "standard": "שעון גואם"
-              }
-            },
             "Gulf": {
               "long": {
                 "standard": "שעון מדינות המפרץ"
@@ -1759,14 +1782,14 @@
             },
             "Guyana": {
               "long": {
-                "standard": "שעון גיאנה"
+                "standard": "שעון גויאנה"
               }
             },
             "Hawaii_Aleutian": {
               "long": {
                 "generic": "שעון האיים האלאוטיים הוואי",
-                "standard": "שעון האיים האלאוטיים הוואי (חורף)",
-                "daylight": "שעון האיים האלאוטיים הוואי (קיץ)"
+                "standard": "שעון רגיל האיים האלאוטיים הוואי",
+                "daylight": "שעון קיץ האיים האלאוטיים הוואי"
               }
             },
             "Hong_Kong": {
@@ -1975,7 +1998,7 @@
             },
             "Myanmar": {
               "long": {
-                "standard": "שעון מיאנמר"
+                "standard": "שעון בורמה"
               }
             },
             "Nauru": {
@@ -2016,19 +2039,14 @@
             },
             "Norfolk": {
               "long": {
-                "standard": "שעון האי נורפוק"
+                "standard": "שעון איי נורפולק"
               }
             },
             "Noronha": {
               "long": {
                 "generic": "שעון פרננדו די נורוניה",
-                "standard": "שעון פרננדו די נורוניה (חורף)",
+                "standard": "פרננדו די נורוניה (חורף)",
                 "daylight": "שעון פרננדו די נורוניה (קיץ)"
-              }
-            },
-            "North_Mariana": {
-              "long": {
-                "standard": "שעון איי מריאנה הצפוניים"
               }
             },
             "Novosibirsk": {
@@ -2066,7 +2084,7 @@
               "long": {
                 "generic": "שעון פרגוואי",
                 "standard": "שעון פרגוואי (חורף)",
-                "daylight": "שעון פרגוואי (קיץ)"
+                "daylight": "שעון קיץ פרגוואי"
               }
             },
             "Peru": {
@@ -2103,18 +2121,6 @@
             "Ponape": {
               "long": {
                 "standard": "שעון פונאפי"
-              }
-            },
-            "Pyongyang": {
-              "long": {
-                "standard": "שעון פיונגיאנג"
-              }
-            },
-            "Qyzylorda": {
-              "long": {
-                "generic": "שעון קיזילורדה",
-                "standard": "שעון קיזילורדה (חורף)",
-                "daylight": "שעון קיזילורדה (קיץ)"
               }
             },
             "Reunion": {
@@ -2242,7 +2248,7 @@
               "long": {
                 "generic": "שעון ונואטו",
                 "standard": "שעון ונואטו (חורף)",
-                "daylight": "שעון ונואטו (קיץ)"
+                "daylight": "שעון קיץ ונואטו"
               }
             },
             "Venezuela": {
