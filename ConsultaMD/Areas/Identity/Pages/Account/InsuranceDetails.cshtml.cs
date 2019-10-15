@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+Ôªøusing System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,17 +42,17 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "PrevisiÛn")]
-            [InsuranceValidation(ErrorMessage = "El RUT no est· registrado en la previsiÛn seleccionada")]
+            [Display(Name = "Previsi√≥n")]
+            [InsuranceValidation(ErrorMessage = "El RUT no est√° registrado en la previsi√≥n seleccionada")]
             public Insurance Insurance { get; set; }
 
             public IEnumerable<SelectListItem> InsuranceList { get; set; } = Enum<Insurance>.ToSelect;
             [DataType(DataType.Password)]
-            [Display(Name = "ContraseÒa de su PrevisiÛn")]
-            [InsurancePassword(ErrorMessage = "Error en la combinaciÛn PrevisiÛn/{0}")]
+            [Display(Name = "Contrase√±a de su Previsi√≥n")]
+            [InsurancePassword(ErrorMessage = "Error en la combinaci√≥n Previsi√≥n/{0}")]
             public string InsurancePassword { get; set; }
             [Required]
-            [Extensions.Validation.RUT(ErrorMessage = "RUT no v·lido")]
+            [Extensions.Validation.RUT(ErrorMessage = "RUT no v√°lido")]
             [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
             [Display(Name = "RUT")]
             public string RUT { get; set; }
@@ -79,7 +79,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 patient.InsurancePassword = Input.InsurancePassword;
                 person.Patient = patient;
                 var result = _context.People.Update(person);
-                _logger.LogInformation("Detalles de previsiÛn ingresados.");
+                _logger.LogInformation("Detalles de previsi√≥n ingresados.");
                 return RedirectToPage("VerifyPhone", new { returnUrl });
             }
             // If we got this far, something failed, redisplay form

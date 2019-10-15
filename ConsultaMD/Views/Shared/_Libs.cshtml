@@ -23,13 +23,13 @@
                     foreach (var input in bundle.inputFiles)
                     {
                         this.Block(@<link href="@input.Insert(0, "~/")" rel="stylesheet" asp-append-version="true" />, style);
-}
-}
-else
-{
-this.Block(@<link href="@file" rel="stylesheet" asp-append-version="true" />, style);
-}
-}
+                    }
+                }
+                else
+                {
+                    this.Block(@<link href="@file" rel="stylesheet" asp-append-version="true" />, style);
+                }
+            }
 else
 {
 if (dev)
