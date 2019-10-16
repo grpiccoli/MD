@@ -1,4 +1,6 @@
-﻿cd /media/guillermo/WD3DNAND-SSD-1TB/ConsultaMD/
+﻿cd /media/guillermo/WD3DNAND-SSD-1TB/
+git clone https://github.com/grpltda/ConsultaMD.git
+cd /media/guillermo/WD3DNAND-SSD-1TB/ConsultaMD/
 git pull
 cd ConsultaMD/
 dotnet bundle
