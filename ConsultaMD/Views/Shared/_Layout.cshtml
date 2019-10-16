@@ -43,7 +43,7 @@
     <partial name="_Favicons" />
     @*"@fortawesome/fontawesome-free",*@
     @*<link href="<%= htmlWebpackPlugin.files.chunks[chunk].css %>" rel="stylesheet" />*@
-    <partial name="_Libs" model='(new string[]{"jquery", "materialize-css", "main"}, "TOP")' />
+    <partial name="_Libs" model='(new string[]{"jquery", "materialize-css","jquery.mousewheel", "main"}, "TOP")' />
     @*<partial name="_Scripts" model='(new string[]{"jquery", "materialize-css", "main", "runtime"}, "-TOP_")' />*@
     @this.WriteBlocks("TOPStyles")
     @this.WriteBlocks("Styles")

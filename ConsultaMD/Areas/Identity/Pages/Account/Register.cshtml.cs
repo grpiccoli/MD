@@ -22,12 +22,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     [ValidateAntiForgeryToken]
     public class RegisterModel : PageModel
     {
-        protected ILookupNormalizer normalizer;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        //private readonly ApplicationDbContext _context;
         private readonly IViewRenderService _viewRenderService;
 
         public RegisterModel(
@@ -35,14 +33,12 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            //ApplicationDbContext context,
             IViewRenderService viewRenderService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            //_context = context;
             _viewRenderService = viewRenderService;
         }
 
@@ -132,9 +128,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     var user = new ApplicationUser
                     {
                         UserName = Input.RUT,
-                        NormalizedUserName = normalizer.Normalize(Input.RUT),
                         Email = Input.Email,
-                        NormalizedEmail = normalizer.Normalize(Input.Email),
                         Person = natural
                     };
                     var result = await _userManager.CreateAsync(user, Input.Password);

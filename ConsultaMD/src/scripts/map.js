@@ -159,7 +159,6 @@ function initMap() {
         addEventListener(marker, value.place.cId);
     }
     function getList(data) {
-        console.log(data);
         var count = data.length;
         if (count === 0) {
             loaderStop();
@@ -367,7 +366,7 @@ function initMap() {
             weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
             weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
             cancel: 'Cancelar',
-            clear: 'Limpar',
+            clear: 'Limpiar',
             done: 'Ok'
         },
         showClearBtn: true

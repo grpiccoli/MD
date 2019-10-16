@@ -170,7 +170,6 @@ function initMap() {
     }
     //PROCESS CALLBACK DATA
     function getList(data: Array<ResultsVM>) {
-        console.log(data);
         var count = data.length;
         if (count === 0) {
             loaderStop();
@@ -386,7 +385,7 @@ function initMap() {
             weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
             weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
             cancel: 'Cancelar',
-            clear: 'Limpar',
+            clear: 'Limpiar',
             done: 'Ok'
         },
         showClearBtn: true

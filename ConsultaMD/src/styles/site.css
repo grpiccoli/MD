@@ -12,6 +12,9 @@
     font-size: 18px;
     overflow: hidden; }
 
+input#Input_RUT {
+  text-transform: uppercase; }
+
 .input-field .prefix.right {
   right: 0; }
 

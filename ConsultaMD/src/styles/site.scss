@@ -17,6 +17,10 @@ html {
     }
 }
 
+input#Input_RUT {
+    text-transform:uppercase;
+}
+
 //materialize icon to the right of input
 .input-field .prefix.right {
     right: 0;
