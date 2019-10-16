@@ -331,10 +331,12 @@ function initMap() {
             format: {
                 to: function (value) {
                     var suffix = "AM";
-                    if (value > 12) {
-                        value -= 12;
+                    if (value >= 12) {
                         if (value !== 24) {
                             suffix = "PM";
+                        }
+                        if (value !== 12) {
+                            value -= 12;
                         }
                     }
                     return Math.ceil(value) + " " + suffix;
