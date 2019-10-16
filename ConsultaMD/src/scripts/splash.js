@@ -2,7 +2,7 @@ $(document).ready(function () {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i.test(navigator.userAgent)) {
         $(".splash:last").remove();
         $("#splash").addClass("s12").removeClass("hide-on-small-only");
-        var slider = $(".splasher").owlCarousel({
+        $(".splasher").owlCarousel({
             items: 1,
             loop: false,
             margin: 0,
@@ -16,7 +16,6 @@ $(document).ready(function () {
             onTranslated: counter
         });
         function counter(event) {
-            var element = event.target;
             var items = event.item.count;
             var item = event.item.index + 1;
             if (item === items) {
@@ -25,7 +24,7 @@ $(document).ready(function () {
         }
     }
     else {
-        var slider = $(".splasher").owlCarousel({
+        $(".splasher").owlCarousel({
             items: 1,
             loop: false,
             margin: 0,

@@ -57,7 +57,7 @@
   background: black;
   opacity: 0.85;
   width: 500px;
-  height: calc(100vh-0.5rem);
+  height: calc( 100vh - 0.5rem);
   padding: 0.5rem; }
   #nav-mobile #sidenav-details {
     height: 100vh; }
