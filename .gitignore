@@ -26,15 +26,12 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-
-# build and backup folders
-obj/
-bin/
-BU/
-#compile locally
 wwwoot/lib/
 wwwoot/js/
 wwwoot/css/
+
+# backup folder
+BU/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

@@ -16,7 +16,7 @@
     "@types/select2": "^4.0.48",
     "@types/webrtc": "0.0.25",
     "@types/wnumb": "^1.0.28",
-    "lighterhtml": "^1.2.1"
+    "cldr-data-downloader": "^0.3.5"
   },
   "author": "EpicSolutions",
   "license": "ISC",
