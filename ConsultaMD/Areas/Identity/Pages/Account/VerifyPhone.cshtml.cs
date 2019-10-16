@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -42,8 +42,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
         [BindProperty]
         [Required]
-        [CellPhone(ErrorMessage = "Ingrese un {0} v醠ido")]
-        [Display(Name = "Tel閒ono M髒il")]
+        [CellPhone(ErrorMessage = "Ingrese un {0} v谩lido")]
+        [Display(Name = "Tel茅fono M贸vil")]
         //[RegularExpression(@"^(?=(?:\D*\d){9})[\(\)\s\-]{,5}$")]
         public string PhoneNumber { get; set; }
         public string ReturnUrl { get; set; }
@@ -83,7 +83,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     }
                     if (user.PhoneConfirmationTime > DateTime.Now)
                     {
-                        ModelState.AddModelError(string.Empty, "C骴igo ya enviado, espere 5 minutos antes de enviar otro");
+                        ModelState.AddModelError(string.Empty, "C贸digo ya enviado, espere 5 minutos antes de enviar otro");
                         return RedirectToPage("ConfirmPhone", new { returnUrl });
                     }
                     var telephone = $"+56{phone}";
@@ -104,14 +104,14 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
                         return RedirectToPage("ConfirmPhone", new { returnUrl });
                     }
-                    ModelState.AddModelError("", $"Hubo un error al enviar el c骴igo de verificaci髇: {verification.Status}");
+                    ModelState.AddModelError("", $"Hubo un error al enviar el c贸digo de verificaci贸n: {verification.Status}");
                 }
-                ModelState.AddModelError(string.Empty, "Error en el formato de Tel閒ono");
+                ModelState.AddModelError(string.Empty, "Error en el formato de Tel茅fono");
             }
             catch (Exception)
             {
                 ModelState.AddModelError("",
-                    "Hubo un error al enviar el c骴igo de verificaci髇, por favor verifique que el n鷐ero sea un n鷐ero de celular v醠ido");
+                    "Hubo un error al enviar el c贸digo de verificaci贸n, por favor verifique que el n煤mero sea un n煤mero de celular v谩lido");
             }
             return Page();
         }

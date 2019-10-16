@@ -211,12 +211,18 @@ namespace ConsultaMD.Areas.Patients.Controllers
             var patient = await _context.Patients
                 .FirstOrDefaultAsync(p => p.NaturalId == user.PersonId);
 
-            var model = new MapVM
+            var model = new MapVM();
+            if (patient != null)
             {
-                Insurance = patient.Insurance,
-                Last = _context.TimeSlots.Max(t => t.StartTime)
-            };
-            return View(model);
+                if (user.PhoneNumberConfirmed)
+                {
+                    model.Insurance = patient.Insurance;
+                    model.Last = _context.TimeSlots.Max(t => t.StartTime);
+                    return View(model);
+                }
+                return LocalRedirect("/Identity/Account/VerifyPhone?returnUrl=/Search/Map");
+            }
+            return LocalRedirect("/Identity/Account/InsuranceDetails?returnUrl=/Search/Map");
         }
         public async Task<IActionResult> DoctorDetails([Bind("Ubicacion,Insurance," +
             "MinTime,MaxTime,MinDate,MaxDate," +

@@ -6,6 +6,16 @@ cd ConsultaMD/
 dotnet restore
 dotnet bundle
 libman restore
+online_md5="$(curl -sL https://unpkg.com/jquery.mousewheel@3.1.9/jquery.mousewheel.js | md5sum | cut -d ' ' -f 1)"
+local_md5="$(md5sum "wwwroot/lib/jquery.mousewheel/jquery.mousewheel.js" | cut -d ' ' -f 1)"
+if [ "$online_md5" == "$local_md5" ]; then
+    echo "hurray, they are equal!"
+fi
+online_md5="$(curl -sL https://unpkg.com/jquery-validation-unobtrusive@3.2.11/dist/jquery.validate.unobtrusive.min.js | md5sum | cut -d ' ' -f 1)"
+local_md5="$(md5sum "wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" | cut -d ' ' -f 1)"
+if [ "$online_md5" == "$local_md5" ]; then
+    echo "hurray, they are equal!"
+fi
 npm i
 ./node_modules/cldr-data-downloader/bin/download.sh -i http://www.unicode.org/Public/cldr/26/json.zip -o ./wwwroot/lib/cldr-data
 dotnet publish -r linux-x64 -c Release
