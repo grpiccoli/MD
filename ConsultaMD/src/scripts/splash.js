@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i.test(navigator.userAgent)) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i.test(navigator.userAgent) && /Identity\/Account\/Login/.test(window.location.href)) {
         $(".splash:last").remove();
         $("#splash").addClass("s12").removeClass("hide-on-small-only");
         $(".splasher").owlCarousel({
