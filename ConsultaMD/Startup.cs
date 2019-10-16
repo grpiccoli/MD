@@ -47,10 +47,10 @@ namespace ConsultaMD
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //var accountSid = Configuration["Twilio:AccountSID"];
-            //var authToken = Configuration["Twilio:AuthToken"];
-            var accountSid = "AC3e87b4b00a0e460583a7e8b77bca6620";
-            var authToken = "837533360893e16b150eca01c03c811f";
+            var accountSid = Configuration["Twilio:AccountSID"];
+            var authToken = Configuration["Twilio:AuthToken"];
+            //var accountSid = "AC3e87b4b00a0e460583a7e8b77bca6620";
+            //var authToken = "837533360893e16b150eca01c03c811f";
             TwilioClient.Init(accountSid, authToken);
 
             services.Configure<TwilioVerifySettings>(Configuration.GetSection("Twilio"));

@@ -78,7 +78,13 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 patient.Insurance = Input.Insurance;
                 patient.InsurancePassword = Input.InsurancePassword;
                 person.Patient = patient;
+                if(patient.NaturalId == 0)
+                {
+                    patient.NaturalId = person.Id;
+                    var pResult = await _context.Patients.AddAsync(patient);
+                }
                 var result = _context.People.Update(person);
+                await _context.SaveChangesAsync();
                 _logger.LogInformation("Detalles de previsión ingresados.");
                 return RedirectToPage("VerifyPhone", new { returnUrl });
             }

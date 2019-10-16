@@ -176,7 +176,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
-                ModelState.AddModelError(string.Empty, "Error en el formato de RUT");
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Error en el formato de RUT");
+                }
             }
             // If we got this far, something failed, redisplay form
             return Page();

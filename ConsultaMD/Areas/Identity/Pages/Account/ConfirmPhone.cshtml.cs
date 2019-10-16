@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using ConsultaMD.Services;
 using Microsoft.Extensions.Options;
-using Twilio.Rest.Preview.AccSecurity.Service;
+using Twilio.Rest.Preview.AccSecurity.Service; 
 using ConsultaMD.Models.Entities;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
@@ -28,7 +28,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         public string ReturnUrl { get; set; }
         public DateTime Wait { get; set; }
 
-        [BindProperty, Required, Display(Name = "C骴igo")]
+        [BindProperty, Required, Display(Name = "C贸digo")]
         public string VerificationCode { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string returnUrl = null)
@@ -67,18 +67,18 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Hubo un error al confirmar su c骴igo de verificaci髇, por favor int閚telo nuevamente");
+                        ModelState.AddModelError("", "Hubo un error al confirmar su c贸digo de verificaci贸n, por favor int茅ntelo nuevamente");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", $"Hubo un error al confirmar su c骴igo de verificaci髇: {verification.Status}");
+                    ModelState.AddModelError("", $"Hubo un error al confirmar su c贸digo de verificaci贸n: {verification.Status}");
                 }
             }
             catch (Exception)
             {
                 ModelState.AddModelError("",
-                    "Hubo un error confirmando el c骴igo, por favor verifique el c骴igo sea correcto e int閚telo nuevamente");
+                    "Hubo un error confirmando el c贸digo, por favor verifique el c贸digo sea correcto e int茅ntelo nuevamente");
             }
 
             return Page();

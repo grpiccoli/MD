@@ -220,9 +220,9 @@ namespace ConsultaMD.Areas.Patients.Controllers
                     model.Last = _context.TimeSlots.Max(t => t.StartTime);
                     return View(model);
                 }
-                return LocalRedirect("/Identity/Account/VerifyPhone?returnUrl=/Search/Map");
+                return LocalRedirect("/Identity/Account/VerifyPhone?returnUrl=/Patients/Search/Map");
             }
-            return LocalRedirect("/Identity/Account/InsuranceDetails?returnUrl=/Search/Map");
+            return LocalRedirect("/Identity/Account/InsuranceDetails?returnUrl=/Patients/Search/Map");
         }
         public async Task<IActionResult> DoctorDetails([Bind("Ubicacion,Insurance," +
             "MinTime,MaxTime,MinDate,MaxDate," +
