@@ -112,7 +112,7 @@ namespace ConsultaMD.Controllers
         public async Task<IActionResult> GetSII(int rut, string dv, string val)
         {
            using (HttpClient client = new HttpClient())
-            {
+           {
                 using (var response = await client.GetAsync($"https://siichile.herokuapp.com/consulta?rut={rut}{dv}"))
                 {
                     var json = JObject.Parse(await response.Content.ReadAsStringAsync());
