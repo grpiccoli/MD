@@ -223,7 +223,7 @@ namespace ConsultaMD
                 app.UseWebMarkupMin();
             }
 
-            app.UseDefaultImage(defaultImagePath: Configuration.GetSection("defaultImagePath").Value);
+            app.UseDefaultImage(defaultImagePath: Configuration.GetSection($"{_os}defaultImagePath").Value);
 
             var path = new List<string> { "wwwroot", "lib", "cldr-data", "main" };
 
