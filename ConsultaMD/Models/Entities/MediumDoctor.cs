@@ -13,7 +13,7 @@ namespace ConsultaMD.Models.Entities
         public int PriceParticular { get; set; }
         public bool OverTime { get; set; }
         public string Color { get; set; }
-        public virtual ICollection<InsuranceLocation> InsuranceLocations { get; set; }
-        public virtual ICollection<Agenda> Agendas { get; set; }
+        public virtual ICollection<InsuranceLocation> InsuranceLocations { get; } = new List<InsuranceLocation>();
+        public virtual ICollection<Agenda> Agendas { get; } = new List<Agenda>();
     }
 }

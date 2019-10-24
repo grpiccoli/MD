@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,18 +21,18 @@ namespace ConsultaMD.Services
 
         public async Task Invoke(HttpContext context)
         {
-            await _next(context);
+            await _next(context).ConfigureAwait(false);
             if (context.Response.StatusCode == 404)
             {
-                var contentType = context.Request.Headers["accept"].ToString().ToLower();
-                if (contentType.StartsWith("image"))
+                var contentType = context.Request.Headers["accept"].ToString().ToUpperInvariant();
+                if (contentType.StartsWith("IMAGE", StringComparison.InvariantCulture))
                 {
-                    await SetDefaultImage(context);
+                    await SetDefaultImage(context).ConfigureAwait(false);
                 }
             }
         }
 
-        private async Task SetDefaultImage(HttpContext context)
+        private static async Task SetDefaultImage(HttpContext context)
         {
             try
             {
@@ -40,16 +41,17 @@ namespace ConsultaMD.Services
                 using (FileStream fs = File.OpenRead(path))
                 {
                     byte[] bytes = new byte[fs.Length];
-                    await fs.ReadAsync(bytes, 0, bytes.Length);
+                    await fs.ReadAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
                     //this header is use for browser cache, format like: "Mon, 15 May 2017 07:03:37 GMT". 
-                    context.Response.Headers.Append("Last-Modified", $"{File.GetLastWriteTimeUtc(path).ToString("ddd, dd MMM yyyy HH:mm:ss")} GMT");
+                    context.Response.Headers.Append("Last-Modified", $"{File.GetLastWriteTimeUtc(path).ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture)} GMT");
 
-                    await context.Response.Body.WriteAsync(bytes, 0, bytes.Length);
+                    await context.Response.Body.WriteAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
                 }
             }
             catch (Exception ex)
             {
-                await context.Response.WriteAsync(ex.Message);
+                await context.Response.WriteAsync(ex.Message).ConfigureAwait(false);
+                throw;
             }
         }
     }

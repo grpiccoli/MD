@@ -14,7 +14,7 @@ namespace ConsultaMD.Areas.MDs.Models
         }
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return Value.GetHashCode(StringComparison.InvariantCulture);
         }
     }
 }

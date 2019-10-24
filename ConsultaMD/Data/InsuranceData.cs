@@ -2,7 +2,7 @@
 
 namespace ConsultaMD.Data
 {
-    public class InsuranceData
+    public static class InsuranceData
     {
         public enum Insurance
         {

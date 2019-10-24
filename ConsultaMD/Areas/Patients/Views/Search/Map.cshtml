@@ -12,20 +12,19 @@
 
 <input asp-for="Last" class="hide" readonly="readonly" disabled="disabled"/>
 
-<button class="btn btn-small btn-floating filterpanel-trigger hide-on-med-and-up waves-effect waves-light modal-trigger" data-target="filters-pane">
+<button id="all1" class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
     <i class="material-icons left">filter_list</i>
 </button>
-<button class="btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light modal-trigger" data-target="filters-pane">
+<button id="all2" class="fltbtn btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light">
     <i class="material-icons left">filter_list</i>Ver todos los filtros
 </button>
-
     <nav>
         <div class="nav-wrapper teal lighten-2">
             <div class="input-field">
                 <input id="search-filter" type="search">
                 <label class="label-icon" for="search-filter">
                 <i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
+                <i id="close-search" class="material-icons">close</i>
             </div>
         </div>
     </nav>
@@ -35,6 +34,20 @@
             <div id="map" class="h-100"></div>
         </div>
         <div id="list-view" class="search-view" data-simplebar>
+            <div class="row m-0">
+                <div class="col s6">
+                    <p class="info"><i class="material-icons left">info_outline</i>Resultados priorizados por próxima hora disponible</p>
+                </div>
+                <div class="col s6">
+                    <select id="show">
+                        <option value="time" selected>Próxima Hora Disponible</option>
+                        <option value="addr">Dirección, oficina</option>
+                        <option value="price">Valor particular</option>
+                        <option value="mis">Convenios</option>
+                        <option value="esp">Especialidad médica</option>
+                    </select>
+                </div>
+            </div>
             <div id="list" class="row"></div>
         </div>
         <div class="list-btn fixed-action-btn">
@@ -47,15 +60,15 @@
                 <i class="material-icons">location_off</i>
             </a>
         </div>
-        <div class="filters" style="position:absolute;top:0px;">
+        <div class="filter-btns">
             <div class="row">
-                <button id="btnEspecialidad" data-target="specialties-pane" class="btn btn-small modal-trigger waves-effect waves-light filter-btn">
+                <button id="btnEspecialidad" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
                     Especialidad
                 </button>
-                <button id="btnUbicacion" data-target="locations-pane" class="btn btn-small modal-trigger waves-effect waves-light filter-btn">
+                <button id="btnUbicacion" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
                     Comuna
                 </button>
-                <button id="btnFechaHora" data-target="dates-pane" class="btn btn-small modal-trigger waves-effect waves-light filter-btn">
+                <button id="btnFechaHora" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
                     Fecha-Hora
                 </button>
             </div>
@@ -64,180 +77,11 @@
     </div>
 
     <form id="filter" asp-action="MapList">
-        <div id="specialties-pane" class="modal bottom-sheet select-sheet filter">
-            <div class="modal-content">
-                <div class="especialities-div">
-                    <div id="especialities-col" class="col s12 m6">
-                        <div class="card">
-                            <div class="card-content clinic-text">
-                                <span class="card-title">
-                                    Especialidades
-                                </span>
-                            </div>
-                            <div class="card-action">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <select asp-for="Especialidad" multiple="multiple" class="sel2open"></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="locations-pane" class="modal bottom-sheet select-sheet filter">
-            <div class="modal-content">
-                <div class="locations-div">
-                    <div id="locations-col" class="col s12 m6">
-                        <div class="card">
-                            <div class="card-content clinic-text">
-                                <span class="card-title">
-                                    Comuna, Provincia o Región
-                                </span>
-                            </div>
-                            <div class="card-action">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <select asp-for="Ubicacion" multiple="multiple" class="sel2open"></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="dates-pane" class="modal bottom-sheet select-sheet filter">
-            <div class="modal-content">
-                <div class="dates-div">
-                    <div id="dates-col" class="col s12 m6">
-                        <div class="card">
-                            <div class="card-content clinic-text">
-                                <span class="card-title">
-                                    Disponibilidad
-                                </span>
-                            </div>
-                            <div class="card-action">
-                                <div class="row">
-                                    <div class="col s6">
-                                        <span>Desde</span>
-                                        <input asp-for="MinDate" type="text" class="datepicker" />
-                                    </div>
-                                    <div class="col s6">
-                                        <span>Hasta</span>
-                                        <input asp-for="MaxDate" type="text" class="datepicker" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Monday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Lu</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Tuesday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Ma</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Wednesday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Mi</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Thursday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Ju</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Friday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Vi</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Saturday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Sa</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s1 center-align">
-                                        <div class="row mb-0">
-                                            <div class="col s1 offset-s3">
-                                                <label>
-                                                    <input asp-for="Sunday" class="filled-in" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12" style="font-size:14px">Do</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row slider-row">
-                                    <div class="col s12">
-                                        <div id="time-slider"></div>
-                                        <input asp-for="MinTime" class="hide"/>
-                                        <input asp-for="MaxTime" class="hide"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="filters-pane" class="modal bottom-sheet select-sheet filters">
             <div class="modal-content">
-                <partial name="_Filter" model="Model" />
+                <div class="row">
+                    <partial name="_Filter" model="Model" />
+                </div>
             </div>
         </div>
     </form>

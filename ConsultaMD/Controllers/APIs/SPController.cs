@@ -58,10 +58,12 @@ namespace ConsultaMD.Controllers
 
             using (HttpClient client = new HttpClient(getHandler))
             {
-                using (var response = await client.PostAsync(uri, formContent))
+                getHandler.Dispose();
+                using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                 {
+                    formContent.Dispose();
                     var parser = new HtmlParser();
-                    using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync()))
+                    using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                     {
                         var result = doc.QuerySelectorAll("tbody > tr > td");
                         if (result.Any())
@@ -70,7 +72,7 @@ namespace ConsultaMD.Controllers
                             switch (val)
                             {
                                 case "name":
-                                    var names = result[num].InnerHtml.ToUpper().Split(" ");
+                                    var names = result[num].InnerHtml.ToUpper(new CultureInfo("es-CL")).Split(" ");
                                     var name = $"{string.Join(" ", names.Skip(2))} {string.Join(" ", names.Take(2))}";
                                     return Ok(name);
                                 case "rut":
@@ -88,7 +90,7 @@ namespace ConsultaMD.Controllers
                                 case "all":
                                     return Ok(new
                                     {
-                                        name = result[0].InnerHtml.ToUpper(),
+                                        name = result[0].InnerHtml.ToUpper(new CultureInfo("es-CL")),
                                         rut = result[1].InnerHtml,
                                         sex = result[2].InnerHtml,
                                         address = result[3].InnerHtml,
@@ -113,9 +115,9 @@ namespace ConsultaMD.Controllers
         {
            using (HttpClient client = new HttpClient())
            {
-                using (var response = await client.GetAsync($"https://siichile.herokuapp.com/consulta?rut={rut}{dv}"))
+                using (var response = await client.GetAsync(new Uri($"https://siichile.herokuapp.com/consulta?rut={rut}{dv}")).ConfigureAwait(false))
                 {
-                    var json = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    var json = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
                     if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
                     return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
                 }
@@ -133,7 +135,7 @@ namespace ConsultaMD.Controllers
                 var parser = new HtmlParser();
                 using (HttpClient client = new HttpClient())
                 {
-                    using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri)))
+                    using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri).ConfigureAwait(false)).ConfigureAwait(false))
                     {
                         var loginFormValues = new Dictionary<string, string>
                         {
@@ -144,18 +146,20 @@ namespace ConsultaMD.Controllers
                             { "javax.faces.ViewState", Javax(docHome) }
                         };
                         var formContent = new FormUrlEncodedContent(loginFormValues);
-                        using (var qNac = await client.PostAsync(uri, formContent))
+                        using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                         {
-                            using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync()))
+                            formContent.Dispose();
+                            using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                             {
                                 var tableNac = GetRows(docNac);
                                 if (tableNac.Length > 2) return Ok(new { nacionalidad= "chilena"});
                                 loginFormValues["javax.faces.ViewState"] = Javax(docNac);
                                 loginFormValues["form:styledSelect"] = "CEDULA_EXT";
                                 formContent = new FormUrlEncodedContent(loginFormValues);
-                                using (var qExt = await client.PostAsync(uri, formContent))
+                                using (var qExt = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                                 {
-                                    using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()))
+                                    formContent.Dispose();
+                                    using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                     {
                                         var tableExt = GetRows(docExt);
                                         if (tableExt.Length > 2) return Ok(new { nacionalidad= "extranjera" });
@@ -175,7 +179,7 @@ namespace ConsultaMD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DocumentRequestStatus(int rut, string dv, int carnet)
         {
-            if (rut > 900_000 && rut < 30_000_000 && dv.Length == 1 && carnet > 100_000_000 && carnet < 999_999_999)
+            if (rut > 900_000 && rut < 30_000_000 && dv?.Length == 1 && carnet > 100_000_000 && carnet < 999_999_999)
             {
                 var uri = new Uri("https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml");
                 using (HttpClient hc = new HttpClient())
@@ -183,30 +187,32 @@ namespace ConsultaMD.Controllers
                     var parser = new HtmlParser();
                     using (HttpClient client = new HttpClient())
                     {
-                        using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri)))
+                        using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri).ConfigureAwait(false)).ConfigureAwait(false))
                         {
                             var loginFormValues = new Dictionary<string, string>
                         {
                             { "form", "form" },
                             { "form:run", $"{rut}-{dv}" },
                             { "form:selectDocType", "CEDULA" },
-                            { "form:docNumber", carnet.ToString() },
+                            { "form:docNumber", carnet.ToString(CultureInfo.InvariantCulture) },
                             { "form:buttonHidden", "" },
                             { "javax.faces.ViewState", Javax(docHome) }
                         };
                             var formContent = new FormUrlEncodedContent(loginFormValues);
-                            using (var qNac = await client.PostAsync(uri, formContent))
+                            using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                             {
-                                using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync()))
+                                formContent.Dispose();
+                                using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                 {
                                     var estado = GetEstadoCarnet(docNac);
                                     if (estado == "Vigente") return Ok(new { nacionalidad = "CHILENA" });
                                     loginFormValues["javax.faces.ViewState"] = Javax(docNac);
                                     loginFormValues["form:selectDocType"] = "CEDULA_EXT";
                                     formContent = new FormUrlEncodedContent(loginFormValues);
-                                    using (var qExt = await client.PostAsync(uri, formContent))
+                                    using (var qExt = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                                     {
-                                        using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()))
+                                        formContent.Dispose();
+                                        using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                         {
                                             estado = GetEstadoCarnet(docExt);
                                             if (estado == "Vigente") return Ok(new { nacionalidad = "EXTRANJERA" });
@@ -235,11 +241,12 @@ namespace ConsultaMD.Controllers
             using (var driver = new ChromeDriver(service, Options)) {
                 driver.Navigate().GoToUrl(uri);
                 var urlCaptcha = driver.FindElementById("simplecaptchaimg").GetAttribute("src");
-                await DownloadAsync(new Uri(urlCaptcha), "solveCaptcha.jpg");
+                await DownloadAsync(new Uri(urlCaptcha), "solveCaptcha.jpg").ConfigureAwait(false);
                 var text = GetText("solveCaptcha.jpg");
                 var result = driver
                     .ExecuteAsyncScript($"dwr.engine._execute(ConsultaWeb._path, 'ConsultaWeb', 'verificaDonante', '{rut}', '{text}', function(d){{return d;}})");
                 driver.Quit();
+                service.Dispose();
                 switch (result)
                 {
                     case "Donante":
@@ -255,12 +262,12 @@ namespace ConsultaMD.Controllers
         {
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, requestUri))
-            using (var send = await client.SendAsync(request))
+            using (var send = await client.SendAsync(request).ConfigureAwait(false))
             using (
-                Stream contentStream = await (send).Content.ReadAsStreamAsync(),
+                Stream contentStream = await (send).Content.ReadAsStreamAsync().ConfigureAwait(false),
                 stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None, 3145728, true))
             {
-                await contentStream.CopyToAsync(stream);
+                await contentStream.CopyToAsync(stream).ConfigureAwait(false);
             }
         }
         public static string GetText(string imgsource)
@@ -285,12 +292,12 @@ namespace ConsultaMD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ValidateRUT(int rut, string dv)
         {
-            if(rut > 900_000 && rut < 30_000_000 && dv.Length == 1)
+            if(rut > 900_000 && rut < 30_000_000 && dv?.Length == 1)
             {
-                var sii = await GetSII(rut, dv, "razon_social");
+                var sii = await GetSII(rut, dv, "razon_social").ConfigureAwait(false);
                 if (sii.GetType() == typeof(NotFoundResult))
                 {
-                    var servel = await GetNRYF(rut, dv, "name", "rut");
+                    var servel = await GetNRYF(rut, dv, "name", "rut").ConfigureAwait(false);
                     if (servel.GetType() == typeof(NotFoundResult))
                     {
                         return NotFound();
@@ -305,52 +312,52 @@ namespace ConsultaMD.Controllers
             return NotFound();
         }
 
-        public IHtmlCollection<IElement> GetRows(IHtmlDocument doc)
+        public static IHtmlCollection<IElement> GetRows(IHtmlDocument doc)
         {
-            return doc.QuerySelectorAll("tr.rowWidth > td");
+            return doc?.QuerySelectorAll("tr.rowWidth > td");
         }
 
-        public string GetEstadoCarnet(IHtmlDocument doc)
+        public static string GetEstadoCarnet(IHtmlDocument doc)
         {
-            return doc.QuerySelector(".setWidthOfSecondColumn").TextContent;
+            return doc?.QuerySelector(".setWidthOfSecondColumn").TextContent;
         }
 
-        public string Javax(IHtmlDocument doc)
+        public static string Javax(IHtmlDocument doc)
         {
-            return doc.GetElementsByTagName("input").Last().GetAttribute("value");
+            return doc?.GetElementsByTagName("input").Last().GetAttribute("value");
         }
 
-        public async Task<IHtmlDocument> GetDoc(string rep)
-        {
-            using (HttpClient hc = new HttpClient())
-            {
-                var parser = new HtmlParser();
-                return await parser.ParseDocumentAsync(await hc.GetStringAsync(rep));
-            }
-        }
-
-        public async Task<IHtmlDocument> GetDocStream(string rep)
+        public static async Task<IHtmlDocument> GetDoc(Uri rep)
         {
             using (HttpClient hc = new HttpClient())
             {
                 var parser = new HtmlParser();
-                return await parser.ParseDocumentAsync(await hc.GetStreamAsync(rep));
+                return await parser.ParseDocumentAsync(await hc.GetStringAsync(rep).ConfigureAwait(false)).ConfigureAwait(false);
             }
         }
 
-        public async Task<HtmlDocument> GetDocXPath(string rep)
+        public static async Task<IHtmlDocument> GetDocStream(Uri rep)
+        {
+            using (HttpClient hc = new HttpClient())
+            {
+                var parser = new HtmlParser();
+                return await parser.ParseDocumentAsync(await hc.GetStreamAsync(rep).ConfigureAwait(false)).ConfigureAwait(false);
+            }
+        }
+
+        public static async Task<HtmlDocument> GetDocXPath(Uri rep)
         {
             using (HttpClient hc = new HttpClient())
             {
                 var doc = new HtmlDocument();
-                doc.Load(await hc.GetStreamAsync(rep));
+                doc.Load(await hc.GetStreamAsync(rep).ConfigureAwait(false));
                 return doc;
             }
         }
 
         public IActionResult ParseName(string full, bool lastfirst)
         {
-            var names = full.Split(" ");
+            var names = full?.Split(" ");
             return lastfirst ?
                 Ok(new
                 {
@@ -360,9 +367,9 @@ namespace ConsultaMD.Controllers
                 }) :
                 Ok(new
                 {
-                    names = string.Join(" ", names.Take(names.Count() - 2).ToArray()),
-                    psur = names[names.Count() - 1],
-                    msur = names[names.Count() - 2]
+                    names = string.Join(" ", names.Take(names.Length - 2).ToArray()),
+                    psur = names[names.Length - 1],
+                    msur = names[names.Length - 2]
                 });
         }
     }

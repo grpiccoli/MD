@@ -4,7 +4,7 @@
     ViewData["Title"] = "Previsión";
 }
 
-<partial name="_Libs" model='(new string[]{ "insurance", "jquery.rut", "simplebar" }, "")' />
+<partial name="_Libs" model='(new string[]{ "anypicker", "insurance", "jquery.rut", "simplebar" }, "")' />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
@@ -58,6 +58,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col s6">
+                <p class="right-align">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
+                        iniciar sesión con otro usuario
+                    </a>
+                </p>
             </div>
         </form>
     </div>

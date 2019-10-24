@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ConsultaMD.Extensions.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    public class CarnetId : ValidationAttribute, IClientModelValidator
+    public sealed class CarnetAttribute : ValidationAttribute, IClientModelValidator
     {
         public override bool IsValid(object value)
         {
@@ -16,9 +14,9 @@ namespace ConsultaMD.Extensions.Validation
         }
         public void AddValidation(ClientModelValidationContext context)
         {
-            MergeAttribute(context.Attributes, "data-val", "true");
+            MergeAttribute(context?.Attributes, "data-val", "true");
             var errorMessage = FormatErrorMessage(context.ModelMetadata.GetDisplayName());
-            MergeAttribute(context.Attributes, "data-val-carnet", errorMessage);
+            MergeAttribute(context?.Attributes, "data-val-carnet", errorMessage);
         }
         private bool MergeAttribute(
         IDictionary<string, string> attributes,

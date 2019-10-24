@@ -13,6 +13,6 @@ namespace ConsultaMD.Models.Entities
         [InsertOff]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
-        public virtual ICollection<AreaCodeProvince> AreaCodeProvinces { get; set; }
+        public virtual ICollection<AreaCodeProvince> AreaCodeProvinces { get; } = new List<AreaCodeProvince>();
     }
 }

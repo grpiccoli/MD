@@ -63,7 +63,7 @@
                 @foreach (var location in Model.LocationList)
                 {
                     <tr id="@location.Value">
-                        <td><i style="color:@Model.ColorList[int.Parse(location.Value)]" class="fas fa-square"></i></td>
+                        <td><i style="color:@Model.ColorList.ElementAtOrDefault(int.Parse(location.Value))" class="fas fa-square"></i></td>
                         <th>@location.Text</th>
                     </tr>
                 }

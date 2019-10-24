@@ -17,7 +17,7 @@ namespace ConsultaMD.Models.Entities
         public virtual DigitalSignature DigitalSignature { get; set; }
         [DataType(DataType.Date)]
         public DateTime RegistryDate { get; set; }
-        public Especialidades? Specialty { get; set; }
+        public Especialidad? Specialty { get; set; }
         public string Title { get; set; }
         public string Institution { get; set; }
         //0 female 1 male
@@ -28,9 +28,9 @@ namespace ConsultaMD.Models.Entities
         public string SisId { get; set; }
         public int YearTitle { get; set; }
         public int YearSpecialty { get; set; }
-        public virtual ICollection<Subspecialty> Subspecialties { get; set; }
-        public virtual ICollection<Publication> Publications { get; set; }
-        public virtual ICollection<MediumDoctor> MediumDoctors { get; set; }
+        public virtual ICollection<Subspecialty> Subspecialties { get; } = new List<Subspecialty>();
+        public virtual ICollection<Publication> Publications { get; } = new List<Publication>();
+        public virtual ICollection<MediumDoctor> MediumDoctors { get; } = new List<MediumDoctor>();
         public int GetYearsExperience()
         {
             return DateTime.Today.Year - YearTitle;

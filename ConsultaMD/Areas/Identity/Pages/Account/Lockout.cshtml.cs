@@ -10,7 +10,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LockoutModel : PageModel
     {
-        public void OnGet()
+        public static void OnGet()
         {
 
         }

@@ -119,77 +119,77 @@ namespace ConsultaMD.Areas.Patients.Controllers
                 new MapDocVM{
                     run = 9649928,
                     dr = "Hugo Menares Rodríguez",
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName(),
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName(),
                     experience = 28
                 },
                 new MapDocVM{
                     run = 12752234,
                     dr = "Marco Luengo López",
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName(),
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName(),
                     experience = 20
                 },
                 new MapDocVM{
                     run = 12116504,
                     dr = "Jaime Claramunt Llull",
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName(),
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName(),
                     experience = 19
                 },
                 new MapDocVM{
                     run = 9643638,
                     dr = "Mauricio Paris González",
                     experience = 28,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 16055808,
                     dr = "Sebastian Andres Ramirez",
                     experience = 12,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 15625915,
                     dr = "Ignacio Alfaro Quezada",
                     experience = 10,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 8749179,
                     dr = "Leonardo Fernández Hinrichs",
                     experience = 25,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 15734669,
                     dr = "Carlos Bachmann Galle",
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 13657332,
                     dr = "Juan Pablo Marquez Doren",
                     experience = 13,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 11736802,
                     dr = "Cristian Águila Rebolledo",
                     experience = 22,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 6264576,
                     dr = "Alejandro Siebert Eller",
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 12670698,
                     dr = "Alejandro Morales Mac-Hale",
                     experience = 25,
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
                 new MapDocVM{
                     run = 12498240,
                     dr = "Cristian Montecinos Contreras",
-                    especialidad = Data.EspecialidadesData.Especialidades.Oftalmologia.GetAttrName()
+                    especialidad = Data.EspecialidadesData.Especialidad.Oftalmologia.GetAttrName()
                 },
             };
             var places = new MapPlaceVM[] {

@@ -9,10 +9,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using ConsultaMD.Models;
 using ConsultaMD.Models.Entities;
-using ConsultaMD.Extensions;
-using ConsultaMD.Extensions.Validation;
+using Microsoft.Extensions.Localization;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -22,66 +20,60 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IStringLocalizer<LoginModel> _localizer;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager,
+            IStringLocalizer<LoginModel> localizer,
             ILogger<LoginModel> logger)
         {
+            _localizer = localizer;
             _signInManager = signInManager;
             _logger = logger;
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public LoginInputModel Input { get; set; }
 
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+        public List<AuthenticationScheme> ExternalLogins { get; } = new List<AuthenticationScheme>();
 
-        public string ReturnUrl { get; set; }
+        public Uri ReturnUrl { get; set; }
 
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public class InputModel
-        {
-            [Required]
-            [Extensions.Validation.RUT(ErrorMessage = "RUT no válido")]
-            public string RUT { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            [Display(Name = "Contraseña")]
-            public string Password { get; set; }
-        }
-
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(Uri returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
 
             // Clear the existing external cookie to ensure a clean login process
-            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme).ConfigureAwait(false);
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var ext = (await _signInManager.GetExternalAuthenticationSchemesAsync().ConfigureAwait(false)).ToList();
+
+            ExternalLogins.Clear();
+            ExternalLogins.AddRange(ext);
 
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
 
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.RUT, Input.Password, true, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(Input.RUT, Input.Password, true, lockoutOnFailure: true).ConfigureAwait(false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("Usuario ingresado.");
-                    return LocalRedirect(returnUrl);
+                    _logger.LogInformation(_localizer["Usuario ingresado."]);
+                    return LocalRedirect(returnUrl.ToString());
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -89,19 +81,34 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("Usuario bloqueado.");
+                    _logger.LogWarning(_localizer["Usuario bloqueado."]);
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "error de usuario / contraseña.");
-                    ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                    var ex = (await _signInManager.GetExternalAuthenticationSchemesAsync().ConfigureAwait(false)).ToList();
+                    ExternalLogins.Clear();
+                    ExternalLogins.AddRange(ex);
                     return Page();
                 }
             }
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var ext = (await _signInManager.GetExternalAuthenticationSchemesAsync().ConfigureAwait(false)).ToList();
+            ExternalLogins.Clear();
+            ExternalLogins.AddRange(ext);
             // If we got this far, something failed, redisplay form
             return Page();
         }
+    }
+    public class LoginInputModel
+    {
+        [Required]
+        [Extensions.Validation.RUT(ErrorMessage = "RUT no válido")]
+        public string RUT { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string Password { get; set; }
     }
 }

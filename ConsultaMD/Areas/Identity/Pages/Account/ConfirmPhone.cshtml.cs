@@ -20,28 +20,28 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
         public ConfirmPhoneModel(IOptions<TwilioVerifySettings> settings, UserManager<ApplicationUser> userManager)
         {
-            _settings = settings.Value;
+            _settings = settings?.Value;
             _userManager = userManager;
         }
 
         public string PhoneNumber { get; set; }
-        public string ReturnUrl { get; set; }
+        public Uri ReturnUrl { get; set; }
         public DateTime Wait { get; set; }
 
         [BindProperty, Required, Display(Name = "Código")]
         public string VerificationCode { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string returnUrl = null)
+        public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {
             ReturnUrl = returnUrl;
-            await LoadPhoneNumber();
+            await LoadPhoneNumber().ConfigureAwait(false);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            await LoadPhoneNumber();
-            returnUrl = returnUrl ?? Url.Content("~/");
+            await LoadPhoneNumber().ConfigureAwait(false);
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -51,14 +51,14 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             {
                 var verification = await VerificationCheckResource.CreateAsync(
                   to: PhoneNumber,
-                  code: VerificationCode.Replace(" ",""),
+                  code: VerificationCode.Replace(" ","", StringComparison.InvariantCulture),
                   pathServiceSid: _settings.VerificationServiceSID
-              );
+              ).ConfigureAwait(false);
                 if (verification.Status == "approved")
                 {
-                    var identityUser = await _userManager.GetUserAsync(User);
+                    var identityUser = await _userManager.GetUserAsync(User).ConfigureAwait(false);
                     identityUser.PhoneNumberConfirmed = true;
-                    var updateResult = await _userManager.UpdateAsync(identityUser);
+                    var updateResult = await _userManager.UpdateAsync(identityUser).ConfigureAwait(false);
 
                     if (updateResult.Succeeded)
                     {
@@ -79,6 +79,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             {
                 ModelState.AddModelError("",
                     "Hubo un error confirmando el código, por favor verifique el código sea correcto e inténtelo nuevamente");
+                throw;
             }
 
             return Page();
@@ -86,7 +87,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
         private async Task LoadPhoneNumber()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
             if (user == null)
             {
                 throw new Exception($"Error al cargar el ID de usuario '{_userManager.GetUserId(User)}'.");

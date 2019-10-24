@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace ConsultaMD.Extensions.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    public class CellPhone : ValidationAttribute, IClientModelValidator
+    public sealed class CellPhoneAttribute : ValidationAttribute, IClientModelValidator
     {
         public override bool IsValid(object value)
         {
@@ -17,9 +17,9 @@ namespace ConsultaMD.Extensions.Validation
         }
         public void AddValidation(ClientModelValidationContext context)
         {
-            MergeAttribute(context.Attributes, "data-val", "true");
-            var errorMessage = FormatErrorMessage(context.ModelMetadata.GetDisplayName());
-            MergeAttribute(context.Attributes, "data-val-cell", errorMessage);
+            MergeAttribute(context?.Attributes, "data-val", "true");
+            var errorMessage = FormatErrorMessage(context?.ModelMetadata.GetDisplayName());
+            MergeAttribute(context?.Attributes, "data-val-cell", errorMessage);
         }
         private bool MergeAttribute(
         IDictionary<string, string> attributes,

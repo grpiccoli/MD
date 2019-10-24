@@ -22,27 +22,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
-
-        public class InputModel
-        {
-            [Required]
-            [Display(Name="RUT")]
-            public string RUT { get; set; }
-
-            [Required]
-            [StringLength(100, ErrorMessage = "La {0} debe tener entre {2} y {1} caracteres de largo.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
-            [Display(Name="Nueva Contraseña")]
-            public string Password { get; set; }
-
-            [DataType(DataType.Password)]
-            [Display(Name = "Reingrese nueva contraseña")]
-            [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
-            public string ConfirmPassword { get; set; }
-
-            public string Code { get; set; }
-        }
+        public ResetPasswordInputModel Input { get; set; }
 
         public IActionResult OnGet(string code = null)
         {
@@ -52,7 +32,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             }
             else
             {
-                Input = new InputModel
+                Input = new ResetPasswordInputModel
                 {
                     Code = code
                 };
@@ -67,14 +47,14 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            var user = await _userManager.FindByNameAsync(Input.RUT);
+            var user = await _userManager.FindByNameAsync(Input.RUT).ConfigureAwait(false);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToPage("./ResetPasswordConfirmation");
             }
 
-            var result = await _userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
+            var result = await _userManager.ResetPasswordAsync(user, Input.Code, Input.Password).ConfigureAwait(false);
             if (result.Succeeded)
             {
                 return RedirectToPage("./ResetPasswordConfirmation");
@@ -86,5 +66,24 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             }
             return Page();
         }
+    }
+    public class ResetPasswordInputModel
+    {
+        [Required]
+        [Display(Name = "RUT")]
+        public string RUT { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "La {0} debe tener entre {2} y {1} caracteres de largo.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Nueva Contraseña")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Reingrese nueva contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
+        public string ConfirmPassword { get; set; }
+
+        public string Code { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿html {
-  position: relative;
+  position: fixed;
   touch-action: manipulation;
   height: 100vh;
   width: 100vw; }

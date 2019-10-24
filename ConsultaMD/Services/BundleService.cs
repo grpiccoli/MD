@@ -1,5 +1,6 @@
 ﻿using ConsultaMD.Models.VM;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace ConsultaMD.Services
             }
         }
         public static IEnumerable<Bundle> GetBundles(string lib) {
-            return Bundles.Where(m => m.outputFileName.Contains(lib));
+            return Bundles.Where(m => m.OutputFileName.Contains(lib, StringComparison.InvariantCulture));
         }
     }
 }

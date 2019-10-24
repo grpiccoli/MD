@@ -2,9 +2,9 @@
 
 namespace ConsultaMD.Data
 {
-    public class ClaimData
+    public static class ClaimData
     {
-        public static List<string> UserClaims { get; set; } = new List<string>
+        public static List<string> UserClaims { get; } = new List<string>
                                                             {
                                                                 "webmaster"
                                                             };

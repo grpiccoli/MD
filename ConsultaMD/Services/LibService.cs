@@ -1,5 +1,6 @@
 ﻿using ConsultaMD.Models.VM;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -19,9 +20,9 @@ namespace ConsultaMD.Services
             }
         }
 
-        public static Lib GetLibs(string lib)
+        public static LibManLibrary GetLibs(string lib)
         {
-            var libs = Libs.libraries.SingleOrDefault(m => m.library.StartsWith($"{lib}@"));
+            var libs = Libs.Libraries.SingleOrDefault(m => m.Library.StartsWith($"{lib}@", StringComparison.InvariantCulture));
             return libs;
         }
     }

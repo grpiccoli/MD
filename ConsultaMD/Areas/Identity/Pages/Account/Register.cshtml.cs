@@ -15,6 +15,7 @@ using ConsultaMD.Models.VM;
 using Microsoft.AspNetCore.Html;
 using System.Net;
 using ConsultaMD.Extensions.Validation;
+using Microsoft.Extensions.Localization;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -27,14 +28,17 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IViewRenderService _viewRenderService;
+        private readonly IStringLocalizer<RegisterModel> _localizer;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            IStringLocalizer<RegisterModel> localizer,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             IViewRenderService viewRenderService)
         {
+            _localizer = localizer;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -43,76 +47,22 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
-        public string ReturnUrl { get; set; }
+        public RegisterInputModel Input { get; set; }
+        public Uri ReturnUrl { get; set; }
 
-        public class InputModel
+        public void OnGet(Uri returnUrl = null)
         {
-            [Required]
-            [RUT(ErrorMessage = "RUT no válido")]
-            [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
-            //[Natural]
-            [Display(Name = "RUT")]
-            public string RUT { get; set; }
-
-            [Required]
-            [ReadOnly(true)]
-            [Display(Name = "Nombre Completo")]
-            [RegularExpression(@"[A-Za-zÁÉÍÓÚÑÜáéíóúüñ ]+")]
-            public string Name { get; set; }
-
-            [Display(Name = "N° Documento de Carnet")]
-            //[Required]
-            [RegularExpression(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}")]
-            [CarnetId(ErrorMessage = "{0} no válido")]
-            public string CarnetId { get; set; }
-
-            [Display(Name = "Nacionalidad")]
-            [ReadOnly(true)]
-            [Required]
-            public string Nationality { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }
-
-            [Required]
-            [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} y máximo {1} caracteres de largo.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
-            [Display(Name = "Contraseña")]
-            public string Password { get; set; }
-
-            [DataType(DataType.Password)]
-            [Display(Name = "Confirmar contraseña")]
-            [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
-            public string ConfirmPassword { get; set; }
-
-            //[Required]
-            //[Display(Name = "Previsión")]
-            //public Insurance Insurance { get; set; }
-
-            //public IEnumerable<SelectListItem> InsuranceList { get; set; } = Enum<Insurance>.ToSelect;
-
-            //[DataType(DataType.Password)]
-            //[Display(Name = "Contraseña de su Previsión")]
-            //[InsurancePassword(ErrorMessage = "Error en la combinación Previsión/{0}")]
-            //public string InsurancePassword { get; set; }
-        }
-
-        public void OnGet(string returnUrl = null)
-        {
-            Input = new InputModel();
+            Input = new RegisterInputModel();
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
             if (ModelState.IsValid)
             {
                 var rutParsed = Extensions.RUT.Unformat(Input.RUT);
-                var carnetParsing = int.TryParse(Input.CarnetId.Replace(".",""), out int carnetParsed);
+                var carnetParsing = int.TryParse(Input.CarnetId.Replace(".","", StringComparison.InvariantCulture), out int carnetParsed);
                 if (rutParsed.HasValue && carnetParsing)
                 {
                     var carnet = new Carnet
@@ -131,12 +81,12 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         Email = Input.Email,
                         Person = natural
                     };
-                    var result = await _userManager.CreateAsync(user, Input.Password);
+                    var result = await _userManager.CreateAsync(user, Input.Password).ConfigureAwait(false);
                     if (result.Succeeded)
                     {
-                        _logger.LogInformation("User created a new account with password.");
+                        _logger.LogInformation(_localizer["User created a new account with password."]);
 
-                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user).ConfigureAwait(false);
                         var callbackUrl = Url.Page(
                             "/Account/ConfirmEmail",
                             pageHandler: null,
@@ -156,16 +106,16 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         };
 
                         var emailView = await _viewRenderService
-                            .RenderToStringAsync("Shared/_ValidationEmail", emailModel);
+                            .RenderToStringAsync("Shared/_ValidationEmail", emailModel).ConfigureAwait(false);
 
                         var response = await _emailSender
-                            .SendEmailAsync(Input.Email, "Verifica tu correo", emailView, logo);
+                            .SendEmailAsync(Input.Email, "Verifica tu correo", emailView, logo).ConfigureAwait(false);
 
                         if(response.StatusCode == HttpStatusCode.Accepted)
                         {
                             user.MailConfirmationTime = DateTime.Now.AddMinutes(5);
-                            await _userManager.UpdateAsync(user);
-                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            await _userManager.UpdateAsync(user).ConfigureAwait(false);
+                            await _signInManager.SignInAsync(user, isPersistent: false).ConfigureAwait(false);
 
                             return RedirectToPage("InsuranceDetails", new { returnUrl });
                         }
@@ -184,5 +134,58 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+    }
+    public class RegisterInputModel
+    {
+        [Required]
+        [RUT(ErrorMessage = "RUT no válido")]
+        [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
+        //[Natural]
+        [Display(Name = "RUT")]
+        public string RUT { get; set; }
+
+        [Required]
+        [ReadOnly(true)]
+        [Display(Name = "Nombre Completo")]
+        [RegularExpression(@"[A-Za-zÁÉÍÓÚÑÜáéíóúüñ ]+")]
+        public string Name { get; set; }
+
+        [Display(Name = "N° Documento de Carnet")]
+        //[Required]
+        [RegularExpression(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}")]
+        [Carnet(ErrorMessage = "{0} no válido")]
+        public string CarnetId { get; set; }
+
+        [Display(Name = "Nacionalidad")]
+        [ReadOnly(true)]
+        [Required]
+        public string Nationality { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} y máximo {1} caracteres de largo.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña (al menos 6 caracteres y debe contener números letras)")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirmar contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
+        public string ConfirmPassword { get; set; }
+
+        //[Required]
+        //[Display(Name = "Previsión")]
+        //public Insurance Insurance { get; set; }
+
+        //public IEnumerable<SelectListItem> InsuranceList { get; set; } = Enum<Insurance>.ToSelect;
+
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Contraseña de su Previsión")]
+        //[InsurancePassword(ErrorMessage = "Error en la combinación Previsión/{0}")]
+        //public string InsurancePassword { get; set; }
     }
 }

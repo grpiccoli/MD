@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ConsultaMD.Models.AccountViewModels
@@ -19,6 +20,6 @@ namespace ConsultaMD.Models.AccountViewModels
 
         [Url]
         [Display(Name = "Imagen")]
-        public string ProfileImageUrl { get; set; }
+        public Uri ProfileImageUrl { get; set; }
     }
 }

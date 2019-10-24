@@ -11,7 +11,7 @@ namespace ConsultaMD.Models.Entities
         public Natural Natural { get; set; }
         public Insurance Insurance { get; set; }
         public string InsurancePassword { get; set; }
-        public virtual ICollection<Dependency> Dependants { get; set; }
-        public virtual ICollection<TimeSlot> TimeSlotAppointments { get; set; }
+        public virtual ICollection<MedicalCoverage> MedicalCoverages { get; } = new List<MedicalCoverage>();
+        public virtual ICollection<Reservation> Reservations { get; } = new List<Reservation>();
     }
 }

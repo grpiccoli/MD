@@ -26,7 +26,7 @@
             validator.form = function () {
                 var result = oldForm.apply(this, arguments);
                 var form = this.currentForm;
-                $(form).trigger((result == true) ? 'formValidationSuccess' : 'formValidationError', form);
+                $(form).trigger((result === true) ? 'formValidationSuccess' : 'formValidationError', form);
                 $(form).trigger('formValidation', [form, result]);
                 return result;
             };
@@ -36,7 +36,7 @@
             var oldElement = validator.element;
             validator.element = function (element) {
                 var result = oldElement.apply(this, arguments);
-                $(element).trigger((result == true) ? 'elementValidationSuccess' : 'elementValidationError', element);
+                $(element).trigger((result === true) ? 'elementValidationSuccess' : 'elementValidationError', element);
                 $(element).trigger('elementValidation', [element, result]);
                 return result;
             };

@@ -61,6 +61,15 @@ namespace ConsultaMD.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El {0} ingresado no es un correo electrónico válido.
+        /// </summary>
+        public static string EmailAttribute {
+            get {
+                return ResourceManager.GetString("EmailAttribute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingrese un {0} válido..
         /// </summary>
         public static string PhoneAttribute {

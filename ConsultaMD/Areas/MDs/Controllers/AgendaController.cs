@@ -29,7 +29,9 @@ namespace ConsultaMD.Areas.MDs.Views
         private readonly Uri _schedule;
         private readonly Uri _selectDr;
         private readonly Uri _getEvents;
-        public string os = Environment.OSVersion.Platform.ToString();
+        private readonly string[] _colors;
+        private readonly Dictionary<string, string> _places;
+        private readonly string[] _formats;
 
         public AgendaController(
             UserManager<ApplicationUser> userManager)
@@ -46,37 +48,35 @@ namespace ConsultaMD.Areas.MDs.Views
             _dataFeed = new Uri($"{_prefix}/class/php/patient/datafeed.php");
             _getEvents = new Uri($"{_dataFeed}?method=list");
             _userManager = userManager;
+            _colors = new string[]
+            {
+                "#FFFFFF","#808080","#000000","#FF0000","#800000","#FFFF00",
+                "#808000","#00FF00","#008000","#00FFFF","#008080","#0000FF",
+                "#000080","#FF00FF","#800080"
+            };
+            _places = new Dictionary<string, string>()
+            {
+                { "Oftalmontt Puerto Montt", "Clínica Pto Montt" },
+                { "Oftalmontt Puerto Varas", "Clínica Oftalmontt Pto Varas"},
+                { "Consulta HMenares", "Ed. Baquedano of. Dr. Menares"},
+                { "Consulta MParis", "Ed. Baquedano of. Dr. Paris"},
+                { "Consulta GNEUMANN", "Ed. Baquedano of. Dr. Neumann"},
+                { "Consulta JROSAS", "Consulta Dr. Rosas"},
+                { "Consulta CLINICA UNIVERSITARIA", "Clínica Universitaria"}
+            };
+            _formats = new string[]
+            {
+                "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Chile Summer Time)'",
+                "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Chile Standard Time)'",
+                "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(hora estándar de Chile)'",
+                "MM/dd/yyyy HH:mm"
+            };
         }
 
-        public string[] colors = new string[]
-{
-            "#FFFFFF","#808080","#000000","#FF0000","#800000","#FFFF00",
-            "#808000","#00FF00","#008000","#00FFFF","#008080","#0000FF",
-            "#000080","#FF00FF","#800080"
-};
-
-        public Dictionary<string, string> places = new Dictionary<string, string>()
-        {
-            { "Oftalmontt Puerto Montt", "Clínica Pto Montt" },
-            { "Oftalmontt Puerto Varas", "Clínica Oftalmontt Pto Varas"},
-            { "Consulta HMenares", "Ed. Baquedano of. Dr. Menares"},
-            { "Consulta MParis", "Ed. Baquedano of. Dr. Paris"},
-            { "Consulta GNEUMANN", "Ed. Baquedano of. Dr. Neumann"},
-            { "Consulta JROSAS", "Consulta Dr. Rosas"},
-            { "Consulta CLINICA UNIVERSITARIA", "Clínica Universitaria"}
-        };
-
-        public string[] formats = new string[]
-        {
-            "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Chile Summer Time)'",
-            "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Chile Standard Time)'",
-            "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(hora estándar de Chile)'",
-            "MM/dd/yyyy HH:mm"
-        };
 
         public async Task<IActionResult> Index(int? id)
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
             var loginFormValues = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("username", "16587043"),
@@ -95,16 +95,18 @@ namespace ConsultaMD.Areas.MDs.Views
             };
 
             using (HttpClient client = new HttpClient(getHandler)) {
+                getHandler.Dispose();
                 var parser = new HtmlParser();
-                var doc = await parser.ParseDocumentAsync(await client.GetStringAsync(_loginUri));
+                var doc = await parser.ParseDocumentAsync(await client.GetStringAsync(_loginUri).ConfigureAwait(false)).ConfigureAwait(false);
                 var locationOptions = doc.QuerySelectorAll("#location > option")
                     .Select(o => new Location
                     {
                         Value = o.GetAttribute("value"),
-                        Text = places.ContainsKey(o.InnerHtml) ? places[o.InnerHtml] : o.InnerHtml
+                        Text = _places.ContainsKey(o.InnerHtml) ? _places[o.InnerHtml] : o.InnerHtml
                     }).ToList();
-                await client.PostAsync(_loginUri, formContent);
-                var loginCookie = getCookies.GetCookies(_loginUri).Cast<System.Net.Cookie>().FirstOrDefault();
+                await client.PostAsync(_loginUri, formContent).ConfigureAwait(false);
+                formContent.Dispose();
+                var loginCookie = getCookies.GetCookies(_loginUri).Cast<Cookie>().FirstOrDefault();
                 var setCookies = new CookieContainer();
                 setCookies.Add(_calendar, loginCookie);
                 HttpClientHandler setHandler = new HttpClientHandler
@@ -115,15 +117,16 @@ namespace ConsultaMD.Areas.MDs.Views
                 };
                 using (HttpClient hc = new HttpClient(setHandler))
                 {
+                    setHandler.Dispose();
                     var parser2 = new HtmlParser();
-                    var doc2 = await parser2.ParseDocumentAsync(await hc.GetStringAsync(_calendar));
+                    var doc2 = await parser2.ParseDocumentAsync(await hc.GetStringAsync(_calendar).ConfigureAwait(false)).ConfigureAwait(false);
                     var doctores = doc2.QuerySelectorAll("#nameProfesional option")
                         .Select(o => new DoctorSelect { Value = o.GetAttribute("value"), Text = o.InnerHtml }).ToList();
                     var model = new AgendaVM
                     {
                         LocationList = locationOptions,
                         DoctorList = doctores,
-                        ColorList = colors
+                        ColorList = _colors
                     };
                     if (id.HasValue) model.DoctorId = id.ToString();
                     return View(model);
@@ -137,7 +140,7 @@ namespace ConsultaMD.Areas.MDs.Views
 
             if (ModelState.IsValid && id != 0)
             {
-                var user = await _userManager.GetUserAsync(User);
+                var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
                 var loginFormValues = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("username", "16587043"),
@@ -157,8 +160,9 @@ namespace ConsultaMD.Areas.MDs.Views
 
                     using (HttpClient client = new HttpClient(getHandler))
                     {
+                        getHandler.Dispose();
                         var parser = new HtmlParser();
-                        var doc = await parser.ParseDocumentAsync(await client.GetStringAsync(_loginUri));
+                        var doc = await parser.ParseDocumentAsync(await client.GetStringAsync(_loginUri).ConfigureAwait(false)).ConfigureAwait(false);
                         var locationOptions = doc.QuerySelectorAll("#location > option")
                             .Select(o => new Location { Value = o.GetAttribute("value"), Text = o.InnerHtml }).ToList();
 
@@ -185,10 +189,10 @@ namespace ConsultaMD.Areas.MDs.Views
                                 };
 
                                 HttpClient locClient = new HttpClient(locHandler);
-                                var locPos = await locClient.PostAsync(_loginUri, locContent);
-                                var locRes = await locPos.Content.ReadAsStringAsync();
+                                var locPos = await locClient.PostAsync(_loginUri, locContent).ConfigureAwait(false);
+                                var locRes = await locPos.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                                System.Net.Cookie locCookie = locCookies.GetCookies(_loginUri).Cast<System.Net.Cookie>().FirstOrDefault();
+                                Cookie locCookie = locCookies.GetCookies(_loginUri).Cast<Cookie>().FirstOrDefault();
 
                                 CookieContainer docCookies = new CookieContainer();
                                 docCookies.Add(_doctores, locCookie);
@@ -199,11 +203,11 @@ namespace ConsultaMD.Areas.MDs.Views
                                     UseDefaultCredentials = false
                                 };
                                 HttpClient docClient = new HttpClient(docHandler);
-                                var tmp = await docClient.GetStringAsync(_doctores);
+                                var tmp = await docClient.GetStringAsync(_doctores).ConfigureAwait(false);
 
-                                if (tmp.Contains("=" + id.ToString() + ">"))
+                                if (tmp.Contains("=" + id.ToString(CultureInfo.InvariantCulture) + ">", StringComparison.InvariantCulture))
                                 {
-                                    System.Net.Cookie docCookie = docCookies.GetCookies(_doctores).Cast<System.Net.Cookie>().FirstOrDefault();
+                                    Cookie docCookie = docCookies.GetCookies(_doctores).Cast<Cookie>().FirstOrDefault();
 
                                     CookieContainer selCookies = new CookieContainer();
                                     selCookies.Add(_selectDr, docCookie);
@@ -216,14 +220,14 @@ namespace ConsultaMD.Areas.MDs.Views
                                     HttpClient selClient = new HttpClient(selHandler);
                                     var selForm = new List<KeyValuePair<string, string>>
                                     {
-                                new KeyValuePair<string, string>("idp", id.ToString())
+                                new KeyValuePair<string, string>("idp", id.ToString(CultureInfo.InvariantCulture))
                                     };
                                     var selContent = new FormUrlEncodedContent(selForm);
-                                    var selPos = await selClient.PostAsync(_selectDr, selContent);
+                                    var selPos = await selClient.PostAsync(_selectDr, selContent).ConfigureAwait(false);
 
-                                    var selRes = await selPos.Content.ReadAsStringAsync();
+                                    var selRes = await selPos.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                                    System.Net.Cookie selCookie = selCookies.GetCookies(_selectDr).Cast<System.Net.Cookie>().FirstOrDefault();
+                                Cookie selCookie = selCookies.GetCookies(_selectDr).Cast<Cookie>().FirstOrDefault();
 
                                     CookieContainer eventCookies = new CookieContainer();
                                     eventCookies.Add(_getEvents, selCookie);
@@ -242,9 +246,9 @@ namespace ConsultaMD.Areas.MDs.Views
                                 new KeyValuePair<string, string>("timezone", "-4")
                                     };
                                     var eventContent = new FormUrlEncodedContent(eventForm);
-                                    var eventRes = await eventClient.PostAsync(_getEvents, eventContent);
-                                    var events = (JObject)JsonConvert.DeserializeObject(await eventRes.Content.ReadAsStringAsync());
-                                    var loca = int.Parse(loc.Value);
+                                    var eventRes = await eventClient.PostAsync(_getEvents, eventContent).ConfigureAwait(false);
+                                    var events = (JObject)JsonConvert.DeserializeObject(await eventRes.Content.ReadAsStringAsync().ConfigureAwait(false));
+                                    var loca = int.Parse(loc.Value, CultureInfo.InvariantCulture);
 
                                 ////start timer
                                 //var watch = Stopwatch.StartNew();
@@ -259,58 +263,58 @@ namespace ConsultaMD.Areas.MDs.Views
                                         {
                                             return new Cita
                                             {
-                                                Id = int.Parse(e[0].ToString()),
+                                                Id = int.Parse(e[0].ToString(), CultureInfo.InvariantCulture),
                                                 Atencion = e[1].ToString(),
-                                                Start = ParseDate(e[2].ToString(), formats),
-                                                End = ParseDate(e[3].ToString(), formats),
+                                                Start = ParseDate(e[2].ToString(), _formats),
+                                                End = ParseDate(e[3].ToString(), _formats),
                                                 Lugar = loc.Text,
-                                                LocId = int.Parse(loc.Value),
+                                                LocId = int.Parse(loc.Value, CultureInfo.InvariantCulture),
                                                 Title = "Libre",
-                                                Url = "#",
-                                                BackgroundColor = colors[loca],
+                                                Url = new Uri("#", UriKind.Relative),
+                                                BackgroundColor = _colors[loca],
                                                 DoctorId = id
                                             };
                                         }
                                         else
                                         {
                                             var prevision = e[13].ToString();
-                                            var run = (int?)int.Parse(e[11].ToString());
+                                            var run = (int?)int.Parse(e[11].ToString(), CultureInfo.InvariantCulture);
                                             var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
                                             if (run.HasValue)
                                             {
                                                 var patient = new Patient { NaturalId = run.Value };
                                                 return new Cita
                                                 {
-                                                    Id = int.Parse(e[0].ToString()),
+                                                    Id = int.Parse(e[0].ToString(), CultureInfo.InvariantCulture),
                                                     Atencion = e[1].ToString(),
-                                                    Start = ParseDate(e[2].ToString(), formats),
-                                                    End = ParseDate(e[3].ToString(), formats),
+                                                    Start = ParseDate(e[2].ToString(), _formats),
+                                                    End = ParseDate(e[3].ToString(), _formats),
                                                     Prevision = prevision,
                                                     Edad = string.IsNullOrWhiteSpace(e[14].ToString()) ?
-                                                            null : (int?)int.Parse(Regex.Replace(e[14].ToString(), "\\D", "")),
+                                                            null : (int?)int.Parse(Regex.Replace(e[14].ToString(), "\\D", ""), CultureInfo.InvariantCulture),
                                                     Lugar = loc.Text,
-                                                    LocId = int.Parse(loc.Value),
+                                                    LocId = int.Parse(loc.Value, CultureInfo.InvariantCulture),
                                                     RUN = run.Value,
                                                     Title = patient.Natural.GetRUT(),
-                                                    Url = "#",
-                                                    BackgroundColor = colors[loca],
+                                                    Url = new Uri("#", UriKind.Relative),
+                                                    BackgroundColor = _colors[loca],
                                                     DoctorId = id
                                                 };
                                             }
                                             return new Cita
                                             {
-                                                Id = int.Parse(e[0].ToString()),
+                                                Id = int.Parse(e[0].ToString(), CultureInfo.InvariantCulture),
                                                 Atencion = e[1].ToString(),
-                                                Start = ParseDate(e[2].ToString(), formats),
-                                                End = ParseDate(e[3].ToString(), formats),
+                                                Start = ParseDate(e[2].ToString(), _formats),
+                                                End = ParseDate(e[3].ToString(), _formats),
                                                 Prevision = prevision,
                                                 Edad = string.IsNullOrWhiteSpace(e[14].ToString()) ?
-                                                null : (int?)int.Parse(Regex.Replace(e[14].ToString(), "\\D", "")),
+                                                null : (int?)int.Parse(Regex.Replace(e[14].ToString(), "\\D", ""), CultureInfo.InvariantCulture),
                                                 Lugar = loc.Text,
-                                                LocId = int.Parse(loc.Value),
+                                                LocId = int.Parse(loc.Value, CultureInfo.InvariantCulture),
                                                 Title = $"sin RUT",
-                                                Url = "#",
-                                                BackgroundColor = colors[loca],
+                                                Url = new Uri("#", UriKind.Relative),
+                                                BackgroundColor = _colors[loca],
                                                 DoctorId = id
                                             };
                                         }
@@ -324,13 +328,13 @@ namespace ConsultaMD.Areas.MDs.Views
                             }
                             }
                         );
-                        await Task.WhenAll(tasks);
+                        await Task.WhenAll(tasks).ConfigureAwait(false);
                     }
                 }
             }
             return Json(citas);
         }
-        public DateTime? ParseDate(string val, string[] formats)
+        public static DateTime? ParseDate(string val, string[] formats)
         {
             var success = DateTime.TryParseExact(val,
                     formats, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out DateTime start);

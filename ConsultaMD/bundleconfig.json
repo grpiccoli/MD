@@ -1,7 +1,7 @@
 [
   //ALL PAGES
   {
-    "outputFileName": "wwwroot/js/main.min.js",
+    "outputFileName": "wwwroot/js/main.js",
     "inputFiles": [
       "src/scripts/loader.js"
     ]
@@ -9,22 +9,22 @@
   {
     "outputFileName": "wwwroot/css/main.min.css",
     "inputFiles": [
-      "src/styles/site.css",
-      "src/styles/bootstrap.css",
-      "src/styles/fixMSelectiOS.css",
-      "src/styles/loader.css"
+      "src/styles/site.min.css",
+      "src/styles/bootstrap.min.css",
+      "src/styles/fixMSelectiOS.min.css",
+      "src/styles/loader.min.css"
     ]
   },
   // 1.7 / 1.8 / 1.9
   //MENU
   {
-    "outputFileName": "wwwroot/js/forgotPassword.min.js",
+    "outputFileName": "wwwroot/js/forgotPassword.js",
     "inputFiles": [
       "src/scripts/add_rut_validation.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/sidenav.min.js",
+    "outputFileName": "wwwroot/js/sidenav.js",
     "inputFiles": [
       "src/scripts/sidenav.js"
     ]
@@ -32,12 +32,12 @@
   {
     "outputFileName": "wwwroot/css/sidenav.min.css",
     "inputFiles": [
-      "src/styles/sidenav.css"
+      "src/styles/sidenav.min.css"
     ]
   },
   //Validation
   {
-    "outputFileName": "wwwroot/js/validation.min.js",
+    "outputFileName": "wwwroot/js/validation.js",
     "inputFiles": [
       "src/scripts/validateAdapterMCSS.js",
       "src/scripts/validate-localization.js"
@@ -46,7 +46,7 @@
   },
   //Identity/Account/LogIn
   {
-    "outputFileName": "wwwroot/js/login.min.js",
+    "outputFileName": "wwwroot/js/login.js",
     "inputFiles": [
       //"src/scripts/format_rut.js",
       "src/scripts/add_rut_validation.js",
@@ -55,7 +55,7 @@
   },
   //Carousel Splash
   {
-    "outputFileName": "wwwroot/js/splash.min.js",
+    "outputFileName": "wwwroot/js/splash.js",
     "inputFiles": [
       "src/scripts/splash.js"
     ]
@@ -63,13 +63,13 @@
   {
     "outputFileName": "wwwroot/css/splash.min.css",
     "inputFiles": [
-      "src/styles/splash.css",
-      "src/styles/center-image.css"
+      "src/styles/splash.min.css",
+      "src/styles/center-image.min.css"
     ]
   },
   //Identity/Account/Register
   {
-    "outputFileName": "wwwroot/js/register.min.js",
+    "outputFileName": "wwwroot/js/register.js",
     "inputFiles": [
       //"wwwroot/js/Global/format_rut.js",
       "src/scripts/add_rut_carnet_validation.js"
@@ -78,7 +78,7 @@
   },
   //Identity/Account/Insurance
   {
-    "outputFileName": "wwwroot/js/insurance.min.js",
+    "outputFileName": "wwwroot/js/insurance.js",
     "inputFiles": [
       "src/scripts/selectInsurance.js",
       "src/scripts/debounce.js"
@@ -86,14 +86,14 @@
   },
   //VerifyPhone
   {
-    "outputFileName": "wwwroot/js/verifyphone.min.js",
+    "outputFileName": "wwwroot/js/verifyphone.js",
     "inputFiles": [
       "src/scripts/formatPhone.js"
     ]
   },
   //Identity/Account/ConfirmPhone
   {
-    "outputFileName": "wwwroot/js/confirmPhone.min.js",
+    "outputFileName": "wwwroot/js/confirmPhone.js",
     "inputFiles": [ "src/scripts/confirmPhone.js" ]
   },
   {
@@ -108,7 +108,7 @@
   //},
   //Map
   {
-    "outputFileName": "wwwroot/js/map.min.js",
+    "outputFileName": "wwwroot/js/map.js",
     "inputFiles": [ "src/scripts/map.js" ]
   },
   {
@@ -126,14 +126,25 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/doctor-details.min.js",
+    "outputFileName": "wwwroot/js/doctor-details.js",
     "inputFiles": [
       "src/scripts/doctor-details.js"
     ]
+  },
+  //Confirm-Date
+  {
+    "outputFileName": "wwwroot/css/confirm-date.min.css",
+    "inputFiles": [
+      "src/styles/confirm-date.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/confirm-date.min.js",
+    "inputFiles": ["src/scripts/confirm-date.js"]
   }
   //AGENDA
   //{
-  //  "outputFileName": "wwwroot/js/agenda.min.js",
+  //  "outputFileName": "wwwroot/js/agenda.js",
   //  "inputFiles": [
   //    "wwwroot/js/MD/modal-action.js",
   //    "wwwroot/js/MD/cal.js",

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ConsultaMD.Models.Entities
+﻿namespace ConsultaMD.Models.Entities
 {
     public class Natural : Person
     {
@@ -9,13 +7,15 @@ namespace ConsultaMD.Models.Entities
         public virtual Patient Patient { get; set; }
         public int DoctorId { get; set; }
         public virtual Doctor Doctor { get; set; }
+        public string FullNameFirst { get; set; }
+        public string FullLastFirst { get; set; }
         public string GetName()
         {
             if(!string.IsNullOrWhiteSpace(FullNameFirst))
                 return FullNameFirst.Split(" ")[0];
             return FullLastFirst.Split(" ")[0];
         }
-        public string GetSurnameF()
+        public string GetSurname()
         {
             if (!string.IsNullOrWhiteSpace(FullLastFirst))
                 return FullLastFirst.Split(" ")[0];

@@ -1,6 +1,12 @@
 ﻿using ConsultaMD.Data;
+using ConsultaMD.Extensions;
+using ConsultaMD.Models.Entities;
+using ConsultaMD.Models.VM;
 using ConsultaMD.Models.VM.PatientsVM;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace ConsultaMD.Areas.Patients.Controllers
 {
@@ -13,43 +19,35 @@ namespace ConsultaMD.Areas.Patients.Controllers
         {
             _context = context;
         }
-        public IActionResult ConfirmPayment([Bind(
-            "RutCliente, NombreCliente, Dia, Hora, Direccion, RutDoctor, DoctorId, " +
-            "Lugar, NombreDoctor, Especialidad, EspecialidadId, Address, PlaceId")]
-        PaymentVM model)
+        [HttpGet]
+        public async Task<IActionResult> ConfirmDate(int id)
         {
-            ViewData["run"] = User.Identity.Name.Replace(".", "").Split("-")[0];
-
+            ViewData["Title"] = "Confirmar y Pagar";
             if (ModelState.IsValid)
             {
-                return View(model);
+                var rutParsed = RUT.Unformat(User.Identity.Name);
+                if (rutParsed != null)
+                {
+                    var reservation = await _context.Reservations
+                        .Include(r => r.Patient)
+                            .ThenInclude(p => p.Natural)
+                        .Include(r => r.TimeSlot)
+                            .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.MediumDoctor)
+                                    .ThenInclude(md => md.Doctor)
+                                        .ThenInclude(d => d.Natural)
+                        .Include(r => r.TimeSlot)
+                            .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.MediumDoctor)
+                                    .ThenInclude(md => (MedicalOffice)md.MedicalAttentionMedium)
+                                        .ThenInclude(mo => mo.Place)
+                        .SingleOrDefaultAsync(r => r.Id == id).ConfigureAwait(false);
+
+                    var paymentvm = new ReservationDetails(reservation);
+                    return View(paymentvm);
+                }
             }
             return RedirectToAction("Map", "Search", new { area = "Patients" });
-        }
-        public JsonResult BookingMorning(string date, string placeId, int drId)
-        {
-            var morning = new[]
-            {
-                new {hora="9:00"},
-                new {hora="9:10"},
-                new {hora="9:20"},
-                new {hora="9:30"},
-                new {hora="9:40"},
-                new {hora="9:50"},
-                new {hora="10:00"},
-                new {hora="10:10"},
-                new {hora="10:20"},
-                new {hora="10:30"},
-                new {hora="10:40"},
-                new {hora="10:50"},
-                new {hora="11:00"},
-                new {hora="14:10"},
-                new {hora="14:20"},
-                new {hora="14:30"},
-                new {hora="14:40"},
-                new {hora="14:50"}
-            };
-            return Json(morning);
         }
         public IActionResult BookAppointment()
         {
@@ -62,29 +60,9 @@ namespace ConsultaMD.Areas.Patients.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult ReservationSummary([Bind(
-            "RutCliente, NombreCliente, Dia, Hora, Direccion, RutDoctor, DoctorId, " +
-            "Lugar, NombreDoctor, Especialidad, EspecialidadId, Address, PlaceId, PaymentType")] PaymentVM model)
-        {
-            ViewData["run"] = User.Identity.Name.Replace(".", "").Split("-")[0];
-            if (ModelState.IsValid)
-            {
-                //return RedirectToAction("Sbono", "Consalud", new
-                //{
-                //    rutp = model.RutCliente,
-                //    rutdr = model.RutDoctor,
-                //    placeId = model.PlaceId
-                //}
-                //);
-                return View(model);
-            }
-            return View("Error");
-        }
         public IActionResult TransactionHistory()
         {
             return View();
         }
-
     }
 }

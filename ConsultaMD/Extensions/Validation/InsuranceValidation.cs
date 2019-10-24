@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 namespace ConsultaMD.Extensions.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    public class Insurance : ValidationAttribute, IClientModelValidator
+    public sealed class InsuranceAttribute : ValidationAttribute, IClientModelValidator
     {
         public override bool IsValid(object value)
         {
@@ -15,9 +15,9 @@ namespace ConsultaMD.Extensions.Validation
 
         public void AddValidation(ClientModelValidationContext context)
         {
-            MergeAttribute(context.Attributes, "data-val", "true");
+            MergeAttribute(context?.Attributes, "data-val", "true");
             var errorMessage = FormatErrorMessage(context.ModelMetadata.GetDisplayName());
-            MergeAttribute(context.Attributes, "data-val-insurance", errorMessage);
+            MergeAttribute(context?.Attributes, "data-val-insurance", errorMessage);
         }
 
         private bool MergeAttribute(

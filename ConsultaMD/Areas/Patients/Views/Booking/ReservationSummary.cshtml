@@ -1,4 +1,4 @@
-﻿@model PaymentVM
+﻿@model ReservationDetails
 
 @{
     ViewData["Title"] = "Resumen de Reserva";
@@ -14,7 +14,7 @@
                 <div class="card-content">
                     <span class="card-title">Resumen Paciente</span>
                     <table>
-                        <tr>
+                        @*<tr>
                             <th class="clinic-text">Rut Titular</th>
                             <td>@Model.RutCliente</td>
                         </tr>
@@ -37,7 +37,7 @@
                         <tr>
                             <th class="clinic-text">Nombre</th>
                             <td>@Model.NombreDoctor</td>
-                        </tr>
+                        </tr>*@
                     </table>
                 </div>
             </div>

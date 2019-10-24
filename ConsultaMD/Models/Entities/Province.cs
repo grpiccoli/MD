@@ -9,7 +9,7 @@ namespace ConsultaMD.Models.Entities
     {
         public int RegionId { get; set; }
         public virtual Region Region { get; set; }
-        public virtual ICollection<Commune> Communes { get; set; }
-        public virtual ICollection<AreaCodeProvince> AreaCodeProvinces { get; set; }
+        public virtual ICollection<Commune> Communes { get; } = new List<Commune>();
+        public virtual ICollection<AreaCodeProvince> AreaCodeProvinces { get; } = new List<AreaCodeProvince>();
     }
 }

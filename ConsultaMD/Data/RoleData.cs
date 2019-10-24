@@ -2,9 +2,9 @@
 
 namespace ConsultaMD.Data
 {
-    public class RoleData
+    public static class RoleData
     {
-        public static List<string> ApplicationRoles { get; set; } = new List<string>
+        public static List<string> ApplicationRoles { get; } = new List<string>
                                                             {
                                                                 "Administrator",
                                                                 "Editor",

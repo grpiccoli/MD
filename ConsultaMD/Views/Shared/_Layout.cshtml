@@ -5,7 +5,7 @@
     <meta http-equiv="MSThemeCompatible" content="Yes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
     <title>@ViewData["Title"] - ConsultaMD</title>
     <meta name="author" content="EPIC Solutions" />
     <meta name="description" content="Consulta Médica" />
@@ -48,6 +48,14 @@
     @this.WriteBlocks("TOPStyles")
     @this.WriteBlocks("Styles")
     @RenderSection("Styles", required: false)
+    <noscript>
+        <style>
+            /*** Reinstate scrolling for non-JS clients*/
+            [data-simplebar] {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
 </head>
 <body data-controller="@ViewContext.RouteData.Values["Controller"]" data-action="@ViewContext.RouteData.Values["Action"]">
     @if (User.Identity.IsAuthenticated)

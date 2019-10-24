@@ -10,38 +10,29 @@ using System.Reflection;
 
 namespace ConsultaMD.Data
 {
-    public class BulkInsert
+    public static class BulkInsert
     {
         public static void RunSql<TSource>(
             string path,
             string conn)
         {
             var name = new Pluralizer().Pluralize(typeof(TSource).ToString().Split(".").Last());
-            var bulkinsert = "BULK INSERT dbo.{0} FROM '{1}' WITH (DATAFILETYPE='widechar')";
-            var entries = Path.Combine(path, $"{name}.tsv");
-            var queryString = string.Format(bulkinsert, name, entries);
             using (SqlConnection connection = new SqlConnection(conn))
             {
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                using (SqlCommand command = new SqlCommand())
                 {
+                    command.Connection = connection;
+                    //command.Parameters.Add(
+                    //    "@dbo", SqlDbType.NChar).Value = $"";
+                    //command.Parameters.Add(
+                    //    "@file", SqlDbType.NChar).Value = $"'{Path.Combine(path, $"{name}.tsv")}'";
                     command.CommandType = CommandType.Text;
                     command.CommandTimeout = 0;
-                    command.Connection.Open();
-                    //connection.Open();
-                    command.ExecuteNonQuery();
-                    command.Connection.Close();
-                    //SqlDataReader reader = command.ExecuteReader();
-                    //try
-                    //{
-                    //    while (reader.Read())
-                    //    {
-                    //        Console.WriteLine("{0}", reader.ToString());
-                    //    }
-                    //}
-                    //finally
-                    //{
-                    //    reader.Close();
-                    //}
+                    command.CommandText = 
+                        $"BULK INSERT dbo.{name} FROM '{Path.Combine(path, $"{name}.tsv")}' WITH (DATAFILETYPE='widechar')";
+                    connection.Open();
+                    object accountNumber = command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
         }
@@ -54,7 +45,7 @@ namespace ConsultaMD.Data
 
         public static PropertyInfo GetPropertyInfo<TSource>(Expression<Func<TSource, object>> propertyLambda)
         {
-            if (!(propertyLambda.Body is MemberExpression member))
+            if (!(propertyLambda?.Body is MemberExpression member))
             {
                 var ubody = (UnaryExpression)propertyLambda.Body;
                 member = ubody.Operand as MemberExpression;

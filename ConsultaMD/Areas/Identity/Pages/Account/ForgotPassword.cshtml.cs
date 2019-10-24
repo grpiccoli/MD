@@ -31,21 +31,14 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
-
-        public class InputModel
-        {
-            [Required]
-            [Display(Name="RUT")]
-            public string RUT { get; set; }
-        }
+        public ForgotPasswordInputModel Input { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(Input.RUT);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                var user = await _userManager.FindByNameAsync(Input.RUT).ConfigureAwait(false);
+                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user).ConfigureAwait(false)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return RedirectToPage("./ForgotPasswordConfirmation");
@@ -53,7 +46,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
                 // For more information on how to enable account confirmation and password reset please 
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user).ConfigureAwait(false);
                 var callbackUrl = Url.Page(
                     "/Account/ResetPassword",
                     pageHandler: null,
@@ -73,16 +66,21 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 };
 
                 var emailView = await _viewRenderService
-                    .RenderToStringAsync("Shared/_ValidationEmail", emailModel);
+                    .RenderToStringAsync("Shared/_ValidationEmail", emailModel).ConfigureAwait(false);
 
                 var maskedEmail = Masking.MaskEmail(user.Email);
                 await _emailSender.SendEmailAsync(
                     user.Email,
-                    "Recuperar Contraseña",emailView, logo);
+                    "Recuperar Contraseña",emailView, logo).ConfigureAwait(false);
                 return RedirectToPage("./ForgotPasswordConfirmation", new { maskedEmail });
             }
-
             return Page();
         }
+    }
+    public class ForgotPasswordInputModel
+    {
+        [Required]
+        [Display(Name = "RUT")]
+        public string RUT { get; set; }
     }
 }

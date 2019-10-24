@@ -22,6 +22,15 @@
       ]
     },
     {
+      "library": "anypicker@2.0.9",
+      "destination": "wwwroot/lib/anypicker/",
+      "files": [
+        "dist/anypicker-all.min.css",
+        "dist/anypicker.min.js",
+        "dist/i18n/anypicker-i18n.js"
+      ]
+    },
+    {
       "library": "materialize-social@1.0.3",
       "destination": "wwwroot/lib/materialize-social/",
       "files": [
@@ -199,7 +208,7 @@
       "files": [ "bundle/libphonenumber-max.js" ]
     },
     {
-      "library": "simplebar@4.2.1",
+      "library": "simplebar@5.0.2",
       "destination": "wwwroot/lib/simplebar/",
       "files": [ "dist/simplebar.min.css", "dist/simplebar.min.js" ]
     },

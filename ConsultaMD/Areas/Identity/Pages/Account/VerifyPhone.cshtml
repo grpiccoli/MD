@@ -19,6 +19,13 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <button type="submit" class="btn waves-effect waves-light white-text teal pill">Enviar código de verificación</button>
+            <div class="col s6">
+                <p class="right-align">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
+                        iniciar sesión con otro usuario
+                    </a>
+                </p>
+            </div>
         </form>
     </div>
 </div>

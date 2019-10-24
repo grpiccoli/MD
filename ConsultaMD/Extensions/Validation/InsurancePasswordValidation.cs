@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace ConsultaMD.Extensions.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    public class InsurancePassword : ValidationAttribute, IClientModelValidator
+    public sealed class InsurancePasswordAttribute : ValidationAttribute, IClientModelValidator
     {
         public override bool IsValid(object value)
         {
@@ -14,9 +14,9 @@ namespace ConsultaMD.Extensions.Validation
         }
         public void AddValidation(ClientModelValidationContext context)
         {
-            MergeAttribute(context.Attributes, "data-val", "true");
+            MergeAttribute(context?.Attributes, "data-val", "true");
             var errorMessage = FormatErrorMessage(context.ModelMetadata.GetDisplayName());
-            MergeAttribute(context.Attributes, "data-val-mipwd", errorMessage);
+            MergeAttribute(context?.Attributes, "data-val-mipwd", errorMessage);
         }
         private bool MergeAttribute(
         IDictionary<string, string> attributes,

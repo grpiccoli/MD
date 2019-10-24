@@ -7,37 +7,35 @@
 <partial name="_Libs" model='(new string[]{
     "simplebar", "moment", "doctor-details" },"")' />
 
+<div class="fixed-action-btn">
+    <a class="btn-floating clinic-desc" id="toggle-center">
+        <i class="material-icons">location_off</i>
+    </a>
+</div>
 <div id="Booking">
-    <div id="map-view" style="height:100%;width:100%;">
-        <div id="map" style="height:100%;"></div>
+    <div id="map-view">
+        <div id="map"></div>
     </div>
-    <div id="date-view" style="display:none;height:100%;">
-        <div class="row" style="height:100%;">
-            <div class="col m4 s12 offset-m4 hide-on-small-only" style="height:100%;">
-                <h5 class="clinic-text">Mañana (AM)</h5>
-                <div style="height:100%;" data-simplebar>
+    <div id="date-view">
+        <div class="row h-100" data-simplebar>
+            <div class="col s12 m6">
+                <h5 class="clinic-text center">Mañana</h5>
+                <div>
+                    <section id="BookingMorning"></section>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <h5 class="clinic-text center">Tarde</h5>
+                <div>
+                    <section id="BookingAfternoon"></section>
+                </div>
+            </div>
+            @*<div class="col s12 hide-on-med-and-up" data-simplebar>
+                    <h5 class="clinic-text">Horarios Disponibles</h5>
                     <section class="BookingMorning"></section>
-                </div>
-            </div>
-            <div class="col m4 s12 hide-on-small-only" style="height:100%;">
-                <h5 class="clinic-text">Tarde (PM)</h5>
-                <div style="height:100%;" data-simplebar>
                     <section class="BookingAfternoon"></section>
-                </div>
-            </div>
-            <div class="col s12 hide-on-med-and-up" style="height:100%" data-simplebar>
-                <h5 class="clinic-text">Horarios Disponibles</h5>
-                <section class="BookingMorning"></section>
-                <section class="BookingAfternoon"></section>
-            </div>
+                </div>*@
         </div>
-    </div>
-    <div id="floating-menu" class="fixed-action-btn hide-on-med-and-up">
-        <a data-target="clinic-bg" href="#" class="sidenav-trigger btn-floating btn-large clinic-desc scale-transition">
-            <img src="/img/doc/@(Model.DocVM.NaturalId).min.jpg" 
-                 class="circle" style="max-height:60px;"
-                 asp-append-version="true"/>
-        </a>
     </div>
 </div>
 
@@ -56,15 +54,16 @@
     <li class="white-text active input-field m-0">
         <form id="BookForm" method="post">
             <i class="clinic-text material-icons prefix">location_on</i>
-            <select class="white-text " asp-for="PlaceId" asp-items="Model.PlacesList"></select>
-            <input id="date-btn" type="button" class="btn clinic-desc datepicker sidenav-close" value="Seleccionar Fecha y Hora" />
+            <select class="white-text " asp-for="MdId" asp-items="Model.MdList"></select>
+            <input asp-for="Date" type="button" class="btn clinic-desc datepicker sidenav-close" value="Seleccionar Fecha y Hora" />
             <span class="hide">
-                <input asp-for="Date" />
+                <input asp-for="Title" />
                 <input asp-for="DocVM.Id" />
                 <input asp-for="DocVM.NaturalId" />
-                <input asp-for="Time" />
                 <input asp-for="DocVM.Specialty" />
+                <input asp-for="TimeSlotId" />
                 <input asp-for="Last" />
+                <select asp-for="PlaceId" asp-items="Model.PlaceList"></select>
             </span>
         </form>
     </li>
@@ -86,9 +85,9 @@
                             </td>
                             <td id="insuranceList">
                                 @*@foreach(var img in Model.PlaceInsurances[Model.PlaceId])
-                {
-                    <img alt="@img" href="/img/mi/@img-icon.min.png" />
-                }*@
+                                    {
+                                        <img alt="@img" href="/img/mi/@img-icon.min.png" />
+                                    }*@
                             </td>
                         </tr>
                         <tr>
@@ -159,13 +158,13 @@
                             </td>
                         </tr>
                         @*<tr>
-            <td>
-                Especialidad
-            </td>
-            <td>
-                @Html.DisplayFor(m => m.DocVM.Specialty)
-            </td>
-        </tr>*@
+                                <td>
+                                    Especialidad
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => m.DocVM.Specialty)
+                                </td>
+                            </tr>*@
                         <tr>
                             <td>
                                 Nacionalidad

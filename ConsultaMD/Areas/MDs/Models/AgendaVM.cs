@@ -11,6 +11,6 @@ namespace ConsultaMD.Areas.MDs.Models
         public string DoctorId { get; set; }
         public IEnumerable<SelectListItem> DoctorList { get; set; }
         public IEnumerable<Location> LocationList { get; set; }
-        public string[] ColorList { get; set; }
+        public IEnumerable<string> ColorList { get; set; }
     }
 }

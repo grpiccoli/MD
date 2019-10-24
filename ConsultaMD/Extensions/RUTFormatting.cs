@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace ConsultaMD.Extensions
 {
@@ -28,7 +29,7 @@ namespace ConsultaMD.Extensions
                 }
             }
             Digito = 11 - (Acumulador % 11);
-            RutDigito = Digito.ToString().Trim();
+            RutDigito = Digito.ToString(CultureInfo.InvariantCulture).Trim();
             if (Digito == 10)
             {
                 RutDigito = "K";
@@ -45,11 +46,11 @@ namespace ConsultaMD.Extensions
         }
         public static (int rut, string dv)? Unformat(string formatted)
         {
-            var array = formatted.Replace(".", "").Split("-");
+            var array = formatted?.Replace(".", "", StringComparison.InvariantCulture).Split("-");
             var parsed = int.TryParse(array[0], out int rut);
             if (parsed)
             {
-                if(DV(rut) == array[1].ToUpper()) return (rut, dv: array[1]);
+                if(DV(rut) == array[1].ToUpper(new CultureInfo("es-CL"))) return (rut, dv: array[1]);
             }
             return null;
         }

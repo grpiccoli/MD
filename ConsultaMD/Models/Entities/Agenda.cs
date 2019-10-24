@@ -11,6 +11,6 @@ namespace ConsultaMD.Models.Entities
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public TimeSpan Duration { get; set; }
-        public virtual ICollection<TimeSlot> TimeSlots { get; set; }
+        public virtual ICollection<TimeSlot> TimeSlots { get; } = new List<TimeSlot>();
     }
 }

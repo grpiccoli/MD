@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -13,30 +14,30 @@ namespace ConsultaMD.Services
 {
     public class LocalizedValidationMetadataProvider : IValidationMetadataProvider
     {
+        private readonly ResourceManager _resourceManager;
+        private readonly Type _resourceType;
         public LocalizedValidationMetadataProvider()
         {
         }
-        private readonly ResourceManager resourceManager;
-        private readonly Type resourceType;
-        public LocalizedValidationMetadataProvider(string baseName, Type type)
+        public LocalizedValidationMetadataProvider(string baseName, Type resourceType)
         {
-            resourceType = type;
-            resourceManager = new ResourceManager(baseName,
-                type.GetTypeInfo().Assembly);
+            _resourceType = resourceType;
+            _resourceManager = new ResourceManager(baseName,
+                resourceType.GetTypeInfo().Assembly);
         }
         public void CreateValidationMetadata(ValidationMetadataProviderContext context)
         {
-            if (context.Key.ModelType.GetTypeInfo().IsValueType && 
-                context.ValidationMetadata.ValidatorMetadata
-                .Where(m => m.GetType() == typeof(RequiredAttribute)).Count() == 0)
+            if (context != null && context.Key.ModelType.GetTypeInfo().IsValueType &&
+                !context.ValidationMetadata.ValidatorMetadata
+                .Where(m => m.GetType() == typeof(RequiredAttribute)).Any())
                 context.ValidationMetadata.ValidatorMetadata.Add(new RequiredAttribute());
-            foreach (var attribute in context.ValidationMetadata.ValidatorMetadata)
+            foreach (var attribute in context?.ValidationMetadata.ValidatorMetadata)
             {
                 var tAttr = attribute as ValidationAttribute;
                 if (tAttr?.ErrorMessage == null && tAttr?.ErrorMessageResourceName == null)
                 {
                     var name = tAttr.GetType().Name;
-                    if (ValidationMessages.ResourceManager.GetString(name) != null)
+                    if (ValidationMessages.ResourceManager.GetString(name, CultureInfo.InvariantCulture) != null)
                     {
                         tAttr.ErrorMessageResourceType = typeof(ValidationMessages);
                         tAttr.ErrorMessageResourceName = name;

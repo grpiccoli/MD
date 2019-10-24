@@ -13,11 +13,12 @@ namespace ConsultaMD.Models.VM.PatientsVM
     {
         public Insurance Insurance { get; set; } = Insurance.Particular;
         [Display(Name = "Ubicación")]
-        public HashSet<int> Ubicacion { get; set; } = new HashSet<int>();
+        public HashSet<int> Ubicacion { get; } = new HashSet<int>();
         [Display(Name = "Especialidad")]
-        public HashSet<Especialidades> Especialidad { get; set; } 
-            = new HashSet<Especialidades>();
-        public HashSet<bool> Sex { get; set; } = new HashSet<bool>();
+        public HashSet<Especialidad> Especialidad { get; } 
+            = new HashSet<Especialidad>();
+        [Display(Name = "Género")]
+        public HashSet<bool> Sex { get; } = new HashSet<bool>();
         [Range(1, 24)]
         public int? MinTime { get; set; }
         [Range(1, 24)]

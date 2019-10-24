@@ -6,6 +6,6 @@ namespace ConsultaMD.Models.Entities
     {
         public int Id { get; set; }
         public string Discriminator { get; set; }
-        public virtual ICollection<MediumDoctor> MediumDoctors { get; set; }
+        public virtual ICollection<MediumDoctor> MediumDoctors { get; } = new List<MediumDoctor>();
     }
 }

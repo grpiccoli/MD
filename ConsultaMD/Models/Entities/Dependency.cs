@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ConsultaMD.Models.Entities
+﻿namespace ConsultaMD.Models.Entities
 {
-    public class Dependency
+    public class MedicalCoverage
     {
         public int BeneficiaryId { get; set; }
         public virtual Patient Beneficiary { get; set; }

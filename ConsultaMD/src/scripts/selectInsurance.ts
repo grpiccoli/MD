@@ -37,6 +37,10 @@ $(`#${insuranceId} > option`).slice(1).each(function () {
 
 //initialize select
 $('select').formSelect();
+//$('select').AnyPicker({
+//    mode: "select",
+//    theme: "Android"
+//});
 
 //Validate User / Insurance / pwd combo
 function validateInsurance(val: number, rut: number, dv: string, pwd: string): boolean {

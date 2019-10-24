@@ -33,16 +33,14 @@ namespace ConsultaMD
 {
     public class Startup
     {
+        private readonly string _os;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _os = Environment.OSVersion.Platform.ToString();
         }
 
-        public IConfiguration Configuration { get; }
-
-        public string os = Environment.OSVersion.Platform.ToString();
-
-        public string version = "0.09";
+    public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -77,7 +75,7 @@ namespace ConsultaMD
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString($"{os}Connection"),
+                    Configuration.GetConnectionString($"{_os}Connection"),
                     sqlServerOptions => sqlServerOptions.CommandTimeout(100)));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -200,6 +198,7 @@ namespace ConsultaMD
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            if (app == null || env == null) return;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -228,7 +227,7 @@ namespace ConsultaMD
 
             var path = new List<string> { "wwwroot", "lib", "cldr-data", "main" };
 
-            var ch = os == "Win32NT" ? @"\" : "/";
+            var ch = _os == "Win32NT" ? @"\" : "/";
 
             var di = new DirectoryInfo(Path.Combine(env.ContentRootPath, string.Join(ch, path)));
             var supportedCultures = di.GetDirectories().Where(x => x.Name != "root").Select(x => new CultureInfo(x.Name)).ToList();

@@ -32,7 +32,7 @@ namespace ConsultaMD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Validate(int insurance, string pwd)
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
             var run = RUT.Unformat(user.UserName);
             var rut = run.Value.rut;
             var dv = run.Value.dv;
@@ -41,25 +41,25 @@ namespace ConsultaMD.Controllers
                 case 0:
                     return Ok();
                 case 1:
-                    return await Fonasa(rut, dv);
+                    return await Fonasa(rut, dv).ConfigureAwait(false);
                 //Banmédica
                 case 2:
-                    return await Banmedica(rut, dv, pwd);
+                    return await Banmedica(rut, pwd).ConfigureAwait(false);
                 //Colmena
                 case 3:
-                    return await Colmena(rut, dv, pwd);
+                    return await Colmena(rut, dv, pwd).ConfigureAwait(false);
                 //Consalud
                 case 4:
-                    return await Consalud(rut, dv, pwd);
+                    return await Consalud(rut, dv, pwd).ConfigureAwait(false);
                 //Cruz Blanca
                 case 5:
-                    return await CruzBlanca(rut, dv, pwd);
+                    return await CruzBlanca(rut, dv, pwd).ConfigureAwait(false);
                 //Nueva Más Vida
                 case 6:
-                    return await NuevaMasVida(rut, dv, pwd);
+                    return await NuevaMasVida(rut, dv, pwd).ConfigureAwait(false);
                 //Vida Tres
                 case 7:
-                    return await Vida3(rut, dv, pwd);
+                    return await Vida3(rut, dv, pwd).ConfigureAwait(false);
                 default:
                     return NotFound();
             }
@@ -78,11 +78,12 @@ namespace ConsultaMD.Controllers
             };
             using (HttpClient getclient = new HttpClient(handler))
             {
+                handler.Dispose();
                 var login = new Uri("https://bonowebfon.fonasa.cl/");
-                using (var response = await getclient.GetAsync(login))
+                using (var response = await getclient.GetAsync(login).ConfigureAwait(false))
                 {
                     var parser = new HtmlParser();
-                    using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync()))
+                    using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                     {
                         var formArray = doc.GetElementsByTagName("input").Select(i => new {
                             name = i.GetAttribute("name"),
@@ -95,9 +96,10 @@ namespace ConsultaMD.Controllers
 
                         using (HttpClient client = new HttpClient())
                         {
-                            using (var logResponse = await client.PostAsync(login, formContent))
+                            using (var logResponse = await client.PostAsync(login, formContent).ConfigureAwait(false))
                             {
-                                using (var docResponse = await parser.ParseDocumentAsync(await logResponse.Content.ReadAsStringAsync()))
+                                formContent.Dispose();
+                                using (var docResponse = await parser.ParseDocumentAsync(await logResponse.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                 {
                                     var test = doc.GetElementById("~~~");
                                     if (test != null)
@@ -115,7 +117,7 @@ namespace ConsultaMD.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Banmedica(int rut, string dv, string pwd)
+        public async Task<IActionResult> Banmedica(int rut, string pwd)
         {
             var cookieContainer = new CookieContainer();
             HttpClientHandler homeHandler = new HttpClientHandler
@@ -126,8 +128,9 @@ namespace ConsultaMD.Controllers
 
             using (HttpClient homeClient = new HttpClient(homeHandler))
             {
+                homeHandler.Dispose();
                 var homeUri = new Uri("https://www.isaprebanmedica.cl/");
-                using (var homeResponse = await homeClient.GetAsync(homeUri))
+                using (var homeResponse = await homeClient.GetAsync(homeUri).ConfigureAwait(false))
                 {
                     using (HttpClientHandler loginHandler = new HttpClientHandler
                     {
@@ -139,12 +142,12 @@ namespace ConsultaMD.Controllers
                         using (HttpClient loginClient = new HttpClient(loginHandler))
                         {
                             var loginUri = new Uri("https://www.isaprebanmedica.cl/LoginBanmedica.aspx");
-                            using (var loginResponse = await loginClient.GetAsync(loginUri))
+                            using (var loginResponse = await loginClient.GetAsync(loginUri).ConfigureAwait(false))
                             {
                                 //var test2 = cookieContainer.GetCookies(homeUri);
                                 //var test3 = cookieContainer.GetCookies(loginUri);
                                 var parser = new HtmlParser();
-                                using (var doc = await parser.ParseDocumentAsync(await loginResponse.Content.ReadAsStringAsync()))
+                                using (var doc = await parser.ParseDocumentAsync(await loginResponse.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                 {
                                     var formArray = new Dictionary<string, string>
                                     {
@@ -184,8 +187,9 @@ namespace ConsultaMD.Controllers
                                             signinClient.DefaultRequestHeaders.Add("Sec-Fetch-User", "?1");
                                             signinClient.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
 
-                                            using (var signinResponse = await signinClient.PostAsync(loginUri, formContent))
+                                            using (var signinResponse = await signinClient.PostAsync(loginUri, formContent).ConfigureAwait(false))
                                             {
+                                                formContent.Dispose();
                                                 if (signinResponse.StatusCode == HttpStatusCode.Found)
                                                 {
                                                     return Ok();
@@ -215,9 +219,10 @@ namespace ConsultaMD.Controllers
             };
             using (HttpClient getclient = new HttpClient(handler))
             {
+                handler.Dispose();
                 var login = new Uri("https://www.colmena.cl/afiliados/");
 
-                using (await getclient.GetAsync(login))
+                using (await getclient.GetAsync(login).ConfigureAwait(false))
                 {
                     using (HttpClientHandler setHandler = new HttpClientHandler
                     {
@@ -238,9 +243,10 @@ namespace ConsultaMD.Controllers
                         using (HttpClient client = new HttpClient(setHandler))
                         {
                             client.DefaultRequestHeaders.Add("Referer", "https://www.colmena.cl/afiliados/");
-                            using (var response = await client.PostAsync(uri, httpContent))
+                            using (var response = await client.PostAsync(uri, httpContent).ConfigureAwait(false))
                             {
-                                string jsonResponse = await response.Content.ReadAsStringAsync();
+                                httpContent.Dispose();
+                                string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                                 var json = JObject.Parse(jsonResponse);
                                 string codigo = (string)json.SelectToken("codigoRetorno");
                                 if(codigo == "0") return Ok();
@@ -268,7 +274,7 @@ namespace ConsultaMD.Controllers
             {
                 var login = new Uri("https://clientes.consalud.cl/Default.aspx");
 
-                using (await getclient.GetAsync(login))
+                using (await getclient.GetAsync(login).ConfigureAwait(false))
                 {
                     var loginCookie = getCookies.GetCookies(login).Cast<Cookie>().FirstOrDefault();
 
@@ -294,11 +300,13 @@ namespace ConsultaMD.Controllers
 
                         using (HttpClient client = new HttpClient(handler))
                         {
+                            handler.Dispose();
                             client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                            using (var response = await client.PostAsync(uri, formContent))
+                            using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                             {
+                                formContent.Dispose();
                                 var parser = new HtmlParser();
-                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync()))
+                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                 {
                                     var test = doc.GetElementById("esWeb");
                                     if (test == null)
@@ -330,7 +338,7 @@ namespace ConsultaMD.Controllers
             {
                 var login = new Uri("https://clientes.consalud.cl/Default.aspx");
 
-                using (await getclient.GetAsync(login))
+                using (await getclient.GetAsync(login).ConfigureAwait(false))
                 {
                     var loginCookie = getCookies.GetCookies(login).Cast<Cookie>().FirstOrDefault();
 
@@ -356,11 +364,13 @@ namespace ConsultaMD.Controllers
 
                         using (HttpClient client = new HttpClient(handler))
                         {
+                            handler.Dispose();
                             client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                            using (var response = await client.PostAsync(uri, formContent))
+                            using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                             {
+                                formContent.Dispose();
                                 var parser = new HtmlParser();
-                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync()))
+                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                 {
                                     var test = doc.GetElementById("~~~");
                                     if (test != null)
@@ -392,7 +402,7 @@ namespace ConsultaMD.Controllers
             {
                 var login = new Uri("https://sv.nuevamasvida.cl/index.php");
 
-                using (await getclient.GetAsync(login))
+                using (await getclient.GetAsync(login).ConfigureAwait(false))
                 {
                     using (HttpClientHandler setHandler = new HttpClientHandler
                     {
@@ -412,9 +422,11 @@ namespace ConsultaMD.Controllers
 
                         using (HttpClient client = new HttpClient(handler))
                         {
+                            handler.Dispose();
                             client.DefaultRequestHeaders.Add("Referer", "https://sv.nuevamasvida.cl/index.php");
-                            using (var response = await client.PostAsync(uri, formContent))
+                            using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                             {
+                                formContent.Dispose();
                                 if (response.RequestMessage.RequestUri.ToString() == "https://sv.nuevamasvida.cl/sucursal_virtual/")
                                 {
                                     return Ok();
@@ -444,7 +456,7 @@ namespace ConsultaMD.Controllers
             {
                 var login = new Uri("https://clientes.consalud.cl/Default.aspx");
 
-                using (await getclient.GetAsync(login))
+                using (await getclient.GetAsync(login).ConfigureAwait(false))
                 {
                     var loginCookie = getCookies.GetCookies(login).Cast<Cookie>().FirstOrDefault();
 
@@ -470,11 +482,13 @@ namespace ConsultaMD.Controllers
 
                         using (HttpClient client = new HttpClient(handler))
                         {
+                            handler.Dispose();
                             client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                            using (var response = await client.PostAsync(uri, formContent))
+                            using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                             {
+                                formContent.Dispose();
                                 var parser = new HtmlParser();
-                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync()))
+                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                                 {
                                     var test = doc.GetElementById("~~~");
                                     if (test != null)

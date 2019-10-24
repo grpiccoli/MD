@@ -93,6 +93,18 @@ namespace ConsultaMD.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Payment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payment", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -119,11 +131,12 @@ namespace ConsultaMD.Migrations
                 {
                     Id = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    FullNameFirst = table.Column<string>(nullable: true),
-                    FullLastFirst = table.Column<string>(nullable: true),
+                    RazonSocial = table.Column<string>(nullable: true),
                     NombreFantasia = table.Column<string>(nullable: true),
                     CarnetId = table.Column<int>(nullable: true),
-                    DoctorId = table.Column<int>(nullable: true)
+                    DoctorId = table.Column<int>(nullable: true),
+                    FullNameFirst = table.Column<string>(nullable: true),
+                    FullLastFirst = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -526,7 +539,7 @@ namespace ConsultaMD.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Dependencies",
+                name: "MedicalCoverages",
                 columns: table => new
                 {
                     BeneficiaryId = table.Column<int>(nullable: false),
@@ -534,15 +547,15 @@ namespace ConsultaMD.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Dependencies", x => new { x.BeneficiaryId, x.DependantId });
+                    table.PrimaryKey("PK_MedicalCoverages", x => new { x.BeneficiaryId, x.DependantId });
                     table.ForeignKey(
-                        name: "FK_Dependencies_Patients_BeneficiaryId",
+                        name: "FK_MedicalCoverages_Patients_BeneficiaryId",
                         column: x => x.BeneficiaryId,
                         principalTable: "Patients",
                         principalColumn: "NaturalId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Dependencies_People_DependantId",
+                        name: "FK_MedicalCoverages_People_DependantId",
                         column: x => x.DependantId,
                         principalTable: "People",
                         principalColumn: "Id",
@@ -628,8 +641,7 @@ namespace ConsultaMD.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AgendaId = table.Column<int>(nullable: false),
-                    PatientId = table.Column<int>(nullable: true),
-                    Taken = table.Column<bool>(nullable: false),
+                    ReservationId = table.Column<int>(nullable: true),
                     StartTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false)
                 },
@@ -642,12 +654,40 @@ namespace ConsultaMD.Migrations
                         principalTable: "Agenda",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PatientId = table.Column<int>(nullable: false),
+                    TimeSlotId = table.Column<int>(nullable: false),
+                    PaymentId = table.Column<int>(nullable: true),
+                    BondId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TimeSlots_Patients_PatientId",
+                        name: "FK_Reservations_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
                         principalColumn: "NaturalId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Payment_PaymentId",
+                        column: x => x.PaymentId,
+                        principalTable: "Payment",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Reservations_TimeSlots_TimeSlotId",
+                        column: x => x.TimeSlotId,
+                        principalTable: "TimeSlots",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -720,11 +760,6 @@ namespace ConsultaMD.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dependencies_DependantId",
-                table: "Dependencies",
-                column: "DependantId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Doctors_DigitalSignatureId",
                 table: "Doctors",
                 column: "DigitalSignatureId");
@@ -761,6 +796,11 @@ namespace ConsultaMD.Migrations
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MedicalCoverages_DependantId",
+                table: "MedicalCoverages",
+                column: "DependantId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MediumDoctors_DoctorId",
                 table: "MediumDoctors",
                 column: "DoctorId");
@@ -791,6 +831,22 @@ namespace ConsultaMD.Migrations
                 column: "DoctorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reservations_PatientId",
+                table: "Reservations",
+                column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_PaymentId",
+                table: "Reservations",
+                column: "PaymentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_TimeSlotId",
+                table: "Reservations",
+                column: "TimeSlotId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Subspecialties_DoctorId",
                 table: "Subspecialties",
                 column: "DoctorId");
@@ -799,11 +855,6 @@ namespace ConsultaMD.Migrations
                 name: "IX_TimeSlots_AgendaId",
                 table: "TimeSlots",
                 column: "AgendaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TimeSlots_PatientId",
-                table: "TimeSlots",
-                column: "PatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vertices_PolygonId",
@@ -838,19 +889,19 @@ namespace ConsultaMD.Migrations
                 name: "CommercialActivities");
 
             migrationBuilder.DropTable(
-                name: "Dependencies");
+                name: "InsuranceLocations");
 
             migrationBuilder.DropTable(
-                name: "InsuranceLocations");
+                name: "MedicalCoverages");
 
             migrationBuilder.DropTable(
                 name: "Publications");
 
             migrationBuilder.DropTable(
-                name: "Subspecialties");
+                name: "Reservations");
 
             migrationBuilder.DropTable(
-                name: "TimeSlots");
+                name: "Subspecialties");
 
             migrationBuilder.DropTable(
                 name: "Vertices");
@@ -865,13 +916,19 @@ namespace ConsultaMD.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Agenda");
-
-            migrationBuilder.DropTable(
                 name: "Patients");
 
             migrationBuilder.DropTable(
+                name: "Payment");
+
+            migrationBuilder.DropTable(
+                name: "TimeSlots");
+
+            migrationBuilder.DropTable(
                 name: "Polygons");
+
+            migrationBuilder.DropTable(
+                name: "Agenda");
 
             migrationBuilder.DropTable(
                 name: "MediumDoctors");

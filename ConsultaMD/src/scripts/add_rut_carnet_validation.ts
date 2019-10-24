@@ -29,7 +29,8 @@ $rut.on('keyup', function () {
 //Format as you type Carnet
 new Cleave(`#${carnetId}`, {
     delimiter: '.',
-    blocks: [3, 3, 3]
+    blocks: [3, 3, 3],
+    uppercase: true
 })
 
 //Validator RUT

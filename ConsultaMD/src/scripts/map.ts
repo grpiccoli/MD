@@ -1,19 +1,18 @@
-﻿var momentFormat = "DD MMMM YYYY";
-var datepickerFormat = "dd mmmm, yyyy";
+﻿var datepickerFormat = "dddd dd mmmm, yyyy";
 //REDIRECT TO DOCTOR DETAILS
-function agendar(run: number, placeId: string) {
+function agendar(run: number, mdId: string) {
     var q = $("#Insurance, #Ubicacion, #MinTime, #MaxTime")
         .serialize();
     var date = $("#MinDate,#MaxDate").serializeArray();
     var array: string[] = [q];
-    array.push(`placeId=${placeId}`);
+    array.push(`MdId=${mdId}`);
     array.push(`Last=${$('#Last').val()}`);
-    date.forEach(function (value, index) {
+    date.forEach((value) => {
         if (value.value === '') return;
-        array.push(value.name + '=' + moment(value.value, momentFormat).toJSON().replace("Z", ""));
+        array.push(value.name + '=' + moment(value.value).toJSON().replace("Z", ""));
     });
     var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    days.forEach(function (value, index) {
+    days.forEach((value) => {
         var prop = $(`#${value}`).prop('checked');
         if (typeof (prop) !== 'undefined') {
             array.push(value + "=" + prop);
@@ -26,14 +25,14 @@ function agendar(run: number, placeId: string) {
 function initMap() {
     //INSURANCES
     let mis: Array<string> = [
-        "Particular",
-        "FONASA",
-        "Banmédica",
-        "Colmena",
-        "Consalud",
-        "CruzBlanca",
-        "Nueva Masvida",
-        "Vida Tres"
+        'Particular',
+        'FONASA',
+        'Banmédica',
+        'Colmena',
+        'Consalud',
+        'CruzBlanca',
+        'Nueva Masvida',
+        'Vida Tres'
     ];
     //ADD MARKER
     let markers: google.maps.Marker[] = [];
@@ -42,8 +41,8 @@ function initMap() {
     function fitToMarkers() {
         //GET BOUNDS
         var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < markers.length; i++) {
-            bounds.extend(markers[i].getPosition());
+        for (var i of markers) {
+            bounds.extend(i.getPosition());
         }
         map.fitBounds(bounds);
     }
@@ -60,16 +59,20 @@ function initMap() {
     var places: { [cid: string]: { [type: string]: string; } } = {};
     //ADD EVENT LISTENER
     function addEventListener(marker: google.maps.Marker, cid: string) {
-        google.maps.event.addListener(marker, 'click', function () {
+        google.maps.event.addListener(marker, 'click', _ => {
             $("#slide-header").html(places[cid]["header"]);
             $("#slide-content").html(places[cid]["content"]);
-            $("#slide-action").sidenav('open');
+            setTimeout(() => {
+                $("#slide-action").sidenav('open');
+                $('#slide-action .tabs').tabs();
+                $('#slide-action .tooltipped').tooltip();
+            }, 500);
         });
     }
     // Sets the map on all markers in the array.
     function setMapOnAll(map: google.maps.Map) {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
+        for (var i of markers) {
+            i.setMap(map);
         }
     }
     // Removes the markers from the map, but keeps them in the array.
@@ -81,78 +84,107 @@ function initMap() {
         clearMarkers();
         markers = [];
     }
-    function format(n:number) {
+    function format(n: number) {
         return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     }
-    function isNullOrWhitespace(input:string) {
+    function isNullOrWhitespace(input: string) {
         if (typeof input === 'undefined' || input == null) return true;
         return input.replace(/\s/g, '').length < 1;
     }
-    function makeCard(item: ResultVM, placeId: string) {
-        var convenios = '';
+    function makeCard(item: ResultVM, place: Place) {
+        var esp = '', title = '', convenios = '';
+        var conv_tab = `<li class="tab"><a class="mis" href="#${item.cardId}insr">Convenios</a></li>`;
+        var esp_tab = `<li class="tab"><a class="esp" href="#${item.cardId}sp">Especialidad</a></li>`;
         if (item.insurances.length !== 0) {
-            convenios+=`<label>Convenio${item.insurances.length > 1 ? "s" : ""}:</label><ul>`;
-            for (var i = 0; i < item.insurances.length; i++) {
-                var mi = mis[item.insurances[i]];
-                convenios += `<li><img src="/img/mi/${mi}-icon.min.png"/>${mi}</li>`;
+            var plural = item.insurances.length > 1 ? 's' : '';
+            convenios += `<div id="${item.cardId}insr" class="tab-content mis"><label>Convenio${plural}:</label><ul>`;
+            for (var i of item.insurances) {
+                var mi = mis[i];
+                convenios += `<li><a class="btn tooltipped" data-tooltip="${mi}"><img src="/img/mi/${mi}-icon.min.png"/></a></li>`;
             }
-            convenios += "</ul><hr/>";
+            convenios += "</ul></div>";
         }
-        var dr = item.especialidad !== null;
-        var title = dr ? `Dr${item.sex ? "" : "a"}.` : '';
-        var esp = dr ? `<li><label>Esp.</label><span>${item.especialidad}</span></li>` : '';
-        var office = isNullOrWhitespace(item.office) ? '': `<li><label>Of.</label><span>${item.office}</span></li>`;
-        return '<div class="col s12 m6 l4"><div class="card horizontal sticky-action">'
-+`<div class="card-image"><img src="/img/doc/${item.run}.min.jpg"/></div>`
-+'<div class="card-stacked">'
-+'<div class="card-content">'
-+   `<span class="card-title activator">${title} ${item.dr}</span>`
-+   `<ul>${esp}${office}</ul><hr/>`
-+   '<span class="card-title activator">'
-+       '<i class="material-icons left">add</i>Más info'
-+   '</span>'
-+'</div>'
-+ '<div class="card-action center">'
-+ `<a href="#" onclick="agendar(${item.run},'${placeId}')">Agendar</a>`
-+'</div>'
-+'</div>'
-+'<div class="card-reveal">'
-+   `<span class="card-title"><i class="material-icons right">close</i>${title} ${item.dr}</span>`
-+   convenios
-+   '<label>Valor Particular:</label>'
-+   `<span>$${format(item.price)}</span>`
-+'</div></div></div>';
+        if (item.especialidad !== null) {
+            title = `Dr${item.sex ? "" : "a"}.`;
+            esp = `<div id="${item.cardId}sp" class="tab-content esp"><label>Esp.</label><span>${item.especialidad}</span></div>`;
+        }
+        var office = `<p class="address">${place.address}`;
+        office += isNullOrWhitespace(item.office) ? '</li>' : ` <span>${item.office}</span></p>`;
+        return '<div class="col s12 m6 l4">'
+            + '<div class="card horizontal sticky-action">'
+            +   '<div class="card-image">'
+            +       `<img src="/img/doc/${item.run}.min.jpg"/>`
+            +   '</div>'
+            +   '<div class="card-stacked">'
+            +       '<div class="card-content">'
+            +           `<span class="card-title activator">${title} ${item.dr}</span>`
+            +       '</div>'
+            +       '<div class="card-tabs">'
+            +       '<ul class="tabs tabs-fixed-width">'
+            + `<li class="tab"><a class="time" href="#${item.cardId}next">Prox. Hora</a></li>`
+            + `<li class="tab"><a class="addr" href="#${item.cardId}addr">Dirección</a></li>`
+            + `<li class="tab"><a class="price" href="#${item.cardId}prce">Valor Particular</a></li>`
+            + conv_tab
+            + esp_tab
+            +       '</ul>'
+            +       '</div>'
+            +       '<div class="card-content grey lighten-4">'
+            + `<div id="${item.cardId}next" class="tab-content time">${item.hora}</div>`
+            + `<div id="${item.cardId}addr" class="tab-content addr">${office}</div>`
+            + `<div id="${item.cardId}prce" class="tab-content price"><span><i class="material-icons left">attach_money</i>${format(item.price)}</span></div>`
+            + convenios
+            + esp
+            +       '</div>'
+            + '<div class="card-action center">'
+            + `<a href="#" onclick="agendar(${item.run},'${item.cardId}')">Agendar</a>`
+            +       '</div>'
+            +   '</div>'
+            +   '<div class="card-reveal">'
+            +       '<span class="card-title">'
+            +           `<i class="material-icons right">close</i>${title} ${item.dr}`
+            +       '</span>'
+            +       convenios
+            +       '<label>Valor Particular:</label>'
+            +       `<span>$${format(item.price)}</span>`
+            +   '</div>'
+            + '</div></div>';
     }
+    //NAME FILTER
+    let dt: { [name: string]: string };
+    //Add Marker
     function addMarkers(value: ResultsVM) {
         if (!(value.place.cId in places)) {
             places[value.place.cId] = {};
             //MARKER SIDE PANEL
             places[value.place.cId]["header"] =
 '<div class="col s12 m6">'
-+'<div class="card m-0">'
-+   '<div class="card-image">'
-+       `<img class="activator placeimg" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${value.place.photoId}&key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA">`
-+       `<span class="card-title activator"><b>${value.place.name}</b></span>`
-+   '</div>'
-+   '<div class="card-content">'
-+       '<span class="card-title activator grey-text text-darken-4">Ver detalles<i class="material-icons right">more_vert</i></span>'
-+   '</div>'
-+   '<div class="card-reveal">'
-+       `<span class="card-title grey-text text-darken-4">${value.place.name}<i class="material-icons right">close</i></span>`
-+       `<p><b>Dirección</b>: ${value.place.address}.<a href="https://maps.google.com/?cid=${value.place.cId}"><i class="material-icons">location_on</i></a></p>`
-+   '</div>'
-+'</div></div></div>';
++   '<div class="card m-0">'
++       '<div class="card-image">'
++           `<img class="activator placeimg" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${value.place.photoId}&key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA">`
++           `<span class="card-title activator"><b>${value.place.name}</b></span>`
++       '</div>'
++       '<div class="card-content">'
++           '<span class="card-title activator grey-text text-darken-4">Ver detalles<i class="material-icons right">more_vert</i></span>'
++       '</div>'
++       '<div class="card-reveal">'
++           `<span class="card-title grey-text text-darken-4">${value.place.name}<i class="material-icons right">close</i></span>`
++           `<p><b>Dirección</b>: ${value.place.address}.<a href="https://maps.google.com/?cid=${value.place.cId}"><i class="material-icons">location_on</i></a></p>`
++       '</div>'
++   '</div></div></div>';
+            places[value.place.cId]["list"] =
+                `<div class="col s12"><h5>${value.place.name}</h5><p>${value.place.address}</p><hr/></div><div id="${value.place.cId}" class="list-place"></div>`
         }
         //LIST
-        $("#list").append(`<div class="col s12"><h5>${value.place.name}</h5><p>${value.place.address}</p><hr/></div><div id="${value.place.cId}"></div>`);
+        $("#list").append(places[value.place.cId]["list"]);
         var cnt = 0;
         var match = 0.5;
-        var content:string = '';
-        $.each(value.items, function (_i, val) {
-            var card = makeCard(val, value.place.id)
+        var content: string = '';
+        $.each(value.items, function () {
+            if(!(this.dr in dt)) dt[this.dr] = `/img/doc/${this.run}.min.jpg`;
+            var card = makeCard(this, value.place)
             content += card;
             cnt++;
-            if (match === 0.5 && val.match) match = 1;
+            if (match === 0.5 && this.match) match = 1;
         });
         places[value.place.cId]["content"] = content;
         var colorMrk = "1d999e";
@@ -173,17 +205,32 @@ function initMap() {
         var count = data.length;
         if (count === 0) {
             loaderStop();
+            $('button').removeAttr('disabled');
             alert("No hay resultados para los filtros seleccionados");
             if (typeof (markerCluster) !== 'undefined') {
                 markerCluster.clearMarkers();
             }
         }
         $("#list").empty();
+        dt = {};
         $.each(data,
-            function (_index, value) {
-                addMarkers(value);
+            function () {
+                addMarkers(this);
                 if (!--count) {
-                    if (typeof (markerCluster) !== 'undefined') {
+                    fitToMarkers();
+                    loaderStop();
+                    var search = $('#search-filter').autocomplete({
+                        data: dt,
+                        limit: 10,
+                        onAutocomplete: (val) => {
+                            var run = parseInt(dt[val].replace(/.*\//g, '').replace(/\..*/g, ''));
+                            agendar(run, null);
+                        }
+                    });
+                    $('#close-search').click(_ => {
+                        search.val('');
+                    });
+                    if (typeof(markerCluster) !== 'undefined') {
                         markerCluster.clearMarkers();
                     }
                     //MARKER CLUSTERER
@@ -192,11 +239,11 @@ function initMap() {
                         imagePath: '/img/cluster/m'
                     };
                     markerCluster = new MarkerClusterer(map, markers, mcOptions);
-                    markerCluster.setCalculator(function (markers: google.maps.Marker[], numStyles: number) {
+                    markerCluster.setCalculator((markers: google.maps.Marker[], numStyles: number) => {
                         var index = 1;
                         var count = 0;
-                        for (var i = 0; i < markers.length; i++) {
-                            count += markers[i].getZIndex();
+                        for (var i of markers) {
+                            count += i.getZIndex();
                         }
                         var index = Math.round(Math.log(count / 4));
                         if (index > 5) index = 5;
@@ -205,9 +252,8 @@ function initMap() {
                             index: index
                         };
                     });
-                    $('.collapsible').collapsible()
-                    fitToMarkers();
-                    loaderStop();
+                    $('.collapsible').collapsible();
+                    $('button').removeAttr('disabled');
                 }
             });
     }
@@ -217,15 +263,15 @@ function initMap() {
             + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance, #MinTime, #MaxTime")
             .serializeArray();
         var date = $("#MinDate,#MaxDate").serializeArray();
-        date.forEach(function (value, index) {
+        date.forEach((value) => {
             if (value.value === '') return;
             array.push({
                 name: value.name,
-                value: moment(value.value, momentFormat).toJSON().replace("Z", "")
+                value: moment(value.value).toJSON().replace("Z", "")
             });
         });
         var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        days.forEach(function (value, index) {
+        days.forEach((value) => {
             array.push({
                 name: value,
                 value: $(`#${value}`).prop('checked')
@@ -235,15 +281,23 @@ function initMap() {
     }
     //GET DATA
     function getData() {
+        loaderStart();
+        $('button').prop('disabled', true);
         $.post("/Patients/Search/MapList", getAllquerys(), getList);
     }
     getData();
-
+    //destroy and create tabs in sidenav
+    $('#slide-action').sidenav({
+        onCloseEnd: _ => {
+            $('#slide-action .tabs').tabs('destroy');
+            $('#slide-action .tooltipped').tooltip('destroy');
+        }
+    });
     var me: google.maps.Marker;
     //Move to new location
     function moveToLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (pos) {
+            navigator.geolocation.getCurrentPosition((pos) => {
                 var bounds = map.getBounds();
                 var post = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
                 me = new google.maps.Marker({
@@ -275,54 +329,52 @@ function initMap() {
     $('#toggle-view').click(function () {
         if ($("#map-view").css("display") === "block") {
             $(this).html("volver al mapa");
-            $.each(places, function (index, value) {
-                $(`#${index}`).html(value["content"])
+            $.each(places, function (i) {
+                $(`#${i}`).html(this["content"])
             });
+            $('#list .tooltipped').tooltip();
+            $("#map-view").slideToggle();
+            $("#list-view").slideToggle();
+            $('#list .tabs').tabs();
         } else {
+            $("#map-view").slideToggle();
+            $("#list-view").slideToggle();
             $(this).html("ver como lista");
+            setTimeout(fitToMarkers, 400);
+            setTimeout(() => {
+                $('#list .tabs').tabs('destroy');
+                $('#list .tooltipped').tooltip('destroy');
+                $('#list .list-place').html('');
+            }, 200);
         }
-        $("#map-view").slideToggle();
-        $("#list-view").slideToggle();
-        setTimeout(fitToMarkers, 400);
     });
+    var change = false;
     function changeFilter() {
-        loaderStart();
-        deleteMarkers();
-        getData();
+        if (change) {
+            deleteMarkers();
+            getData();
+            change = false;
+        }
     }
-    function filterBtnTxt(id: string, el: HTMLElement) {
+    function filterBtnTxt(el: any) {
+        var id = $(el.target).attr('id');
         var text = id;
-        var data = $(el).select2('data');
+        var data = $(el.target).select2('data');
         if (data.length > 0) {
             var number = data.length > 1 ? ` +${data.length - 1}` : '';
             text = `${data[0].text.substring(0, 8)}&hellip;${number}`;
         }
         $(`#btn${id}`).html(text);
+        change = true;
     }
-
-    //NAME FILTER
-    let data: { [name: string]: string };
-    $.getJSON('/Patients/Search/NameList', function (d) {
-        data = d;
-        $('#search-filter').autocomplete({
-            data: d,
-            limit: 10,
-            onAutocomplete: function (val) {
-                console.log(val);
-                var run = parseInt(data[val].replace(/.*\//g, '').replace(/\..*/g,''));
-                agendar(run, null);
-            }
-        });
-    })
     //FILTER TIMES
-    function filterTimes(value: number, type: number) {
+    function filterTimes(value: number, _t: number) {
         if (value % 6) {
             return 0;
         } else {
             return 1;
         }
     }
-
     //TIME SLIDER
     var time_slider = document.getElementById('time-slider');
     noUiSlider.create(time_slider, {
@@ -336,10 +388,10 @@ function initMap() {
             'max': 24
         },
         format: {
-            to: function (value: number) {
+            to: (value: number) => {
                 return Math.ceil(value);
             },
-            from: function (value: string) {
+            from: (value: string) => {
                 return Number(value.replace(/\D/g, ''));
             }
         },
@@ -348,7 +400,7 @@ function initMap() {
             density: 4,
             filter: filterTimes,
             format: {
-                to: function (value: number) {
+                to: (value: number) => {
                     var suffix = "AM";
                     if (value >= 12) {
                         if (value !== 24) {
@@ -360,12 +412,12 @@ function initMap() {
                     }
                     return `${Math.ceil(value)} ${suffix}`;
                 },
-                from: function (value: string) {
+                from: (value: string) => {
                     return Number(value.replace(/\D/g, ''));
                 }
             }
         }
-    }).on('set', function (values: any, handle: any) {
+    }).on('set', (values: any, handle: any) => {
         if (handle) {
             $('#MaxTime').val(values[handle] === 24 ? '' : values[handle]);
         } else {
@@ -396,64 +448,79 @@ function initMap() {
         var max = M.Datepicker.getInstance(document.getElementById('MaxDate'));
         max.options.minDate = $(this).val() === '' ?
             dateToday :
-            moment($(this).val(), momentFormat).toDate();
+            moment($(this).val()).toDate();
     });
-    var dates = $("#dates-col").detach();
-    $('#dates-pane').modal({
-        onOpenEnd: function () {
-            $(this.el).find('.dates-div').append(dates);
-        },
+    //FILTERS MODAL
+    let filters = $('#filters-pane').modal({
         onCloseStart: changeFilter
     });
-
-    $.getJSON('/Patients/Search/FilterLists', function (d) {
+    $('#filter-action').click(event => {
+        event.preventDefault();
+        filters.modal('close');
+    });
+    $('#filter-clear').click(event => {
+        event.preventDefault();
+        //console.log(location, window.location);
+        window.location.reload();
+    });
+    $('#filter input').change(_ => {
+        change = true;
+    });
+    $('.fltbtn').click((panel: any) => {
+        var id = $(panel.target).attr('id');
+        switch (id) {
+            case "btnEspecialidad":
+                $('.fltcol').hide();
+                filters.modal('open');
+                $('#especialities-col').fadeIn();
+                $('#especialities-col input.select2-search__field').trigger('keyup');
+                break;
+            case "btnUbicacion":
+                $('.fltcol').hide();
+                filters.modal('open');
+                $('#locations-col').fadeIn();
+                $('#locations-col input.select2-search__field').trigger('keyup');
+                break;
+            case "btnFechaHora":
+                $('.fltcol').hide();
+                filters.modal('open');
+                $('#dates-col').fadeIn();
+                $('#dates-col input.select2-search__field').trigger('keyup');
+                break;
+            case "all1":
+            case "all2":
+                filters.modal('open');
+                $('.fltcol').fadeIn();
+                $('#filters-pane input.select2-search__field').trigger('keyup');
+                break;
+        }
+    });
+    //select show list
+    $('#show').formSelect().change(function () {
+        $(`li.tab a`).removeClass("active");
+        var val = $(this).val();
+        var $el = $(`li.tab a.${val}`).addClass("active");
+        var pos = 0;
+        if (val === 'esp' || val === 'mis') pos += 200;
+        $el.parent().parent().animate({ scrollLeft: pos });
+        $('.tabs').tabs();
+    });
+    //initialize selects
+    $.post('/Patients/Search/FilterLists', $("#filter input[name='__RequestVerificationToken']").serializeArray(), (d) => {
         //SPECIALTY SELECT
-        let especialties = $('#Especialidad').select2({
+        $('#Especialidad').select2({
             theme: "material",
             placeholder: "Seleccione especialidades",
             data: d.esp
-        });
-        especialties.change(function () {
-            filterBtnTxt('Especialidad', this);
-        });
-        var esp = $("#especialities-col").detach();
-        //ESPECIALITIES
-        $('#specialties-pane').modal({
-            onOpenEnd: function () {
-                $(this.el).find('.especialities-div').append(esp);
-            },
-            onCloseStart: changeFilter
-        });
+        }).change(filterBtnTxt);
         //LOCATION SELECT
-        let locationSel2 = $('#Ubicacion').select2({
+        $('#Ubicacion').select2({
             theme: "material",
             placeholder: "Seleccione ubicaciones",
             data: d.loc
-        });
-        locationSel2.change(function () {
-            filterBtnTxt('Ubicacion', this);
-        });
-        var loc = $("#locations-col").detach();
-        //LOCATIONS
-        $('#locations-pane').modal({
-            onOpenEnd: function () {
-                $(this.el).find('.locations-div').append(loc);
-            },
-            onCloseStart: changeFilter
-        });
-        //FILTERS MODAL
-        $('#filters-pane').modal({
-            onOpenEnd: function () {
-                $(this.el).find('.especialities-div').append(esp);
-                $(this.el).find('.locations-div').append(loc);
-                $(this.el).find('.dates-div').append(dates);
-            },
-            onCloseStart: changeFilter
-        }).find('.especialities-div').append(esp)
-            .find('.locations-div').append(loc)
-            .find('.dates-div').append(dates);
+        }).change(filterBtnTxt);
         //SEX SELECT
-        let sex = $('#Sex').select2({
+        $('#Sex').select2({
             theme: "material",
             maximumSelectionLength: 1,
             placeholder: "Seleccione sexo del profesional médico"

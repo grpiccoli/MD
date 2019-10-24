@@ -42,10 +42,13 @@ namespace ConsultaMD.Services
 
         public static Dictionary<string, Dictionary<string, string>> AddTag(Dictionary<string, Dictionary<string, string>> Tags, string name, string file)
         {
-            var ext = file.Split('.').Last();
-            if (!Tags.ContainsKey(name))
-                Tags[name] = new Dictionary<string, string>();
-            Tags[name].Add(ext, file);
+            if(Tags != null)
+            {
+                var ext = file?.Split('.').Last();
+                if (!Tags.ContainsKey(name))
+                    Tags[name] = new Dictionary<string, string>();
+                Tags[name].Add(ext, file);
+            }
             return Tags;
         }
 

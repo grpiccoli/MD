@@ -9,13 +9,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace ConsultaMD
 {
-    public class Program
+    public static class Program
     {
-        public static IConfigurationRoot Configuration;
+        private static IConfigurationRoot Configuration;
         public static void Main(string[] args)
         {
             var host = CreateWebHostBuilder(args).Build();
@@ -72,8 +73,10 @@ namespace ConsultaMD
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "There has been an error while seeding the database.");
+                    var logger = services.GetRequiredService<ILogger>();
+                    var localizer = services.GetRequiredService<IStringLocalizer>();
+                    logger.LogError(ex, localizer["There has been an error while seeding the database."]);
+                    throw;
                 }
             }
             host.Run();
@@ -81,6 +84,11 @@ namespace ConsultaMD
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging => 
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+            })
             .ConfigureKestrel(options =>
             {
                 string os = Environment.OSVersion.Platform.ToString();

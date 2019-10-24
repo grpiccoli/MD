@@ -18,7 +18,7 @@ namespace ConsultaMD.Extensions.Validation
             await _underlyingModelBinder.BindModelAsync(bindingContext).ConfigureAwait(false);
 
             // If model binding failed don't continue
-            if (bindingContext.Result.Model == null)
+            if (bindingContext?.Result.Model == null)
             {
                 return;
             }

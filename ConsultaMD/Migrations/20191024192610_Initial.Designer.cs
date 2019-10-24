@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultaMD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191015001810_Initial")]
+    [Migration("20191024192610_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -208,19 +208,6 @@ namespace ConsultaMD.Migrations
                     b.ToTable("CommercialActivities");
                 });
 
-            modelBuilder.Entity("ConsultaMD.Models.Entities.Dependency", b =>
-                {
-                    b.Property<int>("BeneficiaryId");
-
-                    b.Property<int>("DependantId");
-
-                    b.HasKey("BeneficiaryId", "DependantId");
-
-                    b.HasIndex("DependantId");
-
-                    b.ToTable("Dependencies");
-                });
-
             modelBuilder.Entity("ConsultaMD.Models.Entities.DigitalSignature", b =>
                 {
                     b.Property<int>("Id")
@@ -325,6 +312,19 @@ namespace ConsultaMD.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("MedicalAttentionMedium");
                 });
 
+            modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalCoverage", b =>
+                {
+                    b.Property<int>("BeneficiaryId");
+
+                    b.Property<int>("DependantId");
+
+                    b.HasKey("BeneficiaryId", "DependantId");
+
+                    b.HasIndex("DependantId");
+
+                    b.ToTable("MedicalCoverages");
+                });
+
             modelBuilder.Entity("ConsultaMD.Models.Entities.MediumDoctor", b =>
                 {
                     b.Property<int>("Id")
@@ -363,16 +363,23 @@ namespace ConsultaMD.Migrations
                     b.ToTable("Patients");
                 });
 
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payment");
+                });
+
             modelBuilder.Entity("ConsultaMD.Models.Entities.Person", b =>
                 {
                     b.Property<int>("Id");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
-
-                    b.Property<string>("FullLastFirst");
-
-                    b.Property<string>("FullNameFirst");
 
                     b.HasKey("Id");
 
@@ -442,6 +449,32 @@ namespace ConsultaMD.Migrations
                     b.ToTable("Publications");
                 });
 
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BondId");
+
+                    b.Property<int>("PatientId");
+
+                    b.Property<int?>("PaymentId");
+
+                    b.Property<int>("TimeSlotId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("TimeSlotId")
+                        .IsUnique();
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("ConsultaMD.Models.Entities.Subspecialty", b =>
                 {
                     b.Property<int>("Id")
@@ -473,17 +506,13 @@ namespace ConsultaMD.Migrations
 
                     b.Property<DateTime>("EndTime");
 
-                    b.Property<int?>("PatientId");
+                    b.Property<int?>("ReservationId");
 
                     b.Property<DateTime>("StartTime");
-
-                    b.Property<bool>("Taken");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AgendaId");
-
-                    b.HasIndex("PatientId");
 
                     b.ToTable("TimeSlots");
                 });
@@ -674,6 +703,8 @@ namespace ConsultaMD.Migrations
 
                     b.Property<string>("NombreFantasia");
 
+                    b.Property<string>("RazonSocial");
+
                     b.HasDiscriminator().HasValue("Company");
                 });
 
@@ -684,6 +715,10 @@ namespace ConsultaMD.Migrations
                     b.Property<int>("CarnetId");
 
                     b.Property<int>("DoctorId");
+
+                    b.Property<string>("FullLastFirst");
+
+                    b.Property<string>("FullNameFirst");
 
                     b.HasIndex("CarnetId");
 
@@ -746,19 +781,6 @@ namespace ConsultaMD.Migrations
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("ConsultaMD.Models.Entities.Dependency", b =>
-                {
-                    b.HasOne("ConsultaMD.Models.Entities.Patient", "Beneficiary")
-                        .WithMany("Dependants")
-                        .HasForeignKey("BeneficiaryId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("ConsultaMD.Models.Entities.Natural", "Dependant")
-                        .WithMany()
-                        .HasForeignKey("DependantId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
                 {
                     b.HasOne("ConsultaMD.Models.Entities.DigitalSignature", "DigitalSignature")
@@ -777,6 +799,19 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("MediumDoctorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalCoverage", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Patient", "Beneficiary")
+                        .WithMany("MedicalCoverages")
+                        .HasForeignKey("BeneficiaryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ConsultaMD.Models.Entities.Natural", "Dependant")
+                        .WithMany()
+                        .HasForeignKey("DependantId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -824,6 +859,23 @@ namespace ConsultaMD.Migrations
                         .HasForeignKey("DoctorId");
                 });
 
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Reservation", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Patient", "Patient")
+                        .WithMany("Reservations")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsultaMD.Models.Entities.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId");
+
+                    b.HasOne("ConsultaMD.Models.Entities.TimeSlot", "TimeSlot")
+                        .WithOne("Reservation")
+                        .HasForeignKey("ConsultaMD.Models.Entities.Reservation", "TimeSlotId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ConsultaMD.Models.Entities.Subspecialty", b =>
                 {
                     b.HasOne("ConsultaMD.Models.Entities.Doctor", "Doctor")
@@ -837,10 +889,6 @@ namespace ConsultaMD.Migrations
                         .WithMany("TimeSlots")
                         .HasForeignKey("AgendaId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ConsultaMD.Models.Entities.Patient", "Patient")
-                        .WithMany("TimeSlotAppointments")
-                        .HasForeignKey("PatientId");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Vertex", b =>

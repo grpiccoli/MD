@@ -14,7 +14,7 @@ namespace ConsultaMD.Extensions
         /// <param name="value"></param>
         public static void Put<T>(this ITempDataDictionary tempData, string key, T value) where T : class
         {
-            tempData[key] = JsonConvert.SerializeObject(value);
+            if(tempData != null) tempData[key] = JsonConvert.SerializeObject(value);
         }
 
         /// <summary>
@@ -26,8 +26,8 @@ namespace ConsultaMD.Extensions
         /// <returns></returns>
         public static T Get<T>(this ITempDataDictionary tempData, string key) where T : class
         {
-            object o;
-            tempData.TryGetValue(key, out o);
+            object o = null;
+            tempData?.TryGetValue(key, out o);
             return o == null ? null : JsonConvert.DeserializeObject<T>((string)o);
         }
     }

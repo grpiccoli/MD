@@ -30,7 +30,7 @@ namespace ConsultaMD.Services
             return Execute("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", subject, message, email, logo);
         }
 
-        public Task<Response> Execute(string apiKey, string subject, string message, string email, string logo = null)
+        public static Task<Response> Execute(string apiKey, string subject, string message, string email, string logo = null)
         {
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
