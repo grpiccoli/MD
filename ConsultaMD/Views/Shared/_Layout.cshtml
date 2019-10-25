@@ -1,7 +1,11 @@
-﻿@{ 
-    var name = this.ViewContext.RouteData.Values["action"].ToString();
-    var action = Actions.GetActionByName(name);
-    var title = ViewData["Title"] ?? action.Title;
+﻿@{
+    var title = ViewData["Title"];
+    if (ViewContext.RouteData.Values["controller"] != null)
+    {
+        var name = ViewContext.RouteData.Values["action"].ToString();
+        var action = Actions.GetActionByName(name);
+        title = title ?? action.Title;
+    }
 }
 <!DOCTYPE html>
 <html lang="es">
