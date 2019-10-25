@@ -2,10 +2,8 @@
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM;
-using ConsultaMD.Models.VM.PatientsVM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Threading.Tasks;
 
 namespace ConsultaMD.Areas.Patients.Controllers

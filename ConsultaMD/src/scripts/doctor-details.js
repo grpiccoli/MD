@@ -32,8 +32,8 @@ function initDetails() {
     }
     function fitToMarkers() {
         var bounds = new google.maps.LatLngBounds();
-        for (var _a = 0, markers_1 = markers; _a < markers_1.length; _a++) {
-            var i = markers_1[_a];
+        for (var _i = 0, markers_1 = markers; _i < markers_1.length; _i++) {
+            var i = markers_1[_i];
             bounds.extend(i.getPosition());
         }
         map.fitBounds(bounds);
@@ -100,23 +100,21 @@ function initDetails() {
     function changeInsurances(mdId) {
         var insurances = dt[mdId][0];
         var msg = '<ul>';
-        for (var _a = 0, insurances_1 = insurances; _a < insurances_1.length; _a++) {
-            var mi = insurances_1[_a];
+        for (var _i = 0, insurances_1 = insurances; _i < insurances_1.length; _i++) {
+            var mi = insurances_1[_i];
             msg += "<li><a class=\"btn tooltipped\" data-tooltip=\"" + mi + "\"><img src=\"/img/mi/" + mi + "-icon.min.png\"/></a></li>";
         }
         msg += '</ul>';
         $("#insuranceList").html(msg);
-        var elems = document.querySelectorAll('.tooltipped');
-        var instances = M.Tooltip.init(elems, {});
+        M.Tooltip.init(document.querySelectorAll('.tooltipped'));
     }
     var sidenav = $('#sidenav-details').detach();
     $('#nav-mobile').html(sidenav[0]);
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
+    M.FormSelect.init(document.querySelectorAll('select'));
     var datepickerFormat = "dddd dd mmmm, yyyy";
     var dateToday = new Date();
     var mañanaTable, tardeTable;
-    $('#Date').datepicker({
+    M.Datepicker.init(document.getElementById('Date'), {
         firstDay: 1,
         format: datepickerFormat,
         autoClose: true,
@@ -207,8 +205,7 @@ function initDetails() {
             marker.setVisible(selected);
             if (selected)
                 map.panTo(marker.getPosition());
-            var elems = document.querySelectorAll('.tooltipped');
-            var instances = M.Tooltip.init(elems, {});
+            M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         });
     });
 }

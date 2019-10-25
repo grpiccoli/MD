@@ -118,10 +118,14 @@ namespace ConsultaMD.Data
                     .WithOne(t => t.TimeSlot)
                     .HasForeignKey<Reservation>(t => t.TimeSlotId);
 
-                modelBuilder.Entity<Reservation>()
-                    .HasOne(r => r.Patient)
+                modelBuilder.Entity<Reservation>(res => {
+                    res.HasOne(r => r.Patient)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(r => r.PatientId);
+                    res.HasOne(r => r.TimeSlot)
+                    .WithOne(t => t.Reservation)
+                    .HasForeignKey<TimeSlot>(t => t.ReservationId);
+                });
 
                 modelBuilder.Entity<MedicalCoverage>(d => {
                     d.HasKey(p => new { p.BeneficiaryId, p.DependantId });

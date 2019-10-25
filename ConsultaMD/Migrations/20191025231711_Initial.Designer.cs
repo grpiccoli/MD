@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultaMD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191024192610_Initial")]
+    [Migration("20191025231711_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -469,9 +469,6 @@ namespace ConsultaMD.Migrations
 
                     b.HasIndex("PaymentId");
 
-                    b.HasIndex("TimeSlotId")
-                        .IsUnique();
-
                     b.ToTable("Reservations");
                 });
 
@@ -513,6 +510,10 @@ namespace ConsultaMD.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AgendaId");
+
+                    b.HasIndex("ReservationId")
+                        .IsUnique()
+                        .HasFilter("[ReservationId] IS NOT NULL");
 
                     b.ToTable("TimeSlots");
                 });
@@ -869,11 +870,6 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Payment", "Payment")
                         .WithMany()
                         .HasForeignKey("PaymentId");
-
-                    b.HasOne("ConsultaMD.Models.Entities.TimeSlot", "TimeSlot")
-                        .WithOne("Reservation")
-                        .HasForeignKey("ConsultaMD.Models.Entities.Reservation", "TimeSlotId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Subspecialty", b =>
@@ -889,6 +885,10 @@ namespace ConsultaMD.Migrations
                         .WithMany("TimeSlots")
                         .HasForeignKey("AgendaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
+                        .WithOne("TimeSlot")
+                        .HasForeignKey("ConsultaMD.Models.Entities.TimeSlot", "ReservationId");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Vertex", b =>

@@ -281,7 +281,8 @@ namespace ConsultaMD.Areas.Patients.Controllers
                         };
                         _context.Reservations.Add(reservation);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
-                        timeSlot.ReservationId = reservation.Id;
+                        var savedReserve = await _context.Reservations.SingleOrDefaultAsync(r => r.TimeSlotId == timeSlot.Id).ConfigureAwait(false);
+                        timeSlot.ReservationId = savedReserve.Id;
                         _context.TimeSlots.Update(timeSlot);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
                         return RedirectToAction("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id });

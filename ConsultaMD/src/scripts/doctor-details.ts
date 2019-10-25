@@ -115,17 +115,15 @@
         }
         msg += '</ul>';
         $("#insuranceList").html(msg);
-        var elems = document.querySelectorAll('.tooltipped');
-        var instances = M.Tooltip.init(elems, {});
+        M.Tooltip.init(document.querySelectorAll('.tooltipped'));
     }
     let sidenav = $('#sidenav-details').detach();
     $('#nav-mobile').html(sidenav[0]);
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
+    M.FormSelect.init(document.querySelectorAll('select'));
     var datepickerFormat = "dddd dd mmmm, yyyy";
     var dateToday = new Date();
     let mañanaTable, tardeTable: string;
-    $('#Date').datepicker({
+    M.Datepicker.init(document.getElementById('Date'), {
         firstDay: 1,
         format: datepickerFormat,
         autoClose: true,
@@ -179,6 +177,60 @@
             );
         }
     });
+    //$('#Date').datepicker({
+    //    firstDay: 1,
+    //    format: datepickerFormat,
+    //    autoClose: true,
+    //    minDate: dateToday,
+    //    maxDate: new Date($("#Last").val() as string),
+    //    disableDayFn: function (d) {
+    //        var mid = $("#MdId").val();
+    //        var result = moment(d, moment.ISO_8601).format("YYYYMMDD");
+    //        return dt[mid as number][1].indexOf(result) === -1;
+    //    },
+    //    container: document.querySelector('body'),
+    //    i18n: {
+    //        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+    //        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+    //        weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+    //        weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+    //        weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
+    //        cancel: 'Cancelar',
+    //        clear: 'Limpiar',
+    //        done: 'Ok'
+    //    },
+    //    showClearBtn: true,
+    //    onSelect: function (d) {
+    //        var result = moment(d, moment.ISO_8601).toJSON().replace("Z", "");
+    //        $.post("/Patients/Search/TimeSlots", {
+    //            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+    //            startDate: result,
+    //            mdId: $("#MdId").val()
+    //        }, function (data: TimeSlotVM[]) {
+    //            let mañanaData = '';
+    //            let tardeData = '';
+    //            $.each(data, (i, e) => {
+    //                var bookingData = '<tr>'
+    //                    + `<td>${e.startTime}</td>`
+    //                    + '<td>'
+    //                    + `<button class="time-select btn clinic-desc" data-id="${e.id}" class="btn waves-effect waves-teal right-align">SELECCIONAR</button>`
+    //                    + '</td></tr>';
+    //                if (~e.startTime.indexOf("a.")) {
+    //                    mañanaData += bookingData;
+    //                } else {
+    //                    tardeData += bookingData;
+    //                }
+    //            });
+    //            mañanaTable = `<table>${mañanaData}</table>`;
+    //            $('#BookingMorning').html(mañanaTable);
+    //            tardeTable = `<table>${tardeData}</table>`;
+    //            $('#BookingAfternoon').html(tardeTable);
+    //            $('#map-view').slideUp();
+    //            $('#date-view').slideDown();
+    //        }
+    //        );
+    //    }
+    //});
     $("#date-view").on('click', 'button.time-select', function () {
         $('#TimeSlotId').val($(this).data('id'));
         $("#BookForm").submit();
@@ -222,8 +274,7 @@
             infowindow.close();
             marker.setVisible(selected);
             if (selected) map.panTo(marker.getPosition());
-            var elems = document.querySelectorAll('.tooltipped');
-            var instances = M.Tooltip.init(elems, {});
+            M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         });
     });
 }

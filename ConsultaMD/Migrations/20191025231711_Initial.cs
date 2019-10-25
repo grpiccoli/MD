@@ -8,7 +8,7 @@ namespace ConsultaMD.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder?.CreateTable(
+            migrationBuilder.CreateTable(
                 name: "AreaCodes",
                 columns: table => new
                 {
@@ -563,6 +563,34 @@ namespace ConsultaMD.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PatientId = table.Column<int>(nullable: false),
+                    TimeSlotId = table.Column<int>(nullable: false),
+                    PaymentId = table.Column<int>(nullable: true),
+                    BondId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Patients_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patients",
+                        principalColumn: "NaturalId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Payment_PaymentId",
+                        column: x => x.PaymentId,
+                        principalTable: "Payment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MediumDoctors",
                 columns: table => new
                 {
@@ -654,40 +682,12 @@ namespace ConsultaMD.Migrations
                         principalTable: "Agenda",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reservations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    PatientId = table.Column<int>(nullable: false),
-                    TimeSlotId = table.Column<int>(nullable: false),
-                    PaymentId = table.Column<int>(nullable: true),
-                    BondId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reservations_Patients_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patients",
-                        principalColumn: "NaturalId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Payment_PaymentId",
-                        column: x => x.PaymentId,
-                        principalTable: "Payment",
+                        name: "FK_TimeSlots_Reservations_ReservationId",
+                        column: x => x.ReservationId,
+                        principalTable: "Reservations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Reservations_TimeSlots_TimeSlotId",
-                        column: x => x.TimeSlotId,
-                        principalTable: "TimeSlots",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -841,12 +841,6 @@ namespace ConsultaMD.Migrations
                 column: "PaymentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_TimeSlotId",
-                table: "Reservations",
-                column: "TimeSlotId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Subspecialties_DoctorId",
                 table: "Subspecialties",
                 column: "DoctorId");
@@ -857,6 +851,13 @@ namespace ConsultaMD.Migrations
                 column: "AgendaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TimeSlots_ReservationId",
+                table: "TimeSlots",
+                column: "ReservationId",
+                unique: true,
+                filter: "[ReservationId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vertices_PolygonId",
                 table: "Vertices",
                 column: "PolygonId");
@@ -864,7 +865,7 @@ namespace ConsultaMD.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder?.DropTable(
+            migrationBuilder.DropTable(
                 name: "AreaCodeProvinces");
 
             migrationBuilder.DropTable(
@@ -898,10 +899,10 @@ namespace ConsultaMD.Migrations
                 name: "Publications");
 
             migrationBuilder.DropTable(
-                name: "Reservations");
+                name: "Subspecialties");
 
             migrationBuilder.DropTable(
-                name: "Subspecialties");
+                name: "TimeSlots");
 
             migrationBuilder.DropTable(
                 name: "Vertices");
@@ -916,22 +917,22 @@ namespace ConsultaMD.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Patients");
+                name: "Agenda");
 
             migrationBuilder.DropTable(
-                name: "Payment");
-
-            migrationBuilder.DropTable(
-                name: "TimeSlots");
+                name: "Reservations");
 
             migrationBuilder.DropTable(
                 name: "Polygons");
 
             migrationBuilder.DropTable(
-                name: "Agenda");
+                name: "MediumDoctors");
 
             migrationBuilder.DropTable(
-                name: "MediumDoctors");
+                name: "Patients");
+
+            migrationBuilder.DropTable(
+                name: "Payment");
 
             migrationBuilder.DropTable(
                 name: "Doctors");

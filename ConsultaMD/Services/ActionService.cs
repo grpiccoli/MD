@@ -1,24 +1,17 @@
-﻿using ConsultaMD.Models.VM;
-using ConsultaMD.Models.VM.PatientsVM;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
+﻿using ConsultaMD.Models.VM.PatientsVM;
 using Newtonsoft.Json;
-using NWebsec.AspNetCore.Core.Web;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 
 namespace ConsultaMD.Services
 {
-    public class Actions
+    public static class Actions
     {
-        private static List<ActionConfig> Action { get; set; } = new List<ActionConfig>();
-        private static List<ActionConfig> MenuActions { get; set; } = new List<ActionConfig>();
-        public static List<ActionConfig> LoadJson()
+        private static IEnumerable<ActionConfig> Action { get; set; } = new List<ActionConfig>();
+        private static IEnumerable<ActionConfig> MenuActions { get; set; } = new List<ActionConfig>();
+        public static IEnumerable<ActionConfig> LoadJson()
         {
             using (StreamReader r = new StreamReader("actions.json"))
             {

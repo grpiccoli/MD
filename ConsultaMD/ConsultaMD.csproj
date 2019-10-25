@@ -21,6 +21,8 @@
     <TypeScriptCompile Remove="wwwroot\lib\**" />
     <Compile Remove="Migrations\20191024191924_Initial.cs" />
     <Compile Remove="Migrations\20191024191924_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191024192610_Initial.cs" />
+    <Compile Remove="Migrations\20191024192610_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\doctor-details.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
