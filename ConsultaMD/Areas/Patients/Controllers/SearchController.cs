@@ -162,7 +162,6 @@ namespace ConsultaMD.Areas.Patients.Controllers
         }
         public async Task<IActionResult> Map()
         {
-            ViewData["Title"] = "Buscar Cita";
             var user = await _context.Users
                 .Include(u => u.Person)
                 .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name).ConfigureAwait(false);
@@ -280,9 +279,10 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             PatientId = rutParsed.Value.rut,
                             TimeSlotId = model.TimeSlotId
                         };
-                        timeSlot.Reservation = reservation;
-                        _context.Update(timeSlot);
                         _context.Reservations.Add(reservation);
+                        await _context.SaveChangesAsync().ConfigureAwait(false);
+                        timeSlot.ReservationId = reservation.Id;
+                        _context.TimeSlots.Update(timeSlot);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
                         return RedirectToAction("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id });
                     }

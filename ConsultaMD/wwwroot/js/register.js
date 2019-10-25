@@ -12,7 +12,10 @@ var debounceTO = 300;
 var $nameDiv = $name.parent();
 var $carnetDiv = $carnet.parent();
 var $nationDiv = $nation.parent();
-$('.collapsible').collapsible();
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, {});
+});
 $rut.on('keyup', function () {
     $nameDiv.slideUp();
     $carnetDiv.slideUp();

@@ -36,11 +36,16 @@ $(`#${insuranceId} > option`).slice(1).each(function () {
 });
 
 //initialize select
-$('select').formSelect();
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+});
+//$('select').formSelect();
 //$('select').AnyPicker({
 //    mode: "select",
 //    theme: "Android"
 //});
+
 
 //Validate User / Insurance / pwd combo
 function validateInsurance(val: number, rut: number, dv: string, pwd: string): boolean {

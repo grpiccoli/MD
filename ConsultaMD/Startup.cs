@@ -138,6 +138,7 @@ namespace ConsultaMD
 
             Libman.LoadJson();
             Bundler.LoadJson();
+            Actions.LoadJson();
             //WebpackChunkNamer.Init();
 
             services.AddMvc(o => {

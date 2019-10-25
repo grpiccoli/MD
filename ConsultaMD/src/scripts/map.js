@@ -52,14 +52,29 @@ function initMap() {
         }
     });
     var places = {};
+    var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
+        onCloseEnd: function (_) {
+            [].forEach.call(document.querySelectorAll('#slide-action .tabs'), function (tab) {
+                M.Tabs.getInstance(tab).destroy();
+            });
+            [].forEach.call(document.querySelectorAll('#slide-action .tooltipped'), function (tooltip) {
+                M.Tabs.getInstance(tooltip).destroy();
+            });
+        }
+    });
+    document.querySelectorAll("#slide-action ul").forEach(function (e) {
+        e.addEventListener('drag', function () {
+            slide_action.isDragged = false;
+        });
+    });
     function addEventListener(marker, cid) {
         google.maps.event.addListener(marker, 'click', function (_) {
             $("#slide-header").html(places[cid]["header"]);
             $("#slide-content").html(places[cid]["content"]);
             setTimeout(function () {
-                $("#slide-action").sidenav('open');
-                $('#slide-action .tabs').tabs();
-                $('#slide-action .tooltipped').tooltip();
+                slide_action.open();
+                M.Tabs.init(document.querySelectorAll('#slide-action .tabs'));
+                M.Tooltip.init(document.querySelectorAll('#slide-action .tooltipped'));
             }, 500);
         });
     }
@@ -209,7 +224,8 @@ function initMap() {
             if (!--count) {
                 fitToMarkers();
                 loaderStop();
-                var search = $('#search-filter').autocomplete({
+                var search = document.getElementById('search-filter');
+                M.Autocomplete.init(search, {
                     data: dt,
                     limit: 10,
                     onAutocomplete: function (val) {
@@ -218,7 +234,7 @@ function initMap() {
                     }
                 });
                 $('#close-search').click(function (_) {
-                    search.val('');
+                    $(search).val('');
                 });
                 if (typeof (markerCluster) !== 'undefined') {
                     markerCluster.clearMarkers();
@@ -243,7 +259,7 @@ function initMap() {
                         index: index
                     };
                 });
-                $('.collapsible').collapsible();
+                M.Collapsible.init(document.querySelectorAll('.collapsible'));
                 $('button').removeAttr('disabled');
             }
         });
@@ -276,12 +292,6 @@ function initMap() {
         $.post("/Patients/Search/MapList", getAllquerys(), getList);
     }
     getData();
-    $('#slide-action').sidenav({
-        onCloseEnd: function (_) {
-            $('#slide-action .tabs').tabs('destroy');
-            $('#slide-action .tooltipped').tooltip('destroy');
-        }
-    });
     var me;
     function moveToLocation() {
         if (navigator.geolocation) {
@@ -319,10 +329,10 @@ function initMap() {
             $.each(places, function (i) {
                 $("#" + i).html(this["content"]);
             });
-            $('#list .tooltipped').tooltip();
+            M.Tooltip.init(document.querySelectorAll('#list .tooltipped'));
             $("#map-view").slideToggle();
             $("#list-view").slideToggle();
-            $('#list .tabs').tabs();
+            M.Tabs.init(document.querySelectorAll('#list .tabs'));
         }
         else {
             $("#map-view").slideToggle();
@@ -330,8 +340,12 @@ function initMap() {
             $(this).html("ver como lista");
             setTimeout(fitToMarkers, 400);
             setTimeout(function () {
-                $('#list .tabs').tabs('destroy');
-                $('#list .tooltipped').tooltip('destroy');
+                [].forEach.call(document.querySelectorAll('#list .tabs'), function (tab) {
+                    M.Tabs.getInstance(tab).destroy();
+                });
+                [].forEach.call(document.querySelectorAll('#list .tooltipped'), function (tooltip) {
+                    M.Tooltip.getInstance(tooltip).destroy();
+                });
                 $('#list .list-place').html('');
             }, 200);
         }
@@ -363,13 +377,12 @@ function initMap() {
             return 1;
         }
     }
-    var time_slider = document.getElementById('time-slider');
-    noUiSlider.create(time_slider, {
+    noUiSlider.create(document.getElementById('time-slider'), {
         start: [0, 24],
         connect: true,
         step: 1,
         orientation: 'horizontal',
-        margin: 1,
+        margin: 6,
         range: {
             'min': 0,
             'max': 24
@@ -413,7 +426,7 @@ function initMap() {
         }
     });
     var dateToday = new Date();
-    $('.datepicker').datepicker({
+    M.Datepicker.init(document.querySelectorAll('.datepicker'), {
         firstDay: 1,
         format: datepickerFormat,
         autoClose: true,
@@ -437,12 +450,12 @@ function initMap() {
             dateToday :
             moment($(this).val()).toDate();
     });
-    var filters = $('#filters-pane').modal({
+    var filters = M.Modal.init(document.getElementById('filters-pane'), {
         onCloseStart: changeFilter
     });
     $('#filter-action').click(function (event) {
         event.preventDefault();
-        filters.modal('close');
+        filters.close();
     });
     $('#filter-clear').click(function (event) {
         event.preventDefault();
@@ -456,39 +469,41 @@ function initMap() {
         switch (id) {
             case "btnEspecialidad":
                 $('.fltcol').hide();
-                filters.modal('open');
+                filters.open();
                 $('#especialities-col').fadeIn();
                 $('#especialities-col input.select2-search__field').trigger('keyup');
                 break;
             case "btnUbicacion":
                 $('.fltcol').hide();
-                filters.modal('open');
+                filters.open();
                 $('#locations-col').fadeIn();
                 $('#locations-col input.select2-search__field').trigger('keyup');
                 break;
             case "btnFechaHora":
                 $('.fltcol').hide();
-                filters.modal('open');
+                filters.open();
                 $('#dates-col').fadeIn();
                 $('#dates-col input.select2-search__field').trigger('keyup');
                 break;
             case "all1":
             case "all2":
-                filters.modal('open');
+                filters.open();
                 $('.fltcol').fadeIn();
                 $('#filters-pane input.select2-search__field').trigger('keyup');
                 break;
         }
     });
-    $('#show').formSelect().change(function () {
+    var show = M.FormSelect.init(document.getElementById('show'));
+    show.el.addEventListener("change", function (e) {
         $("li.tab a").removeClass("active");
-        var val = $(this).val();
+        var s = show.el;
+        var val = s.options[s.selectedIndex].value;
         var $el = $("li.tab a." + val).addClass("active");
         var pos = 0;
         if (val === 'esp' || val === 'mis')
             pos += 200;
         $el.parent().parent().animate({ scrollLeft: pos });
-        $('.tabs').tabs();
+        M.Tabs.init(document.querySelectorAll('.tabs'));
     });
     $.post('/Patients/Search/FilterLists', $("#filter input[name='__RequestVerificationToken']").serializeArray(), function (d) {
         $('#Especialidad').select2({

@@ -22,7 +22,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
         [HttpGet]
         public async Task<IActionResult> ConfirmDate(int id)
         {
-            ViewData["Title"] = "Confirmar y Pagar";
+            ViewData["referer"] = Request.Headers["Referer"].ToString();
             if (ModelState.IsValid)
             {
                 var rutParsed = RUT.Unformat(User.Identity.Name);

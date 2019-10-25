@@ -44,6 +44,7 @@
     <None Remove="src\scripts\map.ts" />
     <None Remove="src\scripts\map.ts.bak1" />
     <None Remove="src\scripts\map.ts.bak2" />
+    <None Remove="src\scripts\markerclusterer.js" />
     <None Remove="src\types\anypicker\index.d.ts" />
     <None Remove="src\types\choicesjs\index.d.ts" />
     <None Remove="src\types\consultamd\index.d.ts" />
@@ -51,7 +52,12 @@
     <None Remove="src\types\jquery.validate.hooks\index.d.ts" />
     <None Remove="src\types\markerclustererplus\index.d.ts" />
     <None Remove="src\types\markerclusterer\index.d.ts" />
+    <TypeScriptCompile Remove="wwwroot\mobiscroll\mobiscroll.jquery.min.d.ts" />
     <Content Include="package_webpack.json_bak" />
+    <Content Include="src\scripts\markerclusterer.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <None Include="compilerconfig.json" />
     <Folder Include="src\types\lighterhtml\" />
     <Folder Include="src\types\nouislider\" />

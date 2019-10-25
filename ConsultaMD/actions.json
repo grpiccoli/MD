@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Map",
+    "title": "Buscar Cita",
+    "icon": "search",
+    "menu": true,
+    "area": "Patients",
+    "controller": "Search"
+  },
+  {
+    "name": "WaitingRoom",
+    "title": "Sala de Espera",
+    "icon": "hourglass_empty",
+    "menu": true,
+    "area": "Patients",
+    "controller": "Date"
+  },
+  {
+    "name": "BookApointment",
+    "title": "Mis Citas",
+    "icon": "schedule",
+    "menu": true,
+    "area": "Patients",
+    "controller": "Book"
+  },
+  {
+    "name": "ConfirmDate",
+    "title": "Confirmar y Pagar",
+    "area": "Patients",
+    "controller": "Booking",
+    "path": [ "Map" ]
+  },
+  {
+    "name": "DoctorDetails",
+    "title": "Detalles",
+    "area": "Patients",
+    "controller": "Search",
+    "path": [ "Map" ]
+  }
+]

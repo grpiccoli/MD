@@ -1,7 +1,7 @@
 ﻿@model MapVM
 
 <partial name="_Libs" model='(new string[]{
-         "select2", "simplebar", "moment", "map", "@google/markerclusterer" }, "")' />
+         "select2", "simplebar", "moment", "map", "markerclusterer" }, "")' />
 
 @using Microsoft.AspNetCore.Identity
 @using ConsultaMD.Models.Entities
@@ -12,8 +12,8 @@
 
 <input asp-for="Last" class="hide" readonly="readonly" disabled="disabled"/>
 
-<button id="all1" class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
-    <i class="material-icons left">filter_list</i>
+<button class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
+    <i id="all1" class="material-icons left">filter_list</i>
 </button>
 <button id="all2" class="fltbtn btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light">
     <i class="material-icons left">filter_list</i>Ver todos los filtros

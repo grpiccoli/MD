@@ -16,6 +16,11 @@
     ]
   },
   // 1.7 / 1.8 / 1.9
+  //Marker clusterer
+  {
+    "outputFileName": "wwwroot/js/markerclusterer.min.js",
+    "inputFiles": [ "src/scripts/markerclusterer.js" ]
+  },
   //MENU
   {
     "outputFileName": "wwwroot/js/forgotPassword.js",
@@ -140,7 +145,7 @@
   },
   {
     "outputFileName": "wwwroot/js/confirm-date.min.js",
-    "inputFiles": ["src/scripts/confirm-date.js"]
+    "inputFiles": [ "src/scripts/confirm-date.js" ]
   }
   //AGENDA
   //{

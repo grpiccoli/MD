@@ -31,6 +31,23 @@
       ]
     },
     {
+      "library": "@ionic-native/wheel-selector@5.15.1",
+      "destination": "wwwroot/lib/@ionic-native/wheel-selector/",
+      "files": [
+        "index.js",
+        "ngx/index.js"
+      ]
+    },
+    {
+      "library": "air-datepicker@2.2.3",
+      "destination": "wwwroot/lib/air-datepicker/",
+      "files": [
+        "dist/css/datepicker.min.css",
+        "dist/js/datepicker.min.js",
+        "dist/js/i18n/datepicker.es.js"
+      ]
+    },
+    {
       "library": "materialize-social@1.0.3",
       "destination": "wwwroot/lib/materialize-social/",
       "files": [
@@ -43,7 +60,7 @@
       "files": [ "dist/cleave.min.js" ]
     },
     {
-      "library": "select2@4.0.10",
+      "library": "select2@4.0.11",
       "destination": "wwwroot/lib/select2/",
       "files": [
         "dist/js/select2.full.min.js",
@@ -58,7 +75,7 @@
       "files": [ "jquery.mousewheel.js" ]
     },
     {
-      "library": "nouislider@14.0.2",
+      "library": "nouislider@14.0.3",
       "destination": "wwwroot/lib/nouislider/",
       "files": [
         "distribute/nouislider.min.css",
@@ -80,7 +97,7 @@
       ]
     },
     {
-      "library": "@fortawesome/fontawesome-free@5.10.2",
+      "library": "@fortawesome/fontawesome-free@5.11.2",
       "destination": "wwwroot/lib/@fortawesome/fontawesome-free/",
       "files": [
         "css/all.min.css",
@@ -112,21 +129,26 @@
       "destination": "wwwroot/lib/jquery/",
       "files": [ "dist/jquery.min.js" ]
     },
+    //{
+    //  "library": "jquery-mobile@1.5.0-alpha.1",
+    //  "destination": "wwwroot/lib/jquery-mobile/",
+    //  "files": [ "jquery.mobile.", "jquery.mobile.min.js" ]
+    //},
     //Google Maps Utilities
-    {
-      "library": "@google/markerclusterer@1.0.3",
-      "destination": "wwwroot/lib/@google/markerclusterer/",
-      "files": [
-        "src/markerclusterer.js"
-      ]
-    },
-    {
-      "library": "@google/markerclustererplus@2.1.11",
-      "destination": "wwwroot/lib/@google/markerclustererplus/",
-      "files": [
-        "src/markerclusterer.js"
-      ]
-    },
+    //{
+    //  "library": "@google/markerclusterer@2.0.0",
+    //  "destination": "wwwroot/lib/@google/markerclusterer/",
+    //  "files": [
+    //    "src/markerclusterer.js"
+    //  ]
+    //},
+    //{
+    //  "library": "@google/markerclustererplus@3.0.1",
+    //  "destination": "wwwroot/lib/@google/markerclustererplus/",
+    //  "files": [
+    //    "src/markerclusterer.js"
+    //  ]
+    //},
     // FULL CALENDAR
     {
       "library": "@fullcalendar/core@4.3.1",
@@ -178,7 +200,7 @@
     },
     // TUI CALENDAR
     {
-      "library": "tui-calendar@1.12.5",
+      "library": "tui-calendar@1.12.6",
       "destination": "wwwroot/lib/tui-calendar/",
       "files": [
         "dist/tui-calendar.min.css",
@@ -186,7 +208,7 @@
       ]
     },
     {
-      "library": "tui-date-picker@4.0.1",
+      "library": "tui-date-picker@4.0.2",
       "destination": "wwwroot/lib/tui-date-picker/",
       "files": [
         "dist/tui-date-picker.css",
@@ -203,12 +225,12 @@
     },
     // GOOGLE PHONE
     {
-      "library": "libphonenumber-js@1.7.24",
+      "library": "libphonenumber-js@1.7.26",
       "destination": "wwwroot/lib/libphonenumber-js/",
       "files": [ "bundle/libphonenumber-max.js" ]
     },
     {
-      "library": "simplebar@5.0.2",
+      "library": "simplebar@5.0.3",
       "destination": "wwwroot/lib/simplebar/",
       "files": [ "dist/simplebar.min.css", "dist/simplebar.min.js" ]
     },
@@ -243,7 +265,7 @@
       "files": [ "dist/jquery.unobtrusive-ajax.min.js" ]
     },
     {
-      "library": "cldr-data@35.1.0",
+      "library": "cldr-data@36.0.0",
       "destination": "wwwroot/lib/cldr-data/"
     },
     {

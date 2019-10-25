@@ -14,7 +14,11 @@ const $nameDiv = $name.parent();
 const $carnetDiv = $carnet.parent();
 const $nationDiv = $nation.parent();
 
-$('.collapsible').collapsible();
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, {});
+});
+//$('.collapsible').collapsible();
 
 //Format as you type RUT
 $rut.on('keyup', function () {

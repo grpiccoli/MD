@@ -17,7 +17,24 @@
     }
 }
 
+nav > div.nav-wrapper > div.nav-wrapper {
+    padding-left:1.5rem;
+}
+
 .details{
     display: block;
     font-size: 1rem;
+}
+
+@media only screen and (max-width:992px) {
+    nav > div.nav-wrapper > div.nav-wrapper {
+        padding-left: 3.5rem;
+    }
+    nav .sidenav-trigger.brand-logo.left{
+        left: 0;
+        margin: 0 13px;
+    }
+}
+
+@media only screen and (max-width:600px) {
 }

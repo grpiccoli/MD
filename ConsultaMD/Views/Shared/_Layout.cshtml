@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var name = this.ViewContext.RouteData.Values["action"].ToString();
+    var action = Actions.GetActionByName(name);
+    var title = ViewData["Title"] ?? action.Title;
+}
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
@@ -6,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
-    <title>@ViewData["Title"] - ConsultaMD</title>
+    <title>@title - ConsultaMD</title>
     <meta name="author" content="EPIC Solutions" />
     <meta name="description" content="Consulta Médica" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,9 +48,10 @@
     <partial name="_Favicons" />
     @*"@fortawesome/fontawesome-free",*@
     @*<link href="<%= htmlWebpackPlugin.files.chunks[chunk].css %>" rel="stylesheet" />*@
-    <partial name="_Libs" model='(new string[]{"jquery", "materialize-css","jquery.mousewheel", "main"}, "TOP")' />
+    <partial name="_Libs" model='(new string[]{"materialize-css","jquery", "jquery.mousewheel", "main"}, "TOP")' />
     @*<partial name="_Scripts" model='(new string[]{"jquery", "materialize-css", "main", "runtime"}, "-TOP_")' />*@
     @this.WriteBlocks("TOPStyles")
+    <link href="~/jquery-mobile/jquery.mobile-1.5.0-rc1.min.css" asp-append-version="true" />
     @this.WriteBlocks("Styles")
     @RenderSection("Styles", required: false)
     <noscript>
@@ -61,27 +67,28 @@
     @if (User.Identity.IsAuthenticated)
     {
         <!-- descomentar cuando esté terminado -->
-    <header>
-        @this.WriteBlocks("Menu")
-    </header>
+        <header>
+            @this.WriteBlocks("Menu")
+        </header>
     }
-<main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
-    @*<partial name="_Loader" />*@
-    @RenderBody()
-    @if (User.Identity.IsAuthenticated)
-    {
-        @this.WriteBlocks("SideNav")
-    }
-</main>
+    <main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
+        @*<partial name="_Loader" />*@
+        @RenderBody()
+        @if (User.Identity.IsAuthenticated)
+        {
+            @this.WriteBlocks("SideNav")
+        }
+    </main>
     @*<footer class="border-top footer text-muted">
             <div class="container">
                 &copy; 2019 - ConsultaMD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </footer>*@
     @*<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-    <% } %>*@
+        <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+        <% } %>*@
     @this.WriteBlocks("TOPScripts")
+    @*<script src="~/jquery-mobile/jquery.mobile-1.5.0-rc1.min.js" asp-append-version="true"></script>*@
     @this.WriteBlocks("ValidationScripts")
     @this.WriteBlocks("Scripts")
     @RenderSection("Scripts", required: false)

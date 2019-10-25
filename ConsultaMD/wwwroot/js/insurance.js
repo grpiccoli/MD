@@ -28,7 +28,10 @@ $("#" + insuranceId + " > option").slice(1).each(function () {
     var $this = $(this);
     $this.attr('data-icon', "/img/mi/" + $this.text() + "-icon.min.png");
 });
-$('select').formSelect();
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+});
 function validateInsurance(val, rut, dv, pwd) {
     var ret = false;
     debounce($.ajax({

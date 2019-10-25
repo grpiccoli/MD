@@ -57,15 +57,34 @@ function initMap() {
         }
     });
     var places: { [cid: string]: { [type: string]: string; } } = {};
+    //destroy and create tabs in sidenav
+    var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
+        //draggable: false,
+        onCloseEnd: _ => {
+            [].forEach.call(document.querySelectorAll('#slide-action .tabs'), function (tab: Element) {
+                M.Tabs.getInstance(tab).destroy();
+            });
+            //$('#slide-action .tabs').tabs('destroy');
+            [].forEach.call(document.querySelectorAll('#slide-action .tooltipped'), function (tooltip: Element) {
+                M.Tabs.getInstance(tooltip).destroy();
+            });
+            //$('#slide-action .tooltipped').tooltip('destroy');
+        }
+    });
+    document.querySelectorAll("#slide-action ul").forEach((e) => {
+        e.addEventListener('drag', function () {
+            slide_action.isDragged = false;
+        });
+    });
     //ADD EVENT LISTENER
     function addEventListener(marker: google.maps.Marker, cid: string) {
         google.maps.event.addListener(marker, 'click', _ => {
             $("#slide-header").html(places[cid]["header"]);
             $("#slide-content").html(places[cid]["content"]);
             setTimeout(() => {
-                $("#slide-action").sidenav('open');
-                $('#slide-action .tabs').tabs();
-                $('#slide-action .tooltipped').tooltip();
+                slide_action.open();
+                M.Tabs.init(document.querySelectorAll('#slide-action .tabs'));
+                M.Tooltip.init(document.querySelectorAll('#slide-action .tooltipped'));
             }, 500);
         });
     }
@@ -219,7 +238,8 @@ function initMap() {
                 if (!--count) {
                     fitToMarkers();
                     loaderStop();
-                    var search = $('#search-filter').autocomplete({
+                    var search = document.getElementById('search-filter');
+                    M.Autocomplete.init(search, {
                         data: dt,
                         limit: 10,
                         onAutocomplete: (val) => {
@@ -228,7 +248,7 @@ function initMap() {
                         }
                     });
                     $('#close-search').click(_ => {
-                        search.val('');
+                        $(search).val('');
                     });
                     if (typeof(markerCluster) !== 'undefined') {
                         markerCluster.clearMarkers();
@@ -252,7 +272,7 @@ function initMap() {
                             index: index
                         };
                     });
-                    $('.collapsible').collapsible();
+                    M.Collapsible.init(document.querySelectorAll('.collapsible'));
                     $('button').removeAttr('disabled');
                 }
             });
@@ -286,13 +306,7 @@ function initMap() {
         $.post("/Patients/Search/MapList", getAllquerys(), getList);
     }
     getData();
-    //destroy and create tabs in sidenav
-    $('#slide-action').sidenav({
-        onCloseEnd: _ => {
-            $('#slide-action .tabs').tabs('destroy');
-            $('#slide-action .tooltipped').tooltip('destroy');
-        }
-    });
+
     var me: google.maps.Marker;
     //Move to new location
     function moveToLocation() {
@@ -332,18 +346,26 @@ function initMap() {
             $.each(places, function (i) {
                 $(`#${i}`).html(this["content"])
             });
-            $('#list .tooltipped').tooltip();
+            M.Tooltip.init(document.querySelectorAll('#list .tooltipped'));
+            //$('#list .tooltipped').tooltip();
             $("#map-view").slideToggle();
             $("#list-view").slideToggle();
-            $('#list .tabs').tabs();
+            M.Tabs.init(document.querySelectorAll('#list .tabs'));
+            //$('#list .tabs').tabs();
         } else {
             $("#map-view").slideToggle();
             $("#list-view").slideToggle();
             $(this).html("ver como lista");
             setTimeout(fitToMarkers, 400);
             setTimeout(() => {
-                $('#list .tabs').tabs('destroy');
-                $('#list .tooltipped').tooltip('destroy');
+                [].forEach.call(document.querySelectorAll('#list .tabs'), function (tab: Element) {
+                    M.Tabs.getInstance(tab).destroy();
+                });
+                [].forEach.call(document.querySelectorAll('#list .tooltipped'), function (tooltip: Element) {
+                    M.Tooltip.getInstance(tooltip).destroy();
+                });
+                //$('#list .tabs').tabs('destroy');
+                //$('#list .tooltipped').tooltip('destroy');
                 $('#list .list-place').html('');
             }, 200);
         }
@@ -376,13 +398,12 @@ function initMap() {
         }
     }
     //TIME SLIDER
-    var time_slider = document.getElementById('time-slider');
-    noUiSlider.create(time_slider, {
+    noUiSlider.create(document.getElementById('time-slider'), {
         start: [0, 24],
         connect: true,
         step: 1,
         orientation: 'horizontal',
-        margin: 1,
+        margin: 6,
         range: {
             'min': 0,
             'max': 24
@@ -426,7 +447,7 @@ function initMap() {
     });
     //DATEPICKER
     var dateToday = new Date();
-    $('.datepicker').datepicker({
+    M.Datepicker.init(document.querySelectorAll('.datepicker'), {
         firstDay: 1,
         format: datepickerFormat,
         autoClose: true,
@@ -444,6 +465,7 @@ function initMap() {
         },
         showClearBtn: true
     });
+    //$('.datepicker').datepicker();
     $('#MinDate').change(function (d) {
         var max = M.Datepicker.getInstance(document.getElementById('MaxDate'));
         max.options.minDate = $(this).val() === '' ?
@@ -451,12 +473,16 @@ function initMap() {
             moment($(this).val()).toDate();
     });
     //FILTERS MODAL
-    let filters = $('#filters-pane').modal({
+    var filters = M.Modal.init(document.getElementById('filters-pane'), {
         onCloseStart: changeFilter
     });
+    //let filters = $('#filters-pane').modal({
+    //    onCloseStart: changeFilter
+    //});
     $('#filter-action').click(event => {
         event.preventDefault();
-        filters.modal('close');
+        filters.close();
+            //.modal('close');
     });
     $('#filter-clear').click(event => {
         event.preventDefault();
@@ -471,39 +497,46 @@ function initMap() {
         switch (id) {
             case "btnEspecialidad":
                 $('.fltcol').hide();
-                filters.modal('open');
+                filters.open();
+                //filters.modal('open');
                 $('#especialities-col').fadeIn();
                 $('#especialities-col input.select2-search__field').trigger('keyup');
                 break;
             case "btnUbicacion":
                 $('.fltcol').hide();
-                filters.modal('open');
+                filters.open();
+                //filters.modal('open');
                 $('#locations-col').fadeIn();
                 $('#locations-col input.select2-search__field').trigger('keyup');
                 break;
             case "btnFechaHora":
                 $('.fltcol').hide();
-                filters.modal('open');
+                filters.open();
+                //filters.modal('open');
                 $('#dates-col').fadeIn();
                 $('#dates-col input.select2-search__field').trigger('keyup');
                 break;
             case "all1":
             case "all2":
-                filters.modal('open');
+                filters.open();
+                //filters.modal('open');
                 $('.fltcol').fadeIn();
                 $('#filters-pane input.select2-search__field').trigger('keyup');
                 break;
         }
     });
     //select show list
-    $('#show').formSelect().change(function () {
+    var show = M.FormSelect.init(document.getElementById('show'));
+    show.el.addEventListener("change", (e) => {
         $(`li.tab a`).removeClass("active");
-        var val = $(this).val();
+        var s = show.el as HTMLSelectElement;
+        var val = s.options[s.selectedIndex].value;
         var $el = $(`li.tab a.${val}`).addClass("active");
         var pos = 0;
         if (val === 'esp' || val === 'mis') pos += 200;
         $el.parent().parent().animate({ scrollLeft: pos });
-        $('.tabs').tabs();
+        M.Tabs.init(document.querySelectorAll('.tabs'));
+        //$('.tabs').tabs();
     });
     //initialize selects
     $.post('/Patients/Search/FilterLists', $("#filter input[name='__RequestVerificationToken']").serializeArray(), (d) => {

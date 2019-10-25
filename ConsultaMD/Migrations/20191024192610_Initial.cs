@@ -8,7 +8,7 @@ namespace ConsultaMD.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            migrationBuilder?.CreateTable(
                 name: "AreaCodes",
                 columns: table => new
                 {
@@ -864,7 +864,7 @@ namespace ConsultaMD.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            migrationBuilder?.DropTable(
                 name: "AreaCodeProvinces");
 
             migrationBuilder.DropTable(

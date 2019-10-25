@@ -106,11 +106,13 @@ function initDetails() {
         }
         msg += '</ul>';
         $("#insuranceList").html(msg);
-        $('.tooltipped').tooltip();
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems, {});
     }
     var sidenav = $('#sidenav-details').detach();
     $('#nav-mobile').html(sidenav[0]);
-    $('select').formSelect();
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
     var datepickerFormat = "dddd dd mmmm, yyyy";
     var dateToday = new Date();
     var mañanaTable, tardeTable;
@@ -205,7 +207,8 @@ function initDetails() {
             marker.setVisible(selected);
             if (selected)
                 map.panTo(marker.getPosition());
-            $('.tooltipped').tooltip();
+            var elems = document.querySelectorAll('.tooltipped');
+            var instances = M.Tooltip.init(elems, {});
         });
     });
 }

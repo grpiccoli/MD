@@ -1,5 +1,7 @@
-﻿$(document).ready(function () {
-    $('#modal1').modal();
+﻿document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.getElementById('modal1');
+    var instances = M.Modal.init(elems, {});
+
     //$('#Dia').datepicker({
     //    format: 'dd mmmm, yyyy',
     //    i18n: {
@@ -16,6 +18,7 @@
     //        this.close();
     //    }
     //});
+
     $(".paymentType").on('change', function () {
         var type = $(this).val();
         $("#PaymentType").val(type);
