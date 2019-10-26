@@ -59,21 +59,24 @@ function initMap() {
     var places: { [cid: string]: { [type: string]: string; } } = {};
     //destroy and create tabs in sidenav
     var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
-        //draggable: false,
+        //draggable: true,
         onCloseEnd: _ => {
             [].forEach.call(document.querySelectorAll('#slide-action .tabs'), function (tab: Element) {
                 M.Tabs.getInstance(tab).destroy();
             });
             //$('#slide-action .tabs').tabs('destroy');
             [].forEach.call(document.querySelectorAll('#slide-action .tooltipped'), function (tooltip: Element) {
-                M.Tabs.getInstance(tooltip).destroy();
+                M.Tooltip.getInstance(tooltip).destroy();
             });
             //$('#slide-action .tooltipped').tooltip('destroy');
         }
     });
     document.querySelectorAll("#slide-action ul").forEach((e) => {
-        e.addEventListener('drag', function () {
-            slide_action.isDragged = false;
+        e.addEventListener('dragstart', function () {
+            slide_action.options.draggable = false;
+        });
+        e.addEventListener('dragend', function () {
+            slide_action.options.draggable = true;
         });
     });
     //ADD EVENT LISTENER
@@ -561,5 +564,59 @@ function initMap() {
         //NORMALIZE SELECT2 INPUT
         $("input.select2-search__field")
             .addClass("browser-default");
+    });
+    M.Datepicker.init(document.getElementById('Date'), {
+        firstDay: 1,
+        format: datepickerFormat,
+        autoClose: true,
+        minDate: dateToday,
+        maxDate: new Date($("#Last").val() as string),
+        disableDayFn: function (d) {
+            var mid = $("#MdId").val();
+            var result = moment(d, moment.ISO_8601).format("YYYYMMDD");
+            return dt[mid as number][1].indexOf(result) === -1;
+        },
+        container: document.querySelector('body'),
+        i18n: {
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+            weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+            weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+            weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
+            cancel: 'Cancelar',
+            clear: 'Limpiar',
+            done: 'Ok'
+        },
+        showClearBtn: true,
+        onSelect: function (d) {
+            var result = moment(d, moment.ISO_8601).toJSON().replace("Z", "");
+            $.post("/Patients/Search/TimeSlots", {
+                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                startDate: result,
+                mdId: $("#MdId").val()
+            }, function (data: TimeSlotVM[]) {
+                let mañanaData = '';
+                let tardeData = '';
+                $.each(data, (i, e) => {
+                    var bookingData = '<tr>'
+                        + `<td>${e.startTime}</td>`
+                        + '<td>'
+                        + `<button class="time-select btn clinic-desc" data-id="${e.id}" class="btn waves-effect waves-teal right-align">SELECCIONAR</button>`
+                        + '</td></tr>';
+                    if (~e.startTime.indexOf("a.")) {
+                        mañanaData += bookingData;
+                    } else {
+                        tardeData += bookingData;
+                    }
+                });
+                //mañanaTable = `<table>${mañanaData}</table>`;
+                //$('#BookingMorning').html(mañanaTable);
+                //tardeTable = `<table>${tardeData}</table>`;
+                //$('#BookingAfternoon').html(tardeTable);
+                $('#map-view').slideUp();
+                $('#date-view').slideDown();
+            }
+            );
+        }
     });
 }

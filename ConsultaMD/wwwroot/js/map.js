@@ -58,13 +58,16 @@ function initMap() {
                 M.Tabs.getInstance(tab).destroy();
             });
             [].forEach.call(document.querySelectorAll('#slide-action .tooltipped'), function (tooltip) {
-                M.Tabs.getInstance(tooltip).destroy();
+                M.Tooltip.getInstance(tooltip).destroy();
             });
         }
     });
     document.querySelectorAll("#slide-action ul").forEach(function (e) {
-        e.addEventListener('drag', function () {
-            slide_action.isDragged = false;
+        e.addEventListener('dragstart', function () {
+            slide_action.options.draggable = false;
+        });
+        e.addEventListener('dragend', function () {
+            slide_action.options.draggable = true;
         });
     });
     function addEventListener(marker, cid) {
@@ -523,6 +526,56 @@ function initMap() {
         });
         $("input.select2-search__field")
             .addClass("browser-default");
+    });
+    M.Datepicker.init(document.getElementById('Date'), {
+        firstDay: 1,
+        format: datepickerFormat,
+        autoClose: true,
+        minDate: dateToday,
+        maxDate: new Date($("#Last").val()),
+        disableDayFn: function (d) {
+            var mid = $("#MdId").val();
+            var result = moment(d, moment.ISO_8601).format("YYYYMMDD");
+            return dt[mid][1].indexOf(result) === -1;
+        },
+        container: document.querySelector('body'),
+        i18n: {
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+            weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+            weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+            weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
+            cancel: 'Cancelar',
+            clear: 'Limpiar',
+            done: 'Ok'
+        },
+        showClearBtn: true,
+        onSelect: function (d) {
+            var result = moment(d, moment.ISO_8601).toJSON().replace("Z", "");
+            $.post("/Patients/Search/TimeSlots", {
+                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                startDate: result,
+                mdId: $("#MdId").val()
+            }, function (data) {
+                var mañanaData = '';
+                var tardeData = '';
+                $.each(data, function (i, e) {
+                    var bookingData = '<tr>'
+                        + ("<td>" + e.startTime + "</td>")
+                        + '<td>'
+                        + ("<button class=\"time-select btn clinic-desc\" data-id=\"" + e.id + "\" class=\"btn waves-effect waves-teal right-align\">SELECCIONAR</button>")
+                        + '</td></tr>';
+                    if (~e.startTime.indexOf("a.")) {
+                        mañanaData += bookingData;
+                    }
+                    else {
+                        tardeData += bookingData;
+                    }
+                });
+                $('#map-view').slideUp();
+                $('#date-view').slideDown();
+            });
+        }
     });
 }
 //# sourceMappingURL=map.js.map

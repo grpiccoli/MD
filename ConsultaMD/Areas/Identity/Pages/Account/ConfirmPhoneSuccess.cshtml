@@ -6,10 +6,6 @@
 
 <partial name="_Libs" model='(new string[]{ "simplebar" }, "")' />
 
-@section Styles{
-    <meta http-equiv="refresh" content="2;url=@Model.ReturnUrl" />
-}
-
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
     <div class="col m6 s12 h-100v" data-simplebar>
@@ -18,3 +14,11 @@
         <partial name="_SimpleCard" model='(icon: "email", msg: "¡Gracias por confirmar su teléfono!")' />
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        setTimeout(function(){
+            window.location.href = '@Model.ReturnUrl';
+         }, 2000);
+    </script>
+}

@@ -5,7 +5,7 @@ git pull
 cd ConsultaMD/
 dotnet ef database drop
 dotnet ef database update
-libman restore
+#libman restore
 online_md5="$(curl -sL https://unpkg.com/jquery.mousewheel@3.1.9/jquery.mousewheel.js | md5sum | cut -d ' ' -f 1)"
 local_md5="$(md5sum "wwwroot/lib/jquery.mousewheel/jquery.mousewheel.js" | cut -d ' ' -f 1)"
 if [ "$online_md5" == "$local_md5" ]; then
@@ -17,7 +17,7 @@ if [ "$online_md5" == "$local_md5" ]; then
     echo "hurray, they are equal!"
 fi
 npm i
-./node_modules/cldr-data-downloader/bin/download.sh -i http://www.unicode.org/Public/cldr/26/json.zip -o ./wwwroot/lib/cldr-data
+./node_modules/cldr-data-downloader/bin/download.sh -f -i http://www.unicode.org/Public/cldr/26/json.zip -o ./wwwroot/lib/cldr-data
 dotnet run
 dotnet publish -r linux-x64 -c Release
 systemctl stop kestrel-consultamd.service;rm -r ../../webapps/consultamd/;mkdir -p ../../webapps/consultamd/;rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ../../webapps/consultamd/;systemctl start kestrel-consultamd.service

@@ -1,7 +1,7 @@
-[
+﻿[
   {
     "name": "Map",
-    "title": "Buscar Cita",
+    "title": "Buscar Médicos",
     "icon": "search",
     "menu": true,
     "area": "Patients",
@@ -25,7 +25,7 @@
   },
   {
     "name": "ConfirmDate",
-    "title": "Confirmar y Pagar",
+    "title": "Pago",
     "area": "Patients",
     "controller": "Booking",
     "path": [ "Map" ]
