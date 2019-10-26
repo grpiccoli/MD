@@ -10,20 +10,22 @@
 
 <partial name="_Loader">
 
-<input asp-for="Last" class="hide" readonly="readonly" disabled="disabled"/>
+    <input asp-for="Last" class="hide" readonly="readonly" disabled="disabled" />
+    <input id="Date" name="Date" type="button" class="btn datepicker hide" />
 
-<button class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
-    <i id="all1" class="material-icons left">filter_list</i>
-</button>
-<button id="all2" class="fltbtn btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light">
-    <i class="material-icons left">filter_list</i>Ver todos los filtros
-</button>
+    <button class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
+        <i id="all1" class="material-icons left">filter_list</i>
+    </button>
+    <button id="all2" class="fltbtn btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light">
+        <i class="material-icons left">filter_list</i>Ver todos los filtros
+    </button>
     <nav>
         <div class="nav-wrapper teal lighten-2">
             <div class="input-field">
                 <input id="search-filter" type="search">
                 <label class="label-icon" for="search-filter">
-                <i class="material-icons">search</i></label>
+                    <i class="material-icons">search</i>
+                </label>
                 <i id="close-search" class="material-icons">close</i>
             </div>
         </div>
@@ -49,6 +51,23 @@
                 </div>
             </div>
             <div id="list" class="row"></div>
+        </div>
+        <div id="date-view">
+            <div class="row"><span id="doctorName"></span> <span id="placeName"></span> <span id="date"></span></div>
+            <div class="row h-100" data-simplebar>
+                <div class="col s12 m6">
+                    <h5 class="clinic-text center">Mañana</h5>
+                    <div>
+                        <section id="BookingMorning"></section>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <h5 class="clinic-text center">Tarde</h5>
+                    <div>
+                        <section id="BookingAfternoon"></section>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="list-btn fixed-action-btn">
             <button id="toggle-view" class="btn btn-small waves-effect waves-light pill">
@@ -86,15 +105,15 @@
         </div>
     </form>
 
-<ul id="slide-action" class="sidenav">
-    <li style="line-height:1rem">
-        <div data-simplebar class="h-100v">
-            <div id="slide-header"></div>
-            <div id="slide-content"></div>
-        </div>
-    </li>
-</ul>
+    <ul id="slide-action" class="sidenav">
+        <li style="line-height:1rem">
+            <div data-simplebar class="h-100v">
+                <div id="slide-header"></div>
+                <div id="slide-content"></div>
+            </div>
+        </li>
+    </ul>
 
-@section Scripts{
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>
-}
+    @section Scripts{
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>
+    }

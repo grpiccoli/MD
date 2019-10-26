@@ -1,4 +1,7 @@
-﻿html {
+﻿.datepicker-controls .select-month input.select-dropdown {
+  width: 81px; }
+
+html {
   position: fixed;
   touch-action: manipulation;
   height: 100vh;

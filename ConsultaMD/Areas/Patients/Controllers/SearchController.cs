@@ -215,6 +215,17 @@ namespace ConsultaMD.Areas.Patients.Controllers
                     StartTime = ts.StartTime.ToString("HH:mm tt", new CultureInfo("es-CL"))
                 }));
         }
+        [HttpPost, ValidateAntiForgeryToken, ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
+        public JsonResult GetDates(int mdId, DateTime? minDate = null, DateTime? maxDate = null)
+        {
+            return Json(_context.Agenda
+                .Where(a => a.MediumDoctorId == mdId
+                && a.StartTime > DateTime.Now.AddMinutes(30)
+                && (!minDate.HasValue || minDate.Value <= a.StartTime)
+                && (!maxDate.HasValue || maxDate.Value >= a.EndTime)
+                && a.TimeSlots.Any(ts => !ts.ReservationId.HasValue))
+                .Select(ts => int.Parse(ts.StartTime.ToString("yyyyMMdd", CultureInfo.InvariantCulture),CultureInfo.InvariantCulture)).Distinct());
+        }
         public async Task<IActionResult> DoctorDetails([Bind("Ubicacion,Insurance," +
             "MinTime,MaxTime,MinDate,MaxDate," +
             "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Days,Last")]
@@ -260,6 +271,27 @@ namespace ConsultaMD.Areas.Patients.Controllers
             };
             return View(model);
         }
+        [HttpPost]
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Reservation(int id)
+        {
+            var rutParsed = RUT.Unformat(User.Identity.Name);
+            var timeSlot = await _context.TimeSlots
+                .SingleOrDefaultAsync(ts => ts.Id == id).ConfigureAwait(false);
+            var reservation = new Reservation
+            {
+                PatientId = rutParsed.Value.rut,
+                TimeSlotId = id
+            };
+            _context.Reservations.Add(reservation);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
+            var savedReserve = await _context.Reservations.SingleOrDefaultAsync(r => r.TimeSlotId == timeSlot.Id).ConfigureAwait(false);
+            timeSlot.ReservationId = savedReserve.Id;
+            _context.TimeSlots.Update(timeSlot);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
+            return RedirectToAction("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id });
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -274,18 +306,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
                         .SingleOrDefaultAsync(ts => ts.Id == model.TimeSlotId).ConfigureAwait(false);
                     if(timeSlot != null)
                     {
-                        var reservation = new Reservation
-                        {
-                            PatientId = rutParsed.Value.rut,
-                            TimeSlotId = model.TimeSlotId
-                        };
-                        _context.Reservations.Add(reservation);
-                        await _context.SaveChangesAsync().ConfigureAwait(false);
-                        var savedReserve = await _context.Reservations.SingleOrDefaultAsync(r => r.TimeSlotId == timeSlot.Id).ConfigureAwait(false);
-                        timeSlot.ReservationId = savedReserve.Id;
-                        _context.TimeSlots.Update(timeSlot);
-                        await _context.SaveChangesAsync().ConfigureAwait(false);
-                        return RedirectToAction("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id });
+                        return RedirectToAction("Reservation", new { id = timeSlot.Id });
                     }
                 }
             }

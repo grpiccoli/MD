@@ -1,4 +1,109 @@
+var dateToday = new Date();
+var yr = dateToday.getFullYear();
 var datepickerFormat = "dddd dd mmmm, yyyy";
+var mañanaTable, tardeTable;
+function min(array) {
+    return Math.min.apply(Math, array);
+}
+;
+function isNullOrWhitespace(input) {
+    if (typeof input === 'undefined' || input == null)
+        return true;
+    return input.replace(/\s/g, '').length < 1;
+}
+$("#date-view").on('click', 'button.time-select', function () {
+    $.post("./Reservation", {
+        id: $(this).data('id'),
+        __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+    });
+});
+function agendar2(mdId) {
+    var minDate = $("#MinDate").val();
+    var last = $("#Last").val();
+    var lastYr = moment(last).toDate().getFullYear();
+    if (isNullOrWhitespace(minDate)) {
+        minDate = moment(dateToday).toJSON().replace("Z", "");
+    }
+    else {
+        minDate = moment(minDate).toJSON().replace("Z", "");
+    }
+    var maxDate = $("#MaxDate").val();
+    if (isNullOrWhitespace(maxDate)) {
+        maxDate = moment(last).toJSON().replace("Z", "");
+    }
+    else {
+        maxDate = moment(maxDate).toJSON().replace("Z", "");
+    }
+    console.log(mdId);
+    $.post("/Patients/Search/GetDates", {
+        __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+        mdId: mdId,
+        minDate: minDate,
+        maxDate: maxDate,
+    }, function (dt) {
+        console.log(mdId);
+        var datePicker = M.Datepicker.init(document.getElementById('Date'), {
+            firstDay: 1,
+            autoClose: true,
+            minDate: dateToday,
+            showDaysInNextAndPreviousMonths: true,
+            maxDate: new Date($("#Last").val()),
+            defaultDate: moment(min(dt), "YYYYMMDD").toDate(),
+            yearRange: [yr, lastYr],
+            setDefaultDate: true,
+            disableDayFn: function (d) {
+                var result = parseInt(moment(d, moment.ISO_8601).format("YYYYMMDD"));
+                return dt.indexOf(result) === -1;
+            },
+            i18n: {
+                months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
+                cancel: 'Cancelar',
+                clear: 'Limpiar',
+                done: 'Ok'
+            },
+            onSelect: function (d) {
+                console.log(mdId);
+                var result = moment(d, moment.ISO_8601).toJSON().replace("Z", "");
+                $.post("/Patients/Search/TimeSlots", {
+                    __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                    startDate: result,
+                    mdId: mdId
+                }, function (data) {
+                    var mañanaData = '';
+                    var tardeData = '';
+                    $.each(data, function (i, e) {
+                        var bookingData = '<tr>'
+                            + ("<td>" + e.startTime + "</td>")
+                            + '<td>'
+                            + ("<button class=\"time-select btn clinic-desc\" data-id=\"" + e.id + "\" class=\"btn waves-effect waves-teal right-align\">SELECCIONAR</button>")
+                            + '</td></tr>';
+                        if (~e.startTime.indexOf("a.")) {
+                            mañanaData += bookingData;
+                        }
+                        else {
+                            tardeData += bookingData;
+                        }
+                    });
+                    mañanaTable = "<table>" + mañanaData + "</table>";
+                    $('#BookingMorning').html(mañanaTable);
+                    tardeTable = "<table>" + tardeData + "</table>";
+                    $('#BookingAfternoon').html(tardeTable);
+                    M.Sidenav.getInstance(document.getElementById('slide-action')).close();
+                    $('#map-view').slideUp();
+                    $('#list-view').slideUp();
+                    $('#date-view').slideDown();
+                    $('#toggle-view').html("volver al mapa");
+                });
+            }
+        });
+        datePicker.open();
+        return false;
+    });
+}
 function agendar(run, mdId) {
     var q = $("#Insurance, #Ubicacion, #MinTime, #MaxTime")
         .serialize();
@@ -47,12 +152,14 @@ function initMap() {
         scaleControl: true,
         streetViewControl: false,
         fullscreenControl: false,
+        gestureHandling: 'greedy',
         zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_CENTER
         }
     });
     var places = {};
     var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
+        draggable: false,
         onCloseEnd: function (_) {
             [].forEach.call(document.querySelectorAll('#slide-action .tabs'), function (tab) {
                 M.Tabs.getInstance(tab).destroy();
@@ -61,14 +168,6 @@ function initMap() {
                 M.Tooltip.getInstance(tooltip).destroy();
             });
         }
-    });
-    document.querySelectorAll("#slide-action ul").forEach(function (e) {
-        e.addEventListener('dragstart', function () {
-            slide_action.options.draggable = false;
-        });
-        e.addEventListener('dragend', function () {
-            slide_action.options.draggable = true;
-        });
     });
     function addEventListener(marker, cid) {
         google.maps.event.addListener(marker, 'click', function (_) {
@@ -96,11 +195,6 @@ function initMap() {
     }
     function format(n) {
         return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    }
-    function isNullOrWhitespace(input) {
-        if (typeof input === 'undefined' || input == null)
-            return true;
-        return input.replace(/\s/g, '').length < 1;
     }
     function makeCard(item, place) {
         var esp = '', title = '', convenios = '';
@@ -148,7 +242,7 @@ function initMap() {
             + esp
             + '</div>'
             + '<div class="card-action center">'
-            + ("<a href=\"#\" onclick=\"agendar(" + item.run + ",'" + item.cardId + "')\">Agendar</a>")
+            + ("<a href=\"#\" onclick=\"agendar2(" + item.cardId + ")\">Agendar</a>")
             + '</div>'
             + '</div>'
             + '<div class="card-reveal">'
@@ -327,19 +421,20 @@ function initMap() {
         }
     });
     $('#toggle-view').click(function () {
+        $("#date-view").slideUp();
         if ($("#map-view").css("display") === "block") {
             $(this).html("volver al mapa");
             $.each(places, function (i) {
                 $("#" + i).html(this["content"]);
             });
             M.Tooltip.init(document.querySelectorAll('#list .tooltipped'));
-            $("#map-view").slideToggle();
-            $("#list-view").slideToggle();
+            $("#map-view").slideUp();
+            $("#list-view").slideDown();
             M.Tabs.init(document.querySelectorAll('#list .tabs'));
         }
         else {
-            $("#map-view").slideToggle();
-            $("#list-view").slideToggle();
+            $("#map-view").slideDown();
+            $("#list-view").slideUp();
             $(this).html("ver como lista");
             setTimeout(fitToMarkers, 400);
             setTimeout(function () {
@@ -428,7 +523,6 @@ function initMap() {
             $('#MinTime').val(values[handle] === 0 ? '' : values[handle]);
         }
     });
-    var dateToday = new Date();
     M.Datepicker.init(document.querySelectorAll('.datepicker'), {
         firstDay: 1,
         format: datepickerFormat,
@@ -526,56 +620,6 @@ function initMap() {
         });
         $("input.select2-search__field")
             .addClass("browser-default");
-    });
-    M.Datepicker.init(document.getElementById('Date'), {
-        firstDay: 1,
-        format: datepickerFormat,
-        autoClose: true,
-        minDate: dateToday,
-        maxDate: new Date($("#Last").val()),
-        disableDayFn: function (d) {
-            var mid = $("#MdId").val();
-            var result = moment(d, moment.ISO_8601).format("YYYYMMDD");
-            return dt[mid][1].indexOf(result) === -1;
-        },
-        container: document.querySelector('body'),
-        i18n: {
-            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
-            weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-            weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-            weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
-            cancel: 'Cancelar',
-            clear: 'Limpiar',
-            done: 'Ok'
-        },
-        showClearBtn: true,
-        onSelect: function (d) {
-            var result = moment(d, moment.ISO_8601).toJSON().replace("Z", "");
-            $.post("/Patients/Search/TimeSlots", {
-                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-                startDate: result,
-                mdId: $("#MdId").val()
-            }, function (data) {
-                var mañanaData = '';
-                var tardeData = '';
-                $.each(data, function (i, e) {
-                    var bookingData = '<tr>'
-                        + ("<td>" + e.startTime + "</td>")
-                        + '<td>'
-                        + ("<button class=\"time-select btn clinic-desc\" data-id=\"" + e.id + "\" class=\"btn waves-effect waves-teal right-align\">SELECCIONAR</button>")
-                        + '</td></tr>';
-                    if (~e.startTime.indexOf("a.")) {
-                        mañanaData += bookingData;
-                    }
-                    else {
-                        tardeData += bookingData;
-                    }
-                });
-                $('#map-view').slideUp();
-                $('#date-view').slideDown();
-            });
-        }
     });
 }
 //# sourceMappingURL=map.js.map

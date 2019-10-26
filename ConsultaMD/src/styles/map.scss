@@ -281,6 +281,10 @@ a[rel="noopener"] {
     left: calc(300px + (100% - 300px) / 2 - 70px)
 }
 
+.preloader-background{
+    left: calc(300px + (100% - 300px) / 2 - 40px)
+}
+
 body {
     header, main, footer {
         padding-left: 300px;
@@ -307,6 +311,9 @@ body {
     }
     .list-btn {
         left: calc(50% - 70px);
+    }
+    .preloader-background {
+        left: calc(50% - 40px)
     }
     body {
         header, main, footer {

@@ -1,9 +1,6 @@
-﻿using ConsultaMD.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using static ConsultaMD.Data.EspecialidadesData;
 using static ConsultaMD.Data.InsuranceData;
 

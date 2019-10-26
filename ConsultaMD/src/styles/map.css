@@ -185,6 +185,9 @@ a[rel="noopener"] {
 .list-btn {
   left: calc(300px + (100% - 300px) / 2 - 70px); }
 
+.preloader-background {
+  left: calc(300px + (100% - 300px) / 2 - 40px); }
+
 body header, body main, body footer {
   padding-left: 300px; }
 
@@ -203,6 +206,8 @@ body header, body main, body footer {
     left: 0; }
   .list-btn {
     left: calc(50% - 70px); }
+  .preloader-background {
+    left: calc(50% - 40px); }
   body header, body main, body footer {
     padding-left: 0px; } }
 
