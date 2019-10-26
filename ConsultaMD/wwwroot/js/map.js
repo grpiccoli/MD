@@ -159,7 +159,7 @@ function initMap() {
     });
     var places = {};
     var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
-        draggable: false,
+        draggable: true,
         onCloseEnd: function (_) {
             [].forEach.call(document.querySelectorAll('#slide-action .tabs'), function (tab) {
                 M.Tabs.getInstance(tab).destroy();
@@ -168,6 +168,14 @@ function initMap() {
                 M.Tooltip.getInstance(tooltip).destroy();
             });
         }
+    });
+    document.querySelectorAll("#slide-action ul").forEach(function (e) {
+        e.addEventListener('dragstart', function () {
+            slide_action.options.draggable = false;
+        });
+        e.addEventListener('dragend', function () {
+            slide_action.options.draggable = true;
+        });
     });
     function addEventListener(marker, cid) {
         google.maps.event.addListener(marker, 'click', function (_) {

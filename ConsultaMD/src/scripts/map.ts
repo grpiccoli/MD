@@ -165,7 +165,7 @@ function initMap() {
     var places: { [cid: string]: { [type: string]: string; } } = {};
     //destroy and create tabs in sidenav
     var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
-        draggable: false,
+        draggable: true,
         onCloseEnd: _ => {
             [].forEach.call(document.querySelectorAll('#slide-action .tabs'), function (tab: Element) {
                 M.Tabs.getInstance(tab).destroy();
@@ -177,14 +177,14 @@ function initMap() {
             //$('#slide-action .tooltipped').tooltip('destroy');
         }
     });
-    //document.querySelectorAll("#slide-action ul").forEach((e) => {
-    //    e.addEventListener('dragstart', function () {
-    //        slide_action.options.draggable = false;
-    //    });
-    //    e.addEventListener('dragend', function () {
-    //        slide_action.options.draggable = true;
-    //    });
-    //});
+    document.querySelectorAll("#slide-action ul").forEach((e) => {
+        e.addEventListener('dragstart', function () {
+            slide_action.options.draggable = false;
+        });
+        e.addEventListener('dragend', function () {
+            slide_action.options.draggable = true;
+        });
+    });
     //ADD EVENT LISTENER
     function addEventListener(marker: google.maps.Marker, cid: string) {
         google.maps.event.addListener(marker, 'click', _ => {
