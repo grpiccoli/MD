@@ -177,25 +177,19 @@ function initMap() {
             //$('#slide-action .tooltipped').tooltip('destroy');
         }
     });
-    document.querySelectorAll("#slide-action ul").forEach((e) => {
-        e.addEventListener('touchstart', function () {
-            slide_action.options.draggable = false;
-        });
-        e.addEventListener('touchmove', function () {
-            slide_action.options.draggable = false;
-        });
-        e.addEventListener('drag', function () {
-            slide_action.options.draggable = false;
-        });
-        e.addEventListener('touchend', function () {
-            slide_action.options.draggable = true;
-        });
-    });
     //ADD EVENT LISTENER
     function addEventListener(marker: google.maps.Marker, cid: string) {
         google.maps.event.addListener(marker, 'click', _ => {
             $("#slide-header").html(places[cid]["header"]);
             $("#slide-content").html(places[cid]["content"]);
+            document.querySelectorAll("#slide-action div.card-tabs, #slide-action ul").forEach((e) => {
+                e.addEventListener('touchstart', function () {
+                    slide_action.options.draggable = false;
+                });
+                e.addEventListener('touchend', function () {
+                    slide_action.options.draggable = true;
+                });
+            });
             setTimeout(() => {
                 slide_action.open();
                 M.Tabs.init(document.querySelectorAll('#slide-action .tabs'));
