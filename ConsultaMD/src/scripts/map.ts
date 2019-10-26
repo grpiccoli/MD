@@ -181,6 +181,12 @@ function initMap() {
         e.addEventListener('touchstart', function () {
             slide_action.options.draggable = false;
         });
+        e.addEventListener('touchmove', function () {
+            slide_action.options.draggable = false;
+        });
+        e.addEventListener('drag', function () {
+            slide_action.options.draggable = false;
+        });
         e.addEventListener('touchend', function () {
             slide_action.options.draggable = true;
         });
