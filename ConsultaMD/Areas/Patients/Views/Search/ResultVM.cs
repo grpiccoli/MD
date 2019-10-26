@@ -21,7 +21,7 @@ namespace ConsultaMD.Areas.Patients.Views.Search
         {
             get
             {
-                return Next.ToString("dddd dd MMMM yyyy HH:mm tt", new CultureInfo("es-CL"));
+                return Next.ToString("dddd dd MMMM yyyy<br>HH:mm tt", new CultureInfo("es-CL"));
             }
             private set
             {

@@ -216,22 +216,24 @@ function initMap() {
         return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     }
     function makeCard(item: ResultVM, place: Place) {
-        var esp = '', title = '', convenios = '';
+        var esp = `<div id="${item.cardId}sp" class="tab-content esp">`, title = '', convenios = `<div id="${item.cardId}insr" class="tab-content mis">`;
         var conv_tab = `<li class="tab"><a class="mis" href="#${item.cardId}insr">Convenios</a></li>`;
         var esp_tab = `<li class="tab"><a class="esp" href="#${item.cardId}sp">Especialidad</a></li>`;
         if (item.insurances.length !== 0) {
             var plural = item.insurances.length > 1 ? 's' : '';
-            convenios += `<div id="${item.cardId}insr" class="tab-content mis"><label>Convenio${plural}:</label><ul>`;
+            convenios += `<label>Convenio${plural}:</label><ul>`;
             for (var i of item.insurances) {
                 var mi = mis[i];
                 convenios += `<li><a class="btn tooltipped" data-tooltip="${mi}"><img src="/img/mi/${mi}-icon.min.png"/></a></li>`;
             }
-            convenios += "</ul></div>";
+            convenios += "</ul>";
         }
+        convenios += '</div>';
         if (item.especialidad !== null) {
             title = `Dr${item.sex ? "" : "a"}.`;
-            esp = `<div id="${item.cardId}sp" class="tab-content esp"><label>Esp.</label><span>${item.especialidad}</span></div>`;
+            esp += `<label>Esp.</label><span>${item.especialidad}</span>`;
         }
+        esp += '</div>';
         var office = `<p class="address">${place.address}`;
         office += isNullOrWhitespace(item.office) ? '</li>' : ` <span>${item.office}</span></p>`;
         return '<div class="col s12 m6 l4">'

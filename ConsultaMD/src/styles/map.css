@@ -32,6 +32,9 @@
       background-color: lightblue;
       /*Custom Background Color While Active*/ }
 
+div.tab-content.time {
+  font-size: small; }
+
 #list-view {
   display: none;
   padding-top: 35px; }
