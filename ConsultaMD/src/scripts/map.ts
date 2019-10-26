@@ -178,10 +178,10 @@ function initMap() {
         }
     });
     document.querySelectorAll("#slide-action ul").forEach((e) => {
-        e.addEventListener('dragstart', function () {
+        e.addEventListener('touchstart', function () {
             slide_action.options.draggable = false;
         });
-        e.addEventListener('dragend', function () {
+        e.addEventListener('touchend', function () {
             slide_action.options.draggable = true;
         });
     });
