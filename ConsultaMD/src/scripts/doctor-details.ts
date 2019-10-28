@@ -161,7 +161,7 @@
                         + '<td>'
                         + `<button class="time-select btn clinic-desc" data-id="${e.id}" class="btn waves-effect waves-teal right-align">SELECCIONAR</button>`
                         + '</td></tr>';
-                    if (~e.startTime.indexOf("a.")) {
+                    if (~e.startTime.toString().indexOf("a.")) {
                         mañanaData += bookingData;
                     } else {
                         tardeData += bookingData;

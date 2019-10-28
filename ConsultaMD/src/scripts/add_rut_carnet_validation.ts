@@ -42,7 +42,7 @@ $.validator.addMethod("rut",
     function (value, element, _params) {
         var valid = false;
         $(element).val(value.replace(/k/, "K"));
-        $.validateRut(value, function (rut, dv) {
+        $.validateRut(value, (rut: number, dv: string) => {
             if (rut as number > 30_000_000) return;
             if ($(":focus")[0] === $(element)[0]) { valid = true; return; }
             $.ajax({

@@ -1,13 +1,9 @@
 ﻿/// <reference types="jquery"/>
 
-interface ICallback {
-    (r: number, dv: string): void;
-}
-
 interface JQueryStatic {
     validateRut(
         rut: string,
-        callback: any,
+        callback: (r: number, dv: string) => void,
         object: { minimumLength: number }) : boolean;
 }
 

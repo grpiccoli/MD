@@ -32,8 +32,8 @@ function initDetails() {
     }
     function fitToMarkers() {
         var bounds = new google.maps.LatLngBounds();
-        for (var _a = 0, markers_1 = markers; _a < markers_1.length; _a++) {
-            var i = markers_1[_a];
+        for (var _i = 0, markers_1 = markers; _i < markers_1.length; _i++) {
+            var i = markers_1[_i];
             bounds.extend(i.getPosition());
         }
         map.fitBounds(bounds);
@@ -100,8 +100,8 @@ function initDetails() {
     function changeInsurances(mdId) {
         var insurances = dt[mdId][0];
         var msg = '<ul>';
-        for (var _a = 0, insurances_1 = insurances; _a < insurances_1.length; _a++) {
-            var mi = insurances_1[_a];
+        for (var _i = 0, insurances_1 = insurances; _i < insurances_1.length; _i++) {
+            var mi = insurances_1[_i];
             msg += "<li><a class=\"btn tooltipped\" data-tooltip=\"" + mi + "\"><img src=\"/img/mi/" + mi + "-icon.min.png\"/></a></li>";
         }
         msg += '</ul>';
@@ -152,7 +152,7 @@ function initDetails() {
                         + '<td>'
                         + ("<button class=\"time-select btn clinic-desc\" data-id=\"" + e.id + "\" class=\"btn waves-effect waves-teal right-align\">SELECCIONAR</button>")
                         + '</td></tr>';
-                    if (~e.startTime.indexOf("a.")) {
+                    if (~e.startTime.toString().indexOf("a.")) {
                         mañanaData += bookingData;
                     }
                     else {

@@ -6,6 +6,8 @@ cd ConsultaMD/
 dotnet ef database drop
 dotnet ef database update
 #libman restore
+wget https://unpkg.com/jquery.mousewheel@3.1.9/jquery.mousewheel.js -O wwwroot/lib/jquery.mousewheel/jquery.mousewheel.js
+wget https://unpkg.com/jquery-validation-unobtrusive@3.2.11/dist/jquery.validate.unobtrusive.min.js -O wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js
 online_md5="$(curl -sL https://unpkg.com/jquery.mousewheel@3.1.9/jquery.mousewheel.js | md5sum | cut -d ' ' -f 1)"
 local_md5="$(md5sum "wwwroot/lib/jquery.mousewheel/jquery.mousewheel.js" | cut -d ' ' -f 1)"
 if [ "$online_md5" == "$local_md5" ]; then
