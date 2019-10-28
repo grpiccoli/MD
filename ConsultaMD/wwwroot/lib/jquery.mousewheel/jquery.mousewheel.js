@@ -13,7 +13,7 @@
     } else if (typeof exports === 'object') {
         // Node/CommonJS style for Browserify
         module.exports = factory;
-    } else {
+    } else {     
         // Browser globals
         factory(jQuery);
     }
