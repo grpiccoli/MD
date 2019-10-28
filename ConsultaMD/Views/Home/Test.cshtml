@@ -1,0 +1,57 @@
+﻿<partial name="_Libs" model='(new string[]{
+         "calentim", "@fortawesome/fontawesome-free", "moment", "hammerjs", "jquery-hammerjs" }, "")' />
+
+<input tabindex="0" type="text" name="form[item_9]" id="fl-item-9" class="yd-date-time" value="" />
+
+@section Scripts{
+    <script src="~/calentim/calentim.min.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $("#fl-item-9").calentim(
+                {
+                    format: "dddd DD MMMM, YYYY h:mm A",
+                    locale: 'es',
+                    inline: true,
+                    startOnMonday: true,
+                    rangeLabel: 'Rangos',
+                    cancelLabel: 'Cancelar',
+                    applyLabel: 'Filtrar',
+                    rangeOrientation: 'vertical',
+                    hideOutOfRange: true,
+                    ranges: [
+                      {
+                          title: "Hoy",
+                          startDate: moment(),
+                            endDate: moment()
+                      },
+                      {
+                          title: "Próximos 3 dias",
+                          startDate: moment(),
+                          endDate: moment().add(3,"days")
+                      },
+                      {
+                          title: "Próximos 5 dias",
+                          startDate: moment(),
+                          endDate: moment().add(5,"days")
+                      },
+                      {
+                          title: "Próximos 7 dias",
+                          startDate: moment(),
+                          endDate: moment().add(7,"days")
+                      },
+                      {
+                          title: "Próxima semana",
+                          startDate: moment().day(7),
+                          endDate: moment().day(7).add(1,"days").day(7)
+                      },
+                      {
+                          title: "Hasta el próximo mes",
+                          startDate: moment(),
+                          endDate: moment().add(1,"month").endOf("month")
+                      }
+                    ]
+                }
+            );
+        });
+    </script>
+}

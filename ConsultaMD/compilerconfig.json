@@ -62,5 +62,9 @@
   {
     "outputFile": "src/styles/confirm-date.css",
     "inputFile": "src/styles/confirm-date.scss"
+  },
+  {
+    "outputFile": "src/styles/calentim.css",
+    "inputFile": "src/styles/calentim.scss"
   }
 ]

@@ -19,6 +19,8 @@
     var person = DbContext.Naturals.FirstOrDefault(p => p.Id == user.PersonId);
     ViewData["run"] = RUT.Unformat(User.Identity.Name).Value.rut;
     var menuActions = Actions.GetMenuActions();
+    bool reservation = DbContext.Reservations.Any(r => r.PatientId == person.Id);
+    bool doctor = DbContext.Doctors.Any(d => d.NaturalId == person.Id);
 }
 
 <partial name="_Libs" model='(new string[]{ "sidenav" }, "")' />
@@ -33,14 +35,17 @@
              </a>
             <div class="nav-wrapper">
                 <div class="col s11 offset-s1">
+                    @if(referer != null)
+                    {
+                        <a href="@((string)referer)" class="breadcrumb">@Actions.GetActionByUrl(new Uri((string)referer)).Title</a>
+                    }
+                    else
+                    {
                     @foreach (var p in action.Path)
                     {
                         var e = Actions.GetActionByName(p);
                         <a href="/@e.Area/@e.Controller/@e.Name" class="breadcrumb">@e.Title</a>
                     }
-                    @if(referer != null)
-                    {
-                        <a href="@((string)referer)" class="breadcrumb">@Actions.GetActionByUrl(new Uri((string)referer)).Title</a>
                     }
                     <a href="#!" class="breadcrumb">@Html.Raw((string)title)</a>
                 </div>
@@ -50,45 +55,58 @@
 
 @this.Block(
     @<ul id="nav-mobile" class="sidenav sidenav-fixed">
-        <li>
-            <div class="user-view" style="line-height:2rem;">
-                <div class="background">
-                    <img class="image" src="~/img/background-aero.png" asp-append-version="true">
-                </div>
-                <a href="#user" class="details"><img alt="profile picture" class="circle" src="~/img/doc/@((int)ViewData["run"]).png" asp-append-version="true"></a>
-                <a href="#name" class="details"><span class="white-text name">@person.FullNameFirst</span></a>
-                <a href="#rut" class="details">
-                <span class="white-text">
-                    <i class="material-icons left">person_pin</i>@User.Identity.Name</span>
-                </a>
-                <a href="#phone" class="details">
-                    <span class="@(user.PhoneNumberConfirmed ? "white-text" : "orange-text") phone">
-                    <i class="material-icons left">phone</i>@user.PhoneNumber.Replace("+569","9 ").Insert(6, " ")</span>
-                </a>
-                <a href="#email" class="details">
-                    <span class="white-text email">
-                        <span><i class="material-icons left">mail</i>@user.Email</span>
-                        @*<span>@(user.EmailConfirmed ? "" : "correo no confirmado")</span>*@
-                    </span>
-                </a>
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img class="image" src="~/img/background-aero.png" asp-append-version="true">
             </div>
-        </li>
-        <li><a class="subheader">Páginas</a></li>
-        @foreach (var a in menuActions)
+            <a id="editProfile" class="btn-floating btn-small waves-effect waves-light teal darken-1">
+                <i class="material-icons" style="line-height:25px;">create</i>
+            </a>
+            <a href="#user" class="details"><img alt="profile picture" class="circle" src="~/img/doc/@((int)ViewData["run"]).png" asp-append-version="true"></a>
+            <a href="#name" class="details"><span class="white-text name">@person.FullNameFirst</span></a>
+            <a href="#rut" class="details">
+                <span class="white-text input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <input class="browser-default white-text" disabled value="@User.Identity.Name" />
+                </span>
+            </a>
+            <a href="#phone" class="details">
+                <span class="@(user.PhoneNumberConfirmed ? "white-text" : "orange-text") phone input-field">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="userphone" class="browser-default white-text" disabled value="@user.PhoneNumber.Replace("+569", "9 ").Insert(6, " ")" />
+                </span>
+            </a>
+            <a href="#email" class="details">
+                <span class="white-text email input-field">
+                    <i class="material-icons prefix">mail</i>
+                    <input id="useremail" class="browser-default white-text" disabled value="@user.Email" />
+                    @*<span>@(user.EmailConfirmed ? "" : "correo no confirmado")</span>*@
+                </span>
+            </a>
+        </div>
+    </li>
+    <li><a class="subheader">Páginas</a></li>
+    @foreach (var a in menuActions)
+    {
+        var print = true;
+        switch (a.Limit)
         {
+            case nameof(reservation):
+                print = reservation;
+                break;
+            case nameof(doctor):
+                print = doctor;
+                break;
+        }
+                @if (print)
+                    {
             <li class="@(name == a.Name ? "active" : "")">
                 <a asp-area="@a.Area" asp-controller="@a.Controller" asp-action="@a.Name">
                     <i class="material-icons left">@a.Icon</i>@a.Title
                 </a>
             </li>
-        }
-    @if (person.DoctorId != 0)
-    { 
-        <li>
-            <a asp-area="MDs" asp-controller="Home" asp-action="Index">
-                <i class="material-icons left">schedule</i>Doctor
-            </a>
-        </li>
+                    }
     }
         <li><div class="divider"></div></li>
         <li><a class="subheader">Sesión</a></li>

@@ -3,7 +3,8 @@
   {
     "outputFileName": "wwwroot/js/main.js",
     "inputFiles": [
-      "src/scripts/loader.js"
+      "src/scripts/loader.js",
+      "src/scripts/debounce.js"
     ]
   },
   {
@@ -15,11 +16,24 @@
       "src/styles/loader.min.css"
     ]
   },
+  //Calentim
+  {
+    "outputFileName": "wwwroot/css/calentim.min.css",
+    "inputFiles": [ "src/styles/calentim.css" ]
+  },
   // 1.7 / 1.8 / 1.9
   //Marker clusterer
   {
     "outputFileName": "wwwroot/js/markerclusterer.min.js",
     "inputFiles": [ "src/scripts/markerclusterer.js" ]
+  },
+  //IOS PICKER STYLES
+  {
+    "outputFileName": "wwwroot/css/ios.picker.min.css",
+    "inputFiles": [
+      "src/styles/ios.picker.css",
+      "src/styles/jquerysctipttop.css"
+    ]
   },
   //MENU
   {
@@ -85,8 +99,7 @@
   {
     "outputFileName": "wwwroot/js/insurance.js",
     "inputFiles": [
-      "src/scripts/selectInsurance.js",
-      "src/scripts/debounce.js"
+      "src/scripts/selectInsurance.js"
     ]
   },
   //VerifyPhone

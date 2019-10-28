@@ -1,24 +1,22 @@
 ﻿@import 'theme';
 
-/*#slide-action {*/
-    #slide-header {
-        .card-content{
-            padding: 12px;
-        }
-        .placeimg {
-            height: 150px;
-            object-fit: cover;
-        }
-    }
-
-    #slide-content > div > div > div.card-content {
+#slide-header {
+    .card-content{
         padding: 12px;
-
-        span {
-            font-size: 20px;
-        }
     }
-/*}*/
+    .placeimg {
+        height: 150px;
+        object-fit: cover;
+    }
+}
+
+#slide-content > div > div > div.card-content {
+    padding: 12px;
+
+    span {
+        font-size: 20px;
+    }
+}
 
 .tabs {
     .indicator {
@@ -55,9 +53,42 @@ div.tab-content.time{
     font-size:small;
 }
 
+$btn-padding: 35px;
+
+#date-view{
+    padding-top: 25px;
+    .card{
+        height: 180px;
+    }
+    > .row[data-simplebar]{
+        height:calc(100vh - 310px);
+        margin:0;
+        padding:0 1rem;
+    }
+}
+
+#specialtyName{
+    color:cadetblue;
+    font-weight:600;
+}
+
+#doctorName{
+    font-weight:700;
+    display:block;
+}
+
+#placeName{
+    font-size:0.9rem;
+    display:block;
+}
+
+#dateDetails{
+    font-weight:600;
+}
+
 #list-view {
     display: none;
-    padding-top: 35px;
+    padding-top: $btn-padding;
     p.info{
         margin:0;
         font-size:0.8rem;
@@ -158,6 +189,9 @@ nav .input-field {
                     font-size: 0.8rem;
                     line-height: 1rem;
                 }
+                .time{
+                    font:icon;
+                }
             }
 
             .card-title {
@@ -170,9 +204,11 @@ nav .input-field {
         .card-action {
             padding: 2px;
             background: white;
+            a{
+                font-weight:700;
+            }
         }
     }
-
     .card-image {
         max-width: 30%;
 
@@ -207,6 +243,17 @@ nav .input-field {
     }
 }
 
+#dates-col {
+    height: calc(100vh-33px);
+    > div.calentim-container-mobile.calentim-inline > div {
+        height: inherit;
+    }
+
+    > div.calentim-container.calentim-inline {
+        margin: 0 calc((100vw - 850px) / 2);
+    }
+}
+
 .panel {
     height: 100%;
     position: relative;
@@ -235,17 +282,6 @@ nav .input-field {
     font-size: 20px;
 }
 
-.modal.bottom-sheet.select-sheet {
-    width: calc(100% - 300px);
-    left: 300px;
-}
-.select-sheet.filter {
-    min-height: calc(100% - 167px);
-}
-.select-sheet.filters {
-    min-height: calc(100% - 64px);
-}
-
 .noUi-value.noUi-value-horizontal.noUi-value-large{
     width:60px;
 }
@@ -254,8 +290,38 @@ tr {
     border: none !important;
 }
 
-#filter-pane {
-    max-height: 93vh;
+#tab-shown {
+    font-size: 0.8rem;
+    color: black;
+    font-weight: 600;
+
+    + i {
+        font-size: 1.5rem;
+        color: black;
+        font-weight: 600;
+    }
+}
+
+#filters-pane {
+    height: calc(100vh - 64px);
+    width: calc(100vw - 300px);
+    max-height: calc(100vh - 64px);
+    left: 300px;
+
+    .modal-content {
+        padding: 0;
+        height: inherit;
+
+        .row.btn-controls {
+            margin: 0;
+            height: 32.39px;
+        }
+
+        .row.filters-controls {
+            margin: 0;
+            height: calc(100% - 32.39px);
+        }
+    }
 }
 
 .noUi-div {
@@ -281,18 +347,27 @@ a[rel="noopener"] {
     width: 100%;
 }
 
+$list-btn-size: 100px;
+
 .list-btn {
-    left: calc(300px + (100% - 300px) / 2 - 70px)
+    left: calc(300px + (100% - 300px) / 2 - #{$list-btn-size} / 2);
+    width: $list-btn-size;
+}
+
+#map-controls{
+    width: 25px;
+}
+
+#re-center{
+    margin-bottom:10px;
+}
+
+#toggle-view {
+    width: $list-btn-size;
 }
 
 .preloader-background{
     left: calc(300px + (100% - 300px) / 2 - 40px)
-}
-
-body {
-    header, main, footer {
-        padding-left: 300px;
-    }
 }
 
 .slider-row {
@@ -304,40 +379,36 @@ body {
     top: 0;
 
     .filter-btn {
-        max-width: 31vw;
+        max-width: calc(100vw / 3 - 4px);
     }
 }
 
 @media only screen and (max-width:990px) {
-    .modal.bottom-sheet.select-sheet {
-        width: 100%;
+    #filters-pane {
+        width: 100vw;
         left: 0;
     }
     .list-btn {
-        left: calc(50% - 70px);
+        left: calc(50% - #{$list-btn-size} / 2);
     }
     .preloader-background {
         left: calc(50% - 40px)
     }
-    body {
-        header, main, footer {
-            padding-left: 0px;
-        }
+    
+    #dates-col > div.calentim-container.calentim-inline {
+        margin: 0 calc((100vw - 500px) / 2);
     }
 }
 
 @media only screen and (max-width:600px) {
-    .select-sheet.filter {
-        min-height: calc(100% - 152px);
-    }
-
-    .select-sheet.filters {
-        min-height: calc(100% - 56px);
+    #filters-pane {
+        height: 100vh;
+        max-height: 100vh;
     }
 
     .filter-btn {
-        width: 31vw;
-        padding:0;
+        width: calc(100vw / 3 - 4px);
+        padding: 0;
     }
 
     .search-view {
@@ -345,5 +416,10 @@ body {
     }
     nav .input-field label[for='search-filter'] i {
         bottom: -45px;
+    }
+    #date-view {
+        > .row[data-simplebar] {
+            height: calc(100vh - 295px);
+        }
     }
 }

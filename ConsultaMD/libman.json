@@ -101,9 +101,9 @@
       "destination": "wwwroot/lib/@fortawesome/fontawesome-free/",
       "files": [
         "css/all.min.css",
-        //"webfonts/fa-solid-900.woff2",
-        //"webfonts/fa-solid-900.woff",
-        //"webfonts/fa-solid-900.ttf",
+        "webfonts/fa-solid-900.woff2",
+        "webfonts/fa-solid-900.woff",
+        "webfonts/fa-solid-900.ttf",
         //"webfonts/fa-regular-400.woff2",
         //"webfonts/fa-regular-400.woff",
         //"webfonts/fa-regular-400.ttf",
@@ -128,6 +128,16 @@
       "library": "jquery@3.4.1",
       "destination": "wwwroot/lib/jquery/",
       "files": [ "dist/jquery.min.js" ]
+    },
+    {
+      "library": "hammerjs@2.0.8",
+      "destination": "wwwroot/lib/hammerjs/",
+      "files": ["hammer.min.js"]
+    },
+    {
+      "library": "jquery-hammerjs@2.0.0",
+      "destination": "wwwroot/lib/jquery-hammerjs/",
+      "files": ["jquery.hammer.js"]
     },
     //{
     //  "library": "jquery-mobile@1.5.0-alpha.1",

@@ -7,7 +7,7 @@ interface ICallback {
 interface JQueryStatic {
     validateRut(
         rut: string,
-        callback: ICallback | null,
+        callback: any,
         object: { minimumLength: number }) : boolean;
 }
 

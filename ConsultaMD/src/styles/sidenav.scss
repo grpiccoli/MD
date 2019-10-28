@@ -4,17 +4,69 @@
     height: 35px;
 }
 
-.sidenav .user-view .background {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    .image{
-        height:100%;
+body {
+    header, main, footer {
+        padding-left: 300px;
     }
+}
+
+#editProfile {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 30px;
+}
+
+.sidenav .user-view {
+    padding: 32px;
+    line-height: 2rem;
+
+    .name {
+        font-size: 13px;
+    }
+
+    .background {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        .image {
+            height: 100%;
+        }
+    }
+
+    .input-field {
+        padding: 0;
+        margin: 0;
+
+        &.email .prefix {
+            top: 9px;
+        }
+
+        .prefix {
+            top: 0;
+        }
+
+        input {
+            font-size: small;
+            margin-bottom: 0;
+            height: 40px;
+        }
+    }
+}
+
+.material-icons.prefix.edit {
+    font-size: 1.2rem;
+    border-radius: 20px;
+    padding: 3px;
+    background-color: #F44336;
+    box-shadow: 1px 1px 2px 0px #000;
+    transition: all 0.5s;
+    width:24px;
 }
 
 nav > div.nav-wrapper > div.nav-wrapper {
@@ -33,6 +85,11 @@ nav > div.nav-wrapper > div.nav-wrapper {
     nav .sidenav-trigger.brand-logo.left{
         left: 0;
         margin: 0 13px;
+    }
+    body {
+        header, main, footer {
+            padding-left: 0px;
+        }
     }
 }
 

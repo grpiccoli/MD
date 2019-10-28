@@ -1,40 +1,58 @@
 ﻿[
   {
+    "area": "Patients",
+    "controller": "Search",
     "name": "Map",
     "title": "Buscar Médicos",
     "icon": "search",
-    "menu": true,
-    "area": "Patients",
-    "controller": "Search"
+    "menu": true
   },
   {
+    "area": "Patients",
+    "controller": "Date",
     "name": "WaitingRoom",
     "title": "Sala de Espera",
     "icon": "hourglass_empty",
     "menu": true,
-    "area": "Patients",
-    "controller": "Date"
+    "limit": "reservation"
   },
   {
-    "name": "BookApointment",
+    "area": "Patients",
+    "controller": "Booking",
+    "name": "Appointments",
     "title": "Mis Citas",
     "icon": "schedule",
     "menu": true,
-    "area": "Patients",
-    "controller": "Book"
+    "limit": "reservation"
   },
   {
-    "name": "ConfirmDate",
-    "title": "Pago",
+    "area": "MDs",
+    "controller": "MD",
+    "name": "MDash",
+    "title": "Doctor",
+    "icon": "sthetoscope",
+    "menu": true,
+    "limit": "doctor"
+  },
+  {
     "area": "Patients",
     "controller": "Booking",
+    "name": "ConfirmDate",
+    "title": "Pago",
     "path": [ "Map" ]
   },
   {
-    "name": "DoctorDetails",
-    "title": "Detalles",
     "area": "Patients",
     "controller": "Search",
+    "name": "DoctorDetails",
+    "title": "Detalles",
+    "path": [ "Map" ]
+  },
+  {
+    "area": "Patients",
+    "controller": "Search",
+    "name": "Test",
+    "title": "Test",
     "path": [ "Map" ]
   }
 ]

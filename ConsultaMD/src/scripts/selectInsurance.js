@@ -24,14 +24,39 @@ function switchRecovery(val, $e) {
     $recovermip.attr("href", mi[val]);
     $recovery.attr('src', "/img/mi/" + $e.text() + "-icon.min.png");
 }
-$("#" + insuranceId + " > option").slice(1).each(function () {
-    var $this = $(this);
-    $this.attr('data-icon', "/img/mi/" + $this.text() + "-icon.min.png");
-});
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
-});
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i
+    .test(navigator.userAgent)) {
+    var selectdata = [];
+    var style = "height:17px;margin:0 15px";
+    $("#Input_Insurance > option").each(function () {
+        selectdata.push("<img src=\"/img/mi/" + $(this).text() + "-icon.min.png\" style=\"" + style + "\" data-id=\"" + $(this).val() + "\"/><span>" + $(this).text() + "</span>");
+    });
+    $('select').remove();
+    var selectModal = M.Modal.init(document.getElementById('select-modal'), {
+        onCloseEnd: function () { $('#Input_Insurance').focusout(); }
+    });
+    $("#example-picker").picker({
+        data: selectdata
+    }, function () {
+        var scrollAmmount = Math.round($('.clone-scroller').scrollTop() / 30);
+        var $option = $($(".picker-scroller").find(".option").get(scrollAmmount));
+        var id = $option.find('img').data('id');
+        var text = $option.find('span').html();
+        $('#Input_Insurance').val(id).change();
+        $('#shower').val(text).change();
+    });
+    $('#shower').click(function () {
+        selectModal.open();
+    });
+}
+else {
+    $("input.mobile-only").remove();
+    $("#" + insuranceId + " > option").slice(1).each(function () {
+        var $this = $(this);
+        $this.attr('data-icon', "/img/mi/" + $this.text() + "-icon.min.png");
+    });
+    M.FormSelect.init(document.querySelectorAll('select'));
+}
 function validateInsurance(val, rut, dv, pwd) {
     var ret = false;
     debounce($.ajax({
@@ -57,7 +82,7 @@ function validateInsurance(val, rut, dv, pwd) {
     }), 1000);
     return ret;
 }
-$insuranceId.on('change', function () {
+$insuranceId.on('change', function (_) {
     $insurancePass.val('');
 });
 $.validator.addMethod("insurance", function (value, element, _params) {
@@ -65,13 +90,13 @@ $.validator.addMethod("insurance", function (value, element, _params) {
     var $this = $(element);
     var rutVal = $rut.val();
     if (rutVal) {
-        $.validateRut(rutVal, function (rut, dv) {
+        $.validateRut(rutVal, function (r, dv) {
             var val = parseInt(value);
             switch (val) {
                 default:
                     switchRecovery(val, $this);
                 case 1:
-                    valid = validateInsurance(val, rut, dv.replace(/k/, "K"), '');
+                    valid = validateInsurance(val, r, dv.replace(/k/, "K"), '');
                 case 0:
                     $insurancePassDiv.slideUp();
                     break;
@@ -100,14 +125,13 @@ $.validator.addMethod("mipwd", function (value, element, _params) {
     var valid = false;
     var rutVal = $rut.val();
     if (rutVal) {
-        $.validateRut(rutVal, function (rut, dv) {
+        $.validateRut(rutVal, function (r, dv) {
             if ($(":focus")[0] === $(element)[0]) {
                 valid = true;
                 return;
             }
             var prev = parseInt(insurance);
-            console.log(prev, rut, dv, value);
-            valid = validateInsurance(prev, rut, dv, value);
+            valid = validateInsurance(prev, r, dv, value);
         }, { minimumLength: minLengthRut });
     }
     return valid;

@@ -29,23 +29,46 @@ function switchRecovery(val : number, $e: any) {
     $recovery.attr('src', `/img/mi/${$e.text()}-icon.min.png`);
 }
 
-//add images to select
-$(`#${insuranceId} > option`).slice(1).each(function () {
-    var $this = $(this);
-    $this.attr('data-icon', `/img/mi/${$this.text()}-icon.min.png`);
-});
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i
+    .test(navigator.userAgent)) {
+    var selectdata: string[] = [];
+    var style="height:17px;margin:0 15px"
+    $("#Input_Insurance > option").each(function () {
+        selectdata.push(`<img src="/img/mi/${$(this).text()}-icon.min.png" style="${style}" data-id="${$(this).val()}"/><span>${$(this).text()}</span>`);
+    })
+    $('select').remove();
+
+    var selectModal = M.Modal.init(document.getElementById('select-modal'), {
+        onCloseEnd: () => { $('#Input_Insurance').focusout(); }
+    });
+    $("#example-picker").picker({
+        data: selectdata
+    }, () => {
+        var scrollAmmount = Math.round($('.clone-scroller').scrollTop() / 30);
+        var $option = $($(".picker-scroller").find(".option").get(scrollAmmount));
+        var id = $option.find('img').data('id');
+        var text = $option.find('span').html();
+        $('#Input_Insurance').val(id).change();
+        $('#shower').val(text).change();
+    });
+    $('#shower').click(function () {
+        selectModal.open();
+    });
+} else {
+    //add images to select
+    $("input.mobile-only").remove();
+    $(`#${insuranceId} > option`).slice(1).each(function () {
+        var $this = $(this);
+        $this.attr('data-icon', `/img/mi/${$this.text()}-icon.min.png`);
+    });
+
+    M.FormSelect.init(document.querySelectorAll('select'));
+}
 
 //initialize select
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
-});
-//$('select').formSelect();
-//$('select').AnyPicker({
-//    mode: "select",
-//    theme: "Android"
+//document.addEventListener('DOMContentLoaded', _ => {
+//    M.FormSelect.init(document.querySelectorAll('select'));
 //});
-
 
 //Validate User / Insurance / pwd combo
 function validateInsurance(val: number, rut: number, dv: string, pwd: string): boolean {
@@ -74,7 +97,7 @@ function validateInsurance(val: number, rut: number, dv: string, pwd: string): b
     return ret;
 }
 
-$insuranceId.on('change', function () {
+$insuranceId.on('change', _ => {
     $insurancePass.val('');
 });
 
@@ -84,13 +107,13 @@ $.validator.addMethod("insurance", function (value, element, _params) {
     var $this = $(element);
     var rutVal = $rut.val() as string;
     if (rutVal) {
-        $.validateRut(rutVal, function (rut, dv) {
+        $.validateRut(rutVal, (r: number, dv: string) => {
             var val = parseInt(value as string);
             switch (val) {
                 default:
                     switchRecovery(val, $this);
                 case 1:
-                    valid = validateInsurance(val, rut, dv.replace(/k/,"K"), '');
+                    valid = validateInsurance(val, r, dv.replace(/k/,"K"), '');
                 case 0:
                     $insurancePassDiv.slideUp();
                     break;
@@ -108,29 +131,28 @@ $.validator.addMethod("insurance", function (value, element, _params) {
     return valid;
 });
 
-$.validator.unobtrusive.adapters.add("insurance", [], function (options: any) {
+$.validator.unobtrusive.adapters.add("insurance", [], (options: any) => {
     options.rules.insurance = {};
     options.messages["insurance"] = options.message;
 });
 
 //Validate pwd
-$.validator.addMethod("mipwd", function (value, element, _params) {
+$.validator.addMethod("mipwd", (value, element, _params) => {
     var insurance = $insuranceId.val();
     if (insurance === '0' || insurance === '1') { return true; }
     var valid = false;
     var rutVal = $rut.val() as string;
     if (rutVal) {
-        $.validateRut(rutVal, function (rut, dv) {
+        $.validateRut(rutVal, (r: number, dv: string) => {
             if ($(":focus")[0] === $(element)[0]) { valid = true; return; }
             var prev = parseInt(insurance as string);
-            console.log(prev, rut, dv, value);
-            valid = validateInsurance(prev, rut, dv, value);
+            valid = validateInsurance(prev, r, dv, value);
         }, { minimumLength: minLengthRut });
     }
     return valid;
 });
 
-$.validator.unobtrusive.adapters.add("mipwd", [], function (options: any) {
+$.validator.unobtrusive.adapters.add("mipwd", [], (options: any) => {
     options.rules.mipwd = {};
     options.messages["mipwd"] = options.message;
 });

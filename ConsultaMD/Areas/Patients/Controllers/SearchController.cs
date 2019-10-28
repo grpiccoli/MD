@@ -71,13 +71,11 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             && filters.Especialidad.Contains(md.Doctor.Specialty.Value)))
                             && (!filters.Sex.Any() || filters.Sex.Contains(md.Doctor.Sex))
                             && md.Agendas.Any(a => a.StartTime > DateTime.Now.AddMinutes(30)
-                                   && (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek))
+                                   //&& (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek))
                                && a.TimeSlots.Any(t => !t.ReservationId.HasValue
                                && a.StartTime > DateTime.Now.AddMinutes(30)
-                                && (!filters.MinTime.HasValue || filters.MinTime.Value <= t.StartTime.Hour)
-                                && (!filters.MaxTime.HasValue || filters.MaxTime.Value >= t.EndTime.Hour)
-                                && (!filters.MinDate.HasValue || filters.MinDate.Value <= t.StartTime)
-                                && (!filters.MaxDate.HasValue || filters.MaxDate.Value >= t.EndTime))))
+                                && (!filters.MinDate.HasValue || (filters.MinDate.Value.TimeOfDay <= t.StartTime.TimeOfDay && filters.MinDate.Value <= t.StartTime))
+                                && (!filters.MaxDate.HasValue || (filters.MaxDate.Value.TimeOfDay >= t.EndTime.TimeOfDay && filters.MaxDate.Value >= t.EndTime)))))
                             .Select(md =>
                             new ResultVM
                             {
@@ -94,18 +92,17 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                 Office = string.Join(" ",(!string.IsNullOrEmpty(office.Appartment)?"dpto."+office.Appartment:""),
                                 (!string.IsNullOrEmpty(office.Floor)?"piso "+office.Floor:""),
                                 (!string.IsNullOrEmpty(office.Office)?"of. "+office.Office:"")),
-                                Next = md.Agendas.Where(a => a.StartTime > DateTime.Now.AddMinutes(30)
-                                    && (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek)))
+                                NextTS = new TimeSlotVM(md.Agendas.Where(a => a.StartTime > DateTime.Now.AddMinutes(30)
+                                    //&& (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek))
+                                    )
                                     .SelectMany(a => a.TimeSlots.Where(t => !t.ReservationId.HasValue
                                     && a.StartTime > DateTime.Now.AddMinutes(30)
-                                      && (!filters.MinTime.HasValue || filters.MinTime.Value <= t.StartTime.Hour)
-                                      && (!filters.MaxTime.HasValue || filters.MaxTime.Value >= t.EndTime.Hour)
-                                      && (!filters.MinDate.HasValue || filters.MinDate.Value <= t.StartTime)
-                                      && (!filters.MaxDate.HasValue || filters.MaxDate.Value >= t.EndTime)
-                                    )).Min(t => t.StartTime),
+                                && (!filters.MinDate.HasValue || (filters.MinDate.Value.TimeOfDay <= t.StartTime.TimeOfDay && filters.MinDate.Value <= t.StartTime))
+                                && (!filters.MaxDate.HasValue || (filters.MaxDate.Value.TimeOfDay >= t.EndTime.TimeOfDay && filters.MaxDate.Value >= t.EndTime))
+                                    )).MinBy(t => t.StartTime).First()),
                                 CardId = md.Id
-                            })).OrderBy(res => res.Next)
-                }).Where(rs => rs.Items.Any()).OrderBy(rs => rs.Items.Min(i => i.Next));
+                            })).OrderBy(res => res.NextTS.StartTime)
+                }).Where(rs => rs.Items.Any()).OrderBy(rs => rs.Items.Min(i => i.NextTS.StartTime));
             return Ok(result);
         }
         [HttpPost, ValidateAntiForgeryToken, ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
@@ -207,10 +204,11 @@ namespace ConsultaMD.Areas.Patients.Controllers
         {
             return Json(_context.TimeSlots
                 .Include(ts => ts.Agenda)
-                .Where(ts => ts.Agenda.MediumDoctorId == mdId 
+                .Where(ts => ts.Agenda.MediumDoctorId == mdId
                 && ts.StartTime.Date == startDate.Date
                 && !ts.ReservationId.HasValue)
-                .Select(ts => new TimeSlotsVM{
+                .Select(ts => new TimeSlotsVM
+                {
                     Id = ts.Id,
                     StartTime = ts.StartTime.ToString("HH:mm tt", new CultureInfo("es-CL"))
                 }));
@@ -290,7 +288,14 @@ namespace ConsultaMD.Areas.Patients.Controllers
             timeSlot.ReservationId = savedReserve.Id;
             _context.TimeSlots.Update(timeSlot);
             await _context.SaveChangesAsync().ConfigureAwait(false);
-            return RedirectToAction("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id });
+            if (HttpContext.Request.Method == "POST")
+            {
+                return Json(Url.Action("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id }, Request.Scheme));
+            }
+            else
+            {
+                return RedirectToAction("ConfirmDate", "Booking", new { area = "Patients", id = reservation.Id });
+            }
         }
 
         [HttpPost]

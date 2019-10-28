@@ -19,6 +19,7 @@
     <meta name="author" content="EPIC Solutions" />
     <meta name="description" content="Consulta Médica" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet" />
     <open-graph-website site-name="ConsultaMD"
                         title="@ViewData["Title"]"
                         main-image="@(new OpenGraphImage(
@@ -51,13 +52,14 @@
         asp-subresource-integrity-src="~/lib/requirejs/require.js"></script>*@
     <partial name="_Favicons" />
     @*"@fortawesome/fontawesome-free",*@
-    @*<link href="<%= htmlWebpackPlugin.files.chunks[chunk].css %>" rel="stylesheet" />*@
-    <partial name="_Libs" model='(new string[]{"materialize-css","jquery", "jquery.mousewheel", "main"}, "TOP")' />
+    @*<link href="<%= htmlWebpackPlugin.files.chunks[chunk].css %>" rel="stylesheet" />  *@
+    <partial name="_Libs" model='(new string[]{ "materialize-css", "jquery", "jquery.mousewheel", "main"}, "TOP")' />
     @*<partial name="_Scripts" model='(new string[]{"jquery", "materialize-css", "main", "runtime"}, "-TOP_")' />*@
     @this.WriteBlocks("TOPStyles")
-    <link href="~/jquery-mobile/jquery.mobile-1.5.0-rc1.min.css" asp-append-version="true" />
+    @*<link href="~/jquery-mobile/jquery.mobile-1.5.0-rc1.min.css" asp-append-version="true" />*@
     @this.WriteBlocks("Styles")
     @RenderSection("Styles", required: false)
+    @this.WriteBlocks("DWNStyles")
     <noscript>
         <style>
             /*** Reinstate scrolling for non-JS clients*/
@@ -94,6 +96,7 @@
     @this.WriteBlocks("TOPScripts")
     @*<script src="~/jquery-mobile/jquery.mobile-1.5.0-rc1.min.js" asp-append-version="true"></script>*@
     @this.WriteBlocks("ValidationScripts")
+    @this.WriteBlocks("UPScripts")
     @this.WriteBlocks("Scripts")
     @RenderSection("Scripts", required: false)
     @this.WriteBlocks("DWNScripts")

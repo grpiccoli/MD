@@ -13,6 +13,7 @@ namespace ConsultaMD.Models.VM.PatientsVM
         public string Title { get; set; }
         public string Icon { get; set; }
         public bool Menu { get; set; }
-        public IEnumerable<string> Path { get; set; } = new List<string>();
+        public string Limit { get; set; }
+        public IEnumerable<string> Path { get; } = new List<string>();
     }
 }

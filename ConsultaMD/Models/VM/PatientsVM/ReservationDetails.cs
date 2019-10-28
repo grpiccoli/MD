@@ -104,7 +104,7 @@ namespace ConsultaMD.Models.VM
         public int? Id { get; private set;  }
         public bool Sex { get; private set; }
         public Especialidad? Specialty { get; private set; }
-        [Display(Prompt = "Especialidad")]
+        [Display(Name = "Especialidad")]
         public string SpecialtyName
         {
             get

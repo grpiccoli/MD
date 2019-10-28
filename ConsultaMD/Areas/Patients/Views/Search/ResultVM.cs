@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConsultaMD.Models.Entities;
+using ConsultaMD.Models.VM.PatientsVM;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using static ConsultaMD.Data.InsuranceData;
@@ -15,19 +17,8 @@ namespace ConsultaMD.Areas.Patients.Views.Search
         public int Experience { get; set; }
         public bool Sex { get; set; }
         public IEnumerable<Insurance> Insurances { get; set; }
-        public DateTime Next { get; set; }
+        public TimeSlotVM NextTS { get; set; }
         public int CardId { get; set; }
-        public string Hora
-        {
-            get
-            {
-                return Next.ToString("dddd dd MMMM yyyy<br>HH:mm tt", new CultureInfo("es-CL"));
-            }
-            private set
-            {
-                Hora = value;
-            }
-        }
         public bool Match { get; set; }
     }
 }

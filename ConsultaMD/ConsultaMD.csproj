@@ -17,6 +17,7 @@
     <Compile Remove="node_modules\**" />
     <EmbeddedResource Remove="wwwroot\js\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
+    <Folder Include="wwwroot\ios.picker\" />
     <TypeScriptCompile Remove="wwwroot\js\**" />
     <TypeScriptCompile Remove="wwwroot\lib\**" />
     <Compile Remove="Migrations\20191024191924_Initial.cs" />
@@ -48,9 +49,11 @@
     <None Remove="src\scripts\map.ts.bak2" />
     <None Remove="src\scripts\markerclusterer.js" />
     <None Remove="src\types\anypicker\index.d.ts" />
+    <None Remove="src\types\calentim\index.d.ts" />
     <None Remove="src\types\choicesjs\index.d.ts" />
     <None Remove="src\types\consultamd\index.d.ts" />
     <None Remove="src\types\globalize\index.d.ts" />
+    <None Remove="src\types\ios.picker\index.d.ts" />
     <None Remove="src\types\jquery.validate.hooks\index.d.ts" />
     <None Remove="src\types\markerclustererplus\index.d.ts" />
     <None Remove="src\types\markerclusterer\index.d.ts" />

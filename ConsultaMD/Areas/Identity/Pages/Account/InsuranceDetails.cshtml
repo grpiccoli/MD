@@ -4,7 +4,7 @@
     ViewData["Title"] = "Previsión";
 }
 
-<partial name="_Libs" model='(new string[]{ "@ionic-native/wheel-selector", "anypicker", "insurance", "jquery.rut", "simplebar", "air-datepicker" }, "")' />
+<partial name="_Libs" model='(new string[]{ "insurance", "jquery.rut", "simplebar" }, "")' />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
@@ -18,6 +18,8 @@
                 <span asp-validation-for="Input.RUT" class="text-danger"></span>
             </div>
             <div class="input-field col s12">
+                <input id="shower" name="shower" value="@Model.Input.Insurance" class="validate mobile-only" readonly />
+                <input asp-for="Input.Insurance" class="validate mobile-only" style="visibility:hidden;position:absolute" />
                 <select asp-for="Input.Insurance" asp-items="Model.Input.InsuranceList" class="validate"></select>
                 <label asp-for="Input.Insurance"></label>
                 <span asp-validation-for="Input.Insurance" class="text-danger"></span>
@@ -71,3 +73,5 @@
 </div>
 
 <partial name="_ValidationScriptsPartial" />
+
+<partial name="_iOSPicker" />

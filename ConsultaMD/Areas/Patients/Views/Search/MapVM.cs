@@ -16,38 +16,38 @@ namespace ConsultaMD.Models.VM.PatientsVM
             = new HashSet<Especialidad>();
         [Display(Name = "Género")]
         public HashSet<bool> Sex { get; } = new HashSet<bool>();
-        [Range(1, 24)]
-        public int? MinTime { get; set; }
-        [Range(1, 24)]
-        public int? MaxTime { get; set; }
+        //[Range(1, 24)]
+        //public DateTime? MinTime { get; set; }
+        ////[Range(1, 24)]
+        //public DateTime? MaxTime { get; set; }
         public DateTime? MinDate { get; set; }
         public DateTime? MaxDate { get; set; }
         public DateTime Last { get; set; }
-        public bool Monday { get; set; } = true;
-        public bool Tuesday { get; set; } = true;
-        public bool Wednesday { get; set; } = true;
-        public bool Thursday { get; set; } = true;
-        public bool Friday { get; set; } = true;
-        public bool Saturday { get; set; } = true;
-        public bool Sunday { get; set; } = true;
-        public HashSet<DayOfWeek> Days {
-            get
-            {
-                var result = new HashSet<DayOfWeek>();
-                if (!Monday) result.Add(DayOfWeek.Monday);
-                if (!Tuesday) result.Add(DayOfWeek.Tuesday);
-                if (!Wednesday) result.Add(DayOfWeek.Wednesday);
-                if (!Thursday) result.Add(DayOfWeek.Thursday);
-                if (!Friday) result.Add(DayOfWeek.Friday);
-                if (!Saturday) result.Add(DayOfWeek.Saturday);
-                if (!Sunday) result.Add(DayOfWeek.Sunday);
-                return result;
-            }
-            private set
-            {
-                Days = value;
-            }
-        }
+        //public bool Monday { get; set; } = true;
+        //public bool Tuesday { get; set; } = true;
+        //public bool Wednesday { get; set; } = true;
+        //public bool Thursday { get; set; } = true;
+        //public bool Friday { get; set; } = true;
+        //public bool Saturday { get; set; } = true;
+        //public bool Sunday { get; set; } = true;
+        //public HashSet<DayOfWeek> Days {
+        //    get
+        //    {
+        //        var result = new HashSet<DayOfWeek>();
+        //        if (!Monday) result.Add(DayOfWeek.Monday);
+        //        if (!Tuesday) result.Add(DayOfWeek.Tuesday);
+        //        if (!Wednesday) result.Add(DayOfWeek.Wednesday);
+        //        if (!Thursday) result.Add(DayOfWeek.Thursday);
+        //        if (!Friday) result.Add(DayOfWeek.Friday);
+        //        if (!Saturday) result.Add(DayOfWeek.Saturday);
+        //        if (!Sunday) result.Add(DayOfWeek.Sunday);
+        //        return result;
+        //    }
+        //    private set
+        //    {
+        //        Days = value;
+        //    }
+        //}
         public bool HighlightInsurance { get; set; } = true;
     }
 }

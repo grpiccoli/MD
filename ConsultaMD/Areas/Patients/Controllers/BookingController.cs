@@ -4,6 +4,7 @@ using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ConsultaMD.Areas.Patients.Controllers
@@ -47,11 +48,25 @@ namespace ConsultaMD.Areas.Patients.Controllers
             }
             return RedirectToAction("Map", "Search", new { area = "Patients" });
         }
-        public IActionResult BookAppointment()
+        public async Task<IActionResult> Appointments()
         {
-            ViewData["Message"] = "Hello";
-            ViewData["NumTimes"] = 150;
-            return View();
+            var rut = RUT.Unformat(User.Identity.Name);
+            var reservations = await _context.Reservations
+                        .Include(r => r.Patient)
+                            .ThenInclude(p => p.Natural)
+                        .Include(r => r.TimeSlot)
+                            .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.MediumDoctor)
+                                    .ThenInclude(md => md.Doctor)
+                                        .ThenInclude(d => d.Natural)
+                        .Include(r => r.TimeSlot)
+                            .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.MediumDoctor)
+                                    .ThenInclude(md => (MedicalOffice)md.MedicalAttentionMedium)
+                                        .ThenInclude(mo => mo.Place)
+                .Where(r => r.PatientId == rut.Value.rut).Select(r => new ReservationDetails(r))
+                .ToListAsync().ConfigureAwait(false);
+            return View(reservations);
         }
 
         public IActionResult CancelBookingDoctor()

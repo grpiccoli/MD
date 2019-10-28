@@ -15,6 +15,12 @@ declare interface Place {
 
 declare interface TimeSlotVM {
     id: number;
+    startTime: Date;
+    hora: string;
+}
+
+declare interface TimeSlotsVM {
+    id: number;
     startTime: string;
 }
 
@@ -27,9 +33,8 @@ declare interface ResultVM {
     experience: number;
     sex: boolean;
     insurances: Array<Insurance>;
-    next: Date;
+    nextTS: TimeSlotVM;
     cardId: number;
-    hora: string;
     match: boolean;
 }
 

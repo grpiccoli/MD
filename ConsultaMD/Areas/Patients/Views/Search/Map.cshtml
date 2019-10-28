@@ -1,12 +1,18 @@
 ﻿@model MapVM
 
 <partial name="_Libs" model='(new string[]{
-         "select2", "simplebar", "moment", "map", "markerclusterer" }, "")' />
+         "calentim", "@fortawesome/fontawesome-free", "select2", "simplebar", "moment", "hammerjs", "jquery-hammerjs", "ios.picker", "markerclusterer" }, "")' />
 
-@using Microsoft.AspNetCore.Identity
-@using ConsultaMD.Models.Entities
+<partial name="_iOSPicker" />
 
-<partial name="_Libs" model='(new string[]{ "sidenav" }, "")' />
+@this.Block(@<link href="~/calentim/calentim.min.css" asp-append-version="true" />, "Styles")
+
+@section Scripts{
+    <script src="~/calentim/calentim.min.js" asp-append-version="true"></script>
+}
+<partial name="_Libs" model='(new string[] { "map" }, "DWN")' />
+
+@this.Block(@<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>,"DWNScripts")
 
 <partial name="_Loader">
 
@@ -34,27 +40,41 @@
     <div class="panel">
         <div id="map-view" class="search-view">
             <div id="map" class="h-100"></div>
+            <div id="map-controls" class="fixed-action-btn">
+                <a class="btn-floating clinic-desc" id="re-center">
+                    <i class="material-icons">my_location</i>
+                </a>
+                <a class="btn-floating clinic-desc" id="toggle-center">
+                    <i class="material-icons">location_off</i>
+                </a>
+            </div>
         </div>
         <div id="list-view" class="search-view" data-simplebar>
             <div class="row m-0">
                 <div class="col s6">
-                    <p class="info"><i class="material-icons left">info_outline</i>Resultados priorizados por próxima hora disponible</p>
+                    <p class="info"><i class="material-icons left">info_outline</i>Priorizados por próx. hora disponible</p>
                 </div>
                 <div class="col s6">
-                    <select id="show">
-                        <option value="time" selected>Próxima Hora Disponible</option>
-                        <option value="addr">Dirección, oficina</option>
-                        <option value="price">Valor particular</option>
-                        <option value="mis">Convenios</option>
-                        <option value="esp">Especialidad médica</option>
-                    </select>
+                    <a class="waves-effect waves-light modal-trigger right" href="#select-modal">
+                        <span id="tab-shown" class="sm">Próx. Hora Disponible</span><i class="material-icons">arrow_drop_down</i>
+                    </a>
+                    @*<select id="show">
+                            <option value="time" selected>Próx. Hora</option>
+                            <option value="addr">Dirección, oficina</option>
+                            <option value="price">Valor particular</option>
+                            <option value="mis">Convenios</option>
+                            <option value="esp">Especialidad médica</option>
+                        </select>*@
                 </div>
             </div>
             <div id="list" class="row"></div>
         </div>
         <div id="date-view">
-            <div class="row"><span id="doctorName"></span> <span id="placeName"></span> <span id="date"></span></div>
-            <div class="row h-100" data-simplebar>
+            <div id="date-details" class="row m-0"></div>
+            <div class="row">
+                <i class="material-icons left">event_available</i> Fecha: <span id="dateDetails"></span>
+            </div>
+            <div class="row" data-simplebar>
                 <div class="col s12 m6">
                     <h5 class="clinic-text center">Mañana</h5>
                     <div>
@@ -71,13 +91,8 @@
         </div>
         <div class="list-btn fixed-action-btn">
             <button id="toggle-view" class="btn btn-small waves-effect waves-light pill">
-                ver como lista
+                ver lista
             </button>
-        </div>
-        <div class="fixed-action-btn">
-            <a class="btn-floating clinic-desc" id="toggle-center">
-                <i class="material-icons">location_off</i>
-            </a>
         </div>
         <div class="filter-btns">
             <div class="row">
@@ -98,9 +113,7 @@
     <form id="filter" asp-action="MapList">
         <div id="filters-pane" class="modal bottom-sheet select-sheet filters">
             <div class="modal-content">
-                <div class="row">
-                    <partial name="_Filter" model="Model" />
-                </div>
+                <partial name="_Filter" model="Model" />
             </div>
         </div>
     </form>
@@ -113,7 +126,3 @@
             </div>
         </li>
     </ul>
-
-    @section Scripts{
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>
-    }

@@ -1,47 +1,69 @@
 var dateToday = new Date();
 var yr = dateToday.getFullYear();
-var datepickerFormat = "dddd dd mmmm, yyyy";
 var mañanaTable, tardeTable;
-function min(array) {
-    return Math.min.apply(Math, array);
-}
-;
+var ASPNETDateFormat = 'YYYY-MM-DDTHH:mm:ss.000';
 function isNullOrWhitespace(input) {
     if (typeof input === 'undefined' || input == null)
         return true;
     return input.replace(/\s/g, '').length < 1;
 }
-$("#date-view").on('click', 'button.time-select', function () {
-    $.post("./Reservation", {
-        id: $(this).data('id'),
-        __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+function min(array) {
+    return Math.min.apply(Math, array);
+}
+function getContent(mdId) {
+    var card = $(places[mdId]['card']);
+    var string = $(card.find('.card-title')[0])
+        .removeClass('activator').attr('onclick', null)
+        .append('<i class="material-icons right">close</i>')[0].outerHTML;
+    var cardtabs = card.find('.tab > a');
+    var content = card.find('.tab-content');
+    for (var i = 0; i < cardtabs.length; i++) {
+        string += "<h6>" + cardtabs[i].innerHTML + "</h6>";
+        string += content[i].innerHTML;
+    }
+    return string;
+}
+function book(id) {
+    $.ajax({
+        type: 'POST',
+        url: "./Reservation",
+        data: {
+            id: id,
+            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+        },
+        success: function (d, textStatus) {
+            window.location.href = d;
+        }
     });
-});
+}
 function agendar2(mdId) {
     var minDate = $("#MinDate").val();
     var last = $("#Last").val();
     var lastYr = moment(last).toDate().getFullYear();
     if (isNullOrWhitespace(minDate)) {
-        minDate = moment(dateToday).toJSON().replace("Z", "");
+        minDate = moment(dateToday).format(ASPNETDateFormat);
     }
     else {
-        minDate = moment(minDate).toJSON().replace("Z", "");
+        minDate = moment(minDate).format(ASPNETDateFormat);
     }
     var maxDate = $("#MaxDate").val();
     if (isNullOrWhitespace(maxDate)) {
-        maxDate = moment(last).toJSON().replace("Z", "");
+        maxDate = moment(last).format(ASPNETDateFormat);
     }
     else {
-        maxDate = moment(maxDate).toJSON().replace("Z", "");
+        maxDate = moment(maxDate).format(ASPNETDateFormat);
     }
-    console.log(mdId);
+    var dets = $(places[mdId]['card']).removeClass('m6').removeClass('l4');
+    dets.find('.card-reveal, .card-action, .tab:first, .time').remove();
+    dets.find('.activator').attr('onclick', null).removeClass('activator');
+    dets.find('.card').addClass('m-0');
+    $('#date-details').html(dets[0].outerHTML);
     $.post("/Patients/Search/GetDates", {
         __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
         mdId: mdId,
         minDate: minDate,
         maxDate: maxDate,
     }, function (dt) {
-        console.log(mdId);
         var datePicker = M.Datepicker.init(document.getElementById('Date'), {
             firstDay: 1,
             autoClose: true,
@@ -66,8 +88,8 @@ function agendar2(mdId) {
                 done: 'Ok'
             },
             onSelect: function (d) {
-                console.log(mdId);
-                var result = moment(d, moment.ISO_8601).toJSON().replace("Z", "");
+                $('#dateDetails').html(moment(d).format('dddd DD [de] MMMM, YYYY'));
+                var result = moment(d, moment.ISO_8601).format(ASPNETDateFormat);
                 $.post("/Patients/Search/TimeSlots", {
                     __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
                     startDate: result,
@@ -96,7 +118,12 @@ function agendar2(mdId) {
                     $('#map-view').slideUp();
                     $('#list-view').slideUp();
                     $('#date-view').slideDown();
-                    $('#toggle-view').html("volver al mapa");
+                    $('#toggle-view').html("ver mapa");
+                    $("#date-view button.time-select").click(function () {
+                        book($(this).data('id'));
+                    });
+                    M.Tabs.init(document.querySelectorAll('#date-view .tabs'));
+                    M.Tooltip.init(document.querySelectorAll('#date-view .tooltipped'));
                 });
             }
         });
@@ -105,7 +132,7 @@ function agendar2(mdId) {
     });
 }
 function agendar(run, mdId) {
-    var q = $("#Insurance, #Ubicacion, #MinTime, #MaxTime")
+    var q = $("#Insurance, #Ubicacion")
         .serialize();
     var date = $("#MinDate,#MaxDate").serializeArray();
     var array = [q];
@@ -114,18 +141,98 @@ function agendar(run, mdId) {
     date.forEach(function (value) {
         if (value.value === '')
             return;
-        array.push(value.name + '=' + moment(value.value).toJSON().replace("Z", ""));
-    });
-    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    days.forEach(function (value) {
-        var prop = $("#" + value).prop('checked');
-        if (typeof (prop) !== 'undefined') {
-            array.push(value + "=" + prop);
-        }
+        array.push(value.name + '=' + moment(value.value).format(ASPNETDateFormat));
     });
     window.location.href = "/Patients/Search/DoctorDetails/" + run + "?" + array.join("&");
     return false;
 }
+var places = {};
+function fillReveal(mdId) {
+    $("#" + mdId + "reveal").html(getContent(mdId));
+}
+document.addEventListener('DOMContentLoaded', function () {
+    function changeDates(_calentim, startDate, endDate) {
+        $('#MinDate').val(startDate.format(ASPNETDateFormat)).change();
+        $('#MaxDate').val(endDate.format(ASPNETDateFormat)).change();
+    }
+    M.FloatingActionButton.init(document.getElementById('filter-options'), { toolbarEnabled: true });
+    var months = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i
+        .test(navigator.userAgent) ? 1 : 2;
+    $("#fl-item-9").calentim({
+        format: "dddd DD MMMM, YYYY h:mm A",
+        locale: 'es',
+        inline: true,
+        startOnMonday: true,
+        startDate: moment().startOf('day'),
+        minDate: moment().startOf('day'),
+        endDate: moment($("#Last").val()).endOf('day'),
+        maxDate: moment($("#Last").val()).endOf('day'),
+        rangeLabel: 'Rangos',
+        cancelLabel: 'Cancelar',
+        calendarCount: months,
+        applyLabel: 'Filtrar',
+        hideOutOfRange: true,
+        ranges: [
+            {
+                title: "Hoy",
+                startDate: moment(),
+                endDate: moment()
+            },
+            {
+                title: "Próximos 3 dias",
+                startDate: moment(),
+                endDate: moment().add(3, "days")
+            },
+            {
+                title: "Próximos 5 dias",
+                startDate: moment(),
+                endDate: moment().add(5, "days")
+            },
+            {
+                title: "Próximos 7 dias",
+                startDate: moment(),
+                endDate: moment().add(7, "days")
+            },
+            {
+                title: "Próxima semana",
+                startDate: moment().day(7),
+                endDate: moment().day(7).add(1, "days").day(7)
+            },
+            {
+                title: "Hasta el próximo mes",
+                startDate: moment(),
+                endDate: moment().add(1, "month").endOf("month")
+            }
+        ],
+        ontimechange: changeDates,
+        onafterselect: changeDates
+    });
+    $(window).on('resize', function () {
+        var windowWidth = $(window).width();
+        if (windowWidth > 610) {
+            $(".calentim-container-mobile").removeClass("calentim-container-mobile").addClass("calentim-container");
+        }
+        else {
+            $(".calentim-container").removeClass("calentim-container").addClass("calentim-container-mobile");
+        }
+    });
+    var tabs = ['time', 'addr', 'price', 'mis', 'esp'];
+    M.Modal.init(document.getElementById('select-modal'));
+    $("#example-picker").picker({
+        data: ['Próx. Hora Disponible', 'Dirección', 'Valor particular', 'Convenios', 'Especialidad médica']
+    }, function () {
+        var scrollAmmount = Math.round($('.clone-scroller').scrollTop() / 30);
+        var html = $($(".picker-scroller").find(".option").get(scrollAmmount)).html();
+        $('#tab-shown').html(html);
+        $("li.tab a").removeClass("active");
+        var $el = $("li.tab a." + tabs[scrollAmmount]).addClass("active");
+        var pos = 0;
+        if (scrollAmmount > 2)
+            pos += 200;
+        $el.parent().parent().animate({ scrollLeft: pos });
+        M.Tabs.init(document.querySelectorAll('.tabs'));
+    });
+});
 function initMap() {
     var mis = [
         'Particular',
@@ -157,7 +264,6 @@ function initMap() {
             position: google.maps.ControlPosition.RIGHT_CENTER
         }
     });
-    var places = {};
     var slide_action = M.Sidenav.init(document.getElementById('slide-action'), {
         draggable: true,
         onCloseEnd: function (_) {
@@ -220,20 +326,21 @@ function initMap() {
         }
         convenios += '</div>';
         if (item.especialidad !== null) {
-            title = "Dr" + (item.sex ? "" : "a") + ".";
+            title = "Dr" + (item.sex ? "" : "a") + ". ";
             esp += "<label>Esp.</label><span>" + item.especialidad + "</span>";
         }
+        var proper = "" + title + item.dr;
         esp += '</div>';
-        var office = "<p class=\"address\">" + place.address;
-        office += isNullOrWhitespace(item.office) ? '</li>' : " <span>" + item.office + "</span></p>";
-        return '<div class="col s12 m6 l4">'
+        var office = "<p class=\"address\">" + place.name + "<br/>" + place.address;
+        office += isNullOrWhitespace(item.office) ? '</p>' : "<br/><span>" + item.office + "</span></p>";
+        return "<div id=" + item.cardId + " class=\"col s12 m6 l4\">"
             + '<div class="card horizontal sticky-action">'
             + '<div class="card-image">'
             + ("<img src=\"/img/doc/" + item.run + ".min.jpg\"/>")
             + '</div>'
             + '<div class="card-stacked">'
             + '<div class="card-content">'
-            + ("<span class=\"card-title activator\">" + title + " " + item.dr + "</span>")
+            + ("<span class=\"card-title activator\" onclick=\"fillReveal(" + item.cardId + ")\">" + proper + "</span>")
             + '</div>'
             + '<div class="card-tabs">'
             + '<ul class="tabs tabs-fixed-width">'
@@ -245,23 +352,17 @@ function initMap() {
             + '</ul>'
             + '</div>'
             + '<div class="card-content grey lighten-4">'
-            + ("<div id=\"" + item.cardId + "next\" class=\"tab-content time\">" + item.hora + "</div>")
+            + ("<div id=\"" + item.cardId + "next\" class=\"tab-content time\">" + item.nextTS.hora + "<br/><a href=\"#\" onclick=\"book(" + item.nextTS.id + ")\">AGENDAR</a></div>")
             + ("<div id=\"" + item.cardId + "addr\" class=\"tab-content addr\">" + office + "</div>")
             + ("<div id=\"" + item.cardId + "prce\" class=\"tab-content price\"><span><i class=\"material-icons left\">attach_money</i>" + format(item.price) + "</span></div>")
             + convenios
             + esp
             + '</div>'
             + '<div class="card-action center">'
-            + ("<a href=\"#\" onclick=\"agendar2(" + item.cardId + ")\">Agendar</a>")
+            + ("<a href=\"#\" onclick=\"agendar2(" + item.cardId + ")\"><i class=\"material-icons\">add</i>Otra Fecha/Hr</a>")
             + '</div>'
             + '</div>'
-            + '<div class="card-reveal">'
-            + '<span class="card-title">'
-            + ("<i class=\"material-icons right\">close</i>" + title + " " + item.dr)
-            + '</span>'
-            + convenios
-            + '<label>Valor Particular:</label>'
-            + ("<span>$" + format(item.price) + "</span>")
+            + ("<div id=\"" + item.cardId + "reveal\" class=\"card-reveal\">")
             + '</div>'
             + '</div></div>';
     }
@@ -295,6 +396,10 @@ function initMap() {
             if (!(this.dr in dt))
                 dt[this.dr] = "/img/doc/" + this.run + ".min.jpg";
             var card = makeCard(this, value.place);
+            if (!(this.cardId.toString() in places)) {
+                places[this.cardId.toString()] = {};
+                places[this.cardId.toString()]['card'] = card;
+            }
             content += card;
             cnt++;
             if (match === 0.5 && this.match)
@@ -331,6 +436,9 @@ function initMap() {
             if (!--count) {
                 fitToMarkers();
                 loaderStop();
+                $('#map-controls').show();
+                $('button').removeAttr('disabled');
+                $("#search-filter").prop('disabled', false);
                 var search = document.getElementById('search-filter');
                 M.Autocomplete.init(search, {
                     data: dt,
@@ -366,14 +474,12 @@ function initMap() {
                         index: index
                     };
                 });
-                M.Collapsible.init(document.querySelectorAll('.collapsible'));
-                $('button').removeAttr('disabled');
             }
         });
     }
     function getAllquerys() {
         var array = $("#filter input[name='__RequestVerificationToken'],"
-            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance, #MinTime, #MaxTime")
+            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance")
             .serializeArray();
         var date = $("#MinDate,#MaxDate").serializeArray();
         date.forEach(function (value) {
@@ -381,20 +487,15 @@ function initMap() {
                 return;
             array.push({
                 name: value.name,
-                value: moment(value.value).toJSON().replace("Z", "")
-            });
-        });
-        var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        days.forEach(function (value) {
-            array.push({
-                name: value,
-                value: $("#" + value).prop('checked')
+                value: moment(value.value).format(ASPNETDateFormat)
             });
         });
         return array;
     }
     function getData() {
         loaderStart();
+        $("#search-filter").prop('disabled', true);
+        $('#map-controls').hide();
         $('button').prop('disabled', true);
         $.post("/Patients/Search/MapList", getAllquerys(), getList);
     }
@@ -417,8 +518,8 @@ function initMap() {
             });
         }
     }
-    $('#toggle-center').click(function () {
-        var icon = this.firstElementChild;
+    document.getElementById('toggle-center').onclick = function () {
+        var icon = document.querySelector('#toggle-center i');
         if (icon.innerHTML == "location_off") {
             icon.innerHTML = "location_on";
             moveToLocation();
@@ -429,11 +530,18 @@ function initMap() {
             me.setMap(null);
             fitToMarkers();
         }
+    };
+    document.getElementById('re-center').onclick = function () {
+        fitToMarkers();
+        document.querySelector('#re-center > i').innerHTML = "my_location";
+    };
+    google.maps.event.addListener(map, 'dragend', function () {
+        document.querySelector('#re-center > i').innerHTML = "location_disabled";
     });
     $('#toggle-view').click(function () {
         $("#date-view").slideUp();
         if ($("#map-view").css("display") === "block") {
-            $(this).html("volver al mapa");
+            $(this).html("ver mapa");
             $.each(places, function (i) {
                 $("#" + i).html(this["content"]);
             });
@@ -445,7 +553,7 @@ function initMap() {
         else {
             $("#map-view").slideDown();
             $("#list-view").slideUp();
-            $(this).html("ver como lista");
+            $(this).html("ver lista");
             setTimeout(fitToMarkers, 400);
             setTimeout(function () {
                 [].forEach.call(document.querySelectorAll('#list .tabs'), function (tab) {
@@ -477,90 +585,10 @@ function initMap() {
         $("#btn" + id).html(text);
         change = true;
     }
-    function filterTimes(value, _t) {
-        if (value % 6) {
-            return 0;
-        }
-        else {
-            return 1;
-        }
-    }
-    noUiSlider.create(document.getElementById('time-slider'), {
-        start: [0, 24],
-        connect: true,
-        step: 1,
-        orientation: 'horizontal',
-        margin: 6,
-        range: {
-            'min': 0,
-            'max': 24
-        },
-        format: {
-            to: function (value) {
-                return Math.ceil(value);
-            },
-            from: function (value) {
-                return Number(value.replace(/\D/g, ''));
-            }
-        },
-        pips: {
-            mode: 'steps',
-            density: 4,
-            filter: filterTimes,
-            format: {
-                to: function (value) {
-                    var suffix = "AM";
-                    if (value >= 12) {
-                        if (value !== 24) {
-                            suffix = "PM";
-                        }
-                        if (value !== 12) {
-                            value -= 12;
-                        }
-                    }
-                    return Math.ceil(value) + " " + suffix;
-                },
-                from: function (value) {
-                    return Number(value.replace(/\D/g, ''));
-                }
-            }
-        }
-    }).on('set', function (values, handle) {
-        if (handle) {
-            $('#MaxTime').val(values[handle] === 24 ? '' : values[handle]);
-        }
-        else {
-            $('#MinTime').val(values[handle] === 0 ? '' : values[handle]);
-        }
-    });
-    M.Datepicker.init(document.querySelectorAll('.datepicker'), {
-        firstDay: 1,
-        format: datepickerFormat,
-        autoClose: true,
-        minDate: dateToday,
-        maxDate: new Date($("#Last").val()),
-        i18n: {
-            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
-            weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-            weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-            weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
-            cancel: 'Cancelar',
-            clear: 'Limpiar',
-            done: 'Ok'
-        },
-        showClearBtn: true
-    });
-    $('#MinDate').change(function (d) {
-        var max = M.Datepicker.getInstance(document.getElementById('MaxDate'));
-        max.options.minDate = $(this).val() === '' ?
-            dateToday :
-            moment($(this).val()).toDate();
-    });
     var filters = M.Modal.init(document.getElementById('filters-pane'), {
         onCloseStart: changeFilter
     });
-    $('#filter-action').click(function (event) {
+    $('.filter-action').click(function (event) {
         event.preventDefault();
         filters.close();
     });
@@ -579,38 +607,31 @@ function initMap() {
                 filters.open();
                 $('#especialities-col').fadeIn();
                 $('#especialities-col input.select2-search__field').trigger('keyup');
+                $('sel2open').select2('close');
                 break;
             case "btnUbicacion":
                 $('.fltcol').hide();
                 filters.open();
                 $('#locations-col').fadeIn();
                 $('#locations-col input.select2-search__field').trigger('keyup');
+                $('sel2open').select2('close');
                 break;
             case "btnFechaHora":
                 $('.fltcol').hide();
                 filters.open();
                 $('#dates-col').fadeIn();
                 $('#dates-col input.select2-search__field').trigger('keyup');
+                $('sel2open').select2('close');
                 break;
             case "all1":
             case "all2":
                 filters.open();
                 $('.fltcol').fadeIn();
                 $('#filters-pane input.select2-search__field').trigger('keyup');
+                $('sel2open').select2('close');
                 break;
         }
-    });
-    var show = M.FormSelect.init(document.getElementById('show'));
-    show.el.addEventListener("change", function (e) {
-        $("li.tab a").removeClass("active");
-        var s = show.el;
-        var val = s.options[s.selectedIndex].value;
-        var $el = $("li.tab a." + val).addClass("active");
-        var pos = 0;
-        if (val === 'esp' || val === 'mis')
-            pos += 200;
-        $el.parent().parent().animate({ scrollLeft: pos });
-        M.Tabs.init(document.querySelectorAll('.tabs'));
+        new SimpleBar(document.querySelector('.filters-controls'));
     });
     $.post('/Patients/Search/FilterLists', $("#filter input[name='__RequestVerificationToken']").serializeArray(), function (d) {
         $('#Especialidad').select2({

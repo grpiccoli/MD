@@ -14,6 +14,7 @@
     "@types/moment": "2.13.0",
     "@types/owl.carousel": "2.3.1",
     "@types/select2": "4.0.48",
+    "@types/simplebar": "^2.4.2",
     "@types/webrtc": "0.0.25",
     "@types/wnumb": "1.0.28",
     "cldr-data-downloader": "0.3.5"
