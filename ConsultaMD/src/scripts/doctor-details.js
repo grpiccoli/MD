@@ -32,8 +32,8 @@ function initDetails() {
     }
     function fitToMarkers() {
         var bounds = new google.maps.LatLngBounds();
-        for (var _i = 0, markers_1 = markers; _i < markers_1.length; _i++) {
-            var i = markers_1[_i];
+        for (var _a = 0, markers_1 = markers; _a < markers_1.length; _a++) {
+            var i = markers_1[_a];
             bounds.extend(i.getPosition());
         }
         map.fitBounds(bounds);
@@ -100,8 +100,8 @@ function initDetails() {
     function changeInsurances(mdId) {
         var insurances = dt[mdId][0];
         var msg = '<ul>';
-        for (var _i = 0, insurances_1 = insurances; _i < insurances_1.length; _i++) {
-            var mi = insurances_1[_i];
+        for (var _a = 0, insurances_1 = insurances; _a < insurances_1.length; _a++) {
+            var mi = insurances_1[_a];
             msg += "<li><a class=\"btn tooltipped\" data-tooltip=\"" + mi + "\"><img src=\"/img/mi/" + mi + "-icon.min.png\"/></a></li>";
         }
         msg += '</ul>';

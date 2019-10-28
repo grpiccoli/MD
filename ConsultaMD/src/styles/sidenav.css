@@ -15,6 +15,10 @@ body header, body main, body footer {
 .sidenav .user-view {
   padding: 32px;
   line-height: 2rem; }
+  .sidenav .user-view a.details {
+    cursor: default; }
+    .sidenav .user-view a.details i.edit {
+      cursor: pointer; }
   .sidenav .user-view .name {
     font-size: 13px; }
   .sidenav .user-view .background {

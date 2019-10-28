@@ -56,35 +56,37 @@
 @this.Block(
     @<ul id="nav-mobile" class="sidenav sidenav-fixed">
     <li>
-        <div class="user-view">
-            <div class="background">
-                <img class="image" src="~/img/background-aero.png" asp-append-version="true">
+        <form>
+            <div class="user-view">
+                <div class="background">
+                    <img class="image" src="~/img/background-aero.png" asp-append-version="true">
+                </div>
+                <a id="editProfile" class="btn-floating btn-small waves-effect waves-light teal darken-1">
+                    <i class="material-icons" style="line-height:25px;">create</i>
+                </a>
+                <a href="#user" class="details"><img alt="profile picture" class="circle" src="~/img/doc/@((int)ViewData["run"]).png" asp-append-version="true"></a>
+                <a href="#name" class="details"><span class="white-text name">@person.FullNameFirst</span></a>
+                <a href="#rut" class="details">
+                    <span class="white-text input-field">
+                        <i class="material-icons prefix">person_pin</i>
+                        <input class="browser-default white-text" disabled value="@User.Identity.Name" />
+                    </span>
+                </a>
+                <a href="#phone" class="details">
+                    <span class="@(user.PhoneNumberConfirmed ? "white-text" : "orange-text") phone input-field">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="userphone" class="browser-default white-text" disabled value="@user.PhoneNumber.Replace("+569", "9 ").Insert(6, " ")" />
+                    </span>
+                </a>
+                <a href="#email" class="details">
+                    <span class="white-text email input-field">
+                        <i class="material-icons prefix">mail</i>
+                        <input id="useremail" class="browser-default white-text" disabled value="@user.Email" />
+                        @*<span>@(user.EmailConfirmed ? "" : "correo no confirmado")</span>*@
+                    </span>
+                </a>
             </div>
-            <a id="editProfile" class="btn-floating btn-small waves-effect waves-light teal darken-1">
-                <i class="material-icons" style="line-height:25px;">create</i>
-            </a>
-            <a href="#user" class="details"><img alt="profile picture" class="circle" src="~/img/doc/@((int)ViewData["run"]).png" asp-append-version="true"></a>
-            <a href="#name" class="details"><span class="white-text name">@person.FullNameFirst</span></a>
-            <a href="#rut" class="details">
-                <span class="white-text input-field">
-                    <i class="material-icons prefix">person_pin</i>
-                    <input class="browser-default white-text" disabled value="@User.Identity.Name" />
-                </span>
-            </a>
-            <a href="#phone" class="details">
-                <span class="@(user.PhoneNumberConfirmed ? "white-text" : "orange-text") phone input-field">
-                    <i class="material-icons prefix">phone</i>
-                    <input id="userphone" class="browser-default white-text" disabled value="@user.PhoneNumber.Replace("+569", "9 ").Insert(6, " ")" />
-                </span>
-            </a>
-            <a href="#email" class="details">
-                <span class="white-text email input-field">
-                    <i class="material-icons prefix">mail</i>
-                    <input id="useremail" class="browser-default white-text" disabled value="@user.Email" />
-                    @*<span>@(user.EmailConfirmed ? "" : "correo no confirmado")</span>*@
-                </span>
-            </a>
-        </div>
+        </form>
     </li>
     <li><a class="subheader">Páginas</a></li>
     @foreach (var a in menuActions)

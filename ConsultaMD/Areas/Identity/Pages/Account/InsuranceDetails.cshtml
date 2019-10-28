@@ -75,3 +75,14 @@
 <partial name="_ValidationScriptsPartial" />
 
 <partial name="_iOSPicker" />
+
+@if (HttpContext.Request.Headers["Referer"].ToString().Contains("Register"))
+{
+    @section Scripts{ 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                M.toast({ html: '<i class="material-icons left">email</i>Correo de verificación enviado' });
+            });
+        </script>
+    }
+}

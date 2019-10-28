@@ -21,6 +21,13 @@ body {
     padding: 32px;
     line-height: 2rem;
 
+    a.details{
+        cursor: default;
+        i.edit{
+            cursor:pointer;
+        }
+    }
+
     .name {
         font-size: 13px;
     }

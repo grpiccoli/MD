@@ -459,7 +459,10 @@ function initMap() {
         if (count === 0) {
             loaderStop();
             $('button').removeAttr('disabled');
-            alert("No hay resultados para los filtros seleccionados");
+            M.toast({
+                html: '<i class="material-icons left">report</i>No hay resultados para los filtros seleccionados<i class="material-icons right">not_interested</i>',
+                classes: 'red'
+            });
             if (typeof (markerCluster) !== 'undefined') {
                 markerCluster.clearMarkers();
             }
@@ -621,6 +624,7 @@ function initMap() {
             }, 200);
         }
     });
+    var el = new SimpleBar(document.querySelector('.filters-controls'));
     //tag if filter settings have been changed
     let change = false;
     //re load data if changed
@@ -747,37 +751,29 @@ function initMap() {
     //load filter options
     $('.fltbtn').click((panel: any) => {
         var id = $(panel.target).attr('id');
+        $('.fltcol').hide();
+        filters.open();
+        let tag;
         switch (id) {
             case "btnEspecialidad":
-                $('.fltcol').hide();
-                filters.open();
-                $('#especialities-col').fadeIn();
-                $('#especialities-col input.select2-search__field').trigger('keyup');
-                $('sel2open').select2('close');
+                tag = '#especialities-col';
                 break;
             case "btnUbicacion":
-                $('.fltcol').hide();
-                filters.open();
-                $('#locations-col').fadeIn();
-                $('#locations-col input.select2-search__field').trigger('keyup');
-                $('sel2open').select2('close');
+                tag = '#locations-col';
                 break;
             case "btnFechaHora":
-                $('.fltcol').hide();
-                filters.open();
-                $('#dates-col').fadeIn();
-                $('#dates-col input.select2-search__field').trigger('keyup');
-                $('sel2open').select2('close');
+                tag = '#dates-col';
                 break;
             case "all1":
             case "all2":
-                filters.open();
-                $('.fltcol').fadeIn();
-                $('#filters-pane input.select2-search__field').trigger('keyup');
-                $('sel2open').select2('close');
+                tag = '.fltcol';
                 break;
         }
-        new SimpleBar(document.querySelector('.filters-controls'));
+        $(tag).fadeIn();
+        $(`${tag} input.select2-search__field`).trigger('keyup');
+        $('.sel2open').select2('close');
+        el.recalculate();
+        el.getScrollElement().scrollTop = 0;
     });
     //initialize selects
     $.post('/Patients/Search/FilterLists', $("#filter input[name='__RequestVerificationToken']").serializeArray(), (d) => {
@@ -796,9 +792,8 @@ function initMap() {
         //SEX SELECT
         $('#Sex').select2({
             theme: "material",
-            maximumSelectionLength: 1,
             placeholder: "Seleccione sexo del profesional médico"
-        });
+        }).on('select2:selecting', (e) => { $('#Sex').val(null) }).on('change', () => { change = true; });
         //NORMALIZE SELECT2 INPUT
         $("input.select2-search__field")
             .addClass("browser-default");
