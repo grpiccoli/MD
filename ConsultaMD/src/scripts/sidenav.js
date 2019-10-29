@@ -1,16 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     M.Sidenav.init(document.querySelectorAll('.sidenav'));
     $("#editProfile").click(function () {
+        var _this = this;
         var $el = $(this);
         if ($el.hasClass('teal')) {
             setTimeout(function () {
                 $el.removeClass('teal').addClass('red').find('i').html("close");
-                $('.phone i, .email i').addClass('edit').html('create');
-                $('.phone i.edit').click(function () {
-                    $('#userphone').prop('disabled', function (i, v) { return !v; });
-                });
-                $('.email i.edit').click(function () {
-                    $('#useremail').prop('disabled', function (i, v) { return !v; });
+                $('.phone i, .email i').addClass('edit').html('create').click(function () {
+                    $(_this).next().prop('disabled', function (i, v) {
+                        return !v;
+                    });
                 });
             }, 500);
         }

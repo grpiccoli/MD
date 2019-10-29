@@ -5,13 +5,12 @@
         if ($el.hasClass('teal')) {
             setTimeout(() => {
                 $el.removeClass('teal').addClass('red').find('i').html("close");
-                $('.phone i, .email i').addClass('edit').html('create');
-                $('.phone i.edit').click(() => {
-                    $('#userphone').prop('disabled', (i, v) => { return !v; });
+                $('.phone i, .email i').addClass('edit').html('create').click(() => {
+                    $(this).next().prop('disabled', (i, v) =>
+                    {
+                        return !v;
+                    });
                     //window.location.href = '/Identity/Account/VerifyPhone?returnUrl=%2FPatients%2FSearch%2FMap';
-                });
-                $('.email i.edit').click(() => {
-                    $('#useremail').prop('disabled', (i, v) => { return !v; });
                 });
             }, 500);
         } else {

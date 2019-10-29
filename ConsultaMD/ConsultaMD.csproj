@@ -48,6 +48,8 @@
     <None Remove="src\scripts\map.ts.bak1" />
     <None Remove="src\scripts\map.ts.bak2" />
     <None Remove="src\scripts\markerclusterer.js" />
+    <None Remove="src\scripts\mi\fonasa.ts" />
+    <None Remove="src\scripts\ps\SII.ts" />
     <None Remove="src\types\anypicker\index.d.ts" />
     <None Remove="src\types\calentim\index.d.ts" />
     <None Remove="src\types\choicesjs\index.d.ts" />
@@ -96,11 +98,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
     <PackageReference Include="morelinq" Version="3.2.0" />
     <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />
-    <PackageReference Include="Schema.NET" Version="5.0.0" />
+    <PackageReference Include="Schema.NET" Version="6.0.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Sendgrid" Version="9.12.0" />
-    <PackageReference Include="Stripe.net" Version="32.0.0" />
+    <PackageReference Include="Stripe.net" Version="32.1.3" />
     <PackageReference Include="Tesseract" Version="3.3.0" />
     <PackageReference Include="Twilio" Version="5.34.0" />
     <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.59" />

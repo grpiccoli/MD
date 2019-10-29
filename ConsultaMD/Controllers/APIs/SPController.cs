@@ -11,12 +11,14 @@ using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
+using ConsultaMD.Extensions;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.NodeServices;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Chrome;
 using Tesseract;
@@ -29,8 +31,11 @@ namespace ConsultaMD.Controllers
     public class SPController : Controller
     {
         private readonly IHostingEnvironment _hostingEnvironment;
-        public SPController(IHostingEnvironment hostingEnvironment)
+        private readonly INodeServices _nodeService;
+        public SPController(IHostingEnvironment hostingEnvironment,
+            INodeServices nodeService)
         {
+            _nodeService = nodeService;
             _hostingEnvironment = hostingEnvironment;
         }
         [HttpPost]
@@ -111,17 +116,27 @@ namespace ConsultaMD.Controllers
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         //val : rut | razon_social | actividades | all
-        public async Task<IActionResult> GetSII(int rut, string dv, string val)
+        public async Task<IActionResult> GetSII(int run, string dv, string val)
         {
-           using (HttpClient client = new HttpClient())
-           {
-                using (var response = await client.GetAsync(new Uri($"https://siichile.herokuapp.com/consulta?rut={rut}{dv}")).ConfigureAwait(false))
-                {
-                    var json = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
-                    if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
-                    return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
-                }
+            var realDV = RUT.DV(run);
+            if(realDV == dv)
+            {
+                var rut = RUT.Format(run);
+                var response = await _nodeService.InvokeAsync<string>("./src/scripts/ps/SII.js", rut).ConfigureAwait(false);
+                var json = JObject.Parse(response);
+                if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
+                return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
             }
+            return NotFound();
+            //using (HttpClient client = new HttpClient())
+            //{
+            //     using (var response = await client.GetAsync(new Uri($"https://siichile.herokuapp.com/consulta?rut={rut}{dv}")).ConfigureAwait(false))
+            //     {
+            //         var json = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+            //         if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
+            //         return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
+            //     }
+            // }
         }
         [HttpGet]
         [Route("[action]")]

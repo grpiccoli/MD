@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using AngleSharp.Html.Parser;
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
+using ConsultaMD.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.NodeServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -22,8 +24,11 @@ namespace ConsultaMD.Controllers
     public class MIPController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        public MIPController(UserManager<ApplicationUser> userManager)
+        private readonly INodeServices _nodeService;
+        public MIPController(UserManager<ApplicationUser> userManager,
+            INodeServices nodeService)
         {
+            _nodeService = nodeService;
             _userManager = userManager;
         }
         [HttpPost]
@@ -85,6 +90,7 @@ namespace ConsultaMD.Controllers
                     var parser = new HtmlParser();
                     using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
                     {
+                        await _nodeService.InvokeAsync<string>("./src/bash/fonasa.ts", AntiCaptchaClient.Get(), "ble").ConfigureAwait(false);
                         var formArray = doc.GetElementsByTagName("input").Select(i => new {
                             name = i.GetAttribute("name"),
                             value = i.GetAttribute("value")

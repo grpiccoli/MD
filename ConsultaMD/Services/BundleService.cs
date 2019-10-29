@@ -9,13 +9,14 @@ namespace ConsultaMD.Services
 {
     public static class Bundler
     {
-        private static List<Bundle> Bundles { get; set; } = new List<Bundle>();
+        private static List<Bundle> Bundles { get; } = new List<Bundle>();
         public static List<Bundle> LoadJson()
         {
             using (StreamReader r = new StreamReader("bundleconfig.json"))
             {
                 string json = r.ReadToEnd();
-                Bundles = JsonConvert.DeserializeObject<List<Bundle>>(json);
+                Bundles.Clear();
+                Bundles.AddRange(JsonConvert.DeserializeObject<List<Bundle>>(json));
                 return Bundles;
             }
         }

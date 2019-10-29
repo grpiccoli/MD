@@ -51,6 +51,9 @@ namespace ConsultaMD
             //var authToken = "837533360893e16b150eca01c03c811f";
             TwilioClient.Init(accountSid, authToken);
 
+            var antiCaptchaKey = Configuration["AntiCaptcha"];
+            AntiCaptchaClient.Init(antiCaptchaKey);
+
             services.Configure<TwilioVerifySettings>(Configuration.GetSection("Twilio"));
 
             services.Configure<CookiePolicyOptions>(options =>
