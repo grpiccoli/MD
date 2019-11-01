@@ -24,10 +24,9 @@ using ConsultaMD.Models.Entities;
 using Microsoft.AspNetCore.StaticFiles;
 using ConsultaMD.Resources;
 using WebMarkupMin.AspNetCore2;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Twilio;
 using Microsoft.Extensions.FileProviders;
-using ConsultaMD.Areas.Patients.Controllers;
+using Microsoft.AspNetCore.NodeServices;
 
 namespace ConsultaMD
 {
@@ -171,10 +170,7 @@ namespace ConsultaMD
                 //options.HttpsPort = 5101;
             });
 
-            services.AddNodeServices(o =>
-            {
-                o.ProjectPath = "./";
-            });
+            services.AddNodeServices();
 
             services.Configure<AuthMessageSenderOptions>(Configuration);
 

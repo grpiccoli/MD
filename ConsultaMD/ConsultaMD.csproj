@@ -12,18 +12,25 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Compile Remove="src\scripts\bash\train\**" />
     <Compile Remove="wwwroot\js\**" />
     <Compile Remove="wwwroot\lib\**" />
     <Compile Remove="node_modules\**" />
+    <Content Remove="src\scripts\bash\train\**" />
+    <EmbeddedResource Remove="src\scripts\bash\train\**" />
     <EmbeddedResource Remove="wwwroot\js\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
+    <None Remove="src\scripts\bash\train\**" />
     <Folder Include="wwwroot\ios.picker\" />
+    <TypeScriptCompile Remove="src\scripts\bash\train\**" />
     <TypeScriptCompile Remove="wwwroot\js\**" />
     <TypeScriptCompile Remove="wwwroot\lib\**" />
     <Compile Remove="Migrations\20191024191924_Initial.cs" />
     <Compile Remove="Migrations\20191024191924_Initial.Designer.cs" />
     <Compile Remove="Migrations\20191024192610_Initial.cs" />
     <Compile Remove="Migrations\20191024192610_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191025231711_Initial.cs" />
+    <Compile Remove="Migrations\20191025231711_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\doctor-details.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -48,8 +55,7 @@
     <None Remove="src\scripts\map.ts.bak1" />
     <None Remove="src\scripts\map.ts.bak2" />
     <None Remove="src\scripts\markerclusterer.js" />
-    <None Remove="src\scripts\mi\fonasa.ts" />
-    <None Remove="src\scripts\ps\SII.ts" />
+    <None Remove="src\scripts\node\ps\SII.ts" />
     <None Remove="src\types\anypicker\index.d.ts" />
     <None Remove="src\types\calentim\index.d.ts" />
     <None Remove="src\types\choicesjs\index.d.ts" />

@@ -108,10 +108,20 @@ namespace ConsultaMD.Data
                 modelBuilder.Entity<Patient>()
                     .HasKey(p => new { p.NaturalId });
 
-                modelBuilder.Entity<Natural>()
-                    .HasOne(d => d.Doctor)
+                modelBuilder.Entity<Natural>(entity => {
+                    entity.HasOne(d => d.Doctor)
                     .WithOne(n => n.Natural)
                     .HasForeignKey<Doctor>(n => n.NaturalId);
+                    entity.HasOne(n => n.DigitalSignature)
+                    .WithOne(d => d.Natural)
+                    .HasForeignKey<DigitalSignature>(n => n.NaturalId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                });
+
+                modelBuilder.Entity<DigitalSignature>()
+                    .HasOne(d => d.Natural)
+                    .WithOne(d => d.DigitalSignature)
+                    .HasForeignKey<Natural>(d => d.DigitalSignatureId);
 
                 modelBuilder.Entity<TimeSlot>()
                     .HasOne(r => r.Reservation)
@@ -128,13 +138,13 @@ namespace ConsultaMD.Data
                 });
 
                 modelBuilder.Entity<MedicalCoverage>(d => {
-                    d.HasKey(p => new { p.BeneficiaryId, p.DependantId });
-                    d.HasOne(md => md.Beneficiary)
+                    d.HasKey(p => new { p.QuoteeId, p.DependantId });
+                    d.HasOne(md => md.Quotee)
                         .WithMany(p => p.MedicalCoverages)
-                        .HasForeignKey(md => md.BeneficiaryId);
-                    d.HasOne(p => p.Beneficiary)
+                        .HasForeignKey(md => md.QuoteeId);
+                    d.HasOne(p => p.Quotee)
                         .WithMany(c => c.MedicalCoverages)
-                        .HasForeignKey(i => i.BeneficiaryId)
+                        .HasForeignKey(i => i.QuoteeId)
                         .OnDelete(DeleteBehavior.Restrict);
                 });
             }

@@ -13,18 +13,12 @@ namespace ConsultaMD.Models.Entities
         public int Id { get; set; }
         public int NaturalId { get; set; }
         public Natural Natural { get; set; }
-        public int DigitalSignatureId { get; set; }
-        public virtual DigitalSignature DigitalSignature { get; set; }
         [DataType(DataType.Date)]
         public DateTime RegistryDate { get; set; }
         public Especialidad? Specialty { get; set; }
         public string Title { get; set; }
         public string Institution { get; set; }
         //0 female 1 male
-        public bool Sex { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime Birth { get; set; }
-        public string Nationality { get; set; }
         public string SisId { get; set; }
         public int YearTitle { get; set; }
         public int YearSpecialty { get; set; }

@@ -212,6 +212,8 @@ namespace ConsultaMD.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("NaturalId");
+
                     b.Property<string>("PathToKey");
 
                     b.HasKey("Id");
@@ -223,19 +225,11 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id");
 
-                    b.Property<DateTime>("Birth");
-
-                    b.Property<int>("DigitalSignatureId");
-
                     b.Property<string>("Institution");
-
-                    b.Property<string>("Nationality");
 
                     b.Property<int>("NaturalId");
 
                     b.Property<DateTime>("RegistryDate");
-
-                    b.Property<bool>("Sex");
 
                     b.Property<string>("SisId");
 
@@ -248,8 +242,6 @@ namespace ConsultaMD.Migrations
                     b.Property<int>("YearTitle");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DigitalSignatureId");
 
                     b.HasIndex("NaturalId")
                         .IsUnique();
@@ -312,11 +304,11 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalCoverage", b =>
                 {
-                    b.Property<int>("BeneficiaryId");
+                    b.Property<int>("QuoteeId");
 
                     b.Property<int>("DependantId");
 
-                    b.HasKey("BeneficiaryId", "DependantId");
+                    b.HasKey("QuoteeId", "DependantId");
 
                     b.HasIndex("DependantId");
 
@@ -355,6 +347,8 @@ namespace ConsultaMD.Migrations
                     b.Property<int>("Insurance");
 
                     b.Property<string>("InsurancePassword");
+
+                    b.Property<int>("Tramo");
 
                     b.HasKey("NaturalId");
 
@@ -711,7 +705,11 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.Person");
 
+                    b.Property<DateTime>("Birth");
+
                     b.Property<int>("CarnetId");
+
+                    b.Property<int>("DigitalSignatureId");
 
                     b.Property<int>("DoctorId");
 
@@ -719,7 +717,21 @@ namespace ConsultaMD.Migrations
 
                     b.Property<string>("FullNameFirst");
 
+                    b.Property<string>("LastFather");
+
+                    b.Property<string>("LastMother");
+
+                    b.Property<string>("Names");
+
+                    b.Property<string>("Nationality");
+
+                    b.Property<bool>("Sex");
+
                     b.HasIndex("CarnetId");
+
+                    b.HasIndex("DigitalSignatureId")
+                        .IsUnique()
+                        .HasFilter("[DigitalSignatureId] IS NOT NULL");
 
                     b.HasDiscriminator().HasValue("Natural");
                 });
@@ -782,11 +794,6 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.DigitalSignature", "DigitalSignature")
-                        .WithMany()
-                        .HasForeignKey("DigitalSignatureId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
                         .WithOne("Doctor")
                         .HasForeignKey("ConsultaMD.Models.Entities.Doctor", "NaturalId")
@@ -803,15 +810,15 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalCoverage", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.Patient", "Beneficiary")
-                        .WithMany("MedicalCoverages")
-                        .HasForeignKey("BeneficiaryId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Dependant")
                         .WithMany()
                         .HasForeignKey("DependantId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsultaMD.Models.Entities.Patient", "Quotee")
+                        .WithMany("MedicalCoverages")
+                        .HasForeignKey("QuoteeId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MediumDoctor", b =>
@@ -965,6 +972,11 @@ namespace ConsultaMD.Migrations
                         .WithMany()
                         .HasForeignKey("CarnetId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsultaMD.Models.Entities.DigitalSignature", "DigitalSignature")
+                        .WithOne("Natural")
+                        .HasForeignKey("ConsultaMD.Models.Entities.Natural", "DigitalSignatureId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationUserRole", b =>

@@ -69,7 +69,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             .Where(md =>
                             (!filters.Especialidad.Any() || (md.Doctor.Specialty.HasValue
                             && filters.Especialidad.Contains(md.Doctor.Specialty.Value)))
-                            && (!filters.Sex.Any() || filters.Sex.Contains(md.Doctor.Sex))
+                            && (!filters.Sex.Any() || filters.Sex.Contains(md.Doctor.Natural.Sex))
                             && md.Agendas.Any(a => a.StartTime > DateTime.Now.AddMinutes(30)
                                    //&& (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek))
                                && a.TimeSlots.Any(t => !t.ReservationId.HasValue
@@ -88,7 +88,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                 Match = filters.Insurance == InsuranceData.Insurance.Particular 
                                 || !filters.HighlightInsurance 
                                 || md.InsuranceLocations.Select(i => i.Insurance).Contains(filters.Insurance),
-                                Sex = md.Doctor.Sex,
+                                Sex = md.Doctor.Natural.Sex,
                                 Office = string.Join(" ",(!string.IsNullOrEmpty(office.Appartment)?"dpto."+office.Appartment:""),
                                 (!string.IsNullOrEmpty(office.Floor)?"piso "+office.Floor:""),
                                 (!string.IsNullOrEmpty(office.Office)?"of. "+office.Office:"")),
@@ -232,7 +232,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
             var doc = await _context.Doctors
                 .Include(d => d.Natural)
                 .SingleOrDefaultAsync(d => d.NaturalId == id).ConfigureAwait(false);
-            var title = doc.Specialty.HasValue ? $"Dr{(doc.Sex ? ". " : "a. ")}" : "";
+            var title = doc.Specialty.HasValue ? $"Dr{(doc.Natural.Sex ? ". " : "a. ")}" : "";
             ViewData["Title"] = $"<span class=\"hide-on-small-only\">Detalles</span> {title}{doc.Natural.GetName()} {doc.Natural.GetSurname()}";
 
             var mds = _context.MediumDoctors

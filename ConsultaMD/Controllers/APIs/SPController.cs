@@ -5,20 +5,19 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
 using ConsultaMD.Extensions;
+using ConsultaMD.Models.VM;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.NodeServices;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Chrome;
 using Tesseract;
@@ -30,12 +29,14 @@ namespace ConsultaMD.Controllers
     //Servicios Públicos
     public class SPController : Controller
     {
+        private readonly string _os;
         private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly INodeServices _nodeService;
+        private readonly INodeServices _nodeServices;
         public SPController(IHostingEnvironment hostingEnvironment,
-            INodeServices nodeService)
+            INodeServices nodeServices)
         {
-            _nodeService = nodeService;
+            _os = Environment.OSVersion.Platform.ToString();
+            _nodeServices = nodeServices;
             _hostingEnvironment = hostingEnvironment;
         }
         [HttpPost]
@@ -119,13 +120,16 @@ namespace ConsultaMD.Controllers
         public async Task<IActionResult> GetSII(int run, string dv, string val)
         {
             var realDV = RUT.DV(run);
-            if(realDV == dv)
+            if (realDV == dv)
             {
                 var rut = RUT.Format(run);
-                var response = await _nodeService.InvokeAsync<string>("./src/scripts/ps/SII.js", rut).ConfigureAwait(false);
-                var json = JObject.Parse(response);
-                if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
-                return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
+                var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/SII.js", rut).ConfigureAwait(false);
+                var siiData = JsonConvert.DeserializeObject<SII>(response);
+                if (string.IsNullOrEmpty(siiData.Razon_Social)) return NotFound();
+                return val == "all" ? Ok(response) : Ok(siiData[val]);
+                //var json = JObject.Parse(response);
+                //if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
+                //return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
             }
             return NotFound();
             //using (HttpClient client = new HttpClient())
@@ -309,7 +313,7 @@ namespace ConsultaMD.Controllers
         {
             if(rut > 900_000 && rut < 30_000_000 && dv?.Length == 1)
             {
-                var sii = await GetSII(rut, dv, "razon_social").ConfigureAwait(false);
+                var sii = await GetSII(rut, dv, "RazonSocial").ConfigureAwait(false);
                 if (sii.GetType() == typeof(NotFoundResult))
                 {
                     var servel = await GetNRYF(rut, dv, "name", "rut").ConfigureAwait(false);

@@ -6,14 +6,17 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Html.Parser;
+using ConsultaMD.Data;
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
+using ConsultaMD.Models.VM;
 using ConsultaMD.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.NodeServices;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -24,11 +27,14 @@ namespace ConsultaMD.Controllers
     public class MIPController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly INodeServices _nodeService;
+        private readonly INodeServices _nodeServices;
+        private readonly ApplicationDbContext _context;
         public MIPController(UserManager<ApplicationUser> userManager,
-            INodeServices nodeService)
+            ApplicationDbContext context,
+            INodeServices nodeServices)
         {
-            _nodeService = nodeService;
+            _context = context;
+            _nodeServices = nodeServices;
             _userManager = userManager;
         }
         [HttpPost]
@@ -72,51 +78,22 @@ namespace ConsultaMD.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Fonasa(int rut, string dv)
+        public async Task<IActionResult> Fonasa(int run, string dv)
         {
-            var getCookies = new CookieContainer();
-            HttpClientHandler handler = new HttpClientHandler
+            var realDV = RUT.DV(run);
+            if (realDV == dv)
             {
-                CookieContainer = getCookies,
-                UseCookies = true,
-                UseDefaultCredentials = false
-            };
-            using (HttpClient getclient = new HttpClient(handler))
-            {
-                handler.Dispose();
-                var login = new Uri("https://bonowebfon.fonasa.cl/");
-                using (var response = await getclient.GetAsync(login).ConfigureAwait(false))
-                {
-                    var parser = new HtmlParser();
-                    using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                    {
-                        await _nodeService.InvokeAsync<string>("./src/bash/fonasa.ts", AntiCaptchaClient.Get(), "ble").ConfigureAwait(false);
-                        var formArray = doc.GetElementsByTagName("input").Select(i => new {
-                            name = i.GetAttribute("name"),
-                            value = i.GetAttribute("value")
-                        }).ToDictionary(p => p.name, p => p.value);
-                        formArray["RutBeneficiario"] = $"00{rut}-{dv}";
-                        formArray["captcha_code"] = "XXXXX";
-
-                        var formContent = new FormUrlEncodedContent(formArray);
-
-                        using (HttpClient client = new HttpClient())
-                        {
-                            using (var logResponse = await client.PostAsync(login, formContent).ConfigureAwait(false))
-                            {
-                                formContent.Dispose();
-                                using (var docResponse = await parser.ParseDocumentAsync(await logResponse.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                                {
-                                    var test = doc.GetElementById("~~~");
-                                    if (test != null)
-                                    {
-                                        return Ok();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                var natural = await _context.Naturals
+                    .Include(n => n.Patient)
+                    .SingleOrDefaultAsync(p => p.Id == run).ConfigureAwait(false);
+                var rut = RUT.Format(run);
+                var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/validateFonasa.js", rut).ConfigureAwait(false);
+                var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
+                if (string.IsNullOrEmpty(fonasaData.ExtNomCotizante)) return NotFound();
+                natural.AddFonasa(fonasaData);
+                _context.Naturals.Update(natural);
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+                return Ok();
             }
             return NotFound();
         }

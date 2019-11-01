@@ -8,7 +8,7 @@ namespace ConsultaMD.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            migrationBuilder?.CreateTable(
                 name: "AreaCodes",
                 columns: table => new
                 {
@@ -55,6 +55,7 @@ namespace ConsultaMD.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    NaturalId = table.Column<int>(nullable: false),
                     PathToKey = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -135,8 +136,15 @@ namespace ConsultaMD.Migrations
                     NombreFantasia = table.Column<string>(nullable: true),
                     CarnetId = table.Column<int>(nullable: true),
                     DoctorId = table.Column<int>(nullable: true),
+                    DigitalSignatureId = table.Column<int>(nullable: true),
+                    LastFather = table.Column<string>(nullable: true),
+                    LastMother = table.Column<string>(nullable: true),
+                    Names = table.Column<string>(nullable: true),
                     FullNameFirst = table.Column<string>(nullable: true),
-                    FullLastFirst = table.Column<string>(nullable: true)
+                    FullLastFirst = table.Column<string>(nullable: true),
+                    Sex = table.Column<bool>(nullable: true),
+                    Birth = table.Column<DateTime>(nullable: true),
+                    Nationality = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,6 +155,12 @@ namespace ConsultaMD.Migrations
                         principalTable: "Carnets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_People_DigitalSignatures_DigitalSignatureId",
+                        column: x => x.DigitalSignatureId,
+                        principalTable: "DigitalSignatures",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -300,14 +314,10 @@ namespace ConsultaMD.Migrations
                 {
                     Id = table.Column<int>(nullable: false),
                     NaturalId = table.Column<int>(nullable: false),
-                    DigitalSignatureId = table.Column<int>(nullable: false),
                     RegistryDate = table.Column<DateTime>(nullable: false),
                     Specialty = table.Column<int>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Institution = table.Column<string>(nullable: true),
-                    Sex = table.Column<bool>(nullable: false),
-                    Birth = table.Column<DateTime>(nullable: false),
-                    Nationality = table.Column<string>(nullable: true),
                     SisId = table.Column<string>(nullable: true),
                     YearTitle = table.Column<int>(nullable: false),
                     YearSpecialty = table.Column<int>(nullable: false)
@@ -315,12 +325,6 @@ namespace ConsultaMD.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doctors", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Doctors_DigitalSignatures_DigitalSignatureId",
-                        column: x => x.DigitalSignatureId,
-                        principalTable: "DigitalSignatures",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Doctors_People_NaturalId",
                         column: x => x.NaturalId,
@@ -335,7 +339,8 @@ namespace ConsultaMD.Migrations
                 {
                     NaturalId = table.Column<int>(nullable: false),
                     Insurance = table.Column<int>(nullable: false),
-                    InsurancePassword = table.Column<string>(nullable: true)
+                    InsurancePassword = table.Column<string>(nullable: true),
+                    Tramo = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -542,24 +547,24 @@ namespace ConsultaMD.Migrations
                 name: "MedicalCoverages",
                 columns: table => new
                 {
-                    BeneficiaryId = table.Column<int>(nullable: false),
+                    QuoteeId = table.Column<int>(nullable: false),
                     DependantId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MedicalCoverages", x => new { x.BeneficiaryId, x.DependantId });
-                    table.ForeignKey(
-                        name: "FK_MedicalCoverages_Patients_BeneficiaryId",
-                        column: x => x.BeneficiaryId,
-                        principalTable: "Patients",
-                        principalColumn: "NaturalId",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_MedicalCoverages", x => new { x.QuoteeId, x.DependantId });
                     table.ForeignKey(
                         name: "FK_MedicalCoverages_People_DependantId",
                         column: x => x.DependantId,
                         principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MedicalCoverages_Patients_QuoteeId",
+                        column: x => x.QuoteeId,
+                        principalTable: "Patients",
+                        principalColumn: "NaturalId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -760,11 +765,6 @@ namespace ConsultaMD.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doctors_DigitalSignatureId",
-                table: "Doctors",
-                column: "DigitalSignatureId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Doctors_NaturalId",
                 table: "Doctors",
                 column: "NaturalId",
@@ -816,6 +816,13 @@ namespace ConsultaMD.Migrations
                 column: "CarnetId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_People_DigitalSignatureId",
+                table: "People",
+                column: "DigitalSignatureId",
+                unique: true,
+                filter: "[DigitalSignatureId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Places_CommuneId",
                 table: "Places",
                 column: "CommuneId");
@@ -865,7 +872,7 @@ namespace ConsultaMD.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            migrationBuilder?.DropTable(
                 name: "AreaCodeProvinces");
 
             migrationBuilder.DropTable(
@@ -941,9 +948,6 @@ namespace ConsultaMD.Migrations
                 name: "MedicalAttentionMediums");
 
             migrationBuilder.DropTable(
-                name: "DigitalSignatures");
-
-            migrationBuilder.DropTable(
                 name: "People");
 
             migrationBuilder.DropTable(
@@ -951,6 +955,9 @@ namespace ConsultaMD.Migrations
 
             migrationBuilder.DropTable(
                 name: "Carnets");
+
+            migrationBuilder.DropTable(
+                name: "DigitalSignatures");
 
             migrationBuilder.DropTable(
                 name: "Localities");
