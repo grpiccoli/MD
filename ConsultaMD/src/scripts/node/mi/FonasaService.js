@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const querystring = require('querystring');
 
-const png = 'tmp.png';
+const png = 'tmp1.png';
 const file_path = path.join(__dirname, png);
 const selector = '#captcha';
 
@@ -83,7 +83,7 @@ module.exports = async function (callback, data) {
                             await submitCatpcha(page, data.rut, captcha).catch(error => { callback(error, null); });
                             break;
                         }
-                        await fs.rename(file_path, path.join(__dirname, '..', 'src', 'scripts', 'node', 'mi', 'trainset', `${captcha}.png`), function (err) {
+                        await fs.rename(file_path, path.join(__dirname, 'trainset', `${captcha}.png`), function (err) {
                             if (err) callback(err, null);
                         });
                         callback(null, browser.wsEndpoint());

@@ -221,8 +221,6 @@ export interface Options<Result = DataFormat | GroupedDataFormat, RemoteResult =
 // --------------------------------------------------------------------------
 
 export interface Select2Plugin<TElement = HTMLElement> {
-    amd: { require: Require; };
-
     defaults: {
         set: (key: string, value: any) => void;
         reset: () => void;

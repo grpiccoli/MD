@@ -19,20 +19,20 @@ namespace ConsultaMD.Services
         }
         public async Task Init()
         {
-            var response = await _nodeServices.InvokeAsync<string>("Services/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
             FonasaSettings.BrowserWSEndpoint = response;
             return;
         }
         public async Task CloseBW()
         {
             FonasaSettings.Rut = null;
-            await _nodeServices.InvokeAsync<string>("Services/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+            await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
             return;
         }
         public async Task<Fonasa> GetById(int id)
         {
             FonasaSettings.Rut = RUT.Fonasa(id);
-            var response = await _nodeServices.InvokeAsync<string>("Services/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
             var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
             return fonasaData;
         }

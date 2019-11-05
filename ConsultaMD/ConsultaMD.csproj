@@ -10,6 +10,13 @@
     <NeutralLanguage>es</NeutralLanguage>
   </PropertyGroup>
 
+   <ItemGroup> 
+     <Content Include="src/scripts/node/ps/SII.rb" CopyToPublishDirectory="PreserveNewest" /> 
+     <Content Include="src/scripts/node/ps/SII.js" CopyToPublishDirectory="PreserveNewest" /> 
+     <Content Include="src/scripts/node/mi/fonasa.js" CopyToPublishDirectory="PreserveNewest" /> 
+     <Content Include="src/scripts/node/mi/FonasaService.js" CopyToPublishDirectory="PreserveNewest" /> 
+   </ItemGroup> 
+  
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
     <Compile Remove="src\scripts\bash\train\**" />

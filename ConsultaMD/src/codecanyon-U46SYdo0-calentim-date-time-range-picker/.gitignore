@@ -1,9 +1,0 @@
-node_modules
-.sass-cache
-output
-*.sublime*
-tests/code
-tests/coverage
-tests/output
-upload
-package-lock.json

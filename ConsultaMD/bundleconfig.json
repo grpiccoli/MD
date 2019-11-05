@@ -1,5 +1,4 @@
 [
-  //ALL PAGES
   {
     "outputFileName": "wwwroot/js/main.js",
     "inputFiles": [
@@ -16,18 +15,18 @@
       "src/styles/loader.min.css"
     ]
   },
-  //Calentim
   {
     "outputFileName": "wwwroot/css/calentim.min.css",
-    "inputFiles": [ "src/styles/calentim.css" ]
+    "inputFiles": [
+      "src/styles/calentim.css"
+    ]
   },
-  // 1.7 / 1.8 / 1.9
-  //Marker clusterer
   {
     "outputFileName": "wwwroot/js/markerclusterer.min.js",
-    "inputFiles": [ "src/scripts/markerclusterer.js" ]
+    "inputFiles": [
+      "src/scripts/markerclusterer.js"
+    ]
   },
-  //IOS PICKER STYLES
   {
     "outputFileName": "wwwroot/css/ios.picker.min.css",
     "inputFiles": [
@@ -35,7 +34,6 @@
       "src/styles/jquerysctipttop.css"
     ]
   },
-  //MENU
   {
     "outputFileName": "wwwroot/js/forgotPassword.js",
     "inputFiles": [
@@ -54,25 +52,20 @@
       "src/styles/sidenav.min.css"
     ]
   },
-  //Validation
   {
     "outputFileName": "wwwroot/js/validation.js",
     "inputFiles": [
       "src/scripts/validateAdapterMCSS.js",
       "src/scripts/validate-localization.js"
-      //"src/scripts/jquery.validate.hooks.js"
     ]
   },
-  //Identity/Account/LogIn
   {
     "outputFileName": "wwwroot/js/login.js",
     "inputFiles": [
-      //"src/scripts/format_rut.js",
       "src/scripts/add_rut_validation.js",
       "src/scripts/external-login.js"
     ]
   },
-  //Carousel Splash
   {
     "outputFileName": "wwwroot/js/splash.js",
     "inputFiles": [
@@ -86,48 +79,41 @@
       "src/styles/center-image.min.css"
     ]
   },
-  //Identity/Account/Register
   {
     "outputFileName": "wwwroot/js/register.js",
     "inputFiles": [
-      //"wwwroot/js/Global/format_rut.js",
       "src/scripts/add_rut_carnet_validation.js"
-      //"wwwroot/js/Global/jquery.rut_Input_name.js",
     ]
   },
-  //Identity/Account/Insurance
   {
     "outputFileName": "wwwroot/js/insurance.js",
     "inputFiles": [
       "src/scripts/selectInsurance.js"
     ]
   },
-  //VerifyPhone
   {
     "outputFileName": "wwwroot/js/verifyphone.js",
     "inputFiles": [
       "src/scripts/formatPhone.js"
     ]
   },
-  //Identity/Account/ConfirmPhone
   {
     "outputFileName": "wwwroot/js/confirmPhone.js",
-    "inputFiles": [ "src/scripts/confirmPhone.js" ]
+    "inputFiles": [
+      "src/scripts/confirmPhone.js"
+    ]
   },
   {
     "outputFileName": "wwwroot/css/confirmPhone.min.css",
-    "inputFiles": [ "src/styles/confirmPhone.css" ]
+    "inputFiles": [
+      "src/styles/confirmPhone.css"
+    ]
   },
-  //{
-  //  "outputFileName": "wwwroot/css/register.min.css",
-  //  "inputFiles": [
-  //    "src/styles/register.css"
-  //  ]
-  //},
-  //Map
   {
     "outputFileName": "wwwroot/js/map.js",
-    "inputFiles": [ "src/scripts/map.js" ]
+    "inputFiles": [
+      "src/scripts/map.js"
+    ]
   },
   {
     "outputFileName": "wwwroot/css/map.min.css",
@@ -136,7 +122,6 @@
       "src/styles/map.css"
     ]
   },
-  //Doctor-Detail
   {
     "outputFileName": "wwwroot/css/doctor-details.min.css",
     "inputFiles": [
@@ -149,7 +134,6 @@
       "src/scripts/doctor-details.js"
     ]
   },
-  //Confirm-Date
   {
     "outputFileName": "wwwroot/css/confirm-date.min.css",
     "inputFiles": [
@@ -158,22 +142,14 @@
   },
   {
     "outputFileName": "wwwroot/js/confirm-date.min.js",
-    "inputFiles": [ "src/scripts/confirm-date.js" ]
+    "inputFiles": [
+      "src/scripts/confirm-date.js"
+    ]
+  },
+  {
+    "outputFileName": "src/scripts/node/mi/FonasaService.min.js",
+    "inputFiles": [
+      "src/scripts/node/mi/FonasaService.js"
+    ]
   }
-  //AGENDA
-  //{
-  //  "outputFileName": "wwwroot/js/agenda.js",
-  //  "inputFiles": [
-  //    "wwwroot/js/MD/modal-action.js",
-  //    "wwwroot/js/MD/cal.js",
-  //    "wwwroot/js/MD/phone.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "wwwroot/css/agenda.min.css",
-  //  "inputFiles": [
-  //    "wwwroot/css/Global/cal.css",
-  //    "wwwroot/css/Global/loading.css"
-  //  ]
-  //}
 ]
