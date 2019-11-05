@@ -25,6 +25,7 @@ dotnet publish -r linux-x64 -c Release
 systemctl stop kestrel-consultamd.service;rm -r ../../webapps/consultamd/;mkdir -p ../../webapps/consultamd/;rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ../../webapps/consultamd/;systemctl start kestrel-consultamd.service
 
 #REQUIREMENTS RUBY
+cd src/scripts/node/ps/
 sudo apt install ruby-full ruby-dev g++ make build-essential zlibc zlib1g zlib1g-dev
 git clone https://github.com/sagmor/sii_chile.git
 sudo gem install sii_chile

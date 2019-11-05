@@ -65,11 +65,6 @@
   dependencies:
     moment "*"
 
-"@types/node@^12.11.7":
-  version "12.12.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.0.tgz#ff3201972d6dc851a9275308a17b9b5094e68057"
-  integrity sha512-6N8Sa5AaENRtJnpKXZgvc119PKxT1Lk9VPy4kfT8JF23tIe1qDfaGkBR2DRKJFIA7NptMz+fps//C6aLi1Uoug==
-
 "@types/owl.carousel@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/owl.carousel/-/owl.carousel-2.3.1.tgz#029d6b0ef84fa3ad6b1e3de18a51742d5178792a"

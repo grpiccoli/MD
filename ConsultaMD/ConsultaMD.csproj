@@ -59,6 +59,7 @@
     <None Remove="src\types\jquery.validate.hooks\index.d.ts" />
     <None Remove="src\types\markerclustererplus\index.d.ts" />
     <None Remove="src\types\markerclusterer\index.d.ts" />
+    <None Remove="src\types\select2\index.d.ts" />
     <TypeScriptCompile Remove="wwwroot\mobiscroll\mobiscroll.jquery.min.d.ts" />
     <Content Include="package_webpack.json_bak" />
     <Content Include="src\scripts\markerclusterer.js">
