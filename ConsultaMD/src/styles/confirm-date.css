@@ -5,3 +5,9 @@
 
 td {
   padding: 0; }
+
+input#PaymentDetails_RUT {
+  text-transform: uppercase; }
+
+#details {
+  height: calc(100vh - 200px); }

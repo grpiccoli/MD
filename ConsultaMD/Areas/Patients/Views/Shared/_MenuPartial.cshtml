@@ -35,18 +35,18 @@
              </a>
             <div class="nav-wrapper">
                 <div class="col s11 offset-s1">
-                    @if(referer != null)
+                    @*@if (!string.IsNullOrWhiteSpace((string)referer))
                     {
                         <a href="@((string)referer)" class="breadcrumb">@Actions.GetActionByUrl(new Uri((string)referer)).Title</a>
                     }
                     else
-                    {
+                    {*@
                     @foreach (var p in action.Path)
                     {
                         var e = Actions.GetActionByName(p);
                         <a href="/@e.Area/@e.Controller/@e.Name" class="breadcrumb">@e.Title</a>
                     }
-                    }
+                    @* } *@
                     <a href="#!" class="breadcrumb">@Html.Raw((string)title)</a>
                 </div>
             </div>

@@ -11,6 +11,7 @@ using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.VM;
+using ConsultaMD.Services;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -18,7 +19,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.NodeServices;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Chrome;
 using Tesseract;
 
@@ -29,13 +29,14 @@ namespace ConsultaMD.Controllers
     //Servicios Públicos
     public class SPController : Controller
     {
-        private readonly string _os;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly INodeServices _nodeServices;
+        private readonly IFonasa _fonasa;
         public SPController(IHostingEnvironment hostingEnvironment,
+            IFonasa fonasa,
             INodeServices nodeServices)
         {
-            _os = Environment.OSVersion.Platform.ToString();
+            _fonasa = fonasa;
             _nodeServices = nodeServices;
             _hostingEnvironment = hostingEnvironment;
         }
@@ -313,20 +314,24 @@ namespace ConsultaMD.Controllers
         {
             if(rut > 900_000 && rut < 30_000_000 && dv?.Length == 1)
             {
-                var sii = await GetSII(rut, dv, "RazonSocial").ConfigureAwait(false);
-                if (sii.GetType() == typeof(NotFoundResult))
+                var fonasa = await _fonasa.GetById(rut).ConfigureAwait(false);
+                var array = new string[] { fonasa.ExtNombres, fonasa.ExtApellidoPat, fonasa.ExtApellidoMat };
+                var nombre = string.Join(" ", array.Where(s => !string.IsNullOrWhiteSpace(s)));
+                if (string.IsNullOrWhiteSpace(nombre))
                 {
-                    var servel = await GetNRYF(rut, dv, "name", "rut").ConfigureAwait(false);
-                    if (servel.GetType() == typeof(NotFoundResult))
+                    var sii = await GetSII(rut, dv, "RazonSocial").ConfigureAwait(false);
+                    if (sii.GetType() == typeof(NotFoundResult))
                     {
-                        return NotFound();
+                        var servel = await GetNRYF(rut, dv, "name", "rut").ConfigureAwait(false);
+                        if (servel.GetType() == typeof(NotFoundResult))
+                        {
+                            return NotFound();
+                        }
+                        return Ok(servel);
                     }
-                    return Ok(servel);
-                }
-                else
-                {
                     return Ok(sii);
                 }
+                return Ok(new { value = nombre });
             }
             return NotFound();
         }

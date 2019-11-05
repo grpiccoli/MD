@@ -1,0 +1,13 @@
+﻿@model string
+
+<form id="Pay" action="https://webpay3g.transbank.cl:443/webpayserver/initTransaction" method="post">
+    <input type="hidden" name="token_ws" value="@Model" />
+</form>
+
+@section Script{ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#Pay').submit();
+        });
+    </script>
+}

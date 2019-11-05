@@ -1,4 +1,5 @@
 ﻿using ConsultaMD.Models.VM;
+using ConsultaMD.Services;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -14,14 +15,13 @@ namespace ConsultaMD.Models.Entities
             Names = fonasa.ExtNombres;
             Sex = fonasa.ExtSexo == "M";
             Birth = DateTime.ParseExact(fonasa.ExtFechaNacimi, "YYYYMMDD", CultureInfo.InvariantCulture);
-            Patient.Tramo = Enum.Parse<Tramo>(fonasa.ExtGrupoIng);
         }
         public int CarnetId { get; set; }
         public virtual Carnet Carnet { get; set; }
         public virtual Patient Patient { get; set; }
         public int DoctorId { get; set; }
         public virtual Doctor Doctor { get; set; }
-        public int DigitalSignatureId { get; set; }
+        public int? DigitalSignatureId { get; set; }
         public virtual DigitalSignature DigitalSignature { get; set; }
         public string LastFather { get; set; }
         public string LastMother { get; set; }

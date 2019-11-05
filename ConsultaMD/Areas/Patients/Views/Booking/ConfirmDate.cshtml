@@ -1,69 +1,76 @@
 ﻿@model ReservationDetails
 
-<partial name="_Libs" model='(new string[]{ "simplebar", "confirm-date" }, "")' />
-
-<div class="row">
-    <div class="col s12 m4 l3 p-0 hide-on-small-and-down">
-        <div class="row m-0">
-            <div class="col s5 m12">
-                <img src="/img/doc/@(Model.DoctorDetails.NaturalId).min.jpg"
-                     class="circle p-25p" style="max-height:150px;"
-                     asp-append-version="true" />
+<partial name="_Libs" model='(new string[]{ "jquery.rut", "simplebar", "confirm-date" }, "")' />
+<partial name="_Loader">
+    <div class="row">
+        <div id="doctorCard" class="col m4 l3 hide-on-small-and-down">
+            <div class="row m-0">
+                <div class="col m12">
+                    <img src="/img/doc/@(Model.DoctorDetails.NaturalId).min.jpg"
+                         class="circle p-25p" style="max-height:150px;"
+                         asp-append-version="true" />
+                </div>
+                <div class="col m12">
+                    <h5 class="clinic-text m-0"> @Model.DoctorDetails.TitleName</h5>
+                    <h6>@Model.DoctorDetails.SpecialtyName</h6>
+                    @Model.PlaceDetails.Name
+                </div>
             </div>
-            <div class="col s7 m12">
-                <h5 class="clinic-text m-0"> @Model.DoctorDetails.TitleName</h5>
-                <h6>@Model.DoctorDetails.SpecialtyName</h6>
-                @Model.PlaceDetails.Name
+        </div>
+        <div id="info" class="col s12 m8 l9">
+            <div id="details" class="row m-0" data-simplebar>
+                <h6 class="clinic-text">@Html.DisplayNameFor(model => model.PatientDetails)</h6>
+                <div class="input-field col s12">
+                    <input asp-for="PatientDetails.Name" readonly />
+                    <label asp-for="PatientDetails.Name"></label>
+                </div>
+                <div class="input-field col s12">
+                    <input asp-for="PatientDetails.Rut" readonly />
+                    <label asp-for="PatientDetails.Rut"></label>
+                </div>
+                <h6 class="clinic-text">@Html.DisplayNameFor(model => model.TimeSlotDetails) y @Html.DisplayNameFor(model => model.PlaceDetails)</h6>
+                <div class="input-field col s12">
+                    <input asp-for="TimeSlotDetails.DateTime" readonly />
+                    <label asp-for="TimeSlotDetails.DateTime"></label>
+                </div>
+                <div class="input-field col s12">
+                    <input asp-for="PlaceDetails.Address" readonly />
+                    <label asp-for="PlaceDetails.Address"></label>
+                </div>
+                <h6 class="clinic-text">@Html.DisplayNameFor(model => model.DoctorDetails)</h6>
+                <div class="input-field col s12">
+                    <input asp-for="DoctorDetails.NaturalName" readonly />
+                    <label asp-for="DoctorDetails.NaturalName"></label>
+                </div>
+                <div class="input-field col s12">
+                    <input asp-for="DoctorDetails.Rut" readonly />
+                    <label asp-for="DoctorDetails.Rut"></label>
+                </div>
+                <div class="input-field col s12">
+                    <input asp-for="DoctorDetails.SpecialtyName" readonly />
+                    <label asp-for="DoctorDetails.SpecialtyName"></label>
+                </div>
             </div>
+            <form action="../Payment" id="Payment" method="post" autocomplete="on">
+                <input id="Id" name="Id" value="@Model.Reservation.Id" readonly class="hide" />
+                @Html.AntiForgeryToken()
+                <div class="input-field col s12 center">
+                    <input name="Rut" id="Rut" asp-for="PaymentDetails.Rut" class="validate" autocomplete="username" />
+                    <label for="Rut" asp-for="PaymentDetails.Rut"></label>
+                    <span data-valmsg-for="Rut" asp-validation-for="PaymentDetails.Rut" class="text-danger"></span>
+                </div>
+                <div class="input-field col s12 center m-0">
+                    <button id="Pay" class="btn teal pill waves-effect waves-light center">
+                        Confirmar y Pagar
+                        <i class="material-icons right">done</i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="col s12 m4 l9 h-55vm h-75v">
-        <div class="h-55vm h-75v" data-simplebar>
-            <h6 class="clinic-text">@Html.DisplayNameFor(model => model.PatientDetails)</h6>
-            <div class="input-field col s12">
-                <input asp-for="PatientDetails.Name" readonly />
-                <label asp-for="PatientDetails.Name"></label>
-            </div>
-            <div class="input-field col s12">
-                <input asp-for="PatientDetails.Rut" readonly />
-                <label asp-for="PatientDetails.Rut"></label>
-            </div>
-            <h6 class="clinic-text">@Html.DisplayNameFor(model => model.TimeSlotDetails)</h6>
-            <div class="input-field col s12">
-                <input asp-for="TimeSlotDetails.DateTime" readonly />
-                <label asp-for="TimeSlotDetails.DateTime"></label>
-            </div>
-            <h6 class="clinic-text">@Html.DisplayNameFor(model => model.PlaceDetails)</h6>
-            <div class="input-field col s12">
-                <input asp-for="PlaceDetails.Address" readonly />
-                <label asp-for="PlaceDetails.Address"></label>
-            </div>
-            <h6 class="clinic-text">@Html.DisplayNameFor(model => model.DoctorDetails)</h6>
-            <div class="input-field col s12">
-                <input asp-for="DoctorDetails.NaturalName" readonly />
-                <label asp-for="DoctorDetails.NaturalName"></label>
-            </div>
-            <div class="input-field col s12">
-                <input asp-for="DoctorDetails.Rut" readonly />
-                <label asp-for="DoctorDetails.Rut"></label>
-            </div>
-            <div class="input-field col s12">
-                <input asp-for="DoctorDetails.SpecialtyName" readonly />
-                <label asp-for="DoctorDetails.SpecialtyName"></label>
-            </div>
-        </div>
-        <div class="input-field col s12 center">
-            <button data-target="modal1" class="btn teal pill waves-effect modal-trigger waves-light">
-                Confirmar y Pagar
-                <i class="material-icons right">done</i>
-            </button>
-        </div>
-    </div>
-</div>
+    <partial name="_ValidationScriptsPartial" />
 
-<partial name="_ValidationScriptsPartial" />
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-    <partial name="PaymentMode" />
-</div>
+    <!-- Modal Structure -->
+    @*<div id="modal1" class="modal">
+            <partial name="PaymentMode" />
+        </div>*@

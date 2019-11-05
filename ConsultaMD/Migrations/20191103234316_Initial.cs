@@ -340,7 +340,7 @@ namespace ConsultaMD.Migrations
                     NaturalId = table.Column<int>(nullable: false),
                     Insurance = table.Column<int>(nullable: false),
                     InsurancePassword = table.Column<string>(nullable: true),
-                    Tramo = table.Column<int>(nullable: false)
+                    Tramo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -360,7 +360,6 @@ namespace ConsultaMD.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Discriminator = table.Column<string>(nullable: false),
-                    CommuneId = table.Column<int>(nullable: true),
                     PlaceId = table.Column<string>(nullable: true),
                     Block = table.Column<string>(nullable: true),
                     Floor = table.Column<string>(nullable: true),
@@ -370,12 +369,6 @@ namespace ConsultaMD.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MedicalAttentionMediums", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MedicalAttentionMediums_Localities_CommuneId",
-                        column: x => x.CommuneId,
-                        principalTable: "Localities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_MedicalAttentionMediums_Places_PlaceId",
                         column: x => x.PlaceId,
@@ -784,11 +777,6 @@ namespace ConsultaMD.Migrations
                 name: "IX_Localities_RegionId",
                 table: "Localities",
                 column: "RegionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MedicalAttentionMediums_CommuneId",
-                table: "MedicalAttentionMediums",
-                column: "CommuneId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MedicalAttentionMediums_PlaceId",

@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Twilio.Rest.Preview.AccSecurity.Service;
 using ConsultaMD.Extensions.Validation;
+using static ConsultaMD.Data.InsuranceData;
+using System.Linq;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -46,14 +48,22 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Display(Name = "Teléfono Móvil")]
         //[RegularExpression(@"^(?=(?:\D*\d){9})[\(\)\s\-]{,5}$")]
         public string PhoneNumber { get; set; }
+        public Insurance Insurance { get; set; }
         public Uri ReturnUrl { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {
             var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
+            var patient = _context.Patients.SingleOrDefault(p => p.NaturalId == user.PersonId);
+            Insurance = patient.Insurance;
             if (user == null)
             {
                 throw new Exception($"No se ha podido cargar el ID de usuario '{_userManager.GetUserId(User)}'.");
+            }
+            if(patient == null)
+            {
+                var pageName = "InsuranceDetails";
+                return RedirectToPage(pageName, new { returnUrl });
             }
             if (!string.IsNullOrEmpty(user.PhoneNumber))
             {

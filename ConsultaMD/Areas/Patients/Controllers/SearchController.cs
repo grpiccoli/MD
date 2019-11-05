@@ -237,7 +237,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
 
             var mds = _context.MediumDoctors
                 .Include(md => md.Agendas)
-                .Include(md => (MedicalOffice)md.MedicalAttentionMedium)
+                .Include(md => md.MedicalAttentionMedium)
                     .ThenInclude(mo => mo.Place)
                         .ThenInclude(p => p.Commune)
                 .Where(md => md.DoctorId == doc.Id
@@ -251,8 +251,8 @@ namespace ConsultaMD.Areas.Patients.Controllers
                 {
                     Value = m.Id.ToString(CultureInfo.InvariantCulture),
                     Text = string.Join(", ", new List<string>{
-                        ((MedicalOffice)m.MedicalAttentionMedium).Place.Name,
-                        ((MedicalOffice)m.MedicalAttentionMedium).Place.Commune.Name,
+                        m.MedicalAttentionMedium.Place.Name,
+                        m.MedicalAttentionMedium.Place.Commune.Name,
                         (!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Appartment) ? ", dpto." + ((MedicalOffice)m.MedicalAttentionMedium).Appartment : null),
                         (!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Floor) ? "piso " + ((MedicalOffice)m.MedicalAttentionMedium).Floor : null),
                         (!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Office) ? "of. " + ((MedicalOffice)m.MedicalAttentionMedium).Office : null)
@@ -262,15 +262,14 @@ namespace ConsultaMD.Areas.Patients.Controllers
                 PlaceList = mds.Select(m => new SelectListItem
                 {
                     Value = m.Id.ToString(CultureInfo.InvariantCulture),
-                    Text = ((MedicalOffice)m.MedicalAttentionMedium).PlaceId
+                    Text = m.MedicalAttentionMedium.PlaceId
                 }),
                 Title = title,
                 Last = filters?.Last
             };
             return View(model);
         }
-        [HttpPost]
-        [HttpGet]
+        [HttpPost, HttpGet]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reservation(int id)
         {
@@ -322,7 +321,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
 
             var mds = _context.MediumDoctors
                 .Include(md => md.Agendas)
-                .Include(md => (MedicalOffice)md.MedicalAttentionMedium)
+                .Include(md => md.MedicalAttentionMedium)
                     .ThenInclude(mo => mo.Place)
                         .ThenInclude(p => p.Commune)
                 .Where(md => md.DoctorId == doc.Id
@@ -335,13 +334,13 @@ namespace ConsultaMD.Areas.Patients.Controllers
                 {
                     Value = m.Id.ToString(CultureInfo.InvariantCulture),
                     Text =
-$"{((MedicalOffice)m.MedicalAttentionMedium).Place.Name}, {((MedicalOffice)m.MedicalAttentionMedium).Place.Commune.Name}{(!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Appartment) ? ", dpto." + ((MedicalOffice)m.MedicalAttentionMedium).Appartment : "")}{(!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Floor) ? "piso " + ((MedicalOffice)m.MedicalAttentionMedium).Floor : "")}{(!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Office) ? "of. " + ((MedicalOffice)m.MedicalAttentionMedium).Office : "")}",
+$"{m.MedicalAttentionMedium.Place.Name}, {m.MedicalAttentionMedium.Place.Commune.Name}{(!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Appartment) ? ", dpto." + ((MedicalOffice)m.MedicalAttentionMedium).Appartment : "")}{(!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Floor) ? "piso " + ((MedicalOffice)m.MedicalAttentionMedium).Floor : "")}{(!string.IsNullOrEmpty(((MedicalOffice)m.MedicalAttentionMedium).Office) ? "of. " + ((MedicalOffice)m.MedicalAttentionMedium).Office : "")}",
                     Selected = model.MdId == m.Id
                 }),
                 PlaceList = mds.Select(m => new SelectListItem
                 {
                     Value = m.Id.ToString(CultureInfo.InvariantCulture),
-                    Text = ((MedicalOffice)m.MedicalAttentionMedium).PlaceId
+                    Text = m.MedicalAttentionMedium.PlaceId
                 })
             };
             return View(model);

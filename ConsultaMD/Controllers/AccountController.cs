@@ -34,7 +34,7 @@ namespace ConsultaMD.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
-        private readonly IStringLocalizer<AccountController> _localizer;
+        private readonly IStringLocalizer _localizer;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,

@@ -27,6 +27,7 @@ using WebMarkupMin.AspNetCore2;
 using Twilio;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.NodeServices;
+using ConsultaMD.Extensions;
 
 namespace ConsultaMD
 {
@@ -39,7 +40,7 @@ namespace ConsultaMD
             _os = Environment.OSVersion.Platform.ToString();
         }
 
-    public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -84,8 +85,7 @@ namespace ConsultaMD
             {
                 options.SignIn.RequireConfirmedEmail = false; //!!!!CAMBIAR A TRUE
                 options.SignIn.RequireConfirmedPhoneNumber = false; //!!!!CAMBIAR A TRUE
-                options.User.AllowedUserNameCharacters =
-                            "K0123456789-.";
+                options.User.AllowedUserNameCharacters = "K0123456789-.";
                 options.User.RequireUniqueEmail = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
@@ -110,16 +110,16 @@ namespace ConsultaMD
                 })
                 .AddFacebook(facebookOptions => 
                 {
-                    facebookOptions.AppId = "461203471369329";
-                    facebookOptions.AppSecret = "e9c5b1f949e9dfbc26afe2017ea8bf75";
+                    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 })
                 .AddGoogle(options =>
                 {
                     IConfigurationSection googleAuthNSection =
                         Configuration.GetSection("Authentication:Google");
 
-                    options.ClientId = "1062549201152-14oa75aaad7ufn8j9s3jm85m92bdts5e.apps.googleusercontent.com";
-                    options.ClientSecret = "n5fwgUhQXbuSGMp09tLAiHVk";
+                    options.ClientId = Configuration["Authentication:Google:ClientId"];
+                    options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -141,18 +141,25 @@ namespace ConsultaMD
             Libman.LoadJson();
             Bundler.LoadJson();
             Actions.LoadJson();
+            services.Configure<FonasaSettings>(o =>
+            {
+                o.AcKey = antiCaptchaKey;
+                o.Rut = RUT.Fonasa(16124902);
+            });
+            services.AddHostedService<FonasaBackground>();
+            services.AddScoped<IFonasa, FonasaService>();
             //WebpackChunkNamer.Init();
 
-            services.AddMvc(o => {
+            services.AddMvc(o => 
                 o.ModelMetadataDetailsProviders.Add(
                     new LocalizedValidationMetadataProvider(
                         "ConsultaMD.Resources.ValidationMessages", typeof(ValidationMessages)
-                    ));
+                    ))
                 //var underlyingModelBinder = o.ModelBinderProviders.FirstOrDefault(x => x.GetType() == typeof(BodyModelBinderProvider));
                 //if (underlyingModelBinder == null) return;
                 //var index = o.ModelBinderProviders.IndexOf(underlyingModelBinder);
                 //o.ModelBinderProviders.Insert(index, new CustomValidationModelBinderProvider(underlyingModelBinder));
-            })
+            )
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
@@ -164,13 +171,10 @@ namespace ConsultaMD
                 options.MaxAge = TimeSpan.FromDays(60);
             });
 
-            services.AddHttpsRedirection(options =>
-            {
-                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                //options.HttpsPort = 5101;
-            });
+            services.AddHttpsRedirection(options => 
+            options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect);
 
-            services.AddNodeServices();
+            services.AddNodeServices(o => o.InvocationTimeoutMilliseconds = 600000);
 
             services.Configure<AuthMessageSenderOptions>(Configuration);
 

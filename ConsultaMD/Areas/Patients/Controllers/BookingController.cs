@@ -2,21 +2,29 @@
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM;
+using ConsultaMD.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.NodeServices;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using static ConsultaMD.Data.InsuranceData;
 
 namespace ConsultaMD.Areas.Patients.Controllers
 {
-    [Area("Patients")]
+    [Area("Patients"), Authorize]
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public BookingController(ApplicationDbContext context)
+        private readonly INodeServices _nodeServices;
+        private readonly IFonasa _fonasa;
+        public BookingController(ApplicationDbContext context,
+            IFonasa fonasa,
+            INodeServices nodeServices)
         {
+            _fonasa = fonasa;
+            _nodeServices = nodeServices;
             _context = context;
         }
         [HttpGet]
@@ -39,15 +47,80 @@ namespace ConsultaMD.Areas.Patients.Controllers
                         .Include(r => r.TimeSlot)
                             .ThenInclude(ts => ts.Agenda)
                                 .ThenInclude(a => a.MediumDoctor)
-                                    .ThenInclude(md => (MedicalOffice)md.MedicalAttentionMedium)
+                                    .ThenInclude(md => md.MedicalAttentionMedium)
                                         .ThenInclude(mo => mo.Place)
                         .SingleOrDefaultAsync(r => r.Id == id).ConfigureAwait(false);
-
-                    var paymentvm = new ReservationDetails(reservation);
-                    return View(paymentvm);
+                        var paymentvm = new ReservationDetails(reservation);
+                        return View(paymentvm);
                 }
             }
             return RedirectToAction("Map", "Search", new { area = "Patients" });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Payment(string Rut, int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                var rutParsed = RUT.Unformat(User.Identity.Name);
+                if (rutParsed != null)
+                {
+                    var user = await _context.Users
+                        .Include(u => u.Person)
+                            .ThenInclude(p => p.Patient)
+                        .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name).ConfigureAwait(false);
+                    if(user != null)
+                    {
+                        var reservation = await _context.Reservations
+                            .Include(r => r.Patient)
+                                .ThenInclude(p => p.Natural)
+                            .Include(r => r.TimeSlot)
+                                .ThenInclude(ts => ts.Agenda)
+                                    .ThenInclude(a => a.MediumDoctor)
+                                        .ThenInclude(md => md.Doctor)
+                                            .ThenInclude(d => d.Natural)
+                            .Include(r => r.TimeSlot)
+                                .ThenInclude(ts => ts.Agenda)
+                                    .ThenInclude(a => a.MediumDoctor)
+                                        .ThenInclude(m => m.InsuranceLocations)
+                            .Include(r => r.TimeSlot)
+                                .ThenInclude(ts => ts.Agenda)
+                                    .ThenInclude(a => a.MediumDoctor)
+                                        .ThenInclude(md => md.MedicalAttentionMedium)
+                                            .ThenInclude(mo => mo.Place)
+                                                .ThenInclude(p => p.Commune)
+                                                    .ThenInclude(c => c.Province)
+                                                        .ThenInclude(p => p.Region)
+                            .SingleOrDefaultAsync(r => r.Id == Id).ConfigureAwait(false);
+                        if(reservation.TimeSlot.Agenda.MediumDoctor.InsuranceLocations
+                            .Any(i => i.Insurance == user.Person.Patient.Insurance))
+                        {
+                            switch (user.Person.Patient.Insurance)
+                            {
+                                case Insurance.Fonasa:
+                                    var paymentData = new PaymentData
+                                    {
+                                        Commune = reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium.Place.Commune.GetCUT(),
+                                        Region = reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium.Place.Commune.Province.Region.GetCUT(),
+                                        DocRut = RUT.Fonasa(reservation.TimeSlot.Agenda.MediumDoctor.Doctor.NaturalId),
+                                        Email = user.Email,
+                                        PayRut = RUT.Fonasa(Rut),
+                                        Phone = user.PhoneNumber.Replace("+56", "", System.StringComparison.InvariantCulture),
+                                        Rut = RUT.Fonasa(user.PersonId),
+                                        Specialty = reservation.TimeSlot.Agenda.MediumDoctor.Doctor.Specialty.Value.ToString("d")
+                                    };
+                                    var fonasaWebPay = await _fonasa.Pay(paymentData).ConfigureAwait(false);
+                                    return Ok(fonasaWebPay.TokenWs);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            return NotFound();
         }
         public async Task<IActionResult> Appointments()
         {
@@ -63,7 +136,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
                         .Include(r => r.TimeSlot)
                             .ThenInclude(ts => ts.Agenda)
                                 .ThenInclude(a => a.MediumDoctor)
-                                    .ThenInclude(md => (MedicalOffice)md.MedicalAttentionMedium)
+                                    .ThenInclude(md => md.MedicalAttentionMedium)
                                         .ThenInclude(mo => mo.Place)
                 .Where(r => r.PatientId == rut.Value.rut).Select(r => new ReservationDetails(r))
                 .ToListAsync().ConfigureAwait(false);

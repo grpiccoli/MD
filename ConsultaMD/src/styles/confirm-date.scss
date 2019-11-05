@@ -5,9 +5,17 @@ label.active{
     font-weight:800;
     font-size:0.9rem;
 }
-
+ 
 td {
     padding: 0;
+}
+
+input#PaymentDetails_RUT {
+    text-transform: uppercase;
+}
+
+#details{
+    height: calc(100vh - 200px);
 }
 
 @media only screen and (max-width:600px) {

@@ -28,6 +28,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IViewRenderService _viewRenderService;
+        private readonly IFonasa _fonasa;
         private readonly IStringLocalizer<RegisterModel> _localizer;
 
         public RegisterModel(
@@ -36,8 +37,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             IStringLocalizer<RegisterModel> localizer,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
+            IFonasa fonasa,
             IViewRenderService viewRenderService)
         {
+            _fonasa = fonasa;
             _localizer = localizer;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -75,6 +78,18 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         Carnet = carnet,
                         FullNameFirst = Input.Name
                     };
+                    var fonasa = await _fonasa.GetById(natural.Id).ConfigureAwait(false);
+                    natural.AddFonasa(fonasa);
+                    var pageName = "InsuranceDetails";
+                    if (string.IsNullOrWhiteSpace(fonasa.ExtGrupoIng)) 
+                    {
+                        var patient = new Patient
+                        {
+                            Tramo = Enum.Parse<Tramo>(fonasa.ExtGrupoIng)
+                        };
+                        natural.Patient = patient;
+                        pageName = "VerifyPhone";
+                    }
                     var user = new ApplicationUser
                     {
                         UserName = Input.RUT,
@@ -116,8 +131,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                             user.MailConfirmationTime = DateTime.Now.AddMinutes(5);
                             await _userManager.UpdateAsync(user).ConfigureAwait(false);
                             await _signInManager.SignInAsync(user, isPersistent: false).ConfigureAwait(false);
-
-                            return RedirectToPage("InsuranceDetails", new { returnUrl });
+                            return RedirectToPage(pageName, new { returnUrl });
                         }
                         ModelState.AddModelError(string.Empty, response.Body.ReadAsStringAsync().Result);
                     }

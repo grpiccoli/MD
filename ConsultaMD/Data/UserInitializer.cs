@@ -3,6 +3,7 @@ using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,6 +16,7 @@ namespace ConsultaMD.Data
     {
         public static Task Initialize(ApplicationDbContext context, ILookupNormalizer normalizer)
         {
+            using (var transaction = context?.Database.BeginTransaction())
             using (var roleStore = new RoleStore<ApplicationRole>(context))
             using (var userStore = new UserStore<ApplicationUser>(context))
             if(context != null)
@@ -97,12 +99,15 @@ namespace ConsultaMD.Data
                         foreach (var item in users)
                         {
                             var carnet = new Carnet { Id = item.Carnet };
-                            context.Carnets.Add(carnet);
-                            var natural = new Natural
+                                context.Carnets.Add(carnet);
+                                var digitalsignature = new DigitalSignature { Id = item.Carnet };
+                                context.DigitalSignatures.Add(digitalsignature);
+                                var natural = new Natural
                             {
                                 Id = item.RUN,
                                 Carnet = carnet,
                                 CarnetId = carnet.Id,
+                                DigitalSignatureId = carnet.Id,
                                 Patient = new Patient
                                 {
                                     Insurance = InsuranceData.Insurance.Fonasa
@@ -150,8 +155,11 @@ namespace ConsultaMD.Data
 
                                 context.Users.Add(user);
                         }
-                        context.SaveChanges();
-                    }
+                            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures ON");
+                            context.SaveChanges();
+                            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures OFF");
+                            transaction.Commit();
+                        }
                 }
             }
             return Task.CompletedTask;

@@ -6,7 +6,10 @@ const path = require('path');
 const querystring = require('querystring');
 
 (async () => {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({
+        headless: false,
+        slowMo: 1000
+    });
     const page = await browser.newPage();
     page.setViewport({ width: 1000, height: 600, deviceScaleFactor: 1 });
     await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' });

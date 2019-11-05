@@ -24,8 +24,18 @@ dotnet run
 dotnet publish -r linux-x64 -c Release
 systemctl stop kestrel-consultamd.service;rm -r ../../webapps/consultamd/;mkdir -p ../../webapps/consultamd/;rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ../../webapps/consultamd/;systemctl start kestrel-consultamd.service
 
-
+#REQUIREMENTS RUBY
 sudo apt install ruby-full ruby-dev g++ make build-essential zlibc zlib1g zlib1g-dev
 git clone https://github.com/sagmor/sii_chile.git
 sudo gem install sii_chile
 ruby test.rb
+
+#REQUIREMENTS WEBPAY NODEJS
+sudo apt install python2
+
+#PHP
+sudo apt install curl php-cli php-mbstring git unzip
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+php -r "unlink('composer-setup.php');"

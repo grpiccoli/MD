@@ -44,8 +44,10 @@ namespace ConsultaMD
                     var tsvPath = Path.Combine(env.ContentRootPath, "Data", "Locality");
                     if (!context.Localities.Any())
                         BulkInsert.RunSql<Locality>(tsvPath, connection);
-                    if (!context.AreaCodes.Any())
-                        BulkInsert.RunSql<AreaCode>(tsvPath, connection);
+                    //if (!context.AreaCodes.Any())
+                    //    BulkInsert.RunSql<AreaCode>(tsvPath, connection);
+                    //if (!context.AreaCodeProvinces.Any())
+                    //    BulkInsert.RunSql<AreaCodeProvince>(tsvPath, connection);
 
                     tsvPath = Path.Combine(env.ContentRootPath, "Data", "MD");
                     if (!context.People.Any())

@@ -50,6 +50,7 @@ $.validator.addMethod("rut", function (value, element, _params) {
             },
             dataType: 'JSON',
             success: function (result) {
+                console.log(result);
                 valid = true;
                 if (result.value === "**") {
                     $name.prop('readonly', false);

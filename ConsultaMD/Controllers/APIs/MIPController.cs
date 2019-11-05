@@ -9,13 +9,11 @@ using AngleSharp.Html.Parser;
 using ConsultaMD.Data;
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
-using ConsultaMD.Models.VM;
 using ConsultaMD.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.NodeServices;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -27,14 +25,14 @@ namespace ConsultaMD.Controllers
     public class MIPController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly INodeServices _nodeServices;
         private readonly ApplicationDbContext _context;
+        private readonly IFonasa _fonasa;
         public MIPController(UserManager<ApplicationUser> userManager,
             ApplicationDbContext context,
-            INodeServices nodeServices)
+            IFonasa fonasa)
         {
             _context = context;
-            _nodeServices = nodeServices;
+            _fonasa = fonasa;
             _userManager = userManager;
         }
         [HttpPost]
@@ -52,7 +50,7 @@ namespace ConsultaMD.Controllers
                 case 0:
                     return Ok();
                 case 1:
-                    return await Fonasa(rut, dv).ConfigureAwait(false);
+                    return await Fonasa(rut).ConfigureAwait(false);
                 //Banmédica
                 case 2:
                     return await Banmedica(rut, pwd).ConfigureAwait(false);
@@ -78,22 +76,15 @@ namespace ConsultaMD.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Fonasa(int run, string dv)
+        public async Task<IActionResult> Fonasa(int run)
         {
-            var realDV = RUT.DV(run);
-            if (realDV == dv)
+            var natural = await _context.Naturals
+                .Include(n => n.Patient)
+                .SingleOrDefaultAsync(p => p.Id == run).ConfigureAwait(false);
+            if (natural != null)
             {
-                var natural = await _context.Naturals
-                    .Include(n => n.Patient)
-                    .SingleOrDefaultAsync(p => p.Id == run).ConfigureAwait(false);
-                var rut = RUT.Format(run);
-                var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/validateFonasa.js", rut).ConfigureAwait(false);
-                var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
-                if (string.IsNullOrEmpty(fonasaData.ExtNomCotizante)) return NotFound();
-                natural.AddFonasa(fonasaData);
-                _context.Naturals.Update(natural);
-                await _context.SaveChangesAsync().ConfigureAwait(false);
-                return Ok();
+                var fonasa = await _fonasa.GetById(run).ConfigureAwait(false);
+                if (!string.IsNullOrWhiteSpace(fonasa?.ExtGrupoIng)) return Ok();
             }
             return NotFound();
         }

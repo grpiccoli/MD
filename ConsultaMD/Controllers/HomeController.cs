@@ -9,11 +9,6 @@ namespace ConsultaMD.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly INodeServices _nodeServices;
-        public HomeController(INodeServices nodeServices)
-        {
-            _nodeServices = nodeServices;
-        }
         public IActionResult Index()
         {
             return RedirectToAction("Index", "Home", new { area = "Patients" });

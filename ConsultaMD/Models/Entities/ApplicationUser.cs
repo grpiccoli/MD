@@ -13,7 +13,7 @@ namespace ConsultaMD.Models.Entities
         public DateTime MailConfirmationTime { get; set; }
         public bool IsActive { get; set; }
         public int PersonId { get; set; }
-        public virtual Person Person { get; set; }
+        public virtual Natural Person { get; set; }
         /// <summary>
         /// Navigation property for the roles this user belongs to.
         /// </summary>

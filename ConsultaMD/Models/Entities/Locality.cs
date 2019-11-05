@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ConsultaMD.Models.Entities
 {
@@ -15,6 +13,11 @@ namespace ConsultaMD.Models.Entities
         public string Name { get; set; }
         public string Discriminator { get; set; }
         public virtual ICollection<Polygon> Polygons { get; } = new List<Polygon>();
+        //Código único territorial
+        public string GetCUT()
+        {
+            return Id.ToString(CultureInfo.InvariantCulture).Remove(0,1);
+        }
         //public int? ParentLocalityId { get; set; }
         //public virtual Locality ParentLocality { get; set; }
         //public virtual ICollection<Locality> ChildLocalities { get; set; }

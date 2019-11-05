@@ -1,4 +1,5 @@
 ﻿using ConsultaMD.Extensions;
+using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -46,7 +47,7 @@ namespace ConsultaMD.Models.VM
         {
             get
             {
-                return new PlaceDetails(((MedicalOffice)Reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium).Place);
+                return new PlaceDetails(Reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium.Place);
             }
             private set
             {
@@ -180,6 +181,11 @@ namespace ConsultaMD.Models.VM
     }
     public class PaymentDetails
     {
+        [Required]
+        [RUT(ErrorMessage = "RUT no válido")]
+        [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
+        [Display(Name = "Ingrese RUT Titular de Tarjeta de Pago")]
+        public string Rut { get; set; }
         public int Type { get; private set; }
     }
 }

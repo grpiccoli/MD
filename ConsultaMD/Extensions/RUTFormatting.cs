@@ -44,6 +44,15 @@ namespace ConsultaMD.Extensions
         {
             return $"{rut.ToString("N0", new CultureInfo("es-CL"))}-{DV(rut)}";
         }
+        public static string Fonasa(int rut)
+        {
+            return $"{rut.ToString("D10", CultureInfo.InvariantCulture)}-{DV(rut)}";
+        }
+        public static string Fonasa(string rut)
+        {
+            var unformated = Unformat(rut);
+            return Fonasa(unformated.Value.rut);
+        }
         public static (int rut, string dv)? Unformat(string formatted)
         {
             var array = formatted?.Replace(".", "", StringComparison.InvariantCulture).Split("-");

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultaMD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191030222200_Initial")]
+    [Migration("20191103234316_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -297,7 +297,11 @@ namespace ConsultaMD.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
+                    b.Property<string>("PlaceId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("MedicalAttentionMediums");
 
@@ -350,7 +354,7 @@ namespace ConsultaMD.Migrations
 
                     b.Property<string>("InsurancePassword");
 
-                    b.Property<int>("Tramo");
+                    b.Property<int?>("Tramo");
 
                     b.HasKey("NaturalId");
 
@@ -659,10 +663,6 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.MedicalAttentionMedium");
 
-                    b.Property<int?>("CommuneId");
-
-                    b.HasIndex("CommuneId");
-
                     b.HasDiscriminator().HasValue("HomeVisit");
                 });
 
@@ -677,10 +677,6 @@ namespace ConsultaMD.Migrations
                     b.Property<string>("Floor");
 
                     b.Property<string>("Office");
-
-                    b.Property<string>("PlaceId");
-
-                    b.HasIndex("PlaceId");
 
                     b.HasDiscriminator().HasValue("MedicalOffice");
                 });
@@ -711,7 +707,7 @@ namespace ConsultaMD.Migrations
 
                     b.Property<int>("CarnetId");
 
-                    b.Property<int>("DigitalSignatureId");
+                    b.Property<int?>("DigitalSignatureId");
 
                     b.Property<int>("DoctorId");
 
@@ -808,6 +804,13 @@ namespace ConsultaMD.Migrations
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("MediumDoctorId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttentionMedium", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalCoverage", b =>
@@ -952,20 +955,6 @@ namespace ConsultaMD.Migrations
                         .WithMany("Provinces")
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("ConsultaMD.Models.Entities.HomeVisit", b =>
-                {
-                    b.HasOne("ConsultaMD.Models.Entities.Commune", "Commune")
-                        .WithMany("HomeVisits")
-                        .HasForeignKey("CommuneId");
-                });
-
-            modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalOffice", b =>
-                {
-                    b.HasOne("ConsultaMD.Models.Entities.Place", "Place")
-                        .WithMany()
-                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Natural", b =>

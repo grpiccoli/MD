@@ -46,7 +46,9 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {
             var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
-            Input = new InsuranceDetailsInputModel { RUT = user.UserName };
+            Input = new InsuranceDetailsInputModel { 
+                RUT = user.UserName
+            };
             ReturnUrl = returnUrl;
 
             return Page();
@@ -85,7 +87,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Insurance(ErrorMessage = "El RUT no está registrado en la previsión seleccionada")]
         public Insurance Insurance { get; set; }
 
-        public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name");
+        public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name").Where(e => e.Value != "1");
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña de su Previsión")]
         [InsurancePassword(ErrorMessage = "Error en la combinación Previsión/{0}")]
