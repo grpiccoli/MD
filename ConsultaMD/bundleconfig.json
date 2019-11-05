@@ -145,11 +145,5 @@
     "inputFiles": [
       "src/scripts/confirm-date.js"
     ]
-  },
-  {
-    "outputFileName": "src/scripts/node/mi/FonasaService.min.js",
-    "inputFiles": [
-      "src/scripts/node/mi/FonasaService.js"
-    ]
   }
 ]
