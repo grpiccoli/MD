@@ -1,6 +1,6 @@
 [
   {
-    "outputFileName": "wwwroot/js/main.js",
+    "outputFileName": "wwwroot/js/main.min.js",
     "inputFiles": [
       "src/scripts/loader.js",
       "src/scripts/debounce.js"
@@ -35,13 +35,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/forgotPassword.js",
+    "outputFileName": "wwwroot/js/forgotPassword.min.js",
     "inputFiles": [
       "src/scripts/add_rut_validation.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/sidenav.js",
+    "outputFileName": "wwwroot/js/sidenav.min.js",
     "inputFiles": [
       "src/scripts/sidenav.js"
     ]
@@ -53,21 +53,21 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/validation.js",
+    "outputFileName": "wwwroot/js/validation.min.js",
     "inputFiles": [
       "src/scripts/validateAdapterMCSS.js",
       "src/scripts/validate-localization.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/login.js",
+    "outputFileName": "wwwroot/js/login.min.js",
     "inputFiles": [
       "src/scripts/add_rut_validation.js",
       "src/scripts/external-login.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/splash.js",
+    "outputFileName": "wwwroot/js/splash.min.js",
     "inputFiles": [
       "src/scripts/splash.js"
     ]
@@ -80,25 +80,25 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/register.js",
+    "outputFileName": "wwwroot/js/register.min.js",
     "inputFiles": [
       "src/scripts/add_rut_carnet_validation.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/insurance.js",
+    "outputFileName": "wwwroot/js/insurance.min.js",
     "inputFiles": [
       "src/scripts/selectInsurance.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/verifyphone.js",
+    "outputFileName": "wwwroot/js/verifyphone.min.js",
     "inputFiles": [
       "src/scripts/formatPhone.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/confirmPhone.js",
+    "outputFileName": "wwwroot/js/confirmPhone.min.js",
     "inputFiles": [
       "src/scripts/confirmPhone.js"
     ]
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/map.js",
+    "outputFileName": "wwwroot/js/map.min.js",
     "inputFiles": [
       "src/scripts/map.js"
     ]
@@ -129,7 +129,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/doctor-details.js",
+    "outputFileName": "wwwroot/js/doctor-details.min.js",
     "inputFiles": [
       "src/scripts/doctor-details.js"
     ]
@@ -144,6 +144,18 @@
     "outputFileName": "wwwroot/js/confirm-date.min.js",
     "inputFiles": [
       "src/scripts/confirm-date.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/ms.min.js",
+    "inputFiles": [
+      "src/mobiscroll.custom/js/mobiscroll.javascript.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/ms.min.css",
+    "inputFiles": [
+      "src/mobiscroll.custom/css/mobiscroll.javascript.min.css"
     ]
   }
 ]

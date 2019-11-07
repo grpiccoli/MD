@@ -32,7 +32,7 @@ function book(id: number) {
             id: id,
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
         },
-        success: function (d, textStatus) {
+        success: function (d, _) {
                 window.location.href = d;
         }
     });
@@ -58,13 +58,6 @@ function agendar2(mdId: number) {
     dets.find('.activator').attr('onclick', null).removeClass('activator');
     dets.find('.card').addClass('m-0');
     $('#date-details').html(dets[0].outerHTML);
-    //var $place = $(places[mdId]['card']);
-    //$('#doctorName').html($place.find('.card-title')[0].innerHTML);
-    //var esp = $place.find('.esp > span')
-    //if (esp.length != 0) {
-    //    $('#specialtyName').html(esp[0].innerHTML.toUpperCase());
-    //}
-    //$('#placeName').html($place.find('.address')[0].innerHTML);
     $.post("/Patients/Search/GetDates", {
         __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
         mdId: mdId,
@@ -151,13 +144,6 @@ function agendar(run: number, mdId: number) {
         if (value.value === '') return;
         array.push(value.name + '=' + moment(value.value).format(ASPNETDateFormat));
     });
-    //var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    //days.forEach((value) => {
-    //    var prop = $(`#${value}`).prop('checked');
-    //    if (typeof (prop) !== 'undefined') {
-    //        array.push(value + "=" + prop);
-    //    }
-    //});
     window.location.href = `/Patients/Search/DoctorDetails/${run}?` + array.join("&");
     return false;
 }
@@ -165,75 +151,122 @@ var places: { [cid: string]: { [type: string]: string; } } = {};
 function fillReveal(mdId: number) {
     $(`#${mdId}reveal`).html(getContent(mdId));
 }
+var tmp = [];
 document.addEventListener('DOMContentLoaded', function () {
     //change dates
-    function changeDates(_calentim: CalentimObject, startDate: moment.Moment, endDate: moment.Moment) {
-        $('#MinDate').val(startDate.format(ASPNETDateFormat)).change();
-        $('#MaxDate').val(endDate.format(ASPNETDateFormat)).change();
+    function changeDates(event: any, inst: any) {
+        $('#Dates').find('option').remove().end();
+        inst.getVal().forEach((e: Date, _: number) => {
+            $('#Dates').append(new Option('', moment(e).format(ASPNETDateFormat), null, true));
+        });
+        $('#Dates').change();
+    }
+    //change times
+    function changeTimes(event: any, inst: any) {
+        console.log(event, inst);
+        tmp.push(event);
+        tmp.push(inst);
+        var times = inst.getVal();
+        if (times != null) {
+            $('#MinTime').val(moment(times[0]).format('HH:mm:ss')).change();
+            $('#MaxTime').val(moment(times[1]).format('HH:mm:ss')).change();
+        }
     }
     //Config button
     M.FloatingActionButton.init(document.getElementById('filter-options'), { toolbarEnabled: true });
-    //detect mobile and show only one month
-    let months = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i
-        .test(navigator.userAgent) ? 1 : 2;
-    //DATE TIME FILTERS
-    $("#fl-item-9").calentim({
-        format: "dddd DD MMMM, YYYY h:mm A",
-        locale: 'es',
-        inline: true,
-        startOnMonday: true,
-        startDate: moment().startOf('day'),
-        minDate: moment().startOf('day'),
-        endDate: moment($("#Last").val()).endOf('day'),
-        maxDate: moment($("#Last").val()).endOf('day'),
-        rangeLabel: 'Rangos',
-        cancelLabel: 'Cancelar',
-        calendarCount: months,
-        applyLabel: 'Filtrar',
-        hideOutOfRange: true,
-        ranges: [
-            {
-                title: "Hoy",
-                startDate: moment(),
-                endDate: moment()
-            },
-            {
-                title: "Próximos 3 dias",
-                startDate: moment(),
-                endDate: moment().add(3, "days")
-            },
-            {
-                title: "Próximos 5 dias",
-                startDate: moment(),
-                endDate: moment().add(5, "days")
-            },
-            {
-                title: "Próximos 7 dias",
-                startDate: moment(),
-                endDate: moment().add(7, "days")
-            },
-            {
-                title: "Próxima semana",
-                startDate: moment().day(7),
-                endDate: moment().day(7).add(1, "days").day(7)
-            },
-            {
-                title: "Hasta el próximo mes",
-                startDate: moment(),
-                endDate: moment().add(1, "month").endOf("month")
-            }
-        ],
-        ontimechange: changeDates,
-        onafterselect: changeDates
-    });
-    //redraw calentim on windows size change
-    $(window).on('resize', () => {
-        var windowWidth = $(window).width();
-        if (windowWidth > 610) {
-            $(".calentim-container-mobile").removeClass("calentim-container-mobile").addClass("calentim-container");
-        } else {
-            $(".calentim-container").removeClass("calentim-container").addClass("calentim-container-mobile");
+    //MOBISCROLL TEST
+    mobiscroll.settings = {
+        lang: 'es',
+        theme: 'material'
+    };
+    var min = moment(dateToday).startOf('day');
+    var max = moment($("#Last").val()).endOf('day');
+
+    function setDay(e: any) {
+        var $class = $(e.target).attr('class');
+        var num = parseInt($class[$class.length - 1]);
+        var isoD = num + 7;
+        var y = $('.mbsc-cal-year').attr('aria-label');
+        var m = $('.mbsc-cal-month').attr('aria-label');
+        var date = moment().set('year', y).set('month', m).set('date', 1).isoWeekday(isoD);
+        var month = date.month();
+        if (date.date() > 7) date.isoWeekday(num - 7);
+        var dates = [];
+        while (date.month() == month) {
+            if (date >= min && date <= max)
+                dates.push(date.toDate());
+            date.add(7, 'days');
         }
+        calendar.setVal(dates);
+    }
+    function setWeek(e: any) {
+        var num = parseInt($(e.target).html());
+        var y = $('.mbsc-cal-year').attr('aria-label');
+        var m = $('.mbsc-cal-month').attr('aria-label');
+        var date = moment().set('year', y).set('month', m).set('date', 1);
+        var month = date.month();
+        date.add(7 * (num - 1), 'days');
+        var dates = [];
+        for (var i = 1; i < 8; i++) {
+            date.isoWeekday(i);
+            if (date >= min && date <= max && date.month() == month)
+                dates.push(date.toDate());
+        }
+        calendar.setVal(dates);
+    }
+
+    function listenDay() {
+        for (var i = 0; i < 7; i++) {
+            $('.mbsc-cal-week-day' + i).click(setDay);
+        }
+    }
+
+    function listenWeek() {
+        $('.mbsc-cal-week-nr').click(setWeek);
+    }
+
+    function setListeners() {
+        listenDay(); listenWeek();
+    }
+
+    var calendar = mobiscroll.calendar('#demo-max-days', {
+        theme: 'material',
+        display: 'inline',
+        select: 7,
+        min: min.toDate(),
+        headerText: 'Seleccione hasta 7 dias',
+        weekCounter: 'month',
+        counter: true,
+        showOuterDays: false,
+        max: max.toDate(),
+        onInit: setListeners,
+        onPageLoaded: listenWeek,
+        onMonthChange: setListeners,
+        onSetDate: changeDates
+    });
+    mobiscroll.range('#demo', {
+        theme: 'material',
+        startInput: '#StartTime',
+        endInput: '#EndTime',
+        minRange: 1000 * 60 * 10,
+        steps: {
+            minute: 10,
+        },
+        fromText: 'Desde',
+        toText: 'Hasta',
+        display: 'inline',
+        controls: ['time'],
+        hourText: 'Hora',
+        minuteText: 'Minutos',
+        ampmText: 'Horario',
+        amText: 'AM',
+        pmText: 'PM',
+        timeFormat: 'h:ii A',
+        onSetDate: changeTimes,
+        defaultValue: [
+            "00:00:00",
+            "23:59:59"
+        ]
     });
     //define list doctor details tabs
     var tabs = ['time', 'addr', 'price', 'mis', 'esp'];
@@ -368,7 +401,7 @@ function initMap() {
         return `<div id=${item.cardId} class="col s12 m6 l4">`
             + '<div class="card horizontal sticky-action">'
             + '<div class="card-image">'
-            + `<img src="/img/doc/${item.run}.min.jpg"/>`
+            + `<img src="/home/getimg/${item.run}"/>`
             + '</div>'
             + '<div class="card-stacked">'
             + '<div class="card-content">'
@@ -429,7 +462,7 @@ function initMap() {
         var match = 0.5;
         var content: string = '';
         $.each(value.items, function () {
-            if (!(this.dr in dt)) dt[this.dr] = `/img/doc/${this.run}.min.jpg`;
+            if (!(this.dr in dt)) dt[this.dr] = `/home/getimg/${this.run}`;
             var card = makeCard(this, value.place)
             if (!(this.cardId.toString() in places)) {
                 places[this.cardId.toString()] = {};
@@ -523,24 +556,8 @@ function initMap() {
     //SEARCH FUNCTIONS
     function getAllquerys() {
         var array = $("#filter input[name='__RequestVerificationToken'],"
-            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance")
+            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance, #Dates, #MinTime, #MaxTime")
             .serializeArray();
-        var date = $("#MinDate,#MaxDate").serializeArray();
-        date.forEach((value) => {
-            if (value.value === '') return;
-            array.push({
-                name: value.name,
-                value: moment(value.value).format(ASPNETDateFormat)
-            });
-        });
-        ////Day of the week filter
-        //var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        //days.forEach((value) => {
-        //    array.push({
-        //        name: value,
-        //        value: $(`#${value}`).prop('checked')
-        //    })
-        //});
         return array;
     }
     //GET DATA
@@ -647,89 +664,6 @@ function initMap() {
         $(`#btn${id}`).html(text);
         change = true;
     }
-    ////FILTER TIMES available on time slider
-    //function filterTimes(value: number, _t: number) {
-    //    if (value % 6) {
-    //        return 0;
-    //    } else {
-    //        return 1;
-    //    }
-    //}
-    ////TIME SLIDER
-    //noUiSlider.create(document.getElementById('time-slider'), {
-    //    start: [0, 24],
-    //    connect: true,
-    //    step: 1,
-    //    orientation: 'horizontal',
-    //    margin: 6,
-    //    range: {
-    //        'min': 0,
-    //        'max': 24
-    //    },
-    //    format: {
-    //        to: (value: number) => {
-    //            return Math.ceil(value);
-    //        },
-    //        from: (value: string) => {
-    //            return Number(value.replace(/\D/g, ''));
-    //        }
-    //    },
-    //    pips: {
-    //        mode: 'steps',
-    //        density: 4,
-    //        filter: filterTimes,
-    //        format: {
-    //            to: (value: number) => {
-    //                var suffix = "AM";
-    //                if (value >= 12) {
-    //                    if (value !== 24) {
-    //                        suffix = "PM";
-    //                    }
-    //                    if (value !== 12) {
-    //                        value -= 12;
-    //                    }
-    //                }
-    //                return `${Math.ceil(value)} ${suffix}`;
-    //            },
-    //            from: (value: string) => {
-    //                return Number(value.replace(/\D/g, ''));
-    //            }
-    //        }
-    //    }
-    //}).on('set', (values: any, handle: any) => {
-    //    if (handle) {
-    //        $('#MaxTime').val(values[handle] === 24 ? '' : values[handle]);
-    //    } else {
-    //        $('#MinTime').val(values[handle] === 0 ? '' : values[handle]);
-    //    }
-    //});
-    ////start date picker
-    //var datepickerFormat = "dddd dd mmmm, yyyy";
-    //M.Datepicker.init(document.querySelectorAll('.datepicker'), {
-    //    firstDay: 1,
-    //    format: datepickerFormat,
-    //    autoClose: true,
-    //    minDate: dateToday,
-    //    maxDate: new Date($("#Last").val() as string),
-    //    i18n: {
-    //        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-    //        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
-    //        weekdays: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-    //        weekdaysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-    //        weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
-    //        cancel: 'Cancelar',
-    //        clear: 'Limpiar',
-    //        done: 'Ok'
-    //    },
-    //    showClearBtn: true
-    //});
-    ////on mindate change change minimal selectable value of max date calendar
-    //$('#MinDate').change(function (d) {
-    //    var max = M.Datepicker.getInstance(document.getElementById('MaxDate'));
-    //    max.options.minDate = $(this).val() === '' ?
-    //        dateToday :
-    //        moment($(this).val()).toDate();
-    //});
     //init FILTERS MODAL and reload data on close
     var filters = M.Modal.init(document.getElementById('filters-pane'), {
         onCloseStart: changeFilter
@@ -746,6 +680,9 @@ function initMap() {
     });
     //if any input within filter form changes tag true
     $('#filter input').change(_ => {
+        change = true;
+    });
+    $('#Dates').change(_ => {
         change = true;
     });
     //load filter options

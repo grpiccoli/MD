@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ConsultaMD.Models;
-using Microsoft.AspNetCore.Hosting;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.NodeServices;
+using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using System.Globalization;
+using ConsultaMD.Services;
 
 namespace ConsultaMD.Controllers
 {
@@ -12,6 +13,15 @@ namespace ConsultaMD.Controllers
         public IActionResult Index()
         {
             return RedirectToAction("Index", "Home", new { area = "Patients" });
+        }
+
+        [Authorize]
+        public IActionResult GetImg(int id)
+        {
+            var file = Path.Combine(Directory.GetCurrentDirectory(),
+                "profileImg", id.ToString(CultureInfo.InvariantCulture)+".min.jpg");
+            var physical = System.IO.File.Exists(file) ? file : Path.Combine(Directory.GetCurrentDirectory(),DefaultImageMiddleware.DefaultImagePath);
+            return PhysicalFile(physical, "image/jpg");
         }
 
         public IActionResult Privacy()

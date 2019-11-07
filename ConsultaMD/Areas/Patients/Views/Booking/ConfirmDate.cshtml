@@ -6,9 +6,8 @@
         <div id="doctorCard" class="col m4 l3 hide-on-small-and-down">
             <div class="row m-0">
                 <div class="col m12">
-                    <img src="/img/doc/@(Model.DoctorDetails.NaturalId).min.jpg"
-                         class="circle p-25p" style="max-height:150px;"
-                         asp-append-version="true" />
+                    <img src="~/home/getimg/@(Model.DoctorDetails.NaturalId)"
+                         class="circle p-25p" style="max-height:150px;" />
                 </div>
                 <div class="col m12">
                     <h5 class="clinic-text m-0"> @Model.DoctorDetails.TitleName</h5>

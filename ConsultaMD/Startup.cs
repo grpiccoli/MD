@@ -213,6 +213,12 @@ namespace ConsultaMD
                         Path.Combine(Directory.GetCurrentDirectory(), "src")),
                     RequestPath = "/src"
                 });
+                app.UseSpaStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(
+                        Path.Combine(Directory.GetCurrentDirectory(), "node_modules")),
+                    RequestPath = "/node_modules"
+                });
                 //app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 //{
                 //    ProjectPath = env.ContentRootPath,

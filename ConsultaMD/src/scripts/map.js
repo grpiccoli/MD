@@ -31,7 +31,7 @@ function book(id) {
             id: id,
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
         },
-        success: function (d, textStatus) {
+        success: function (d, _) {
             window.location.href = d;
         }
     });
@@ -150,71 +150,115 @@ var places = {};
 function fillReveal(mdId) {
     $("#" + mdId + "reveal").html(getContent(mdId));
 }
+var tmp = [];
 document.addEventListener('DOMContentLoaded', function () {
-    function changeDates(_calentim, startDate, endDate) {
-        $('#MinDate').val(startDate.format(ASPNETDateFormat)).change();
-        $('#MaxDate').val(endDate.format(ASPNETDateFormat)).change();
+    function changeDates(event, inst) {
+        $('#Dates').find('option').remove().end();
+        inst.getVal().forEach(function (e, _) {
+            $('#Dates').append(new Option('', moment(e).format(ASPNETDateFormat), null, true));
+        });
+        $('#Dates').change();
+    }
+    function changeTimes(event, inst) {
+        console.log(event, inst);
+        tmp.push(event);
+        tmp.push(inst);
+        var times = inst.getVal();
+        if (times != null) {
+            $('#MinTime').val(moment(times[0]).format('HH:mm:ss')).change();
+            $('#MaxTime').val(moment(times[1]).format('HH:mm:ss')).change();
+        }
     }
     M.FloatingActionButton.init(document.getElementById('filter-options'), { toolbarEnabled: true });
-    var months = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Nexus/i
-        .test(navigator.userAgent) ? 1 : 2;
-    $("#fl-item-9").calentim({
-        format: "dddd DD MMMM, YYYY h:mm A",
-        locale: 'es',
-        inline: true,
-        startOnMonday: true,
-        startDate: moment().startOf('day'),
-        minDate: moment().startOf('day'),
-        endDate: moment($("#Last").val()).endOf('day'),
-        maxDate: moment($("#Last").val()).endOf('day'),
-        rangeLabel: 'Rangos',
-        cancelLabel: 'Cancelar',
-        calendarCount: months,
-        applyLabel: 'Filtrar',
-        hideOutOfRange: true,
-        ranges: [
-            {
-                title: "Hoy",
-                startDate: moment(),
-                endDate: moment()
-            },
-            {
-                title: "Próximos 3 dias",
-                startDate: moment(),
-                endDate: moment().add(3, "days")
-            },
-            {
-                title: "Próximos 5 dias",
-                startDate: moment(),
-                endDate: moment().add(5, "days")
-            },
-            {
-                title: "Próximos 7 dias",
-                startDate: moment(),
-                endDate: moment().add(7, "days")
-            },
-            {
-                title: "Próxima semana",
-                startDate: moment().day(7),
-                endDate: moment().day(7).add(1, "days").day(7)
-            },
-            {
-                title: "Hasta el próximo mes",
-                startDate: moment(),
-                endDate: moment().add(1, "month").endOf("month")
-            }
-        ],
-        ontimechange: changeDates,
-        onafterselect: changeDates
+    mobiscroll.settings = {
+        lang: 'es',
+        theme: 'material'
+    };
+    var min = moment(dateToday).startOf('day');
+    var max = moment($("#Last").val()).endOf('day');
+    function setDay(e) {
+        var $class = $(e.target).attr('class');
+        var num = parseInt($class[$class.length - 1]);
+        var isoD = num + 7;
+        var y = $('.mbsc-cal-year').attr('aria-label');
+        var m = $('.mbsc-cal-month').attr('aria-label');
+        var date = moment().set('year', y).set('month', m).set('date', 1).isoWeekday(isoD);
+        var month = date.month();
+        if (date.date() > 7)
+            date.isoWeekday(num - 7);
+        var dates = [];
+        while (date.month() == month) {
+            if (date >= min && date <= max)
+                dates.push(date.toDate());
+            date.add(7, 'days');
+        }
+        calendar.setVal(dates);
+    }
+    function setWeek(e) {
+        var num = parseInt($(e.target).html());
+        var y = $('.mbsc-cal-year').attr('aria-label');
+        var m = $('.mbsc-cal-month').attr('aria-label');
+        var date = moment().set('year', y).set('month', m).set('date', 1);
+        var month = date.month();
+        date.add(7 * (num - 1), 'days');
+        var dates = [];
+        for (var i = 1; i < 8; i++) {
+            date.isoWeekday(i);
+            if (date >= min && date <= max && date.month() == month)
+                dates.push(date.toDate());
+        }
+        calendar.setVal(dates);
+    }
+    function listenDay() {
+        for (var i = 0; i < 7; i++) {
+            $('.mbsc-cal-week-day' + i).click(setDay);
+        }
+    }
+    function listenWeek() {
+        $('.mbsc-cal-week-nr').click(setWeek);
+    }
+    function setListeners() {
+        listenDay();
+        listenWeek();
+    }
+    var calendar = mobiscroll.calendar('#demo-max-days', {
+        theme: 'material',
+        display: 'inline',
+        select: 7,
+        min: min.toDate(),
+        headerText: 'Seleccione hasta 7 dias',
+        weekCounter: 'month',
+        counter: true,
+        showOuterDays: false,
+        max: max.toDate(),
+        onInit: setListeners,
+        onPageLoaded: listenWeek,
+        onMonthChange: setListeners,
+        onSetDate: changeDates
     });
-    $(window).on('resize', function () {
-        var windowWidth = $(window).width();
-        if (windowWidth > 610) {
-            $(".calentim-container-mobile").removeClass("calentim-container-mobile").addClass("calentim-container");
-        }
-        else {
-            $(".calentim-container").removeClass("calentim-container").addClass("calentim-container-mobile");
-        }
+    mobiscroll.range('#demo', {
+        theme: 'material',
+        startInput: '#StartTime',
+        endInput: '#EndTime',
+        minRange: 1000 * 60 * 10,
+        steps: {
+            minute: 10,
+        },
+        fromText: 'Desde',
+        toText: 'Hasta',
+        display: 'inline',
+        controls: ['time'],
+        hourText: 'Hora',
+        minuteText: 'Minutos',
+        ampmText: 'Horario',
+        amText: 'AM',
+        pmText: 'PM',
+        timeFormat: 'h:ii A',
+        onSetDate: changeTimes,
+        defaultValue: [
+            "00:00:00",
+            "23:59:59"
+        ]
     });
     var tabs = ['time', 'addr', 'price', 'mis', 'esp'];
     M.Modal.init(document.getElementById('select-modal'));
@@ -336,7 +380,7 @@ function initMap() {
         return "<div id=" + item.cardId + " class=\"col s12 m6 l4\">"
             + '<div class="card horizontal sticky-action">'
             + '<div class="card-image">'
-            + ("<img src=\"/img/doc/" + item.run + ".min.jpg\"/>")
+            + ("<img src=\"/home/getimg/" + item.run + "\"/>")
             + '</div>'
             + '<div class="card-stacked">'
             + '<div class="card-content">'
@@ -394,7 +438,7 @@ function initMap() {
         var content = '';
         $.each(value.items, function () {
             if (!(this.dr in dt))
-                dt[this.dr] = "/img/doc/" + this.run + ".min.jpg";
+                dt[this.dr] = "/home/getimg/" + this.run;
             var card = makeCard(this, value.place);
             if (!(this.cardId.toString() in places)) {
                 places[this.cardId.toString()] = {};
@@ -482,17 +526,8 @@ function initMap() {
     }
     function getAllquerys() {
         var array = $("#filter input[name='__RequestVerificationToken'],"
-            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance")
+            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance, #Dates, #MinTime, #MaxTime")
             .serializeArray();
-        var date = $("#MinDate,#MaxDate").serializeArray();
-        date.forEach(function (value) {
-            if (value.value === '')
-                return;
-            array.push({
-                name: value.name,
-                value: moment(value.value).format(ASPNETDateFormat)
-            });
-        });
         return array;
     }
     function getData() {
@@ -601,6 +636,9 @@ function initMap() {
         window.location.reload();
     });
     $('#filter input').change(function (_) {
+        change = true;
+    });
+    $('#Dates').change(function (_) {
         change = true;
     });
     $('.fltbtn').click(function (panel) {

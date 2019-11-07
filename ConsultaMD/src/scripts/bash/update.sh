@@ -24,7 +24,12 @@ dotnet run
 dotnet publish -r linux-x64 -c Release
 systemctl stop kestrel-consultamd.service;rm -r ../../webapps/consultamd/;mkdir -p ../../webapps/consultamd/;rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ../../webapps/consultamd/;systemctl start kestrel-consultamd.service
 
-#REQUIREMENTS RUBY
+#ONE TIME MS CONFIGURATION
+npm i -g @mobiscroll/cli
+mobiscroll login --global
+mobiscroll config javascript
+
+#ONE TIME RUBY CONFIGURATION
 cd src/scripts/node/ps/
 sudo apt install ruby-full ruby-dev g++ make build-essential zlibc zlib1g zlib1g-dev
 git clone https://github.com/sagmor/sii_chile.git

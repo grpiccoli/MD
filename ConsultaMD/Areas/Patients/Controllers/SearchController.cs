@@ -28,8 +28,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
         [HttpPost, ValidateAntiForgeryToken, ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         public IActionResult MapList(
             [Bind("Ubicacion,Especialidad,Sex,Insurance," +
-            "MinTime,MaxTime,MinDate,MaxDate," +
-            "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Days")]
+            "MinTime,MaxTime,Dates")]
         MapVM filters
             //Medium Discriminator Office = 1, Home = 2, Remote = 3
             //string disc,
@@ -71,11 +70,14 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             && filters.Especialidad.Contains(md.Doctor.Specialty.Value)))
                             && (!filters.Sex.Any() || filters.Sex.Contains(md.Doctor.Natural.Sex))
                             && md.Agendas.Any(a => a.StartTime > DateTime.Now.AddMinutes(30)
+                            && (!filters.Dates.Any() || filters.Dates.Any(d => d.Date == a.StartTime.Date))
                                    //&& (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek))
                                && a.TimeSlots.Any(t => !t.ReservationId.HasValue
                                && a.StartTime > DateTime.Now.AddMinutes(30)
-                                && (!filters.MinDate.HasValue || (filters.MinDate.Value.TimeOfDay <= t.StartTime.TimeOfDay && filters.MinDate.Value <= t.StartTime))
-                                && (!filters.MaxDate.HasValue || (filters.MaxDate.Value.TimeOfDay >= t.EndTime.TimeOfDay && filters.MaxDate.Value >= t.EndTime)))))
+                                && (!filters.MinTime.HasValue || filters.MinTime.Value <= t.StartTime.TimeOfDay)
+                                && (!filters.MaxTime.HasValue || filters.MaxTime.Value >= t.EndTime.TimeOfDay))))
+                                //&& (!filters.MinDate.HasValue || (filters.MinDate.Value.TimeOfDay <= t.StartTime.TimeOfDay && filters.MinDate.Value <= t.StartTime))
+                                //&& (!filters.MaxDate.HasValue || (filters.MaxDate.Value.TimeOfDay >= t.EndTime.TimeOfDay && filters.MaxDate.Value >= t.EndTime)))))
                             .Select(md =>
                             new ResultVM
                             {
@@ -87,18 +89,19 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                 Insurances = md.InsuranceLocations.Select(i => i.Insurance),
                                 Match = filters.Insurance == InsuranceData.Insurance.Particular 
                                 || !filters.HighlightInsurance 
-                                || md.InsuranceLocations.Select(i => i.Insurance).Contains(filters.Insurance),
+                                || md.InsuranceLocations.Any(i => i.Insurance == filters.Insurance),
                                 Sex = md.Doctor.Natural.Sex,
                                 Office = string.Join(" ",(!string.IsNullOrEmpty(office.Appartment)?"dpto."+office.Appartment:""),
                                 (!string.IsNullOrEmpty(office.Floor)?"piso "+office.Floor:""),
                                 (!string.IsNullOrEmpty(office.Office)?"of. "+office.Office:"")),
                                 NextTS = new TimeSlotVM(md.Agendas.Where(a => a.StartTime > DateTime.Now.AddMinutes(30)
+                                    && (!filters.Dates.Any() || filters.Dates.Any(d => d.Date == a.StartTime.Date))
                                     //&& (!filters.Days.Any() || !filters.Days.Contains(a.StartTime.DayOfWeek))
                                     )
                                     .SelectMany(a => a.TimeSlots.Where(t => !t.ReservationId.HasValue
                                     && a.StartTime > DateTime.Now.AddMinutes(30)
-                                && (!filters.MinDate.HasValue || (filters.MinDate.Value.TimeOfDay <= t.StartTime.TimeOfDay && filters.MinDate.Value <= t.StartTime))
-                                && (!filters.MaxDate.HasValue || (filters.MaxDate.Value.TimeOfDay >= t.EndTime.TimeOfDay && filters.MaxDate.Value >= t.EndTime))
+                                && (!filters.MinTime.HasValue || filters.MinTime.Value <= t.StartTime.TimeOfDay)
+                                && (!filters.MaxTime.HasValue || filters.MaxTime.Value >= t.EndTime.TimeOfDay)
                                     )).MinBy(t => t.StartTime).First()),
                                 CardId = md.Id
                             })).OrderBy(res => res.NextTS.StartTime)

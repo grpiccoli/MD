@@ -17,11 +17,12 @@ namespace ConsultaMD.Models.VM.PatientsVM
         [Display(Name = "Género")]
         public HashSet<bool> Sex { get; } = new HashSet<bool>();
         //[Range(1, 24)]
-        //public DateTime? MinTime { get; set; }
-        ////[Range(1, 24)]
-        //public DateTime? MaxTime { get; set; }
-        public DateTime? MinDate { get; set; }
-        public DateTime? MaxDate { get; set; }
+        public TimeSpan? MinTime { get; set; }
+        //[Range(1, 24)]
+        public TimeSpan? MaxTime { get; set; }
+        public HashSet<DateTime> Dates { get; } = new HashSet<DateTime>();
+        //public DateTime? MinDate { get; set; }
+        //public DateTime? MaxDate { get; set; }
         public DateTime Last { get; set; }
         //public bool Monday { get; set; } = true;
         //public bool Tuesday { get; set; } = true;
