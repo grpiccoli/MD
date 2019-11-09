@@ -11,7 +11,7 @@
                 </div>
                 <div class="col m12">
                     <h5 class="clinic-text m-0"> @Model.DoctorDetails.TitleName</h5>
-                    <h6>@Model.DoctorDetails.SpecialtyName</h6>
+                    <h6>@Model.DoctorDetails.SpecialtyList</h6>
                     @Model.PlaceDetails.Name
                 </div>
             </div>
@@ -46,8 +46,8 @@
                     <label asp-for="DoctorDetails.Rut"></label>
                 </div>
                 <div class="input-field col s12">
-                    <input asp-for="DoctorDetails.SpecialtyName" readonly />
-                    <label asp-for="DoctorDetails.SpecialtyName"></label>
+                    <input asp-for="DoctorDetails.SpecialtyList" readonly />
+                    <label asp-for="DoctorDetails.SpecialtyList"></label>
                 </div>
             </div>
             <form action="../Payment" id="Payment" method="post" autocomplete="on">

@@ -60,6 +60,10 @@ namespace ConsultaMD
                         BulkInsert.RunSql<DigitalSignature>(tsvPath, connection);
                     if (!context.Doctors.Any())
                         BulkInsert.RunSql<Doctor>(tsvPath, connection);
+                    if (!context.Specialties.Any())
+                        BulkInsert.RunSql<Specialty>(tsvPath, connection);
+                    if (!context.DoctorSpecialties.Any())
+                        BulkInsert.RunSql<DoctorSpecialty>(tsvPath, connection);
                     if (!context.InsuranceLocations.Any())
                         BulkInsert.RunSql<InsuranceLocation>(tsvPath, connection);
                     if (!context.MedicalAttentionMediums.Any())

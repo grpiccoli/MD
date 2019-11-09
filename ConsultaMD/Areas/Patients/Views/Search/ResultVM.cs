@@ -1,8 +1,5 @@
-﻿using ConsultaMD.Models.Entities;
-using ConsultaMD.Models.VM.PatientsVM;
-using System;
+﻿using ConsultaMD.Models.VM.PatientsVM;
 using System.Collections.Generic;
-using System.Globalization;
 using static ConsultaMD.Data.InsuranceData;
 
 namespace ConsultaMD.Areas.Patients.Views.Search
@@ -13,7 +10,7 @@ namespace ConsultaMD.Areas.Patients.Views.Search
         public int Price { get; set; }
         public string Dr { get; set; }
         public string Office { get; set; }
-        public string Especialidad { get; set; }
+        public IEnumerable<string> Especialidades { get; set; }
         public int Experience { get; set; }
         public bool Sex { get; set; }
         public IEnumerable<Insurance> Insurances { get; set; }

@@ -2,9 +2,10 @@
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using static ConsultaMD.Data.EspecialidadesData;
+using System.Linq;
 
 namespace ConsultaMD.Models.VM
 {
@@ -98,23 +99,21 @@ namespace ConsultaMD.Models.VM
         public DoctorDetails(Doctor doctor)
         {
             Id = doctor?.Id;
-            Specialty = doctor.Specialty;
+            Specialties = doctor.Specialties.Select(s => s.Specialty.Name);
             NaturalId = doctor.NaturalId;
             NaturalName = doctor.Natural.FullNameFirst;
         }
         public int? Id { get; private set;  }
         public bool Sex { get; private set; }
-        public Especialidad? Specialty { get; private set; }
-        [Display(Name = "Especialidad")]
-        public string SpecialtyName
-        {
+        public IEnumerable<string> Specialties { get; private set; }
+        public string SpecialtyList {
             get
             {
-                return Specialty.GetAttrName();
+                return string.Join(", ", Specialties);
             }
-            private set
+            private set 
             {
-                SpecialtyName = value;
+                SpecialtyList = value;
             }
         }
         public int NaturalId { get; private set; }
@@ -136,7 +135,7 @@ namespace ConsultaMD.Models.VM
         {
             get
             {
-                return Specialty.HasValue ? $"Dr{(Sex ? "" : "a")}." : null;
+                return $"Dr{(Sex ? "" : "a")}.";
             }
             private set
             {

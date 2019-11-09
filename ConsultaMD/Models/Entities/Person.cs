@@ -11,6 +11,7 @@ namespace ConsultaMD.Models.Entities
         [Display(Name = "RUT")]
         public int Id { get; set; }
         public string Discriminator { get; set; }
+        public string BanmedicaName { get; set; }
         public string GetRUT()
         {
             return RUT.Format(Id);

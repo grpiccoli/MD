@@ -90,7 +90,7 @@ const querystring = require('querystring');
                     await page.type('#EmailNotificacion', 'guille.arp@gmail.com');
                     await page.select('#TipoBusquedaProfesional', 'RutProfesional');
                     await page.type('#PalabraClave', '12116504-K');
-                    await page.select('#Especialidad', '120');
+                    //await page.select('#Especialidad', '120');
                     await page.select('#Region', '10');
                     break;
                 case 'BwPrmComunaS':

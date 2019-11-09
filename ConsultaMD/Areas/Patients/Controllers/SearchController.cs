@@ -66,8 +66,9 @@ namespace ConsultaMD.Areas.Patients.Controllers
                     Items = item.SelectMany(office =>
                             office.MediumDoctors
                             .Where(md =>
-                            (!filters.Especialidad.Any() || (md.Doctor.Specialty.HasValue
-                            && filters.Especialidad.Contains(md.Doctor.Specialty.Value)))
+                            (!filters.Especialidad.Any() 
+                            //|| (md.Doctor.Specialty.HasValue
+                            && filters.Especialidad.Any(e => md.Doctor.Specialties.Any(s => s.SpecialtyId == e)))
                             && (!filters.Sex.Any() || filters.Sex.Contains(md.Doctor.Natural.Sex))
                             && md.Agendas.Any(a => a.StartTime > DateTime.Now.AddMinutes(30)
                             && (!filters.Dates.Any() || filters.Dates.Any(d => d.Date == a.StartTime.Date))
@@ -84,7 +85,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                 Run = md.Doctor.NaturalId,
                                 Dr = md.Doctor.Natural.FullNameFirst,
                                 Experience = md.Doctor.GetYearsExperience(),
-                                Especialidad = md.Doctor.Specialty == null ? null : md.Doctor.Specialty.GetAttrName(),
+                                Especialidades = md.Doctor.Specialties.Select(s => s.Specialty.Name),
                                 Price = md.PriceParticular,
                                 Insurances = md.InsuranceLocations.Select(i => i.Insurance),
                                 Match = filters.Insurance == InsuranceData.Insurance.Particular 
@@ -118,12 +119,10 @@ namespace ConsultaMD.Areas.Patients.Controllers
 
             return Json(new
             {
-                esp = _context.MediumDoctors
-                .Include(c => c.Doctor)
-                .Where(md => md.Doctor.Specialty.HasValue)
-                .Select(md => new {
-                    id = (int)md.Doctor.Specialty.Value,
-                    text = md.Doctor.Specialty.GetAttrName(),
+                esp = _context.Specialties
+                .Select(s => new {
+                    id = s.Id,
+                    text = s.Name,
                 }).Distinct(),
                     loc = new object[]
                     {
@@ -235,7 +234,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
             var doc = await _context.Doctors
                 .Include(d => d.Natural)
                 .SingleOrDefaultAsync(d => d.NaturalId == id).ConfigureAwait(false);
-            var title = doc.Specialty.HasValue ? $"Dr{(doc.Natural.Sex ? ". " : "a. ")}" : "";
+            var title = $"Dr{(doc.Natural.Sex ? ". " : "a. ")}";
             ViewData["Title"] = $"<span class=\"hide-on-small-only\">Detalles</span> {title}{doc.Natural.GetName()} {doc.Natural.GetSurname()}";
 
             var mds = _context.MediumDoctors

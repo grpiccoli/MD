@@ -163,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     //change times
     function changeTimes(event: any, inst: any) {
-        console.log(event, inst);
         tmp.push(event);
         tmp.push(inst);
         var times = inst.getVal();

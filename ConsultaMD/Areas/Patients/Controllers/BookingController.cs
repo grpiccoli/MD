@@ -1,11 +1,9 @@
 ﻿using ConsultaMD.Data;
 using ConsultaMD.Extensions;
-using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM;
 using ConsultaMD.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.NodeServices;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,14 +15,11 @@ namespace ConsultaMD.Areas.Patients.Controllers
     public class BookingController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly INodeServices _nodeServices;
         private readonly IFonasa _fonasa;
         public BookingController(ApplicationDbContext context,
-            IFonasa fonasa,
-            INodeServices nodeServices)
+            IFonasa fonasa)
         {
             _fonasa = fonasa;
-            _nodeServices = nodeServices;
             _context = context;
         }
         [HttpGet]
@@ -58,7 +53,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Payment(string Rut, int Id)
+        public async Task<IActionResult> Payment(string Rut, int Id, int Sp)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +102,8 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                         PayRut = RUT.Fonasa(Rut),
                                         Phone = user.PhoneNumber.Replace("+56", "", System.StringComparison.InvariantCulture),
                                         Rut = RUT.Fonasa(user.PersonId),
-                                        Specialty = reservation.TimeSlot.Agenda.MediumDoctor.Doctor.Specialty.Value.ToString("d")
+                                        Specialty = Sp.ToString("d", null)
+                                        //reservation.TimeSlot.Agenda.MediumDoctor.Doctor.Specialty.Value.ToString("d")
                                     };
                                     var fonasaWebPay = await _fonasa.Pay(paymentData).ConfigureAwait(false);
                                     return Ok(fonasaWebPay.TokenWs);

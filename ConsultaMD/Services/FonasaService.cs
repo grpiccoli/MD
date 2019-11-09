@@ -3,6 +3,7 @@ using ConsultaMD.Models.VM;
 using Microsoft.AspNetCore.NodeServices;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ConsultaMD.Services

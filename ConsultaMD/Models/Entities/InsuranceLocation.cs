@@ -8,6 +8,8 @@ namespace ConsultaMD.Models.Entities
         public int MediumDoctorId { get; set; }
         public virtual MediumDoctor MediumDoctor { get; set; }
         public Insurance Insurance { get; set; }
+        public int PersonId { get; set; }
+        public virtual Person Person { get; set; }
         public string Password { get; set; }
     }
 }

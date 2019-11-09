@@ -43,11 +43,24 @@ namespace ConsultaMD.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetDoc(int rut, string dv)
+        {
+            if (dv == RUT.DV(rut)) {
+                var search = new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/Search?SearchView&Query=(FIELD%20rut_pres={rut})&Start=1&count=10");
+                var id = "";
+                var details = new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/{id}?OpenDocument");
+                return Ok();
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         //val  : name| rut | sex | address | commune | all
         //type : rut | buscar
         public async Task<IActionResult> GetNRYF(int rut, string dv, string val, string type)
         {
-            var rutF = $"{rut.ToString("N0", new CultureInfo("es-CL"))}-{dv}";
+            var rutF = RUT.Format(rut);
             var loginFormValues = new Dictionary<string, string>
             {
                 { "term", rutF }
@@ -128,20 +141,8 @@ namespace ConsultaMD.Controllers
                 var siiData = JsonConvert.DeserializeObject<SII>(response);
                 if (string.IsNullOrEmpty(siiData.Razon_Social)) return NotFound();
                 return val == "all" ? Ok(response) : Ok(siiData[val]);
-                //var json = JObject.Parse(response);
-                //if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
-                //return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
             }
             return NotFound();
-            //using (HttpClient client = new HttpClient())
-            //{
-            //     using (var response = await client.GetAsync(new Uri($"https://siichile.herokuapp.com/consulta?rut={rut}{dv}")).ConfigureAwait(false))
-            //     {
-            //         var json = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
-            //         if (string.IsNullOrEmpty((string)json.SelectToken("razon_social"))) return NotFound();
-            //         return val == "all" ? Ok(json) : Ok(json.SelectToken(val));
-            //     }
-            // }
         }
         [HttpGet]
         [Route("[action]")]

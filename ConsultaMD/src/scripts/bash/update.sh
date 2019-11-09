@@ -7,6 +7,7 @@ dotnet ef database drop
 dotnet ef database update
 #libman restore
 wget https://unpkg.com/jquery.mousewheel@3.1.9/jquery.mousewheel.js -O wwwroot/lib/jquery.mousewheel/jquery.mousewheel.js
+wget https://unpkg.com/jquery-hammerjs@2.0.0/jquery.hammer.js -O wwwroot/lib/jquery-hammerjs/jquery.hammer.js
 wget https://unpkg.com/jquery-validation-unobtrusive@3.2.11/dist/jquery.validate.unobtrusive.min.js -O wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js
 online_md5="$(curl -sL https://unpkg.com/jquery.mousewheel@3.1.9/jquery.mousewheel.js | md5sum | cut -d ' ' -f 1)"
 local_md5="$(md5sum "wwwroot/lib/jquery.mousewheel/jquery.mousewheel.js" | cut -d ' ' -f 1)"
@@ -22,10 +23,16 @@ npm i
 ./node_modules/cldr-data-downloader/bin/download.sh -f -i http://www.unicode.org/Public/cldr/26/json.zip -o ./wwwroot/lib/cldr-data
 dotnet run
 dotnet publish -r linux-x64 -c Release
-systemctl stop kestrel-consultamd.service;rm -r ../../webapps/consultamd/;mkdir -p ../../webapps/consultamd/;rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ../../webapps/consultamd/;systemctl start kestrel-consultamd.service
+systemctl stop kestrel-consultamd.service;rm -r ../../webapps/consultamd/;mkdir -p ../../webapps/consultamd/;rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ../../webapps/consultamd/;
+npm --prefix ../../webapps/consultamd/ install ../../webapps/consultamd/
+systemctl start kestrel-consultamd.service
+
+#config kestrel
+sudo vim /etc/systemd/system/kestrel-consultamd.service
+systemctl daemon-reload
 
 #ONE TIME MS CONFIGURATION
-npm i -g @mobiscroll/cli
+sudo npm i -g @mobiscroll/cli
 mobiscroll login --global
 mobiscroll config javascript
 

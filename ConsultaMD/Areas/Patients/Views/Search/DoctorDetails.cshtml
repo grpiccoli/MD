@@ -47,7 +47,7 @@
             </div>
             <div class="col s6 m8 p-0">
                 <h5 class="white-text" id="nombre-data">@Model.Title@Model.DocVM.Natural.FullNameFirst</h5>
-                <span>@(Model.DocVM.Specialty.HasValue ? Model.DocVM.Specialty.Value.ToString() + ", " + @Model.DocVM.YearSpecialty : "")</span>
+                @*<span>@(Model.DocVM.Specialty.HasValue ? Model.DocVM.Specialty.Value.ToString() + ", " + @Model.DocVM.YearSpecialty : "")</span>*@
             </div>
         </div>
     </li>
@@ -60,7 +60,7 @@
                 <input asp-for="Title" />
                 <input asp-for="DocVM.Id" />
                 <input asp-for="DocVM.NaturalId" />
-                <input asp-for="DocVM.Specialty" />
+                @*<input asp-for="DocVM.Specialty" />*@
                 <input asp-for="TimeSlotId" />
                 <input asp-for="Last" />
                 <select asp-for="PlaceId" asp-items="Model.PlaceList"></select>
@@ -103,7 +103,7 @@
                                 Título
                             </td>
                             <td>
-                                @Html.DisplayFor(m => m.DocVM.Title)
+                                @*@Html.DisplayFor(m => m.DocVM.Title)*@
                             </td>
                         </tr>
                         <tr>
@@ -111,7 +111,7 @@
                                 Año titulación
                             </td>
                             <td>
-                                @Model.DocVM.YearTitle
+                                @*@Model.DocVM.YearTitle*@
                             </td>
                         </tr>
                         <tr>
@@ -127,7 +127,7 @@
                                 Acreditado por
                             </td>
                             <td>
-                                @Model.DocVM.Institution
+                                @*@Model.DocVM.Institution*@
                             </td>
                         </tr>
                         <tr>

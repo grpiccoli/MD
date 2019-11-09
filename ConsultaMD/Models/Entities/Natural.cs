@@ -1,8 +1,10 @@
 ﻿using ConsultaMD.Models.VM;
 using ConsultaMD.Services;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Linq;
 
 namespace ConsultaMD.Models.Entities
 {
@@ -13,6 +15,8 @@ namespace ConsultaMD.Models.Entities
             LastFather = fonasa?.ExtApellidoPat;
             LastMother = fonasa.ExtApellidoMat;
             Names = fonasa.ExtNombres;
+            FullNameFirst = string.Join(" ", new List<string> { Names, LastFather, LastMother }.Select(l => !string.IsNullOrWhiteSpace(l)));
+            FullLastFirst = string.Join(" ", new List<string> { LastFather, LastMother, Names }.Select(l => !string.IsNullOrWhiteSpace(l)));
             Sex = fonasa.ExtSexo == "M";
             Birth = DateTime.ParseExact(fonasa.ExtFechaNacimi, "YYYYMMDD", CultureInfo.InvariantCulture);
         }

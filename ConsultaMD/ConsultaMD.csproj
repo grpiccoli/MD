@@ -11,38 +11,14 @@
   </PropertyGroup>
 
    <ItemGroup> 
-     <Content Include="profileImg\doc\10818980.min.jpg" /> 
-     <Content Include="profileImg\doc\10818980.png" /> 
-     <Content Include="profileImg\doc\12116504.jpg" /> 
-     <Content Include="profileImg\doc\12116504.min.jpg" /> 
-     <Content Include="profileImg\doc\12116504.png" /> 
-     <Content Include="profileImg\doc\13657332.jpg" /> 
-     <Content Include="profileImg\doc\13657332.min.jpg" /> 
-     <Content Include="profileImg\doc\13657332.png" /> 
-     <Content Include="profileImg\doc\15625915.jpg" /> 
-     <Content Include="profileImg\doc\15625915.min.jpg" /> 
-     <Content Include="profileImg\doc\15625915.png" /> 
-     <Content Include="profileImg\doc\16124902.jpg" /> 
-     <Content Include="profileImg\doc\16124902.min.jpg" /> 
-     <Content Include="profileImg\doc\16124902.png" /> 
-     <Content Include="profileImg\doc\8749179.jpg" /> 
-     <Content Include="profileImg\doc\8749179.min.jpg" /> 
-     <Content Include="profileImg\doc\8749179.png" /> 
-     <Content Include="profileImg\doc\9643638.jpg" /> 
-     <Content Include="profileImg\doc\9643638.min.jpg" /> 
-     <Content Include="profileImg\doc\9643638.png" /> 
-     <Content Include="profileImg\doc\9649928.jpg" /> 
-     <Content Include="profileImg\doc\9649928.min.jpg" /> 
-     <Content Include="profileImg\doc\9649928.png" /> 
-     <Content Include="profileImg\doc\Borquez-Copy.png" /> 
-     <Content Include="profileImg\doc\default.min.jpg" /> 
-     <Content Include="profileImg\doc\default.png" /> 
-     <Content Include="profileImg\doc\Guillermo-Rodríguez1.jpg" /> 
      <Content Include="src/scripts/node/ps/SII.rb" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/ps/SII.js" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/mi/fonasa.js" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/mi/FonasaService.js" CopyToPublishDirectory="PreserveNewest" />
      <Content Include="profileImg\**" CopyToPublishDirectory="PreserveNewest" LinkBase="profileImg" />
+     <Content Include="node_modules\**" CopyToPublishDirectory="PreserveNewest" LinkBase="node_modules" />
+     <None Update="chromedriver.exe" CopyToPublishDirectory="PreserveNewest" />
+     <None Update="chromedriver" CopyToPublishDirectory="PreserveNewest" />
    </ItemGroup> 
   
   <ItemGroup>
@@ -65,6 +41,10 @@
     <TypeScriptCompile Remove="src\scripts\bash\train\**" />
     <TypeScriptCompile Remove="wwwroot\js\**" />
     <TypeScriptCompile Remove="wwwroot\lib\**" />
+    <Compile Remove="Migrations\20191103234316_Initial.cs" />
+    <Compile Remove="Migrations\20191103234316_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191108171818_Initial.cs" />
+    <Compile Remove="Migrations\20191108171818_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\doctor-details.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -80,9 +60,6 @@
     <None Remove="src\scripts\jquery.validate.hooks.js" />
     <None Remove="src\scripts\loader.ts" />
     <None Remove="src\scripts\map.ts" />
-    <None Remove="src\scripts\map.v1.ts" />
-    <None Remove="src\scripts\map.v2.ts" />
-    <None Remove="src\scripts\map.v3.ts" />
     <None Remove="src\scripts\markerclusterer.js" />
     <None Remove="src\scripts\node\ps\SII.ts" />
     <None Remove="src\types\anypicker\index.d.ts" />
@@ -97,7 +74,6 @@
     <None Remove="src\types\mobiscroll\index.d.ts" />
     <None Remove="src\types\select2\index.d.ts" />
     <TypeScriptCompile Remove="src\types\mobiscroll\index.d.ts" />
-    <TypeScriptCompile Remove="wwwroot\mobiscroll\mobiscroll.jquery.min.d.ts" />
     <Content Include="package_webpack.json_bak" />
     <Content Include="src\scripts\markerclusterer.js">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -151,11 +127,6 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.9.406" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="chromedriver.exe" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="chromedriver" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

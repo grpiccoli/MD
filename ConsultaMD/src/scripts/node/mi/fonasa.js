@@ -89,7 +89,7 @@ module.exports = async function (callback, data) {
                     await type(page, '#EmailNotificacion', data.email);
                     await page.select('#TipoBusquedaProfesional', 'RutProfesional');
                     await type(page, '#PalabraClave', data.docRut);
-                    await page.select('#Especialidad', data.specialty);
+                    //await page.select('#Especialidad', data.specialty);
                     await page.select('#Region', data.region);
                     break;
                 case 'BwPrmComunaS':

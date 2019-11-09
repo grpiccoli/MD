@@ -12,8 +12,8 @@ namespace ConsultaMD.Models.VM.PatientsVM
         [Display(Name = "Ubicación")]
         public HashSet<int> Ubicacion { get; } = new HashSet<int>();
         [Display(Name = "Especialidad")]
-        public HashSet<Especialidad> Especialidad { get; } 
-            = new HashSet<Especialidad>();
+        public HashSet<int> Especialidad { get; } 
+            = new HashSet<int>();
         [Display(Name = "Género")]
         public HashSet<bool> Sex { get; } = new HashSet<bool>();
         //[Range(1, 24)]

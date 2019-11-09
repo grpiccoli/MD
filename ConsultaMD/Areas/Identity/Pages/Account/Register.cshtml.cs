@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Html;
 using System.Net;
 using ConsultaMD.Extensions.Validation;
 using Microsoft.Extensions.Localization;
+using ConsultaMD.Controllers;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -28,6 +29,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IViewRenderService _viewRenderService;
+        private readonly SPController _sPController;
         private readonly IFonasa _fonasa;
         private readonly IStringLocalizer<RegisterModel> _localizer;
 
@@ -38,8 +40,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             IFonasa fonasa,
+            SPController sPController,
             IViewRenderService viewRenderService)
         {
+            _sPController = sPController;
             _fonasa = fonasa;
             _localizer = localizer;
             _userManager = userManager;
@@ -68,6 +72,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 var carnetParsing = int.TryParse(Input.CarnetId.Replace(".","", StringComparison.InvariantCulture), out int carnetParsed);
                 if (rutParsed.HasValue && carnetParsing)
                 {
+                    await _sPController.DocumentRequestStatus(rutParsed.Value.rut, rutParsed.Value.dv, carnetParsed).ConfigureAwait(false);
                     var carnet = new Carnet
                     {
                         Id = carnetParsed

@@ -60,6 +60,19 @@ namespace ConsultaMD.Data
                     .HasForeignKey(i => i.ProvinceId)
                     .OnDelete(DeleteBehavior.Restrict);
 
+                modelBuilder.Entity<DoctorSpecialty>(a =>
+                {
+                    a.HasKey(p => new { p.DoctorId, p.SpecialtyId });
+
+                    a.HasOne(md => md.Doctor)
+                        .WithMany(d => d.Specialties)
+                        .HasForeignKey(md => md.DoctorId);
+
+                    a.HasOne(md => md.Specialty)
+                        .WithMany(d => d.Doctors)
+                        .HasForeignKey(md => md.SpecialtyId);
+                });
+
                 modelBuilder.Entity<Province>(r =>
                 {
                     r.HasOne(p => p.Region)
@@ -164,6 +177,7 @@ namespace ConsultaMD.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<DigitalSignature> DigitalSignatures { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<DoctorSpecialty> DoctorSpecialties { get; set; }
         public DbSet<HomeVisit> HomeVisits { get; set; }
         public DbSet<InsuranceLocation> InsuranceLocations { get; set; }
         public DbSet<MedicalCoverage> MedicalCoverages { get; set; }
@@ -175,11 +189,12 @@ namespace ConsultaMD.Data
         public DbSet<Place> Places { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Polygon> Polygons { get; set; }
-        public DbSet<Publication> Publications { get; set; }
+        //public DbSet<Publication> Publications { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<RemoteAppointment> RemoteAppointments { get; set; }
-        public DbSet<Subspecialty> Subspecialties { get; set; }
+        //public DbSet<Subspecialty> Subspecialties { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
         public DbSet<TimeSlot> TimeSlots { get; set; }
         public DbSet<Vertex> Vertices { get; set; }
         public DbSet<Locality> Localities { get; set; }

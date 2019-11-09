@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#Dates').change();
     }
     function changeTimes(event, inst) {
-        console.log(event, inst);
         tmp.push(event);
         tmp.push(inst);
         var times = inst.getVal();
