@@ -242,9 +242,6 @@ a[rel="noopener"] {
 #toggle-view {
   width: 100px; }
 
-.preloader-background {
-  left: calc(300px + (100% - 300px) / 2 - 40px); }
-
 .slider-row {
   padding: 20px 16px 50px 16px; }
 
@@ -260,8 +257,6 @@ a[rel="noopener"] {
     left: 0; }
   .list-btn {
     left: calc(50% - 100px / 2); }
-  .preloader-background {
-    left: calc(50% - 40px); }
   #dates-col > div.calentim-container.calentim-inline {
     margin: 0 calc((100vw - 500px) / 2); } }
 

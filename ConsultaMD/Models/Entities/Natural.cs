@@ -1,5 +1,4 @@
 ﻿using ConsultaMD.Models.VM;
-using ConsultaMD.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,10 +14,10 @@ namespace ConsultaMD.Models.Entities
             LastFather = fonasa?.ExtApellidoPat;
             LastMother = fonasa.ExtApellidoMat;
             Names = fonasa.ExtNombres;
-            FullNameFirst = string.Join(" ", new List<string> { Names, LastFather, LastMother }.Select(l => !string.IsNullOrWhiteSpace(l)));
-            FullLastFirst = string.Join(" ", new List<string> { LastFather, LastMother, Names }.Select(l => !string.IsNullOrWhiteSpace(l)));
+            FullNameFirst = string.Join(" ", new List<string> { Names, LastFather, LastMother }.Where(l => !string.IsNullOrWhiteSpace(l)));
+            FullLastFirst = string.Join(" ", new List<string> { LastFather, LastMother, Names }.Where(l => !string.IsNullOrWhiteSpace(l)));
             Sex = fonasa.ExtSexo == "M";
-            Birth = DateTime.ParseExact(fonasa.ExtFechaNacimi, "YYYYMMDD", CultureInfo.InvariantCulture);
+            Birth = DateTime.ParseExact(fonasa.ExtFechaNacimi, "yyyyMMdd", CultureInfo.InvariantCulture);
         }
         public int CarnetId { get; set; }
         public virtual Carnet Carnet { get; set; }

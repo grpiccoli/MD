@@ -165,7 +165,12 @@ namespace ConsultaMD.Migrations
 
                     b.Property<string>("FrontImage");
 
+                    b.Property<int>("NaturalId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("NaturalId")
+                        .IsUnique();
 
                     b.ToTable("Carnets");
                 });
@@ -218,6 +223,9 @@ namespace ConsultaMD.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NaturalId")
+                        .IsUnique();
+
                     b.ToTable("DigitalSignatures");
                 });
 
@@ -266,9 +274,13 @@ namespace ConsultaMD.Migrations
 
                     b.Property<string>("Password");
 
+                    b.Property<int>("PersonId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("MediumDoctorId");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("InsuranceLocations");
                 });
@@ -701,12 +713,6 @@ namespace ConsultaMD.Migrations
 
                     b.Property<bool>("Sex");
 
-                    b.HasIndex("CarnetId");
-
-                    b.HasIndex("DigitalSignatureId")
-                        .IsUnique()
-                        .HasFilter("[DigitalSignatureId] IS NOT NULL");
-
                     b.HasDiscriminator().HasValue("Natural");
                 });
 
@@ -752,6 +758,14 @@ namespace ConsultaMD.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Carnet", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
+                        .WithOne("Carnet")
+                        .HasForeignKey("ConsultaMD.Models.Entities.Carnet", "NaturalId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ConsultaMD.Models.Entities.Census", b =>
                 {
                     b.HasOne("ConsultaMD.Models.Entities.Locality", "Locality")
@@ -764,6 +778,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Company")
                         .WithMany("CommercialActivities")
                         .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.DigitalSignature", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
+                        .WithOne("DigitalSignature")
+                        .HasForeignKey("ConsultaMD.Models.Entities.DigitalSignature", "NaturalId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
@@ -792,6 +814,11 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("MediumDoctorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsultaMD.Models.Entities.Person", "Person")
+                        .WithMany("InsuranceLocations")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -929,19 +956,6 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Region", "Region")
                         .WithMany("Provinces")
                         .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("ConsultaMD.Models.Entities.Natural", b =>
-                {
-                    b.HasOne("ConsultaMD.Models.Entities.Carnet", "Carnet")
-                        .WithMany()
-                        .HasForeignKey("CarnetId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ConsultaMD.Models.Entities.DigitalSignature", "DigitalSignature")
-                        .WithOne("Natural")
-                        .HasForeignKey("ConsultaMD.Models.Entities.Natural", "DigitalSignatureId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

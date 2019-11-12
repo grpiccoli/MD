@@ -1,9 +1,9 @@
 ﻿using ConsultaMD.Extensions;
 using ConsultaMD.Models.VM;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.NodeServices;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ConsultaMD.Services
@@ -20,21 +20,25 @@ namespace ConsultaMD.Services
         }
         public async Task Init()
         {
+            FonasaSettings.Close = false;
             var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
-            FonasaSettings.BrowserWSEndpoint = response;
+            var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
+            FonasaSettings.BrowserWSEndpoint = fonasaData.BrowserWSEndpoint;
             return;
         }
         public async Task CloseBW()
         {
-            FonasaSettings.Rut = null;
+            FonasaSettings.Close = true;
             await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
             return;
         }
         public async Task<Fonasa> GetById(int id)
         {
+            FonasaSettings.Close = false;
             FonasaSettings.Rut = RUT.Fonasa(id);
             var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
             var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
+            FonasaSettings.BrowserWSEndpoint = fonasaData.BrowserWSEndpoint;
             return fonasaData;
         }
         public async Task<FonasaWebPay> Pay(PaymentData paymentData)
@@ -54,6 +58,7 @@ namespace ConsultaMD.Services
         public string AcKey { get; set; }
         public string Rut { get; set; }
         public string BrowserWSEndpoint { get; internal set; }
+        public bool Close { get; set; }
     }
     public class PaymentData
     {

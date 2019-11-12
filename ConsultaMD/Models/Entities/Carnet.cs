@@ -10,6 +10,8 @@ namespace ConsultaMD.Models.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
+        public int NaturalId { get; set; }
+        public virtual Natural Natural { get; set; }
         public string BackImage { get; set; }
         public string FrontImage { get; set; }
     }

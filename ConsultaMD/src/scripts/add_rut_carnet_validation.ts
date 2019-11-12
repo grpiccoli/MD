@@ -3,10 +3,12 @@ var rutId = "Input_RUT";
 const nameId = "Input_Name";
 const carnetId = "Input_CarnetId";
 const nationId = "Input_Nationality";
+const email = "Input_Email";
 var $rut = $(`#${rutId}`);
 var $name = $(`#${nameId}`);
 var $carnet = $(`#${carnetId}`);
 var $nation = $(`#${nationId}`);
+var $email = $(`#${email}`);
 var minLengthRut = 7;
 const minLengthCarnet = 9;
 const debounceTO = 300;
@@ -15,10 +17,9 @@ const $carnetDiv = $carnet.parent();
 const $nationDiv = $nation.parent();
 
 document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, {});
+    M.Collapsible.init(document.querySelectorAll('.collapsible'));
+    //$("form").validate().element("#Input_RUT");
 });
-//$('.collapsible').collapsible();
 
 //Format as you type RUT
 $rut.on('keyup', function () {
@@ -28,7 +29,8 @@ $rut.on('keyup', function () {
     $name.prop('readonly', true);
     $carnet.val('');
     $name.val('');
-}).rut({ formatOn: 'keyup change', minimumLength: minLengthRut, validateOn: 'change' });
+})
+    .rut({ formatOn: 'keyup change', minimumLength: minLengthRut, validateOn: 'change' });
 
 //Format as you type Carnet
 new Cleave(`#${carnetId}`, {
@@ -40,6 +42,7 @@ new Cleave(`#${carnetId}`, {
 //Validator RUT
 $.validator.addMethod("rut",
     function (value, element, _params) {
+        loaderStart();
         var valid = false;
         $(element).val(value.replace(/k/, "K"));
         $.validateRut(value, (rut: number, dv: string) => {
@@ -67,9 +70,11 @@ $.validator.addMethod("rut",
                     $nameDiv.slideDown();
                     $carnetDiv.slideDown();
                     $carnet.focus();
+                    M.toast({ html: 'RUT válido', classes: 'rounded' });
                 }
             });
         }, { minimumLength: minLengthRut });
+        loaderStop();
         return valid;
     });
 
@@ -81,6 +86,7 @@ $.validator.unobtrusive.adapters.add("rut", [], function (options: any) {
 //Validator Carnet
 $.validator.addMethod("carnet",
     function (value, element, _params) {
+        loaderStart();
         var carnet = value;
         var valid = false;
         $nationDiv.slideUp();
@@ -104,10 +110,13 @@ $.validator.addMethod("carnet",
                         $nation.val(result.nacionalidad);
                         M.updateTextFields();
                         $nationDiv.slideDown();
+                        $email.focus();
+                        M.toast({ html: 'Cédula válida', classes: 'rounded' });
                     }
                 });
             }, { minimumLength: minLengthRut });
         }
+        loaderStop();
         return valid;
     });
 

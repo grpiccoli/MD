@@ -1,1 +1,1 @@
-﻿.preloader-background{display:none;align-items:center;justify-content:center;background-color:transparent;position:fixed;z-index:100;top:50%;left:60%;right:0;bottom:0;}
+﻿.preloader-background{display:none;align-items:center;justify-content:center;background-color:transparent;position:fixed;z-index:100;top:calc(50% - 25px);left:calc(300px + (100% - 300px)/2 - 25px);right:0;bottom:0;}@media only screen and (max-width:990px){.preloader-background{left:calc(50% - 25px);}}

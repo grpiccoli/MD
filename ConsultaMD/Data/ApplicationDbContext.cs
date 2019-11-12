@@ -122,6 +122,9 @@ namespace ConsultaMD.Data
                     .HasKey(p => new { p.NaturalId });
 
                 modelBuilder.Entity<Natural>(entity => {
+                    entity.HasOne(n => n.Carnet)
+                    .WithOne(c => c.Natural)
+                    .HasForeignKey<Carnet>(c => c.NaturalId);
                     entity.HasOne(d => d.Doctor)
                     .WithOne(n => n.Natural)
                     .HasForeignKey<Doctor>(n => n.NaturalId);
@@ -130,11 +133,6 @@ namespace ConsultaMD.Data
                     .HasForeignKey<DigitalSignature>(n => n.NaturalId)
                     .OnDelete(DeleteBehavior.Restrict);
                 });
-
-                modelBuilder.Entity<DigitalSignature>()
-                    .HasOne(d => d.Natural)
-                    .WithOne(d => d.DigitalSignature)
-                    .HasForeignKey<Natural>(d => d.DigitalSignatureId);
 
                 modelBuilder.Entity<TimeSlot>()
                     .HasOne(r => r.Reservation)

@@ -72,7 +72,17 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="input-field col s12">
+                <p>
+                    <label>
+                        <input asp-for="Input.Agree" class="validate" />
+                        <span>@Html.DisplayNameFor(model => model.Input.Agree)</span>
+                    </label>
+                </p>
+                <span asp-validation-for="Input.Agree" class="text-danger"></span>
+            </div>
             <div class="row">
+                <input asp-for="Input.ConnectionId" class="hide" readonly />
                 <div class="col s6">
                     <button type="submit" class="btn waves-effect waves-light white-text teal pill">Registrarse</button>
                 </div>

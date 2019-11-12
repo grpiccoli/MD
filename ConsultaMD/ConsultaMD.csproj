@@ -8,6 +8,7 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <NeutralLanguage>es</NeutralLanguage>
+    <UICulture>es-CL</UICulture>
   </PropertyGroup>
 
    <ItemGroup> 
@@ -45,9 +46,14 @@
     <Compile Remove="Migrations\20191103234316_Initial.Designer.cs" />
     <Compile Remove="Migrations\20191108171818_Initial.cs" />
     <Compile Remove="Migrations\20191108171818_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191109143900_Initial.cs" />
+    <Compile Remove="Migrations\20191109143900_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191110225247_Initial.cs" />
+    <Compile Remove="Migrations\20191110225247_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\doctor-details.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\scripts\feedback.js" />
     <TypeScriptCompile Include="src\scripts\jquery.validate.hooks.js" />
     <None Remove=".babelrc" />
     <None Remove="package_webpack.json_bak" />
@@ -57,6 +63,7 @@
     <None Remove="src\scripts\debounce.ts" />
     <None Remove="src\scripts\doctor-details.ts" />
     <None Remove="src\scripts\doctor-details.ts.bak1" />
+    <None Remove="src\scripts\feedback.js" />
     <None Remove="src\scripts\jquery.validate.hooks.js" />
     <None Remove="src\scripts\loader.ts" />
     <None Remove="src\scripts\map.ts" />

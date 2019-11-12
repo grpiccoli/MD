@@ -7,6 +7,7 @@ using ConsultaMD.Data;
 using ConsultaMD.Extensions;
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
+using ConsultaMD.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using static ConsultaMD.Data.InsuranceData;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
@@ -26,13 +28,16 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<RegisterModel> _logger;
+        private readonly IFonasa _fonasa;
         private readonly IStringLocalizer<InsuranceDetailsModel> _localizer;
 
         public InsuranceDetailsModel(UserManager<ApplicationUser> userManager,
             ILogger<RegisterModel> logger,
+            IFonasa fonasa,
             IStringLocalizer<InsuranceDetailsModel> localizer,
             ApplicationDbContext context)
         {
+            _fonasa = fonasa;
             _localizer = localizer;
             _userManager = userManager;
             _logger = logger;
@@ -55,22 +60,23 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
         public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
                 var person = _context.Naturals
                     .Include(n => n.Patient)
                     .SingleOrDefault(p => p.Id == user.PersonId);
-                var patient = person.Patient ?? new Patient();
-                patient.Insurance = Input.Insurance;
-                patient.InsurancePassword = Input.InsurancePassword;
-                person.Patient = patient;
-                if(patient.NaturalId == 0)
+                if(person.Patient == null)
                 {
-                    patient.NaturalId = person.Id;
-                    var pResult = await _context.Patients.AddAsync(patient).ConfigureAwait(false);
+                    person.Patient = new Patient { 
+                        NaturalId = person.Id,
+                        Natural = person
+                    };
                 }
+                person.Patient.Insurance = Input.Insurance;
+                person.Patient.InsurancePassword = Input.InsurancePassword;
+                var pResult = await _context.Patients.AddAsync(person.Patient).ConfigureAwait(false);
                 var result = _context.People.Update(person);
                 await _context.SaveChangesAsync().ConfigureAwait(false);
                 _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
@@ -87,7 +93,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Insurance(ErrorMessage = "El RUT no está registrado en la previsión seleccionada")]
         public Insurance Insurance { get; set; }
 
-        public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name").Where(e => e.Value != "1");
+        public string InsuranceList { get; set; } = JsonConvert.SerializeObject(EnumUtils.Enum2MS<Insurance>("Name").Where(e => e.Value != "1"));
+        //public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name").Where(e => e.Value != "1");
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña de su Previsión")]
         [InsurancePassword(ErrorMessage = "Error en la combinación Previsión/{0}")]

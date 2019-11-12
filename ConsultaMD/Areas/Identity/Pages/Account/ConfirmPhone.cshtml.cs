@@ -41,7 +41,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
             await LoadPhoneNumber().ConfigureAwait(false);
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
             if (!ModelState.IsValid)
             {
                 return Page();

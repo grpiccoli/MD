@@ -1,7 +1,7 @@
 function loaderStart() {
-    $(".preloader-background").css("display", "block");
+    document.getElementsByClassName('preloader-background')[0].style.display = "block";
 }
 function loaderStop() {
-    $(".preloader-background").css("display", "none");
+    document.getElementsByClassName('preloader-background')[0].style.display = "none";
 }
 //# sourceMappingURL=loader.js.map

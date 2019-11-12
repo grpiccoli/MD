@@ -60,7 +60,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnGetCallbackAsync(Uri returnUrl = null, string remoteError = null)
         {
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
             if (remoteError != null)
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";

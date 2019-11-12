@@ -60,7 +60,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
+            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
 
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync().ConfigureAwait(false);
             if (user == null)

@@ -17,5 +17,6 @@ namespace ConsultaMD.Models.VM
         public string ExtGrupoIng { get; set; }
         public string FechaNacimi { get; set; }
         public int EdadBeneficiario { get; set; }
+        public string BrowserWSEndpoint { get; set; }
     }
 }

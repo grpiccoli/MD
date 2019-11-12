@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsultaMD.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,17 @@ namespace ConsultaMD.Models.Entities
 {
     public class Doctor
     {
+        public Doctor() { }
+        public Doctor(SuperData superData) 
+        {
+            if(superData != null)
+            {
+                Id = superData.Id;
+                RegistryDate = superData.Registry;
+                SisId = superData.Sis;
+                Specialties = superData.GetSpecialties.ToList();
+            }
+        }
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Registro Médico")]
         public int Id { get; set; }

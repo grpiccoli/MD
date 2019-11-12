@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
 using ConsultaMD.Extensions;
@@ -39,19 +38,6 @@ namespace ConsultaMD.Controllers
             _fonasa = fonasa;
             _nodeServices = nodeServices;
             _hostingEnvironment = hostingEnvironment;
-        }
-        [HttpPost]
-        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetDoc(int rut, string dv)
-        {
-            if (dv == RUT.DV(rut)) {
-                var search = new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/Search?SearchView&Query=(FIELD%20rut_pres={rut})&Start=1&count=10");
-                var id = "";
-                var details = new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/{id}?OpenDocument");
-                return Ok();
-            }
-            return NotFound();
         }
         [HttpPost]
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
@@ -133,8 +119,7 @@ namespace ConsultaMD.Controllers
         //val : rut | razon_social | actividades | all
         public async Task<IActionResult> GetSII(int run, string dv, string val)
         {
-            var realDV = RUT.DV(run);
-            if (realDV == dv)
+            if (RUT.IsValid(run, dv))
             {
                 var rut = RUT.Format(run);
                 var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/SII.js", rut).ConfigureAwait(false);
@@ -144,106 +129,18 @@ namespace ConsultaMD.Controllers
             }
             return NotFound();
         }
-        [HttpGet]
-        [Route("[action]")]
-        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DocumentStatus(string rut)
-        {
-            var uri = new Uri("https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentStatus.xhtml");
-            using (HttpClient hc = new HttpClient())
-            {
-                var parser = new HtmlParser();
-                using (HttpClient client = new HttpClient())
-                {
-                    using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri).ConfigureAwait(false)).ConfigureAwait(false))
-                    {
-                        var loginFormValues = new Dictionary<string, string>
-                        {
-                            { "form", "form" },
-                            { "form:run", rut },
-                            { "form:styledSelect", "CEDULA" },
-                            { "form:buttonHidden", "" },
-                            { "javax.faces.ViewState", Javax(docHome) }
-                        };
-                        var formContent = new FormUrlEncodedContent(loginFormValues);
-                        using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                        {
-                            formContent.Dispose();
-                            using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                            {
-                                var tableNac = GetRows(docNac);
-                                if (tableNac.Length > 2) return Ok(new { nacionalidad= "chilena"});
-                                loginFormValues["javax.faces.ViewState"] = Javax(docNac);
-                                loginFormValues["form:styledSelect"] = "CEDULA_EXT";
-                                formContent = new FormUrlEncodedContent(loginFormValues);
-                                using (var qExt = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                                {
-                                    formContent.Dispose();
-                                    using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                                    {
-                                        var tableExt = GetRows(docExt);
-                                        if (tableExt.Length > 2) return Ok(new { nacionalidad= "extranjera" });
-                                        return NotFound();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
         [HttpPost]
         [AllowAnonymous]
         [ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DocumentRequestStatus(int rut, string dv, int carnet)
+        public async Task<IActionResult> DocumentRequestStatus(int rut, string dv, int carnet = 0)
         {
-            if (rut > 900_000 && rut < 30_000_000 && dv?.Length == 1 && carnet > 100_000_000 && carnet < 999_999_999)
+            if (rut > 900_000 && rut < 30_000_000 && RUT.IsValid(rut,dv) && carnet > 100_000_000 && carnet < 999_999_999)
             {
-                var uri = new Uri("https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml");
-                using (HttpClient hc = new HttpClient())
-                {
-                    var parser = new HtmlParser();
-                    using (HttpClient client = new HttpClient())
-                    {
-                        using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri).ConfigureAwait(false)).ConfigureAwait(false))
-                        {
-                            var loginFormValues = new Dictionary<string, string>
-                        {
-                            { "form", "form" },
-                            { "form:run", $"{rut}-{dv}" },
-                            { "form:selectDocType", "CEDULA" },
-                            { "form:docNumber", carnet.ToString(CultureInfo.InvariantCulture) },
-                            { "form:buttonHidden", "" },
-                            { "javax.faces.ViewState", Javax(docHome) }
-                        };
-                            var formContent = new FormUrlEncodedContent(loginFormValues);
-                            using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                            {
-                                formContent.Dispose();
-                                using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                                {
-                                    var estado = GetEstadoCarnet(docNac);
-                                    if (estado == "Vigente") return Ok(new { nacionalidad = "CHILENA" });
-                                    loginFormValues["javax.faces.ViewState"] = Javax(docNac);
-                                    loginFormValues["form:selectDocType"] = "CEDULA_EXT";
-                                    formContent = new FormUrlEncodedContent(loginFormValues);
-                                    using (var qExt = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                                    {
-                                        formContent.Dispose();
-                                        using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                                        {
-                                            estado = GetEstadoCarnet(docExt);
-                                            if (estado == "Vigente") return Ok(new { nacionalidad = "EXTRANJERA" });
-                                            return NotFound();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                var result = await SPServices.SRCI(rut, carnet).ConfigureAwait(false);
+                if (result != null) {
+                    return Ok(new { nacionalidad = result });
                 }
             }
             return NotFound();
@@ -335,21 +232,6 @@ namespace ConsultaMD.Controllers
                 return Ok(new { value = nombre });
             }
             return NotFound();
-        }
-
-        public static IHtmlCollection<IElement> GetRows(IHtmlDocument doc)
-        {
-            return doc?.QuerySelectorAll("tr.rowWidth > td");
-        }
-
-        public static string GetEstadoCarnet(IHtmlDocument doc)
-        {
-            return doc?.QuerySelector(".setWidthOfSecondColumn").TextContent;
-        }
-
-        public static string Javax(IHtmlDocument doc)
-        {
-            return doc?.GetElementsByTagName("input").Last().GetAttribute("value");
         }
 
         public static async Task<IHtmlDocument> GetDoc(Uri rep)

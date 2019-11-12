@@ -53,7 +53,7 @@
     <partial name="_Favicons" />
     @*"@fortawesome/fontawesome-free",*@
     @*<link href="<%= htmlWebpackPlugin.files.chunks[chunk].css %>" rel="stylesheet" />  *@
-    <partial name="_Libs" model='(new string[]{ "ms", "materialize-css", "jquery", "jquery.mousewheel", "main"}, "TOP")' />
+    <partial name="_Libs" model='(new string[]{ "ms", "materialize-css", "jquery", "jquery.mousewheel", "@aspnet/signalr", "main"}, "TOP")' />
     @*<partial name="_Scripts" model='(new string[]{"jquery", "materialize-css", "main", "runtime"}, "-TOP_")' />*@
     @this.WriteBlocks("TOPStyles")
     @*<link href="~/jquery-mobile/jquery.mobile-1.5.0-rc1.min.css" asp-append-version="true" />*@
@@ -77,14 +77,15 @@
             @this.WriteBlocks("Menu")
         </header>
     }
-    <main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
-        @*<partial name="_Loader" />*@
-        @RenderBody()
-        @if (User.Identity.IsAuthenticated)
-        {
-            @this.WriteBlocks("SideNav")
-        }
-    </main>
+<main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
+    @*<partial name="_Loader" />*@
+    @RenderBody()
+    @if (User.Identity.IsAuthenticated)
+    {
+        @this.WriteBlocks("SideNav")
+    }
+    <partial name="_Loader">
+</main>
     @*<footer class="border-top footer text-muted">
             <div class="container">
                 &copy; 2019 - ConsultaMD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

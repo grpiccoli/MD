@@ -8,6 +8,7 @@ const querystring = require('querystring');
 const png = 'tmp1.png';
 const file_path = path.join(__dirname, png);
 const selector = '#captcha';
+const loaderRut = '0016124902-5';
 
 const screenshotDOMElement = async function (page, opts) {
     const padding = 'padding' in opts ? opts.padding : 0;
@@ -54,57 +55,81 @@ const type = async function (page, selector, value) {
     await page.type(selector, value);
 };
 
-const submitCatpcha = async function (page, rut, captcha) {
-    await type(page, '#RutBeneficiario', rut);
+const submitCatpcha = async function (page, captcha) {
+    await type(page, '#RutBeneficiario', loaderRut);
     await type(page, '#captcha_code', captcha);
     await page.click('#btnCertifBenef');
 };
 
-//data { acKey, browserWSEndpoint, rut }
+const initBrowser = async function (data) {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = (await browser.pages())[0];
+    page.setViewport({ width: 1000, height: 600, deviceScaleFactor: 1 });
+    await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' });
+    let captcha = await readCaptcha(page, data.acKey).catch(error => { return [error, null]; });
+    page.on('response', (response) => {
+        let url = response.url();
+        let params = querystring.decode(url.split('?')[1]);
+        response.text().then(async function (textBody) {
+            switch (params.action) {
+                case 'execWSCertifTrab':
+                    if (textBody === 'ERROR_CAPTCHA') {
+                        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
+                        captcha = await readCaptcha(page, data.acKey).catch(error => { return [error, null]; });
+                        await submitCatpcha(page, captcha).catch(error => { return [error, null]; });
+                        break;
+                    }
+                    await fs.rename(file_path, path.join(__dirname, 'trainset', `${captcha}.png`), function (err) {
+                        if (err) return [err, null];
+                    });
+                    return [null, browser];
+            }
+        }).catch();
+    });
+    await submitCatpcha(page, captcha).catch(error => { return [error, null]; });
+    return [null, browser];
+};
+
+const readInfo = async function (browser, person) {
+    var page = (await browser.pages())[0];
+    var user = await page.evaluate(async (rut) => {
+        var url = urlAjax('bono', 'execWSCertifPagador');
+        return await fetch(url, {
+            method: 'POST',
+            headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
+            body: `RutPagador=${rut}`
+        }).then(response => response.json());
+    }, person);
+    user['browserWSEndpoint'] = browser.wsEndpoint();
+    return JSON.stringify(user);
+};
+
+//data { acKey, browserWSEndpoint, rut, close }
 
 module.exports = async function (callback, data) {
-    if (!data.browserWSEndpoint) {
-        if (!data.rut) callback("No value for RUT", null);
-        console.log(`No browserWSEndpoint Starting Service with RUT:${data.rut}`);
-        const browser = await puppeteer.launch({ headless: true });
-        const page = (await browser.pages())[0];
-        page.setViewport({ width: 1000, height: 600, deviceScaleFactor: 1 });
-        await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' });
-        let captcha = await readCaptcha(page, data.acKey).catch(error => { callback(error, null); });
-        page.on('response', (response) => {
-            let url = response.url();
-            let params = querystring.decode(url.split('?')[1]);
-            response.text().then(async function (textBody) {
-                switch (params.action) {
-                    case 'execWSCertifTrab':
-                        if (textBody === 'ERROR_CAPTCHA') {
-                            await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
-                            captcha = await readCaptcha(page, data.acKey).catch(error => { callback(error, null); });
-                            await submitCatpcha(page, data.rut, captcha).catch(error => { callback(error, null); });
-                            break;
-                        }
-                        await fs.rename(file_path, path.join(__dirname, 'trainset', `${captcha}.png`), function (err) {
-                            if (err) callback(err, null);
-                        });
-                        callback(null, browser.wsEndpoint());
-                        break;
-                }
+    if (data.close) {
+        await puppeteer
+            .connect({ browserWSEndpoint: data.browserWSEndpoint })
+            .then(async browser => {
+                await browser.close();
+            })
+            .catch(error => {
+                callback(error, null);
             });
-        });
-        await submitCatpcha(page, data.rut, captcha).catch(error => { callback(error, null); });
     } else {
-        const browserWSEndpoint = data.browserWSEndpoint;
-        const browser = await puppeteer.connect({ browserWSEndpoint: browserWSEndpoint });
-        var page = (await browser.pages())[0];
-        const user = await page.evaluate(async (rut) => {
-            var url = urlAjax('bono', 'execWSCertifPagador');
-            return await fetch(url, {
-                method: 'POST',
-                headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
-                body: `RutPagador=${rut}`
-            }).then(response => response.text());
-        }, data.rut);
-        if (user === 'ERROR') callback(user, null);
-        callback(null, user);
+        await puppeteer
+            .connect({ browserWSEndpoint: data.browserWSEndpoint })
+            .then(async browser => {
+                let user = await readInfo(browser, data.rut);
+                if (user === 'ERROR') callback(user, null);
+                callback(null, user);
+            })
+            .catch(async error => {
+                let values = await initBrowser(data);
+                if (values[0]) callback(values[0], null);
+                let user = await readInfo(values[1], data.rut);
+                if (user === 'ERROR') callback(user + error, null);
+                callback(null, user);
+            });
     }
 };

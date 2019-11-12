@@ -28,6 +28,7 @@ using Twilio;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.NodeServices;
 using ConsultaMD.Extensions;
+using ConsultaMD.Hubs;
 
 namespace ConsultaMD
 {
@@ -184,10 +185,11 @@ namespace ConsultaMD
                     var supportedCultures = new List<CultureInfo>
                     {
                                     new CultureInfo("es"),
+                                    new CultureInfo("es-CL"),
                                     new CultureInfo("en")
                     };
 
-                    opts.DefaultRequestCulture = new RequestCulture("es");
+                    opts.DefaultRequestCulture = new RequestCulture("es-CL");
                                 // Formatting numbers, dates, etc.
                                 opts.SupportedCultures = supportedCultures;
                                 // UI strings that we have localized.
@@ -232,6 +234,11 @@ namespace ConsultaMD
                 app.UseHsts();
                 app.UseWebMarkupMin();
             }
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<FeedBackHub>("/feedbackHub");
+            });
 
             app.UseDefaultImage(defaultImagePath: Configuration.GetSection($"{_os}defaultImagePath").Value);
 

@@ -68,6 +68,35 @@ namespace ConsultaMD.Extensions
             }
         }
 
+        public static IEnumerable<object> Enum2MS<TEnum>(string name = null)
+            where TEnum : struct, IConvertible, IFormattable
+        {
+            switch (name)
+            {
+                case "Name":
+                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                        .Select(t => new
+                        {
+                            Value = t.ToString("d", null),
+                            Text = t.GetAttrName()
+                        }).ToList();
+                case "Description":
+                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                        .Select(t => new
+                        {
+                            Value = t.ToString("d", null),
+                            Text = t.GetAttrDescription()
+                        }).ToList();
+                default:
+                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                        .Select(t => new
+                        {
+                            Value = t.ToString("d", null),
+                            Text = t.ToString()
+                        }).ToList();
+            }
+        }
+
         public static MultiSelectList Enum2MultiSelect<TEnum>(string name = null)
             where TEnum : struct, IConvertible, IFormattable
         {

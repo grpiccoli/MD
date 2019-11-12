@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ConsultaMD.Models.VM;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using static ConsultaMD.Data.InsuranceData;
 
@@ -6,6 +8,12 @@ namespace ConsultaMD.Models.Entities
 {
     public class Patient
     {
+        public Patient() { }
+        public Patient(Fonasa fonasa) 
+        {
+            Insurance = Insurance.Fonasa;
+            Tramo = Enum.Parse<Tramo>(fonasa?.ExtGrupoIng);
+        }
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int NaturalId { get; set; }
         public Natural Natural { get; set; }

@@ -37,33 +37,6 @@ namespace ConsultaMD.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Carnets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false),
-                    BackImage = table.Column<string>(nullable: true),
-                    FrontImage = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Carnets", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DigitalSignatures",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    NaturalId = table.Column<int>(nullable: false),
-                    PathToKey = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DigitalSignatures", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Localities",
                 columns: table => new
                 {
@@ -106,6 +79,32 @@ namespace ConsultaMD.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "People",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    BanmedicaName = table.Column<string>(nullable: true),
+                    RazonSocial = table.Column<string>(nullable: true),
+                    NombreFantasia = table.Column<string>(nullable: true),
+                    CarnetId = table.Column<int>(nullable: true),
+                    DoctorId = table.Column<int>(nullable: true),
+                    DigitalSignatureId = table.Column<int>(nullable: true),
+                    LastFather = table.Column<string>(nullable: true),
+                    LastMother = table.Column<string>(nullable: true),
+                    Names = table.Column<string>(nullable: true),
+                    FullNameFirst = table.Column<string>(nullable: true),
+                    FullLastFirst = table.Column<string>(nullable: true),
+                    Sex = table.Column<bool>(nullable: true),
+                    Birth = table.Column<DateTime>(nullable: true),
+                    Nationality = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_People", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Specialties",
                 columns: table => new
                 {
@@ -137,44 +136,6 @@ namespace ConsultaMD.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "People",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    BanmedicaName = table.Column<string>(nullable: true),
-                    RazonSocial = table.Column<string>(nullable: true),
-                    NombreFantasia = table.Column<string>(nullable: true),
-                    CarnetId = table.Column<int>(nullable: true),
-                    DoctorId = table.Column<int>(nullable: true),
-                    DigitalSignatureId = table.Column<int>(nullable: true),
-                    LastFather = table.Column<string>(nullable: true),
-                    LastMother = table.Column<string>(nullable: true),
-                    Names = table.Column<string>(nullable: true),
-                    FullNameFirst = table.Column<string>(nullable: true),
-                    FullLastFirst = table.Column<string>(nullable: true),
-                    Sex = table.Column<bool>(nullable: true),
-                    Birth = table.Column<DateTime>(nullable: true),
-                    Nationality = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_People", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_People_Carnets_CarnetId",
-                        column: x => x.CarnetId,
-                        principalTable: "Carnets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_People_DigitalSignatures_DigitalSignatureId",
-                        column: x => x.DigitalSignatureId,
-                        principalTable: "DigitalSignatures",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -304,6 +265,26 @@ namespace ConsultaMD.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Carnets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    NaturalId = table.Column<int>(nullable: false),
+                    BackImage = table.Column<string>(nullable: true),
+                    FrontImage = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carnets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Carnets_People_NaturalId",
+                        column: x => x.NaturalId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CommercialActivities",
                 columns: table => new
                 {
@@ -317,6 +298,26 @@ namespace ConsultaMD.Migrations
                     table.ForeignKey(
                         name: "FK_CommercialActivities_People_CompanyId",
                         column: x => x.CompanyId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DigitalSignatures",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    NaturalId = table.Column<int>(nullable: false),
+                    PathToKey = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DigitalSignatures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DigitalSignatures_People_NaturalId",
+                        column: x => x.NaturalId,
                         principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -637,6 +638,7 @@ namespace ConsultaMD.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MediumDoctorId = table.Column<int>(nullable: false),
                     Insurance = table.Column<int>(nullable: false),
+                    PersonId = table.Column<int>(nullable: false),
                     Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -646,6 +648,12 @@ namespace ConsultaMD.Migrations
                         name: "FK_InsuranceLocations_MediumDoctors_MediumDoctorId",
                         column: x => x.MediumDoctorId,
                         principalTable: "MediumDoctors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_InsuranceLocations_People_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -738,6 +746,12 @@ namespace ConsultaMD.Migrations
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Carnets_NaturalId",
+                table: "Carnets",
+                column: "NaturalId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Census_LocalityId",
                 table: "Census",
                 column: "LocalityId");
@@ -746,6 +760,12 @@ namespace ConsultaMD.Migrations
                 name: "IX_CommercialActivities_CompanyId",
                 table: "CommercialActivities",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DigitalSignatures_NaturalId",
+                table: "DigitalSignatures",
+                column: "NaturalId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Doctors_NaturalId",
@@ -762,6 +782,11 @@ namespace ConsultaMD.Migrations
                 name: "IX_InsuranceLocations_MediumDoctorId",
                 table: "InsuranceLocations",
                 column: "MediumDoctorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InsuranceLocations_PersonId",
+                table: "InsuranceLocations",
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Localities_ProvinceId",
@@ -792,18 +817,6 @@ namespace ConsultaMD.Migrations
                 name: "IX_MediumDoctors_MedicalAttentionMediumId",
                 table: "MediumDoctors",
                 column: "MedicalAttentionMediumId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_People_CarnetId",
-                table: "People",
-                column: "CarnetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_People_DigitalSignatureId",
-                table: "People",
-                column: "DigitalSignatureId",
-                unique: true,
-                filter: "[DigitalSignatureId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Places_CommuneId",
@@ -864,10 +877,16 @@ namespace ConsultaMD.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Carnets");
+
+            migrationBuilder.DropTable(
                 name: "Census");
 
             migrationBuilder.DropTable(
                 name: "CommercialActivities");
+
+            migrationBuilder.DropTable(
+                name: "DigitalSignatures");
 
             migrationBuilder.DropTable(
                 name: "DoctorSpecialties");
@@ -925,12 +944,6 @@ namespace ConsultaMD.Migrations
 
             migrationBuilder.DropTable(
                 name: "Places");
-
-            migrationBuilder.DropTable(
-                name: "Carnets");
-
-            migrationBuilder.DropTable(
-                name: "DigitalSignatures");
 
             migrationBuilder.DropTable(
                 name: "Localities");

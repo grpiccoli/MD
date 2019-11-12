@@ -132,12 +132,12 @@
     {
       "library": "hammerjs@2.0.8",
       "destination": "wwwroot/lib/hammerjs/",
-      "files": ["hammer.min.js"]
+      "files": [ "hammer.min.js" ]
     },
     {
       "library": "jquery-hammerjs@2.0.0",
       "destination": "wwwroot/lib/jquery-hammerjs/",
-      "files": ["jquery.hammer.js"]
+      "files": [ "jquery.hammer.js" ]
     },
     //{
     //  "library": "jquery-mobile@1.5.0-alpha.1",
@@ -294,6 +294,13 @@
         "dist/globalize.js",
         "dist/globalize/number.js",
         "dist/globalize/date.js"
+      ]
+    },
+    {
+      "library": "@aspnet/signalr@1.1.4",
+      "destination": "wwwroot/lib/@aspnet/signalr/",
+      "files": [
+        "dist/browser/signalr.min.js"
       ]
     }
   ]

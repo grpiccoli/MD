@@ -3,7 +3,8 @@
     "outputFileName": "wwwroot/js/main.min.js",
     "inputFiles": [
       "src/scripts/loader.js",
-      "src/scripts/debounce.js"
+      "src/scripts/debounce.js",
+      "src/scripts/feedback.js"
     ]
   },
   {

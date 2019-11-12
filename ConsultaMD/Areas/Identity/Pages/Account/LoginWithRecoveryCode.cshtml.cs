@@ -66,7 +66,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation(_localizer["User with ID '{UserId}' logged in with a recovery code."], user.Id);
-                ReturnUrl = returnUrl ?? new Uri(Url.Content("~/"));
+                ReturnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
                 return LocalRedirect(ReturnUrl.ToString());
             }
             if (result.IsLockedOut)

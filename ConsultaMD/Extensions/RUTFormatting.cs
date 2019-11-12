@@ -40,9 +40,11 @@ namespace ConsultaMD.Extensions
             }
             return (RutDigito);
         }
-        public static string Format(int rut)
+        public static string Format(int rut, bool thousandSep = true, bool dash = true)
         {
-            return $"{rut.ToString("N0", new CultureInfo("es-CL"))}-{DV(rut)}";
+            return $@"{(thousandSep ? 
+                rut.ToString("N0", new CultureInfo("es-CL")) : 
+                rut.ToString(CultureInfo.InvariantCulture) )}{(dash ? "-" : "")}{DV(rut)}";
         }
         public static string Fonasa(int rut)
         {
@@ -52,6 +54,13 @@ namespace ConsultaMD.Extensions
         {
             var unformated = Unformat(rut);
             return Fonasa(unformated.Value.rut);
+        }
+        public static bool IsValid(int rut, string dv) {
+            return DV(rut) == dv;
+        }
+        public static bool IsValid(string rut)
+        {
+            return Unformat(rut) != null;
         }
         public static (int rut, string dv)? Unformat(string formatted)
         {
