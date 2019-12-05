@@ -24,8 +24,9 @@ namespace ConsultaMD.Models.Entities
         public virtual Patient Patient { get; set; }
         public int DoctorId { get; set; }
         public virtual Doctor Doctor { get; set; }
-        public int? DigitalSignatureId { get; set; }
-        public virtual DigitalSignature DigitalSignature { get; set; }
+        //public int? DigitalSignatureId { get; set; }
+        //public virtual DigitalSignature DigitalSignature { get; set; }
+        public string PassSII { get; set; }
         public string LastFather { get; set; }
         public string LastMother { get; set; }
         public string Names { get; set; }
@@ -42,11 +43,11 @@ namespace ConsultaMD.Models.Entities
                 age--;
             return age;
         }
-        public string GetName()
+        public int? ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        public new string GetShortName()
         {
-            if(!string.IsNullOrWhiteSpace(FullNameFirst))
-                return FullNameFirst.Split(" ")[0];
-            return FullLastFirst.Split(" ")[0];
+            return $"{Names.Split(" ")[0]} {LastFather}";
         }
         public string GetSurname()
         {

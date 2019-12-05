@@ -39,4 +39,4 @@ if (deadline.isAfter(moment())) {
     $("#clock").slideDown();
     $("#resend").addClass("disabled");
 }
-//# sourceMappingURL=confirmPhone.js.map
+//# sourceMappingURL=ConfirmPhone.js.map

@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.3.1.tgz#a061c6d2e998d4155439dbc8aefdfe01cdf648d8"
   integrity sha512-Eh+p/wpMkWGu26f8NpfQK9ecQMoZxX/aopv+0+4/CH+Ip0paP6iEc40JYgTz7RFl0bFqV1dvwyGyUZ4+9ZeySA==
 
+"@mobiscroll/javascript@^4.9.0":
+  version "4.9.0"
+  resolved "https://npm.mobiscroll.com/@mobiscroll%2fjavascript/-/javascript-4.9.0.tgz#312966f1b38d3abdc9a5e99ade6a53b315fd8c33"
+  integrity sha512-N8ItSB+Dw8YZ7TpTEqqqa3iUuLUcczsf1iJHtfWufY6LaS7vAthN+KYhEDABwerIgmMKXhbGNrcEj4UErTVgRw==
+
 "@types/cash@*":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@types/cash/-/cash-0.0.3.tgz#770d6382c605bb4f8572f17cea6f40cec5832496"
@@ -23,11 +28,6 @@
   integrity sha512-FQTLuqZxqf+T1Ao6RzaIP7HcTcNvgDf0YQfK90YGYt1N6KeU5GE0M/hsxdQlpqvuztxjEwEQqIO3paSO/tZ4Pw==
   dependencies:
     "@types/cldrjs" "*"
-
-"@types/googlemaps@^3.38.0":
-  version "3.38.0"
-  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.38.0.tgz#069c0303ec60706b2e32b14330634c1e1cd59e45"
-  integrity sha512-Rp7FnrwyYGnjoxM+/q/4DRqUzvV9JKK1SBRXx8APxU6NNMtYMsWmOMsQOV2U6z8aMFzlUbRv3EDixLcDep8t9w==
 
 "@types/jquery-validation-unobtrusive@^3.2.32":
   version "3.2.32"
@@ -65,25 +65,17 @@
   dependencies:
     moment "*"
 
+"@types/node@^12.11.7":
+  version "12.12.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.14.tgz#1c1d6e3c75dba466e0326948d56e8bd72a1903d2"
+  integrity sha512-u/SJDyXwuihpwjXy7hOOghagLEV1KdAST6syfnOk6QZAMzZuWZqXy5aYYZbh8Jdpd4escVFP0MvftHNDb9pruA==
+
 "@types/owl.carousel@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/owl.carousel/-/owl.carousel-2.3.1.tgz#029d6b0ef84fa3ad6b1e3de18a51742d5178792a"
   integrity sha512-D4N1k+zTtdxSgQQeTaSYqJ/Av5X41u5VNymNznIrnngzhLVmM6WYh8Iga8Hr3dHKnijDhElya1JZJAMzjVbTkQ==
   dependencies:
     "@types/jquery" "*"
-
-"@types/requirejs@*":
-  version "2.1.31"
-  resolved "https://registry.yarnpkg.com/@types/requirejs/-/requirejs-2.1.31.tgz#a24eaa0ee4f6b84feb8f521ca6550d48490b2bc6"
-  integrity sha512-b2soeyuU76rMbcRJ4e0hEl0tbMhFwZeTC0VZnfuWlfGlk6BwWNsev6kFu/twKABPX29wkX84wU2o+cEJoXsiTw==
-
-"@types/select2@^4.0.48":
-  version "4.0.48"
-  resolved "https://registry.yarnpkg.com/@types/select2/-/select2-4.0.48.tgz#068af9ed46e6455e74eaaafa78f85d201b3e72d7"
-  integrity sha512-C1cUbfwKBqlO+/3OWQKMajA4D/d5SvI9rSGoXCa7FQI9B1p1iRqZzetkfpGPY44BP1Y8emHL17rdUJYZEyzN+Q==
-  dependencies:
-    "@types/jquery" "*"
-    "@types/requirejs" "*"
 
 "@types/simplebar@^2.4.2":
   version "2.4.2"

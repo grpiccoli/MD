@@ -15,7 +15,7 @@
      <Content Include="src/scripts/node/ps/SII.rb" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/ps/SII.js" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/mi/fonasa.js" CopyToPublishDirectory="PreserveNewest" /> 
-     <Content Include="src/scripts/node/mi/FonasaService.js" CopyToPublishDirectory="PreserveNewest" />
+     <Content Include="src\scripts\node\mi\FonasaService_v1.js" CopyToPublishDirectory="PreserveNewest" />
      <Content Include="profileImg\**" CopyToPublishDirectory="PreserveNewest" LinkBase="profileImg" />
      <Content Include="node_modules\**" CopyToPublishDirectory="PreserveNewest" LinkBase="node_modules" />
      <None Update="chromedriver.exe" CopyToPublishDirectory="PreserveNewest" />
@@ -37,48 +37,53 @@
     <EmbeddedResource Remove="wwwroot\lib\**" />
     <None Remove="profileImg\doc\**" />
     <None Remove="src\scripts\bash\train\**" />
+    <Folder Include="node_modules\.bin\" />
+    <Folder Include="src\scripts\node\ps\trainset\" />
     <Folder Include="wwwroot\ios.picker\" />
     <TypeScriptCompile Remove="profileImg\doc\**" />
     <TypeScriptCompile Remove="src\scripts\bash\train\**" />
     <TypeScriptCompile Remove="wwwroot\js\**" />
     <TypeScriptCompile Remove="wwwroot\lib\**" />
-    <Compile Remove="Migrations\20191103234316_Initial.cs" />
-    <Compile Remove="Migrations\20191103234316_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20191108171818_Initial.cs" />
-    <Compile Remove="Migrations\20191108171818_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20191109143900_Initial.cs" />
-    <Compile Remove="Migrations\20191109143900_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20191110225247_Initial.cs" />
-    <Compile Remove="Migrations\20191110225247_Initial.Designer.cs" />
-    <TypeScriptCompile Include="src\scripts\doctor-details.ts.bak1">
+    <Compile Remove="Migrations\20191128181949_Initial.cs" />
+    <Compile Remove="Migrations\20191128181949_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191129123635_Initial.cs" />
+    <Compile Remove="Migrations\20191129123635_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191201202713_Initial.cs" />
+    <Compile Remove="Migrations\20191201202713_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191204201346_Initial.cs" />
+    <Compile Remove="Migrations\20191204201346_Initial.Designer.cs" />
+    <TypeScriptCompile Include="src\scripts\DoctorDetails.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\scripts\feedback.js" />
     <TypeScriptCompile Include="src\scripts\jquery.validate.hooks.js" />
-    <None Remove=".babelrc" />
-    <None Remove="package_webpack.json_bak" />
     <None Remove="src\scripts\add_rut_carnet_validation.ts" />
-    <None Remove="src\scripts\confirm-date.ts" />
-    <None Remove="src\scripts\confirmPhone.ts" />
+    <None Remove="src\scripts\Agenda.ts" />
+    <None Remove="src\scripts\ConfirmDate.ts" />
+    <None Remove="src\scripts\ConfirmPhone.ts" />
     <None Remove="src\scripts\debounce.ts" />
-    <None Remove="src\scripts\doctor-details.ts" />
-    <None Remove="src\scripts\doctor-details.ts.bak1" />
+    <None Remove="src\scripts\DoctorDetails.ts" />
+    <None Remove="src\scripts\DoctorInsurance.ts" />
+    <None Remove="src\scripts\DoctorLocations.ts" />
     <None Remove="src\scripts\feedback.js" />
     <None Remove="src\scripts\jquery.validate.hooks.js" />
     <None Remove="src\scripts\loader.ts" />
     <None Remove="src\scripts\map.ts" />
     <None Remove="src\scripts\markerclusterer.js" />
+    <None Remove="src\scripts\MDWaitingRoom.ts" />
     <None Remove="src\scripts\node\ps\SII.ts" />
     <None Remove="src\types\anypicker\index.d.ts" />
     <None Remove="src\types\calentim\index.d.ts" />
     <None Remove="src\types\choicesjs\index.d.ts" />
     <None Remove="src\types\consultamd\index.d.ts" />
     <None Remove="src\types\globalize\index.d.ts" />
+    <None Remove="src\types\googlemaps\index.d.ts" />
     <None Remove="src\types\ios.picker\index.d.ts" />
     <None Remove="src\types\jquery.validate.hooks\index.d.ts" />
     <None Remove="src\types\markerclustererplus\index.d.ts" />
     <None Remove="src\types\markerclusterer\index.d.ts" />
     <None Remove="src\types\mobiscroll\index.d.ts" />
+    <None Remove="src\types\parsley\index.d.ts" />
     <None Remove="src\types\select2\index.d.ts" />
     <TypeScriptCompile Remove="src\types\mobiscroll\index.d.ts" />
     <Content Include="package_webpack.json_bak" />
@@ -102,6 +107,7 @@
     <PackageReference Condition="'$(OS)' == 'Windows_NT'" Include="BuildWebCompiler" Version="1.12.405" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.16" />
+    <PackageReference Include="libphonenumber-csharp" Version="8.11.0" />
     <PackageReference Include="LocalizationProvider.AspNetCore" Version="5.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.2.1" />
@@ -146,18 +152,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Update="src\scripts\map.v1.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Update="src\scripts\map.v2.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Update="src\scripts\map.v3.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties wwwroot_4manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

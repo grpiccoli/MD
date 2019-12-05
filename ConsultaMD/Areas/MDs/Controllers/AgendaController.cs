@@ -73,8 +73,7 @@ namespace ConsultaMD.Areas.MDs.Views
             };
         }
 
-
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index2(int? id)
         {
             var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
             var loginFormValues = new List<KeyValuePair<string, string>>

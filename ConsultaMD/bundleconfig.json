@@ -8,6 +8,18 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/js/Agenda.min.js",
+    "inputFiles": [
+      "src/scripts/Agenda.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Agenda.min.css",
+    "inputFiles": [
+      "src/styles/Agenda.min.css"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/css/main.min.css",
     "inputFiles": [
       "src/styles/site.min.css",
@@ -36,7 +48,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/forgotPassword.min.js",
+    "outputFileName": "wwwroot/js/ResetPassword.min.js",
     "inputFiles": [
       "src/scripts/add_rut_validation.js"
     ]
@@ -61,7 +73,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/login.min.js",
+    "outputFileName": "wwwroot/js/Login.min.js",
     "inputFiles": [
       "src/scripts/add_rut_validation.js",
       "src/scripts/external-login.js"
@@ -81,33 +93,33 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/register.min.js",
+    "outputFileName": "wwwroot/js/Register.min.js",
     "inputFiles": [
       "src/scripts/add_rut_carnet_validation.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/insurance.min.js",
+    "outputFileName": "wwwroot/js/InsuranceDetails.min.js",
     "inputFiles": [
-      "src/scripts/selectInsurance.js"
+      "src/scripts/InsuranceDetails.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/verifyphone.min.js",
+    "outputFileName": "wwwroot/js/VerifyPhone.min.js",
     "inputFiles": [
       "src/scripts/formatPhone.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/confirmPhone.min.js",
+    "outputFileName": "wwwroot/js/ConfirmPhone.min.js",
     "inputFiles": [
-      "src/scripts/confirmPhone.js"
+      "src/scripts/ConfirmPhone.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/css/confirmPhone.min.css",
+    "outputFileName": "wwwroot/css/ConfirmPhone.min.css",
     "inputFiles": [
-      "src/styles/confirmPhone.css"
+      "src/styles/ConfirmPhone.min.css"
     ]
   },
   {
@@ -124,27 +136,27 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/css/doctor-details.min.css",
+    "outputFileName": "wwwroot/css/DoctorDetails.min.css",
     "inputFiles": [
-      "src/styles/doctor-details.css"
+      "src/styles/DoctorDetails.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/doctor-details.min.js",
+    "outputFileName": "wwwroot/js/DoctorDetails.min.js",
     "inputFiles": [
-      "src/scripts/doctor-details.js"
+      "src/scripts/DoctorDetails.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/css/confirm-date.min.css",
+    "outputFileName": "wwwroot/css/ConfirmDate.min.css",
     "inputFiles": [
-      "src/styles/confirm-date.min.css"
+      "src/styles/ConfirmDate.min.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/confirm-date.min.js",
+    "outputFileName": "wwwroot/js/ConfirmDate.min.js",
     "inputFiles": [
-      "src/scripts/confirm-date.js"
+      "src/scripts/ConfirmDate.js"
     ]
   },
   {
@@ -158,5 +170,17 @@
     "inputFiles": [
       "src/mobiscroll.custom/css/mobiscroll.javascript.min.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/DoctorInsurance.min.js",
+    "inputFiles": [ "src/scripts/DoctorInsurance.js" ]
+  },
+  {
+    "outputFileName": "wwwroot/js/DoctorLocations.min.js",
+    "inputFiles": [ "src/scripts/DoctorLocations.js" ]
+  },
+  {
+    "outputFileName": "wwwroot/js/DoctorLocations.min.css",
+    "inputFiles": [ "src/styles/DoctorLocations.min.css" ]
   }
 ]

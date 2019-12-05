@@ -5,6 +5,7 @@
     "name": "Map",
     "title": "Buscar Médicos",
     "icon": "search",
+    "material": true,
     "menu": true
   },
   {
@@ -13,6 +14,7 @@
     "name": "WaitingRoom",
     "title": "Sala de Espera",
     "icon": "hourglass_empty",
+    "material": true,
     "menu": true,
     "limit": "reservation"
   },
@@ -22,17 +24,9 @@
     "name": "Appointments",
     "title": "Mis Citas",
     "icon": "schedule",
+    "material": true,
     "menu": true,
     "limit": "reservation"
-  },
-  {
-    "area": "MDs",
-    "controller": "MD",
-    "name": "MDash",
-    "title": "Doctor",
-    "icon": "sthetoscope",
-    "menu": true,
-    "limit": "doctor"
   },
   {
     "area": "Patients",
@@ -54,5 +48,50 @@
     "name": "Test",
     "title": "Test",
     "path": [ "Map" ]
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
+    "name": "Summary",
+    "title": "Resumen",
+    "icon": "doctor",
+    "menu": true,
+    "limit": "doctor"
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
+    "name": "Agreements",
+    "title": "Convenios",
+    "icon": "insurance_billing",
+    "menu": true,
+    "limit": "doctor"
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
+    "name": "Locations",
+    "title": "Ubicaciones",
+    "icon": "hospital",
+    "menu": true,
+    "limit": "doctor"
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
+    "name": "Agenda",
+    "title": "Agenda",
+    "icon": "appointment",
+    "menu": true,
+    "limit": "doctor"
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
+    "name": "MDWaitingRoom",
+    "title": "Sala de espera",
+    "icon": "waiting_room",
+    "menu": true,
+    "limit": "doctor"
   }
 ]

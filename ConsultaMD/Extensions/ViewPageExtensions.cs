@@ -11,20 +11,50 @@ namespace ConsultaMD.Extensions
     {
         private const string BLOCK_BUILDER = "BlockBuilder";
 
-        public static HtmlString Block(this RazorPage webPage, Func<dynamic, HelperResult> template, string name)
+        //public static HtmlString Block(this RazorPage webPage, Func<dynamic, HelperResult> template, string name)
+        //{
+        //    var sb = new StringBuilder();
+        //    using (TextWriter tw = new StringWriter(sb))
+        //    {
+        //        var encoder = (HtmlEncoder)webPage?.ViewContext.HttpContext.RequestServices.GetService(typeof(HtmlEncoder));
+
+        //        if (webPage.Context.Request.Headers["x-requested-with"] != "XMLHttpRequest")
+        //        {
+        //            var scriptBuilder = webPage.Context.Items[name + BLOCK_BUILDER] as StringBuilder ?? new StringBuilder();
+
+        //            template?.Invoke(null).WriteTo(tw, encoder);
+        //            scriptBuilder.Append(sb.ToString());
+        //            webPage.Context.Items[name + BLOCK_BUILDER] = scriptBuilder;
+
+        //            return new HtmlString(string.Empty);
+        //        }
+
+        //        template?.Invoke(null).WriteTo(tw, encoder);
+
+        //        return new HtmlString(sb.ToString());
+        //    }
+        //}
+        //public static HtmlString WriteBlocks(this RazorPage webPage, string name)
+        //{
+        //    var scriptBuilder = webPage?.Context.Items[name+BLOCK_BUILDER] as StringBuilder ?? new StringBuilder();
+
+        //    return new HtmlString(scriptBuilder.ToString());
+        //}
+
+        public static HtmlString Block(this RazorPageBase webPage, Func<dynamic, HelperResult> template, string name)
         {
             var sb = new StringBuilder();
             using (TextWriter tw = new StringWriter(sb))
             {
                 var encoder = (HtmlEncoder)webPage?.ViewContext.HttpContext.RequestServices.GetService(typeof(HtmlEncoder));
 
-                if (webPage.Context.Request.Headers["x-requested-with"] != "XMLHttpRequest")
+                if (webPage.ViewContext.HttpContext.Request.Headers["x-requested-with"] != "XMLHttpRequest")
                 {
-                    var scriptBuilder = webPage.Context.Items[name + BLOCK_BUILDER] as StringBuilder ?? new StringBuilder();
+                    var scriptBuilder = webPage.ViewContext.HttpContext.Items[name + BLOCK_BUILDER] as StringBuilder ?? new StringBuilder();
 
                     template?.Invoke(null).WriteTo(tw, encoder);
                     scriptBuilder.Append(sb.ToString());
-                    webPage.Context.Items[name + BLOCK_BUILDER] = scriptBuilder;
+                    webPage.ViewContext.HttpContext.Items[name + BLOCK_BUILDER] = scriptBuilder;
 
                     return new HtmlString(string.Empty);
                 }
@@ -35,11 +65,12 @@ namespace ConsultaMD.Extensions
             }
         }
 
-        public static HtmlString WriteBlocks(this RazorPage webPage, string name)
+        public static HtmlString WriteBlocks(this RazorPageBase webPage, string name)
         {
-            var scriptBuilder = webPage?.Context.Items[name+BLOCK_BUILDER] as StringBuilder ?? new StringBuilder();
+            var scriptBuilder = webPage?.ViewContext.HttpContext.Items[name + BLOCK_BUILDER] as StringBuilder ?? new StringBuilder();
 
             return new HtmlString(scriptBuilder.ToString());
         }
+
     }
 }

@@ -35,6 +35,7 @@ namespace ConsultaMD.Models.Entities
         //0 female 1 male
         public string SisId { get; set; }
         public int YearTitle { get; set; }
+        public int? FonasaLevel { get; set; }
         //public int YearSpecialty { get; set; }
         //public virtual ICollection<Subspecialty> Subspecialties { get; } = new List<Subspecialty>();
         //public virtual ICollection<Publication> Publications { get; } = new List<Publication>();

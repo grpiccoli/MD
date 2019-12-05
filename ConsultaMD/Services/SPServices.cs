@@ -1,7 +1,6 @@
 ﻿using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
-using ConsultaMD.Data;
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
 using System;
@@ -29,28 +28,29 @@ namespace ConsultaMD.Services
                     var loginFormValues = new Dictionary<string, string>
                     {
                         { "form", "form" },
+                        { "form:captchaUrl", "initial" },
                         { "form:run", $"{RUT.Format(rut,false)}" },
                         { $"form:{(cedula ? "selectDocType" : "styledSelect")}", "CEDULA" },
+                        { "form:inputCaptcha", "" },
                         { "form:buttonHidden", "" },
                         { "javax.faces.ViewState", Javax(docHome) }
                     };
                     if (cedula) loginFormValues.Add("form:docNumber", carnet.ToString(CultureInfo.InvariantCulture));
-                    var formContent = new FormUrlEncodedContent(loginFormValues);
+                    using (var formContent = new FormUrlEncodedContent(loginFormValues))
                     using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
                     {
-                        formContent.Dispose();
                         using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync()
                             .ConfigureAwait(false)).ConfigureAwait(false))
                         {
-                            if (cedula) {
+                            if (cedula)
+                            {
                                 var estado = GetEstadoCarnet(docNac);
                                 if (estado == "Vigente") return "CHILENA";
                                 loginFormValues["javax.faces.ViewState"] = Javax(docNac);
                                 loginFormValues["form:selectDocType"] = "CEDULA_EXT";
-                                formContent = new FormUrlEncodedContent(loginFormValues);
-                                using (var qExt = await client.PostAsync(uri, formContent).ConfigureAwait(false))
+                                using (var formContent2 = new FormUrlEncodedContent(loginFormValues))
+                                using (var qExt = await client.PostAsync(uri, formContent2).ConfigureAwait(false))
                                 {
-                                    formContent.Dispose();
                                     using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()
                                         .ConfigureAwait(false)).ConfigureAwait(false))
                                     {
@@ -66,10 +66,9 @@ namespace ConsultaMD.Services
                                 if (tableNac.Length > 2) return "CHILENA";
                                 loginFormValues["javax.faces.ViewState"] = Javax(docNac);
                                 loginFormValues["form:styledSelect"] = "CEDULA_EXT";
-                                formContent = new FormUrlEncodedContent(loginFormValues);
-                                using (var qExt = await client.PostAsync(uri, formContent).ConfigureAwait(false))
+                                using (var formContent3 = new FormUrlEncodedContent(loginFormValues))
+                                using (var qExt = await client.PostAsync(uri, formContent3).ConfigureAwait(false))
                                 {
-                                    formContent.Dispose();
                                     using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()
                                         .ConfigureAwait(false)).ConfigureAwait(false))
                                     {

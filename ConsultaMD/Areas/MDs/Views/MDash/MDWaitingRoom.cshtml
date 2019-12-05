@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MDWaitingRoomPatientVM>
+
+@{
+    ViewData["Title"] = "Sala de Espera";
+}
+
+<partial name="_Libs" model="(new List<string>(), string.Empty)" />
+
+<div data-simplebar>
+    <div mbsc-form>
+        <div mbsc-accordion>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Atendiendo</div>
+                <div mbsc-card data-collapsible>
+                    <div class="mbsc-card-header">
+                        <img src="https://img.mobiscroll.com/demos/f2.png" class="mbsc-avatar">
+                        <h5 class="mbsc-card-title mbsc-bold">Adeline Sharman</h5>
+                        <div class="mbsc-card-subtitle">Bigcorp Inc.</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <ul class="md-contact-list mbsc-cloak">
+                            <li data-icon="material-email">
+                                <p>Email</p>
+                                <h4><a href="mailto:adeline-s@bigcorp.com">adeline-s@bigcorp.com</a></h4>
+                            </li>
+                            <li data-icon="material-phone-iphone">
+                                <p>Mobile</p>
+                                <h4><a href="tel:(202) 555-0147">(202) 555-0147</a></h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Esperando</div>
+                <div mbsc-card data-collapsible>
+                    <div class="mbsc-card-header">
+                        <img src="https://img.mobiscroll.com/demos/m2.png" class="mbsc-avatar">
+                        <h5 class="mbsc-card-title mbsc-bold">Carl Hambledon</h5>
+                        <div class="mbsc-card-subtitle">Washaway Ltd.</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <ul class="md-contact-list mbsc-cloak">
+                            <li data-icon="material-email">
+                                <p>Email</p>
+                                <h4><a href="mailto:adeline-s@bigcorp.com">carl.h@washaway.com</a></h4>
+
+                            </li>
+                            <li data-icon="material-phone-iphone">
+                                <p>Mobile</p>
+                                <h4><a href="tel:(202) 553-5247">(202) 553-5247</a></h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div mbsc-card data-collapsible>
+                    <div class="mbsc-card-header">
+                        <img src="https://img.mobiscroll.com/demos/f1.png" class="mbsc-avatar">
+                        <h5 class="mbsc-card-title mbsc-bold">Hortense Tinker</h5>
+                        <div class="mbsc-card-subtitle">Tinker Records</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <ul class="md-contact-list mbsc-cloak">
+                            <li data-icon="material-email">
+                                <p>Email</p>
+                                <h4><a href="hortense@tinker.com">hortense@tinker.com</a></h4>
+                            </li>
+                            <li data-icon="material-phone-iphone">
+                                <p>Mobile</p>
+                                <h4><a href="tel:(202) 555-0137">(202) 555-0137</a></h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div mbsc-card data-collapsible>
+                    <div class="mbsc-card-header">
+                        <img src="https://img.mobiscroll.com/demos/m1.png" class="mbsc-avatar">
+                        <h5 class="mbsc-card-title mbsc-bold">Barry Lyon</h5>
+                        <div class="mbsc-card-subtitle">Road Scrapers Inc</div>
+                    </div>
+                    <div class="mbsc-card-content">
+                        <ul class="md-contact-list mbsc-cloak">
+                            <li data-icon="material-email">
+                                <p>Email</p>
+                                <h4><a href="mailto:barry.ly@roads.com">barry.ly@roads.com</a></h4>
+                            </li>
+                            <li data-icon="material-phone-iphone">
+                                <p>Mobile</p>
+                                <h4><a href="tel:(302) 663-5247">(302) 663-5247</a></h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

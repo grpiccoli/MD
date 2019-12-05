@@ -2,10 +2,10 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Iniciar Sesión";
 }
 
-<partial name="_Libs" model='(new string[] { "jquery.rut", "@fortawesome/fontawesome-free", "materialize-social", "login" }, "")' />
+<partial name="_Libs" model='(new List<string>{ "@fortawesome/fontawesome-free", "materialize-social" }, "")' />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
@@ -25,20 +25,25 @@
                     <label asp-for="Input.Password"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <p class="right-align">
-                    <a id="forgot-password" asp-page="./ForgotPassword">Olvidé mi contraseña</a>
-                </p>
-                <p class="right-align">
-                    ¿No tienes cuenta?
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
-                        Regístrate
-                    </a>
-                </p>
-                <div class="form-group">
-                    <button type="submit" class="btn waves-effect waves-light white-text teal pill">Ingresar</button>
+                <div class="col s12">
+                    <p class="right-align">
+                        <a id="forgot-password" asp-page="./ForgotPassword">Olvidé mi contraseña</a>
+                    </p>
+                    <p class="right-align center">
+                        ¿No tienes cuenta?
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                            Regístrate
+                        </a>
+                    </p>
                 </div>
-                <p>Ingresar con redes sociales</p>
-                <div>
+                <div class="col s12">
+                    <div class="form-group">
+                        <button type="submit" class="btn waves-effect waves-light white-text teal pill w-100 tile-gradient">Ingresar</button>
+                    </div>
+                    <hr />
+                </div>
+                <div class="col s12 center">
+                    <p>Ingresar con redes sociales</p>
                     <p>
                         @foreach (var provider in Model.ExternalLogins)
                         {

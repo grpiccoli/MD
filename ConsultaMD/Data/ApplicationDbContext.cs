@@ -128,11 +128,16 @@ namespace ConsultaMD.Data
                     entity.HasOne(d => d.Doctor)
                     .WithOne(n => n.Natural)
                     .HasForeignKey<Doctor>(n => n.NaturalId);
-                    entity.HasOne(n => n.DigitalSignature)
-                    .WithOne(d => d.Natural)
-                    .HasForeignKey<DigitalSignature>(n => n.NaturalId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    //entity.HasOne(n => n.DigitalSignature)
+                    //.WithOne(d => d.Natural)
+                    //.HasForeignKey<DigitalSignature>(n => n.NaturalId)
+                    //.OnDelete(DeleteBehavior.Restrict);
                 });
+
+                //modelBuilder.Entity<InsuranceLocation>()
+                //    .HasOne(r => r.Prestacion)
+                //    .WithOne(t => t.InsuranceLocation)
+                //    .HasForeignKey<Prestacion>(t => t.InsuranceLocationId);
 
                 modelBuilder.Entity<TimeSlot>()
                     .HasOne(r => r.Reservation)
@@ -158,10 +163,23 @@ namespace ConsultaMD.Data
                         .HasForeignKey(i => i.QuoteeId)
                         .OnDelete(DeleteBehavior.Restrict);
                 });
+
+                modelBuilder.Entity<Agenda>()
+                    .HasMany(r => r.TimeSlots)
+                    .WithOne(p => p.Agenda)
+                    .HasForeignKey(r => r.AgendaId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                modelBuilder.Entity<AgendaEvent>()
+                    .HasMany(r => r.Agendas)
+                    .WithOne(p => p.AgendaEvent)
+                    .HasForeignKey(r => r.AgendaEventId)
+                    .OnDelete(DeleteBehavior.Restrict);
             }
         }
         public DbSet<IdentityUserClaim<string>> IdentityUserClaims { get; set; }
         public DbSet<IdentityUserRole<string>> IdentityUserRoles { get; set; }
+        public DbSet<AgendaEvent> AgendaEvents { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
@@ -173,10 +191,12 @@ namespace ConsultaMD.Data
         public DbSet<CommercialActivity> CommercialActivities { get; set; }
         public DbSet<Commune> Communes { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<DigitalSignature> DigitalSignatures { get; set; }
+        //public DbSet<DigitalSignature> DigitalSignatures { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<DoctorSpecialty> DoctorSpecialties { get; set; }
+        public DbSet<EventDayWeek> EventDayWeeks { get; set; }
         public DbSet<HomeVisit> HomeVisits { get; set; }
+        public DbSet<InsuranceAgreement> InsuranceAgreements { get; set; }
         public DbSet<InsuranceLocation> InsuranceLocations { get; set; }
         public DbSet<MedicalCoverage> MedicalCoverages { get; set; }
         public DbSet<MedicalOffice> MedicalOffices { get; set; }
@@ -185,6 +205,7 @@ namespace ConsultaMD.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Place> Places { get; set; }
+        public DbSet<Prestacion> Prestacions { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Polygon> Polygons { get; set; }
         //public DbSet<Publication> Publications { get; set; }

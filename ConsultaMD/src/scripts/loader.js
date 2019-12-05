@@ -1,7 +1,7 @@
-function loaderStart() {
+var loaderStart = function () {
     document.getElementsByClassName('preloader-background')[0].style.display = "block";
-}
-function loaderStop() {
+};
+var loaderStop = function () {
     document.getElementsByClassName('preloader-background')[0].style.display = "none";
-}
+};
 //# sourceMappingURL=loader.js.map

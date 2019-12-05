@@ -36,14 +36,16 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             .ThenInclude(p => p.Natural)
                         .Include(r => r.TimeSlot)
                             .ThenInclude(ts => ts.Agenda)
-                                .ThenInclude(a => a.MediumDoctor)
-                                    .ThenInclude(md => md.Doctor)
-                                        .ThenInclude(d => d.Natural)
+                                .ThenInclude(a => a.AgendaEvent)
+                                    .ThenInclude(a => a.MediumDoctor)
+                                        .ThenInclude(md => md.Doctor)
+                                            .ThenInclude(d => d.Natural)
                         .Include(r => r.TimeSlot)
                             .ThenInclude(ts => ts.Agenda)
-                                .ThenInclude(a => a.MediumDoctor)
-                                    .ThenInclude(md => md.MedicalAttentionMedium)
-                                        .ThenInclude(mo => mo.Place)
+                                .ThenInclude(a => a.AgendaEvent)
+                                    .ThenInclude(a => a.MediumDoctor)
+                                        .ThenInclude(md => md.MedicalAttentionMedium)
+                                            .ThenInclude(mo => mo.Place)
                         .SingleOrDefaultAsync(r => r.Id == id).ConfigureAwait(false);
                         var paymentvm = new ReservationDetails(reservation);
                         return View(paymentvm);
@@ -71,15 +73,19 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                 .ThenInclude(p => p.Natural)
                             .Include(r => r.TimeSlot)
                                 .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.AgendaEvent)
                                     .ThenInclude(a => a.MediumDoctor)
                                         .ThenInclude(md => md.Doctor)
                                             .ThenInclude(d => d.Natural)
                             .Include(r => r.TimeSlot)
                                 .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.AgendaEvent)
                                     .ThenInclude(a => a.MediumDoctor)
                                         .ThenInclude(m => m.InsuranceLocations)
+                                            .ThenInclude(i => i.InsuranceAgreement)
                             .Include(r => r.TimeSlot)
                                 .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.AgendaEvent)
                                     .ThenInclude(a => a.MediumDoctor)
                                         .ThenInclude(md => md.MedicalAttentionMedium)
                                             .ThenInclude(mo => mo.Place)
@@ -87,17 +93,17 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                                     .ThenInclude(c => c.Province)
                                                         .ThenInclude(p => p.Region)
                             .SingleOrDefaultAsync(r => r.Id == Id).ConfigureAwait(false);
-                        if(reservation.TimeSlot.Agenda.MediumDoctor.InsuranceLocations
-                            .Any(i => i.Insurance == user.Person.Patient.Insurance))
+                        if(reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.InsuranceLocations
+                            .Any(i => i.InsuranceAgreement.Insurance == user.Person.Patient.Insurance))
                         {
                             switch (user.Person.Patient.Insurance)
                             {
                                 case Insurance.Fonasa:
                                     var paymentData = new PaymentData
                                     {
-                                        Commune = reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium.Place.Commune.GetCUT(),
-                                        Region = reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium.Place.Commune.Province.Region.GetCUT(),
-                                        DocRut = RUT.Fonasa(reservation.TimeSlot.Agenda.MediumDoctor.Doctor.NaturalId),
+                                        Commune = reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.MedicalAttentionMedium.Place.Commune.GetCUT(),
+                                        Region = reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.MedicalAttentionMedium.Place.Commune.Province.Region.GetCUT(),
+                                        DocRut = RUT.Fonasa(reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.Doctor.NaturalId),
                                         Email = user.Email,
                                         PayRut = RUT.Fonasa(Rut),
                                         Phone = user.PhoneNumber.Replace("+56", "", System.StringComparison.InvariantCulture),
@@ -126,11 +132,13 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             .ThenInclude(p => p.Natural)
                         .Include(r => r.TimeSlot)
                             .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.AgendaEvent)
                                 .ThenInclude(a => a.MediumDoctor)
                                     .ThenInclude(md => md.Doctor)
                                         .ThenInclude(d => d.Natural)
                         .Include(r => r.TimeSlot)
                             .ThenInclude(ts => ts.Agenda)
+                                .ThenInclude(a => a.AgendaEvent)
                                 .ThenInclude(a => a.MediumDoctor)
                                     .ThenInclude(md => md.MedicalAttentionMedium)
                                         .ThenInclude(mo => mo.Place)

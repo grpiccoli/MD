@@ -3,7 +3,6 @@ using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -121,12 +120,12 @@ namespace ConsultaMD.Data
                                     NaturalId = item.RUN
                                 };
                                 context.Carnets.Add(carnet);
-                                var digitalsignature = new DigitalSignature
-                                {
-                                    Id = item.Carnet,
-                                    NaturalId = item.RUN
-                                };
-                                context.DigitalSignatures.Add(digitalsignature);
+                                //var digitalsignature = new DigitalSignature
+                                //{
+                                //    Id = item.Carnet,
+                                //    NaturalId = item.RUN
+                                //};
+                                //context.DigitalSignatures.Add(digitalsignature);
                                 var patient = new Patient
                                 {
                                     Insurance = item.Insurance,
@@ -140,7 +139,7 @@ namespace ConsultaMD.Data
                                     Id = item.RUN,
                                     Carnet = carnet,
                                     CarnetId = carnet.Id,
-                                    DigitalSignatureId = carnet.Id,
+                                    //DigitalSignatureId = carnet.Id,
                                     Patient = patient,
                                     Names = item.Names,
                                     LastFather = item.LastF,
@@ -157,7 +156,7 @@ namespace ConsultaMD.Data
                                 var user = new ApplicationUser
                                 {
                                     UserName = RUT.Format(item.RUN),
-                                    PhoneNumber = "+56968419339",
+                                    PhoneNumber = "+56 9 6841 9339",
                                     PhoneConfirmationTime = DateTime.Now.AddMinutes(5),
                                     PhoneNumberConfirmed = true,
                                     Email = item.Email,
@@ -194,9 +193,9 @@ namespace ConsultaMD.Data
 
                                 context.Users.Add(user);
                             }
-                            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures ON");
+                            //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures ON");
                             context.SaveChanges();
-                            context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures OFF");
+                            //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures OFF");
                             transaction.Commit();
                         }
                     }

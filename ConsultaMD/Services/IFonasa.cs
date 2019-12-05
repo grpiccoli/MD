@@ -1,7 +1,5 @@
 ﻿using ConsultaMD.Models.VM;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ConsultaMD.Services
@@ -12,5 +10,6 @@ namespace ConsultaMD.Services
         Task CloseBW();
         Task<Fonasa> GetById(int id);
         Task<FonasaWebPay> Pay(PaymentData paymentData);
+        Task<List<DocFonasa>> GetDocData(int id);
     }
 }

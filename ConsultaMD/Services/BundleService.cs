@@ -21,7 +21,7 @@ namespace ConsultaMD.Services
             }
         }
         public static IEnumerable<Bundle> GetBundles(string lib) {
-            return Bundles.Where(m => m.OutputFileName.Contains(lib, StringComparison.InvariantCulture));
+            return Bundles.Where(m => m.OutputFileName.Contains($"/{lib}.", StringComparison.InvariantCulture));
         }
     }
 }

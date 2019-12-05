@@ -76,7 +76,7 @@ module.exports = async function (callback, data) {
             switch (params.action) {
                 case 'execWSCertifTrab':
                     if (textBody === 'ERROR_CAPTCHA') {
-                        await page.reload({ waitUntil: 'networkidle2' });
+                        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
                         captcha = await readCaptcha(page, data.acKey).catch(error => { callback(error, null); });
                         await submitCatpcha(page, data.rut, captcha).catch(error => { callback(error, null); });
                         break;

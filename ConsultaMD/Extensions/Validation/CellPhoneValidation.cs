@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
 
 namespace ConsultaMD.Extensions.Validation
 {
@@ -11,9 +10,10 @@ namespace ConsultaMD.Extensions.Validation
     {
         public override bool IsValid(object value)
         {
-            Regex regex = new Regex(@"9\s[1-9]\d{3}\s[0-9]{4}");
-            Match match = regex.Match((string)value);
-            return match.Success;
+            var phoneNumberUtil = PhoneNumbers.PhoneNumberUtil.GetInstance();
+            var phone = phoneNumberUtil.Parse((string)value, "CL");
+            var valid = phoneNumberUtil.IsPossibleNumberForType(phone, PhoneNumbers.PhoneNumberType.MOBILE);
+            return valid;
         }
         public void AddValidation(ClientModelValidationContext context)
         {

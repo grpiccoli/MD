@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using ConsultaMD.Data;
 using ConsultaMD.Models.Entities;
+using ConsultaMD.Services;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -29,6 +31,7 @@ namespace ConsultaMD
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<ApplicationDbContext>();
+                var eventService = services.GetRequiredService<IEvent>();
                 var normalizer = services.GetRequiredService<ILookupNormalizer>();
                 var env = services.GetRequiredService<IHostingEnvironment>();
 
@@ -56,14 +59,16 @@ namespace ConsultaMD
                     UserInitializer.Initialize(context, normalizer);
                     var adminId = context.ApplicationUsers.Where(u => u.Email == "contacto@epicsolutions.cl").SingleOrDefault().Id;
 
-                    if (!context.DigitalSignatures.Any())
-                        BulkInsert.RunSql<DigitalSignature>(tsvPath, connection);
+                    //if (!context.DigitalSignatures.Any())
+                    //    BulkInsert.RunSql<DigitalSignature>(tsvPath, connection);
                     if (!context.Doctors.Any())
                         BulkInsert.RunSql<Doctor>(tsvPath, connection);
                     if (!context.Specialties.Any())
                         BulkInsert.RunSql<Specialty>(tsvPath, connection);
                     if (!context.DoctorSpecialties.Any())
                         BulkInsert.RunSql<DoctorSpecialty>(tsvPath, connection);
+                    if (!context.InsuranceLocations.Any())
+                        BulkInsert.RunSql<InsuranceAgreement>(tsvPath, connection);
                     if (!context.InsuranceLocations.Any())
                         BulkInsert.RunSql<InsuranceLocation>(tsvPath, connection);
                     if (!context.MedicalAttentionMediums.Any())
@@ -72,10 +77,166 @@ namespace ConsultaMD
                         BulkInsert.RunSql<MediumDoctor>(tsvPath, connection);
                     if (!context.Places.Any())
                         BulkInsert.RunSql<Place>(tsvPath, connection);
-                    if (!context.Agenda.Any())
-                        BulkInsert.RunSql<Agenda>(tsvPath, connection);
-                    if (!context.TimeSlots.Any())
-                        BulkInsert.RunSql<TimeSlot>(tsvPath, connection);
+
+                    if (!context.AgendaEvents.Any())
+                        eventService.AddEvents(new List<AgendaEvent> { 
+                            new AgendaEvent {
+                                MediumDoctorId = 1,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,12,13,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{ 
+                                    DayOfWeek.Monday,
+                                    DayOfWeek.Tuesday,
+                                    DayOfWeek.Wednesday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 5,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,12,13,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 6,
+                                StartDateTime = new DateTime(2019,11,15,15,50,0),
+                                EndDateTime = new DateTime(2019,12,17,18,30,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Tuesday,
+                                    DayOfWeek.Wednesday,
+                                    DayOfWeek.Thursday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 8,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,12,13,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday,
+                                    DayOfWeek.Tuesday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 11,
+                                StartDateTime = new DateTime(2019,11,18,10,0,0),
+                                EndDateTime = new DateTime(2019,11,18,12,30,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Tuesday,
+                                    DayOfWeek.Wednesday,
+                                    DayOfWeek.Thursday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 12,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,11,15,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday,
+                                    DayOfWeek.Tuesday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 13,
+                                StartDateTime = new DateTime(2019,11,15,9,30,0),
+                                EndDateTime = new DateTime(2019,11,15,13,0,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Wednesday,
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 15,
+                                StartDateTime = new DateTime(2019,11,19,9,0,0),
+                                EndDateTime = new DateTime(2019,11,19,12,30,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Monday,
+                                    DayOfWeek.Tuesday,
+                                    DayOfWeek.Wednesday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 16,
+                                StartDateTime = new DateTime(2019,11,15,9,0,0),
+                                EndDateTime = new DateTime(2019,11,15,18,10,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 17,
+                                StartDateTime = new DateTime(2019,11,18,15,0,0),
+                                EndDateTime = new DateTime(2019,11,18,18,10,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 24,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,12,13,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 25,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,12,13,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday
+                                }
+                            },
+                            new AgendaEvent {
+                                MediumDoctorId = 26,
+                                StartDateTime = new DateTime(2019,11,15,11,30,0),
+                                EndDateTime = new DateTime(2019,12,13,17,15,0),
+                                Duration = new TimeSpan(0,10,0),
+                                Frequency = 1,
+                                daysOfWeek = new List<DayOfWeek>{
+                                    DayOfWeek.Thursday,
+                                    DayOfWeek.Friday,
+                                    DayOfWeek.Monday
+                                }
+                            }
+                        }).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {

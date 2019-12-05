@@ -56,7 +56,8 @@ namespace ConsultaMD.Extensions
             return Fonasa(unformated.Value.rut);
         }
         public static bool IsValid(int rut, string dv) {
-            return DV(rut) == dv;
+            var Dv = DV(rut);
+            return Dv == dv;
         }
         public static bool IsValid(string rut)
         {

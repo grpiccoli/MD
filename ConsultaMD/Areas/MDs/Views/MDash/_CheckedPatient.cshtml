@@ -1,0 +1,39 @@
+﻿@model MDWaitingRoomPatientVM
+
+<div mbsc-card data-collapsible>
+    <div class="mbsc-card-header">
+        <img src="~/home/getimg/@Model.Id" class="mbsc-avatar">
+        <h5 class="mbsc-card-title mbsc-bold">@Model.Name</h5>
+        <div class="mbsc-card-subtitle">@Model.GetRUT()</div>
+    </div>
+    <div class="mbsc-card-content">
+        <ul class="md-contact-list mbsc-cloak">
+            <li>
+                <p>@Html.DisplayNameFor(m => m.Insurance)</p>
+                <h4><img src="~/img/mi/@((int)Model.Insurance).png" style="height:30px" />@Html.DisplayFor(m => m.Insurance)</h4>
+            </li>
+            <li>
+                <p>@Html.DisplayNameFor(m => m.Age)</p>
+                <h4>@Model.Age</h4>
+                <p>@Html.DisplayNameFor(m => m.Birth)</p>
+                <h4>@Html.DisplayFor(m => m.Birth)</h4>
+            </li>
+            <li>
+                <p>@Html.DisplayNameFor(m => m.Sex)</p>
+                <h4>@Html.DisplayFor(m => m.Sex)</h4>
+            </li>
+            <li>
+                <p>@Html.DisplayNameFor(m => m.Nationality)</p>
+                <h4>@Html.DisplayFor(m => m.Nationality)</h4>
+            </li>
+            <li data-icon="material-email">
+                <p>@Html.DisplayNameFor(m => m.Email)</p>
+                <h4><a href="mailto:@Model.Email">@Model.Email</a></h4>
+            </li>
+            <li data-icon="material-phone-iphone">
+                <p>@Html.DisplayNameFor(m => m.Phone)</p>
+                <h4><a href="tel:@Model.Phone">@Model.Phone</a></h4>
+            </li>
+        </ul>
+    </div>
+</div>

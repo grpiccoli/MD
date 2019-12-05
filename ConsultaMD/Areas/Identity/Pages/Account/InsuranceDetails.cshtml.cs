@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -28,16 +26,17 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IFonasa _fonasa;
+        private readonly IMIP _mIPService;
         private readonly IStringLocalizer<InsuranceDetailsModel> _localizer;
 
-        public InsuranceDetailsModel(UserManager<ApplicationUser> userManager,
+        public InsuranceDetailsModel(
+            IMIP mIPService,
+            UserManager<ApplicationUser> userManager,
             ILogger<RegisterModel> logger,
-            IFonasa fonasa,
             IStringLocalizer<InsuranceDetailsModel> localizer,
             ApplicationDbContext context)
         {
-            _fonasa = fonasa;
+            _mIPService = mIPService;
             _localizer = localizer;
             _userManager = userManager;
             _logger = logger;
@@ -47,7 +46,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [BindProperty]
         public InsuranceDetailsInputModel Input { get; set; }
         public Uri ReturnUrl { get; set; }
-
+        private Redirect Redir { get; set; } = new Redirect();
         public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {
             var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
@@ -60,27 +59,48 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
         public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
+            ReturnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
                 var person = _context.Naturals
                     .Include(n => n.Patient)
+                    .Include(n => n.Doctor)
                     .SingleOrDefault(p => p.Id == user.PersonId);
-                if(person.Patient == null)
+                if(person != null)
                 {
-                    person.Patient = new Patient { 
-                        NaturalId = person.Id,
-                        Natural = person
-                    };
+                    var valid = await _mIPService.Validate((int)Input.Insurance, person.Id, Input.InsurancePassword)
+                        .ConfigureAwait(false);
+                    if (valid)
+                    {
+                        Redir.Doctor = person.Doctor != null;
+                        if (person.Patient == null)
+                        {
+                            person.Patient = new Patient
+                            {
+                                NaturalId = person.Id,
+                                Natural = person
+                            };
+                        }
+                        person.Patient.Insurance = Input.Insurance;
+                        person.Patient.InsurancePassword = Input.InsurancePassword;
+                        if (_context.Patients.Any(p => p.NaturalId == person.Id))
+                        {
+                            _context.Patients.Update(person.Patient);
+                        }
+                        else
+                        {
+                            await _context.Patients.AddAsync(person.Patient).ConfigureAwait(false);
+                        }
+                        var result = _context.People.Update(person);
+                        await _context.SaveChangesAsync().ConfigureAwait(false);
+                        Redir.Prevision = true;
+                        _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
+                        return RedirectToPage(Redir.GetPage(), new { ReturnUrl });
+                    }
+                    ModelState.AddModelError(string.Empty, "Error combinación Usuario/Previsión/Contraseña");
                 }
-                person.Patient.Insurance = Input.Insurance;
-                person.Patient.InsurancePassword = Input.InsurancePassword;
-                var pResult = await _context.Patients.AddAsync(person.Patient).ConfigureAwait(false);
-                var result = _context.People.Update(person);
-                await _context.SaveChangesAsync().ConfigureAwait(false);
-                _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
-                return RedirectToPage("VerifyPhone", new { returnUrl });
+                ModelState.AddModelError(string.Empty, "Error desconocido por favor contactese con soporte");
             }
             // If we got this far, something failed, redisplay form
             return Page();
@@ -93,7 +113,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Insurance(ErrorMessage = "El RUT no está registrado en la previsión seleccionada")]
         public Insurance Insurance { get; set; }
 
-        public string InsuranceList { get; set; } = JsonConvert.SerializeObject(EnumUtils.Enum2MS<Insurance>("Name").Where(e => e.Value != "1"));
+        public string InsuranceList { get; } = JsonConvert.SerializeObject(EnumUtils.Enum2Ms<Insurance>("Name").Where(e => e.value != 1));
         //public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name").Where(e => e.Value != "1");
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña de su Previsión")]

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ConsultaMD.Models.Entities
 {
@@ -9,5 +10,6 @@ namespace ConsultaMD.Models.Entities
         public int ProvinceId { get; set; }
         public virtual Province Province { get; set; }
         public virtual ICollection<Place> Places { get; } = new List<Place>();
+        public virtual ICollection<InsuranceLocation> InsuranceLocations { get; } = new List<InsuranceLocation>();
     }
 }

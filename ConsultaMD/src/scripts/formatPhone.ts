@@ -26,3 +26,38 @@ $.validator.unobtrusive.adapters.add("cell", [], function (options: any) {
     options.rules.cell = {};
     options.messages["cell"] = options.message;
 });
+
+//mobiscroll.settings = {
+//    lang: 'es',
+//    theme: 'ios',
+//    themeVariant: 'light'
+//};
+
+//mobiscroll.numpad('#PhoneNumber', {
+//    fill: 'ltr',
+//    template: '(+569) dddd dddd',
+//    allowLeadingZero: false,
+//    validate: function (event, inst) {
+//        if (inst.isVisible()) {
+//            // Display the formatted value
+//            inst._markup[0].querySelector('.mbsc-np-dsp').innerHTML =
+//                inst.settings.formatValue(event.values, event.variables, inst) || '&nbsp;';
+//        }
+
+//        return {
+//            // Set the set button invalid until 10 chars filled
+//            invalid: event.values.length != 10
+//        };
+//    },
+//    formatValue: function (numbers, _variables, _inst) {
+//        // Specify how the value will be formatted
+//        return (numbers.length > 2 ? '(' : '') + numbers.slice(0, 3).join('')
+//            + (numbers.length > 2 ? ') ' : '') + numbers.slice(3, 6).join('')
+//            + (numbers.length > 5 ? '-' : '') + numbers.slice(6, 10).join('');
+//    },
+//    parseValue: function (v) {
+//        if (v) {
+//            return v.replace('(', '').replace(') ', '').replace('-', '');
+//        }
+//    }
+//});

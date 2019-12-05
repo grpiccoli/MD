@@ -13,6 +13,14 @@
       ]
     },
     {
+      "library": "parsleyjs@2.9.1",
+      "destination": "wwwroot/lib/parsleyjs/",
+      "files": [
+        "dist/parsley.min.js",
+        "dist/i18n/es.js"
+      ]
+    },
+    {
       "library": "owl.carousel@2.3.4",
       "destination": "wwwroot/lib/owl.carousel/",
       "files": [

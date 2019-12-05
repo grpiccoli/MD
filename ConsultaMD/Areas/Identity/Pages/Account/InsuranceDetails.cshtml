@@ -4,42 +4,40 @@
     ViewData["Title"] = "Previsión";
 }
 
-<partial name="_Libs" model='(new string[]{ "insurance", "jquery.rut", "simplebar" }, "")' />
+<partial name="_Libs" model="(new List<string>(), string.Empty)" />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
     <div class="col m6 s12 h-100v" data-simplebar>
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" data-parsley-validate>
             <h3 class="center-align header">Añade tu Previsión</h3>
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="input-field col s12">
-                <input asp-for="Input.RUT" class="validate valid" readonly="readonly" autocomplete="username" style="font-weight:800" />
+                <input asp-for="Input.RUT" class="validate valid" readonly="readonly" style="font-weight:800" />
                 <label asp-for="Input.RUT"></label>
                 <span asp-validation-for="Input.RUT" class="text-danger"></span>
             </div>
             <div class="input-field col s12">
-                @*<input id="shower" name="shower" value="@Model.Input.Insurance" class="validate mobile-only" readonly />*@
                 <input asp-for="Input.Insurance" class="validate"/>
-                @*<select asp-for="Input.Insurance" asp-items="Model.Input.InsuranceList" class="validate"></select>*@
                 <label asp-for="Input.Insurance"></label>
                 <span asp-validation-for="Input.Insurance" class="text-danger"></span>
             </div>
             <div class="input-field col s12" style="display: none;">
-                <input asp-for="Input.InsurancePassword" class="validate" autocomplete="current-password" />
+                <input asp-for="Input.InsurancePassword" class="validate" data-parsley-mipwd />
                 <label asp-for="Input.InsurancePassword"></label>
                 <span asp-validation-for="Input.InsurancePassword" class="text-danger"></span>
                 <div class="collection">
                     <a id="recoverpass" href="#" class="collection-item" target="_blank">
                         <span class="badge">
-                            <img id="recovery" src="" />
+                            <img id="recovery" style="height:100%"/>
                         </span>
                         ¿Olvidó la contraseña de su previsión?
                     </a>
                 </div>
             </div>
             <div class="row">
-                <div class="col s6">
-                    <button type="submit" class="btn waves-effect waves-light white-text teal pill">
+                <div class="col s12">
+                    <button type="submit" class="btn waves-effect waves-light white-text teal pill w-100 tile-gradient">
                         <i class="material-icons right">arrow_forward</i>Continuar
                     </button>
                 </div>
@@ -65,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s6">
+            <div class="col s12">
                 <p class="right-align">
                     <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
                         iniciar sesión con otro usuario
@@ -88,6 +86,8 @@
             @:M.toast({ html: '<i class="material-icons left">email</i>Correo de verificación enviado' });
 }
             var instance = mobiscroll.select('#Input_Insurance', {
+                lang: 'es',
+                theme: 'material',
                 data: @Html.Raw(Model.Input.InsuranceList),
                 display: 'bubble',
                 showOnTap: true,

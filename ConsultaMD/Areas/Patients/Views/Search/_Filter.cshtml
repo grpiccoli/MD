@@ -233,10 +233,12 @@
                 <div class="card-action">
                     <div class="row">
                         <div class="col s12">
-                            <input @(Model.Insurance == ConsultaMD.Data.InsuranceData.Insurance.Particular ? "disabled" : "") asp-for="HighlightInsurance" class="filled-in" />
-                            <span>
-                                Destacar servicios compatibles con plan de salud
-                            </span>
+                            <p>
+                                <label>
+                                    <input asp-for="HighlightInsurance" disabled="@(Model.Insurance == 0)" class="validate filled-in" />
+                                    <span>@Html.DisplayNameFor(model => model.HighlightInsurance)</span>
+                                </label>
+                            </p>
                         </div>
                     </div>
                 </div>

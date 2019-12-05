@@ -35,7 +35,7 @@ namespace ConsultaMD.Models.VM
         {
             get
             {
-                return new DoctorDetails(Reservation.TimeSlot.Agenda.MediumDoctor.Doctor);
+                return new DoctorDetails(Reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.Doctor);
             }
             private set
             {
@@ -48,7 +48,7 @@ namespace ConsultaMD.Models.VM
         {
             get
             {
-                return new PlaceDetails(Reservation.TimeSlot.Agenda.MediumDoctor.MedicalAttentionMedium.Place);
+                return new PlaceDetails(Reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.MedicalAttentionMedium.Place);
             }
             private set
             {

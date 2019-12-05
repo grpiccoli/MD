@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ConsultaMD.Models.Entities;
 
 namespace ConsultaMD.Models.VM
 {
@@ -18,5 +15,17 @@ namespace ConsultaMD.Models.VM
         public string FechaNacimi { get; set; }
         public int EdadBeneficiario { get; set; }
         public string BrowserWSEndpoint { get; set; }
+        public string Text { get; set; }
+    }
+    public class DocFonasa
+    {
+        public string Address { get; set; }
+        public string Commune { get; set; }
+        public string Region { get; set; }
+        public int Nivel { get; set; }
+        public string PrestacionId { get; set; }
+        public string RutTratante { get; set; }
+        public string NomTratante { get; set; }
+        public Prestacion Prestacion { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    M.Collapsible.init(document.getElementById('nav-mobile'), {accordion:false});
+    M.Sidenav.init(document.getElementById('nav-mobile'));
     $("#editProfile").click(function () {
         var $el = $(this);
         if ($el.hasClass('teal')) {

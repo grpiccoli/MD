@@ -133,6 +133,16 @@ namespace ConsultaMD
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
+            services.Configure<RegCivilSettings>(o =>
+            {
+                o.AcKey = antiCaptchaKey;
+                o.Rut = RUT.Format(16_124_902, false);
+                o.Carnet = 519_194_461;
+            });
+
+            services.AddHostedService<RegCivilBackground>();
+            services.AddScoped<IRegCivil, RegCivilService>();
+
             // Add WebMarkupMin services.
             services.AddWebMarkupMin()
                 .AddHtmlMinification()
@@ -149,6 +159,8 @@ namespace ConsultaMD
             });
             services.AddHostedService<FonasaBackground>();
             services.AddScoped<IFonasa, FonasaService>();
+            services.AddScoped<IMIP, MIPService>();
+            services.AddScoped<IEvent, EventService>();
             //WebpackChunkNamer.Init();
 
             services.AddMvc(o => 
@@ -175,25 +187,26 @@ namespace ConsultaMD
             services.AddHttpsRedirection(options => 
             options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect);
 
-            services.AddNodeServices(o => o.InvocationTimeoutMilliseconds = 600000);
+            services.AddNodeServices(o => o.InvocationTimeoutMilliseconds = 600_000);
 
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-CL");
             services.Configure<RequestLocalizationOptions>(
                 opts =>
                 {
                     var supportedCultures = new List<CultureInfo>
                     {
-                                    new CultureInfo("es"),
                                     new CultureInfo("es-CL"),
+                                    new CultureInfo("es"),
                                     new CultureInfo("en")
                     };
 
                     opts.DefaultRequestCulture = new RequestCulture("es-CL");
-                                // Formatting numbers, dates, etc.
-                                opts.SupportedCultures = supportedCultures;
-                                // UI strings that we have localized.
-                                opts.SupportedUICultures = supportedCultures;
+                    // Formatting numbers, dates, etc.
+                    opts.SupportedCultures = new List<CultureInfo> { new CultureInfo("es-CL") };
+                    // UI strings that we have localized.
+                    opts.SupportedUICultures = supportedCultures;
                 });
             services.AddUrlHelper();
             services.AddSignalR(options => {

@@ -4,16 +4,25 @@
     ViewData["Title"] = "Registro";
 }
 
-<partial name="_Libs" model='(new string[]{ "jquery.rut", "simplebar", "cleave.js", "register" }, "")' />
+<partial name="_Libs" model='(new List<string>{ "cleave.js" }, "")' />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
     <div class="col m6 s12 h-100v" data-simplebar>
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+        <form id="register" asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on" data-parsley-validate>
             <h3 class="center-align">¡Regístrate!</h3>
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="input-field col s12">
-                <input asp-for="Input.RUT" class="validate" autocomplete="username" />
+                <p>
+                    <label>
+                        <input asp-for="Input.IsExt" class="validate" />
+                        <span>@Html.DisplayNameFor(model => model.Input.IsExt)</span>
+                    </label>
+                </p>
+                <span asp-validation-for="Input.IsExt" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.RUT" class="validate" autocomplete="username" data-parsley-rut />
                 <label asp-for="Input.RUT"></label>
                 <span asp-validation-for="Input.RUT" class="text-danger"></span>
             </div>
@@ -23,7 +32,7 @@
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <div class="input-field col s12" style="display:none;">
-                <input asp-for="Input.CarnetId" class="validate" />
+                <input asp-for="Input.CarnetId" class="validate" data-parsley-carnet />
                 <label asp-for="Input.CarnetId"></label>
                 <span asp-validation-for="Input.CarnetId" class="text-danger"></span>
                 <ul class="collapsible">
@@ -44,19 +53,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="input-field col s12" style="display:none;">
-                <input asp-for="Input.Nationality" />
-                <label asp-for="Input.Nationality"></label>
-            </div>
+            @*<div class="input-field col s12" style="display:none;">
+            <input asp-for="Input.Nationality" />
+            <label asp-for="Input.Nationality"></label>
+        </div>*@
             @*<div class="input-field col s12">
-                <select asp-for="Input.Insurance" asp-items="Model.Input.InsuranceList" class="validate"></select>
-            </div>
-            <div class="input-field col s12" style="display: none;">
-                <input asp-for="Input.InsurancePassword" class="validate" autocomplete="current-password" />
-                <label asp-for="Input.InsurancePassword"></label>
-                <span asp-validation-for="Input.InsurancePassword" class="text-danger"></span>
-                <a id="recoverpass" href="#" target="_blank">¿Olvidó la contraseña de su previsión?</a>
-            </div>*@
+            <select asp-for="Input.Insurance" asp-items="Model.Input.InsuranceList" class="validate"></select>
+        </div>
+        <div class="input-field col s12" style="display: none;">
+            <input asp-for="Input.InsurancePassword" class="validate" autocomplete="current-password" />
+            <label asp-for="Input.InsurancePassword"></label>
+            <span asp-validation-for="Input.InsurancePassword" class="text-danger"></span>
+            <a id="recoverpass" href="#" target="_blank">¿Olvidó la contraseña de su previsión?</a>
+        </div>*@
             <div class="input-field col s12">
                 <input asp-for="Input.Email" class="validate" autocomplete="email" />
                 <label asp-for="Input.Email"></label>
@@ -83,10 +92,10 @@
             </div>
             <div class="row">
                 <input asp-for="Input.ConnectionId" class="hide" readonly />
-                <div class="col s6">
-                    <button type="submit" class="btn waves-effect waves-light white-text teal pill">Registrarse</button>
+                <div class="col s12">
+                    <button type="submit" class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">Registrarse</button>
                 </div>
-                <div class="col s6">
+                <div class="col s12">
                     <p class="right-align">
                         <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
                             Iniciar Sesión

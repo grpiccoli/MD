@@ -1,79 +1,91 @@
-﻿.brand-logo img {
-    width: 60%;
-    vertical-align: sub;
-    height: 35px;
-}
-
-body {
+﻿body {
     header, main, footer {
         padding-left: 300px;
     }
 }
 
-#editProfile {
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    right: 30px;
-}
-
-.sidenav .user-view {
-    padding: 32px;
-    line-height: 2rem;
-
-    a.details{
-        cursor: default;
-        i.edit{
-            cursor:pointer;
-        }
-    }
-
-    .name {
-        font-size: 13px;
-    }
-
-    .background {
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-
-        .image {
-            height: 100%;
-        }
-    }
-
-    .input-field {
-        padding: 0;
+.sidenav {
+    .user-view {
+        padding: 1.5rem;
         margin: 0;
+        line-height: 1.5rem;
 
-        &.email .prefix {
-            top: 9px;
+        #editProfile {
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            right: 30px;
+            cursor: pointer;
         }
 
-        .prefix {
-            top: 0;
+        a.details {
+            cursor: default;
+
+            i.edit {
+                cursor: pointer;
+            }
         }
 
-        input {
-            font-size: small;
-            margin-bottom: 0;
-            height: 40px;
+        .name {
+            font-size: 13px;
+        }
+
+        .input-field {
+            padding: 0;
+            margin: 0;
+
+            &.email .prefix {
+                top: 9px;
+            }
+
+            .material-icons.prefix {
+                top: 0;
+                font-size: 1.5rem;
+
+                &.edit {
+                    font-size: 1rem;
+                    border-radius: 20px;
+                    padding: 3px;
+                    background-color: #F44336;
+                    box-shadow: 1px 1px 2px 0px #000;
+                    transition: all 0.5s;
+                    width: 20px;
+                }
+            }
+
+            input {
+                font-size: small;
+                margin-bottom: 0;
+                height: 30px;
+            }
         }
     }
-}
 
-.material-icons.prefix.edit {
-    font-size: 1.2rem;
-    border-radius: 20px;
-    padding: 3px;
-    background-color: #F44336;
-    box-shadow: 1px 1px 2px 0px #000;
-    transition: all 0.5s;
-    width:24px;
+    li {
+        &.active .collapsible-body > ul:not(.collapsible) > li.active {
+            background-color: darkgrey;
+        }
+
+        a {
+            line-height: 2.5rem;
+            height: 2.5rem;
+            padding: 0 1.5rem;
+
+            i.material-icons.left {
+                height: 2.5rem;
+                line-height: 2.5rem;
+            }
+
+            img.material-custom {
+                height: 2.5rem;
+            }
+
+            &.subheader {
+                line-height: 2rem;
+                height: 2rem;
+            }
+        }
+    }
 }
 
 nav > div.nav-wrapper > div.nav-wrapper {

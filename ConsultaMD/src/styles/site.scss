@@ -18,8 +18,18 @@ html {
     }
 }
 
+.parsley-errors-list {
+    color: #dc3545 !important;
+}
+
+.parsley-error {
+    border-bottom: 1px solid #F44336 !important;
+    -webkit-box-shadow: 0 1px 0 0 #F44336 !important;
+    box-shadow: 0 1px 0 0 #F44336 !important;
+}
+
 input#Input_RUT {
-    text-transform:uppercase;
+    text-transform: uppercase;
 }
 
 //materialize icon to the right of input
@@ -58,6 +68,11 @@ button.accept-policy {
 
 .pill {
     border-radius: 30px !important;
+}
+
+.material-custom {
+    height: 45px;
+    padding: 7px 26px 7px 0
 }
 
 .btn {

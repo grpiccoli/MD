@@ -1,0 +1,45 @@
+﻿@page
+@model ConsultaMD.Areas.Identity.Pages.Account.VerifyEmailModel
+@{
+    ViewData["Title"] = "Verifica tu Correo";
+}
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='"Patient"' />
+    <div class="col m6 s12 h-100v">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+            <h3 class="center-align">@ViewData["Title"]</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-field col s12">
+                <input asp-for="Email" class="validate" autocomplete="email" />
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <button type="submit" class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">Reenviar correo de verificación</button>
+            </div>
+            <div class="col s6">
+                <p class="right-align">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
+                        iniciar sesión con otro usuario
+                    </a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        setInterval(async () => {
+            await fetch('@Model.ReturnUrl')
+                .then(response => {
+                    if (!response.redirected) {
+                        window.location.href = '@Model.ReturnUrl';
+                    }
+                });
+         }, 2000);
+    </script>
+}
+
+<partial name="_ValidationScriptsPartial" />

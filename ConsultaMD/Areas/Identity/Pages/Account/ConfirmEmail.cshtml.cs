@@ -15,13 +15,13 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     public class ConfirmEmailModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-
+        public Uri ReturnUrl { get; set; }
         public ConfirmEmailModel(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> OnGetAsync(string userId, string code)
+        public async Task<IActionResult> OnGetAsync(string userId, string code, Uri returnUrl = null)
         {
             if (userId == null || code == null)
             {
@@ -39,6 +39,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             {
                 throw new InvalidOperationException($"Error confirming email for user with ID '{userId}':");
             }
+
+            ReturnUrl = returnUrl;
 
             return Page();
         }

@@ -1,0 +1,34 @@
+﻿@model SummaryVM
+
+@{
+    ViewData["Title"] = "Panel de Control";
+}
+
+<div class="row center">
+    <div class="col s6">
+        <div class="col s12">@Html.DisplayNameFor(m => m.TotalAppointments)</div>
+        <div class="col s12">
+            <button class="btn pill">@Html.DisplayFor(m => m.TotalAppointments)</button>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="col s12">@Html.DisplayNameFor(m => m.TodayAppointments)</div>
+        <div class="col s12">
+            <button class="btn pill">@Html.DisplayFor(m => m.TodayAppointments)</button>
+        </div>
+    </div>
+</div>
+<div class="row" data-simplebar style="height:calc(100vh - 64px*2)">
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.TotalIncome), Html.DisplayFor(m => m.TotalIncome))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.TotalInvoice), Html.DisplayFor(m => m.TotalInvoice))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.PendingInvoice), Html.DisplayFor(m => m.PendingInvoice))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.TotalPayed), Html.DisplayFor(m => m.TotalPayed))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.PendingPayments), Html.DisplayFor(m => m.PendingPayments))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.TimeSlots), Html.DisplayFor(m => m.TimeSlots))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.Ocupacion), Html.DisplayFor(m => m.Ocupacion))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.TakenTimeSlots), Html.DisplayFor(m => m.TakenTimeSlots))" />
+    <partial name="_SummaryPie" model="(Html.DisplayNameFor(m => m.RevenuePerInsurance), Model.RevenuePerInsurance)" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.TotalPatients), Html.DisplayFor(m => m.TotalPatients))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.ReturningPatients), Html.DisplayFor(m => m.ReturningPatients))" />
+    <partial name="_SummaryItem" model="(Html.DisplayNameFor(m => m.Comisiones), Html.DisplayFor(m => m.Comisiones))" />
+</div>

@@ -1,0 +1,106 @@
+﻿@page
+@model DoctorLocationsModel
+@{
+    ViewData["Title"] = "Previsión";
+}
+
+<partial name="_Libs" model="(new List<string>(), string.Empty)" />
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='"MD"' />
+    <div class="col m6 s12 h-100v" data-simplebar>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <h3 class="center-align header">Configura tus ubicaciones</h3>
+            <div id="selector" class="input-field col s12 insured">
+                <input asp-for="Input.Selector" class="validate valid"
+                       style="font-weight:800" />
+                <label asp-for="Input.Selector"></label>
+                <span asp-validation-for="Input.Selector" class="text-danger"></span>
+            </div>
+            <div id="place" class="input-field col s12">
+                <input asp-for="Input.PlaceId" class="hide" />
+                <input id="pac-input"
+                       class="controls"
+                       type="text"
+                       placeholder="Enter a location" />
+            </div>
+            <div class="input-field col s3">
+                <input asp-for="Input.Block" />
+                <label asp-for="Input.Block"></label>
+                <span asp-validation-for="Input.Block" class="text-danger"></span>
+            </div>
+            <div class="input-field col s3">
+                <input asp-for="Input.Floor" />
+                <label asp-for="Input.Floor"></label>
+                <span asp-validation-for="Input.Floor" class="text-danger"></span>
+            </div>
+            <div class="input-field col s3">
+                <input asp-for="Input.Appartment" />
+                <label asp-for="Input.Appartment"></label>
+                <span asp-validation-for="Input.Appartment" class="text-danger"></span>
+            </div>
+            <div class="input-field col s3">
+                <input asp-for="Input.Office" />
+                <label asp-for="Input.Office"></label>
+                <span asp-validation-for="Input.Office" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <div id="map"></div>
+            </div>
+            <div style="display:none">
+                <div id="infowindow-content">
+                    <div class="card small">
+                        <div class="card-image">
+                            <img id="place-image" />
+                            <span id="place-name" class="card-title"></span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <strong>Dirección:</strong><br>
+                            <span id="place-address"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="add" type="submit" disabled
+                    class="btn waves-effect waves-light white-text teal pill">
+                <i class="material-icons left">check</i>Guardar
+            </button>
+            <div class="input-field">
+                <a asp-page="./DoctorInsurance" asp-route-returnUrl="@Model.ReturnUrl"
+                   class="btn btn-small waves-effect waves-light white-text teal pill">
+                    <i class="material-icons left">add</i>Añadir Convenio
+                </a>
+            </div>
+            <div class="input-field">
+                <br />
+                <div class="col s12">
+                    <button id="end" type="submit"
+                            class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">
+                        <i class="material-icons right">arrow_forward</i>Continuar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@this.Block(@<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&libraries=places&language=es&region=CL&callback=initPlaceSelector" async defer></script>, "DWNScripts")
+
+@section Scripts{
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var instance = mobiscroll.select('#Input_Selector', {
+                lang: 'es',
+                theme: 'material',
+                data: @Html.Raw(Model.SelectorList),
+                display: 'bubble',
+                showOnTap: true,
+                showOnFocus: true
+            });
+        });
+    </script>
+}
+
+<partial name="_ValidationScriptsPartial" />

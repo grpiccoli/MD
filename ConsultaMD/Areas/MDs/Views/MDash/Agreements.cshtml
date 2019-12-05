@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AgreementVM>
+
+@{
+    ViewData["Title"] = "Agreements";
+}
+
+<div class="row h-100v-b" data-simplebar>
+    <div class="col s12">
+        <a asp-area="Identity" asp-page="/Account/DoctorInsurance" asp-route-returnUrl="@Context.Request.Path" style="border-bottom: 1px solid lightblue">
+            <i class="material-icons left">add</i>Añadir Convenio
+        </a>
+    </div>
+    @foreach (var loc in Model)
+    {
+        <div class="col s12">
+            <div class="card">
+                <div class="card-image">
+                    <img class="pill" style="width:150px" src="~/img/mi/@((int)loc.Insurance).png" alt="@loc.Insurance" asp-append-version="true" />
+                    <span class="card-title black-text" style="padding-left:150px;">
+                        @loc.Insurance.GetAttrName()<br />
+                        @Html.DisplayFor(m => loc.PersonName)<br />
+                        @Html.DisplayFor(m => loc.PersonRUT)
+                    </span>
+                    <a href="#" class="btn-floating halfway-fab waves-effect waves-light teal">
+                        <i class="material-icons">refresh</i>
+                    </a>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        @*<button class="btn"><i class="material-icons left">edit</i>Editar</button>*@
+                        <table>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => loc.ActiveLocations)</th>
+                            </tr>
+                            @foreach (var mi in loc.ActiveLocations)
+                            {
+                                <tr>
+                                    <td>
+                                        <span>@mi</span>
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => loc.InactiveLocations)</th>
+                            </tr>
+                            @foreach (var mi in loc.InactiveLocations)
+                            {
+                                <tr>
+                                    <td>
+                                        <span>@mi</span>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    @*<div class="card-action">
+                        <div class="col s5 offset-s1">
+                            <button class="btn center pill tile-gradient">Activar</button>
+                        </div>
+                        <div class="col s5">
+                            <button class="btn center pill tile-gradient">Eliminar</button>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    }
+</div>

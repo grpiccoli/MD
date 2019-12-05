@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LocationVM>
+
+@{
+    ViewData["Title"] = "Ubicaciones";
+}
+
+<partial name="_Libs" model="(new List<string>(), string.Empty)" />
+
+    <div class="row" data-simplebar style="height: calc(100vh - 64px);">
+        <div class="col s12">
+            <a asp-area="Identity" asp-page="/Account/DoctorLocations" asp-route-returnUrl="@Context.Request.Path" style="border-bottom: 1px solid lightblue">
+                <i class="material-icons left">add</i>Añadir Ubicación
+            </a>
+        </div>
+        @foreach (var loc in Model)
+        {
+            <div class="col s12">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img class="pill" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=150&photoreference=@(loc.PhotoId)&key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA" alt="@loc.Name" asp-append-version="true" />
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <button class="btn"><i class="material-icons left">edit</i>Editar</button>
+                            <table>
+                                <tr>
+                                    <td>@Html.DisplayFor(m => loc.Name)</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => loc.Address)</th>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(m => loc.Address)</td>
+                                </tr>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => loc.Agreements)</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @foreach (var mi in loc.Agreements)
+                                        {
+                                            <a class="btn tooltipped" data-tooltip="@mi">
+                                                <img src="~/img/mi/@mi-icon.min.png" alt="@mi" class="h-100"
+                                                     asp-append-version="true" />
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="card-action">
+                            <div class="col s5 offset-s1">
+                                <button class="btn center pill tile-gradient">Activar</button>
+                            </div>
+                            <div class="col s5">
+                                <button class="btn center pill tile-gradient">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>

@@ -12,8 +12,8 @@
     "inputFile": "src/styles/center-image.scss"
   },
   {
-    "outputFile": "src/styles/doctor-details.css",
-    "inputFile": "src/styles/doctor-details.scss"
+    "outputFile": "src/styles/DoctorDetails.css",
+    "inputFile": "src/styles/DoctorDetails.scss"
   },
   {
     "outputFile": "src/styles/splash.css",
@@ -40,8 +40,8 @@
     "inputFile": "src/styles/map.scss"
   },
   {
-    "outputFile": "src/styles/confirmPhone.css",
-    "inputFile": "src/styles/confirmPhone.scss"
+    "outputFile": "src/styles/ConfirmPhone.css",
+    "inputFile": "src/styles/ConfirmPhone.scss"
   },
   {
     "outputFile": "src/styles/site.css",
@@ -60,11 +60,19 @@
     "inputFile": "src/styles/select2mcss.scss"
   },
   {
-    "outputFile": "src/styles/confirm-date.css",
-    "inputFile": "src/styles/confirm-date.scss"
+    "outputFile": "src/styles/ConfirmDate.css",
+    "inputFile": "src/styles/ConfirmDate.scss"
   },
   {
     "outputFile": "src/styles/calentim.css",
     "inputFile": "src/styles/calentim.scss"
+  },
+  {
+    "outputFile": "src/styles/DoctorLocations.css",
+    "inputFile": "src/styles/DoctorLocations.scss"
+  },
+  {
+    "outputFile": "src/styles/Agenda.css",
+    "inputFile": "src/styles/Agenda.scss"
   }
 ]

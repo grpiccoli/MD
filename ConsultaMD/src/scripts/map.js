@@ -152,7 +152,7 @@ function fillReveal(mdId) {
 }
 var tmp = [];
 document.addEventListener('DOMContentLoaded', function () {
-    function changeDates(event, inst) {
+    function changeDates(_event, inst) {
         $('#Dates').find('option').remove().end();
         inst.getVal().forEach(function (e, _) {
             $('#Dates').append(new Option('', moment(e).format(ASPNETDateFormat), null, true));
@@ -237,8 +237,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     mobiscroll.range('#demo', {
         theme: 'material',
-        startInput: '#StartTime',
-        endInput: '#EndTime',
+        startInput: '#MinTime',
+        endInput: '#MaxTime',
         minRange: 1000 * 60 * 10,
         steps: {
             minute: 10,
@@ -523,18 +523,12 @@ function initMap() {
             }
         });
     }
-    function getAllquerys() {
-        var array = $("#filter input[name='__RequestVerificationToken'],"
-            + "#Insurance, #Ubicacion, #Especialidad, #Sex, #HighlightInsurance, #Dates, #MinTime, #MaxTime")
-            .serializeArray();
-        return array;
-    }
     function getData() {
         loaderStart();
         $("#search-filter").prop('disabled', true);
         $('#map-controls').hide();
         $('button').prop('disabled', true);
-        $.post("/Patients/Search/MapList", getAllquerys(), getList);
+        $.post("/Patients/Search/MapList", $("#filter").serializeArray(), getList);
     }
     getData();
     var me;

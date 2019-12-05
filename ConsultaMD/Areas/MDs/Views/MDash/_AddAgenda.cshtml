@@ -1,0 +1,124 @@
+﻿@model AddAgendaVM
+
+<div id="addAgenda" class="mbsc-cloak">
+    <div mbsc-form>
+        <div class="mbsc-form-group-inset">
+            <label>
+                ¿Tiene sobre cupos?
+                <input mbsc-switch data-input-style="box" asp-for="HasOverTime" />
+            </label>
+            <label asp-for="MedicalAttentionMediumId">
+                <input mbsc-input asp-for="MedicalAttentionMediumId" />
+            </label>
+            <label>
+                Inicio
+                <input mbsc-input asp-for="StartTime" />
+            </label>
+            <label>
+                Término
+                <input mbsc-input asp-for="EndTime" />
+            </label>
+            <label>
+                Duración (minutos)
+                <input mbsc-input asp-for="Duration" />
+            </label>
+            <label>
+                Frecuencia (semanas)
+                <input mbsc-input asp-for="Frequency" />
+            </label>
+            <div class="row">
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Monday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Lu</div>
+                    </div>
+                </div>
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Tuesday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Ma</div>
+                    </div>
+                </div>
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Wednesday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Mi</div>
+                    </div>
+                </div>
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Thursday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Ju</div>
+                    </div>
+                </div>
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Friday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Vi</div>
+                    </div>
+                </div>
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Saturday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Sa</div>
+                    </div>
+                </div>
+                <div class="col s1 center-align">
+                    <div class="row mb-0">
+                        <div class="col s1 offset-s3">
+                            <label>
+                                <input asp-for="Sunday" class="filled-in" />
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12" style="font-size:14px">Do</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

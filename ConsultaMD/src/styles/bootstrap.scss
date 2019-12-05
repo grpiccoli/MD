@@ -9,6 +9,10 @@
     height: 100vh !important;
 }
 
+.h-100v-b {
+    height: calc(100vh - 64px) !important;
+}
+
 .h-75v {
     height: 75vh !important;
 }

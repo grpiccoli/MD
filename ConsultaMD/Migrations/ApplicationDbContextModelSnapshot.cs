@@ -25,19 +25,40 @@ namespace ConsultaMD.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<TimeSpan>("Duration");
+                    b.Property<int>("AgendaEventId");
 
                     b.Property<DateTime>("EndTime");
-
-                    b.Property<int>("MediumDoctorId");
 
                     b.Property<DateTime>("StartTime");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MediumDoctorId");
+                    b.HasIndex("AgendaEventId");
 
                     b.ToTable("Agenda");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.AgendaEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<TimeSpan>("Duration");
+
+                    b.Property<DateTime>("EndDateTime");
+
+                    b.Property<int>("Frequency");
+
+                    b.Property<int>("MediumDoctorId");
+
+                    b.Property<DateTime>("StartDateTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MediumDoctorId");
+
+                    b.ToTable("AgendaEvents");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationRole", b =>
@@ -130,7 +151,8 @@ namespace ConsultaMD.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("PersonId")
+                        .IsUnique();
 
                     b.ToTable("AspNetUsers");
                 });
@@ -211,27 +233,11 @@ namespace ConsultaMD.Migrations
                     b.ToTable("CommercialActivities");
                 });
 
-            modelBuilder.Entity("ConsultaMD.Models.Entities.DigitalSignature", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("NaturalId");
-
-                    b.Property<string>("PathToKey");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NaturalId")
-                        .IsUnique();
-
-                    b.ToTable("DigitalSignatures");
-                });
-
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
                 {
                     b.Property<int>("Id");
+
+                    b.Property<int?>("FonasaLevel");
 
                     b.Property<int>("NaturalId");
 
@@ -262,7 +268,24 @@ namespace ConsultaMD.Migrations
                     b.ToTable("DoctorSpecialties");
                 });
 
-            modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceLocation", b =>
+            modelBuilder.Entity("ConsultaMD.Models.Entities.EventDayWeek", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AgendaEventId");
+
+                    b.Property<int>("DayOfWeek");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgendaEventId");
+
+                    b.ToTable("EventDayWeeks");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceAgreement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -270,17 +293,44 @@ namespace ConsultaMD.Migrations
 
                     b.Property<int>("Insurance");
 
-                    b.Property<int>("MediumDoctorId");
-
                     b.Property<string>("Password");
 
                     b.Property<int>("PersonId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("InsuranceAgreements");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceLocation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<int>("CommuneId");
+
+                    b.Property<int>("InsuranceAgreementId");
+
+                    b.Property<string>("InsuranceSelector");
+
+                    b.Property<int>("MediumDoctorId");
+
+                    b.Property<string>("PrestacionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommuneId");
+
+                    b.HasIndex("InsuranceAgreementId");
+
                     b.HasIndex("MediumDoctorId");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("PrestacionId");
 
                     b.ToTable("InsuranceLocations");
                 });
@@ -346,7 +396,7 @@ namespace ConsultaMD.Migrations
 
                     b.Property<int>("DoctorId");
 
-                    b.Property<int>("MedicalAttentionMediumId");
+                    b.Property<int?>("MedicalAttentionMediumId");
 
                     b.Property<bool>("OverTime");
 
@@ -441,6 +491,22 @@ namespace ConsultaMD.Migrations
                     b.HasIndex("LocalityId");
 
                     b.ToTable("Polygons");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Prestacion", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Copago");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Total");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Prestacions");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Reservation", b =>
@@ -691,11 +757,11 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.Person");
 
+                    b.Property<int?>("ApplicationUserId");
+
                     b.Property<DateTime>("Birth");
 
                     b.Property<int>("CarnetId");
-
-                    b.Property<int?>("DigitalSignatureId");
 
                     b.Property<int>("DoctorId");
 
@@ -710,6 +776,8 @@ namespace ConsultaMD.Migrations
                     b.Property<string>("Names");
 
                     b.Property<string>("Nationality");
+
+                    b.Property<string>("PassSII");
 
                     b.Property<bool>("Sex");
 
@@ -731,8 +799,16 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Agenda", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
+                    b.HasOne("ConsultaMD.Models.Entities.AgendaEvent", "AgendaEvent")
                         .WithMany("Agendas")
+                        .HasForeignKey("AgendaEventId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.AgendaEvent", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
+                        .WithMany("AgendaEvents")
                         .HasForeignKey("MediumDoctorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -740,8 +816,8 @@ namespace ConsultaMD.Migrations
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationUser", b =>
                 {
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
+                        .WithOne("ApplicationUser")
+                        .HasForeignKey("ConsultaMD.Models.Entities.ApplicationUser", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -780,14 +856,6 @@ namespace ConsultaMD.Migrations
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("ConsultaMD.Models.Entities.DigitalSignature", b =>
-                {
-                    b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
-                        .WithOne("DigitalSignature")
-                        .HasForeignKey("ConsultaMD.Models.Entities.DigitalSignature", "NaturalId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
                 {
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
@@ -809,17 +877,42 @@ namespace ConsultaMD.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ConsultaMD.Models.Entities.EventDayWeek", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.AgendaEvent", "AgendaEvent")
+                        .WithMany("EventDayWeeks")
+                        .HasForeignKey("AgendaEventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceAgreement", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Person", "Person")
+                        .WithMany("InsuranceAgreements")
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceLocation", b =>
                 {
+                    b.HasOne("ConsultaMD.Models.Entities.Commune", "Commune")
+                        .WithMany("InsuranceLocations")
+                        .HasForeignKey("CommuneId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsultaMD.Models.Entities.InsuranceAgreement", "InsuranceAgreement")
+                        .WithMany("InsuranceLocations")
+                        .HasForeignKey("InsuranceAgreementId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("MediumDoctorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ConsultaMD.Models.Entities.Person", "Person")
-                        .WithMany("InsuranceLocations")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("ConsultaMD.Models.Entities.Prestacion", "Prestacion")
+                        .WithMany("InsuranceLocation")
+                        .HasForeignKey("PrestacionId");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttentionMedium", b =>
@@ -896,7 +989,7 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Agenda", "Agenda")
                         .WithMany("TimeSlots")
                         .HasForeignKey("AgendaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
                         .WithOne("TimeSlot")

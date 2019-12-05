@@ -4,7 +4,7 @@
     ViewData["Title"] = "Verifica tu Celular";
 }
 
-<partial name="_Libs" model='(new string[]{ "libphonenumber-js", "verifyphone" }, "")' />
+<partial name="_Libs" model='(new List<string>{ "libphonenumber-js" }, "")' />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
@@ -12,13 +12,22 @@
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
             <h3 class="center-align">@ViewData["Title"]</h3>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div mbsc-form>
+                <input asp-for="PhoneNumber" class="validate" autocomplete="tel-national"
+                       mbsc-input data-input-style="box" data-label-style="stacked" 
+                       placeholder="+56 9 1234 5678" />
+                <label asp-for="PhoneNumber"></label>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>*@
             <div class="input-field col s12">
-                <span class="prefix" style="font-size:22px;">+56</span>
+                <span class="prefix" style="font-size:22px">+56</span>
                 <input asp-for="PhoneNumber" class="validate" autocomplete="tel-national" />
                 <label asp-for="PhoneNumber"></label>
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn waves-effect waves-light white-text teal pill">Enviar código de verificación</button>
+            <div class="input-field col s12">
+                <button type="submit" class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">Enviar código de verificación</button>
+            </div>
             <div class="col s6">
                 <p class="right-align">
                     <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">

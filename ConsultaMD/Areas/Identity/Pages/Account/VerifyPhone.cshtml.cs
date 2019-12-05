@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 using ConsultaMD.Services;
-using System.Text.RegularExpressions;
-using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using ConsultaMD.Data;
@@ -14,8 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Twilio.Rest.Preview.AccSecurity.Service;
 using ConsultaMD.Extensions.Validation;
-using static ConsultaMD.Data.InsuranceData;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -48,26 +45,28 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Display(Name = "Teléfono Móvil")]
         //[RegularExpression(@"^(?=(?:\D*\d){9})[\(\)\s\-]{,5}$")]
         public string PhoneNumber { get; set; }
-        public Insurance Insurance { get; set; }
         public Uri ReturnUrl { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {
-            var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
-            var patient = _context.Patients.SingleOrDefault(p => p.NaturalId == user.PersonId);
-            Insurance = patient.Insurance;
+            var user = await _context.Users
+                .Include(u => u.Person)
+                    .ThenInclude(p => p.Patient)
+                .Include(u => u.Person)
+                    .ThenInclude(p => p.Doctor)
+                .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name).ConfigureAwait(false);
             if (user == null)
             {
-                throw new Exception($"No se ha podido cargar el ID de usuario '{_userManager.GetUserId(User)}'.");
+                throw new Exception($"No se ha podido cargar el ID de usuario '{_userManager.GetUserId(User)}' Por favor intente limpiar cache e ingresar nuevamente.");
             }
-            if(patient == null)
+            if(user.Person.Patient == null)
             {
-                var pageName = "InsuranceDetails";
+                var pageName = "./InsuranceDetails";
                 return RedirectToPage(pageName, new { returnUrl });
             }
             if (!string.IsNullOrEmpty(user.PhoneNumber))
             {
-                PhoneNumber = user.PhoneNumber.Replace("+56", "", StringComparison.InvariantCulture).Insert(1, " ").Insert(6, " ");
+                PhoneNumber = user.PhoneNumber;
             }
             ReturnUrl = returnUrl;
             return Page();
@@ -83,8 +82,9 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
             try
             {
-                var phoneParse = int.TryParse(Regex.Replace(PhoneNumber, @"\D", ""), out var phone);
-                if (phoneParse)
+                var phoneNumberUtil = PhoneNumbers.PhoneNumberUtil.GetInstance();
+                var phoneParse = phoneNumberUtil.Parse(PhoneNumber, "CL");
+                if (phoneNumberUtil.IsPossibleNumberForType(phoneParse, PhoneNumbers.PhoneNumberType.MOBILE))
                 {
                     var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
                     if (user == null)
@@ -96,7 +96,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         ModelState.AddModelError(string.Empty, "Código ya enviado, espere 5 minutos antes de enviar otro");
                         return RedirectToPage("ConfirmPhone", new { returnUrl });
                     }
-                    var telephone = $"+56{phone}";
+                    var telephone = phoneNumberUtil.FormatOutOfCountryCallingNumber(phoneParse, null);
                     user.PhoneNumber = telephone;
                     user.PhoneNumberConfirmed = false;
                     _context.Users.Update(user);

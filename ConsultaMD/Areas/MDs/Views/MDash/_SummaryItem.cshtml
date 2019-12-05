@@ -1,0 +1,10 @@
+﻿@model (string name, IHtmlContent value)
+
+<div class="col s4" style="height:150px">
+    <div mbsc-card>
+        <div class="mbsc-card-content center">
+            <h2 class="mbsc-card-title">@Model.name</h2>
+            @Model.value
+        </div>
+    </div>
+</div>

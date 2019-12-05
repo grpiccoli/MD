@@ -1,0 +1,42 @@
+﻿@page
+@model BillingModel
+@{
+    ViewData["Title"] = "Faturación electrónica";
+}
+
+<div class="row mb-0">
+    <partial name="_LeftIconTile" model='"MD"' />
+    <div class="col m6 s12 h-100v">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
+            <h3 class="center-align">@ViewData["Title"]</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-field col s12">
+                <input asp-for="Input.RUTJ" class="validate" autocomplete="tel-national" />
+                <label asp-for="Input.RUTJ"></label>
+                <span asp-validation-for="Input.RUTJ" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.RUT" class="validate" autocomplete="tel-national" disabled/>
+                <label asp-for="Input.RUT"></label>
+                <span asp-validation-for="Input.RUT" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.Password" class="validate" autocomplete="new-password" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <button type="submit" class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">Continuar</button>
+            </div>
+            <div class="col s6">
+                <p class="right-align">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
+                        iniciar sesión con otro usuario
+                    </a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

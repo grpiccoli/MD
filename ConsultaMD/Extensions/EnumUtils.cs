@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -19,23 +20,23 @@ namespace ConsultaMD.Extensions
             switch (name)
             {
                 case "Description":
-                        return new MultiSelectList(
-                            from TEnum s in Enum.GetValues(tipo)
-                            select new
-                            { Value = s.ToString("d", null), Text = s.GetAttrDescription() },
-                            Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
+                    return new MultiSelectList(
+                        from TEnum s in Enum.GetValues(tipo)
+                        select new
+                        { Value = s.ToString("d", null), Text = s.GetAttrDescription() },
+                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
                 case "Name":
-                        return new MultiSelectList(
-                            from TEnum s in Enum.GetValues(tipo)
-                            select new
-                            { Value = s.ToString("d", null), Text = s.GetAttrName() },
-                            Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
+                    return new MultiSelectList(
+                        from TEnum s in Enum.GetValues(tipo)
+                        select new
+                        { Value = s.ToString("d", null), Text = s.GetAttrName() },
+                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
                 default:
-                        return new MultiSelectList(
-                            from TEnum s in Enum.GetValues(tipo)
-                            select new
-                            { Value = s.ToString("d", null), Text = s.ToString() },
-                            Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
+                    return new MultiSelectList(
+                        from TEnum s in Enum.GetValues(tipo)
+                        select new
+                        { Value = s.ToString("d", null), Text = s.ToString() },
+                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
             }
         }
 
@@ -68,31 +69,31 @@ namespace ConsultaMD.Extensions
             }
         }
 
-        public static IEnumerable<object> Enum2MS<TEnum>(string name = null)
+        public static IEnumerable<MsSelect> Enum2Ms<TEnum>(string name = null)
             where TEnum : struct, IConvertible, IFormattable
         {
             switch (name)
             {
                 case "Name":
                     return ((TEnum[])Enum.GetValues(typeof(TEnum)))
-                        .Select(t => new
+                        .Select(t => new MsSelect
                         {
-                            Value = t.ToString("d", null),
-                            Text = t.GetAttrName()
+                            value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
+                            text = t.GetAttrName()
                         }).ToList();
                 case "Description":
                     return ((TEnum[])Enum.GetValues(typeof(TEnum)))
-                        .Select(t => new
+                        .Select(t => new MsSelect
                         {
-                            Value = t.ToString("d", null),
-                            Text = t.GetAttrDescription()
+                            value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
+                            text = t.GetAttrDescription()
                         }).ToList();
                 default:
                     return ((TEnum[])Enum.GetValues(typeof(TEnum)))
-                        .Select(t => new
+                        .Select(t => new MsSelect
                         {
-                            Value = t.ToString("d", null),
-                            Text = t.ToString()
+                            value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
+                            text = t.ToString()
                         }).ToList();
             }
         }
@@ -171,5 +172,10 @@ namespace ConsultaMD.Extensions
               ?.GroupName
               ?? e.ToString();
         }
+    }
+    public class MsSelect
+    {
+        public int value { get; set; }
+        public string text { get; set; }
     }
 }

@@ -13,10 +13,14 @@ namespace ConsultaMD.Models.Entities
         public int Id { get; set; }
         public string Discriminator { get; set; }
         public string BanmedicaName { get; set; }
-        public ICollection<InsuranceLocation> InsuranceLocations { get; } = new List<InsuranceLocation>();
+        public ICollection<InsuranceAgreement> InsuranceAgreements { get; } = new List<InsuranceAgreement>();
         public string GetRUT()
         {
             return RUT.Format(Id);
+        }
+        public string GetShortName()
+        {
+            return Discriminator == "Natural" ? ((Natural)this).GetShortName() : ((Company)this).RazonSocial;
         }
         public string GetDV() {
             return RUT.DV(Id);

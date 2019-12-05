@@ -1,7 +1,8 @@
 ﻿@model MapVM
 
-<partial name="_Libs" model='(new string[]{
-         "calentim", "@fortawesome/fontawesome-free", "select2", "simplebar", "moment", "hammerjs", "jquery-hammerjs", "ios.picker", "markerclusterer" }, "")' />
+<partial name="_Libs" model='(new List<string>{
+         "calentim", "@fortawesome/fontawesome-free", "select2", "moment", "hammerjs", 
+"jquery-hammerjs", "ios.picker", "markerclusterer" }, string.Empty)' />
 
 <partial name="_iOSPicker" />
 
@@ -10,117 +11,117 @@
 @section Scripts{
     <script src="~/calentim/calentim.min.js" asp-append-version="true"></script>
 }
-<partial name="_Libs" model='(new string[] { "map" }, "DWN")' />
+<partial name="_Libs" model='(new List<string>{ "map" }, "DWN")' />
 
-@this.Block(@<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>,"DWNScripts")
+@this.Block(@<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>, "DWNScripts")
 
-    <input asp-for="Last" class="hide" readonly="readonly" disabled="disabled" />
-    <input id="Date" name="Date" type="button" class="btn datepicker hide" />
-
-    <button class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
-        <i id="all1" class="material-icons left">filter_list</i>
-    </button>
-    <button id="all2" class="fltbtn btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light">
-        <i class="material-icons left">filter_list</i>Ver todos los filtros
-    </button>
-    <nav>
-        <div class="nav-wrapper teal lighten-2">
-            <div class="input-field">
-                <input id="search-filter" type="search">
-                <label class="label-icon" for="search-filter">
-                    <i class="material-icons">search</i>
-                </label>
-                <i id="close-search" class="material-icons">close</i>
-            </div>
+<button class="btn btn-small btn-floating filterpanel-trigger fltbtn hide-on-med-and-up waves-effect waves-light">
+    <i id="all1" class="material-icons left">filter_list</i>
+</button>
+<button id="all2" class="fltbtn btn btn-small pill filterpanel-trigger hide-on-small-and-down waves-effect waves-light">
+    <i class="material-icons left">filter_list</i>Ver todos los filtros
+</button>
+<nav>
+    <div class="nav-wrapper teal lighten-2">
+        <div class="input-field">
+            <input id="search-filter" type="search">
+            <label class="label-icon" for="search-filter">
+                <i class="material-icons">search</i>
+            </label>
+            <i id="close-search" class="material-icons">close</i>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="panel">
-        <div id="map-view" class="search-view">
-            <div id="map" class="h-100"></div>
-            <div id="map-controls" class="fixed-action-btn">
-                <a class="btn-floating clinic-desc" id="re-center">
-                    <i class="material-icons">my_location</i>
+<div class="panel">
+    <div id="map-view" class="search-view">
+        <div id="map" class="h-100"></div>
+        <div id="map-controls" class="fixed-action-btn">
+            <a class="btn-floating clinic-desc" id="re-center">
+                <i class="material-icons">my_location</i>
+            </a>
+            <a class="btn-floating clinic-desc" id="toggle-center">
+                <i class="material-icons">location_off</i>
+            </a>
+        </div>
+    </div>
+    <div id="list-view" class="search-view" data-simplebar>
+        <div class="row m-0">
+            <div class="col s6">
+                <p class="info"><i class="material-icons left">info_outline</i>Priorizados por próx. hora disponible</p>
+            </div>
+            <div class="col s6">
+                <a class="waves-effect waves-light modal-trigger right" href="#select-modal">
+                    <span id="tab-shown" class="sm">Próx. Hora Disponible</span><i class="material-icons">arrow_drop_down</i>
                 </a>
-                <a class="btn-floating clinic-desc" id="toggle-center">
-                    <i class="material-icons">location_off</i>
-                </a>
+                @*<select id="show">
+                        <option value="time" selected>Próx. Hora</option>
+                        <option value="addr">Dirección, oficina</option>
+                        <option value="price">Valor particular</option>
+                        <option value="mis">Convenios</option>
+                        <option value="esp">Especialidad médica</option>
+                    </select>*@
             </div>
         </div>
-        <div id="list-view" class="search-view" data-simplebar>
-            <div class="row m-0">
-                <div class="col s6">
-                    <p class="info"><i class="material-icons left">info_outline</i>Priorizados por próx. hora disponible</p>
-                </div>
-                <div class="col s6">
-                    <a class="waves-effect waves-light modal-trigger right" href="#select-modal">
-                        <span id="tab-shown" class="sm">Próx. Hora Disponible</span><i class="material-icons">arrow_drop_down</i>
-                    </a>
-                    @*<select id="show">
-                            <option value="time" selected>Próx. Hora</option>
-                            <option value="addr">Dirección, oficina</option>
-                            <option value="price">Valor particular</option>
-                            <option value="mis">Convenios</option>
-                            <option value="esp">Especialidad médica</option>
-                        </select>*@
-                </div>
-            </div>
-            <div id="list" class="row"></div>
+        <div id="list" class="row"></div>
+    </div>
+    <div id="date-view">
+        <div id="date-details" class="row m-0"></div>
+        <div class="row">
+            <i class="material-icons left">event_available</i> Fecha: <span id="dateDetails"></span>
         </div>
-        <div id="date-view">
-            <div id="date-details" class="row m-0"></div>
-            <div class="row">
-                <i class="material-icons left">event_available</i> Fecha: <span id="dateDetails"></span>
-            </div>
-            <div class="row" data-simplebar>
-                <div class="col s12 m6">
-                    <h5 class="clinic-text center">Mañana</h5>
-                    <div>
-                        <section id="BookingMorning"></section>
-                    </div>
+        <div class="row" data-simplebar>
+            <div class="col s12 m6">
+                <h5 class="clinic-text center">Mañana</h5>
+                <div>
+                    <section id="BookingMorning"></section>
                 </div>
-                <div class="col s12 m6">
-                    <h5 class="clinic-text center">Tarde</h5>
-                    <div>
-                        <section id="BookingAfternoon"></section>
-                    </div>
+            </div>
+            <div class="col s12 m6">
+                <h5 class="clinic-text center">Tarde</h5>
+                <div>
+                    <section id="BookingAfternoon"></section>
                 </div>
             </div>
         </div>
-        <div class="list-btn fixed-action-btn">
-            <button id="toggle-view" class="btn btn-small waves-effect waves-light pill">
-                ver lista
+    </div>
+    <div class="list-btn fixed-action-btn">
+        <button id="toggle-view" class="btn btn-small waves-effect waves-light pill">
+            ver lista
+        </button>
+    </div>
+    <div class="filter-btns">
+        <div class="row">
+            <button id="btnEspecialidad" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
+                Especialidad
+            </button>
+            <button id="btnUbicacion" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
+                Ubicación
+            </button>
+            <button id="btnFechaHora" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
+                Fecha-Hora
             </button>
         </div>
-        <div class="filter-btns">
-            <div class="row">
-                <button id="btnEspecialidad" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
-                    Especialidad
-                </button>
-                <button id="btnUbicacion" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
-                    Ubicación
-                </button>
-                <button id="btnFechaHora" class="btn btn-small waves-effect waves-light filter-btn fltbtn">
-                    Fecha-Hora
-                </button>
-            </div>
-        </div>
-
     </div>
 
-    <form id="filter" asp-action="MapList">
-        <div id="filters-pane" class="modal bottom-sheet select-sheet filters">
-            <div class="modal-content">
-                <partial name="_Filter" model="Model" />
-            </div>
-        </div>
-    </form>
+</div>
 
-    <ul id="slide-action" class="sidenav">
-        <li style="line-height:1rem">
-            <div data-simplebar class="h-100v">
-                <div id="slide-header"></div>
-                <div id="slide-content"></div>
-            </div>
-        </li>
-    </ul>
+<form id="filter" asp-action="MapList">
+    <input asp-for="Last" class="hide" />
+    <input asp-for="Insurance" class="hide" />
+    <input id="Date" name="Date" type="button" class="btn datepicker hide" />
+    <div id="filters-pane" class="modal bottom-sheet select-sheet filters">
+        <div class="modal-content">
+            <partial name="_Filter" model="Model" />
+        </div>
+    </div>
+</form>
+
+<ul id="slide-action" class="sidenav">
+    <li style="line-height:1rem">
+        <div data-simplebar class="h-100v">
+            <div id="slide-header"></div>
+            <div id="slide-content"></div>
+        </div>
+    </li>
+</ul>

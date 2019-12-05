@@ -1,120 +1,104 @@
-var rutId = "Input_RUT";
-var nameId = "Input_Name";
-var carnetId = "Input_CarnetId";
-var nationId = "Input_Nationality";
-var email = "Input_Email";
-var $rut = $("#" + rutId);
-var $name = $("#" + nameId);
-var $carnet = $("#" + carnetId);
-var $nation = $("#" + nationId);
-var $email = $("#" + email);
-var minLengthRut = 7;
-var minLengthCarnet = 9;
-var debounceTO = 300;
-var $nameDiv = $name.parent();
-var $carnetDiv = $carnet.parent();
-var $nationDiv = $nation.parent();
-document.addEventListener('DOMContentLoaded', function () {
-    M.Collapsible.init(document.querySelectorAll('.collapsible'));
-});
-$rut.on('keyup', function () {
-    $nameDiv.slideUp();
-    $carnetDiv.slideUp();
-    $nationDiv.slideUp();
-    $name.prop('readonly', true);
-    $carnet.val('');
-    $name.val('');
-})
-    .rut({ formatOn: 'keyup change', minimumLength: minLengthRut, validateOn: 'change' });
-new Cleave("#" + carnetId, {
-    delimiter: '.',
-    blocks: [3, 3, 3],
-    uppercase: true
-});
-$.validator.addMethod("rut", function (value, element, _params) {
-    loaderStart();
-    var valid = false;
-    $(element).val(value.replace(/k/, "K"));
-    $.validateRut(value, function (rut, dv) {
-        if (rut > 30000000)
-            return;
-        if ($(":focus")[0] === $(element)[0]) {
-            valid = true;
-            return;
-        }
-        $.ajax({
-            method: 'POST',
-            url: '/SP/validaterut',
-            async: false,
-            data: {
-                __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val(),
-                rut: rut,
-                dv: dv.replace(/k/, "K")
-            },
-            dataType: 'JSON',
-            success: function (result) {
-                valid = true;
-                if (result.value === "**") {
-                    $name.prop('readonly', false);
-                }
-                else {
-                    $name.val(result.value);
-                    $name.addClass('valid');
-                }
+document.addEventListener('DOMContentLoaded', function (_) {
+    var rutId = "Input_RUT";
+    var nameId = "Input_Name";
+    var carnetId = "Input_CarnetId";
+    var email = "Input_Email";
+    var $rut = $("#" + rutId);
+    var $name = $("#" + nameId);
+    var $carnet = $("#" + carnetId);
+    var $email = $("#" + email);
+    var minLengthRut = 7;
+    var $nameDiv = $name.parent();
+    var $carnetDiv = $carnet.parent();
+    new Cleave("#" + carnetId, {
+        delimiter: '.',
+        blocks: [3, 3, 3],
+        uppercase: true
+    });
+    Parsley.addValidator('rut', {
+        validateString: function (value) {
+            $rut.val(value.replace(/k/, "K"));
+            var rut, dv;
+            var valid = $.validateRut(value, function (r, d) {
+                rut = r;
+                dv = d;
+            }, { minimumLength: minLengthRut });
+            if (!valid || rut > 30000000)
+                return false;
+            loaderStart();
+            return fetch('/SP/validaterut', {
+                method: 'POST',
+                headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
+                body: "__RequestVerificationToken=" + $('input[name="__RequestVerificationToken"]').val()
+                    + ("&rut=" + rut)
+                    + ("&dv=" + dv.replace(/k/, 'K'))
+            })
+                .then(function (response) { return response.json(); })
+                .then(function (json) {
+                $name.val(json.value);
+                $name.addClass('valid');
                 M.updateTextFields();
                 $nameDiv.slideDown();
                 $carnetDiv.slideDown();
                 $carnet.focus();
                 M.toast({ html: 'RUT válido', classes: 'rounded' });
-            }
-        });
-    }, { minimumLength: minLengthRut });
-    loaderStop();
-    return valid;
-});
-$.validator.unobtrusive.adapters.add("rut", [], function (options) {
-    options.rules.rut = {};
-    options.messages["rut"] = options.message;
-});
-$.validator.addMethod("carnet", function (value, element, _params) {
-    loaderStart();
-    var carnet = value;
-    var valid = false;
-    $nationDiv.slideUp();
-    var rutVal = $rut.val();
-    if (rutVal) {
-        $.validateRut(rutVal, function (rut, dv) {
-            if ($(":focus")[0] === $(element)[0]) {
-                valid = true;
-                return;
-            }
-            $.ajax({
+                $rut.parsley().reset();
+                return true;
+            })
+                .catch(function (err) {
+                throw (err);
+            })
+                .finally(loaderStop);
+        },
+        messages: { es: 'RUT inválido' }
+    });
+    Parsley.addValidator('carnet', {
+        validateString: function (value) {
+            var rutVal = $rut.val();
+            if (!rutVal)
+                return false;
+            var rut, dv;
+            var valid = $.validateRut(rutVal, function (r, d) {
+                rut = r;
+                dv = d;
+            }, { minimumLength: minLengthRut });
+            if (!valid || rut > 30000000)
+                return false;
+            loaderStart();
+            var isExt = $("#IsExt").prop('checked');
+            return fetch('/SP/DocumentRequestStatus', {
                 method: 'POST',
-                url: '/SP/DocumentRequestStatus',
-                async: false,
-                data: {
-                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val(),
-                    rut: rut,
-                    dv: dv.replace(/k/g, "K"),
-                    carnet: carnet.replace(/\./g, "")
-                },
-                dataType: 'JSON',
-                success: function (result) {
-                    valid = true;
-                    $nation.val(result.nacionalidad);
-                    M.updateTextFields();
-                    $nationDiv.slideDown();
-                    $email.focus();
-                    M.toast({ html: 'Cédula válida', classes: 'rounded' });
-                }
-            });
-        }, { minimumLength: minLengthRut });
-    }
-    loaderStop();
-    return valid;
-});
-$.validator.unobtrusive.adapters.add("carnet", [], function (options) {
-    options.rules.carnet = {};
-    options.messages["carnet"] = options.message;
+                headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
+                body: "__RequestVerificationToken=" + $('input[name="__RequestVerificationToken"]').val()
+                    + ("&rut=" + rut)
+                    + ("&dv=" + dv.replace(/k/, 'K'))
+                    + ("&carnet=" + value.replace(/\./g, ""))
+                    + ("&isExt=" + isExt)
+            })
+                .then(function (response) { return response.text(); })
+                .then(function (bool) {
+                console.log(bool);
+                M.updateTextFields();
+                $email.focus();
+                M.toast({ html: 'Cédula válida', classes: 'rounded' });
+                $carnet.parsley().reset();
+                return true;
+            })
+                .catch(function (err) {
+                throw (err);
+            })
+                .finally(loaderStop);
+        },
+        messages: { es: 'Verfique combinación RUT/Carnet' }
+    });
+    $rut.keyup(function (_) {
+        $nameDiv.slideUp();
+        $carnetDiv.slideUp();
+        $name.prop('readonly', true);
+        $carnet.val('');
+        $name.val('');
+    })
+        .rut({ formatOn: 'keyup change', minimumLength: minLengthRut, validateOn: 'change' });
+    M.Collapsible.init(document.querySelectorAll('.collapsible'));
 });
 //# sourceMappingURL=add_rut_carnet_validation.js.map
