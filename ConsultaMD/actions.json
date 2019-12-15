@@ -88,6 +88,20 @@
   {
     "area": "MDs",
     "controller": "MDash",
+    "name": "AddAgenda",
+    "title": "Añadir Agenda",
+    "path": [ "Agenda" ]
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
+    "name": "AgendaEvents",
+    "title": "Ver Agendas",
+    "path": [ "Agenda" ]
+  },
+  {
+    "area": "MDs",
+    "controller": "MDash",
     "name": "MDWaitingRoom",
     "title": "Sala de espera",
     "icon": "waiting_room",

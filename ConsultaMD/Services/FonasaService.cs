@@ -118,9 +118,11 @@ namespace ConsultaMD.Services
                 var result = doc.QuerySelectorAll(".MenuConten > tbody > tr > td > table > tbody > tr > td");
                 if (result.Any())
                 {
-                    var prestacion = new Prestacion();
-                    prestacion.Id = Regex.Replace(result[0].TextContent, @"\D", "");
-                    prestacion.Description = result[1].TextContent;
+                    var prestacion = new Prestacion
+                    {
+                        Id = Regex.Replace(result[0].TextContent, @"\D", ""),
+                        Description = result[1].TextContent
+                    };
                     var ammounts = result[level + 1].QuerySelectorAll("td");
                     prestacion.Total = int.Parse(Regex.Replace(ammounts[0].TextContent, @"\D", ""), CultureInfo.InvariantCulture);
                     prestacion.Copago = int.Parse(Regex.Replace(ammounts[1].TextContent, @"\D", ""), CultureInfo.InvariantCulture);

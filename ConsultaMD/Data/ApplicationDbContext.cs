@@ -121,6 +121,12 @@ namespace ConsultaMD.Data
                 modelBuilder.Entity<Patient>()
                     .HasKey(p => new { p.NaturalId });
 
+                modelBuilder.Entity<Doctor>()
+                    .HasOne(r => r.MedicalAttention)
+                    .WithOne(a => a.Doctor)
+                    .HasForeignKey<MedicalAttention>(a => a.DoctorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
                 modelBuilder.Entity<Natural>(entity => {
                     entity.HasOne(n => n.Carnet)
                     .WithOne(c => c.Natural)
@@ -148,9 +154,14 @@ namespace ConsultaMD.Data
                     res.HasOne(r => r.Patient)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(r => r.PatientId);
+
                     res.HasOne(r => r.TimeSlot)
                     .WithOne(t => t.Reservation)
                     .HasForeignKey<TimeSlot>(t => t.ReservationId);
+
+                    res.HasOne(r => r.MedicalAttention)
+                    .WithOne(a => a.Reservation)
+                    .HasForeignKey<MedicalAttention>(a => a.ReservationId);
                 });
 
                 modelBuilder.Entity<MedicalCoverage>(d => {

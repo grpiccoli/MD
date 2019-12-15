@@ -49,7 +49,9 @@ const readCaptcha = async function (page, acKey) {
 };
 
 const initBrowser = async (acKey) => {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch(
+        //{ headless: false }
+    );
     const page = (await browser.pages())[0];
     await page.goto('https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml', { waitUntil: 'networkidle2' });
     //CAPTCHA SOLVING

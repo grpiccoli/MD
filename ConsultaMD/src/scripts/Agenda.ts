@@ -3,42 +3,31 @@
     theme: 'material'
 };
 
-var now = new Date();
+//var register = mobiscroll.popup('#addAgenda', {
+//    display: 'center',
+//    buttons: [
+//        'set',
+//        {
+//            text: 'Añadir agenda',
+//            handler: async () => {
+//                await fetch('/mds/mdash/addagenda', {
+//                    method: 'POST',
+//                    headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
+//                    body: `__RequestVerificationToken=${$('input[name="__RequestVerificationToken"]').val()}`
+//                        + `&rut=${rut}`
+//                        + `&dv=${dv.replace(/k/, 'K')}`
+//                })
+//                mobiscroll.toast({ message: 'Agenda añadida' });
+//            }
+//        }
+//    ]
+//});
 
-mobiscroll.datetime('#StartTime', {
-    timeFormat: 'hh:ii A',
-    onInit: function (_event, inst) {
-        inst.setVal(now, true);
-    }
-});
-
-mobiscroll.datetime('#EndTime', {
-    timeFormat: 'hh:ii A',
-    onInit: function (_event, inst) {
-        inst.setVal(now, true);
-    }
-});
-
-mobiscroll.time('#Duration', {
-    timeFormat: 'ii',
-    onInit: function (_event, inst) {
-        inst.setVal(now, true);
-    }
-});
-
-var register = mobiscroll.popup('#addAgenda', {
-    display: 'center',
-    buttons: [{
-        text: 'Añadir agenda',
-        handler: 'set'
-    }]
-});
-
-document
-    .getElementById('showAdd')
-    .addEventListener('click', function () {
-        register.show();
-    }, false);
+//document
+//    .getElementById('showAdd')
+//    .addEventListener('click', () => {
+//        register.show();
+//    }, false);
 
 var inst = mobiscroll.eventcalendar('#demo-event-popover', {
     lang: 'es',
@@ -48,6 +37,10 @@ var inst = mobiscroll.eventcalendar('#demo-event-popover', {
     showEventCount: true
 });
 
-mobiscroll.util.getJson('https://trial.mobiscroll.com/events/', function (events: any) {
+//mobiscroll.util.getJson('https://trial.mobiscroll.com/events/', function (events: any) {
+//    inst.setEvents(events);
+//}, 'jsonp');
+
+mobiscroll.util.getJson('/mds/mdash/agendajson', (events: any) => {
     inst.setEvents(events);
 }, 'jsonp');

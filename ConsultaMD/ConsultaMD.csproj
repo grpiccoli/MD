@@ -52,11 +52,24 @@
     <Compile Remove="Migrations\20191201202713_Initial.Designer.cs" />
     <Compile Remove="Migrations\20191204201346_Initial.cs" />
     <Compile Remove="Migrations\20191204201346_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191204203100_Initial.cs" />
+    <Compile Remove="Migrations\20191204203100_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191213025028_bulkInsert.cs" />
+    <Compile Remove="Migrations\20191213025028_bulkInsert.Designer.cs" />
+    <Compile Remove="Migrations\20191213032628_Initial.cs" />
+    <Compile Remove="Migrations\20191213032628_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191213050006_Initial.cs" />
+    <Compile Remove="Migrations\20191213050006_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191214163653_Initial.cs" />
+    <Compile Remove="Migrations\20191214163653_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191214164301_Initial.cs" />
+    <Compile Remove="Migrations\20191214164301_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\DoctorDetails.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\scripts\feedback.js" />
     <TypeScriptCompile Include="src\scripts\jquery.validate.hooks.js" />
+    <None Remove="Areas\MDs\Views\MDash\AddAgenda.cshtml.ts" />
     <None Remove="src\scripts\add_rut_carnet_validation.ts" />
     <None Remove="src\scripts\Agenda.ts" />
     <None Remove="src\scripts\ConfirmDate.ts" />

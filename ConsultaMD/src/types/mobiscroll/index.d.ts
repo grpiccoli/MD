@@ -891,6 +891,7 @@ declare interface IMobiscroll extends _IMobiscroll {
     select(selector: string | HTMLElement, options?: MbscSelectOptions): Select;
     timer(selector: string | HTMLElement, options?: MbscTimerOptions): Timer;
     timespan(selector: string | HTMLElement, options?: MbscTimespanOptions): Timespan;
+    toast(options?: any): any;
     treelist(selector: string | HTMLElement, options?: MbscTreelistOptions): Treelist;
     popup(selector: string | HTMLElement, options?: MbscPopupOptions): Popup;
     widget(selector: string | HTMLElement, options?: MbscWidgetOptions): Widget;

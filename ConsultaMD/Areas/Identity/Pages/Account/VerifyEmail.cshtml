@@ -1,7 +1,7 @@
 ﻿@page
 @model ConsultaMD.Areas.Identity.Pages.Account.VerifyEmailModel
 @{
-    ViewData["Title"] = "Verifica tu Correo";
+    ViewData["Title"] = "Correo no verificado";
 }
 
 <div class="row mb-0">
@@ -9,6 +9,7 @@
     <div class="col m6 s12 h-100v">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
             <h3 class="center-align">@ViewData["Title"]</h3>
+            <h5>Verifica o cambia tu correo</h5>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="input-field col s12">
                 <input asp-for="Email" class="validate" autocomplete="email" />

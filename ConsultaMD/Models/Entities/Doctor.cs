@@ -45,5 +45,7 @@ namespace ConsultaMD.Models.Entities
             return DateTime.Today.Year - YearTitle;
             //return DateTime.Today.Year - Titles.Min(t => t.Date).Year;
         }
+        public int? MedicalAttentionId { get; set; }
+        public MedicalAttention MedicalAttention { get; set; }
     }
 }

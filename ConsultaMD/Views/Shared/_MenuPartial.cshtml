@@ -25,7 +25,7 @@
     bool doctor = DbContext.Doctors.Any(d => d.NaturalId == person.Id);
 }
 
-<partial name="_Libs" model='(new List<string>{ "sidenav" }, string.Empty)' />
+<partial name="_Libs" model='(new HashSet<string>{ "sidenav" }, string.Empty)' />
 
 @this.Block(
     @<nav>

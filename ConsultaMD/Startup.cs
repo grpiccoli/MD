@@ -26,7 +26,6 @@ using ConsultaMD.Resources;
 using WebMarkupMin.AspNetCore2;
 using Twilio;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.AspNetCore.NodeServices;
 using ConsultaMD.Extensions;
 using ConsultaMD.Hubs;
 
@@ -46,15 +45,37 @@ namespace ConsultaMD
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var accountSid = Configuration["Twilio:AccountSID"];
-            var authToken = Configuration["Twilio:AuthToken"];
-            //var accountSid = "AC3e87b4b00a0e460583a7e8b77bca6620";
-            //var authToken = "837533360893e16b150eca01c03c811f";
-            TwilioClient.Init(accountSid, authToken);
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString($"{_os}Connection"),
+                    sqlServerOptions => sqlServerOptions.CommandTimeout(100)));
+
+            services.AddHostedService<SeedBackground>();
+            services.AddScoped<ISeed, SeedService>();
 
             var antiCaptchaKey = Configuration["AntiCaptcha"];
             AntiCaptchaClient.Init(antiCaptchaKey);
 
+            services.Configure<FonasaSettings>(o =>
+            {
+                o.AcKey = antiCaptchaKey;
+                o.Rut = RUT.Fonasa(16124902);
+            });
+            services.AddHostedService<FonasaBackground>();
+            services.AddScoped<IFonasa, FonasaService>();
+
+            services.Configure<RegCivilSettings>(o =>
+            {
+                o.AcKey = antiCaptchaKey;
+                o.Rut = RUT.Format(16_124_902, false);
+                o.Carnet = 519_194_461;
+            });
+            services.AddHostedService<RegCivilBackground>();
+            services.AddScoped<IRegCivil, RegCivilService>();
+
+            var accountSid = Configuration["Twilio:AccountSID"];
+            var authToken = Configuration["Twilio:AuthToken"];
+            TwilioClient.Init(accountSid, authToken);
             services.Configure<TwilioVerifySettings>(Configuration.GetSection("Twilio"));
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -63,7 +84,6 @@ namespace ConsultaMD
                 options.CheckConsentNeeded = context => false; //!!!!CAMBIAR A TRUE
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
             services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
@@ -76,11 +96,6 @@ namespace ConsultaMD
                 options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
                 options.SlidingExpiration = true;
             });
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString($"{_os}Connection"),
-                    sqlServerOptions => sqlServerOptions.CommandTimeout(100)));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
@@ -125,23 +140,11 @@ namespace ConsultaMD
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddProgressiveWebApp();
-
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddScoped<IViewRenderService, ViewRenderService>();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-
-            services.Configure<RegCivilSettings>(o =>
-            {
-                o.AcKey = antiCaptchaKey;
-                o.Rut = RUT.Format(16_124_902, false);
-                o.Carnet = 519_194_461;
-            });
-
-            services.AddHostedService<RegCivilBackground>();
-            services.AddScoped<IRegCivil, RegCivilService>();
 
             // Add WebMarkupMin services.
             services.AddWebMarkupMin()
@@ -152,16 +155,11 @@ namespace ConsultaMD
             Libman.LoadJson();
             Bundler.LoadJson();
             Actions.LoadJson();
-            services.Configure<FonasaSettings>(o =>
-            {
-                o.AcKey = antiCaptchaKey;
-                o.Rut = RUT.Fonasa(16124902);
-            });
-            services.AddHostedService<FonasaBackground>();
-            services.AddScoped<IFonasa, FonasaService>();
             services.AddScoped<IMIP, MIPService>();
             services.AddScoped<IEvent, EventService>();
             //WebpackChunkNamer.Init();
+
+            services.AddProgressiveWebApp();
 
             services.AddMvc(o => 
                 o.ModelMetadataDetailsProviders.Add(

@@ -1,69 +1,80 @@
-﻿@model IEnumerable<AgendaEventVM>
+﻿@model IEnumerable<AgendaJsonVM>
 
 @{
-    ViewData["Title"] = "Agendas";
+    ViewData["Title"] = "Calendario de Agendas";
 }
 
-<partial name="_Libs" model="(new List<string>(), string.Empty)" />
+@*<partial name="_LibsPg" model="new HashSet<string>()" />*@
 
-<div class="row" data-simplebar>
-    <div class="col s12">
-        <div mbsc-form>
-            <div class="mbsc-form-group">
-                <div class="mbsc-btn-group-block">
-                    <button mbsc-button id="showAdd" style="border-bottom: 1px solid lightblue">
-                        <i class="material-icons left">add</i>Añadir Agenda
-                    </button>
-                </div>
-            </div>
+    <div class="row" data-simplebar>
+        <div class="col s6">
+            <a asp-action="AddAgenda" class="btn tile waves-effect tile-gradient">
+                <i class="material-icons left">add</i>Añadir Agenda
+            </a>
         </div>
-        <partial name="_AddAgenda" model="new AddAgendaVM()" />
-    </div>
-    <div class="col s12">
-        <div id="demo-event-popover"></div>
-    </div>
-    @foreach (var agenda in Model)
-    {
-        <div class="col s4">
-            <div class="card">
-                <div class="card-content">
-                    <button class="btn"><i class="material-icons left">edit</i>Editar</button>
-                    <table>
-                        <tr>
-                            <th>@Html.DisplayNameFor(m => agenda.Location)</th>
-                            <td>@Html.DisplayFor(m => agenda.Location)</td>
-                        </tr>
-                        <tr>
-                            <th>@Html.DisplayNameFor(m => agenda.StartTime)</th>
-                            <th>@Html.DisplayFor(m => agenda.StartTime)</th>
-                        </tr>
-                        <tr>
-                            <th>@Html.DisplayNameFor(m => agenda.EndTime)</th>
-                            <th>@Html.DisplayFor(m => agenda.EndTime)</th>
-                        </tr>
-                        <tr>
-                            <th>@Html.DisplayNameFor(m => agenda.Duration)</th>
-                            <th>@Html.DisplayFor(m => agenda.Duration)</th>
-                        </tr>
-                        <tr>
-                            <th>@Html.DisplayNameFor(m => agenda.TimeSlotCount)</th>
-                            <th>@Html.DisplayFor(m => agenda.TimeSlotCount)</th>
-                        </tr>
-                        <tr>
-                            <th>@Html.DisplayNameFor(m => agenda.TakenTimeSlotCount)</th>
-                            <th>@Html.DisplayFor(m => agenda.TakenTimeSlotCount)</th>
-                        </tr>
-                    </table>
-                    <div class="row">
-                        <div class="col s5 offset-s1">
-                            <button class="btn center pill tile-gradient">Activar</button>
-                        </div>
-                        <div class="col s5">
-                            <button class="btn center pill tile-gradient">Eliminar</button>
+        <div class="col s6">
+            <a asp-action="AgendaEvents" class="btn tile waves-effect tile-gradient">
+                <i class="material-icons left">remove_red_eye</i>Ver Agendas
+            </a>
+        </div>
+        <div class="col s12">
+            <div id="demo-event-popover"></div>
+        </div>
+        @*@foreach (var agenda in Model)
+        {
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-content">
+                        <button class="btn"><i class="material-icons left">edit</i>Editar</button>
+                        <table>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => agenda.Location)</th>
+                                <td>@Html.DisplayFor(m => agenda.Location)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => agenda.StartTime)</th>
+                                <th>@Html.DisplayFor(m => agenda.StartTime)</th>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => agenda.EndTime)</th>
+                                <th>@Html.DisplayFor(m => agenda.EndTime)</th>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => agenda.Duration)</th>
+                                <th>@Html.DisplayFor(m => agenda.Duration)</th>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => agenda.TimeSlotCount)</th>
+                                <th>@Html.DisplayFor(m => agenda.TimeSlotCount)</th>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => agenda.TakenTimeSlotCount)</th>
+                                <th>@Html.DisplayFor(m => agenda.TakenTimeSlotCount)</th>
+                            </tr>
+                        </table>
+                        <div class="row">
+                            <div class="col s5 offset-s1">
+                                <button class="btn center pill tile-gradient">Activar</button>
+                            </div>
+                            <div class="col s5">
+                                <button class="btn center pill tile-gradient">Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }*@
+    </div>
+
+@this.Block(@<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var inst = mobiscroll.eventcalendar('#demo-event-popover', {
+                lang: 'es',
+                theme: 'material',
+                themeVariant: 'light',
+                display: 'inline',
+                showEventCount: true,
+                data: @Html.Raw(JsonConvert.SerializeObject(Model))
+            });
+        });
+</script>, "Scripts")

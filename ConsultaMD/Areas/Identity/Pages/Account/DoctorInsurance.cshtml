@@ -4,7 +4,7 @@
     ViewData["Title"] = "Previsión";
 }
 
-<partial name="_Libs" model="(new List<string>(), string.Empty)" />
+<partial name="_LibsPg" model="new HashSet<string>()" />
 
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"MD"' />
@@ -45,7 +45,7 @@
         <div class="input-field col s12">
             <a href="@string.Format("{0}://{1}{2}", Request.Scheme, Request.Host, Model.ReturnUrl.ToString().Replace("~",""))"
                class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">
-                <i class="material-icons right">arrow_forward</i>Finalizar
+                <i class="material-icons right">arrow_forward</i>Continuar
             </a>
         </div>
     </div>

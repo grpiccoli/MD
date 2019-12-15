@@ -4,10 +4,10 @@
     ViewData["Title"] = "Agenda";
 }
 
-<partial name="_Libs" model='new List<string> { "bootstrap", "tooltip.js",
-          "jqueryui", "@fullcalendar/core", "@fullcalendar/moment", "@fullcalendar/list", "@fullcalendar/daygrid", "@fullcalendar/timegrid",
-"libphonenumber-js",
-         "flatpickr", "/agenda.min" }' />
+<partial name="_LibsPg" model='new HashSet<string> { "bootstrap", "tooltip.js",
+          "jqueryui", "@fullcalendar/core", "@fullcalendar/moment", "@fullcalendar/list", 
+"@fullcalendar/daygrid", "@fullcalendar/timegrid",
+"libphonenumber-js", "flatpickr", "/agenda.min" }' />
 
 @section Styles {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

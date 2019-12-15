@@ -14,7 +14,8 @@ namespace ConsultaMD.Services
         private readonly ILogger _logger;
         private readonly IStringLocalizer _localizer;
         //private Timer _timer;
-        public FonasaBackground(IServiceProvider services,
+        public FonasaBackground(
+            IServiceProvider services,
             IStringLocalizer<FonasaBackground> localizer,
             ILogger<FonasaBackground> logger)
         {

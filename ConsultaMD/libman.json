@@ -13,7 +13,7 @@
       ]
     },
     {
-      "library": "parsleyjs@2.9.1",
+      "library": "parsleyjs@2.9.2",
       "destination": "wwwroot/lib/parsleyjs/",
       "files": [
         "dist/parsley.min.js",
@@ -29,32 +29,32 @@
         "dist/owl.carousel.min.js"
       ]
     },
-    {
-      "library": "anypicker@2.0.9",
-      "destination": "wwwroot/lib/anypicker/",
-      "files": [
-        "dist/anypicker-all.min.css",
-        "dist/anypicker.min.js",
-        "dist/i18n/anypicker-i18n.js"
-      ]
-    },
-    {
-      "library": "@ionic-native/wheel-selector@5.15.1",
-      "destination": "wwwroot/lib/@ionic-native/wheel-selector/",
-      "files": [
-        "index.js",
-        "ngx/index.js"
-      ]
-    },
-    {
-      "library": "air-datepicker@2.2.3",
-      "destination": "wwwroot/lib/air-datepicker/",
-      "files": [
-        "dist/css/datepicker.min.css",
-        "dist/js/datepicker.min.js",
-        "dist/js/i18n/datepicker.es.js"
-      ]
-    },
+    //{
+    //  "library": "anypicker@2.0.9",
+    //  "destination": "wwwroot/lib/anypicker/",
+    //  "files": [
+    //    "dist/anypicker-all.min.css",
+    //    "dist/anypicker.min.js",
+    //    "dist/i18n/anypicker-i18n.js"
+    //  ]
+    //},
+    //{
+    //  "library": "@ionic-native/wheel-selector@5.15.1",
+    //  "destination": "wwwroot/lib/@ionic-native/wheel-selector/",
+    //  "files": [
+    //    "index.js",
+    //    "ngx/index.js"
+    //  ]
+    //},
+    //{
+    //  "library": "air-datepicker@2.2.3",
+    //  "destination": "wwwroot/lib/air-datepicker/",
+    //  "files": [
+    //    "dist/css/datepicker.min.css",
+    //    "dist/js/datepicker.min.js",
+    //    "dist/js/i18n/datepicker.es.js"
+    //  ]
+    //},
     {
       "library": "materialize-social@1.0.3",
       "destination": "wwwroot/lib/materialize-social/",
@@ -68,7 +68,7 @@
       "files": [ "dist/cleave.min.js" ]
     },
     {
-      "library": "select2@4.0.11",
+      "library": "select2@4.0.12",
       "destination": "wwwroot/lib/select2/",
       "files": [
         "dist/js/select2.full.min.js",
@@ -78,12 +78,12 @@
       ]
     },
     {
-      "library": "jquery.mousewheel@3.1.9",
-      "destination": "wwwroot/lib/jquery.mousewheel/",
+      "library": "jquery-mousewheel@3.1.13",
+      "destination": "wwwroot/lib/jquery-mousewheel/",
       "files": [ "jquery.mousewheel.js" ]
     },
     {
-      "library": "nouislider@14.0.3",
+      "library": "nouislider@14.1.0",
       "destination": "wwwroot/lib/nouislider/",
       "files": [
         "distribute/nouislider.min.css",
@@ -91,7 +91,7 @@
       ]
     },
     {
-      "library": "wnumb@1.1.0",
+      "library": "wnumb@1.2.0",
       "destination": "wwwroot/lib/wnumb/",
       "files": [
         "wNumb.js"
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "library": "@fortawesome/fontawesome-free@5.11.2",
+      "library": "@fortawesome/fontawesome-free@5.12.0",
       "destination": "wwwroot/lib/@fortawesome/fontawesome-free/",
       "files": [
         "css/all.min.css",
@@ -120,13 +120,13 @@
         "webfonts/fa-brands-400.ttf"
       ]
     },
-    {
-      "library": "datatables.net@2.1.1",
-      "destination": "wwwroot/lib/datatables.net/",
-      "files": [
-        "js/jquery.dataTables.js"
-      ]
-    },
+    //{
+    //  "library": "datatables.net@2.1.1",
+    //  "destination": "wwwroot/lib/datatables.net/",
+    //  "files": [
+    //    "js/jquery.dataTables.js"
+    //  ]
+    //},
     {
       "library": "jquery.rut@1.1.2",
       "destination": "wwwroot/lib/jquery.rut/",
@@ -168,46 +168,46 @@
     //  ]
     //},
     // FULL CALENDAR
-    {
-      "library": "@fullcalendar/core@4.3.1",
-      "destination": "wwwroot/lib/fullcalendar/core/",
-      "files": [
-        "main.min.js",
-        "main.min.css",
-        "locales/es.js"
-      ]
-    },
-    {
-      "library": "@fullcalendar/daygrid@4.3.0",
-      "destination": "wwwroot/lib/fullcalendar/daygrid/",
-      "files": [
-        "main.min.js",
-        "main.min.css"
-      ]
-    },
-    {
-      "library": "@fullcalendar/timegrid@4.3.0",
-      "destination": "wwwroot/lib/fullcalendar/timegrid/",
-      "files": [
-        "main.min.js",
-        "main.min.css"
-      ]
-    },
-    {
-      "library": "@fullcalendar/list@4.3.0",
-      "destination": "wwwroot/lib/fullcalendar/list/",
-      "files": [
-        "main.min.js",
-        "main.min.css"
-      ]
-    },
-    {
-      "library": "@fullcalendar/moment@4.3.0",
-      "destination": "wwwroot/lib/fullcalendar/moment/",
-      "files": [
-        "main.min.js"
-      ]
-    },
+    //{
+    //  "library": "@fullcalendar/core@4.3.1",
+    //  "destination": "wwwroot/lib/fullcalendar/core/",
+    //  "files": [
+    //    "main.min.js",
+    //    "main.min.css",
+    //    "locales/es.js"
+    //  ]
+    //},
+    //{
+    //  "library": "@fullcalendar/daygrid@4.3.0",
+    //  "destination": "wwwroot/lib/fullcalendar/daygrid/",
+    //  "files": [
+    //    "main.min.js",
+    //    "main.min.css"
+    //  ]
+    //},
+    //{
+    //  "library": "@fullcalendar/timegrid@4.3.0",
+    //  "destination": "wwwroot/lib/fullcalendar/timegrid/",
+    //  "files": [
+    //    "main.min.js",
+    //    "main.min.css"
+    //  ]
+    //},
+    //{
+    //  "library": "@fullcalendar/list@4.3.0",
+    //  "destination": "wwwroot/lib/fullcalendar/list/",
+    //  "files": [
+    //    "main.min.js",
+    //    "main.min.css"
+    //  ]
+    //},
+    //{
+    //  "library": "@fullcalendar/moment@4.3.0",
+    //  "destination": "wwwroot/lib/fullcalendar/moment/",
+    //  "files": [
+    //    "main.min.js"
+    //  ]
+    //},
     {
       "library": "moment@2.24.0",
       "destination": "wwwroot/lib/moment/",
@@ -217,38 +217,38 @@
       ]
     },
     // TUI CALENDAR
-    {
-      "library": "tui-calendar@1.12.6",
-      "destination": "wwwroot/lib/tui-calendar/",
-      "files": [
-        "dist/tui-calendar.min.css",
-        "dist/tui-calendar.min.js"
-      ]
-    },
-    {
-      "library": "tui-date-picker@4.0.2",
-      "destination": "wwwroot/lib/tui-date-picker/",
-      "files": [
-        "dist/tui-date-picker.css",
-        "dist/tui-date-picker.min.js"
-      ]
-    },
-    {
-      "library": "tui-time-picker@2.0.1",
-      "destination": "wwwroot/lib/tui-time-picker",
-      "files": [
-        "dist/tui-time-picker.css",
-        "dist/tui-time-picker.min.js"
-      ]
-    },
+    //{
+    //  "library": "tui-calendar@1.12.6",
+    //  "destination": "wwwroot/lib/tui-calendar/",
+    //  "files": [
+    //    "dist/tui-calendar.min.css",
+    //    "dist/tui-calendar.min.js"
+    //  ]
+    //},
+    //{
+    //  "library": "tui-date-picker@4.0.2",
+    //  "destination": "wwwroot/lib/tui-date-picker/",
+    //  "files": [
+    //    "dist/tui-date-picker.css",
+    //    "dist/tui-date-picker.min.js"
+    //  ]
+    //},
+    //{
+    //  "library": "tui-time-picker@2.0.1",
+    //  "destination": "wwwroot/lib/tui-time-picker",
+    //  "files": [
+    //    "dist/tui-time-picker.css",
+    //    "dist/tui-time-picker.min.js"
+    //  ]
+    //},
     // GOOGLE PHONE
     {
-      "library": "libphonenumber-js@1.7.26",
+      "library": "libphonenumber-js@1.7.29",
       "destination": "wwwroot/lib/libphonenumber-js/",
       "files": [ "bundle/libphonenumber-max.js" ]
     },
     {
-      "library": "simplebar@5.0.3",
+      "library": "simplebar@5.0.7",
       "destination": "wwwroot/lib/simplebar/",
       "files": [ "dist/simplebar.min.css", "dist/simplebar.min.js" ]
     },

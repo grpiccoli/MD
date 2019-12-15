@@ -1,8 +1,8 @@
 ﻿@model MapVM
 
-<partial name="_Libs" model='(new List<string>{
+<partial name="_LibsPg" model='new HashSet<string>{
          "calentim", "@fortawesome/fontawesome-free", "select2", "moment", "hammerjs", 
-"jquery-hammerjs", "ios.picker", "markerclusterer" }, string.Empty)' />
+"jquery-hammerjs", "ios.picker", "markerclusterer" }' />
 
 <partial name="_iOSPicker" />
 
@@ -11,7 +11,7 @@
 @section Scripts{
     <script src="~/calentim/calentim.min.js" asp-append-version="true"></script>
 }
-<partial name="_Libs" model='(new List<string>{ "map" }, "DWN")' />
+<partial name="_Libs" model='(new HashSet<string>{ "map" }, "DWN")' />
 
 @this.Block(@<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA&language=es&region=CL&callback=initMap" async defer></script>, "DWNScripts")
 

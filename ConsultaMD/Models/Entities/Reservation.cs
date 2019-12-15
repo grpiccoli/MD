@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
 
 namespace ConsultaMD.Models.Entities
 {
@@ -12,5 +12,10 @@ namespace ConsultaMD.Models.Entities
         public int? PaymentId { get; set; }
         public Payment Payment { get; set; }
         public int? BondId { get; set; }
+        public bool Confirmed { get; set; }
+        public bool Arrived { get; set; }
+        public DateTime Arrival { get; set; }
+        public int MedicalAttentionId { get; set; }
+        public MedicalAttention MedicalAttention { get; set; }
     }
 }

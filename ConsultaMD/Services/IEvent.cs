@@ -7,6 +7,9 @@ namespace ConsultaMD.Services
     public interface IEvent
     {
         Task AddEvents(List<AgendaEvent> events);
-        //Task DeleteEvents(List<int> eventIds);
+        Task AddEvent(AgendaEvent e);
+        Task DeleteEvents(List<int> eventIds);
+        Task DeleteEvent(int id);
+        Task DisableEvent(int id);
     }
 }

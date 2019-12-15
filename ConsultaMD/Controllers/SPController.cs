@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.NodeServices;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using OpenQA.Selenium.Chrome;
 using Tesseract;
 
@@ -122,8 +123,15 @@ namespace ConsultaMD.Controllers
             {
                 var rut = RUT.Format(run);
                 var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/SII.js", rut).ConfigureAwait(false);
-                var siiData = JsonConvert.DeserializeObject<SII>(response);
-                if (string.IsNullOrEmpty(siiData.Razon_Social)) return NotFound();
+                var siiData = JsonConvert.DeserializeObject<SII>(response, 
+                    new JsonSerializerSettings 
+                    {
+                        ContractResolver = new DefaultContractResolver 
+                        { 
+                            NamingStrategy = new SnakeCaseNamingStrategy() 
+                        }
+                    });
+                if (string.IsNullOrEmpty(siiData.RazonSocial)) return NotFound();
                 return val == "all" ? Ok(response) : Ok(siiData[val]);
             }
             return NotFound();

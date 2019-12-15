@@ -11,20 +11,28 @@ using System.Threading.Tasks;
 
 namespace ConsultaMD.Data
 {
-    public static class UserInitializer
+    public class UserInitializer : IUser
     {
-        public static Task Initialize(ApplicationDbContext context, ILookupNormalizer normalizer)
+        private readonly ApplicationDbContext _context;
+        private readonly ILookupNormalizer _normalizer;
+        public UserInitializer(
+            ApplicationDbContext context,
+            ILookupNormalizer normalizer
+            )
         {
-            using (var transaction = context?.Database.BeginTransaction())
-            using (var roleStore = new RoleStore<ApplicationRole>(context))
-            using (var userStore = new UserStore<ApplicationUser>(context))
-                if (context != null)
-                {
-                    if (!context.ApplicationUserRoles.Any())
+            _context = context;
+            _normalizer = normalizer;
+        }
+        public async Task Seed()
+        {
+            using (var transaction = _context.Database.BeginTransaction())
+            using (var roleStore = new RoleStore<ApplicationRole>(_context))
+            using (var userStore = new UserStore<ApplicationUser>(_context))
+                    if (!_context.ApplicationUserRoles.Any())
                     {
-                        if (!context.Users.Any())
+                        if (!_context.Users.Any())
                         {
-                            if (!context.ApplicationRoles.Any())
+                            if (!_context.ApplicationRoles.Any())
                             {
                                 var applicationRoles = new List<ApplicationRole> { };
                                 foreach (var item in RoleData.ApplicationRoles)
@@ -41,9 +49,9 @@ namespace ConsultaMD.Data
 
                                 foreach (var role in applicationRoles)
                                 {
-                                    context.ApplicationRoles.Add(role);
+                                    await _context.ApplicationRoles.AddAsync(role).ConfigureAwait(false);
                                 }
-                                context.SaveChanges();
+                                await _context.SaveChangesAsync().ConfigureAwait(false);
                             }
 
                             var users = new UserInitializerVM[]
@@ -119,7 +127,7 @@ namespace ConsultaMD.Data
                                     Id = item.Carnet,
                                     NaturalId = item.RUN
                                 };
-                                context.Carnets.Add(carnet);
+                                await _context.Carnets.AddAsync(carnet).ConfigureAwait(false);
                                 //var digitalsignature = new DigitalSignature
                                 //{
                                 //    Id = item.Carnet,
@@ -133,7 +141,7 @@ namespace ConsultaMD.Data
                                     InsurancePassword = item.Key
                                 };
                                 if (item.Tramo != 0) patient.Tramo = item.Tramo;
-                                context.Patients.Add(patient);
+                                await _context.Patients.AddAsync(patient).ConfigureAwait(false);
                                 var natural = new Natural
                                 {
                                     Id = item.RUN,
@@ -152,7 +160,7 @@ namespace ConsultaMD.Data
                                     Nationality = "CHILENA"
                                 };
                                 if (!string.IsNullOrWhiteSpace(item.Banmedica)) natural.BanmedicaName = item.Banmedica;
-                                context.People.Add(natural);
+                                await _context.People.AddAsync(natural).ConfigureAwait(false);
                                 var user = new ApplicationUser
                                 {
                                     UserName = RUT.Format(item.RUN),
@@ -160,14 +168,14 @@ namespace ConsultaMD.Data
                                     PhoneConfirmationTime = DateTime.Now.AddMinutes(5),
                                     PhoneNumberConfirmed = true,
                                     Email = item.Email,
-                                    NormalizedEmail = normalizer?.Normalize(item.Email),
+                                    NormalizedEmail = _normalizer.Normalize(item.Email),
                                     MailConfirmationTime = DateTime.Now.AddMinutes(5),
                                     EmailConfirmed = true,
                                     LockoutEnabled = false,
                                     SecurityStamp = Guid.NewGuid().ToString(),
                                     Person = natural
                                 };
-                                user.NormalizedUserName = normalizer?.Normalize(user.UserName);
+                                user.NormalizedUserName = _normalizer.Normalize(user.UserName);
                                 var hasher = new PasswordHasher<ApplicationUser>();
                                 var hashedPassword = hasher.HashPassword(user, item.Key);
                                 user.PasswordHash = hashedPassword;
@@ -183,24 +191,22 @@ namespace ConsultaMD.Data
 
                                 if (!string.IsNullOrWhiteSpace(item.Role))
                                 {
-                                    var roller = context.Roles.SingleOrDefault(r => r.Name == item.Role);
+                                    var roller = _context.Roles.SingleOrDefault(r => r.Name == item.Role);
                                     user.UserRoles.Add(new ApplicationUserRole
                                     {
                                         UserId = user.Id,
                                         RoleId = roller.Id
                                     });
                                 }
-
-                                context.Users.Add(user);
+                                await _context.Users.AddAsync(user).ConfigureAwait(false);
                             }
                             //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures ON");
-                            context.SaveChanges();
+                            await _context.SaveChangesAsync().ConfigureAwait(false);
                             //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures OFF");
                             transaction.Commit();
                         }
                     }
-                }
-            return Task.CompletedTask;
+            return;
         }
     }
 }

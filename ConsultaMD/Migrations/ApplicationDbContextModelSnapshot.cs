@@ -239,6 +239,8 @@ namespace ConsultaMD.Migrations
 
                     b.Property<int?>("FonasaLevel");
 
+                    b.Property<int?>("MedicalAttentionId");
+
                     b.Property<int>("NaturalId");
 
                     b.Property<DateTime>("RegistryDate");
@@ -351,6 +353,29 @@ namespace ConsultaMD.Migrations
                     b.ToTable("Localities");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Locality");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttention", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DoctorId");
+
+                    b.Property<int>("ReservationId");
+
+                    b.Property<DateTime>("StartTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId")
+                        .IsUnique();
+
+                    b.HasIndex("ReservationId")
+                        .IsUnique();
+
+                    b.ToTable("MedicalAttention");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttentionMedium", b =>
@@ -515,7 +540,15 @@ namespace ConsultaMD.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Arrival");
+
+                    b.Property<bool>("Arrived");
+
                     b.Property<int?>("BondId");
+
+                    b.Property<bool>("Confirmed");
+
+                    b.Property<int>("MedicalAttentionId");
 
                     b.Property<int>("PatientId");
 
@@ -913,6 +946,19 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Prestacion", "Prestacion")
                         .WithMany("InsuranceLocation")
                         .HasForeignKey("PrestacionId");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttention", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Doctor", "Doctor")
+                        .WithOne("MedicalAttention")
+                        .HasForeignKey("ConsultaMD.Models.Entities.MedicalAttention", "DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
+                        .WithOne("MedicalAttention")
+                        .HasForeignKey("ConsultaMD.Models.Entities.MedicalAttention", "ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttentionMedium", b =>

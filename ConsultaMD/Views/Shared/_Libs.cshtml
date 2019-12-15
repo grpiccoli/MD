@@ -1,4 +1,4 @@
-﻿@model (List<string>, string)
+﻿@model (HashSet<string>, string)
 
 @using ConsultaMD.Services
 
@@ -6,12 +6,6 @@
     var style = $"{Model.Item2}Styles";
     var script = $"{Model.Item2}Scripts";
     bool dev = true;
-    var pageName = ViewContext.RouteData.Values.ContainsKey("action") ?
-        ViewContext.RouteData.Values["action"].ToString() :
-        ViewContext.RouteData.Values.ContainsKey("page") ?
-        ViewContext.RouteData.Values["page"].ToString().Split("/").Last() :
-        null;
-    Model.Item1.Add(pageName);
     <environment exclude="Development">
         @{
             dev = false;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ConsultaMD.Areas.MDs.Models
@@ -41,7 +40,7 @@ namespace ConsultaMD.Areas.MDs.Models
         [Display(Name = "Total Citas Agendadas")]
         public int TakenTimeSlots { get; set; }
         [Display(Name = "Ingresos por Previsión")]
-        public List<int> RevenuePerInsurance { get; set; }
+        public List<int> RevenuePerInsurance { get; } = new List<int>();
         [Display(Name = "Pacientes Totales")]
         public int TotalPatients { get; set; }
         [Display(Name = "Pacientes Antiguo")]

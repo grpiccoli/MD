@@ -1,0 +1,173 @@
+﻿@model AddAgendaVM
+
+@{
+    ViewData["Title"] = "Añadir Agenda";
+}
+
+<div class="row h-100v-b" data-simplebar>
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="input-field col s12">
+            <p>
+                <label>
+                    <input asp-for="HasOverTime" class="validate" />
+                    <span>@Html.DisplayNameFor(model => model.HasOverTime)</span>
+                </label>
+            </p>
+            <span asp-validation-for="HasOverTime" class="text-danger"></span>
+        </div>
+        <div class="input-field col s12">
+            <input asp-for="MediumDoctorId" class="validate" autocomplete="email" />
+            <label asp-for="MediumDoctorId"></label>
+            <span asp-validation-for="MediumDoctorId" class="text-danger"></span>
+        </div>
+        <div class="input-field col s12">
+            <input asp-for="StartTime" class="validate" autocomplete="email" />
+            <label class="active" asp-for="StartTime"></label>
+            <span asp-validation-for="StartTime" class="text-danger"></span>
+        </div>
+        <div class="input-field col s12">
+            <input asp-for="EndTime" class="validate" autocomplete="email" />
+            <label class="active" asp-for="EndTime"></label>
+            <span asp-validation-for="EndTime" class="text-danger"></span>
+        </div>
+        <div class="input-field col s12">
+            <input asp-for="Duration" class="validate" autocomplete="email" />
+            <label asp-for="Duration"></label>
+            <span asp-validation-for="Duration" class="text-danger"></span>
+        </div>
+        <div class="input-field col s12">
+            <input asp-for="Frequency" class="validate" autocomplete="email" />
+            <label asp-for="Frequency"></label>
+            <span asp-validation-for="Frequency" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Monday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Lu</div>
+                </div>
+            </div>
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Tuesday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Ma</div>
+                </div>
+            </div>
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Wednesday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Mi</div>
+                </div>
+            </div>
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Thursday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Ju</div>
+                </div>
+            </div>
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Friday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Vi</div>
+                </div>
+            </div>
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Saturday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Sa</div>
+                </div>
+            </div>
+            <div class="col s1 center-align">
+                <div class="row mb-0">
+                    <div class="col s1 offset-s3">
+                        <label>
+                            <input asp-for="Sunday" class="filled-in" />
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12" style="font-size:14px">Do</div>
+                </div>
+            </div>
+        </div>
+        <div class="input-field col s12">
+            <button type="submit"
+                    class="btn waves-effect waves-light white-text teal pill tile-gradient">
+                <i class="material-icons left">add</i>Añadir
+            </button>
+        </div>
+    </form>
+</div>
+
+@this.Block(@<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        mobiscroll.datetime('#StartTime', {
+                lang: 'es',
+                dateFormat: 'D d M, yy',
+                timeFormat: 'hh:ii A'
+            });
+            mobiscroll.datetime('#EndTime', {
+                lang: 'es',
+                dateFormat: 'D d M, yy',
+                timeFormat: 'hh:ii A'
+            });
+            mobiscroll.time('#Duration', {
+                lang: 'es',
+                timeFormat: 'ii'
+            });
+            var instance = mobiscroll.select('#MediumDoctorId', {
+                lang: 'es',
+                theme: 'material',
+                data: @Html.Raw(Model.SelectorList),
+                display: 'bubble',
+                showOnTap: true,
+                showOnFocus: true
+            });
+        });
+</script>, "Scripts")
+
+<partial name="_ValidationScriptsPartial" />

@@ -64,7 +64,7 @@ const submitCatpcha = async function (page, rut, captcha) {
 //rut, phone, email, docRut, specialty, region, commune, payRut, acKey
 
 module.exports = async function (callback, data) {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch();
     const page = (await browser.pages())[0];
     page.setViewport({ width: 1000, height: 600, deviceScaleFactor: 1 });
     await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' });

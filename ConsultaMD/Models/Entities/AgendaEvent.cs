@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
+using System.Linq;
 
 namespace ConsultaMD.Models.Entities
 {
@@ -15,7 +17,17 @@ namespace ConsultaMD.Models.Entities
         public int Frequency { get; set; }
         //public RepeatEvery RepeatEvery { get; set; }
         [NotMapped]
-        public List<DayOfWeek> daysOfWeek { get; set; }
+        public HashSet<DayOfWeek> DaysOfWeek 
+        { 
+            get 
+            {
+                var list = Days.ToString(CultureInfo.InvariantCulture)
+                    .ToCharArray().Select(a => a - '0').Cast<DayOfWeek>();
+                return new HashSet<DayOfWeek>(list);
+            } 
+        }
+        [NotMapped]
+        public int Days { get; set; }
         public ICollection<EventDayWeek> EventDayWeeks { get; } = new List<EventDayWeek>();
         public virtual ICollection<Agenda> Agendas { get; } = new List<Agenda>();
     }
