@@ -30,16 +30,19 @@ namespace ConsultaMD.Services
             {
                 await _context.AgendaEvents.AddAsync(e).ConfigureAwait(false);
                 await _context.SaveChangesAsync().ConfigureAwait(false);
-                var start = e.StartDateTime;
-                var max = e.EndDateTime;
-                while (start < max)
+                var startEvent = e.StartDateTime.AddDays(-(double)e.StartDateTime.DayOfWeek);
+                var maxEvent = e.EndDateTime;
+                var daysEvent = (maxEvent.Date - startEvent.Date).Days;
+                while (startEvent < maxEvent)
                 {
-                    foreach (var day in e.DaysOfWeek)
+                    foreach (var day in e.DaysOfWeek.Where(d => (int)d <= daysEvent))
                     {
+                        var startAgenda = startEvent.AddDays((int)day);
+                        if (startAgenda > maxEvent) break;
                         var agenda = new Agenda
                         {
                             AgendaEventId = e.Id,
-                            StartTime = start.AddDays((int)day),
+                            StartTime = startAgenda,
                         };
                         await _context.Agenda.AddAsync(agenda).ConfigureAwait(false);
                         var weekdays = new EventDayWeek
@@ -49,23 +52,22 @@ namespace ConsultaMD.Services
                         };
                         await _context.EventDayWeeks.AddAsync(weekdays).ConfigureAwait(false);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
-                        var startTime = start;
-                        var end = startTime.Add(e.Duration);
+                        var startTime = startAgenda;
                         var slots = new List<TimeSlot>();
-                        while (startTime.TimeOfDay < max.TimeOfDay)
+                        while (startTime.TimeOfDay < maxEvent.TimeOfDay)
                         {
                             slots.Add(new TimeSlot
                             {
                                 AgendaId = agenda.Id,
                                 StartTime = startTime,
-                                EndTime = end
+                                EndTime = startTime.Add(e.Duration)
                             });
                             startTime = startTime.Add(e.Duration);
                         }
                         await _context.TimeSlots.AddRangeAsync(slots).ConfigureAwait(false);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
                     }
-                    start = start.AddDays(7 * e.Frequency);
+                    startEvent = startEvent.AddDays(7 * e.Frequency);
                 }
             }
             return;
@@ -77,10 +79,17 @@ namespace ConsultaMD.Services
                 .Include(a => a.Agendas)
                     .ThenInclude(a => a.TimeSlots)
                         .ThenInclude(a => a.Reservation)
-                .SingleOrDefaultAsync(a => a.Id == id).ConfigureAwait(false);
+                .SingleOrDefaultAsync(a => a.Id == id)
+                .ConfigureAwait(false);
             _context.EventDayWeeks.RemoveRange(e.EventDayWeeks);
-            _context.TimeSlots.RemoveRange(e.Agendas.SelectMany(a => a.TimeSlots.Where(t => t.Reservation != null)));
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             _context.Agenda.RemoveRange(e.Agendas);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
+            _context.TimeSlots
+                .RemoveRange(e.Agendas
+                .SelectMany(a => a.TimeSlots
+                .Where(t => t.ReservationId.HasValue)));
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             _context.AgendaEvents.Remove(e);
             await _context.SaveChangesAsync().ConfigureAwait(false);
             return;

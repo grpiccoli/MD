@@ -740,7 +740,7 @@ namespace ConsultaMD.Migrations
                         column: x => x.AgendaEventId,
                         principalTable: "AgendaEvents",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -782,7 +782,7 @@ namespace ConsultaMD.Migrations
                         column: x => x.AgendaId,
                         principalTable: "Agenda",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TimeSlots_Reservations_ReservationId",
                         column: x => x.ReservationId,

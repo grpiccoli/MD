@@ -114,6 +114,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
                 .SelectMany(m => m.AgendaEvents.Select(a => 
             new AgendaEventVM
             {
+                Id = a.Id,
                 Location = $"{m.MedicalAttentionMedium.Place.Name}, {m.MedicalAttentionMedium.Place.Commune.Name}",
                 StartTime = a.StartDateTime,
                 EndTime = a.EndDateTime,
@@ -174,9 +175,9 @@ namespace ConsultaMD.Areas.MDs.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddAgenda(
-            [Bind("MediumDoctorId, StartTime, EndTime, Duration, HasOverTime, Frequency, Days")] 
+            [Bind("MediumDoctorId, StartTime, EndTime, Duration, HasOverTime, Frequency, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday")] 
         AddAgendaVM model) {
-            if (ModelState.IsValid && model != null)
+            if (ModelState.IsValid && model != null && model.DaysOfWeek.Any())
             {
                 if(model.StartTime <= model.EndTime.AddMinutes(model.Duration))
                 {
@@ -186,9 +187,9 @@ namespace ConsultaMD.Areas.MDs.Controllers
                         StartDateTime = model.StartTime,
                         EndDateTime = model.EndTime,
                         MediumDoctorId = model.MediumDoctorId,
-                        Frequency = model.Frequency
+                        Frequency = model.Frequency,
+                        Days = int.Parse(string.Join("",model.DaysOfWeek.Select(d => (int)d)),CultureInfo.InvariantCulture)
                     };
-                    agendaEvent.DaysOfWeek.UnionWith(model.DaysOfWeek);
                     await _eventService.AddEvent(agendaEvent).ConfigureAwait(false);
                     return RedirectToAction(nameof(Agenda));
                 }
@@ -227,7 +228,6 @@ namespace ConsultaMD.Areas.MDs.Controllers
 
             return View(model);
         }
-        [HttpPost]
         public async Task<IActionResult> DeleteAgenda(int id)
         {
             await _eventService.DeleteEvent(id).ConfigureAwait(false);

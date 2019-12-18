@@ -148,7 +148,8 @@ namespace ConsultaMD.Data
                 modelBuilder.Entity<TimeSlot>()
                     .HasOne(r => r.Reservation)
                     .WithOne(t => t.TimeSlot)
-                    .HasForeignKey<Reservation>(t => t.TimeSlotId);
+                    .HasForeignKey<Reservation>(t => t.TimeSlotId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
                 modelBuilder.Entity<Reservation>(res => {
                     res.HasOne(r => r.Patient)
@@ -157,7 +158,8 @@ namespace ConsultaMD.Data
 
                     res.HasOne(r => r.TimeSlot)
                     .WithOne(t => t.Reservation)
-                    .HasForeignKey<TimeSlot>(t => t.ReservationId);
+                    .HasForeignKey<TimeSlot>(t => t.ReservationId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
                     res.HasOne(r => r.MedicalAttention)
                     .WithOne(a => a.Reservation)
@@ -179,13 +181,15 @@ namespace ConsultaMD.Data
                     .HasMany(r => r.TimeSlots)
                     .WithOne(p => p.Agenda)
                     .HasForeignKey(r => r.AgendaId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    //.OnDelete(DeleteBehavior.Restrict)
+                    ;
 
                 modelBuilder.Entity<AgendaEvent>()
                     .HasMany(r => r.Agendas)
                     .WithOne(p => p.AgendaEvent)
                     .HasForeignKey(r => r.AgendaEventId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    //.OnDelete(DeleteBehavior.Restrict)
+                    ;
             }
         }
         public DbSet<IdentityUserClaim<string>> IdentityUserClaims { get; set; }

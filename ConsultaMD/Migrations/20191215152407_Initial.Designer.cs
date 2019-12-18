@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultaMD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191214225523_Initial")]
+    [Migration("20191215152407_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -837,7 +837,7 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.AgendaEvent", "AgendaEvent")
                         .WithMany("Agendas")
                         .HasForeignKey("AgendaEventId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.AgendaEvent", b =>
@@ -1037,11 +1037,12 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Agenda", "Agenda")
                         .WithMany("TimeSlots")
                         .HasForeignKey("AgendaId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
                         .WithOne("TimeSlot")
-                        .HasForeignKey("ConsultaMD.Models.Entities.TimeSlot", "ReservationId");
+                        .HasForeignKey("ConsultaMD.Models.Entities.TimeSlot", "ReservationId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Vertex", b =>

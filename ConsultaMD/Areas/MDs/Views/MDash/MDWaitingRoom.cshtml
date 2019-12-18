@@ -11,17 +11,24 @@
         <div mbsc-accordion>
             <div class="mbsc-form-group">
                 <div class="mbsc-form-group-title">Atendiendo</div>
-                <partial name="_MDPatient" model="Model.Attending" />
             </div>
+            @if (Model.Attending != null)
+            {
+                <partial name="_MDPatient" model="Model.Attending" />
+            }
+            else
+            {
+                <a class="btn">Llamar paciente</a>
+            }
             <div class="mbsc-form-group">
-                <div class="mbsc-form-group-title">Esperando</div>
+                <div class="mbsc-form-group-title">En espera @Model.Waiting.Count()</div>
                 @foreach (var w in Model.Waiting)
                 {
                     <partial name="_MDPatient" model="w" />
                 }
             </div>
             <div class="mbsc-form-group">
-                <div class="mbsc-form-group-title">Confirmados</div>
+                <div class="mbsc-form-group-title">Confirmados @Model.Confirmed.Count()</div>
                 @foreach (var c in Model.Confirmed)
                 {
                     <partial name="_MDPatient" model="c" />

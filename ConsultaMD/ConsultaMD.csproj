@@ -64,6 +64,10 @@
     <Compile Remove="Migrations\20191214163653_Initial.Designer.cs" />
     <Compile Remove="Migrations\20191214164301_Initial.cs" />
     <Compile Remove="Migrations\20191214164301_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191214225523_Initial.cs" />
+    <Compile Remove="Migrations\20191214225523_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191215152016_Initial.cs" />
+    <Compile Remove="Migrations\20191215152016_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\DoctorDetails.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -118,35 +122,37 @@
     <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="3.2.0" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
     <PackageReference Condition="'$(OS)' == 'Windows_NT'" Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="CorePush" Version="2.0.1" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.16" />
-    <PackageReference Include="libphonenumber-csharp" Version="8.11.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.17" />
+    <PackageReference Include="Lib.AspNetCore.WebPush" Version="1.2.0" />
+    <PackageReference Include="libphonenumber-csharp" Version="8.11.1" />
     <PackageReference Include="LocalizationProvider.AspNetCore" Version="5.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Proxy" Version="0.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.3.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.4">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
-    <PackageReference Include="morelinq" Version="3.2.0" />
+    <PackageReference Include="morelinq" Version="3.3.1" />
     <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />
     <PackageReference Include="Schema.NET" Version="6.0.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Sendgrid" Version="9.12.0" />
-    <PackageReference Include="Stripe.net" Version="32.1.3" />
+    <PackageReference Include="Stripe.net" Version="34.5.0" />
     <PackageReference Include="Tesseract" Version="3.3.0" />
-    <PackageReference Include="Twilio" Version="5.34.0" />
+    <PackageReference Include="Twilio" Version="5.37.0" />
     <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.59" />
     <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.7.0" />
   </ItemGroup>

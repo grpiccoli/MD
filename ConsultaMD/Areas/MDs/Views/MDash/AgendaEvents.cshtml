@@ -18,7 +18,7 @@
                         <div class="card-content">
                             <table>
                                 <tr>
-                                    <th>@Html.DisplayNameFor(m => e.Location)</th>
+                                    <th>@Html.DisplayNameFor(m => e.Location) @Html.DisplayFor(m => e.Id)</th>
                                 </tr>
                                 <tr>
                                     <td>@Html.DisplayFor(m => e.Location)</td>
@@ -33,13 +33,13 @@
                                     <th>Dias</th>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayFor(m => e.GetDays())</td>
+                                    <td>@e.GetDays()</td>
                                 </tr>
                                 <tr>
                                     <th>Horario</th>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayFor(m => e.TimeRange())</td>
+                                    <td>@e.TimeRange()</td>
                                 </tr>
                                 <tr>
                                     <th>@Html.DisplayNameFor(m => e.Duration)</th>
@@ -51,7 +51,7 @@
                                     <th>Citas</th>
                                 </tr>
                                 <tr>
-                                    <td>@Html.DisplayFor(m => e.GetSlots())</td>
+                                    <td>@e.GetSlots()</td>
                                 </tr>
                             </table>
                         </div>
@@ -60,7 +60,8 @@
                                 <button class="btn center pill tile-gradient">Desactivar</button>
                             </div>
                             <div class="col s5">
-                                <button class="btn center pill tile-gradient">Eliminar</button>
+                                <a asp-action="DeleteAgenda" asp-route-id="@e.Id" 
+                                   class="btn center pill tile-gradient">Eliminar</a>
                             </div>
                         </div>
                     </div>

@@ -74,7 +74,14 @@
                 themeVariant: 'light',
                 display: 'inline',
                 showEventCount: true,
-                data: @Html.Raw(JsonConvert.SerializeObject(Model))
+                data: @Html.Raw(JsonConvert.SerializeObject(Model, 
+                    new JsonSerializerSettings 
+                    {
+                        ContractResolver = new DefaultContractResolver 
+                        { 
+                            NamingStrategy = new CamelCaseNamingStrategy()
+                        }
+                    }))
             });
         });
 </script>, "Scripts")

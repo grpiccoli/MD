@@ -835,7 +835,7 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.AgendaEvent", "AgendaEvent")
                         .WithMany("Agendas")
                         .HasForeignKey("AgendaEventId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.AgendaEvent", b =>
@@ -1035,11 +1035,12 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Agenda", "Agenda")
                         .WithMany("TimeSlots")
                         .HasForeignKey("AgendaId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
                         .WithOne("TimeSlot")
-                        .HasForeignKey("ConsultaMD.Models.Entities.TimeSlot", "ReservationId");
+                        .HasForeignKey("ConsultaMD.Models.Entities.TimeSlot", "ReservationId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Vertex", b =>

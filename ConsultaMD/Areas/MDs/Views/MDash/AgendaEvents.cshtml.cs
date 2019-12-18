@@ -9,28 +9,30 @@ namespace ConsultaMD.Areas.MDs.Models
 {
     public class AgendaEventVM
     {
+        [Display(Name = "Id")]
         public int Id { get; set; }
         [Display(Name = "Ubicación")]
         public string Location { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         [Display(Name = "Duración de Citas")]
+        [DisplayFormat(DataFormatString = "{0:mm}")]
         public TimeSpan Duration { get; set; }
         public IEnumerable<TimeSlot> TimeSlots { get; set; }
         public IEnumerable<EventDayWeek> EventDayWeeks { get; set; }
         [Display(Name = "Fechas")]
         public string DateRange()
         {
-            return GetRange("{0:dd/MM/yyyy}");
+            return GetRange("dddd dd MMMM yyyy");
         }
         [Display(Name = "Horario")]
         public string TimeRange()
         {
-            return GetRange("{0:hh:mm tt}");
+            return GetRange("hh:mm tt");
         }
         public string GetRange(string format)
         {
-            return $"{StartTime.ToString(format, CultureInfo.InvariantCulture)} - {EndTime.ToString(format, CultureInfo.InvariantCulture)}";
+            return $"{StartTime.ToString(format, new CultureInfo("es-CL"))} - {EndTime.ToString(format, new CultureInfo("es-CL"))}";
         }
         [Display(Name = "Citas")]
         public string GetSlots()
@@ -40,7 +42,10 @@ namespace ConsultaMD.Areas.MDs.Models
         [Display(Name = "Dias")]
         public string GetDays()
         {
-            return string.Join(",", EventDayWeeks.Select(e => e.DayOfWeek.ToString()));
+            var culture = new CultureInfo("es-CL");
+            return string.Join(",", EventDayWeeks
+                .Select(e => culture.DateTimeFormat
+                .GetDayName(e.DayOfWeek)));
         }
         //[Display(Name = "Citas Totales")]
         public int TimeSlotCount

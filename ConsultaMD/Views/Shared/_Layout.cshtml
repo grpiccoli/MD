@@ -77,15 +77,15 @@
             @this.WriteBlocks("Menu")
         </header>
     }
-<main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
-    @*<partial name="_Loader" />*@
-    @RenderBody()
-    @if (User.Identity.IsAuthenticated)
-    {
-        @this.WriteBlocks("SideNav")
-    }
-    <partial name="_Loader">
-</main>
+    <main role="main" class="pb-3 @(User.Identity.IsAuthenticated ? "under-menu" : "")">
+        @*<partial name="_Loader" />*@
+        @RenderBody()
+        @if (User.Identity.IsAuthenticated)
+        {
+            @this.WriteBlocks("SideNav")
+        }
+        <partial name="_Loader">
+    </main>
     @*<footer class="border-top footer text-muted">
             <div class="container">
                 &copy; 2019 - ConsultaMD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -100,6 +100,27 @@
     @this.WriteBlocks("UPScripts")
     @this.WriteBlocks("Scripts")
     @RenderSection("Scripts", required: false)
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAeCkFCa5QXQtHzQoTw1yrGBz074FvHmSU",
+            authDomain: "consultamd.firebaseapp.com",
+            databaseURL: "https://consultamd.firebaseio.com",
+            projectId: "consultamd",
+            storageBucket: "consultamd.appspot.com",
+            messagingSenderId: "1062549201152",
+            appId: "1:1062549201152:web:a7cc62cd0d9a9df317d3e5",
+            measurementId: "G-J2WCS6FLGC"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
     @this.WriteBlocks("DWNScripts")
 </body>
 </html>
