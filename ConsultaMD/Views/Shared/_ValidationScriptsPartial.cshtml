@@ -17,7 +17,7 @@
         else if (System.IO.Directory.Exists(System.IO.Path.Combine(HostingEnvironment.WebRootPath, string.Format(localePattern, currentCulture.TwoLetterISOLanguageName))))
             cultureToUse = currentCulture.TwoLetterISOLanguageName;
 
-        return cultureToUse;
+        return cultureToUse.Split("-").First();
     }
 }
 
