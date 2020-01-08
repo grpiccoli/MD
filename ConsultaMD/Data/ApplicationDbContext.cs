@@ -2,15 +2,26 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
 namespace ConsultaMD.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
+        //public static readonly ILoggerFactory loggerFactory = new LoggerFactory(new[] {
+        //      new ConsoleLoggerProvider((_, __) => true, true)
+        //});
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.SetCommandTimeout(10000);
         }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder?.UseLoggerFactory(loggerFactory)  //tie-up DbContext with LoggerFactory object
+        //        .EnableSensitiveDataLogging();
+        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             if(modelBuilder != null)
@@ -206,6 +217,7 @@ namespace ConsultaMD.Data
         public DbSet<CommercialActivity> CommercialActivities { get; set; }
         public DbSet<Commune> Communes { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         //public DbSet<DigitalSignature> DigitalSignatures { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<DoctorSpecialty> DoctorSpecialties { get; set; }

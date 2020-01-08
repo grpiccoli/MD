@@ -45,6 +45,8 @@ namespace ConsultaMD.Models.Entities
         }
         public int? ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
+        public string CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
         public new string GetShortName()
         {
             return $"{Names.Split(" ")[0]} {LastFather}";

@@ -16,14 +16,24 @@ namespace ConsultaMD.Services
             RegCivilSettings = settings?.Value;
             _nodeServices = nodeServices;
         }
-        public async Task Init()
+        public async Task<bool> Init()
+        {
+            var RegCivilData = await VAsync().ConfigureAwait(false);
+            while (!RegCivilData.IsValid)
+            {
+                await CloseBW().ConfigureAwait(false);
+                RegCivilData = await VAsync().ConfigureAwait(false);
+            }
+            RegCivilSettings.BrowserWSEndpoint = RegCivilData.BrowserWSEndpoint;
+            RegCivilSettings.Captcha = RegCivilData.Captcha;
+            return true;
+        }
+        public async Task<RegCivil> VAsync()
         {
             RegCivilSettings.Close = false;
             var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
-            var RegCivilData = JsonConvert.DeserializeObject<RegCivil>(response);
-            RegCivilSettings.BrowserWSEndpoint = RegCivilData.BrowserWSEndpoint;
-            RegCivilSettings.Captcha = RegCivilData.Captcha;
-            return;
+            var data = JsonConvert.DeserializeObject<RegCivil>(response);
+            return data;
         }
         public async Task CloseBW()
         {
@@ -31,18 +41,24 @@ namespace ConsultaMD.Services
             await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
             return;
         }
+        public async Task<bool> Test()
+        {
+            var data = new RegCivil 
+            {
+                Close = true
+            };
+            while (data.Close) {
+                data = await VAsync().ConfigureAwait(false);
+                if (data.Close) await CloseBW().ConfigureAwait(false);
+            }
+            return data.IsValid;
+        }
         public async Task<bool> IsValid(int rut, int carnet, bool isExt)
         {
             RegCivilSettings.Rut = RUT.Format(rut, false);
             RegCivilSettings.Carnet = carnet;
-            RegCivilSettings.Close = false;
             RegCivilSettings.IsExt = isExt;
-            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
-            var vigente = JsonConvert.DeserializeObject<RegCivil>(response);
-            if (vigente.Close)
-                await CloseBW().ConfigureAwait(false);
-            RegCivilSettings.BrowserWSEndpoint = vigente.BrowserWSEndpoint;
-            return vigente.IsValid;
+            return await Test().ConfigureAwait(false);
         }
     }
     public class RegCivilSettings

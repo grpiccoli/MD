@@ -28,6 +28,8 @@ using Twilio;
 using Microsoft.Extensions.FileProviders;
 using ConsultaMD.Extensions;
 using ConsultaMD.Hubs;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
 namespace ConsultaMD
 {
@@ -46,9 +48,17 @@ namespace ConsultaMD
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
+            {
                 options.UseSqlServer(
                     Configuration.GetConnectionString($"{_os}Connection"),
-                    sqlServerOptions => sqlServerOptions.CommandTimeout(100)));
+                    sqlServerOptions => sqlServerOptions.CommandTimeout(10000));
+            });
+
+            //services.AddLogging(loggingBuilder =>
+            //{
+            //    loggingBuilder.AddConsole();
+            //    loggingBuilder.AddDebug();
+            //});
 
             services.AddHostedService<SeedBackground>();
             services.AddScoped<ISeed, SeedService>();
@@ -72,6 +82,20 @@ namespace ConsultaMD
             });
             services.AddHostedService<RegCivilBackground>();
             services.AddScoped<IRegCivil, RegCivilService>();
+
+            services.Configure<FlowSettings>(o =>
+            {
+                o.ApiKey = Configuration["Flow:ApiKey"];
+                o.SecretKey = Configuration["Flow:SecretKey"];
+                o.Currency = "UF";
+                //var sufix = Development ? "sandbox" : "www";
+                var sufix = "sandbox";
+                o.EndPoint = new Uri($"https://{sufix}.flow.cl/api");
+            });
+            services.AddScoped<IFlow, FlowService>();
+
+            services.AddScoped<IRedirect, RedirectService>();
+            services.AddScoped<IMedium, MediumService>();
 
             var accountSid = Configuration["Twilio:AccountSID"];
             var authToken = Configuration["Twilio:AuthToken"];

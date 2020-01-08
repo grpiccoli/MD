@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultaMD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191215152407_Initial")]
+    [Migration("20191219203125_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,6 +233,38 @@ namespace ConsultaMD.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("CommercialActivities");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Customer", b =>
+                {
+                    b.Property<string>("CustomerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("CreditCardType");
+
+                    b.Property<string>("Email");
+
+                    b.Property<int>("ExternalId");
+
+                    b.Property<string>("Last4CardDigits");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("PayMode");
+
+                    b.Property<DateTime>("RegisterDate");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Token");
+
+                    b.HasKey("CustomerId");
+
+                    b.HasIndex("ExternalId");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
@@ -798,6 +830,8 @@ namespace ConsultaMD.Migrations
 
                     b.Property<int>("CarnetId");
 
+                    b.Property<string>("CustomerId");
+
                     b.Property<int>("DoctorId");
 
                     b.Property<string>("FullLastFirst");
@@ -815,6 +849,8 @@ namespace ConsultaMD.Migrations
                     b.Property<string>("PassSII");
 
                     b.Property<bool>("Sex");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasDiscriminator().HasValue("Natural");
                 });
@@ -889,6 +925,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Company")
                         .WithMany("CommercialActivities")
                         .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Customer", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Person", "External")
+                        .WithMany()
+                        .HasForeignKey("ExternalId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
@@ -1099,6 +1143,13 @@ namespace ConsultaMD.Migrations
                         .WithMany("Provinces")
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("ConsultaMD.Models.Entities.Natural", b =>
+                {
+                    b.HasOne("ConsultaMD.Models.Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationUserRole", b =>

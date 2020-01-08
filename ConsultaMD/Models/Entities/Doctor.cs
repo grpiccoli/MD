@@ -18,6 +18,7 @@ namespace ConsultaMD.Models.Entities
                 RegistryDate = superData.Registry;
                 SisId = superData.Sis;
                 Specialties = superData.GetSpecialties.ToList();
+                YearTitle = superData.TitleDate.Year;
             }
         }
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

@@ -21,61 +21,59 @@ namespace ConsultaMD.Services
             var uri = new Uri($"https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/Document{(cedula ? "Request" : "")}Status.xhtml");
             var parser = new HtmlParser();
             using (HttpClient client = new HttpClient())
+            using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri)
+                .ConfigureAwait(false)).ConfigureAwait(false))
             {
-                using (var docHome = await parser.ParseDocumentAsync(await client.GetStringAsync(uri)
-                    .ConfigureAwait(false)).ConfigureAwait(false))
+                var loginFormValues = new Dictionary<string, string>
                 {
-                    var loginFormValues = new Dictionary<string, string>
+                    { "form", "form" },
+                    { "form:captchaUrl", "initial" },
+                    { "form:run", $"{RUT.Format(rut,false)}" },
+                    { $"form:{(cedula ? "selectDocType" : "styledSelect")}", "CEDULA" },
+                    { "form:inputCaptcha", "" },
+                    { "form:buttonHidden", "" },
+                    { "javax.faces.ViewState", Javax(docHome) }
+                };
+                if (cedula) loginFormValues.Add("form:docNumber", carnet.ToString(CultureInfo.InvariantCulture));
+                using (var formContent = new FormUrlEncodedContent(loginFormValues))
+                using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
+                {
+                    using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync()
+                        .ConfigureAwait(false)).ConfigureAwait(false))
                     {
-                        { "form", "form" },
-                        { "form:captchaUrl", "initial" },
-                        { "form:run", $"{RUT.Format(rut,false)}" },
-                        { $"form:{(cedula ? "selectDocType" : "styledSelect")}", "CEDULA" },
-                        { "form:inputCaptcha", "" },
-                        { "form:buttonHidden", "" },
-                        { "javax.faces.ViewState", Javax(docHome) }
-                    };
-                    if (cedula) loginFormValues.Add("form:docNumber", carnet.ToString(CultureInfo.InvariantCulture));
-                    using (var formContent = new FormUrlEncodedContent(loginFormValues))
-                    using (var qNac = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                    {
-                        using (var docNac = await parser.ParseDocumentAsync(await qNac.Content.ReadAsStringAsync()
-                            .ConfigureAwait(false)).ConfigureAwait(false))
+                        if (cedula)
                         {
-                            if (cedula)
+                            var estado = GetEstadoCarnet(docNac);
+                            if (estado == "Vigente") return "CHILENA";
+                            loginFormValues["javax.faces.ViewState"] = Javax(docNac);
+                            loginFormValues["form:selectDocType"] = "CEDULA_EXT";
+                            using (var formContent2 = new FormUrlEncodedContent(loginFormValues))
+                            using (var qExt = await client.PostAsync(uri, formContent2).ConfigureAwait(false))
                             {
-                                var estado = GetEstadoCarnet(docNac);
-                                if (estado == "Vigente") return "CHILENA";
-                                loginFormValues["javax.faces.ViewState"] = Javax(docNac);
-                                loginFormValues["form:selectDocType"] = "CEDULA_EXT";
-                                using (var formContent2 = new FormUrlEncodedContent(loginFormValues))
-                                using (var qExt = await client.PostAsync(uri, formContent2).ConfigureAwait(false))
+                                using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()
+                                    .ConfigureAwait(false)).ConfigureAwait(false))
                                 {
-                                    using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()
-                                        .ConfigureAwait(false)).ConfigureAwait(false))
-                                    {
-                                        estado = GetEstadoCarnet(docExt);
-                                        if (estado == "Vigente") return "EXTRANJERA";
-                                        return null;
-                                    }
+                                    estado = GetEstadoCarnet(docExt);
+                                    if (estado == "Vigente") return "EXTRANJERA";
+                                    return null;
                                 }
                             }
-                            else
+                        }
+                        else
+                        {
+                            var tableNac = GetRows(docNac);
+                            if (tableNac.Length > 2) return "CHILENA";
+                            loginFormValues["javax.faces.ViewState"] = Javax(docNac);
+                            loginFormValues["form:styledSelect"] = "CEDULA_EXT";
+                            using (var formContent3 = new FormUrlEncodedContent(loginFormValues))
+                            using (var qExt = await client.PostAsync(uri, formContent3).ConfigureAwait(false))
                             {
-                                var tableNac = GetRows(docNac);
-                                if (tableNac.Length > 2) return "CHILENA";
-                                loginFormValues["javax.faces.ViewState"] = Javax(docNac);
-                                loginFormValues["form:styledSelect"] = "CEDULA_EXT";
-                                using (var formContent3 = new FormUrlEncodedContent(loginFormValues))
-                                using (var qExt = await client.PostAsync(uri, formContent3).ConfigureAwait(false))
+                                using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()
+                                    .ConfigureAwait(false)).ConfigureAwait(false))
                                 {
-                                    using (var docExt = await parser.ParseDocumentAsync(await qExt.Content.ReadAsStringAsync()
-                                        .ConfigureAwait(false)).ConfigureAwait(false))
-                                    {
-                                        var tableExt = GetRows(docExt);
-                                        if (tableExt.Length > 2) return "EXTRANJERA";
-                                        return null;
-                                    }
+                                    var tableExt = GetRows(docExt);
+                                    if (tableExt.Length > 2) return "EXTRANJERA";
+                                    return null;
                                 }
                             }
                         }
@@ -101,45 +99,44 @@ namespace ConsultaMD.Services
         {
             var search = new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/Search?SearchView&Query=(FIELD%20rut_pres={rut})");
             var parser = new HtmlParser();
-            using (HttpClient hc = new HttpClient()) {
-                using (var doc = await parser.ParseDocumentAsync(await hc.GetStringAsync(search).ConfigureAwait(false)).ConfigureAwait(false)) {
-                    var count = doc.GetElementsByTagName("maxview").First().TextContent.Trim();
-                    if (count == "1") {
-                        var cells = doc.GetElementsByTagName("td");
-                        var tmp = cells[0];
-                        var details = tmp.GetElementsByTagName("a").OfType<IHtmlAnchorElement>().First().Href;
-                        var data = new SuperData
+            using (HttpClient hc = new HttpClient())
+            using (var doc = await parser.ParseDocumentAsync(await hc.GetStringAsync(search).ConfigureAwait(false)).ConfigureAwait(false)) {
+                var count = doc.GetElementsByTagName("maxview").First().TextContent.Trim();
+                if (count == "1") {
+                    var cells = doc.GetElementsByTagName("td");
+                    var tmp = cells[0];
+                    var details = tmp.GetElementsByTagName("a").OfType<IHtmlAnchorElement>().First().Href;
+                    var data = new SuperData
+                    {
+                        LastFirst = tmp.TextContent,
+                        Title = cells[2].TextContent,
+                        Institution = cells[3].TextContent,
+                        Specialties = cells[4].TextContent.Split("<br>"),
+                        Sis = details.Split("?")[0].Split("/").Last()
+                    };
+                    if (data.Dr) {
+                        using (var doc2 = await parser.ParseDocumentAsync(
+                            await hc.GetStringAsync(
+                                new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/{data.Sis}?OpenDocument"))
+                            .ConfigureAwait(false)).ConfigureAwait(false))
                         {
-                            LastFirst = tmp.TextContent,
-                            Title = cells[2].TextContent,
-                            Institution = cells[3].TextContent,
-                            Specialties = cells[4].TextContent.Split("<br>"),
-                            Sis = details.Split("?")[0].Split("/").Last()
-                        };
-                        if (data.Dr) {
-                            using (var doc2 = await parser.ParseDocumentAsync(
+                            var cells2 = doc2.GetElementsByTagName("td");
+                            data.NameFirst = cells2[8].TextContent;
+                            data.Birth = DateTime.ParseExact(cells2[17].TextContent, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                            data.Nationality = cells2[23].TextContent;
+                            data.Id = int.Parse(cells2[27].TextContent.Trim(), CultureInfo.InvariantCulture);
+                            data.Sex = cells2[21].TextContent == "Masculino";
+                            data.Registry = DateTime.ParseExact(cells2[29].TextContent, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                            data.TitleId = cells2[11].FirstElementChild.GetAttribute("ref");
+                            using (var doc3 = await parser.ParseDocumentAsync(
                                 await hc.GetStringAsync(
-                                    new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(searchAll2)/{data.Sis}?OpenDocument"))
+                                    new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(AntecRegxRut2)//{data.TitleId}?open"))
                                 .ConfigureAwait(false)).ConfigureAwait(false))
                             {
-                                var cells2 = doc2.GetElementsByTagName("td");
-                                data.NameFirst = cells2[8].TextContent;
-                                data.Birth = DateTime.ParseExact(cells2[17].TextContent, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                                data.Nationality = cells2[23].TextContent;
-                                data.Id = int.Parse(cells2[27].TextContent.Trim(), CultureInfo.InvariantCulture);
-                                data.Sex = cells2[21].TextContent == "Masculino";
-                                data.Registry = DateTime.ParseExact(cells2[29].TextContent, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                                data.TitleId = cells2[11].FirstElementChild.GetAttribute("ref");
-                                using (var doc3 = await parser.ParseDocumentAsync(
-                                    await hc.GetStringAsync(
-                                        new Uri($"http://webhosting.superdesalud.gob.cl/bases/prestadoresindividuales.nsf/(AntecRegxRut2)//{data.TitleId}?open"))
-                                    .ConfigureAwait(false)).ConfigureAwait(false))
-                                {
-                                    var cells3 = doc3.GetElementsByTagName("td");
-                                    var date = Regex.Replace(Regex.Replace(cells3[1].TextContent, @"^\D+", ""), @"de ", "").Trim();
-                                    data.TitleDate = DateTime.ParseExact(date, "d MMMM yyyy", new CultureInfo("es-CL"));
-                                    return data;
-                                }
+                                var cells3 = doc3.GetElementsByTagName("td");
+                                var date = Regex.Replace(Regex.Replace(cells3[1].TextContent, @"^\D+", ""), @"de ", "").Trim();
+                                data.TitleDate = DateTime.ParseExact(date, "d MMMM yyyy", new CultureInfo("es-CL"));
+                                return data;
                             }
                         }
                     }

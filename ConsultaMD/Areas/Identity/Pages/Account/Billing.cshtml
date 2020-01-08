@@ -10,11 +10,11 @@
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
             <h3 class="center-align">@ViewData["Title"]</h3>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="input-field col s12">
+            @*<div class="input-field col s12">
                 <input asp-for="Input.RUTJ" class="validate" autocomplete="tel-national" />
                 <label asp-for="Input.RUTJ"></label>
                 <span asp-validation-for="Input.RUTJ" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="input-field col s12">
                 <input asp-for="Input.RUT" class="validate" autocomplete="tel-national" disabled/>
                 <label asp-for="Input.RUT"></label>

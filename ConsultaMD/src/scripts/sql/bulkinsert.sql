@@ -2,6 +2,6 @@
 AS
 BEGIN 
 DECLARE @SQLSelectQuery NVARCHAR(MAX)=''
-SET @SQLSelectQuery = 'BULK INSERT ' + @TableName + ' FROM ' + QUOTENAME(@tsv) + ' WITH (DATAFILETYPE='+QUOTENAME('widechar')+')'
+SET @SQLSelectQuery = 'BULK INSERT ' + @TableName + ' FROM ' + QUOTENAME(@tsv) + ' WITH (DATAFILETYPE=''widechar'')'
   exec(@SQLSelectQuery)
 END

@@ -8,15 +8,6 @@
     <form method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="input-field col s12">
-            <p>
-                <label>
-                    <input asp-for="HasOverTime" class="validate" />
-                    <span>@Html.DisplayNameFor(model => model.HasOverTime)</span>
-                </label>
-            </p>
-            <span asp-validation-for="HasOverTime" class="text-danger"></span>
-        </div>
-        <div class="input-field col s12">
             <input asp-for="MediumDoctorId" class="validate" autocomplete="email" />
             <label asp-for="MediumDoctorId"></label>
             <span asp-validation-for="MediumDoctorId" class="text-danger"></span>
@@ -42,7 +33,8 @@
             <span asp-validation-for="Frequency" class="text-danger"></span>
         </div>
         <div class="row">
-            <div class="col s1 center-align">
+            <h6 class="input-field col s12">@Html.DisplayNameFor(model => model.DaysOfWeek)</h6>
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>
@@ -55,7 +47,7 @@
                     <div class="col s12" style="font-size:14px">Lu</div>
                 </div>
             </div>
-            <div class="col s1 center-align">
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>
@@ -68,7 +60,7 @@
                     <div class="col s12" style="font-size:14px">Ma</div>
                 </div>
             </div>
-            <div class="col s1 center-align">
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>
@@ -81,7 +73,7 @@
                     <div class="col s12" style="font-size:14px">Mi</div>
                 </div>
             </div>
-            <div class="col s1 center-align">
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>
@@ -94,7 +86,7 @@
                     <div class="col s12" style="font-size:14px">Ju</div>
                 </div>
             </div>
-            <div class="col s1 center-align">
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>
@@ -107,7 +99,7 @@
                     <div class="col s12" style="font-size:14px">Vi</div>
                 </div>
             </div>
-            <div class="col s1 center-align">
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>
@@ -120,7 +112,7 @@
                     <div class="col s12" style="font-size:14px">Sa</div>
                 </div>
             </div>
-            <div class="col s1 center-align">
+            <div class="input-field col s1 center-align">
                 <div class="row mb-0">
                     <div class="col s1 offset-s3">
                         <label>

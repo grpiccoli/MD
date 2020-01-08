@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function (_) {
                 return true;
             })
                 .catch(function (err) {
+                $rut.addError("rut", { message: "RUT inválido", updateClass: true });
                 throw (err);
             })
                 .finally(loaderStop);
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function (_) {
                 return false;
             loaderStart();
             var isExt = $("#IsExt").prop('checked');
-            return fetch('/SP/DocumentRequestStatus', {
+            var carnetValid = fetch('/SP/DocumentRequestStatus', {
                 method: 'POST',
                 headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
                 body: "__RequestVerificationToken=" + $('input[name="__RequestVerificationToken"]').val()
@@ -77,17 +78,26 @@ document.addEventListener('DOMContentLoaded', function (_) {
             })
                 .then(function (response) { return response.text(); })
                 .then(function (bool) {
-                console.log(bool);
                 M.updateTextFields();
-                $email.focus();
-                M.toast({ html: 'Cédula válida', classes: 'rounded' });
-                $carnet.parsley().reset();
-                return true;
+                var rValid = bool === 'true';
+                if (rValid) {
+                    $email.focus();
+                    M.toast({ html: "C\u00E9dula v\u00E1lida", classes: "rounded" });
+                    $carnet.parsley().reset();
+                }
+                else {
+                    M.toast({ html: "C\u00E9dula inv\u00E1lida", classes: "rounded danger" });
+                    $rut.addError("carnet", { message: "Cédula inválida", updateClass: true });
+                }
+                return rValid;
             })
                 .catch(function (err) {
+                $rut.addError("carnet", { message: "Error al validar Carnét", updateClass: true });
                 throw (err);
             })
                 .finally(loaderStop);
+            console.log(carnetValid);
+            return carnetValid;
         },
         messages: { es: 'Verfique combinación RUT/Carnet' }
     });

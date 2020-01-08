@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using ConsultaMD.Areas.Identity.Pages.Account;
 using ConsultaMD.Areas.Patients.Views.Search;
 using ConsultaMD.Data;
 using ConsultaMD.Extensions;
 using ConsultaMD.Models.Entities;
 using ConsultaMD.Models.VM.PatientsVM;
+using ConsultaMD.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +23,12 @@ namespace ConsultaMD.Areas.Patients.Controllers
     public class SearchController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public SearchController(ApplicationDbContext context)
+        private readonly IRedirect _redirect;
+        public SearchController(
+            ApplicationDbContext context,
+            IRedirect redirect)
         {
+            _redirect = redirect;
             _context = context;
         }
         [HttpPost, ValidateAntiForgeryToken, ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
@@ -36,7 +40,120 @@ namespace ConsultaMD.Areas.Patients.Controllers
             //string disc,
             )
         {
-            var result = _context.MedicalOffices
+            if (filters == null) return NotFound();
+
+            //var ma = _context.MedicalOffices
+            //.Include(o => o.Place)
+            //    .ThenInclude(p => p.Commune)
+            //        .ThenInclude(c => c.Province)
+            //.Include(o => o.MediumDoctors)
+            //    .ThenInclude(md => md.Doctor)
+            //        .ThenInclude(d => d.Natural)
+            //.Include(o => o.MediumDoctors)
+            //    .ThenInclude(d => d.AgendaEvents)
+            //    .ThenInclude(d => d.Agendas)
+            //        .ThenInclude(at => at.TimeSlots)
+            //.Include(o => o.MediumDoctors)
+            //    .ThenInclude(o => o.InsuranceLocations)
+            //        .ThenInclude(i => i.InsuranceAgreement)
+            //.Where(o => !filters.Ubicacion.Any()
+            //|| filters.Ubicacion.Contains(o.Place.CommuneId)
+            //|| filters.Ubicacion.Contains(o.Place.Commune.ProvinceId)
+            //|| filters.Ubicacion.Contains(o.Place.Commune.Province.RegionId)
+            //);
+
+            //var mo = ma
+            //.GroupBy(o => o.Place);
+
+            //var final = new List<ResultsVM>();
+
+            //foreach (var item in mo)
+            //{
+            //    var place = new PlaceVM
+            //    {
+            //        Address = item.Key.Address,
+            //        CId = item.Key.CId,
+            //        Id = item.Key.Id,
+            //        Name = item.Key.Name,
+            //        Latitude = item.Key.Latitude,
+            //        Longitude = item.Key.Longitude,
+            //        PhotoId = item.Key.PhotoId
+            //    };
+
+            //    var items = new List<ResultVM>();
+
+            //    foreach (var office in item)
+            //    {
+            //        var mds = office.MediumDoctors
+            //        .Where(md =>
+            //        md.MedicalAttentionMediumId.HasValue
+            //        && (!filters.Especialidad.Any()
+            //        || filters.Especialidad.Any(e => md.Doctor.Specialties.Any(s => s.SpecialtyId == e)))
+            //        && (!filters.Sex.Any()
+            //        || filters.Sex.Contains(md.Doctor.Natural.Sex))
+            //        && md.AgendaEvents.Any(e => 
+            //        e.Agendas.Any(a => a.StartTime > DateTime.Now.AddMinutes(30)
+            //        //&& (!filters.Dates.Any()
+            //        //|| filters.Dates.Any(d => d.Date == a.StartTime.Date))
+            //        //&& a.TimeSlots.Any(t =>
+            //        //!t.ReservationId.HasValue
+            //        //&& a.StartTime > DateTime.Now.AddMinutes(30)
+            //        //&& (!filters.MinTime.HasValue
+            //        //|| filters.MinTime.Value <= t.StartTime.TimeOfDay)
+            //        //&& (!filters.MaxTime.HasValue
+            //        //|| filters.MaxTime.Value >= t.EndTime.TimeOfDay)
+            //        //)
+            //        )
+            //        )
+            //        );
+
+            //        var ul = new List<ResultVM>();
+
+            //        foreach (var md in mds)
+            //        {
+            //            var r = new ResultVM
+            //            {
+            //                Run = md.Doctor.NaturalId,
+            //                Dr = md.Doctor.Natural.FullNameFirst,
+            //                Experience = md.Doctor.GetYearsExperience(),
+            //                Especialidades = md.Doctor.Specialties.Select(s => s.Specialty.Name),
+            //                Price = md.PriceParticular,
+            //                Insurances = md.InsuranceLocations.Select(i => i.InsuranceAgreement.Insurance),
+            //                Match = filters.Insurance == (int)Insurance.Particular
+            //                    || !filters.HighlightInsurance
+            //                    || md.InsuranceLocations.Any(i => (int)i.InsuranceAgreement.Insurance == filters.Insurance),
+            //                Sex = md.Doctor.Natural.Sex,
+            //                Office = string.Join(" ", (!string.IsNullOrEmpty(office.Appartment) ? "dpto." + office.Appartment : ""),
+            //                    (!string.IsNullOrEmpty(office.Floor) ? "piso " + office.Floor : ""),
+            //                    (!string.IsNullOrEmpty(office.Office) ? "of. " + office.Office : "")),
+            //                NextTS = new TimeSlotVM(md.AgendaEvents.SelectMany(e => e.Agendas.Where(a =>
+            //                a.StartTime > DateTime.Now.AddMinutes(30)
+            //                && (!filters.Dates.Any()
+            //                || filters.Dates.Any(d => d.Date == a.StartTime.Date))
+            //                ))
+            //                    .SelectMany(a => a.TimeSlots.Where(t =>
+            //                    !t.ReservationId.HasValue
+            //                    && a.StartTime > DateTime.Now.AddMinutes(30)
+            //                    && (!filters.MinTime.HasValue
+            //                    || filters.MinTime.Value <= t.StartTime.TimeOfDay)
+            //                    && (!filters.MaxTime.HasValue
+            //                    || filters.MaxTime.Value >= t.EndTime.TimeOfDay)
+            //                        )).MinBy(t => t.StartTime).First()),
+            //                CardId = md.Id
+            //            };
+
+            //            ul.Add(r);
+            //        }
+
+            //        items.AddRange(ul);
+            //    }
+
+            //    final.Add(new ResultsVM { Place = place, Items = items.OrderBy(res => res.NextTS.StartTime) });
+            //}
+
+            //var final2 = final.Where(rs => rs.Items.Any()).OrderBy(rs => rs.Items.Min(i => i.NextTS.StartTime));
+
+            return Ok(_context.MedicalOffices
                 .Include(o => o.Place)
                     .ThenInclude(p => p.Commune)
                         .ThenInclude(c => c.Province)
@@ -51,14 +168,15 @@ namespace ConsultaMD.Areas.Patients.Controllers
                     .ThenInclude(o => o.InsuranceLocations)
                         .ThenInclude(i => i.InsuranceAgreement)
                 .Where(o => !filters.Ubicacion.Any()
-                || filters.Ubicacion.Contains(o.Place.CommuneId) 
+                || filters.Ubicacion.Contains(o.Place.CommuneId)
                 || filters.Ubicacion.Contains(o.Place.Commune.ProvinceId)
                 || filters.Ubicacion.Contains(o.Place.Commune.Province.RegionId)
                 )
                 .GroupBy(o => o.Place)
                 .Select(item => new ResultsVM
                 {
-                    Place = new PlaceVM { 
+                    Place = new PlaceVM
+                    {
                         Address = item.Key.Address,
                         CId = item.Key.CId,
                         Id = item.Key.Id,
@@ -78,7 +196,7 @@ namespace ConsultaMD.Areas.Patients.Controllers
                             && md.AgendaEvents.Any(e => e.Agendas.Any(a => a.StartTime > DateTime.Now.AddMinutes(30)
                             && (!filters.Dates.Any()
                             || filters.Dates.Any(d => d.Date == a.StartTime.Date))
-                            && a.TimeSlots.Any(t => 
+                            && a.TimeSlots.Any(t =>
                             !t.ReservationId.HasValue
                             && a.StartTime > DateTime.Now.AddMinutes(30)
                             && (!filters.MinTime.HasValue
@@ -98,30 +216,30 @@ namespace ConsultaMD.Areas.Patients.Controllers
                                 Especialidades = md.Doctor.Specialties.Select(s => s.Specialty.Name),
                                 Price = md.PriceParticular,
                                 Insurances = md.InsuranceLocations.Select(i => i.InsuranceAgreement.Insurance),
-                                Match = filters.Insurance == (int)Insurance.Particular 
-                                || !filters.HighlightInsurance 
+                                Match = filters.Insurance == (int)Insurance.Particular
+                                || !filters.HighlightInsurance
                                 || md.InsuranceLocations.Any(i => (int)i.InsuranceAgreement.Insurance == filters.Insurance),
                                 Sex = md.Doctor.Natural.Sex,
-                                Office = string.Join(" ",(!string.IsNullOrEmpty(office.Appartment)?"dpto."+office.Appartment:""),
-                                (!string.IsNullOrEmpty(office.Floor)?"piso "+office.Floor:""),
-                                (!string.IsNullOrEmpty(office.Office)?"of. "+office.Office:"")),
-                                NextTS = new TimeSlotVM(md.AgendaEvents.SelectMany(e => e.Agendas.Where(a => 
+                                Office = string.Join(" ", (!string.IsNullOrEmpty(office.Appartment) ? "dpto." + office.Appartment : ""),
+                                (!string.IsNullOrEmpty(office.Floor) ? "piso " + office.Floor : ""),
+                                (!string.IsNullOrEmpty(office.Office) ? "of. " + office.Office : "")),
+                                NextTS = new TimeSlotVM(md.AgendaEvents.SelectMany(e => e.Agendas.Where(a =>
                                 a.StartTime > DateTime.Now.AddMinutes(30)
-                                && (!filters.Dates.Any() 
+                                && (!filters.Dates.Any()
                                 || filters.Dates.Any(d => d.Date == a.StartTime.Date))
                                 ))
-                                .SelectMany(a => a.TimeSlots.Where(t => 
+                                .SelectMany(a => a.TimeSlots.Where(t =>
                                 !t.ReservationId.HasValue
                                 && a.StartTime > DateTime.Now.AddMinutes(30)
-                                && (!filters.MinTime.HasValue 
+                                && (!filters.MinTime.HasValue
                                 || filters.MinTime.Value <= t.StartTime.TimeOfDay)
-                                && (!filters.MaxTime.HasValue 
+                                && (!filters.MaxTime.HasValue
                                 || filters.MaxTime.Value >= t.EndTime.TimeOfDay)
                                     )).MinBy(t => t.StartTime).First()),
                                 CardId = md.Id
-                            })).OrderBy(res => res.NextTS.StartTime)
-                }).Where(rs => rs.Items.Any()).OrderBy(rs => rs.Items.Min(i => i.NextTS.StartTime));
-            return Ok(result);
+                            }))
+                    .OrderBy(res => res.NextTS.StartTime)
+                }).Where(rs => rs.Items.Any()).OrderBy(rs => rs.Items.Min(i => i.NextTS.StartTime)));
         }
         [HttpPost, ValidateAntiForgeryToken, ProducesResponseType(typeof(JsonResult), StatusCodes.Status200OK)]
         public IActionResult FilterLists()
@@ -175,29 +293,14 @@ namespace ConsultaMD.Areas.Patients.Controllers
         }
         public async Task<IActionResult> Map()
         {
-            var redir = new Redirect();
-            var user = await _context.Users
+            var page = await _redirect.Init(User.Identity.Name).ConfigureAwait(false);
+            if(page == "Done")
+            {
+                var user = await _context.Users
                 .Include(u => u.Person)
                     .ThenInclude(p => p.Patient)
-                .Include(u => u.Person)
-                    .ThenInclude(p => p.Doctor)
-                        .ThenInclude(d => d.MediumDoctors)
-                            .ThenInclude(m => m.MedicalAttentionMedium)
-                .FirstOrDefaultAsync(u => u.UserName == User.Identity.Name).ConfigureAwait(false);
-
-            redir.Prevision = user.Person.Patient != null;
-            redir.Doctor = user.Person.Doctor != null;
-            if (redir.Doctor)
-            {
-                redir.ConvenioAny = user.Person.Doctor.MediumDoctors.Any();
-                redir.LocationAny = user.Person.Doctor.MediumDoctors
-                    .Any(m => m.MedicalAttentionMedium != null);
-            }
-            redir.PhoneConfirmed = user.PhoneNumberConfirmed;
-            redir.EmailConfirmed = user.EmailConfirmed;
-            var page = redir.GetPage();
-            if(page == "Map")
-            {
+                .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name)
+                .ConfigureAwait(false);
                 var model = new MapVM
                 {
                     Insurance = (int)user.Person.Patient.Insurance,

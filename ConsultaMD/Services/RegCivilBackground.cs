@@ -34,7 +34,13 @@ namespace ConsultaMD.Services
                     scope.ServiceProvider
                         .GetRequiredService<IRegCivil>();
 
-                await scopedProcessingService.Init().ConfigureAwait(false);
+                var success = false;
+                success = await scopedProcessingService.Init().ConfigureAwait(false);
+                while (!success)
+                {
+                    await scopedProcessingService.CloseBW().ConfigureAwait(false);
+                    success = await scopedProcessingService.Init().ConfigureAwait(false);
+                }
             }
         }
         public async Task StopAsync(CancellationToken stoppingToken)

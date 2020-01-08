@@ -68,6 +68,14 @@
     <Compile Remove="Migrations\20191214225523_Initial.Designer.cs" />
     <Compile Remove="Migrations\20191215152016_Initial.cs" />
     <Compile Remove="Migrations\20191215152016_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191215152407_Initial.cs" />
+    <Compile Remove="Migrations\20191215152407_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191219045743_Initial.cs" />
+    <Compile Remove="Migrations\20191219045743_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191219190556_Initial.cs" />
+    <Compile Remove="Migrations\20191219190556_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191219194726_Initial.cs" />
+    <Compile Remove="Migrations\20191219194726_Initial.Designer.cs" />
     <TypeScriptCompile Include="src\scripts\DoctorDetails.ts.bak1">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -133,6 +141,7 @@
     <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Proxy" Version="0.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.2.3" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.4.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
@@ -151,6 +160,7 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Sendgrid" Version="9.12.0" />
     <PackageReference Include="Stripe.net" Version="34.5.0" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="Tesseract" Version="3.3.0" />
     <PackageReference Include="Twilio" Version="5.37.0" />
     <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.59" />

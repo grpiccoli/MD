@@ -6,6 +6,7 @@ using ConsultaMD.Data;
 using ConsultaMD.Extensions;
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
+using ConsultaMD.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,13 +24,16 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ApplicationDbContext _context;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IStringLocalizer<InsuranceDetailsModel> _localizer;
+        private readonly IRedirect _redirect;
         public DoctorInsuranceModel(
             UserManager<ApplicationUser> userManager,
+            IRedirect redirect,
             ILogger<RegisterModel> logger,
             IStringLocalizer<InsuranceDetailsModel> localizer,
             ApplicationDbContext context
             )
         {
+            _redirect = redirect;
             _localizer = localizer;
             _userManager = userManager;
             _logger = logger;
@@ -65,7 +69,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     var result = _context.People.Update(person);
                     await _context.SaveChangesAsync().ConfigureAwait(false);
                     _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
-                    return RedirectToPage("DoctorLocations", new { ReturnUrl });
+                    return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
                 }
             }
             // If we got this far, something failed, redisplay form

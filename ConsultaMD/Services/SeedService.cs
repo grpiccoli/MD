@@ -29,7 +29,7 @@ namespace ConsultaMD.Services
         private readonly string _os;
         private readonly string _conn;
         private readonly ApplicationDbContext _context;
-        private readonly IEvent _eventService;
+        private readonly IEvent _events;
         private readonly ILookupNormalizer _normalizer;
         //private readonly IUser _user;
         //private int executionCount = 0;
@@ -42,7 +42,7 @@ namespace ConsultaMD.Services
             IConfiguration configuration,
             IHostingEnvironment environment,
             ApplicationDbContext context,
-            IEvent eventService,
+            IEvent events,
             ILookupNormalizer normalizer
             //IUser user
             //Bulk bulk
@@ -55,7 +55,7 @@ namespace ConsultaMD.Services
             _os = Environment.OSVersion.Platform.ToString();
             _conn = Configuration.GetConnectionString($"{_os}Connection");
             _context = context;
-            _eventService = eventService;
+            _events = events;
             _normalizer = normalizer;
             //_user = user;
             //_bulk = bulk;
@@ -99,109 +99,112 @@ namespace ConsultaMD.Services
                 if (!_context.Places.Any())
                     await Insert<Place>(tsvPath).ConfigureAwait(false);
 
+                var today = DateTime.Now.AddDays(5);
+                var ts10 = new TimeSpan(0, 10, 0);
+
                 if (!_context.AgendaEvents.Any())
-                    await _eventService.AddEvents(new List<AgendaEvent> {
+                    await _events.AddRange(new List<AgendaEvent> {
                             new AgendaEvent {
                                 MediumDoctorId = 1,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,12,13,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(11).AddMinutes(30),
+                                EndDateTime = today.AddDays(28).AddHours(17).AddMinutes(15),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 123
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 5,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,12,13,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(11).AddMinutes(30),
+                                EndDateTime = today.AddDays(28).AddHours(17).AddMinutes(15),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 234
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 6,
-                                StartDateTime = new DateTime(2019,11,15,15,50,0),
-                                EndDateTime = new DateTime(2019,12,17,18,30,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(15).AddMinutes(50),
+                                EndDateTime = today.AddDays(32).AddHours(18).AddMinutes(30),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 345
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 8,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,12,13,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(11).AddMinutes(30),
+                                EndDateTime = today.AddDays(28).AddHours(17).AddMinutes(15),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 451
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 11,
-                                StartDateTime = new DateTime(2019,11,18,10,0,0),
-                                EndDateTime = new DateTime(2019,11,18,12,30,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddDays(8).AddHours(10),
+                                EndDateTime = today.AddDays(8).AddHours(12).AddMinutes(30),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 512
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 12,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,11,15,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(11).AddMinutes(30),
+                                EndDateTime = today.AddHours(17).AddMinutes(15),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 123
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 13,
-                                StartDateTime = new DateTime(2019,11,15,9,30,0),
-                                EndDateTime = new DateTime(2019,11,15,13,0,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(9).AddMinutes(30),
+                                EndDateTime = today.AddHours(13),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 234
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 15,
-                                StartDateTime = new DateTime(2019,11,19,9,0,0),
-                                EndDateTime = new DateTime(2019,11,19,12,30,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddDays(9).AddHours(9),
+                                EndDateTime = today.AddDays(9).AddHours(12).AddMinutes(30),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 345
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 16,
-                                StartDateTime = new DateTime(2019,11,15,9,0,0),
-                                EndDateTime = new DateTime(2019,11,15,18,10,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(9),
+                                EndDateTime = today.AddHours(18).AddMinutes(10),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 451
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 17,
-                                StartDateTime = new DateTime(2019,11,18,15,0,0),
-                                EndDateTime = new DateTime(2019,11,18,18,10,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddDays(8).AddHours(15),
+                                EndDateTime = today.AddDays(8).AddHours(18).AddMinutes(10),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 512
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 24,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,12,13,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddDays(28).AddHours(10).AddMinutes(30),
+                                EndDateTime = today.AddDays(28).AddHours(16).AddMinutes(30),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 123
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 25,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,12,13,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddDays(28).AddHours(10).AddMinutes(30),
+                                EndDateTime = today.AddDays(28).AddHours(16).AddMinutes(30),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 234
                             },
                             new AgendaEvent {
                                 MediumDoctorId = 26,
-                                StartDateTime = new DateTime(2019,11,15,11,30,0),
-                                EndDateTime = new DateTime(2019,12,13,17,15,0),
-                                Duration = new TimeSpan(0,10,0),
+                                StartDateTime = today.AddHours(10).AddMinutes(30),
+                                EndDateTime = today.AddHours(16).AddMinutes(30),
+                                Duration = ts10,
                                 Frequency = 1,
                                 Days = 345
                             }
@@ -220,7 +223,7 @@ namespace ConsultaMD.Services
 AS
 BEGIN 
 DECLARE @SQLSelectQuery NVARCHAR(MAX)=''
-SET @SQLSelectQuery = 'BULK INSERT ' + @TableName + ' FROM ' + QUOTENAME(@Tsv)
+SET @SQLSelectQuery = 'BULK INSERT ' + @TableName + ' FROM ' + QUOTENAME(@Tsv) + ' WITH (DATAFILETYPE=''widechar'')'
   exec(@SQLSelectQuery)
 END";
             bool spExists = false;
@@ -258,9 +261,11 @@ END";
         public async Task Insert<TSource>(string path)
         {
             var name = new Pluralizer().Pluralize(typeof(TSource).ToString().Split(".").Last());
+            _context.Database.SetCommandTimeout(10000);
+            var tableName = $"dbo.{name}";
+            var tsv = Path.Combine(path, $"{name}.tsv");
             await _context.Database
-                .ExecuteSqlCommandAsync("BulkInsert @p0, @p1", parameters: new[] { $"dbo.{name}",
-                    Path.Combine(path, $"{name}.tsv") })
+                .ExecuteSqlCommandAsync($"BulkInsert @p0, @p1;", tableName, tsv)
                 .ConfigureAwait(false);
             return;
         }

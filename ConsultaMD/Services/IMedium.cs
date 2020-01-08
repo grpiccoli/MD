@@ -1,14 +1,14 @@
-﻿using ConsultaMD.Models.Entities;
+﻿using ConsultaMD.Areas.Identity.Pages.Account;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ConsultaMD.Services
 {
-    public interface IEvent
+    public interface IMedium
     {
-        Task AddRange(List<AgendaEvent> events);
-        Task Add(AgendaEvent e);
-        Task DeleteRange(List<int> eventIds);
+        Task Add(DoctorLocationsInputModel m);
         Task Delete(int id);
         Task Enable(int id);
         Task Disable(int id);

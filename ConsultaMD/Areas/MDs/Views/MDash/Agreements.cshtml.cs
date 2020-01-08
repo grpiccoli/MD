@@ -10,9 +10,15 @@ namespace ConsultaMD.Areas.MDs.Models
         public Insurance Insurance { get; set; }
         public string PersonRUT { get; set; }
         public string PersonName { get; set; }
-        [Display(Name = "Ubicaciones Inactivas")]
-        public IEnumerable<string> InactiveLocations { get; set; }
-        [Display(Name = "Ubicaciones Activas")]
-        public IEnumerable<string> ActiveLocations { get; set; }
+        [Display(Name = "Ubicaciones Inactivas Convenio")]
+        public IEnumerable<AgreementLocationVM> InactiveLocations { get; set; }
+        [Display(Name = "Ubicaciones Activas Convenio")]
+        public IEnumerable<AgreementLocationVM> ActiveLocations { get; set; }
+    }
+    public class AgreementLocationVM
+    {
+        public string Name { get; set; }
+        public int MId { get; set; }
+        public int IId { get; set; }
     }
 }

@@ -20,7 +20,6 @@ using System.Linq;
 using Microsoft.AspNetCore.SignalR;
 using ConsultaMD.Hubs;
 using System.Globalization;
-using System.Collections.Generic;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -35,6 +34,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IFonasa _fonasa;
+        private readonly IRedirect _redirect;
         private readonly ILookupNormalizer _normalizer;
         private readonly IStringLocalizer<RegisterModel> _localizer;
         private readonly IRegCivil _regCivil;
@@ -46,11 +46,13 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             IStringLocalizer<RegisterModel> localizer,
             ILogger<RegisterModel> logger,
+            IRedirect redirect,
             ILookupNormalizer normalizer,
             IEmailSender emailSender,
             IRegCivil regCivil,
             IFonasa fonasa)
         {
+            _redirect = redirect;
             _regCivil = regCivil;
             _normalizer = normalizer;
             _feedbackHub = feedbackHub;
@@ -66,7 +68,6 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [BindProperty]
         public RegisterInputModel Input { get; set; }
         public Uri ReturnUrl { get; set; }
-        private Redirect Redir { get; set; } = new Redirect();
         public void OnGet(Uri returnUrl = null)
         {
             Input = new RegisterInputModel();
@@ -83,6 +84,11 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     .Replace(".","", StringComparison.InvariantCulture), out int carnetParsed);
                 if (rutParsed.HasValue && carnetParsing)
                 {
+                    var created = _context.Users.SingleOrDefault(p => p.PersonId == rutParsed.Value.rut);
+                    if (created != null)
+                    {
+                        return RedirectToPage("Login", new { ReturnUrl });
+                    }
                     //Validate ID *and get nationality* NOT ANYMORE
                     await _feedbackHub.Clients.Client(Input.ConnectionId)
                         .SendAsync("FeedBack", "Validando Identidad").ConfigureAwait(true);
@@ -95,7 +101,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                             Id = carnetParsed,
                             NaturalId = rutParsed.Value.rut
                         };
-                        _context.Carnets.Add(carnet);
+
+                        //Add Carnet
+                        await _context.Carnets.AddAsync(carnet).ConfigureAwait(false);
+
                         var nationality = Input.IsExt ? "EXTRANJERA" : "CHILENA";
                         var natural = new Natural
                         {
@@ -105,8 +114,11 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                             FullNameFirst = _normalizer.Normalize(Input.Name),
                             Nationality = _normalizer.Normalize(nationality)
                         };
-                        _context.Naturals.Add(natural);
+
+                        //Add Person
+                        await _context.Naturals.AddAsync(natural).ConfigureAwait(false);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
+
                         //Validate RUT and get Birthday, Names and Sex
                         await _feedbackHub.Clients.Client(Input.ConnectionId)
                             .SendAsync("FeedBack", "Validando Previsión").ConfigureAwait(true);
@@ -114,23 +126,27 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         if (fonasa != null)
                         {
                             natural.AddFonasa(fonasa);
+
+                            //Update Person
                             _context.Naturals.Update(natural);
                             await _context.SaveChangesAsync().ConfigureAwait(false);
+
                             //IF patient is Fonasa skip insurance and go directly to phone verification
                             if (!string.IsNullOrWhiteSpace(fonasa.ExtGrupoIng))
                             {
                                 await _feedbackHub.Clients.Client(Input.ConnectionId)
-                                    .SendAsync("FeedBack", "FONASA Detectado").ConfigureAwait(true);
+                                    .SendAsync("FeedBack", "Afiliación a FONASA detectada").ConfigureAwait(true);
                                 var patient = new Patient(fonasa)
                                 {
                                     NaturalId = natural.Id
                                 };
-                                _context.Patients.Add(patient);
+
+                                await _context.Patients.AddAsync(patient).ConfigureAwait(false);
                                 natural.Patient = patient;
                                 _context.Naturals.Update(natural);
                                 await _context.SaveChangesAsync().ConfigureAwait(false);
+
                                 //FONASA Patient
-                                Redir.Prevision = true;
                             }
                             //Check if doctor
                             var superData = await SPServices.GetDr(natural.Id).ConfigureAwait(false);
@@ -156,13 +172,14 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                 {
                                     NaturalId = natural.Id
                                 };
-                                _context.Doctors.Add(doctor);
+
+                                await _context.Doctors.AddAsync(doctor).ConfigureAwait(false);
                                 natural.Doctor = doctor;
                                 natural.DoctorId = doctor.Id;
                                 _context.Naturals.Update(natural);
                                 await _context.SaveChangesAsync().ConfigureAwait(false);
+
                                 //Doctor added to database
-                                Redir.Doctor = true;
                                 var docFonasa = await _fonasa.GetDocData(natural.Id).ConfigureAwait(false);
                                 if (docFonasa.Any())
                                 {
@@ -170,8 +187,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                         .SendAsync("FeedBack", "Convenio FONASA detectado").ConfigureAwait(true);
 
                                     doctor.FonasaLevel = docFonasa.First().Nivel;
+
                                     _context.Doctors.Update(doctor);
                                     await _context.SaveChangesAsync().ConfigureAwait(false);
+
                                     var groups = docFonasa.GroupBy(g => g.Address);
                                     foreach(var g in groups)
                                     {
@@ -179,8 +198,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                         {
                                             DoctorId = doctor.Id,
                                         };
-                                        _context.MediumDoctors.Add(medium);
+
+                                        await _context.MediumDoctors.AddAsync(medium).ConfigureAwait(false);
                                         await _context.SaveChangesAsync().ConfigureAwait(false);
+
                                         foreach (var s in g)
                                         {
                                             var rut = RUT.Unformat(s.RutTratante);
@@ -196,7 +217,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                                     Insurance = InsuranceData.Insurance.Fonasa,
                                                     PersonId = rut.Value.rut
                                                 };
-                                                _context.InsuranceAgreements.Add(agreement);
+
+                                                await _context.InsuranceAgreements.AddAsync(agreement).ConfigureAwait(false);
                                                 await _context.SaveChangesAsync().ConfigureAwait(false);
                                             }
                                             var ins = new InsuranceLocation
@@ -209,8 +231,12 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                                 InsuranceAgreementId = agreement.Id,
                                                 CommuneId = int.Parse("1"+s.Commune, CultureInfo.InvariantCulture)
                                             };
-                                            if (!_context.Prestacions.Any(p => p.Id == s.PrestacionId)) _context.Prestacions.Add(s.Prestacion);
-                                            if (!_context.InsuranceLocations.Any(i => i.InsuranceSelector == selector)) _context.InsuranceLocations.Add(ins);
+                                            if (!_context.Prestacions.Any(p => p.Id == s.PrestacionId)) 
+                                                await _context.Prestacions
+                                                    .AddAsync(s.Prestacion).ConfigureAwait(false);
+                                            if (!_context.InsuranceLocations.Any(i => i.InsuranceSelector == selector)) 
+                                                await _context.InsuranceLocations
+                                                    .AddAsync(ins).ConfigureAwait(false);
                                             medium.InsuranceLocations.Add(ins);
                                         }
                                     }
@@ -218,7 +244,6 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                     await _feedbackHub.Clients.Client(Input.ConnectionId)
                                         .SendAsync("FeedBack", "Convenios FONASA agregados").ConfigureAwait(true);
                                     //Convenio FONASA Added
-                                    Redir.ConvenioAny = true;
                                 }
                             }
                             //Create user
@@ -254,11 +279,13 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                         .SendAsync("FeedBack", $"Correo de validación enviado a {Input.Email}").ConfigureAwait(true);
 
                                     user.MailConfirmationTime = DateTime.Now.AddMinutes(5);
-                                    await _userManager.UpdateAsync(user).ConfigureAwait(false);
+                                    var identityResult = await _userManager.UpdateAsync(user).ConfigureAwait(false);
                                     await _signInManager.SignInAsync(user, isPersistent: false)
                                         .ConfigureAwait(false);
-
-                                    return RedirectToPage(Redir.GetPage(), new { ReturnUrl });
+                                    if (identityResult.Succeeded)
+                                    {
+                                        return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
+                                    }
                                 }
                                 ModelState.AddModelError(string.Empty, 
                                     response.Body.ReadAsStringAsync().Result);
@@ -342,65 +369,5 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         //[Display(Name = "Contraseña de su Previsión")]
         //[InsurancePassword(ErrorMessage = "Error en la combinación Previsión/{0}")]
         //public string InsurancePassword { get; set; }
-    }
-    public class Redirect
-    {
-        public bool Prevision { get; set; }
-        public bool Doctor { get; set; }
-        public bool ConvenioAny { get; set; }
-        public bool LocationAny { get; set; }
-        public bool PhoneConfirmed { get; set; }
-        public bool EmailConfirmed { get; set; }
-        public List<string> PageName { get; } = new List<string> {
-            "InsuranceDetails",
-            "DoctorInsurance",
-            "DoctorLocations",
-            "VerifyPhone",
-            "VerifyEmail",
-            "Map"
-        };
-        public string GetPage() {
-            var index = 
-                Prevision ?
-                    //Prevision TRUE
-                    (Doctor ?
-                        //Prevision + Doctor TRUE
-                        (ConvenioAny ?
-                            //Prevision + Doctor + ConvenioAny TRUE
-                            (LocationAny ?
-                                //Prevision + Doctor + ConvenioAny + LocationAny TRUE
-                                (PhoneConfirmed ?
-                                    //Prevision + Doctor + Convenio + Location + Phone TRUE
-                                    (EmailConfirmed ?
-                                        //Prevision + Doctor + Convenio + Location + Phone + Email TRUE
-                                        5
-                                        //Prevision + Doctor + Convenio + Location + Phone TRUE email false
-                                        : 4
-                                    )
-                                    //Prevision + Doctor + Convenio + Location TRUE Phone + Email FALSE
-                                    : 3
-                                )
-                                //Prevision + Doctor + Convenio TRUE Location + Phone + Email FALSE
-                                : 2
-                            )
-                            //Prevision + Doctor TRUE Convenio + Location + Phone + Email FALSE
-                            : 1
-                        )
-                        //Previsión TRUE Doctor FALSE
-                        : PhoneConfirmed ?
-                            //Previsión + Phone TRUE Doctor False
-                            (EmailConfirmed ?
-                                //Previsión + Phone + Email TRUE Doctor FALSE
-                                5
-                                //Previsión + Phone TRUE Doctor + Email FALSE
-                                : 4
-                            )
-                            //Previsión TRUE Doctor + Email + Phone FALSE
-                            : 3
-                    )
-                    //Previsión + Phone TRUE Doctor + Email + Phone FALSE
-                    : 0;
-            return PageName[index];
-        }
     }
 }

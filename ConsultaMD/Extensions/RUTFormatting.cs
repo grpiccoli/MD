@@ -40,6 +40,11 @@ namespace ConsultaMD.Extensions
             }
             return (RutDigito);
         }
+        public static string Format(string rut, bool thousandSep = true, bool dash = true)
+        {
+            var ruT = Unformat(rut);
+            return Format(ruT.Value.rut, thousandSep, dash);
+        }
         public static string Format(int rut, bool thousandSep = true, bool dash = true)
         {
             return $@"{(thousandSep ? 

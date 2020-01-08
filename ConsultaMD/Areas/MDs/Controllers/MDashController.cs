@@ -21,11 +21,14 @@ namespace ConsultaMD.Areas.MDs.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IEvent _eventService;
+        private readonly IMedium _medium;
         private readonly UserManager<ApplicationUser> _userManager;
         public MDashController(UserManager<ApplicationUser> userManager, 
             IEvent eventService,
+            IMedium medium,
             ApplicationDbContext context)
         {
+            _medium = medium;
             _eventService = eventService;
             _context = context;
             _userManager = userManager;
@@ -64,7 +67,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
                         .ThenInclude(p => p.ApplicationUser)
                 .Include(a => a.TimeSlot)
                     .ThenInclude(p => p.Agenda)
-                .Where(a => a.TimeSlot.Agenda.StartTime <= now.AddMinutes(10) && a.TimeSlot.Agenda.EndTime >= now.AddMinutes(-10))
+                .Where(a => a.TimeSlot.Agenda.StartTime <= now && a.TimeSlot.Agenda.EndTime >= now.AddMinutes(-60))
                 .Select(a => new MDWaitingRoomPatientVM { 
                     Age = a.Patient.Natural.Age(),
                     Name = a.Patient.Natural.GetShortName(),
@@ -160,10 +163,11 @@ namespace ConsultaMD.Areas.MDs.Controllers
             {
                 SelectorList = JsonConvert.SerializeObject(
                 _context.MediumDoctors
+                .Include(i => i.Doctor)
                 .Include(i => i.MedicalAttentionMedium)
                     .ThenInclude(m => m.Place)
                         .ThenInclude(m => m.Commune)
-                .Where(i => i.Doctor.NaturalId == user.PersonId)
+                .Where(i => i.MedicalAttentionMediumId != null && i.Doctor.NaturalId == user.PersonId)
                 .Select(i =>
                 new MsSelect
                 {
@@ -175,7 +179,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddAgenda(
-            [Bind("MediumDoctorId, StartTime, EndTime, Duration, HasOverTime, Frequency, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday")] 
+            [Bind("MediumDoctorId, StartTime, EndTime, Duration, Frequency, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday")] 
         AddAgendaVM model) {
             if (ModelState.IsValid && model != null && model.DaysOfWeek.Any())
             {
@@ -190,7 +194,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
                         Frequency = model.Frequency,
                         Days = int.Parse(string.Join("",model.DaysOfWeek.Select(d => (int)d)),CultureInfo.InvariantCulture)
                     };
-                    await _eventService.AddEvent(agendaEvent).ConfigureAwait(false);
+                    await _eventService.Add(agendaEvent).ConfigureAwait(false);
                     return RedirectToAction(nameof(Agenda));
                 }
                 ModelState.AddModelError(string.Empty, "Hora de Inicio debe ser menor o igual a la hora de término más la duración");
@@ -201,6 +205,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
         {
             var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
             var random = new Random();
+
             var model = _context.TimeSlots
                 .Include(t => t.Reservation)
                     .ThenInclude(r => r.Patient)
@@ -220,7 +225,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
                 {
                     Start = m.StartTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture),
                     End = m.EndTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture),
-                    Text = m.Reservation == null ? "Libre" : m.Reservation.Patient.Natural.GetShortName(),
+                    Text = m.ReservationId.HasValue ? m.Reservation.Patient.Natural.GetShortName() : "Libre",
                     Color = string.Format(CultureInfo.InvariantCulture, "#{0:X6}", random.Next(0x1000000)),
                     //m.Agenda.AgendaEvent.MediumDoctor.Color
                     Location = $"{m.Agenda.AgendaEvent.MediumDoctor.MedicalAttentionMedium.Place.Name}, {m.Agenda.AgendaEvent.MediumDoctor.MedicalAttentionMedium.Place.Commune.Name}"
@@ -228,15 +233,20 @@ namespace ConsultaMD.Areas.MDs.Controllers
 
             return View(model);
         }
+        public async Task<IActionResult> DeleteLocation(int id, string returnAction)
+        {
+            await _medium.Delete(id).ConfigureAwait(false);
+            return RedirectToAction(returnAction);
+        }
         public async Task<IActionResult> DeleteAgenda(int id)
         {
-            await _eventService.DeleteEvent(id).ConfigureAwait(false);
+            await _eventService.Delete(id).ConfigureAwait(false);
             return RedirectToAction(nameof(AgendaEvents));
         }
         [HttpPost]
         public async Task<IActionResult> DisableAgenda(int id)
         {
-            await _eventService.DisableEvent(id).ConfigureAwait(false);
+            await _eventService.Disable(id).ConfigureAwait(false);
             return RedirectToAction(nameof(AgendaEvents));
         }
         public async Task<IActionResult> Locations()
@@ -259,6 +269,7 @@ namespace ConsultaMD.Areas.MDs.Controllers
                 .Where(m => m.MedicalAttentionMedium != null)
                 .Select(m => new LocationVM
             {
+                MId = m.Id,
                 Address = m.MedicalAttentionMedium.Place.Address,
                 Agreements = m.InsuranceLocations
                 .Select(i => i.InsuranceAgreement.Insurance.GetAttrName()),
@@ -307,11 +318,19 @@ namespace ConsultaMD.Areas.MDs.Controllers
                     PersonRUT = RUT.Format(m.PersonId),
                     PersonName = m.Person.GetShortName(),
                     ActiveLocations = m.InsuranceLocations
-                    .Where(i => i.MediumDoctor.MedicalAttentionMedium != null)
-                    .Select(i => i.GetName()),
+                    .Where(i => i.MediumDoctor.MedicalAttentionMediumId.HasValue)
+                    .Select(i => new AgreementLocationVM { 
+                        Name = i.GetName(),
+                        MId = i.MediumDoctorId,
+                        IId = i.Id
+                    }),
                     InactiveLocations = m.InsuranceLocations
-                    .Where(i => i.MediumDoctor.MedicalAttentionMedium == null)
-                    .Select(i => i.GetName())
+                    .Where(i => !i.MediumDoctor.MedicalAttentionMediumId.HasValue)
+                    .Select(i => new AgreementLocationVM {
+                        Name = i.GetName(),
+                        MId = i.MediumDoctorId,
+                        IId = i.Id
+                    })
                 });
             return View(model);
         }

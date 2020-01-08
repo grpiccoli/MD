@@ -79,13 +79,23 @@ const readInfo = async (browser, data) => {
             headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }),
             body: body
         }).then(response => {
-                if (response.status === 200) {
-                    return response.text();
+            if (response.status === 200) {
+                return response.text();
             }
-            close = true;
-            throw Error(`Status ${response.status} ${response.statusText}.`);
+            var sessionError = text.includes('Sesión no válida');
+            close = sessionError;
+            return vigente;
+            //throw Error(`Status ${response.status} ${response.statusText}.`);
         }).then(text => {
-            return text.includes('Vigente');
+            var vigente = text.includes('Vigente');
+            if (!vigente) {
+                var captchaError = text.includes('Por favor, Intente nuevamente.');
+                var sessionError = text.includes('Sesión no válida');
+                var errorValidation = text.includes('La información ingresada no corresponde en nuestros registros');
+                close = captchaError || sessionError;
+                close = !errorValidation;
+            }
+            return vigente;
         }).catch(err => {
             close = true;
             throw err;

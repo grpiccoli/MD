@@ -28,14 +28,17 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IMIP _mIPService;
         private readonly IStringLocalizer<InsuranceDetailsModel> _localizer;
+        private readonly IRedirect _redirect;
 
         public InsuranceDetailsModel(
             IMIP mIPService,
+            IRedirect redirect,
             UserManager<ApplicationUser> userManager,
             ILogger<RegisterModel> logger,
             IStringLocalizer<InsuranceDetailsModel> localizer,
             ApplicationDbContext context)
         {
+            _redirect = redirect;
             _mIPService = mIPService;
             _localizer = localizer;
             _userManager = userManager;
@@ -46,7 +49,6 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [BindProperty]
         public InsuranceDetailsInputModel Input { get; set; }
         public Uri ReturnUrl { get; set; }
-        private Redirect Redir { get; set; } = new Redirect();
         public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {
             var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
@@ -73,7 +75,6 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         .ConfigureAwait(false);
                     if (valid)
                     {
-                        Redir.Doctor = person.Doctor != null;
                         if (person.Patient == null)
                         {
                             person.Patient = new Patient
@@ -94,9 +95,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         }
                         var result = _context.People.Update(person);
                         await _context.SaveChangesAsync().ConfigureAwait(false);
-                        Redir.Prevision = true;
                         _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
-                        return RedirectToPage(Redir.GetPage(), new { ReturnUrl });
+                        return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
                     }
                     ModelState.AddModelError(string.Empty, "Error combinación Usuario/Previsión/Contraseña");
                 }

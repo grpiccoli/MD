@@ -7,18 +7,17 @@ namespace ConsultaMD.Areas.MDs.Models
     public class AddAgendaVM
     {
         public string SelectorList { get; set; }
+        [Display(Name = "Ubicación")]
         public int MediumDoctorId { get; set; }
-        [Display(Name = "Inicio")]
+        [Display(Name = "Desde")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:ddd dd MMMM yyyy, h:mm tt}")]
         public DateTime StartTime { get; set; } = DateTime.Now.AddDays(1);
-        [Display(Name = "Término")]
+        [Display(Name = "Hasta")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:ddd dd MMMM yyyy, h:mm tt}")]
         public DateTime EndTime { get; set; } = DateTime.Now.AddDays(2);
-        [Display(Name = "Duración (minutos)")]
+        [Display(Name = "Duración atención (min)")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:mm}")]
         public int Duration { get; set; } = 10;
-        [Display(Name = "¿Tiene sobre cupos?")]
-        public bool HasOverTime { get; set; } = true;
         [Display(Name = "¿Cada cuantas semanas? (semanas)")]
         [Range(1, 10)]
         public int Frequency { get; set; } = 1;
@@ -29,6 +28,7 @@ namespace ConsultaMD.Areas.MDs.Models
         public bool Friday { get; set; } = true;
         public bool Saturday { get; set; } = true;
         public bool Sunday { get; set; } = true;
+        [Display(Name = "Dias")]
         public HashSet<DayOfWeek> DaysOfWeek
         {
             get

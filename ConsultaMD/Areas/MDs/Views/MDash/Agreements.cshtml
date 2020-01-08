@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AgreementVM>
 
 @{
-    ViewData["Title"] = "Agreements";
+    ViewData["Title"] = "Convenios";
 }
 
 <div class="row h-100v-b" data-simplebar>
@@ -17,7 +17,7 @@
                 <div class="card-image">
                     <img class="pill" style="width:150px" src="~/img/mi/@((int)loc.Insurance).png" alt="@loc.Insurance" asp-append-version="true" />
                     <span class="card-title black-text" style="padding-left:150px;">
-                        @loc.Insurance.GetAttrName()<br />
+                        CONVENIO @loc.Insurance.GetAttrName()<br />
                         @Html.DisplayFor(m => loc.PersonName)<br />
                         @Html.DisplayFor(m => loc.PersonRUT)
                     </span>
@@ -36,7 +36,9 @@
                             {
                                 <tr>
                                     <td>
-                                        <span>@mi</span>
+                                        <span><a 
+                                                 asp-action="DeleteLocation" asp-route-id="@mi.MId" asp-route-returnAction="Agreements"
+                                                 class="btn waves-effect waves-red">desactivar</a> @mi.Name</span>
                                     </td>
                                 </tr>
                             }
@@ -47,7 +49,9 @@
                             {
                                 <tr>
                                     <td>
-                                        <span>@mi</span>
+                                        <span><a asp-area="Identity" asp-page="/Account/DoctorLocations" 
+                                                 asp-route-mId="@mi.IId" asp-route-returnUrl="@Context.Request.Path"
+                                                 class="btn waves-effect waves-teal" >activar</a> @mi.Name</span>
                                     </td>
                                 </tr>
                             }

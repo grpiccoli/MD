@@ -13,9 +13,15 @@ declare interface IParsleyConfig {
 interface JQuery<TElement = HTMLElement> {
     parsley(options?: IParsleyConfig): this;
     addValidator(name: string, options: ParsleyOptions): void;
+    addError(name: string, options: ErrorOptions): this;
     validate(): this;
     isValid(): boolean;
     reset(): this;
+}
+
+declare interface ErrorOptions {
+    message: string;
+    updateClass: boolean;
 }
 
 declare interface ParsleyOptions {

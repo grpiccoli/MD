@@ -18,6 +18,20 @@
                 <label asp-for="Input.Selector"></label>
                 <span asp-validation-for="Input.Selector" class="text-danger"></span>
             </div>
+            <div class="input-field col s12">
+                <input asp-for="Input.Price" />
+                <label asp-for="Input.Price"></label>
+                <span asp-validation-for="Input.Price" class="text-danger"></span>
+            </div>
+            <div class="input-field col s12">
+                <p>
+                    <label>
+                        <input asp-for="Input.HasOverTime" class="validate" />
+                        <span>@Html.DisplayNameFor(model => model.Input.HasOverTime)</span>
+                    </label>
+                </p>
+                <span asp-validation-for="Input.HasOverTime" class="text-danger"></span>
+            </div>
             <div id="place" class="input-field col s12">
                 <input asp-for="Input.PlaceId" class="hide" />
                 <input id="pac-input"
@@ -95,6 +109,7 @@
                 lang: 'es',
                 theme: 'material',
                 data: @Html.Raw(Model.SelectorList),
+                defaultValue: @Html.Raw(Model.Default),
                 display: 'bubble',
                 showOnTap: true,
                 showOnFocus: true

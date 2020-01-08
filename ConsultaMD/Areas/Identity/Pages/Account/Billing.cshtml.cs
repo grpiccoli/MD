@@ -1,6 +1,7 @@
 using ConsultaMD.Data;
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
+using ConsultaMD.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,13 +21,16 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly ApplicationDbContext _context;
         private readonly IStringLocalizer<InsuranceDetailsModel> _localizer;
+        private readonly IRedirect _redirect;
         public BillingModel(
+            IRedirect redirect,
             IStringLocalizer<InsuranceDetailsModel> localizer,
             ILogger<RegisterModel> logger,
             UserManager<ApplicationUser> userManager,
             ApplicationDbContext context
             )
         {
+            _redirect = redirect;
             _localizer = localizer;
             _logger = logger;
             _userManager = userManager;
@@ -58,10 +62,11 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 if (person.Doctor != null)
                 {
                     //FALTAN CONVENIOS PREVISIONES
+                    person.PassSII = Input.Password;
                     var result = _context.People.Update(person);
                     await _context.SaveChangesAsync().ConfigureAwait(false);
                     _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
-                    return RedirectToPage("DoctorLocations", new { ReturnUrl });
+                    return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
                 }
             }
             // If we got this far, something failed, redisplay form
@@ -70,11 +75,11 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     }
     public class BillingInputModel
     {
-        [Required]
-        [RUT(ErrorMessage = "RUT no válido")]
-        [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
-        [Display(Name = "RUT persona jurídica")]
-        public string RUTJ { get; set; }
+        //[Required]
+        //[RUT(ErrorMessage = "RUT no válido")]
+        //[RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
+        //[Display(Name = "RUT persona jurídica")]
+        //public string RUTJ { get; set; }
         [Required]
         [RUT(ErrorMessage = "RUT persona natural")]
         [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]

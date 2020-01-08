@@ -23,19 +23,16 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         //private readonly TwilioVerifyClient _client;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
-        private readonly ILogger<RegisterModel> _logger;
 
         public VerifyPhoneModel(
             IOptions<TwilioVerifySettings> settings,
             //TwilioVerifyClient client,
             UserManager<ApplicationUser> userManager,
-            ILogger<RegisterModel> logger,
             ApplicationDbContext context)
         {
             //_client = client;
             _settings = settings?.Value;
             _userManager = userManager;
-            _logger = logger;
             _context = context;
         }
 
@@ -112,7 +109,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         user.PhoneConfirmationTime = DateTime.Now.AddMinutes(5);
                         await _userManager.UpdateAsync(user).ConfigureAwait(false);
 
-                        return RedirectToPage("ConfirmPhone", new { returnUrl });
+                        return RedirectToPage("ConfirmPhone", new { ReturnUrl });
                     }
                     ModelState.AddModelError("", $"Hubo un error al enviar el código de verificación: {verification.Status}");
                 }

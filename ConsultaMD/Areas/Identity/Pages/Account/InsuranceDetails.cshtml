@@ -23,7 +23,7 @@
                 <span asp-validation-for="Input.Insurance" class="text-danger"></span>
             </div>
             <div class="input-field col s12" style="display: none;">
-                <input asp-for="Input.InsurancePassword" class="validate" data-parsley-mipwd />
+                <input asp-for="Input.InsurancePassword" class="validate" data-parsley-mipwd data-trigger="change" />
                 <label asp-for="Input.InsurancePassword"></label>
                 <span asp-validation-for="Input.InsurancePassword" class="text-danger"></span>
                 <div class="collection">

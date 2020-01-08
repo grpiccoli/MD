@@ -21,7 +21,6 @@
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <button class="btn"><i class="material-icons left">edit</i>Editar</button>
                             <table>
                                 <tr>
                                     <td>@Html.DisplayFor(m => loc.Name)</td>
@@ -50,10 +49,13 @@
                         </div>
                         <div class="card-action">
                             <div class="col s5 offset-s1">
-                                <button class="btn center pill tile-gradient">Activar</button>
+                                <button class="btn center pill tile-gradient"><i class="material-icons left">edit</i>Editar</button>
+                                @*<button class="btn center pill tile-gradient">Activar</button>*@
                             </div>
                             <div class="col s5">
-                                <button class="btn center pill tile-gradient">Eliminar</button>
+                                <a asp-action="DeleteLocation" asp-route-id="@loc.MId" asp-route-returnAction="Locations"
+                                   class="btn center pill tile-gradient">
+                                    <i class="material-icons left">delete</i>Eliminar</a>
                             </div>
                         </div>
                     </div>
