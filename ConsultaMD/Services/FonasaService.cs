@@ -51,7 +51,7 @@ namespace ConsultaMD.Services
             FonasaSettings.BrowserWSEndpoint = fonasaData.BrowserWSEndpoint;
             return fonasaData;
         }
-        public async Task<List<DocFonasa>> GetDocData(int id)
+        public async Task<List<DocFonasa>> GetDocData(int id) 
         {
             FonasaSettings.Close = false;
             FonasaSettings.DocData = true;
