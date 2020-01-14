@@ -31,7 +31,18 @@ systemctl start kestrel-consultamd.service
 sudo vim /etc/systemd/system/kestrel-consultamd.service
 systemctl daemon-reload
 
+
+#ONE TIME DOTNET
+
+#ONE TIME INSTALL LIBMAN
+#ONE TIME INSTALL NODEJS
+
 #ONE TIME MS CONFIGURATION
+#1)INSTALL YARN
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+#2)MOBISCROLL
 sudo npm i -g @mobiscroll/cli
 mobiscroll login --global
 mobiscroll config javascript

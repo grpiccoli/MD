@@ -43,10 +43,10 @@ namespace ConsultaMD
                 options.Listen(IPAddress.Parse("127.0.0.10"), 5101,
                     listenOptions =>
                 {
-                    listenOptions.UseHttps(os == "Win32NT" ?
+                    listenOptions.UseHttps(
                         Path.Combine(
                             Directory.GetCurrentDirectory(),
-                            "sslforfree/consultamd.pfx") : "/media/guillermo/WD3DNAND-SSD-1TB/certs/consultamd.pfx", "34#$ERer");
+                            "sslforfree/consultamd.pfx"), "34#$ERer");
                 });
             })
             .UseStartup<Startup>();
