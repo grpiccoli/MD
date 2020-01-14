@@ -16,16 +16,16 @@
   {
     "outputFileName": "wwwroot/css/Agenda.min.css",
     "inputFiles": [
-      "src/styles/Agenda.min.css"
+      "src/styles/Agenda.css"
     ]
   },
   {
     "outputFileName": "wwwroot/css/main.min.css",
     "inputFiles": [
-      "src/styles/site.min.css",
-      "src/styles/bootstrap.min.css",
-      "src/styles/fixMSelectiOS.min.css",
-      "src/styles/loader.min.css"
+      "src/styles/site.css",
+      "src/styles/bootstrap.css",
+      "src/styles/fixMSelectiOS.css",
+      "src/styles/loader.css"
     ]
   },
   {
@@ -62,7 +62,7 @@
   {
     "outputFileName": "wwwroot/css/sidenav.min.css",
     "inputFiles": [
-      "src/styles/sidenav.min.css"
+      "src/styles/sidenav.css"
     ]
   },
   {
@@ -88,8 +88,8 @@
   {
     "outputFileName": "wwwroot/css/splash.min.css",
     "inputFiles": [
-      "src/styles/splash.min.css",
-      "src/styles/center-image.min.css"
+      "src/styles/splash.css",
+      "src/styles/center-image.css"
     ]
   },
   {
@@ -119,7 +119,7 @@
   {
     "outputFileName": "wwwroot/css/ConfirmPhone.min.css",
     "inputFiles": [
-      "src/styles/ConfirmPhone.min.css"
+      "src/styles/ConfirmPhone.css"
     ]
   },
   {
@@ -150,7 +150,7 @@
   {
     "outputFileName": "wwwroot/css/ConfirmDate.min.css",
     "inputFiles": [
-      "src/styles/ConfirmDate.min.css"
+      "src/styles/ConfirmDate.css"
     ]
   },
   {
@@ -181,6 +181,6 @@
   },
   {
     "outputFileName": "wwwroot/js/DoctorLocations.min.css",
-    "inputFiles": [ "src/styles/DoctorLocations.min.css" ]
+    "inputFiles": [ "src/styles/DoctorLocations.css" ]
   }
 ]
