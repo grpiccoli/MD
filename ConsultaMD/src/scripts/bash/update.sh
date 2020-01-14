@@ -33,10 +33,11 @@ systemctl daemon-reload
 
 
 #ONE TIME DOTNET
-
+#ONE TIME MSSQL
 #ONE TIME INSTALL LIBMAN
 #ONE TIME INSTALL NODEJS
-
+#ONE TIME CHROMIUM
+sudo apt-get install chromium-browser
 #ONE TIME MS CONFIGURATION
 #1)INSTALL YARN
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -

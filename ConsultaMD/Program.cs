@@ -39,8 +39,8 @@ namespace ConsultaMD
                 //    new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
                 //options.Limits.MinResponseDataRate =
                 //    new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
-                options.Listen(IPAddress.Parse("127.0.0.10"), 5100);
-                options.Listen(IPAddress.Parse("127.0.0.10"), 5101,
+                options.Listen(IPAddress.Parse("127.0.0.99"), 5100);
+                options.Listen(IPAddress.Parse("127.0.0.99"), 5101,
                     listenOptions =>
                 {
                     listenOptions.UseHttps(
