@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 
 const initBrowser = async () => {
     const browser = await puppeteer.launch(
-        { ignoreHTTPSErrors: true, headless: false }
+        { ignoreHTTPSErrors: true, headless: true }
     );
     const page = (await browser.pages())[0];
     await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' });
