@@ -1,24 +1,34 @@
-@*<partial name="_Scripts" model='(new string[]{"jquery-validation", "jquery-validation-unobtrusive", 
-         "cldrjs", "globalize", "jquery-validation-unobtrusive-extensions", "validation"}, "-Validation_")' />*@
+@*@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnvironment
+@using System.IO
+@using System.Globalization*@
+@*<partial name="_Scripts" model='(new string[]{"jquery-validation", "jquery-validation-unobtrusive",
+    "cldrjs", "globalize", "jquery-validation-unobtrusive-extensions", "validation"}, "-Validation_")' />*@
 
-<partial name="_Libs" model='(new HashSet<string>{"jquery-validation", "jquery-validation-unobtrusive", 
+<partial name="_Libs" model='(new HashSet<string>{"jquery-validation", "jquery-validation-unobtrusive",
          "cldrjs", "globalize", "jquery-validation-unobtrusive-extensions", "parsleyjs", "validation"}, "Validation")' />
 
-@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnvironment
-@{
+@*@{
     string GetDefaultLocale()
     {
         const string localePattern = "lib\\cldr-data\\main\\{0}";
-        var currentCulture = System.Globalization.CultureInfo.CurrentCulture;
+        var currentCulture = CultureInfo.CurrentCulture;
         var cultureToUse = Localizer["es-CL"].Value; //Default regionalisation to use
 
-        if (System.IO.Directory.Exists(System.IO.Path.Combine(HostingEnvironment.WebRootPath, string.Format(localePattern, currentCulture.Name))))
+        //return System.IO.Path.Combine(
+        //        HostingEnvironment.WebRootPath,
+        //        string.Format(localePattern, currentCulture.Name));
+
+        if (Directory.Exists(System.IO.Path.Combine(
+            HostingEnvironment.WebRootPath, 
+            string.Format(localePattern, currentCulture.Name))))
             cultureToUse = currentCulture.Name;
-        else if (System.IO.Directory.Exists(System.IO.Path.Combine(HostingEnvironment.WebRootPath, string.Format(localePattern, currentCulture.TwoLetterISOLanguageName))))
+        else if (Directory.Exists(System.IO.Path.Combine(
+            HostingEnvironment.WebRootPath, 
+            string.Format(localePattern, currentCulture.TwoLetterISOLanguageName))))
             cultureToUse = currentCulture.TwoLetterISOLanguageName;
 
-        return cultureToUse.Split("-").First();
+        return cultureToUse;
     }
 }
 
-@this.Block(@<script>window.localStorage.setItem('Locale', '@GetDefaultLocale()')</script>, "-TOP_Scripts")
+@this.Block(@<script>window.localStorage.setItem('Locale', @GetDefaultLocale())</script>, "-TOP_Scripts")*@
