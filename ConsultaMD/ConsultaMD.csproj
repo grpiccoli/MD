@@ -9,6 +9,7 @@
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <NeutralLanguage>es</NeutralLanguage>
     <UICulture>es-CL</UICulture>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
    <ItemGroup> 
@@ -152,6 +153,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
     <PackageReference Include="morelinq" Version="3.3.1" />
     <PackageReference Include="Pluralize.NET.Core" Version="1.0.0" />

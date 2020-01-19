@@ -199,15 +199,15 @@ namespace ConsultaMD
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
 
-            services.AddHsts(options =>
-            {
-                options.Preload = true;
-                options.IncludeSubDomains = true;
-                options.MaxAge = TimeSpan.FromDays(60);
-            });
+            //services.AddHsts(options =>
+            //{
+            //    options.Preload = true;
+            //    options.IncludeSubDomains = true;
+            //    options.MaxAge = TimeSpan.FromDays(60);
+            //});
 
-            services.AddHttpsRedirection(options => 
-            options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect);
+            //services.AddHttpsRedirection(options =>
+            //options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect);
 
             services.AddNodeServices(o => o.InvocationTimeoutMilliseconds = 600_000);
 
@@ -266,7 +266,8 @@ namespace ConsultaMD
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //app.UseHsts();
+
                 app.UseWebMarkupMin();
             }
 
@@ -289,7 +290,9 @@ namespace ConsultaMD
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             });
-            app.UseHttpsRedirection();
+            
+            //app.UseHttpsRedirection();
+            
             FileExtensionContentTypeProvider provider = new FileExtensionContentTypeProvider();
             provider.Mappings[".webmanifest"] = "application/manifest+json";
             app.UseStaticFiles(new StaticFileOptions()
