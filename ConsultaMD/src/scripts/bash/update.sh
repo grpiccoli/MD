@@ -43,7 +43,10 @@ git config --global credential.helper store
 git clone https://github.com/grpltda/ConsultaMD.git
 #XtxGx2B6yjxEmwg
 cd ConsultaMD
+
+git reset --hard HEAD
 git pull
+
 cd ConsultaMD
 dotnet ef database drop
 dotnet ef database update
