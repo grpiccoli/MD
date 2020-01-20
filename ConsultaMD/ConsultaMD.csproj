@@ -15,8 +15,9 @@
    <ItemGroup> 
      <Content Include="src/scripts/node/ps/SII.rb" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/ps/SII.js" CopyToPublishDirectory="PreserveNewest" /> 
+     <Content Include="src/scripts/node/ps/RegCivil.js" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/mi/fonasa.js" CopyToPublishDirectory="PreserveNewest" /> 
-     <Content Include="src\scripts\node\mi\FonasaService_v1.js" CopyToPublishDirectory="PreserveNewest" />
+     <Content Include="src/scripts/node/mi/FonasaService.js" CopyToPublishDirectory="PreserveNewest" />
      <Content Include="profileImg\**" CopyToPublishDirectory="PreserveNewest" LinkBase="profileImg" />
      <Content Include="node_modules\**" CopyToPublishDirectory="PreserveNewest" LinkBase="node_modules" />
      <None Update="chromedriver.exe" CopyToPublishDirectory="PreserveNewest" />
