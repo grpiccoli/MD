@@ -1,10 +1,13 @@
 ﻿'use strict';
 const puppeteer = require('puppeteer');
+
 const isWin = process.platform === "win32";
-const pre = '../../../../node_modules/puppeteer/.local-chromium/';
+const preWin = '/root/webapps/consultamd/';
+const preUnix = '../../../../';
+const chrome_path = 'node_modules/puppeteer/.local-chromium/';
 const ver = '706915';
-const win = pre + 'win64-' + ver + '/chrome-win/chrome.exe';
-const unix = pre + 'linux-' + ver +'/chrome-linux/chrome';
+const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
+const unix = preUnix + 'linux-' + ver + '/chrome-linux/chrome';
 
 const initBrowser = async () => {
     const browser = await puppeteer.launch(

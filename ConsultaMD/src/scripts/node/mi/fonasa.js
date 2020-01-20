@@ -64,10 +64,12 @@ const submitCatpcha = async function (page, rut, captcha) {
 //rut, phone, email, docRut, specialty, region, commune, payRut, acKey
 
 const isWin = process.platform === "win32";
-const pre = '../../../../node_modules/puppeteer/.local-chromium/';
+const preWin = '/root/webapps/consultamd/';
+const preUnix = '../../../../';
+const chrome_path = 'node_modules/puppeteer/.local-chromium/';
 const ver = '706915';
-const win = pre + 'win64-' + ver + '/chrome-win/chrome.exe';
-const unix = pre + 'linux-' + ver + '/chrome-linux/chrome';
+const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
+const unix = preUnix + 'linux-' + ver + '/chrome-linux/chrome';
 
 module.exports = async function (callback, data) {
     const browser = await puppeteer.launch(

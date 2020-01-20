@@ -67,6 +67,7 @@ if [ "$online_md5" == "$local_md5" ]; then
     echo "hurray, they are equal!"
 fi
 npm i
+#yarn install
 ./node_modules/cldr-data-downloader/bin/download.sh -f -i http://www.unicode.org/Public/cldr/26/json.zip -o ./wwwroot/lib/cldr-data
 dotnet run
 dotnet publish -r linux-x64 -c Release
