@@ -81,15 +81,18 @@
                 {
                     this.Block(@<link href="@($"{Context.Request.Scheme}://{url}/{l.Library}/{file}")" rel="stylesheet"
                                   asp-fallback-href="@($"{l.Destination.Replace("wwwroot", "")}{file}")"
-                                  asp-subresource-integrity-href="@($"{l.Destination.Replace("wwwroot", "")}{file}")" />, style);
+                                  asp-subresource-integrity-href="@($"{l.Destination.Replace("wwwroot", "")}{file}")"
+                                      />, style);
                 }
                 else if (file.Contains(".js"))
                 {
                     this.Block(@<script src="@($"{Context.Request.Scheme}://{url}/{l.Library}/{file}")"
                                     asp-fallback-src="@($"{l.Destination.Replace("wwwroot", "")}{file}")"
-                                    asp-subresource-integrity-src="@($"{l.Destination.Replace("wwwroot", "")}{file}")"></script>, script);
+                                        ></script>, script);
                 }
             }
         }}
     }
 }
+
+@*asp-subresource-integrity-src="@($"{l.Destination.Replace("wwwroot", "")}{file}")"*@

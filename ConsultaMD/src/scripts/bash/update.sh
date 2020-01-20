@@ -7,6 +7,7 @@ sudo apt install apt-transport-https
 sudo apt update
 #sudo apt purge aspnetcore-runtime-2.2 dotnet-runtime-2.2 dotnet-hostfxr-2.2 dotnet-host dotnet-runtime-deps-2.2 dotnet-sdk-2.2
 sudo apt install aspnetcore-runtime-2.2=2.2.5-1 dotnet-runtime-2.2=2.2.5-1 dotnet-hostfxr-2.2=2.2.5-1 dotnet-host=2.2.5-1 dotnet-runtime-deps-2.2=2.2.5-1 dotnet-sdk-2.2=2.2.300-1
+sudo apt-mark hold aspnetcore-runtime-2.2=2.2.5-1 dotnet-runtime-2.2=2.2.5-1 dotnet-hostfxr-2.2=2.2.5-1 dotnet-host=2.2.5-1 dotnet-runtime-deps-2.2=2.2.5-1 dotnet-sdk-2.2=2.2.300-1
 
 #ONE TIME MSSQL
 #https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql17/
@@ -17,6 +18,7 @@ sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubunt
 sudo apt update
 #sudo apt purge msodbcsql17 mssql-server mssql-tools
 sudo apt install msodbcsql17=17.3.1.1-1 mssql-server=14.0.3192.2-2 mssql-tools=17.3.0.1-1
+sudo apt-mark hold msodbcsql17=17.3.1.1-1 mssql-server=14.0.3192.2-2 mssql-tools=17.3.0.1-1
 sudo /opt/mssql/bin/mssql-conf setup
 systemctl status mssql-server --no-pager
 
