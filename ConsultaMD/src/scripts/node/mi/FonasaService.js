@@ -2,8 +2,8 @@
 const puppeteer = require('puppeteer');
 
 const isWin = process.platform === "win32";
-const preWin = '/root/webapps/consultamd/';
-const preUnix = '../../../../';
+const preUnix = '/root/webapps/consultamd/';
+const preWin = '../../../../';
 const chrome_path = 'node_modules/puppeteer/.local-chromium/';
 const ver = '706915';
 const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
