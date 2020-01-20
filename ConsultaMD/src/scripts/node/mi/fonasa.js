@@ -63,9 +63,20 @@ const submitCatpcha = async function (page, rut, captcha) {
 //data:
 //rut, phone, email, docRut, specialty, region, commune, payRut, acKey
 
+const isWin = process.platform === "win32";
+const pre = '../../../../node_modules/puppeteer/.local-chromium/';
+const ver = '706915';
+const win = pre + 'win64-' + ver + '/chrome-win/chrome.exe';
+const unix = pre + 'linux-' + ver + '/chrome-linux/chrome';
+
 module.exports = async function (callback, data) {
     const browser = await puppeteer.launch(
-        { ignoreHTTPSErrors: true, headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
+        {
+            ignoreHTTPSErrors: true,
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: isWin ? win : unix
+        }
     );
     const page = (await browser.pages())[0];
     page.setViewport({ width: 1000, height: 600, deviceScaleFactor: 1 });

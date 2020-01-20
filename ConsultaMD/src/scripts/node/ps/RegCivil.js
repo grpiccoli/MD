@@ -48,9 +48,20 @@ const readCaptcha = async function (page, acKey) {
     return result.getValue();
 };
 
+const isWin = process.platform === "win32";
+const pre = '../../../../node_modules/puppeteer/.local-chromium/';
+const ver = '706915';
+const win = pre + 'win64-' + ver + '/chrome-win/chrome.exe';
+const unix = pre + 'linux-' + ver + '/chrome-linux/chrome';
+
 const initBrowser = async (acKey) => {
     const browser = await puppeteer.launch(
-        { ignoreHTTPSErrors: true, headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
+        {
+            ignoreHTTPSErrors: true,
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: isWin ? win : unix
+        }
     );
     const page = (await browser.pages())[0];
     await page.goto('https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml', { waitUntil: 'networkidle2' });

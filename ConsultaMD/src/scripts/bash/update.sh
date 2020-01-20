@@ -159,6 +159,7 @@ server {
 #TESTING NODE
 delete require.cache[require.resolve('./FonasaService.js')];
 var T = require('./FonasaService.js');
-T(function (e, r) { console.log(e, r); }, 
-{ acKey: '693c4e031bcd23937811cedd2f1dba08', 
-rut: '16124902-5', carnet: '519194461' });
+T(function (e, r) { console.log(e, r); }, { acKey: '693c4e031bcd23937811cedd2f1dba08', rut: '16124902-5' });
+
+var T = require('./RegCivil.js');
+T(function (e, r) { console.log(e, r); }, { acKey: '693c4e031bcd23937811cedd2f1dba08', rut: '16124902-5', carnet: '519194461' });
