@@ -14,8 +14,9 @@ const initBrowser = async () => {
         {
             ignoreHTTPSErrors: true,
             headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: isWin ? win : unix
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            //,
+            //executablePath: isWin ? win : unix
         }
     );
     const page = (await browser.pages())[0];
