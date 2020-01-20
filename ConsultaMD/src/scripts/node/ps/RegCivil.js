@@ -50,7 +50,7 @@ const readCaptcha = async function (page, acKey) {
 
 const initBrowser = async (acKey) => {
     const browser = await puppeteer.launch(
-        { headless: true }
+        { ignoreHTTPSErrors: true, headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
     );
     const page = (await browser.pages())[0];
     await page.goto('https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml', { waitUntil: 'networkidle2' });

@@ -65,7 +65,7 @@ const submitCatpcha = async function (page, rut, captcha) {
 
 module.exports = async function (callback, data) {
     const browser = await puppeteer.launch(
-        { ignoreHTTPSErrors: true, headless: true }
+        { ignoreHTTPSErrors: true, headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
     );
     const page = (await browser.pages())[0];
     page.setViewport({ width: 1000, height: 600, deviceScaleFactor: 1 });

@@ -130,3 +130,35 @@ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('composer-setup.php');"
+
+#NGINX
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    location / {
+        proxy_pass              http://localhost:5000;
+        proxy_http_version      1.1;
+        proxy_set_header        Upgrade $http_upgrade;
+        proxy_set_header        Connection keep-alive;
+        proxy_set_header        Host $host;
+        proxy_cache_bypass      $http_upgrade;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+    }                                                                                  
+    location /feedbackHub {                                                                    
+        proxy_pass              http://localhost:5000;                                     
+        proxy_http_version      1.1;                                                       
+        proxy_set_header        Upgrade $http_upgrade;                                     
+        proxy_set_header        Connection "upgrade";                                      
+        proxy_set_header        Host $host;                                                
+        proxy_cache_bypass      $http_upgrade;                                     
+    }
+}
+
+#TESTING NODE
+delete require.cache[require.resolve('./FonasaService.js')];
+var T = require('./FonasaService.js');
+T(function (e, r) { console.log(e, r); }, 
+{ acKey: '693c4e031bcd23937811cedd2f1dba08', 
+rut: '16124902-5', carnet: '519194461' });
