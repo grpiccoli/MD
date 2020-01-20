@@ -155,6 +155,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                 await _feedbackHub.Clients.Client(Input.ConnectionId)
                                     .SendAsync("FeedBack", "Médico detectado").ConfigureAwait(true);
 
+                                _logger.LogInformation(string.Join(" ",superData.Specialties));
+
                                 superData.GetSpecialties =
                                     superData.Specialties
                                     .Select(s => {

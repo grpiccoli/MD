@@ -48,13 +48,13 @@ const readCaptcha = async function (page, acKey) {
     return result.getValue();
 };
 
-const isWin = process.platform === "win32";
-const preUnix = '/root/webapps/consultamd/';
-const preWin = '../../../../';
-const chrome_path = 'node_modules/puppeteer/.local-chromium/';
-const ver = '706915';
-const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
-const unix = preUnix + 'linux-' + ver + '/chrome-linux/chrome';
+//const isWin = process.platform === "win32";
+//const preUnix = '/root/webapps/consultamd/';
+//const preWin = '../../../../';
+//const chrome_path = 'node_modules/puppeteer/.local-chromium/';
+//const ver = '706915';
+//const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
+//const unix = preUnix + 'linux-' + ver + '/chrome-linux/chrome';
 
 const initBrowser = async (acKey) => {
     const browser = await puppeteer.launch(

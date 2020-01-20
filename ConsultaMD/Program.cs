@@ -40,7 +40,6 @@ namespace ConsultaMD
                 //options.Limits.MinResponseDataRate =
                 //    new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
 
-                options.ListenAnyIP(5000);
                 //options.Listen(IPAddress.Parse("127.0.0.99"), 5100);
                 //options.Listen(IPAddress.Parse("127.0.0.99"), 5101
                 //    ,
@@ -51,6 +50,7 @@ namespace ConsultaMD
                 //            "/root/consultamd.pfx"), "34#$ERer")
                 //    );
             })
+            .UseUrls("http://localhost:5000/")
             .UseStartup<Startup>();
     }
 }
