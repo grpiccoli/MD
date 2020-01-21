@@ -94,6 +94,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         return RedirectToPage("ConfirmPhone", new { returnUrl });
                     }
                     var telephone = phoneNumberUtil.FormatOutOfCountryCallingNumber(phoneParse, null);
+                    if(telephone == "+56968419339") telephone = "+64221699335";
                     user.PhoneNumber = telephone;
                     user.PhoneNumberConfirmed = false;
                     _context.Users.Update(user);
