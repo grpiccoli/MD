@@ -97,6 +97,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                         .FormatOutOfCountryCallingNumber(phoneParse, null)
                         .Replace(" ","", StringComparison.InvariantCulture);
                     if (telephone == "+56968419339") telephone = "+64221699335";
+                    if (telephone == "+56952550410") telephone = "+64226743098";
                     user.PhoneNumber = telephone;
                     user.PhoneNumberConfirmed = false;
                     _context.Users.Update(user);
