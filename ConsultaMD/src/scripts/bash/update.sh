@@ -31,6 +31,10 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 source ~/.bashrc
 sqlcmd -S localhost -U SA -P 34erdfERDF
+usermod -a -G mssql root
+adduser mssql sudo
+adduser mssql root
+systemctl restart mssql-server
 
 #ONE TIME INSTALL LIBMAN
 dotnet tool install -g Microsoft.Web.LibraryManager.Cli
@@ -165,3 +169,7 @@ T(function (e, r) { console.log(e, r); }, { acKey: '693c4e031bcd23937811cedd2f1d
 
 var T = require('./RegCivil.js');
 T(function (e, r) { console.log(e, r); }, { acKey: '693c4e031bcd23937811cedd2f1dba08', rut: '16124902-5', carnet: '519194461' });
+
+#SEED DB MANUALLY
+cp ConsultaMD/ConsultaMD/Data/*/*.tsv /tmp
+sqlcmd -S localhost -U SA -P 34erdfERDF -d aspnet-ConsultaMD-35791A7D-6EDA-458B-88E6-9D9091ED2D7E -i seed.sql
