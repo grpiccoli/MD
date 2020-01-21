@@ -51,30 +51,31 @@ const readInfo = async (browser, person, docData) => {
 //data { acKey, browserWSEndpoint, docData, rut, close }
 
 module.exports = async (callback, data) => {
-    if (data.close) {
-        await puppeteer
-            .connect({ browserWSEndpoint: data.browserWSEndpoint })
-            .then(async browser => {
-                await browser.close();
-            })
-            .catch(error => {
-                callback(error, null);
-            });
-    } else {
-        await puppeteer
-            .connect({ browserWSEndpoint: data.browserWSEndpoint })
-            .then(async browser => {
-                let user = await readInfo(browser, data.rut, data.docData);
-                if (user.indexOf('ERROR') !== -1) callback(user, null);
-                callback(null, user);
-            })
-            .catch(async error => {
-                console.log(error);
+    //if (data.close) {
+    //    await puppeteer
+    //        .connect({ browserWSEndpoint: data.browserWSEndpoint })
+    //        .then(async browser => {
+    //            await browser.close();
+    //        })
+    //        .catch(error => {
+    //            callback(error, null);
+    //        });
+    //} else {
+        //await puppeteer
+            //.connect({ browserWSEndpoint: data.browserWSEndpoint })
+            //.then(async browser => {
+            //    let user = await readInfo(browser, data.rut, data.docData);
+            //    if (user.indexOf('ERROR') !== -1) callback(user, null);
+            //    callback(null, user);
+            //})
+            //.catch(async error => {
+                //console.log(error);
                 let values = await initBrowser();
                 if (values[0]) callback(values[0], null);
                 let user = await readInfo(values[1], data.rut, data.docData);
                 if (user.indexOf('ERROR') !== -1) callback(user + error, null);
+                values[1].close();//
                 callback(null, user);
-            });
-    }
+            //});
+    //}
 };
