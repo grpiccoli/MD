@@ -267,7 +267,7 @@ END";
             var tmp = Path.Combine(Path.GetTempPath(), $"{name}.tsv");
             File.Copy(tsv, tmp, true);
             await _context.Database
-                .ExecuteSqlCommandAsync($"BulkInsert @p0, @p1;", tableName, tsv)
+                .ExecuteSqlCommandAsync($"BulkInsert @p0, @p1;", tableName, tmp)
                 .ConfigureAwait(false);
             File.Delete(tmp);
             return;
