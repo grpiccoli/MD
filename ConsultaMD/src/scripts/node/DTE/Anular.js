@@ -13,7 +13,7 @@ module.exports = async (callback, _data) => {
         rut: "161249025",
         pwd: "CF7Ja8EBYq",
         rutEmp: "76473272-3",
-        folio: "61",
+        folio: "64",
         signature: "0076"
     };
     const browser = await puppeteer.launch({

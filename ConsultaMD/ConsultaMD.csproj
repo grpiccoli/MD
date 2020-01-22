@@ -14,7 +14,7 @@
 
    <ItemGroup> 
      <Content Include="src/scripts/node/ps/SII.rb" CopyToPublishDirectory="PreserveNewest" /> 
-     <Content Include="src/scripts/node/ps/SII.js" CopyToPublishDirectory="PreserveNewest" /> 
+     <Content Include="src/scripts/node/ps/SII.js" CopyToPublishDirectory="PreserveNewest" />
      <Content Include="src/scripts/node/ps/RegCivil.js" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/mi/fonasa.js" CopyToPublishDirectory="PreserveNewest" /> 
      <Content Include="src/scripts/node/mi/FonasaService.js" CopyToPublishDirectory="PreserveNewest" />
@@ -84,6 +84,7 @@
     <TypeScriptCompile Include="src\scripts\feedback.js" />
     <TypeScriptCompile Include="src\scripts\jquery.validate.hooks.js" />
     <None Remove="Areas\MDs\Views\MDash\AddAgenda.cshtml.ts" />
+    <None Remove="package.json._webpack_bak" />
     <None Remove="src\scripts\add_rut_carnet_validation.ts" />
     <None Remove="src\scripts\Agenda.ts" />
     <None Remove="src\scripts\ConfirmDate.ts" />
@@ -113,7 +114,7 @@
     <None Remove="src\types\parsley\index.d.ts" />
     <None Remove="src\types\select2\index.d.ts" />
     <TypeScriptCompile Remove="src\types\mobiscroll\index.d.ts" />
-    <Content Include="package_webpack.json_bak" />
+    <Content Include="package.json._webpack_bak" />
     <Content Include="src\scripts\markerclusterer.js">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

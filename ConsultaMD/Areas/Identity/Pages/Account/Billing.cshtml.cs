@@ -1,4 +1,4 @@
-using ConsultaMD.Data;
+ï»¿using ConsultaMD.Data;
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
 using ConsultaMD.Services;
@@ -65,7 +65,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     person.PassSII = Input.Password;
                     var result = _context.People.Update(person);
                     await _context.SaveChangesAsync().ConfigureAwait(false);
-                    _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
+                    _logger.LogInformation(_localizer["Detalles de previsiÃ³n ingresados."]);
                     return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
                 }
             }
@@ -76,9 +76,9 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     public class BillingInputModel
     {
         //[Required]
-        //[RUT(ErrorMessage = "RUT no válido")]
+        //[RUT(ErrorMessage = "RUT no vï¿½lido")]
         //[RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
-        //[Display(Name = "RUT persona jurídica")]
+        //[Display(Name = "RUT persona jurï¿½dica")]
         //public string RUTJ { get; set; }
         [Required]
         [RUT(ErrorMessage = "RUT persona natural")]
@@ -86,8 +86,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Display(Name = "RUT representante")]
         public string RUT { get; set; }
         [DataType(DataType.Password)]
-        [Display(Name = "Contraseña de SII representante")]
-        [InsurancePassword(ErrorMessage = "Error en la combinación Previsión/{0}")]
+        [Display(Name = "ContraseÃ±a de SII representante")]
+        [InsurancePassword(ErrorMessage = "Error en la combinaciÃ³n PrevisiÃ³n/{0}")]
         public string Password { get; set; }
     }
 }

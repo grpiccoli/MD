@@ -72,7 +72,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 await _medium.Add(Input).ConfigureAwait(false);
-                _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
+                _logger.LogInformation(_localizer["Detalles de previsiÃ³n ingresados."]);
                 return await _redirect.Redirect(ReturnUrl, User.Identity.Name).ConfigureAwait(false);
             }
             // If we got this far, something failed, redisplay form
@@ -81,12 +81,12 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     }
     public class DoctorLocationsInputModel
     {
-        //Fonasa Código de prestación
+        //Fonasa Cï¿½digo de prestaciï¿½n
         public int Selector { get; set; }
         public string PlaceId { get; set; }
         [Display(Name = "Valor Particular")]
         public int Price { get; set; }
-        [Display(Name = "¿Tiene sobre cupos?")]
+        [Display(Name = "Â¿Tiene sobre cupos?")]
         public bool HasOverTime { get; set; } = true;
         [Display(Name = "Bloque")]
         public string Block { get; set; }

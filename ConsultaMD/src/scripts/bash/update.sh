@@ -31,9 +31,6 @@ echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 source ~/.bashrc
 sqlcmd -S localhost -U SA -P 34erdfERDF
-usermod -a -G mssql root
-adduser mssql sudo
-adduser mssql root
 systemctl restart mssql-server
 
 #ONE TIME INSTALL LIBMAN
@@ -77,10 +74,12 @@ npm i
 dotnet run
 dotnet publish -r linux-x64 -c Release
 systemctl stop kestrel-consultamd.service;
-rm -r ../../webapps/consultamd/;
-mkdir -p ../../webapps/consultamd/;
-rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* ~/webapps/consultamd/;
-npm --prefix ~/webapps/consultamd/ install ~/webapps/consultamd/
+rm -r /root/webapps/consultamd/;
+mkdir -p /root/webapps/consultamd/;
+rsync -auv bin/Release/netcoreapp2.2/linux-x64/publish/* /root/webapps/consultamd/;
+npm --prefix /root/webapps/consultamd/ install /root/webapps/consultamd/
+mkdir /root/webapps/consultamd/src/scripts/node/ps/trainset
+mkdir /root/webapps/consultamd/src/scripts/node/mi/trainset
 systemctl start kestrel-consultamd.service
 
 #config kestrel
@@ -171,5 +170,5 @@ var T = require('./RegCivil.js');
 T(function (e, r) { console.log(e, r); }, { acKey: '693c4e031bcd23937811cedd2f1dba08', rut: '16124902-5', carnet: '519194461' });
 
 #SEED DB MANUALLY
-cp ConsultaMD/ConsultaMD/Data/*/*.tsv /tmp
+cp /root/ConsultaMD/ConsultaMD/Data/*/*.tsv /tmp
 sqlcmd -S localhost -U SA -P 34erdfERDF -d aspnet-ConsultaMD-35791A7D-6EDA-458B-88E6-9D9091ED2D7E -i seed.sql

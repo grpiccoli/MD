@@ -31,8 +31,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
         [BindProperty]
         [Required]
-        [EmailAddress(ErrorMessage = "Ingrese un {0} v�lido")]
-        [Display(Name = "Correo electr�nico")]
+        [EmailAddress(ErrorMessage = "Ingrese un {0} válido")]
+        [Display(Name = "Correo electrónico")]
         //[RegularExpression(@"^(?=(?:\D*\d){9})[\(\)\s\-]{,5}$")]
         public string Email { get; set; }
         public Uri ReturnUrl { get; set; }
@@ -111,7 +111,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             catch (Exception)
             {
                 ModelState.AddModelError("",
-                    "Hubo un error al enviar el c�digo de verificaci�n, por favor verifique que el n�mero sea un n�mero de celular v�lido");
+                    "Hubo un error al enviar el código de verificación, por favor verifique que el número sea un número de celular válido");
                 throw;
             }
             return Page();

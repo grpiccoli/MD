@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -68,7 +68,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     //FALTAN CONVENIOS PREVISIONES
                     var result = _context.People.Update(person);
                     await _context.SaveChangesAsync().ConfigureAwait(false);
-                    _logger.LogInformation(_localizer["Detalles de previsiÛn ingresados."]);
+                    _logger.LogInformation(_localizer["Detalles de previsi√≥n ingresados."]);
                     return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
                 }
             }
@@ -79,18 +79,18 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     public class DoctorInsuranceInputModel
     {
         [Required]
-        [RUT(ErrorMessage = "RUT no v·lido")]
+        [RUT(ErrorMessage = "RUT no v√°lido")]
         [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
         [Display(Name = "RUT")]
         public string RUT { get; set; }
         [Required]
         [Display(Name = "Selecciona tu Convenio")]
-        [Insurance(ErrorMessage = "El RUT no est· registrado en la previsiÛn seleccionada")]
+        [Insurance(ErrorMessage = "El RUT no est√° registrado en la previsi√≥n seleccionada")]
         public Insurance Company { get; set; }
         //public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name").Where(e => e.Value != "1");
         [DataType(DataType.Password)]
-        [Display(Name = "ContraseÒa de su PrevisiÛn")]
-        [InsurancePassword(ErrorMessage = "Error en la combinaciÛn PrevisiÛn/{0}")]
+        [Display(Name = "Contrase√±a de su Previsi√≥n")]
+        [InsurancePassword(ErrorMessage = "Error en la combinaci√≥n Previsi√≥n/{0}")]
         public string Password { get; set; }
     }
 }
