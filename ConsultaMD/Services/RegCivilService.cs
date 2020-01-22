@@ -31,7 +31,15 @@ namespace ConsultaMD.Services
         public async Task<RegCivil> VAsync()
         {
             RegCivilSettings.Close = false;
-            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
+            var eval = true;
+            var response = string.Empty;
+            while (eval)
+            {
+                response = await _nodeServices
+                    .InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings)
+                    .ConfigureAwait(false);
+                eval = response.Contains("Error", System.StringComparison.InvariantCulture);
+            }
             var data = JsonConvert.DeserializeObject<RegCivil>(response);
             return data;
         }
@@ -43,14 +51,7 @@ namespace ConsultaMD.Services
         //}
         public async Task<bool> Test()
         {
-            var data = new RegCivil
-            {
-                Close = true
-            };
-            while (data.Close)
-            {
-                data = await VAsync().ConfigureAwait(false);
-            }
+            var data = await VAsync().ConfigureAwait(false);
             return data.IsValid;
         }
         public async Task<bool> IsValid(int rut, int carnet, bool isExt)

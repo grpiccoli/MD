@@ -46,7 +46,15 @@ namespace ConsultaMD.Services
             FonasaSettings.Close = false;
             FonasaSettings.DocData = false;
             FonasaSettings.Rut = RUT.Fonasa(id);
-            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+            var eval = true;
+            var response = string.Empty;
+            while (eval)
+            {
+                response = await _nodeServices
+                    .InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings)
+                    .ConfigureAwait(false);
+                eval = response.Contains("Error", StringComparison.InvariantCulture);
+            }
             var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
             FonasaSettings.BrowserWSEndpoint = fonasaData.BrowserWSEndpoint;
             return fonasaData;
@@ -56,7 +64,15 @@ namespace ConsultaMD.Services
             FonasaSettings.Close = false;
             FonasaSettings.DocData = true;
             FonasaSettings.Rut = RUT.Format(id,false);
-            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+            var eval = true;
+            var response = string.Empty;
+            while (eval)
+            {
+                response = await _nodeServices
+                    .InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings)
+                    .ConfigureAwait(false);
+                eval = response.Contains("Error", StringComparison.InvariantCulture);
+            }
             //var places = Regex.Matches(response, @"/\(([^)]+)\)/").Where((m,i) => i % 2 != 0);
             var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
             var parser = new HtmlParser();
@@ -139,7 +155,15 @@ namespace ConsultaMD.Services
             if(paymentData != null)
             {
                 paymentData.AcKey = FonasaSettings.AcKey;
-                var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/fonasa.js", paymentData).ConfigureAwait(false);
+                var eval = true;
+                var response = string.Empty;
+                while (eval)
+                {
+                    response = await _nodeServices
+                        .InvokeAsync<string>("src/scripts/node/mi/fonasa.js", paymentData)
+                        .ConfigureAwait(false);
+                    eval = response.Contains("Error", StringComparison.InvariantCulture);
+                }
                 var fonasaData = JsonConvert.DeserializeObject<FonasaWebPay>(response);
                 return fonasaData;
             }
