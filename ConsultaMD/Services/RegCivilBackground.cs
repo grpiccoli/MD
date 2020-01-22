@@ -35,12 +35,12 @@ namespace ConsultaMD.Services
                         .GetRequiredService<IRegCivil>();
 
                 var success = false;
-                success = await scopedProcessingService.Init().ConfigureAwait(false);
-                while (!success)
-                {
-                    await scopedProcessingService.CloseBW().ConfigureAwait(false);
-                    success = await scopedProcessingService.Init().ConfigureAwait(false);
-                }
+                //success = await scopedProcessingService.Init().ConfigureAwait(false);
+                //while (!success)
+                //{
+                //    await scopedProcessingService.CloseBW().ConfigureAwait(false);
+                //    success = await scopedProcessingService.Init().ConfigureAwait(false);
+                //}
             }
         }
         public async Task StopAsync(CancellationToken stoppingToken)
@@ -54,7 +54,7 @@ namespace ConsultaMD.Services
                     scope.ServiceProvider
                         .GetRequiredService<IRegCivil>();
 
-                await scopedProcessingService.CloseBW().ConfigureAwait(false);
+                //await scopedProcessingService.CloseBW().ConfigureAwait(false);
             }
         }
     }

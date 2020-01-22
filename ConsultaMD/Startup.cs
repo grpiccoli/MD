@@ -71,7 +71,7 @@ namespace ConsultaMD
                 o.AcKey = antiCaptchaKey;
                 o.Rut = RUT.Fonasa(16124902);
             });
-            services.AddHostedService<FonasaBackground>();
+            //services.AddHostedService<FonasaBackground>();
             services.AddScoped<IFonasa, FonasaService>();
 
             services.Configure<RegCivilSettings>(o =>
@@ -80,7 +80,7 @@ namespace ConsultaMD
                 o.Rut = RUT.Format(16_124_902, false);
                 o.Carnet = 519_194_461;
             });
-            services.AddHostedService<RegCivilBackground>();
+            //services.AddHostedService<RegCivilBackground>();
             services.AddScoped<IRegCivil, RegCivilService>();
 
             services.Configure<FlowSettings>(o =>

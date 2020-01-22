@@ -26,21 +26,21 @@ namespace ConsultaMD.Services
             FonasaSettings = settings?.Value;
             _nodeServices = nodeServices;
         }
-        public async Task Init()
-        {
-            FonasaSettings.Close = false;
-            FonasaSettings.DocData = false;
-            var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
-            var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
-            FonasaSettings.BrowserWSEndpoint = fonasaData.BrowserWSEndpoint;
-            return;
-        }
-        public async Task CloseBW()
-        {
-            FonasaSettings.Close = true;
-            await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
-            return;
-        }
+        //public async Task Init()
+        //{
+        //    FonasaSettings.Close = false;
+        //    FonasaSettings.DocData = false;
+        //    var response = await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+        //    var fonasaData = JsonConvert.DeserializeObject<Fonasa>(response);
+        //    FonasaSettings.BrowserWSEndpoint = fonasaData.BrowserWSEndpoint;
+        //    return;
+        //}
+        //public async Task CloseBW()
+        //{
+        //    FonasaSettings.Close = true;
+        //    await _nodeServices.InvokeAsync<string>("src/scripts/node/mi/FonasaService.js", FonasaSettings).ConfigureAwait(false);
+        //    return;
+        //}
         public async Task<Fonasa> GetById(int id)
         {
             FonasaSettings.Close = false;

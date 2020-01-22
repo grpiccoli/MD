@@ -7,14 +7,31 @@ const path = require('path');
 const png = 'tmp.png';
 const file_path = path.join(__dirname, png);
 const selector = '#form\\:captchaPanel > img';
+let cllbck, brw;
 
-const screenshotDOMElement = async function (page, opts) {
+const end = async (msg, success = false) => {
+    brw.close().then(_ => {
+        if (success) {
+            cllbck(null, msg);
+        } else {
+            throw msg;
+        }
+    }).catch(_ => {
+        if (success) {
+            cllbck(null, msg);
+        } else {
+            throw msg;
+        }
+    });
+};
+
+const screenshotDOMElement = async (page, opts) => {
     const padding = 'padding' in opts ? opts.padding : 0;
     const imgPath = 'imgPath' in opts ? opts.imgPath : null;
     const selector = opts.selector;
 
     if (!selector)
-        throw Error('Please provide a selector.');
+        end('Please provide a selector.');
 
     const rect = await page.evaluate((selector) => {
         const element = document.querySelector(selector);
@@ -22,10 +39,10 @@ const screenshotDOMElement = async function (page, opts) {
             return null;
         const drect = element.getBoundingClientRect();
         return { left: drect.x, top: drect.y, width: drect.width, height: drect.height };
-    }, selector);
+    }, selector).catch(e => end(25 + e));
 
     if (!rect)
-        throw Error(`Could not find element that matches selector: ${selector}.`);
+        end(`Could not find element that matches selector: ${selector}.`);
 
     return await page.screenshot({
         path: imgPath,
@@ -35,50 +52,40 @@ const screenshotDOMElement = async function (page, opts) {
             width: rect.width + padding * 2,
             height: rect.height + padding * 2
         }
-    });
+    }).catch(e => end(38 + e) );
 };
 
-const readCaptcha = async function (page, acKey) {
+const readCaptcha = async data => {
+    const page = (await brw.pages())[0];
     await screenshotDOMElement(page, {
         imgPath: file_path,
         selector: selector
-    }).catch(error => { callback(error, null); });
-    const client = anticaptchaAsync(acKey);
-    const result = await client.getImage(fs.createReadStream(file_path));
+    }).catch(e => end(45 + e));
+    const client = anticaptchaAsync(data.acKey);
+    const result = await client.getImage(fs.createReadStream(file_path))
+        .catch(e => end(48 + e));
     return result.getValue();
 };
 
-//const isWin = process.platform === "win32";
-//const preUnix = '/root/webapps/consultamd/';
-//const preWin = '../../../../';
-//const chrome_path = 'node_modules/puppeteer/.local-chromium/';
-//const ver = '706915';
-//const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
-//const unix = preUnix + 'linux-' + ver + '/chrome-linux/chrome';
-
-const initBrowser = async (acKey) => {
-    const browser = await puppeteer.launch(
+const initBrowser = async () => {
+    await puppeteer.launch(
         {
             ignoreHTTPSErrors: true,
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
-            //,
-            //executablePath: isWin ? win : unix
         }
-    );
-    const page = (await browser.pages())[0];
-    await page.goto('https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml', { waitUntil: 'networkidle2' });
-    //CAPTCHA SOLVING
-    let captcha = await readCaptcha(page, acKey).catch(error => { return [error, null]; });
-    return [null, browser, captcha];
+    ).then(async browser => {
+        brw = browser;
+        const page = (await brw.pages())[0];
+        await page.goto('https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml', { waitUntil: 'networkidle2' });
+    }).catch(e => end(e));
 };
 
-const readInfo = async (browser, data) => {
-    var page = (await browser.pages())[0];
+const readInfo = async data => {
+    var page = (await brw.pages())[0];
     var suffix = data.isExt ? '_EXT' : '';
     var type = `CEDULA${suffix}`;
-    var close = false;
-    var isVigente = await page.evaluate(async (captcha, rut, carnet, type) => {
+    var result = await page.evaluate(async (captcha, rut, carnet, type) => {
         var url = 'https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml';
         var javax = $("#javax\\.faces\\.ViewState").val();
         var body = 'form=form&form%3AcaptchaUrl=initial'
@@ -96,68 +103,48 @@ const readInfo = async (browser, data) => {
             if (response.status === 200) {
                 return response.text();
             }
-            var sessionError = text.includes('Sesión no válida');
-            close = sessionError;
-            return vigente;
-            //throw Error(`Status ${response.status} ${response.statusText}.`);
+            if (text.includes('Sesión no válida'))
+                throw Error(`Status ${response.status} ${response.statusText}.`);
         }).then(text => {
             var vigente = text.includes('Vigente');
             if (!vigente) {
-                var captchaError = text.includes('Por favor, Intente nuevamente.');
-                var sessionError = text.includes('Sesión no válida');
-                var errorValidation = text.includes('La información ingresada no corresponde en nuestros registros');
-                close = captchaError || sessionError;
-                close = !errorValidation;
+                if (text.includes('Por favor, Intente nuevamente.'))
+                    throw Error('Por favor, Intente nuevamente.');
+                if (text.includes('Sesión no válida'))
+                    throw Error('Sesión no válida');
+                if (text.includes('La información ingresada no corresponde en nuestros registros'))
+                    throw Error('La información ingresada no corresponde en nuestros registros');
             }
-            return vigente;
-        }).catch(err => {
-            close = true;
-            throw err;
-        });
+            return vigente.toString();
+        }).catch(e => end(107 + e));
     }, data.captcha, data.rut, data.carnet, type);
-    var user = {
-        'browserWSEndpoint': browser.wsEndpoint(),
-        'isValid': isVigente,
-        'close': close,
-        'captcha': data.captcha
-    };
-    return JSON.stringify(user);
+    if (result.indexOf('ERROR') !== -1) end(result);
+    return result;
 };
 
 //data:
-//acKey, rut, carnet?, close, browserWSEndpoint
-
+//acKey, rut, carnet?
 module.exports = async (callback, data) => {
+    cllbck = callback;
     console.log(data);
-    //if (data.isExt) {
-    //    console.log("bla");
-    //}
-    //if (data.close) {
-    //    await puppeteer
-    //        .connect({ browserWSEndpoint: data.browserWSEndpoint })
-    //        .then(async browser => {
-    //            await browser.close();
-    //        })
-    //        .catch(error => {
-    //            callback(error, null);
-    //        });
-    //} else {
-        //await puppeteer
-            //.connect({ browserWSEndpoint: data.browserWSEndpoint })
-            //.then(async browser => {
-            //    let user = await readInfo(browser, data).catch(e => { throw e; });
-            //    if (user.indexOf('ERROR') !== -1) callback(user, null);
-            //    callback(null, user);
-            //})
-            //.catch(async error => {
-                //console.log(error);
-                let values = await initBrowser(data.acKey).catch(e => { throw e; });
-                if (values[0]) callback(values[0], null);
-                data.captcha = values[2];
-                let user = await readInfo(values[1], data).catch(e => { throw e; });
-        if (user.indexOf('ERROR') !== -1) callback(user + error, null);
-        values[1].close();//
-                callback(null, user);
-            //});
-    //}
+    await initBrowser()
+        .then(async () => 
+            //CAPTCHA SOLVING
+            await readCaptcha(data)
+                .then(async c => {
+                    data.captcha = c;
+                    var dest = path.resolve(
+                        __dirname, 'trainset', `${data.captcha}.png`);
+                    await fs.rename(file_path, dest, function (err) {
+                        if (err) end(err);
+                    });
+
+                    let isVigente = await readInfo(data)
+                        .catch(e => end(121 + e));
+                    var user = {
+                        'isValid': isVigente
+                    };
+                    end(JSON.stringify(user), true);
+                })
+        ).catch(e => end(119 + e));
 };

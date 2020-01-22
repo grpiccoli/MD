@@ -6,8 +6,8 @@ namespace ConsultaMD.Services
 {
     public interface IFonasa
     {
-        Task Init();
-        Task CloseBW();
+        //Task Init();
+        //Task CloseBW();
         Task<Fonasa> GetById(int id);
         Task<FonasaWebPay> Pay(PaymentData paymentData);
         Task<List<DocFonasa>> GetDocData(int id);

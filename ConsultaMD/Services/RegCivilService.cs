@@ -16,18 +16,18 @@ namespace ConsultaMD.Services
             RegCivilSettings = settings?.Value;
             _nodeServices = nodeServices;
         }
-        public async Task<bool> Init()
-        {
-            var RegCivilData = await VAsync().ConfigureAwait(false);
-            while (!RegCivilData.IsValid)
-            {
-                await CloseBW().ConfigureAwait(false);
-                RegCivilData = await VAsync().ConfigureAwait(false);
-            }
-            RegCivilSettings.BrowserWSEndpoint = RegCivilData.BrowserWSEndpoint;
-            RegCivilSettings.Captcha = RegCivilData.Captcha;
-            return true;
-        }
+        //public async Task<bool> Init()
+        //{
+        //    var RegCivilData = await VAsync().ConfigureAwait(false);
+        //    while (!RegCivilData.IsValid)
+        //    {
+        //        await CloseBW().ConfigureAwait(false);
+        //        RegCivilData = await VAsync().ConfigureAwait(false);
+        //    }
+        //    RegCivilSettings.BrowserWSEndpoint = RegCivilData.BrowserWSEndpoint;
+        //    RegCivilSettings.Captcha = RegCivilData.Captcha;
+        //    return true;
+        //}
         public async Task<RegCivil> VAsync()
         {
             RegCivilSettings.Close = false;
@@ -35,21 +35,21 @@ namespace ConsultaMD.Services
             var data = JsonConvert.DeserializeObject<RegCivil>(response);
             return data;
         }
-        public async Task CloseBW()
-        {
-            RegCivilSettings.Close = true;
-            await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
-            return;
-        }
+        //public async Task CloseBW()
+        //{
+        //    RegCivilSettings.Close = true;
+        //    await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
+        //    return;
+        //}
         public async Task<bool> Test()
         {
-            var data = new RegCivil 
+            var data = new RegCivil
             {
                 Close = true
             };
-            while (data.Close) {
+            while (data.Close)
+            {
                 data = await VAsync().ConfigureAwait(false);
-                if (data.Close) await CloseBW().ConfigureAwait(false);
             }
             return data.IsValid;
         }

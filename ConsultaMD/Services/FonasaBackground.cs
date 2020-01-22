@@ -35,7 +35,7 @@ namespace ConsultaMD.Services
                     scope.ServiceProvider
                         .GetRequiredService<IFonasa>();
 
-                await scopedProcessingService.Init().ConfigureAwait(false);
+                //await scopedProcessingService.Init().ConfigureAwait(false);
             }
         }
         public async Task StopAsync(CancellationToken stoppingToken)
@@ -49,7 +49,7 @@ namespace ConsultaMD.Services
                     scope.ServiceProvider
                         .GetRequiredService<IFonasa>();
 
-                await scopedProcessingService.CloseBW().ConfigureAwait(false);
+                //await scopedProcessingService.CloseBW().ConfigureAwait(false);
             }
         }
     }

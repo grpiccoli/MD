@@ -1,31 +1,39 @@
 ﻿'use strict';
 const puppeteer = require('puppeteer');
+let cllbck, brw;
 
-//const isWin = process.platform === "win32";
-//const preUnix = '/root/webapps/consultamd/';
-//const preWin = '../../../../';
-//const chrome_path = 'node_modules/puppeteer/.local-chromium/';
-//const ver = '706915';
-//const win = preWin + 'win64-' + ver + '/chrome-win/chrome.exe';
-//const unix = preUnix + 'linux-' + ver + '/chrome-linux/chrome';
+const end = async (msg, success = false) => {
+    brw.close().then(_ => {
+        if (success) {
+            cllbck(null, msg);
+        } else {
+            throw msg;
+        }
+    }).catch(_ => {
+        if (success) {
+            cllbck(null, msg);
+        } else {
+            throw msg;
+        }
+    });
+};
 
 const initBrowser = async () => {
-    const browser = await puppeteer.launch(
+    await puppeteer.launch(
         {
             ignoreHTTPSErrors: true,
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
-            //,
-            //executablePath: isWin ? win : unix
         }
-    );
-    const page = (await browser.pages())[0];
-    await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' });
-    return [null, browser];
+    ).then(async browser => {
+        brw = browser;
+        const page = (await brw.pages())[0];
+        await page.goto('https://bonowebfon.fonasa.cl/', { waitUntil: 'networkidle2' }).catch(e => { throw e; });
+    }).catch(e => { throw e; });
 };
 
-const readInfo = async (browser, person, docData) => {
-    var page = (await browser.pages())[0];
+const readInfo = async data => {
+    var page = (await brw.pages())[0];
     var user = await page.evaluate(async (rut, doc) => {
         var url = urlAjax('bono', doc ? 'BuscaPorProfesional' : 'execWSCertifPagador');
         var body = doc ?
@@ -42,40 +50,19 @@ const readInfo = async (browser, person, docData) => {
             } catch (err) {
                 return { text: text };
             }
-        });
-    }, person, docData);
-    user['browserWSEndpoint'] = browser.wsEndpoint();
-    return JSON.stringify(user);
+        }).catch(e => { throw e; });
+    }, data.rut, data.docData).catch(e => { throw e; });
+    var result = JSON.stringify(user);
+    if (result.indexOf('ERROR') !== -1) end(result);
+    return result;
 };
 
-//data { acKey, browserWSEndpoint, docData, rut, close }
-
+//data { acKey, docData, rut }
 module.exports = async (callback, data) => {
-    //if (data.close) {
-    //    await puppeteer
-    //        .connect({ browserWSEndpoint: data.browserWSEndpoint })
-    //        .then(async browser => {
-    //            await browser.close();
-    //        })
-    //        .catch(error => {
-    //            callback(error, null);
-    //        });
-    //} else {
-        //await puppeteer
-            //.connect({ browserWSEndpoint: data.browserWSEndpoint })
-            //.then(async browser => {
-            //    let user = await readInfo(browser, data.rut, data.docData);
-            //    if (user.indexOf('ERROR') !== -1) callback(user, null);
-            //    callback(null, user);
-            //})
-            //.catch(async error => {
-                //console.log(error);
-                let values = await initBrowser();
-                if (values[0]) callback(values[0], null);
-                let user = await readInfo(values[1], data.rut, data.docData);
-                if (user.indexOf('ERROR') !== -1) callback(user + error, null);
-                values[1].close();//
-                callback(null, user);
-            //});
-    //}
+    cllbck = callback;
+    await initBrowser().then(async () => 
+        await readInfo(data)
+            .then(user => end(user, true))
+            .catch(e => end(66 + e))
+    ).catch(e => end(66 + e));
 };

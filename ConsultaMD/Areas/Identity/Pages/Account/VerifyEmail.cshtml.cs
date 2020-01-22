@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
@@ -31,8 +31,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         }
         [BindProperty]
         [Required]
-        [EmailAddress(ErrorMessage = "Ingrese un {0} válido")]
-        [Display(Name = "Correo electrónico")]
+        [EmailAddress(ErrorMessage = "Ingrese un {0} vï¿½lido")]
+        [Display(Name = "Correo electrï¿½nico")]
         //[RegularExpression(@"^(?=(?:\D*\d){9})[\(\)\s\-]{,5}$")]
         public string Email { get; set; }
         public Uri ReturnUrl { get; set; }
@@ -111,7 +111,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             catch (Exception)
             {
                 ModelState.AddModelError("",
-                    "Hubo un error al enviar el código de verificación, por favor verifique que el número sea un número de celular válido");
+                    "Hubo un error al enviar el cï¿½digo de verificaciï¿½n, por favor verifique que el nï¿½mero sea un nï¿½mero de celular vï¿½lido");
                 throw;
             }
             return Page();
