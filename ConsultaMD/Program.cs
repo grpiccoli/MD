@@ -31,7 +31,7 @@ namespace ConsultaMD
             })
             .ConfigureKestrel(options =>
             {
-                string os = Environment.OSVersion.Platform.ToString();
+                //string os = Environment.OSVersion.Platform.ToString();
                 options.Limits.MaxConcurrentConnections = 200;
                 options.Limits.MaxConcurrentUpgradedConnections = 200;
                 //options.Limits.MaxRequestBodySize = 20_000_000;

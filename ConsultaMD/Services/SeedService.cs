@@ -37,8 +37,8 @@ namespace ConsultaMD.Services
         //private readonly string _conn;
         //private Timer _timer;
         public SeedService(
-            ILogger<FonasaBackground> logger,
-            IStringLocalizer<FonasaBackground> localizer,
+            ILogger<SeedService> logger,
+            IStringLocalizer<SeedService> localizer,
             IConfiguration configuration,
             IHostingEnvironment environment,
             ApplicationDbContext context,
@@ -440,7 +440,9 @@ END";
 
                             if (!string.IsNullOrWhiteSpace(item.Role))
                             {
-                                var roller = _context.Roles.SingleOrDefault(r => r.Name == item.Role);
+                                var roller = await _context.Roles
+                                    .SingleOrDefaultAsync(r => r.Name == item.Role)
+                                    .ConfigureAwait(false);
                                 user.UserRoles.Add(new ApplicationUserRole
                                 {
                                     UserId = user.Id,

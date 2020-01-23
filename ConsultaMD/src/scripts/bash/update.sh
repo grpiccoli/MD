@@ -139,8 +139,8 @@ php -r "unlink('composer-setup.php');"
 #NGINX
 server {
     listen 80 default_server;
-    listen [::]:80 default_server;
-    server_name _;
+    #listen [::]:80 default_server;
+    server_name apdoc.cl www.apdoc.cl;
     location / {
         proxy_pass              http://localhost:5000;
         proxy_http_version      1.1;
@@ -150,14 +150,14 @@ server {
         proxy_cache_bypass      $http_upgrade;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto $scheme;
-    }                                                                                  
-    location /feedbackHub {                                                                    
-        proxy_pass              http://localhost:5000;                                     
-        proxy_http_version      1.1;                                                       
-        proxy_set_header        Upgrade $http_upgrade;                                     
-        proxy_set_header        Connection "upgrade";                                      
-        proxy_set_header        Host $host;                                                
-        proxy_cache_bypass      $http_upgrade;                                     
+    }
+    location /feedbackHub {
+        proxy_pass              http://localhost:5000;
+        proxy_http_version      1.1;
+        proxy_set_header        Upgrade $http_upgrade;
+        proxy_set_header        Connection "upgrade";
+        proxy_set_header        Host $host;
+        proxy_cache_bypass      $http_upgrade;
     }
 }
 

@@ -33,12 +33,17 @@ const screenshotDOMElement = async (page, opts) => {
     if (!selector)
         end('Please provide a selector.');
 
-    const rect = await page.evaluate((selector) => {
+    const rect = await page.evaluate(selector => {
         const element = document.querySelector(selector);
         if (!element)
             return null;
         const drect = element.getBoundingClientRect();
-        return { left: drect.x, top: drect.y, width: drect.width, height: drect.height };
+        return {
+            left: drect.x,
+            top: drect.y,
+            width: drect.width,
+            height: drect.height
+        };
     }, selector).catch(e => end(25 + e));
 
     if (!rect)
@@ -52,16 +57,16 @@ const screenshotDOMElement = async (page, opts) => {
             width: rect.width + padding * 2,
             height: rect.height + padding * 2
         }
-    }).catch(e => end(38 + e) );
+    }).catch(e => end(38 + e));
 };
 
-const readCaptcha = async data => {
+const readCaptcha = async acKey => {
     const page = (await brw.pages())[0];
     await screenshotDOMElement(page, {
         imgPath: file_path,
         selector: selector
     }).catch(e => end(45 + e));
-    const client = anticaptchaAsync(data.acKey);
+    const client = anticaptchaAsync(acKey);
     const result = await client.getImage(fs.createReadStream(file_path))
         .catch(e => end(48 + e));
     return result.getValue();
@@ -130,7 +135,7 @@ module.exports = async (callback, data) => {
     await initBrowser()
         .then(async () => 
             //CAPTCHA SOLVING
-            await readCaptcha(data)
+            await readCaptcha(data.acKey)
                 .then(async c => {
                     data.captcha = c;
                     var dest = path.resolve(
