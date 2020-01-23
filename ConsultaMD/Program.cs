@@ -31,24 +31,8 @@ namespace ConsultaMD
             })
             .ConfigureKestrel(options =>
             {
-                //string os = Environment.OSVersion.Platform.ToString();
                 options.Limits.MaxConcurrentConnections = 200;
                 options.Limits.MaxConcurrentUpgradedConnections = 200;
-                //options.Limits.MaxRequestBodySize = 20_000_000;
-                //options.Limits.MinRequestBodyDataRate =
-                //    new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
-                //options.Limits.MinResponseDataRate =
-                //    new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
-
-                //options.Listen(IPAddress.Parse("127.0.0.99"), 5100);
-                //options.Listen(IPAddress.Parse("127.0.0.99"), 5101
-                //    ,
-                //    listenOptions =>
-                //    listenOptions.UseHttps(
-                //        Path.Combine(
-                //            Directory.GetCurrentDirectory(),
-                //            "/root/consultamd.pfx"), "34#$ERer")
-                //    );
             })
             .UseUrls("http://localhost:5000/")
             .UseStartup<Startup>();
