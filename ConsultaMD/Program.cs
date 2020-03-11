@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using Microsoft.AspNetCore;
+﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace ConsultaMD
@@ -15,26 +13,22 @@ namespace ConsultaMD
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables();
-            })
-            .ConfigureLogging(logging =>
-            {
-                logging.ClearProviders();
-                logging.AddConsole();
-            })
-            .ConfigureKestrel(options =>
-            {
-                options.Limits.MaxConcurrentConnections = 200;
-                options.Limits.MaxConcurrentUpgradedConnections = 200;
-            })
-            .UseUrls("http://localhost:5000/")
-            .UseStartup<Startup>();
+        public static IHostBuilder CreateWebHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    config
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                    .AddEnvironmentVariables())
+                .ConfigureLogging(logging =>
+                    logging.ClearProviders().AddConsole())
+                .ConfigureKestrel(options =>
+                {
+                    options.Limits.MaxConcurrentConnections = 200;
+                    options.Limits.MaxConcurrentUpgradedConnections = 200;
+                })
+                .UseUrls("http://localhost:5000/")
+                .UseStartup<Startup>());
     }
 }

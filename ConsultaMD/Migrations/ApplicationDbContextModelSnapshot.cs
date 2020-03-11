@@ -15,7 +15,7 @@ namespace ConsultaMD.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -23,13 +23,17 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AgendaEventId");
+                    b.Property<int>("AgendaEventId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartTime");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -42,17 +46,23 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<TimeSpan>("Duration");
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
 
-                    b.Property<DateTime>("EndDateTime");
+                    b.Property<DateTime>("EndDateTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("Frequency");
+                    b.Property<int>("Frequency")
+                        .HasColumnType("int");
 
-                    b.Property<int>("MediumDoctorId");
+                    b.Property<int>("MediumDoctorId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("StartDateTime");
+                    b.Property<DateTime>("StartDateTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -64,21 +74,27 @@ namespace ConsultaMD.Migrations
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedDate");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -94,51 +110,71 @@ namespace ConsultaMD.Migrations
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AccessFailedCount");
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<bool>("EmailConfirmed");
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("LockoutEnabled");
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd");
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTime>("MailConfirmationTime");
+                    b.Property<DateTime>("MailConfirmationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("MemberSince");
+                    b.Property<DateTime>("MemberSince")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("PasswordHash");
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonId");
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("PhoneConfirmationTime");
+                    b.Property<DateTime>("PhoneConfirmationTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("PhoneNumber");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("PhoneNumberConfirmed");
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("Rating");
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
-                    b.Property<string>("SecurityStamp");
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TwoFactorEnabled");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -159,7 +195,8 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.AreaCode", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -168,9 +205,11 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.AreaCodeProvince", b =>
                 {
-                    b.Property<int>("AreaCodeId");
+                    b.Property<int>("AreaCodeId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ProvinceId");
+                    b.Property<int>("ProvinceId")
+                        .HasColumnType("int");
 
                     b.HasKey("AreaCodeId", "ProvinceId");
 
@@ -181,13 +220,17 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Carnet", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("BackImage");
+                    b.Property<string>("BackImage")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FrontImage");
+                    b.Property<string>("FrontImage")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NaturalId");
+                    b.Property<int>("NaturalId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -201,15 +244,20 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Count");
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("LocalityId");
+                    b.Property<int?>("LocalityId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("LocationId");
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("Year");
+                    b.Property<DateTime>("Year")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -220,11 +268,14 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.CommercialActivity", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("CompanyId");
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -236,27 +287,37 @@ namespace ConsultaMD.Migrations
             modelBuilder.Entity("ConsultaMD.Models.Entities.Customer", b =>
                 {
                     b.Property<string>("CustomerId")
-                        .ValueGeneratedOnAdd();
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("Created");
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("CreditCardType");
+                    b.Property<string>("CreditCardType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ExternalId");
+                    b.Property<int>("ExternalId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Last4CardDigits");
+                    b.Property<string>("Last4CardDigits")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PayMode");
+                    b.Property<int>("PayMode")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("RegisterDate");
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("Status");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Token");
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustomerId");
 
@@ -267,19 +328,26 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("FonasaLevel");
+                    b.Property<int?>("FonasaLevel")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("MedicalAttentionId");
+                    b.Property<int?>("MedicalAttentionId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("NaturalId");
+                    b.Property<int>("NaturalId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("RegistryDate");
+                    b.Property<DateTime>("RegistryDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("SisId");
+                    b.Property<string>("SisId")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("YearTitle");
+                    b.Property<int>("YearTitle")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -291,9 +359,11 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.DoctorSpecialty", b =>
                 {
-                    b.Property<int>("DoctorId");
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SpecialtyId");
+                    b.Property<int>("SpecialtyId")
+                        .HasColumnType("int");
 
                     b.HasKey("DoctorId", "SpecialtyId");
 
@@ -306,11 +376,14 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AgendaEventId");
+                    b.Property<int>("AgendaEventId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("DayOfWeek");
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -323,13 +396,17 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Insurance");
+                    b.Property<int>("Insurance")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonId");
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -342,19 +419,26 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommuneId");
+                    b.Property<int>("CommuneId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("InsuranceAgreementId");
+                    b.Property<int>("InsuranceAgreementId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("InsuranceSelector");
+                    b.Property<string>("InsuranceSelector")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MediumDoctorId");
+                    b.Property<int>("MediumDoctorId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PrestacionId");
+                    b.Property<string>("PrestacionId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -371,14 +455,18 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Locality", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Surface");
+                    b.Property<int?>("Surface")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -391,13 +479,17 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DoctorId");
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ReservationId");
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("StartTime");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -414,12 +506,15 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PlaceId");
+                    b.Property<string>("PlaceId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -432,9 +527,11 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalCoverage", b =>
                 {
-                    b.Property<int>("QuoteeId");
+                    b.Property<int>("QuoteeId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("DependantId");
+                    b.Property<int>("DependantId")
+                        .HasColumnType("int");
 
                     b.HasKey("QuoteeId", "DependantId");
 
@@ -447,17 +544,23 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Color");
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DoctorId");
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("MedicalAttentionMediumId");
+                    b.Property<int?>("MedicalAttentionMediumId")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("OverTime");
+                    b.Property<bool>("OverTime")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("PriceParticular");
+                    b.Property<int>("PriceParticular")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -470,13 +573,17 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Patient", b =>
                 {
-                    b.Property<int>("NaturalId");
+                    b.Property<int>("NaturalId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Insurance");
+                    b.Property<int>("Insurance")
+                        .HasColumnType("int");
 
-                    b.Property<string>("InsurancePassword");
+                    b.Property<string>("InsurancePassword")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Tramo");
+                    b.Property<int?>("Tramo")
+                        .HasColumnType("int");
 
                     b.HasKey("NaturalId");
 
@@ -487,6 +594,7 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("Id");
@@ -496,12 +604,15 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Person", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("BanmedicaName");
+                    b.Property<string>("BanmedicaName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -512,21 +623,29 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Place", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CId");
+                    b.Property<string>("CId")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CommuneId");
+                    b.Property<int>("CommuneId")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Latitude");
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
 
-                    b.Property<double>("Longitude");
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhotoId");
+                    b.Property<string>("PhotoId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -539,9 +658,11 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("LocalityId");
+                    b.Property<int>("LocalityId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -553,13 +674,16 @@ namespace ConsultaMD.Migrations
             modelBuilder.Entity("ConsultaMD.Models.Entities.Prestacion", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Copago");
+                    b.Property<int>("Copago")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Total");
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -570,23 +694,32 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Arrival");
+                    b.Property<DateTime>("Arrival")
+                        .HasColumnType("datetime2");
 
-                    b.Property<bool>("Arrived");
+                    b.Property<bool>("Arrived")
+                        .HasColumnType("bit");
 
-                    b.Property<int?>("BondId");
+                    b.Property<int?>("BondId")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("Confirmed");
+                    b.Property<bool>("Confirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("MedicalAttentionId");
+                    b.Property<int>("MedicalAttentionId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("PatientId");
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("PaymentId");
+                    b.Property<int?>("PaymentId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("TimeSlotId");
+                    b.Property<int>("TimeSlotId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -601,9 +734,11 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -614,15 +749,20 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AgendaId");
+                    b.Property<int>("AgendaId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int?>("ReservationId");
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("StartTime");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -639,15 +779,20 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Latitude");
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
 
-                    b.Property<double>("Longitude");
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
 
-                    b.Property<int>("Order");
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
 
-                    b.Property<int>("PolygonId");
+                    b.Property<int>("PolygonId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -660,14 +805,18 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType");
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -680,14 +829,18 @@ namespace ConsultaMD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType");
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -698,14 +851,18 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProviderKey");
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProviderDisplayName");
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -716,12 +873,15 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("RoleId");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -732,13 +892,17 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Value");
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -749,11 +913,14 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.Locality");
 
-                    b.Property<int?>("ElectoralDistrict");
+                    b.Property<int?>("ElectoralDistrict")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ProvinceId");
+                    b.Property<int>("ProvinceId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("SenatorialCircunscription");
+                    b.Property<int?>("SenatorialCircunscription")
+                        .HasColumnType("int");
 
                     b.HasIndex("ProvinceId");
 
@@ -764,7 +931,8 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.Locality");
 
-                    b.Property<int>("RegionId");
+                    b.Property<int>("RegionId")
+                        .HasColumnType("int");
 
                     b.HasIndex("RegionId");
 
@@ -789,13 +957,17 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.MedicalAttentionMedium");
 
-                    b.Property<string>("Appartment");
+                    b.Property<string>("Appartment")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Block");
+                    b.Property<string>("Block")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Floor");
+                    b.Property<string>("Floor")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Office");
+                    b.Property<string>("Office")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("MedicalOffice");
                 });
@@ -811,9 +983,11 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.Person");
 
-                    b.Property<string>("NombreFantasia");
+                    b.Property<string>("NombreFantasia")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RazonSocial");
+                    b.Property<string>("RazonSocial")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Company");
                 });
@@ -822,31 +996,44 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("ConsultaMD.Models.Entities.Person");
 
-                    b.Property<int?>("ApplicationUserId");
+                    b.Property<int?>("ApplicationUserId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("Birth");
+                    b.Property<DateTime>("Birth")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("CarnetId");
+                    b.Property<int>("CarnetId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CustomerId");
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("DoctorId");
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("FullLastFirst");
+                    b.Property<string>("FullLastFirst")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FullNameFirst");
+                    b.Property<string>("FullNameFirst")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastFather");
+                    b.Property<string>("LastFather")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastMother");
+                    b.Property<string>("LastMother")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Names");
+                    b.Property<string>("Names")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nationality");
+                    b.Property<string>("Nationality")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PassSII");
+                    b.Property<string>("PassSII")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Sex");
+                    b.Property<bool>("Sex")
+                        .HasColumnType("bit");
 
                     b.HasIndex("CustomerId");
 
@@ -857,7 +1044,8 @@ namespace ConsultaMD.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
 
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasIndex("RoleId");
 
@@ -871,7 +1059,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.AgendaEvent", "AgendaEvent")
                         .WithMany("Agendas")
                         .HasForeignKey("AgendaEventId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.AgendaEvent", b =>
@@ -879,7 +1068,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
                         .WithMany("AgendaEvents")
                         .HasForeignKey("MediumDoctorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.ApplicationUser", b =>
@@ -887,7 +1077,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Person")
                         .WithOne("ApplicationUser")
                         .HasForeignKey("ConsultaMD.Models.Entities.ApplicationUser", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.AreaCodeProvince", b =>
@@ -895,12 +1086,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.AreaCode", "AreaCode")
                         .WithMany("AreaCodeProvinces")
                         .HasForeignKey("AreaCodeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Province", "Province")
                         .WithMany("AreaCodeProvinces")
                         .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Carnet", b =>
@@ -908,7 +1101,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
                         .WithOne("Carnet")
                         .HasForeignKey("ConsultaMD.Models.Entities.Carnet", "NaturalId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Census", b =>
@@ -920,7 +1114,7 @@ namespace ConsultaMD.Migrations
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.CommercialActivity", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.Company")
+                    b.HasOne("ConsultaMD.Models.Entities.Company", null)
                         .WithMany("CommercialActivities")
                         .HasForeignKey("CompanyId");
                 });
@@ -930,7 +1124,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Person", "External")
                         .WithMany()
                         .HasForeignKey("ExternalId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Doctor", b =>
@@ -938,7 +1133,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
                         .WithOne("Doctor")
                         .HasForeignKey("ConsultaMD.Models.Entities.Doctor", "NaturalId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.DoctorSpecialty", b =>
@@ -946,12 +1142,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Doctor", "Doctor")
                         .WithMany("Specialties")
                         .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Specialty", "Specialty")
                         .WithMany("Doctors")
                         .HasForeignKey("SpecialtyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.EventDayWeek", b =>
@@ -959,7 +1157,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.AgendaEvent", "AgendaEvent")
                         .WithMany("EventDayWeeks")
                         .HasForeignKey("AgendaEventId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceAgreement", b =>
@@ -967,7 +1166,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Person", "Person")
                         .WithMany("InsuranceAgreements")
                         .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.InsuranceLocation", b =>
@@ -975,17 +1175,20 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Commune", "Commune")
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("CommuneId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.InsuranceAgreement", "InsuranceAgreement")
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("InsuranceAgreementId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.MediumDoctor", "MediumDoctor")
                         .WithMany("InsuranceLocations")
                         .HasForeignKey("MediumDoctorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Prestacion", "Prestacion")
                         .WithMany("InsuranceLocation")
@@ -997,12 +1200,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Doctor", "Doctor")
                         .WithOne("MedicalAttention")
                         .HasForeignKey("ConsultaMD.Models.Entities.MedicalAttention", "DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
                         .WithOne("MedicalAttention")
                         .HasForeignKey("ConsultaMD.Models.Entities.MedicalAttention", "ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MedicalAttentionMedium", b =>
@@ -1017,12 +1222,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Dependant")
                         .WithMany()
                         .HasForeignKey("DependantId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Patient", "Quotee")
                         .WithMany("MedicalCoverages")
                         .HasForeignKey("QuoteeId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.MediumDoctor", b =>
@@ -1030,7 +1237,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Doctor", "Doctor")
                         .WithMany("MediumDoctors")
                         .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.MedicalAttentionMedium", "MedicalAttentionMedium")
                         .WithMany("MediumDoctors")
@@ -1043,7 +1251,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Natural", "Natural")
                         .WithOne("Patient")
                         .HasForeignKey("ConsultaMD.Models.Entities.Patient", "NaturalId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Place", b =>
@@ -1051,7 +1260,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Commune", "Commune")
                         .WithMany("Places")
                         .HasForeignKey("CommuneId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Polygon", b =>
@@ -1059,7 +1269,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Locality", "Locality")
                         .WithMany("Polygons")
                         .HasForeignKey("LocalityId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Reservation", b =>
@@ -1067,7 +1278,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Patient", "Patient")
                         .WithMany("Reservations")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Payment", "Payment")
                         .WithMany()
@@ -1079,7 +1291,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Agenda", "Agenda")
                         .WithMany("TimeSlots")
                         .HasForeignKey("AgendaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.Reservation", "Reservation")
                         .WithOne("TimeSlot")
@@ -1092,39 +1305,44 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Polygon", "Polygon")
                         .WithMany("Vertices")
                         .HasForeignKey("PolygonId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.ApplicationRole")
+                    b.HasOne("ConsultaMD.Models.Entities.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser")
+                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser", null)
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser")
+                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser")
+                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Commune", b =>
@@ -1132,7 +1350,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Province", "Province")
                         .WithMany("Communes")
                         .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Province", b =>
@@ -1140,7 +1359,8 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.Region", "Region")
                         .WithMany("Provinces")
                         .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ConsultaMD.Models.Entities.Natural", b =>
@@ -1155,12 +1375,14 @@ namespace ConsultaMD.Migrations
                     b.HasOne("ConsultaMD.Models.Entities.ApplicationRole", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser")
+                    b.HasOne("ConsultaMD.Models.Entities.ApplicationUser", null)
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ConsultaMD.Models.Entities.ApplicationUser", "User")
                         .WithMany()

@@ -10,7 +10,7 @@ namespace ConsultaMD.Services
     {
         Task Add(DoctorLocationsInputModel m);
         Task Delete(int id);
-        Task Enable(int id);
-        Task Disable(int id);
+        //Task Enable(int id);
+        //Task Disable(int id);
     }
 }

@@ -29,14 +29,11 @@ namespace ConsultaMD.Services
             _logger.LogInformation(
                 _localizer["Consume Scoped Service Hosted Service is working."]);
 
-            using (var scope = Services.CreateScope())
-            {
-                var scopedProcessingService =
-                    scope.ServiceProvider
-                        .GetRequiredService<ISeed>();
-
-                await scopedProcessingService.Seed().ConfigureAwait(false);
-            }
+            using var scope = Services.CreateScope();
+            var scopedProcessingService =
+                scope.ServiceProvider
+                .GetRequiredService<ISeed>();
+            await scopedProcessingService.Seed().ConfigureAwait(false);
 
         }
         // noop

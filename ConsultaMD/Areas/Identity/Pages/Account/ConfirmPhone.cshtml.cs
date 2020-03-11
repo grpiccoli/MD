@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using ConsultaMD.Services;
 using Microsoft.Extensions.Options;
-using Twilio.Rest.Preview.AccSecurity.Service; 
 using ConsultaMD.Models.Entities;
+using Twilio.Rest.Verify.V2.Service;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -41,7 +41,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
             await LoadPhoneNumber().ConfigureAwait(false);
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
+            returnUrl ??= new Uri(Url.Content("~/"), UriKind.Relative);
             if (!ModelState.IsValid)
             {
                 return Page();

@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="card-action">
-                <a href="#">Pagar</a>
+                <a asp-area="Patients" asp-controller="Booking" asp-action="ConfirmDate" asp-route-id="@res.Reservation.Id">Pagar</a>
                 <a href="#">Eliminar</a>
             </div>
         </div>

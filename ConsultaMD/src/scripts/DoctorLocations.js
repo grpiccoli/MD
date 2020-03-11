@@ -7,6 +7,18 @@ function initPlaceSelector() {
         fullscreenControl: false,
         mapTypeControl: false
     });
+    document.getElementById('add')
+        .addEventListener('click', function () {
+        $("#Input_More").val("true");
+        $("form").submit();
+    });
+    var end = document.getElementById('end');
+    if (end != null) {
+        end.addEventListener('click', function () {
+            $("#Input_More").val("false");
+            $("form").submit();
+        });
+    }
     var input = document.getElementById('pac-input');
     var options = {
         componentRestrictions: { country: 'cl' }
@@ -41,10 +53,10 @@ function initPlaceSelector() {
         marker.setVisible(true);
         infowindowContent.querySelector('#place-image').src = place.photos[0].getUrl({ 'maxWidth': 200 });
         infowindowContent.querySelector('#place-name').textContent = place.name;
-        $('#Input_PlaceId').val(place.place_id);
+        document.getElementById('Input_PlaceId').value = place.place_id;
         infowindowContent.querySelector('#place-address').textContent = place.formatted_address;
         infowindow.open(map, marker);
-        $("#add").removeAttr('disabled');
+        document.getElementById('add').attributes.removeNamedItem('disabled');
     });
 }
 //# sourceMappingURL=DoctorLocations.js.map

@@ -1,82 +1,153 @@
 ﻿using ConsultaMD.Extensions;
-using Microsoft.AspNetCore.NodeServices;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
+using PuppeteerSharp;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ConsultaMD.Services
 {
     public class RegCivilService : IRegCivil
     {
-        private readonly INodeServices _nodeServices;
-        public RegCivilSettings RegCivilSettings { get; set; }
-        public RegCivilService(INodeServices nodeServices,
-                    IOptions<RegCivilSettings> settings)
+        private readonly IPuppet _puppet;
+        private readonly RegCivilSettings _settings;
+        public RegCivilService(
+            IPuppet puppet,
+            IOptions<RegCivilSettings> settings)
         {
-            RegCivilSettings = settings?.Value;
-            _nodeServices = nodeServices;
+            _puppet = puppet;
+            _settings = settings?.Value;
         }
-        //public async Task<bool> Init()
-        //{
-        //    var RegCivilData = await VAsync().ConfigureAwait(false);
-        //    while (!RegCivilData.IsValid)
-        //    {
-        //        await CloseBW().ConfigureAwait(false);
-        //        RegCivilData = await VAsync().ConfigureAwait(false);
-        //    }
-        //    RegCivilSettings.BrowserWSEndpoint = RegCivilData.BrowserWSEndpoint;
-        //    RegCivilSettings.Captcha = RegCivilData.Captcha;
-        //    return true;
-        //}
-        public async Task<RegCivil> VAsync()
+//        public async Task Init()
+//        {
+//            var eval = true;
+//            while (eval)
+//            {
+//                var open = true;
+//                Page page = null;
+//                while (open)
+//                {
+//                    try
+//                    {
+//                        page = await _puppet
+//                        .GetPageAsync(_settings.Url, _settings.Block)
+//                        .ConfigureAwait(false);
+//                        open = false;
+//                    }
+//                    catch (TimeoutException ex)
+//                    {
+//                        Console.WriteLine(ex);
+//                        await page.Browser.CloseAsync().ConfigureAwait(false);
+//                    }
+//                };
+//                var captcha = await _puppet
+//                    .GetCaptchaAsync(page, "[id$='captchaPanel'] > img", "RegCivil")
+//                    .ConfigureAwait(false);
+//                var body = GetBody(_settings.InitRut, _settings.InitCarnet, captcha);
+//                var response = await page.EvaluateFunctionAsync<string>(
+//@$"async () => await fetch('{_settings.Url.AbsoluteUri}', {{
+//    method: 'POST',
+//    headers: new Headers({{ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }}),
+//    body: `{body}&javax.faces.ViewState=${{document.querySelector(""[id$='ViewState']"").value}}`
+//}}).then(response => response.text())")
+//        .ConfigureAwait(false);
+//                eval = response.Contains("Sesión no válida", StringComparison.InvariantCulture)
+//                        || response.Contains("Error", StringComparison.InvariantCulture)
+//                        || response.Contains("Por favor, Intente nuevamente", StringComparison.InvariantCulture)
+//                        || response.Contains("La información ingresada no corresponde en nuestros registros",
+//                        StringComparison.InvariantCulture);
+//                if (!eval)
+//                {
+//                    _settings.WSE = page.Browser.WebSocketEndpoint;
+//                    _settings.Captcha = captcha;
+//                }
+//                else
+//                {
+//                    await page.Browser.CloseAsync().ConfigureAwait(false);
+//                }
+//            }
+//        }
+        public async Task<bool> IsValidAsync(int rut, int carnet, bool isExt)
         {
-            RegCivilSettings.Close = false;
-            var eval = true;
-            var response = string.Empty;
+            bool eval = true, valid = false;
             while (eval)
             {
-                response = await _nodeServices
-                    .InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings)
+                var open = true;
+                Page page = null;
+                while (open)
+                {
+                    try
+                    {
+                        page = await _puppet
+                        .GetPageAsync(_settings.Url, _settings.Block)
+                        .ConfigureAwait(false);
+                        open = false;
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        Console.WriteLine(ex);
+                        await page.Browser.CloseAsync().ConfigureAwait(false);
+                    }
+                };
+                var captcha = await _puppet
+                    .GetCaptchaAsync(page, "[id$='captchaPanel'] > img", "RegCivil")
                     .ConfigureAwait(false);
-                eval = response.Contains("Error", System.StringComparison.InvariantCulture);
+                var body = GetBody(rut, carnet, captcha, isExt);
+                var response = await page.EvaluateFunctionAsync<string>(
+@$"async () => await fetch('{_settings.Url.AbsoluteUri}', {{
+    method: 'POST',
+    headers: new Headers({{ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }}),
+    body: `{body}&javax.faces.ViewState=${{document.querySelector(""[id$='ViewState']"").value}}`
+}}).then(r => r.text())")
+                    .ConfigureAwait(false);
+                var notValid = response.Contains("La información ingresada no corresponde en nuestros registros",
+                        StringComparison.InvariantCulture);
+                valid = response.Contains("Vigente", StringComparison.InvariantCulture);
+                //eval = (response.Contains("Sesión no válida", StringComparison.InvariantCulture)
+                //    || response.Contains("Error", StringComparison.InvariantCulture))
+                //    || response.Contains("Por favor, Intente nuevamente", StringComparison.InvariantCulture)
+                //    ||  || (response.Contains("La información ingresada no corresponde en nuestros registros",
+                //        StringComparison.InvariantCulture))
+                eval = notValid == valid;
+                await page.Browser.CloseAsync().ConfigureAwait(false);
             }
-            var data = JsonConvert.DeserializeObject<RegCivil>(response);
-            return data;
+            return valid;
         }
-        //public async Task CloseBW()
-        //{
-        //    RegCivilSettings.Close = true;
-        //    await _nodeServices.InvokeAsync<string>("src/scripts/node/ps/RegCivil.js", RegCivilSettings).ConfigureAwait(false);
-        //    return;
-        //}
-        public async Task<bool> Test()
+        public static string GetBody(int rut, int carnet, string captcha, bool ext = false)
         {
-            var data = await VAsync().ConfigureAwait(false);
-            return data.IsValid;
-        }
-        public async Task<bool> IsValid(int rut, int carnet, bool isExt)
-        {
-            RegCivilSettings.Rut = RUT.Format(rut, false);
-            RegCivilSettings.Carnet = carnet;
-            RegCivilSettings.IsExt = isExt;
-            return await Test().ConfigureAwait(false);
+            var suffix = ext ? "_EXT" : "";
+            var parameters = new Dictionary<string, string>
+                {
+                    { "form", "form" },
+                    { "form:captchaUrl", "initial" },
+                    { "form:run", RUT.Format(rut,false) },
+                    { "form:selectDocType", $"CEDULA{suffix}" },
+                    { "form:docNumber", carnet.ToString(CultureInfo.InvariantCulture) },
+                    { "form:inputCaptcha", captcha },
+                    { "form:buttonHidden", "" }
+                };
+            return string.Join("&", parameters.Select(p =>
+                    string.Format(CultureInfo.InvariantCulture,
+                    "{0}={1}", p.Key.Replace(":", "%3A",
+                    StringComparison.InvariantCultureIgnoreCase), p.Value)));
         }
     }
     public class RegCivilSettings
     {
-        public string AcKey { get; set; }
-        public string Rut { get; set; }
-        public int Carnet { get; set; }
-        public string BrowserWSEndpoint { get; internal set; }
+        public Uri Url { get; set; }
+        public int InitRut { get; set; }
+        public int InitCarnet { get; set; }
         public string Captcha { get; set; }
-        public bool Close { get; set; }
-        public bool IsExt { get; set; }
-    }
-    public class RegCivil
-    {
-        public bool IsValid { get; set; }
-        public string BrowserWSEndpoint { get; set; }
-        public bool Close { get; set; }
-        public string Captcha { get; set; }
+        public string WSE { get; set; }
+        public List<string> Block { get; } = new List<string>{
+                    "google",
+                    "css",
+                    "img",
+                    "assets"
+                };
     }
 }

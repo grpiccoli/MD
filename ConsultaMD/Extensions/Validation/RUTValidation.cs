@@ -10,7 +10,7 @@ namespace ConsultaMD.Extensions.Validation
     {
         public override bool IsValid(object value)
         {
-            var parts = Extensions.RUT.Unformat(value?.ToString());
+            var parts = RUT.Unformat(value?.ToString());
             return parts != null && parts.Value.rut > 900_000 && parts.Value.rut < 30_000_000;
         }
 

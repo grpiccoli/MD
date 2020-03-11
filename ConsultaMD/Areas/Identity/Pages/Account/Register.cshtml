@@ -9,7 +9,7 @@
 <div class="row mb-0">
     <partial name="_LeftIconTile" model='"Patient"' />
     <div class="col m6 s12 h-100v" data-simplebar>
-        <form id="register" asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on" data-parsley-validate>
+        <form id="register" asp-route-returnUrl="@Model.ReturnUrl" method="post" autocomplete="on">
             <h3 class="center-align">¡Regístrate!</h3>
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="input-field col s12">
@@ -22,17 +22,17 @@
                 <span asp-validation-for="Input.IsExt" class="text-danger"></span>
             </div>
             <div class="input-field col s12">
-                <input asp-for="Input.RUT" class="validate" autocomplete="username" data-parsley-rut />
+                <input asp-for="Input.RUT" class="validate" autocomplete="username" />
                 <label asp-for="Input.RUT"></label>
                 <span asp-validation-for="Input.RUT" class="text-danger"></span>
             </div>
-            <div class="input-field col s12" style="display:none;">
+            @*<div class="input-field col s12" style="display:none;">
                 <input asp-for="Input.Name" class="validate" autocomplete="cc-name" />
                 <label asp-for="Input.Name"></label>
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
-            </div>
-            <div class="input-field col s12" style="display:none;">
-                <input asp-for="Input.CarnetId" class="validate" data-parsley-carnet />
+            </div>*@
+            <div class="input-field col s12">
+                <input asp-for="Input.CarnetId" class="validate" />
                 <label asp-for="Input.CarnetId"></label>
                 <span asp-validation-for="Input.CarnetId" class="text-danger"></span>
                 <ul class="collapsible">

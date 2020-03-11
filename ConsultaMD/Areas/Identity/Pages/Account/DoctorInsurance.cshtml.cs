@@ -42,7 +42,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [BindProperty]
         public DoctorInsuranceInputModel Input { get; set; }
         //Exclude FONASA, added during registry
-        public string InsuranceList { get; } = JsonConvert.SerializeObject(EnumUtils.Enum2Ms<Insurance>("Name").Where(i => i.value > 1));
+        public string InsuranceList { get; } = JsonConvert.SerializeObject(EnumUtils.Enum2Ms<Insurance>("Name").Where(i => i.Value > 1));
         public Uri ReturnUrl { get; set; }
         public async Task<IActionResult> OnGetAsync(Uri returnUrl = null)
         {

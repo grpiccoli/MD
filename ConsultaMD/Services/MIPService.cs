@@ -20,37 +20,22 @@ namespace ConsultaMD.Services
             _fonasa = fonasa;
         }
         public async Task<bool> Validate(int insurance, int rut, string pwd) {
-            switch (insurance)
+            return insurance switch
             {
-                case 0:
-                    return true;
-                case 1:
-                    return await Fonasa(rut).ConfigureAwait(false);
-                //Banmédica
-                case 2:
-                    return await Banmedica(rut, pwd).ConfigureAwait(false);
-                //Colmena
-                case 3:
-                    return await Colmena(rut, pwd).ConfigureAwait(false);
-                //Consalud
-                case 4:
-                    return await Consalud(rut, pwd).ConfigureAwait(false);
-                //Cruz Blanca
-                case 5:
-                    return await CruzBlanca(rut, pwd).ConfigureAwait(false);
-                //Nueva Más Vida
-                case 6:
-                    return await NuevaMasvida(rut, pwd).ConfigureAwait(false);
-                //Vida Tres
-                case 7:
-                    return await Vida3(rut, pwd).ConfigureAwait(false);
-                default:
-                    return false;
-            }
+                0 => true,
+                1 => await Fonasa(rut).ConfigureAwait(false),
+                2 => await Banmedica(rut, pwd).ConfigureAwait(false),
+                3 => await Colmena(rut, pwd).ConfigureAwait(false),
+                4 => await Consalud(rut, pwd).ConfigureAwait(false),
+                5 => await CruzBlanca(rut, pwd).ConfigureAwait(false),
+                6 => await NuevaMasvida(rut, pwd).ConfigureAwait(false),
+                7 => await Vida3(rut, pwd).ConfigureAwait(false),
+                _ => false
+            };
         }
         private async Task<bool> Fonasa(int run)
         {
-            var fonasa = await _fonasa.GetById(run).ConfigureAwait(false);
+            var fonasa = await _fonasa.GetByIdAsync(run).ConfigureAwait(false);
             if (!string.IsNullOrWhiteSpace(fonasa?.ExtGrupoIng)) return true;
             return false;
         }
@@ -93,37 +78,33 @@ namespace ConsultaMD.Services
                 formArray["txt_pass"] = pwd;
                 formArray["ddl_listado"] = "/";
 
-                using (FormUrlEncodedContent formContent = new FormUrlEncodedContent(formArray))
-                using (HttpClientHandler signinHandler = new HttpClientHandler
+                using FormUrlEncodedContent formContent = new FormUrlEncodedContent(formArray);
+                using HttpClientHandler signinHandler = new HttpClientHandler
                 {
                     CookieContainer = cookieContainer,
                     UseCookies = true
-                })
-                using (HttpClient signinClient = new HttpClient(signinHandler))
-                {
-                    signinClient.DefaultRequestHeaders.Add("Accept",
-                        "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3");
-                    signinClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
-                    signinClient.DefaultRequestHeaders.Add("Accept-Lenguage", "es,en-US;q=0.9,en;q=0.8");
-                    signinClient.DefaultRequestHeaders.Add("Cache-Control", "max-age=0");
-                    signinClient.DefaultRequestHeaders.Add("Connection", "keep-alive");
-                    //signinClient.DefaultRequestHeaders.Add("Content-Length", "1381");
-                    //signinClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
-                    signinClient.DefaultRequestHeaders.Add("Host", "www.isaprebanmedica.cl");
-                    signinClient.DefaultRequestHeaders.Add("Origin", "https://www.isaprebanmedica.cl");
-                    signinClient.DefaultRequestHeaders.Add("Referer", "https://www.isaprebanmedica.cl/LoginBanmedica.aspx");
-                    signinClient.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "navigate");
-                    signinClient.DefaultRequestHeaders.Add("Sec-Fetch-Site", "same-origin");
-                    signinClient.DefaultRequestHeaders.Add("Sec-Fetch-User", "?1");
-                    signinClient.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
+                };
+                using HttpClient signinClient = new HttpClient(signinHandler);
+                signinClient.DefaultRequestHeaders.Add("Accept",
+"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3");
+                signinClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+                signinClient.DefaultRequestHeaders.Add("Accept-Lenguage", "es,en-US;q=0.9,en;q=0.8");
+                signinClient.DefaultRequestHeaders.Add("Cache-Control", "max-age=0");
+                signinClient.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                //signinClient.DefaultRequestHeaders.Add("Content-Length", "1381");
+                //signinClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
+                signinClient.DefaultRequestHeaders.Add("Host", "www.isaprebanmedica.cl");
+                signinClient.DefaultRequestHeaders.Add("Origin", "https://www.isaprebanmedica.cl");
+                signinClient.DefaultRequestHeaders.Add("Referer", "https://www.isaprebanmedica.cl/LoginBanmedica.aspx");
+                signinClient.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "navigate");
+                signinClient.DefaultRequestHeaders.Add("Sec-Fetch-Site", "same-origin");
+                signinClient.DefaultRequestHeaders.Add("Sec-Fetch-User", "?1");
+                signinClient.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
 
-                    using (var signinResponse = await signinClient.PostAsync(loginUri, formContent).ConfigureAwait(false))
-                    {
-                        if (signinResponse.StatusCode == HttpStatusCode.Found)
-                        {
-                            return true;
-                        }
-                    }
+                using var signinResponse = await signinClient.PostAsync(loginUri, formContent).ConfigureAwait(false);
+                if (signinResponse.StatusCode == HttpStatusCode.Found)
+                {
+                    return true;
                 }
             }
             return false;
@@ -158,13 +139,11 @@ namespace ConsultaMD.Services
             using (HttpClient client = new HttpClient(setHandler))
             {
                 client.DefaultRequestHeaders.Add("Referer", "https://www.colmena.cl/afiliados/");
-                using (var response = await client.PostAsync(uri, httpContent).ConfigureAwait(false))
-                {
-                    string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var json = JObject.Parse(jsonResponse);
-                    string codigo = (string)json.SelectToken("codigoRetorno");
-                    if (codigo == "0") return true;
-                }
+                using var response = await client.PostAsync(uri, httpContent).ConfigureAwait(false);
+                string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var json = JObject.Parse(jsonResponse);
+                string codigo = (string)json.SelectToken("codigoRetorno");
+                if (codigo == "0") return true;
             }
             return false;
         }
@@ -199,15 +178,13 @@ namespace ConsultaMD.Services
             using (HttpClient client = new HttpClient(handler))
             {
                 client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                using (var doc = await parser.ParseDocumentAsync(await response.Content
-                    .ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
+                using var response = await client.PostAsync(uri, formContent).ConfigureAwait(false);
+                using var doc = await parser.ParseDocumentAsync(await response.Content
+                    .ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false);
+                var test = doc.GetElementById("esWeb");
+                if (test == null)
                 {
-                    var test = doc.GetElementById("esWeb");
-                    if (test == null)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
@@ -243,15 +220,13 @@ namespace ConsultaMD.Services
             using (HttpClient client = new HttpClient(handler))
             {
                 client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                using (var doc = await parser.ParseDocumentAsync(await response.Content
-                    .ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
+                using var response = await client.PostAsync(uri, formContent).ConfigureAwait(false);
+                using var doc = await parser.ParseDocumentAsync(await response.Content
+                    .ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false);
+                var test = doc.GetElementById("~~~");
+                if (test != null)
                 {
-                    var test = doc.GetElementById("~~~");
-                    if (test != null)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
@@ -287,12 +262,10 @@ namespace ConsultaMD.Services
                 //client.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "navigate");
                 //client.DefaultRequestHeaders.Add("Sec-Fetch-Site", "same-origin");
                 //client.DefaultRequestHeaders.Add("Sec-Fetch-User", "?1");
-                using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
+                using var response = await client.PostAsync(uri, formContent).ConfigureAwait(false);
+                if (response.RequestMessage.RequestUri.ToString() == "https://sv.nuevamasvida.cl/sucursal_virtual/")
                 {
-                    if (response.RequestMessage.RequestUri.ToString() == "https://sv.nuevamasvida.cl/sucursal_virtual/")
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
@@ -328,15 +301,13 @@ namespace ConsultaMD.Services
             using (HttpClient client = new HttpClient(postHandler))
             {
                 client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                using (var response = await client.PostAsync(post, formContent).ConfigureAwait(false))
-                using (var doc = await parser.ParseDocumentAsync(await response.Content
-                    .ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
+                using var response = await client.PostAsync(post, formContent).ConfigureAwait(false);
+                using var doc = await parser.ParseDocumentAsync(await response.Content
+                    .ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false);
+                var test = doc.GetElementById("~~~");
+                if (test != null)
                 {
-                    var test = doc.GetElementById("~~~");
-                    if (test != null)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;

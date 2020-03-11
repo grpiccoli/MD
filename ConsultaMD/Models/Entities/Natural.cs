@@ -14,7 +14,7 @@ namespace ConsultaMD.Models.Entities
             LastFather = fonasa?.ExtApellidoPat;
             LastMother = fonasa.ExtApellidoMat;
             Names = fonasa.ExtNombres;
-            FullNameFirst = string.Join(" ", new List<string> { Names, LastFather, LastMother }.Where(l => !string.IsNullOrWhiteSpace(l)));
+            FullNameFirst = fonasa.Nombre.ToUpperInvariant();
             FullLastFirst = string.Join(" ", new List<string> { LastFather, LastMother, Names }.Where(l => !string.IsNullOrWhiteSpace(l)));
             Sex = fonasa.ExtSexo == "M";
             Birth = DateTime.ParseExact(fonasa.ExtFechaNacimi, "yyyyMMdd", CultureInfo.InvariantCulture);

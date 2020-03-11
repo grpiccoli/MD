@@ -24,12 +24,12 @@ namespace ConsultaMD.Controllers
     public class ConsaludController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly int _waitTime;
         private readonly IStringLocalizer<ConsaludController> _localizer;
         public ConsaludController(
-            IHostingEnvironment hostingEnvironment,
+            IWebHostEnvironment hostingEnvironment,
             UserManager<ApplicationUser> userManager,
             IStringLocalizer<ConsaludController> localizer,
             ApplicationDbContext context)
@@ -66,43 +66,36 @@ namespace ConsultaMD.Controllers
                     var loginCookie = getCookies.GetCookies(login).Cast<System.Net.Cookie>().FirstOrDefault();
 
                     var setCookies = new CookieContainer();
-                    using (HttpClientHandler setHandler = new HttpClientHandler
+                    HttpClientHandler httpClientHandler = new HttpClientHandler
                     {
                         CookieContainer = setCookies,
                         UseCookies = true,
                         UseDefaultCredentials = false
-                    })
-                    {
-                        var uri = new Uri("https://clientes.consalud.cl/auw.aspx");
-                        setCookies.Add(uri, loginCookie);
+                    };
+                    using HttpClientHandler setHandler = httpClientHandler;
+                    var uri = new Uri("https://clientes.consalud.cl/auw.aspx");
+                    setCookies.Add(uri, loginCookie);
 
-                        var loginFormValues = new Dictionary<string, string>
+                    var loginFormValues = new Dictionary<string, string>
                         {
                             { "esWeb", "1" },
                             { "usr", rut },
                             { "pwd", pwd },
                             { "ingresar", "Ingresar" }
                         };
-                        var formContent = new FormUrlEncodedContent(loginFormValues);
+                    var formContent = new FormUrlEncodedContent(loginFormValues);
 
-                        using (HttpClient client = new HttpClient(handler))
-                        {
-                            handler.Dispose();
-                            client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
-                            using (var response = await client.PostAsync(uri, formContent).ConfigureAwait(false))
-                            {
-                                formContent.Dispose();
-                                var parser = new HtmlParser();
-                                using (var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false))
-                                {
-                                    var test = doc.GetElementById("esWeb");
-                                    if (test == null)
-                                    {
-                                        return Ok();
-                                    }
-                                }
-                            }
-                        }
+                    using HttpClient client = new HttpClient(handler);
+                    handler.Dispose();
+                    client.DefaultRequestHeaders.Add("Referer", "https://clientes.consalud.cl/Default.aspx");
+                    using var response = await client.PostAsync(uri, formContent).ConfigureAwait(false);
+                    formContent.Dispose();
+                    var parser = new HtmlParser();
+                    using var doc = await parser.ParseDocumentAsync(await response.Content.ReadAsStringAsync().ConfigureAwait(false)).ConfigureAwait(false);
+                    var test = doc.GetElementById("esWeb");
+                    if (test == null)
+                    {
+                        return Ok();
                     }
                 }
             }

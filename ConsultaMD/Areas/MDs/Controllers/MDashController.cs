@@ -171,8 +171,8 @@ namespace ConsultaMD.Areas.MDs.Controllers
                 .Select(i =>
                 new MsSelect
                 {
-                    value = i.Id,
-                    text = $"{i.MedicalAttentionMedium.Place.Name}, {i.MedicalAttentionMedium.Place.Commune.Name}"
+                    Value = i.Id,
+                    Text = $"{i.MedicalAttentionMedium.Place.Name}, {i.MedicalAttentionMedium.Place.Commune.Name}"
                 }))
             };
             return View(model);

@@ -17,85 +17,82 @@ namespace ConsultaMD.Extensions
         {
             var tipo = typeof(TEnum);
             var nombre = tipo.ToString().Split('.').Last();
-            switch (name)
+            return name switch
             {
-                case "Description":
-                    return new MultiSelectList(
+                "Description" =>
+                    new MultiSelectList(
                         from TEnum s in Enum.GetValues(tipo)
                         select new
                         { Value = s.ToString("d", null), Text = s.GetAttrDescription() },
-                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
-                case "Name":
-                    return new MultiSelectList(
+                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null),
+                "Name" =>
+                    new MultiSelectList(
                         from TEnum s in Enum.GetValues(tipo)
                         select new
                         { Value = s.ToString("d", null), Text = s.GetAttrName() },
-                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
-                default:
-                    return new MultiSelectList(
+                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null),
+                _ =>
+                    new MultiSelectList(
                         from TEnum s in Enum.GetValues(tipo)
                         select new
                         { Value = s.ToString("d", null), Text = s.ToString() },
-                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null);
-            }
+                        Filters != null && Filters.ContainsKey(nombre) ? Filters[nombre] : null)
+            };
         }
 
         public static IEnumerable<SelectListItem> Enum2Select<TEnum>(string name = null)
             where TEnum : struct, IConvertible, IFormattable
         {
-            switch (name)
+            return name switch
             {
-                case "Name":
-                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                "Name" =>
+                    ((TEnum[])Enum.GetValues(typeof(TEnum)))
                         .Select(t => new SelectListItem
                         {
                             Value = t.ToString("d", null),
                             Text = t.GetAttrName()
-                        }).ToList();
-                case "Description":
-                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                        }).ToList(),
+                "Description" =>
+                    ((TEnum[])Enum.GetValues(typeof(TEnum)))
                         .Select(t => new SelectListItem
                         {
                             Value = t.ToString("d", null),
                             Text = t.GetAttrDescription()
-                        }).ToList();
-                default:
-                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                        }).ToList(),
+                _ =>
+                    ((TEnum[])Enum.GetValues(typeof(TEnum)))
                         .Select(t => new SelectListItem
                         {
                             Value = t.ToString("d", null),
                             Text = t.ToString()
-                        }).ToList();
-            }
+                        }).ToList()
+            };
         }
 
         public static IEnumerable<MsSelect> Enum2Ms<TEnum>(string name = null)
             where TEnum : struct, IConvertible, IFormattable
         {
-            switch (name)
+            return name switch
             {
-                case "Name":
-                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                "Name" => ((TEnum[])Enum.GetValues(typeof(TEnum)))
                         .Select(t => new MsSelect
                         {
-                            value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
-                            text = t.GetAttrName()
-                        }).ToList();
-                case "Description":
-                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                            Value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
+                            Text = t.GetAttrName()
+                        }).ToList(),
+                "Description" => ((TEnum[])Enum.GetValues(typeof(TEnum)))
                         .Select(t => new MsSelect
                         {
-                            value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
-                            text = t.GetAttrDescription()
-                        }).ToList();
-                default:
-                    return ((TEnum[])Enum.GetValues(typeof(TEnum)))
+                            Value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
+                            Text = t.GetAttrDescription()
+                        }).ToList(),
+                _ => ((TEnum[])Enum.GetValues(typeof(TEnum)))
                         .Select(t => new MsSelect
                         {
-                            value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
-                            text = t.ToString()
-                        }).ToList();
-            }
+                            Value = Convert.ToInt32(t, CultureInfo.InvariantCulture),
+                            Text = t.ToString()
+                        }).ToList()
+            };
         }
 
         public static MultiSelectList Enum2MultiSelect<TEnum>(string name = null)
@@ -103,24 +100,21 @@ namespace ConsultaMD.Extensions
         {
             var tipo = typeof(TEnum);
             var nombre = tipo.ToString().Split('.').Last();
-            switch (name)
+            return name switch
             {
-                case "Description":
-                        return new MultiSelectList(
+                "Description" => new MultiSelectList(
                             from TEnum s in Enum.GetValues(tipo)
                             select new
-                            { Value = s.ToString("d", null), Text = s.GetAttrDescription() });
-                case "Name":
-                        return new MultiSelectList(
+                            { Value = s.ToString("d", null), Text = s.GetAttrDescription() }),
+                "Name" => new MultiSelectList(
                             from TEnum s in Enum.GetValues(tipo)
                             select new
-                            { Value = s.ToString("d", null), Text = s.GetAttrName() });
-                default:
-                        return new MultiSelectList(
+                            { Value = s.ToString("d", null), Text = s.GetAttrName() }),
+                _ => new MultiSelectList(
                             from TEnum s in Enum.GetValues(tipo)
                             select new
-                            { Value = s.ToString("d", null), Text = s.ToString() });
-            }
+                            { Value = s.ToString("d", null), Text = s.ToString() })
+            };
         }
 
         public static string GetAttrDescription<TEnum>(this TEnum e)
@@ -175,7 +169,7 @@ namespace ConsultaMD.Extensions
     }
     public class MsSelect
     {
-        public int value { get; set; }
-        public string text { get; set; }
+        public int Value { get; set; }
+        public string Text { get; set; }
     }
 }

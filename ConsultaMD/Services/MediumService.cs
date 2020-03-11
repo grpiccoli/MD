@@ -85,34 +85,32 @@ namespace ConsultaMD.Services
         {
             var url = $"https://maps.googleapis.com/maps/api/place/details/json?place_id={id}&fields=name,url,geometry,formatted_address,photo,address_components&key=AIzaSyDkCLRdkB6VyOXs-Uz_MFJ8Ym9Ji1Xp3rA";
             var uri = new Uri(url);
-            using (HttpClient client = new HttpClient())
+            using HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync(uri).ConfigureAwait(false);
+            JObject json = JObject.Parse(response);
+            JToken result = json["result"];
+            JToken location = result["geometry"]["location"];
+            var addr = result["address_components"];
+            var comm = string.Empty;
+            foreach (var comp in addr)
             {
-                var response = await client.GetStringAsync(uri).ConfigureAwait(false);
-                JObject json = JObject.Parse(response);
-                JToken result = json["result"];
-                JToken location = result["geometry"]["location"];
-                var addr = result["address_components"];
-                var comm = string.Empty;
-                foreach(var comp in addr)
+                if (comp["types"].ToString().Contains("locality", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    if (comp["types"].ToString().Contains("locality", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        comm = (string)comp["long_name"];
-                    }
+                    comm = (string)comp["long_name"];
                 }
-                var commune = await _context.Communes.SingleOrDefaultAsync(c => c.Name == comm).ConfigureAwait(false);
-                return new Place 
-                {
-                    Id = id,
-                    Latitude = double.Parse((string)location["lat"], CultureInfo.InvariantCulture),
-                    Longitude = double.Parse((string)location["lng"], CultureInfo.InvariantCulture),
-                    Name = (string)result["name"],
-                    PhotoId = (string)result["photos"][0]["photo_reference"],
-                    CId = ((string)result["url"]).Split("?")[1],
-                    CommuneId = commune.Id,
-                    Address = (string)result["formatted_address"]
-                };
             }
+            var commune = await _context.Communes.SingleOrDefaultAsync(c => c.Name == comm).ConfigureAwait(false);
+            return new Place
+            {
+                Id = id,
+                Latitude = double.Parse((string)location["lat"], CultureInfo.InvariantCulture),
+                Longitude = double.Parse((string)location["lng"], CultureInfo.InvariantCulture),
+                Name = (string)result["name"],
+                PhotoId = (string)result["photos"][0]["photo_reference"],
+                CId = ((string)result["url"]).Split("?")[1],
+                CommuneId = commune.Id,
+                Address = (string)result["formatted_address"]
+            };
         }
         public async Task Delete(int id) 
         {
@@ -134,13 +132,13 @@ namespace ConsultaMD.Services
                 await _context.SaveChangesAsync().ConfigureAwait(false);
             }
         }
-        public async Task Enable(int id)
-        {
+        //public async Task Enable(int id)
+        //{
 
-        }
-        public async Task Disable(int id)
-        {
+        //}
+        //public async Task Disable(int id)
+        //{
 
-        }
+        //}
     }
 }

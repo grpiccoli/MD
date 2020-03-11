@@ -2,8 +2,7 @@
 {
     public class FonasaWebPay
     {
-        public string Total { get; set; }
-        public string Copago { get; set; }
-        public string TokenWs { get; set; }
+        public int Total { get; set; }
+        public int Copago { get; set; }
     }
 }

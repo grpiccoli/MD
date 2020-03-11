@@ -25,37 +25,37 @@ namespace ConsultaMD.Data
         }
         public async Task Seed()
         {
-            using (var transaction = _context.Database.BeginTransaction())
-            using (var roleStore = new RoleStore<ApplicationRole>(_context))
-            using (var userStore = new UserStore<ApplicationUser>(_context))
-                    if (!_context.ApplicationUserRoles.Any())
+            using var transaction = _context.Database.BeginTransaction();
+            using var roleStore = new RoleStore<ApplicationRole>(_context);
+            using var userStore = new UserStore<ApplicationUser>(_context);
+            if (!_context.ApplicationUserRoles.Any())
+            {
+                if (!_context.Users.Any())
+                {
+                    if (!_context.ApplicationRoles.Any())
                     {
-                        if (!_context.Users.Any())
+                        var applicationRoles = new List<ApplicationRole> { };
+                        foreach (var item in RoleData.ApplicationRoles)
                         {
-                            if (!_context.ApplicationRoles.Any())
-                            {
-                                var applicationRoles = new List<ApplicationRole> { };
-                                foreach (var item in RoleData.ApplicationRoles)
+                            applicationRoles.Add(
+                                new ApplicationRole
                                 {
-                                    applicationRoles.Add(
-                                        new ApplicationRole
-                                        {
-                                            CreatedDate = DateTime.Now,
-                                            Name = item,
-                                            Description = "",
-                                            NormalizedName = item.ToLower(new CultureInfo("es-CL"))
-                                        });
-                                };
+                                    CreatedDate = DateTime.Now,
+                                    Name = item,
+                                    Description = "",
+                                    NormalizedName = item.ToLower(new CultureInfo("es-CL"))
+                                });
+                        };
 
-                                foreach (var role in applicationRoles)
-                                {
-                                    await _context.ApplicationRoles.AddAsync(role).ConfigureAwait(false);
-                                }
-                                await _context.SaveChangesAsync().ConfigureAwait(false);
-                            }
+                        foreach (var role in applicationRoles)
+                        {
+                            await _context.ApplicationRoles.AddAsync(role).ConfigureAwait(false);
+                        }
+                        await _context.SaveChangesAsync().ConfigureAwait(false);
+                    }
 
-                            var users = new UserInitializerVM[]
-                            {
+                    var users = new UserInitializerVM[]
+                    {
                                 new UserInitializerVM
                                 {
                                     Names = "GUILLERMO ANTONIO",
@@ -119,93 +119,93 @@ namespace ConsultaMD.Data
                                 //    Key = "test2019",
                                 //    Claims = new string[] { "" }
                                 //},
-                            };
-                            foreach (var item in users)
+                    };
+                    foreach (var item in users)
+                    {
+                        var carnet = new Carnet
+                        {
+                            Id = item.Carnet,
+                            NaturalId = item.RUN
+                        };
+                        await _context.Carnets.AddAsync(carnet).ConfigureAwait(false);
+                        //var digitalsignature = new DigitalSignature
+                        //{
+                        //    Id = item.Carnet,
+                        //    NaturalId = item.RUN
+                        //};
+                        //context.DigitalSignatures.Add(digitalsignature);
+                        var patient = new Patient
+                        {
+                            Insurance = item.Insurance,
+                            NaturalId = item.RUN,
+                            InsurancePassword = item.Key
+                        };
+                        if (item.Tramo != 0) patient.Tramo = item.Tramo;
+                        await _context.Patients.AddAsync(patient).ConfigureAwait(false);
+                        var natural = new Natural
+                        {
+                            Id = item.RUN,
+                            Carnet = carnet,
+                            CarnetId = carnet.Id,
+                            //DigitalSignatureId = carnet.Id,
+                            Patient = patient,
+                            Names = item.Names,
+                            LastFather = item.LastF,
+                            LastMother = item.LastM,
+                            FullLastFirst = $"{item.LastF} {item.LastM}, {item.Names}",
+                            FullNameFirst = $"{item.Names} {item.LastF} {item.LastM}",
+                            Sex = item.Sex,
+                            Birth = item.Birth,
+                            Discriminator = "Natural",
+                            Nationality = "CHILENA"
+                        };
+                        if (!string.IsNullOrWhiteSpace(item.Banmedica)) natural.BanmedicaName = item.Banmedica;
+                        await _context.People.AddAsync(natural).ConfigureAwait(false);
+                        var user = new ApplicationUser
+                        {
+                            UserName = RUT.Format(item.RUN),
+                            PhoneNumber = "+56 9 6841 9339",
+                            PhoneConfirmationTime = DateTime.Now.AddMinutes(5),
+                            PhoneNumberConfirmed = true,
+                            Email = item.Email,
+                            NormalizedEmail = _normalizer.NormalizeEmail(item.Email),
+                            MailConfirmationTime = DateTime.Now.AddMinutes(5),
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            SecurityStamp = Guid.NewGuid().ToString(),
+                            Person = natural
+                        };
+                        user.NormalizedUserName = _normalizer.NormalizeName(user.UserName);
+                        var hasher = new PasswordHasher<ApplicationUser>();
+                        var hashedPassword = hasher.HashPassword(user, item.Key);
+                        user.PasswordHash = hashedPassword;
+
+                        if (!string.IsNullOrWhiteSpace(item.Claim))
+                        {
+                            user.Claims.Add(new IdentityUserClaim<string>
                             {
-                                var carnet = new Carnet
-                                {
-                                    Id = item.Carnet,
-                                    NaturalId = item.RUN
-                                };
-                                await _context.Carnets.AddAsync(carnet).ConfigureAwait(false);
-                                //var digitalsignature = new DigitalSignature
-                                //{
-                                //    Id = item.Carnet,
-                                //    NaturalId = item.RUN
-                                //};
-                                //context.DigitalSignatures.Add(digitalsignature);
-                                var patient = new Patient
-                                {
-                                    Insurance = item.Insurance,
-                                    NaturalId = item.RUN,
-                                    InsurancePassword = item.Key
-                                };
-                                if (item.Tramo != 0) patient.Tramo = item.Tramo;
-                                await _context.Patients.AddAsync(patient).ConfigureAwait(false);
-                                var natural = new Natural
-                                {
-                                    Id = item.RUN,
-                                    Carnet = carnet,
-                                    CarnetId = carnet.Id,
-                                    //DigitalSignatureId = carnet.Id,
-                                    Patient = patient,
-                                    Names = item.Names,
-                                    LastFather = item.LastF,
-                                    LastMother = item.LastM,
-                                    FullLastFirst = $"{item.LastF} {item.LastM}, {item.Names}",
-                                    FullNameFirst = $"{item.Names} {item.LastF} {item.LastM}",
-                                    Sex = item.Sex,
-                                    Birth = item.Birth,
-                                    Discriminator = "Natural",
-                                    Nationality = "CHILENA"
-                                };
-                                if (!string.IsNullOrWhiteSpace(item.Banmedica)) natural.BanmedicaName = item.Banmedica;
-                                await _context.People.AddAsync(natural).ConfigureAwait(false);
-                                var user = new ApplicationUser
-                                {
-                                    UserName = RUT.Format(item.RUN),
-                                    PhoneNumber = "+56 9 6841 9339",
-                                    PhoneConfirmationTime = DateTime.Now.AddMinutes(5),
-                                    PhoneNumberConfirmed = true,
-                                    Email = item.Email,
-                                    NormalizedEmail = _normalizer.Normalize(item.Email),
-                                    MailConfirmationTime = DateTime.Now.AddMinutes(5),
-                                    EmailConfirmed = true,
-                                    LockoutEnabled = false,
-                                    SecurityStamp = Guid.NewGuid().ToString(),
-                                    Person = natural
-                                };
-                                user.NormalizedUserName = _normalizer.Normalize(user.UserName);
-                                var hasher = new PasswordHasher<ApplicationUser>();
-                                var hashedPassword = hasher.HashPassword(user, item.Key);
-                                user.PasswordHash = hashedPassword;
-
-                                if (!string.IsNullOrWhiteSpace(item.Claim))
-                                {
-                                    user.Claims.Add(new IdentityUserClaim<string>
-                                    {
-                                        ClaimType = item.Claim,
-                                        ClaimValue = item.Claim
-                                    });
-                                }
-
-                                if (!string.IsNullOrWhiteSpace(item.Role))
-                                {
-                                    var roller = _context.Roles.SingleOrDefault(r => r.Name == item.Role);
-                                    user.UserRoles.Add(new ApplicationUserRole
-                                    {
-                                        UserId = user.Id,
-                                        RoleId = roller.Id
-                                    });
-                                }
-                                await _context.Users.AddAsync(user).ConfigureAwait(false);
-                            }
-                            //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures ON");
-                            await _context.SaveChangesAsync().ConfigureAwait(false);
-                            //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures OFF");
-                            transaction.Commit();
+                                ClaimType = item.Claim,
+                                ClaimValue = item.Claim
+                            });
                         }
+
+                        if (!string.IsNullOrWhiteSpace(item.Role))
+                        {
+                            var roller = _context.Roles.SingleOrDefault(r => r.Name == item.Role);
+                            user.UserRoles.Add(new ApplicationUserRole
+                            {
+                                UserId = user.Id,
+                                RoleId = roller.Id
+                            });
+                        }
+                        await _context.Users.AddAsync(user).ConfigureAwait(false);
                     }
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures ON");
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.DigitalSignatures OFF");
+                    transaction.Commit();
+                }
+            }
             return;
         }
     }

@@ -15,7 +15,6 @@ namespace ConsultaMD.Extensions
             IEnumerable<char> provider = domainsplit[0].ToCharArray().ToList();
             return $"{Mask(user)}@{Mask(provider)}.{domainsplit[1]}";
         }
-
         public static string Mask(IEnumerable<char> chars)
         {
             return $"{chars.Take(1).First().ToString(CultureInfo.InvariantCulture)}{new string('*', chars.Count() - 2)}{chars.Reverse().Take(1).First().ToString(CultureInfo.InvariantCulture)}";

@@ -1,4 +1,5 @@
 ﻿using ConsultaMD.Data;
+using ConsultaMD.Extensions;
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
 using ConsultaMD.Services;
@@ -66,7 +67,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     var result = _context.People.Update(person);
                     await _context.SaveChangesAsync().ConfigureAwait(false);
                     _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
-                    return await _redirect.Redirect(ReturnUrl, Input.RUT).ConfigureAwait(false);
+                    return await _redirect.Redirect(ReturnUrl, RUT.Format(user.PersonId)).ConfigureAwait(false);
                 }
             }
             // If we got this far, something failed, redisplay form
@@ -76,13 +77,13 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
     public class BillingInputModel
     {
         //[Required]
-        //[RUT(ErrorMessage = "RUT no v�lido")]
+        //[RUT(ErrorMessage = "RUT no válido")]
         //[RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
-        //[Display(Name = "RUT persona jur�dica")]
+        //[Display(Name = "RUT persona jurídica")]
         //public string RUTJ { get; set; }
-        [Required]
-        [RUT(ErrorMessage = "RUT persona natural")]
-        [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
+        //[Required]
+        //[RUT(ErrorMessage = "RUT persona natural")]
+        //[RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
         [Display(Name = "RUT representante")]
         public string RUT { get; set; }
         [DataType(DataType.Password)]

@@ -65,7 +65,7 @@
                          <a id="editProfile" class="btn-floating btn-small waves-effect waves-light teal darken-1">
                              <i class="material-icons" style="line-height:25px;font-size:1.5rem">create</i>
                          </a>
-                         <a href="#user" class="details"><img alt="profile picture" class="circle" src="~/home/getimg/@((int)ViewData["run"])" asp-append-version="true"></a>
+                         <a href="#user" class="details"><img alt="profile picture" class="circle" src="~/patients/search/getimg/@((int)ViewData["run"])" asp-append-version="true"></a>
                          <a href="#name" class="details"><span class="white-text name">@person.FullNameFirst</span></a>
                          <a href="#rut" class="details">
                              <span class="white-text input-field">
@@ -180,7 +180,7 @@
             <a href="#" onclick="document.getElementById('logout').submit();">
                 <i class="material-icons left">exit_to_app</i>Salir
             </a>
-            <form id="logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
+            <form id="logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
             </form>
         </li>
                 </ul>

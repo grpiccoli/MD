@@ -19,15 +19,29 @@ $.validator.unobtrusive.adapters.add("rut", [], function (options) {
 document.addEventListener('DOMContentLoaded', function () {
     $('#Payment').on('submit', function (e) {
         loaderStart();
-        setInterval(function () {
+        var waiting = setInterval(function () {
             M.toast({ html: 'Comprando bono y redirigiendo a pago, esto puede tardar varios minutos' });
         }, 10 * 1000);
         e.preventDefault();
         var url = $('#Payment').attr('action');
         console.log(url);
+        var type = $('#PaymentDetails_Type').val();
         $.post(url, $('#Payment').serializeArray(), function (response) {
             console.log(response);
-            window.location.href = 'https://webpay3g.transbank.cl:443/webpayserver/initTransaction?token_ws=' + response;
+            switch (type) {
+                case '0':
+                    window.location.href = response;
+                    break;
+                case '1':
+                    window.location.href = 'https://webpay3g.transbank.cl:443/webpayserver/initTransaction?token_ws=' + response;
+                    break;
+                default:
+                    alert('error inesperado');
+                    break;
+            }
+            ;
+            loaderStop();
+            clearInterval(waiting);
         });
     });
 });

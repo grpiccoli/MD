@@ -113,7 +113,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Insurance(ErrorMessage = "El RUT no está registrado en la previsión seleccionada")]
         public Insurance Insurance { get; set; }
 
-        public string InsuranceList { get; } = JsonConvert.SerializeObject(EnumUtils.Enum2Ms<Insurance>("Name").Where(e => e.value != 1));
+        public string InsuranceList { get; } = JsonConvert.SerializeObject(EnumUtils.Enum2Ms<Insurance>("Name").Where(e => e.Value != 1));
         //public IEnumerable<SelectListItem> InsuranceList { get; set; } = EnumUtils.Enum2Select<Insurance>("Name").Where(e => e.Value != "1");
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña de su Previsión")]

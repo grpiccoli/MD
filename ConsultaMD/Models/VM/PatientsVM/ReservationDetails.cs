@@ -2,6 +2,7 @@
 using ConsultaMD.Extensions.Validation;
 using ConsultaMD.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -70,7 +71,17 @@ namespace ConsultaMD.Models.VM
         }
         [Display(Name = "Detalles de pago")]
         [BindProperty]
-        public PaymentDetails PaymentDetails { get; private set; }
+        public PaymentDetails PaymentDetails 
+        { 
+            get 
+            {
+                return new PaymentDetails(Reservation);
+            }
+            private set 
+            {
+                PaymentDetails = value;
+            } 
+        }
     }
     public class PatientDetails
     {
@@ -102,10 +113,12 @@ namespace ConsultaMD.Models.VM
             Specialties = doctor.Specialties.Select(s => s.Specialty.Name);
             NaturalId = doctor.NaturalId;
             NaturalName = doctor.Natural.FullNameFirst;
+            Sex = doctor.Natural.Sex;
         }
         public int? Id { get; private set;  }
         public bool Sex { get; private set; }
         public IEnumerable<string> Specialties { get; private set; }
+        [Display(Name = "Especialidad(es)")]
         public string SpecialtyList {
             get
             {
@@ -180,11 +193,18 @@ namespace ConsultaMD.Models.VM
     }
     public class PaymentDetails
     {
+        public PaymentDetails(Reservation reservation)
+        {
+            if (reservation == null) throw new Exception();
+            var match = reservation.TimeSlot.Agenda.AgendaEvent.MediumDoctor.InsuranceLocations
+            .Any(i => i.InsuranceAgreement.Insurance == reservation.Patient.Insurance);
+            Type = match ? (int)reservation.Patient.Insurance : 0;
+        }
         [Required]
         [RUT(ErrorMessage = "RUT no válido")]
         [RegularExpression(@"[0-9\.]{7,10}-[0-9Kk]")]
         [Display(Name = "Ingrese RUT Titular de Tarjeta de Pago")]
         public string Rut { get; set; }
-        public int Type { get; private set; }
+        public int Type { get; set; }
     }
 }

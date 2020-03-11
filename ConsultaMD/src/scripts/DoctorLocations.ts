@@ -8,6 +8,21 @@
         mapTypeControl: false
     });
 
+    document.getElementById('add')
+        .addEventListener('click', () =>
+        {
+            $("#Input_More").val("true");
+            $("form").submit();
+        });
+
+    var end = document.getElementById('end');
+
+    if (end != null) {
+        end.addEventListener('click', () => {
+                $("#Input_More").val("false");
+                $("form").submit();
+            });
+    }
     var input = <HTMLInputElement>document.getElementById('pac-input');
 
     var options = {
@@ -60,9 +75,9 @@
         (infowindowContent.querySelector('#place-image') as HTMLImageElement).src = place.photos[0].getUrl({ 'maxWidth': 200 });
         infowindowContent.querySelector('#place-name').textContent = place.name;
         //infowindowContent.querySelector('#place-id').textContent = place.place_id;
-        $('#Input_PlaceId').val(place.place_id);
+        (<HTMLInputElement>document.getElementById('Input_PlaceId')).value = place.place_id;
         infowindowContent.querySelector('#place-address').textContent = place.formatted_address;
         infowindow.open(map, marker);
-        $("#add").removeAttr('disabled');
+        document.getElementById('add').attributes.removeNamedItem('disabled');
     });
 }

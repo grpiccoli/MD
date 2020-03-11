@@ -10,6 +10,7 @@
     <partial name="_LeftIconTile" model='"MD"' />
     <div class="col m6 s12 h-100v" data-simplebar>
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <input asp-for="Input.More" class="hide"/>
             <div asp-validation-summary="All" class="text-danger"></div>
             <h3 class="center-align header">Configura tus ubicaciones</h3>
             <div id="selector" class="input-field col s12 insured">
@@ -77,25 +78,31 @@
                     </div>
                 </div>
             </div>
-            <button id="add" type="submit" disabled
-                    class="btn waves-effect waves-light white-text teal pill">
-                <i class="material-icons left">check</i>Guardar
-            </button>
             <div class="input-field">
-                <a asp-page="./DoctorInsurance" asp-route-returnUrl="@Model.ReturnUrl"
-                   class="btn btn-small waves-effect waves-light white-text teal pill">
-                    <i class="material-icons left">add</i>Añadir Convenio
-                </a>
-            </div>
-            <div class="input-field">
-                <br />
-                <div class="col s12">
-                    <button id="end" type="submit"
-                            class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">
-                        <i class="material-icons right">arrow_forward</i>Continuar
+                <div class="col s8">
+                    <button id="add" disabled
+                            class="btn waves-effect waves-light white-text teal pill">
+                        <i class="material-icons left">check</i>Guardar
                     </button>
                 </div>
+                <div class="col s4">
+                    <a asp-page="./DoctorInsurance" asp-route-returnUrl="@Model.ReturnUrl"
+                       class="btn btn-small waves-effect waves-light white-text teal pill">
+                        <i class="material-icons left">add</i>Añadir Convenio
+                    </a>
+                </div>
             </div>
+            @if (Model.LocationsAny)
+            {
+                <div class="input-field">
+                    <div class="col s12">
+                        <button id="end"
+                                class="btn waves-effect waves-light white-text teal pill tile-gradient w-100">
+                            <i class="material-icons right">arrow_forward</i>Continuar
+                        </button>
+                    </div>
+                </div>
+            }
         </form>
     </div>
 </div>

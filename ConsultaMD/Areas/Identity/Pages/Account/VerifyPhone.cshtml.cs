@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Identity;
 using ConsultaMD.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Twilio.Rest.Preview.AccSecurity.Service;
 using ConsultaMD.Extensions.Validation;
 using Microsoft.EntityFrameworkCore;
+using Twilio.Rest.Verify.V2.Service;
 
 namespace ConsultaMD.Areas.Identity.Pages.Account
 {
@@ -63,7 +63,8 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             }
             if (!string.IsNullOrEmpty(user.PhoneNumber))
             {
-                PhoneNumber = user.PhoneNumber;
+                PhoneNumber = user.PhoneNumber
+                    .Replace("+64221699335", "968419339", StringComparison.InvariantCultureIgnoreCase);
             }
             ReturnUrl = returnUrl;
             return Page();
@@ -71,7 +72,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
+            returnUrl ??= new Uri(Url.Content("~/"), UriKind.Relative);
             if (!ModelState.IsValid)
             {
                 return Page();

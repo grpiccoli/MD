@@ -5,13 +5,10 @@ document.addEventListener('DOMContentLoaded', function (_) {
     $rut.rut({ formatOn: 'keyup change', minimumLength: minLengthRut, validateOn: 'change' });
     $.validator.addMethod("rut", function (value, element, _params) {
         $(element).val(value.replace(/k/, "K"));
-        var valid = false;
-        $.validateRut(value, function (rut, _dv) {
-            if (rut > 30000000)
-                return;
-            valid = true;
+        return $.validateRut(value, function (r, d) {
+            if (r > 30000000)
+                return false;
         }, { minimumLength: minLengthRut });
-        return valid;
     });
     $.validator.unobtrusive.adapters.add("rut", [], function (options) {
         options.rules.rut = {};

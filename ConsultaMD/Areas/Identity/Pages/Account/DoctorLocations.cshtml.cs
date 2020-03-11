@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ConsultaMD.Data;
 using ConsultaMD.Extensions;
-using ConsultaMD.Models.Entities;
 using ConsultaMD.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,14 +16,13 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 {
     public class DoctorLocationsModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMedium _medium;
         private readonly ApplicationDbContext _context;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IRedirect _redirect;
         private readonly IStringLocalizer<InsuranceDetailsModel> _localizer;
 
-        public DoctorLocationsModel(UserManager<ApplicationUser> userManager,
+        public DoctorLocationsModel(
             IMedium medium,
             ILogger<RegisterModel> logger,
             IRedirect redirect,
@@ -35,7 +32,6 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             _medium = medium;
             _redirect = redirect;
             _localizer = localizer;
-            _userManager = userManager;
             _logger = logger;
             _context = context;
         }
@@ -45,24 +41,37 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         public string SelectorList { get; set; }
         public int? Default { get; set; }
         public Uri ReturnUrl { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(Uri returnUrl = null, int? mId = 0)
+        public bool LocationsAny { get; set; }
+        public async Task<IActionResult> OnGetAsync(Uri returnUrl = null, int? mId = null)
         {
-            var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
-            SelectorList = JsonConvert.SerializeObject(
-                _context.InsuranceLocations
+            var user = await _context.Users
+            .Include(u => u.Person)
+                .ThenInclude(p => p.Doctor)
+                    .ThenInclude(d => d.MediumDoctors)
+                        .ThenInclude(m => m.MedicalAttentionMedium)
+            .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name)
+            .ConfigureAwait(false);
+
+            LocationsAny = user.Person.Doctor.MediumDoctors
+                .Any(m => m.MedicalAttentionMedium != null);
+
+            var ils = _context.InsuranceLocations
                 .Include(i => i.InsuranceAgreement)
                 .Include(i => i.MediumDoctor)
                     .ThenInclude(m => m.Doctor)
+                .Include(i => i.MediumDoctor)
+                    .ThenInclude(m => m.MedicalAttentionMedium)
                 .Include(i => i.Commune)
                 .Include(i => i.Prestacion)
-                .Where(i => i.MediumDoctor.Doctor.NaturalId == user.PersonId)
-                .Select(i =>
-            new MsSelect{ 
-                value = i.Id,
-                text = i.GetName()
-            }));
-            Default = mId;
+                .Where(i => i.MediumDoctor.Doctor.NaturalId == user.PersonId && i.MediumDoctor.MedicalAttentionMedium == null)
+                .Select(i => new MsSelect
+                {
+                    Value = i.Id,
+                    Text = i.GetName()
+                });
+
+            SelectorList = JsonConvert.SerializeObject(ils);
+            Default = mId.HasValue ? mId : ils.First().Value;
             ReturnUrl = returnUrl;
             return Page();
         }
@@ -73,15 +82,44 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             {
                 await _medium.Add(Input).ConfigureAwait(false);
                 _logger.LogInformation(_localizer["Detalles de previsión ingresados."]);
-                return await _redirect.Redirect(ReturnUrl, User.Identity.Name).ConfigureAwait(false);
             }
-            // If we got this far, something failed, redisplay form
+            if (!Input.More)
+                return await _redirect.Redirect(ReturnUrl, User.Identity.Name).ConfigureAwait(false);
+            var user = await _context.Users
+            .Include(u => u.Person)
+                .ThenInclude(p => p.Doctor)
+                    .ThenInclude(d => d.MediumDoctors)
+                        .ThenInclude(m => m.MedicalAttentionMedium)
+            .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name)
+            .ConfigureAwait(false);
+
+            LocationsAny = user.Person.Doctor.MediumDoctors
+                .Any(m => m.MedicalAttentionMedium != null);
+
+            var ils = _context.InsuranceLocations
+                .Include(i => i.InsuranceAgreement)
+                .Include(i => i.MediumDoctor)
+                    .ThenInclude(m => m.Doctor)
+                .Include(i => i.MediumDoctor)
+                    .ThenInclude(m => m.MedicalAttentionMedium)
+                .Include(i => i.Commune)
+                .Include(i => i.Prestacion)
+                .Where(i => i.MediumDoctor.Doctor.NaturalId == user.PersonId && i.MediumDoctor.MedicalAttentionMedium == null)
+                .Select(i => new MsSelect
+                {
+                    Value = i.Id,
+                    Text = i.GetName()
+                });
+            SelectorList = JsonConvert.SerializeObject(ils);
+            Default = ils.First().Value;
+            ReturnUrl = returnUrl;
             return Page();
         }
     }
     public class DoctorLocationsInputModel
     {
-        //Fonasa C�digo de prestaci�n
+        public bool More { get; set; }
+        //Fonasa Código de prestación
         public int Selector { get; set; }
         public string PlaceId { get; set; }
         [Display(Name = "Valor Particular")]

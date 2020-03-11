@@ -38,15 +38,13 @@ namespace ConsultaMD.Services
             {
                 string path = Path.Combine(Directory.GetCurrentDirectory(), DefaultImagePath);
 
-                using (FileStream fs = File.OpenRead(path))
-                {
-                    byte[] bytes = new byte[fs.Length];
-                    await fs.ReadAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
-                    //this header is use for browser cache, format like: "Mon, 15 May 2017 07:03:37 GMT". 
-                    context.Response.Headers.Append("Last-Modified", $"{File.GetLastWriteTimeUtc(path).ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture)} GMT");
+                using FileStream fs = File.OpenRead(path);
+                byte[] bytes = new byte[fs.Length];
+                await fs.ReadAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
+                //this header is use for browser cache, format like: "Mon, 15 May 2017 07:03:37 GMT". 
+                context.Response.Headers.Append("Last-Modified", $"{File.GetLastWriteTimeUtc(path).ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture)} GMT");
 
-                    await context.Response.Body.WriteAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
-                }
+                await context.Response.Body.WriteAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

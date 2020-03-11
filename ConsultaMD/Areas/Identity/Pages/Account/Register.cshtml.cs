@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System.ComponentModel;
 using ConsultaMD.Services;
 using IEmailSender = ConsultaMD.Services.IEmailSender;
 using SendGrid.Helpers.Mail;
@@ -33,6 +32,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ISuperSaludService _superSalud;
         private readonly IFonasa _fonasa;
         private readonly IRedirect _redirect;
         private readonly ILookupNormalizer _normalizer;
@@ -45,6 +45,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IStringLocalizer<RegisterModel> localizer,
+            ISuperSaludService superSalud,
             ILogger<RegisterModel> logger,
             IRedirect redirect,
             ILookupNormalizer normalizer,
@@ -52,6 +53,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
             IRegCivil regCivil,
             IFonasa fonasa)
         {
+            _superSalud = superSalud;
             _redirect = redirect;
             _regCivil = regCivil;
             _normalizer = normalizer;
@@ -91,70 +93,77 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                     }
                     //Validate ID *and get nationality* NOT ANYMORE
                     await _feedbackHub.Clients.Client(Input.ConnectionId)
-                        .SendAsync("FeedBack", "Validando Identidad").ConfigureAwait(true);
-                    var isValid = await _regCivil.IsValid(rutParsed.Value.rut, carnetParsed, Input.IsExt)
+                        .SendAsync("FeedBack", "Validando nuevo usuario").ConfigureAwait(true);
+                    var isValid = await _regCivil.IsValidAsync(rutParsed.Value.rut, carnetParsed, Input.IsExt)
                         .ConfigureAwait(false);
-                    if(isValid)
+                    if (isValid)
                     {
-                        var carnet = new Carnet
-                        {
-                            Id = carnetParsed,
-                            NaturalId = rutParsed.Value.rut
-                        };
-
-                        //Add Carnet
-                        await _context.Carnets.AddAsync(carnet).ConfigureAwait(false);
-
-                        var nationality = Input.IsExt ? "EXTRANJERA" : "CHILENA";
-                        var natural = new Natural
-                        {
-                            Id = rutParsed.Value.rut,
-                            CarnetId = carnet.Id,
-                            Carnet = carnet,
-                            FullNameFirst = _normalizer.Normalize(Input.Name),
-                            Nationality = _normalizer.Normalize(nationality)
-                        };
-
-                        //Add Person
-                        await _context.Naturals.AddAsync(natural).ConfigureAwait(false);
-                        await _context.SaveChangesAsync().ConfigureAwait(false);
-
+                        await _feedbackHub.Clients.Client(Input.ConnectionId)
+                            .SendAsync("FeedBack", "Usuario válido").ConfigureAwait(true);
+                        //Check if doctor
+                        await _feedbackHub.Clients.Client(Input.ConnectionId)
+                            .SendAsync("FeedBack", "Verificando registros médicos").ConfigureAwait(true);
+                        var superData = await _superSalud.GetDr(rutParsed.Value.rut).ConfigureAwait(false);
+                        var doc = superData != null;
+                        if (doc)
+                            await _feedbackHub.Clients.Client(Input.ConnectionId)
+                                .SendAsync("FeedBack", "Médico detectado").ConfigureAwait(true);
                         //Validate RUT and get Birthday, Names and Sex
                         await _feedbackHub.Clients.Client(Input.ConnectionId)
-                            .SendAsync("FeedBack", "Validando Previsión").ConfigureAwait(true);
-                        var fonasa = await _fonasa.GetById(natural.Id).ConfigureAwait(false);
+                            .SendAsync("FeedBack", "Creando ficha médica").ConfigureAwait(true);
+                        var fonasa = await _fonasa.GetByIdAsync(rutParsed.Value.rut, doc).ConfigureAwait(false);
                         if (fonasa != null)
                         {
-                            natural.AddFonasa(fonasa);
-
-                            //Update Person
-                            _context.Naturals.Update(natural);
-                            await _context.SaveChangesAsync().ConfigureAwait(false);
-
+                            await _feedbackHub.Clients.Client(Input.ConnectionId)
+                                .SendAsync("FeedBack", "Ficha creada").ConfigureAwait(true);
+                            //Add Carnet
+                            if (!_context.Carnets.Any(c => c.Id == carnetParsed))
+                            {
+                                await _context.Carnets.AddAsync(new Carnet
+                                {
+                                    Id = carnetParsed,
+                                    NaturalId = rutParsed.Value.rut
+                                }).ConfigureAwait(false);
+                            }
+                            Natural natural = null;
+                            //Add Person
+                            if (!_context.Naturals.Any(n => n.Id == rutParsed.Value.rut))
+                            {
+                                natural = new Natural
+                                {
+                                    Id = rutParsed.Value.rut,
+                                    CarnetId = carnetParsed,
+                                    Nationality = _normalizer.NormalizeName(Input.IsExt ? "EXTRANJERA" : "CHILENA")
+                                };
+                                natural.AddFonasa(fonasa);
+                                await _context.Naturals.AddAsync(natural).ConfigureAwait(false);
+                                await _context.SaveChangesAsync().ConfigureAwait(false);
+                            }
+                            else
+                            {
+                                natural = _context.Naturals.SingleOrDefault(n => n.Id == natural.Id);
+                                natural.AddFonasa(fonasa);
+                                _context.Naturals.Update(natural);
+                                await _context.SaveChangesAsync().ConfigureAwait(false);
+                            }
                             //IF patient is Fonasa skip insurance and go directly to phone verification
                             if (!string.IsNullOrWhiteSpace(fonasa.ExtGrupoIng))
                             {
+                                //FONASA Patient
                                 await _feedbackHub.Clients.Client(Input.ConnectionId)
                                     .SendAsync("FeedBack", "Afiliación a FONASA detectada").ConfigureAwait(true);
                                 var patient = new Patient(fonasa)
                                 {
                                     NaturalId = natural.Id
                                 };
-
-                                await _context.Patients.AddAsync(patient).ConfigureAwait(false);
+                                if(!_context.Patients.Any(p => p.NaturalId == natural.Id))
+                                    await _context.Patients.AddAsync(patient).ConfigureAwait(false);
                                 natural.Patient = patient;
                                 _context.Naturals.Update(natural);
                                 await _context.SaveChangesAsync().ConfigureAwait(false);
-
-                                //FONASA Patient
                             }
-                            //Check if doctor
-                            var superData = await SPServices.GetDr(natural.Id).ConfigureAwait(false);
-                            if (superData != null)
+                            if (doc)
                             {
-                                await _feedbackHub.Clients.Client(Input.ConnectionId)
-                                    .SendAsync("FeedBack", "Médico detectado").ConfigureAwait(true);
-
                                 _logger.LogInformation(string.Join(" ",superData.Specialties));
 
                                 superData.GetSpecialties =
@@ -162,7 +171,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                     .Select(s => {
                                         var specialty = _context.Specialties
                                         .First(sp => sp.Name == _normalizer
-                                        .Normalize(s));
+                                        .NormalizeName(s));
                                         return new DoctorSpecialty
                                         {
                                             DoctorId = superData.Id,
@@ -175,77 +184,108 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                                     NaturalId = natural.Id
                                 };
 
-                                await _context.Doctors.AddAsync(doctor).ConfigureAwait(false);
-                                natural.Doctor = doctor;
+                                if(!_context.Doctors.Any(d => d.NaturalId == natural.Id))
+                                    await _context.Doctors.AddAsync(doctor).ConfigureAwait(false);
+
                                 natural.DoctorId = doctor.Id;
                                 _context.Naturals.Update(natural);
                                 await _context.SaveChangesAsync().ConfigureAwait(false);
 
                                 //Doctor added to database
-                                var docFonasa = await _fonasa.GetDocData(natural.Id).ConfigureAwait(false);
-                                if (docFonasa.Any())
+                                //var docFonasa = await _fonasa.GetDocDataAsync(natural.Id).ConfigureAwait(false);
+                                if (fonasa.Docs.Any())
                                 {
                                     await _feedbackHub.Clients.Client(Input.ConnectionId)
                                         .SendAsync("FeedBack", "Convenio FONASA detectado").ConfigureAwait(true);
 
-                                    doctor.FonasaLevel = docFonasa.First().Nivel;
+                                    doctor.FonasaLevel = fonasa.Docs.First().NivelPrestador;
 
                                     _context.Doctors.Update(doctor);
                                     await _context.SaveChangesAsync().ConfigureAwait(false);
 
-                                    var groups = docFonasa.GroupBy(g => g.Address);
+                                    var groups = fonasa.Docs.GroupBy(g => g.Address);
                                     foreach(var g in groups)
                                     {
+                                        var filtered = g.Count() > 1 ?
+                                            g.Where(g => g.Prestacion.Description != "CONSULTA MEDICA ELECTIVA")
+                                            : g;
+                                        //CREATE MEDIUM
                                         var medium = new MediumDoctor
                                         {
                                             DoctorId = doctor.Id,
                                         };
-
                                         await _context.MediumDoctors.AddAsync(medium).ConfigureAwait(false);
                                         await _context.SaveChangesAsync().ConfigureAwait(false);
-
-                                        foreach (var s in g)
+                                        foreach (var s in filtered)
                                         {
-                                            var rut = RUT.Unformat(s.RutTratante);
-                                            var selector = $"button[data-comlegal='{s.Commune}'][data-codprestacion='{s.PrestacionId}'][data-ruttratante='{s.RutTratante}']";
-                                            var agreement = _context.InsuranceAgreements
-                                                .FirstOrDefault(a => 
-                                                a.PersonId == rut.Value.rut
-                                                && a.Insurance == InsuranceData.Insurance.Fonasa);
-                                            if(agreement == null)
+                                            var rut = RUT.Unformat(s.RutPrestador);
+                                            if (rut.HasValue)
                                             {
-                                                agreement = new InsuranceAgreement
+                                                var selector = s.CodEspeciali.ToString(CultureInfo.InvariantCulture);
+                                                var person = await _context.People.FindAsync(rut.Value.rut).ConfigureAwait(false);
+                                                if(person == null)
                                                 {
-                                                    Insurance = InsuranceData.Insurance.Fonasa,
-                                                    PersonId = rut.Value.rut
-                                                };
-
-                                                await _context.InsuranceAgreements.AddAsync(agreement).ConfigureAwait(false);
+                                                    //URGENT!!!!! add companies here
+                                                    await _context.Companies.AddAsync(new Company
+                                                    {
+                                                        Id = rut.Value.rut
+                                                    }).ConfigureAwait(false);
+                                                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                                                }
+                                                if (!_context.Prestacions.Any(p => p.Id == s.PrestacionId))
+                                                {
+                                                    await _context.Prestacions.AddAsync(s.Prestacion).ConfigureAwait(false);
+                                                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                                                }
+                                                var agreement = _context.InsuranceAgreements
+                                                    .FirstOrDefault(a =>
+                                                    a.PersonId == rut.Value.rut
+                                                    && a.Insurance == InsuranceData.Insurance.Fonasa);
+                                                if (agreement == null)
+                                                {
+                                                    agreement = new InsuranceAgreement
+                                                    {
+                                                        Insurance = InsuranceData.Insurance.Fonasa,
+                                                        PersonId = rut.Value.rut
+                                                    };
+                                                    await _context.InsuranceAgreements.AddAsync(agreement).ConfigureAwait(false);
+                                                    await _context.SaveChangesAsync().ConfigureAwait(false);
+                                                }
+                                                if (!_context.Prestacions.Any(p => p.Id == s.PrestacionId))
+                                                    await _context.Prestacions
+                                                        .AddAsync(s.Prestacion).ConfigureAwait(false);
+                                                if (!_context.InsuranceLocations.Any(i =>
+                                                   i.InsuranceSelector == selector
+                                                && i.PrestacionId == s.PrestacionId
+                                                && i.MediumDoctorId == medium.Id
+                                                && i.InsuranceAgreementId == agreement.Id))
+                                                {
+                                                    var ins = new InsuranceLocation
+                                                    {
+                                                        Address = s.Address,
+                                                        InsuranceSelector = selector,
+                                                        PrestacionId = s.PrestacionId,
+                                                        MediumDoctorId = medium.Id,
+                                                        InsuranceAgreementId = agreement.Id,
+                                                        CommuneId = int.Parse("1" + s.Commune, CultureInfo.InvariantCulture)
+                                                    };
+                                                    await _context.InsuranceLocations
+                                                        .AddAsync(ins).ConfigureAwait(false);
+                                                    medium.InsuranceLocations.Add(ins);
+                                                }
                                                 await _context.SaveChangesAsync().ConfigureAwait(false);
                                             }
-                                            var ins = new InsuranceLocation
-                                            {
-                                                Address = s.Address,
-                                                InsuranceSelector = selector,
-                                                PrestacionId = s.PrestacionId,
-                                                Prestacion = s.Prestacion,
-                                                MediumDoctorId = medium.Id,
-                                                InsuranceAgreementId = agreement.Id,
-                                                CommuneId = int.Parse("1"+s.Commune, CultureInfo.InvariantCulture)
-                                            };
-                                            if (!_context.Prestacions.Any(p => p.Id == s.PrestacionId)) 
-                                                await _context.Prestacions
-                                                    .AddAsync(s.Prestacion).ConfigureAwait(false);
-                                            if (!_context.InsuranceLocations.Any(i => i.InsuranceSelector == selector)) 
-                                                await _context.InsuranceLocations
-                                                    .AddAsync(ins).ConfigureAwait(false);
-                                            medium.InsuranceLocations.Add(ins);
                                         }
                                     }
                                     await _context.SaveChangesAsync().ConfigureAwait(false);
                                     await _feedbackHub.Clients.Client(Input.ConnectionId)
                                         .SendAsync("FeedBack", "Convenios FONASA agregados").ConfigureAwait(true);
                                     //Convenio FONASA Added
+                                }
+                                else
+                                {
+                                    if(doc) await _feedbackHub.Clients.Client(Input.ConnectionId)
+                                        .SendAsync("FeedBack", "Sin Convenio Fonasa Web, contacte a FONASA").ConfigureAwait(true);
                                 }
                             }
                             //Create user
@@ -296,10 +336,10 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                             {
                                 ModelState.AddModelError(string.Empty, error.Description);
                             }
-                        }
-                        ModelState.AddModelError(string.Empty, "Error en la validación del paciente");
                     }
-                    ModelState.AddModelError(string.Empty, "Error en la validación del carnet");
+                    ModelState.AddModelError(string.Empty, "Error en la validación del paciente");
+                }
+                ModelState.AddModelError(string.Empty, "Error en la validación del carnet");
                 }
                 else
                 {
@@ -319,11 +359,11 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Display(Name = "RUT")]
         public string RUT { get; set; }
 
-        [Required]
-        [ReadOnly(true)]
-        [Display(Name = "Nombre Completo")]
-        [RegularExpression(@"[A-Za-zÁÉÍÓÚÑÜáéíóúüñ ]+")]
-        public string Name { get; set; }
+        //[Required]
+        //[ReadOnly(true)]
+        //[Display(Name = "Nombre Completo")]
+        //[RegularExpression(@"[A-Za-zÁÉÍÓÚÑÜáéíóúüñ ]+")]
+        //public string Name { get; set; }
 
         [Display(Name = "N° Documento de Carnet")]
         //[Required]
@@ -358,7 +398,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
         [Display(Name="He leído y acepto los Términos y Condiciones")]
         [Compare("IsTrue", ErrorMessage = "Por favor acepte los términos y condiciones")]
         public bool Agree { get; set; }
-        public bool IsTrue { get { return true; } }
+        public bool IsTrue { get; } = true;
         [Display(Name = "Soy Extranjero")]
         public bool IsExt { get; set; }
         //[Required]

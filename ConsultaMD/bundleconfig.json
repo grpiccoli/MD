@@ -95,13 +95,13 @@
   {
     "outputFileName": "wwwroot/js/Register.min.js",
     "inputFiles": [
-      "src/scripts/add_rut_carnet_validation.js"
+      "src/scripts/Register.cshtml.js"
     ]
   },
   {
     "outputFileName": "wwwroot/js/InsuranceDetails.min.js",
     "inputFiles": [
-      "src/scripts/InsuranceDetails.js"
+      "src/scripts/InsuranceDetails.cshtml.js"
     ]
   },
   {

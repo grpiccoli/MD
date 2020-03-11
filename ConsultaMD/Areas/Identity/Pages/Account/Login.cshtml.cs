@@ -48,7 +48,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"), UriKind.Relative);
+            returnUrl ??= new Uri(Url.Content("~/"), UriKind.Relative);
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme).ConfigureAwait(false);
@@ -63,7 +63,7 @@ namespace ConsultaMD.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(Uri returnUrl = null)
         {
-            returnUrl = returnUrl ?? new Uri(Url.Content("~/"));
+            returnUrl ??= new Uri(Url.Content("~/"));
 
             if (ModelState.IsValid)
             {

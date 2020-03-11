@@ -27,7 +27,7 @@ function getContent(mdId: number) {
 function book(id: number) {
     $.ajax({
         type: 'POST',
-        url: "./Reservation",
+        url: "/patients/search/reservation",
         data: {
             id: id,
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -400,7 +400,7 @@ function initMap() {
         return `<div id=${item.cardId} class="col s12 m6 l4">`
             + '<div class="card horizontal sticky-action">'
             + '<div class="card-image">'
-            + `<img src="/home/getimg/${item.run}"/>`
+            + `<img src="/patients/search/getimg/${item.run}"/>`
             + '</div>'
             + '<div class="card-stacked">'
             + '<div class="card-content">'
@@ -461,7 +461,7 @@ function initMap() {
         var match = 0.5;
         var content: string = '';
         $.each(value.items, function () {
-            if (!(this.dr in dt)) dt[this.dr] = `/home/getimg/${this.run}`;
+            if (!(this.dr in dt)) dt[this.dr] = `/patients/search/getimg/${this.run}`;
             var card = makeCard(this, value.place)
             if (!(this.cardId.toString() in places)) {
                 places[this.cardId.toString()] = {};

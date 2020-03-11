@@ -11,17 +11,13 @@
     $.validator.addMethod("rut",
         (value, element, _params) => {
             $(element).val(value.replace(/k/, "K"));
-            var valid = false;
-            $.validateRut(value, function (rut, _dv) {
-                if (rut as number > 30_000_000) return;
-                valid = true;
+            return $.validateRut(value, function (r, d) {
+                if (r > 30_000_000) return false;
             }, { minimumLength: minLengthRut });
-            return valid;
         });
 
     $.validator.unobtrusive.adapters.add("rut", [], (options: any) => {
         options.rules.rut = {};
         options.messages["rut"] = options.message;
     });
-
 });

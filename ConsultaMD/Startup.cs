@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
@@ -15,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.IO;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using ConsultaMD.Services;
@@ -26,10 +26,7 @@ using ConsultaMD.Resources;
 using WebMarkupMin.AspNetCore2;
 using Twilio;
 using Microsoft.Extensions.FileProviders;
-using ConsultaMD.Extensions;
 using ConsultaMD.Hubs;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 
 namespace ConsultaMD
 {
@@ -60,37 +57,34 @@ namespace ConsultaMD
             //    loggingBuilder.AddDebug();
             //});
 
-            services.AddHostedService<SeedBackground>();
             services.AddScoped<ISeed, SeedService>();
+            services.AddHostedService<SeedBackground>();
 
             var antiCaptchaKey = Configuration["AntiCaptcha"];
             AntiCaptchaClient.Init(antiCaptchaKey);
 
-            services.Configure<FonasaSettings>(o =>
-            {
-                o.AcKey = antiCaptchaKey;
-                o.Rut = RUT.Fonasa(16124902);
-            });
             //services.AddHostedService<FonasaBackground>();
-            services.AddScoped<IFonasa, FonasaService>();
+            services.AddScoped<IPuppet, PuppetService>();
 
+            services.AddScoped<ISuperSaludService, SuperSaludService>();
             services.Configure<RegCivilSettings>(o =>
             {
-                o.AcKey = antiCaptchaKey;
-                o.Rut = RUT.Format(16_124_902, false);
-                o.Carnet = 519_194_461;
+                o.Url = new Uri("https://portal.sidiv.registrocivil.cl/usuarios-portal/pages/DocumentRequestStatus.xhtml");
             });
-            //services.AddHostedService<RegCivilBackground>();
             services.AddScoped<IRegCivil, RegCivilService>();
+            //services.AddHostedService<RegCivilBackground>();
+
+            services.AddScoped<IFonasa, FonasaService>();
 
             services.Configure<FlowSettings>(o =>
             {
-                o.ApiKey = Configuration["Flow:ApiKey"];
-                o.SecretKey = Configuration["Flow:SecretKey"];
+                var dev = true;
+                var flowEnv = dev ? "Sandbox" : "Production";
+                var preffix = dev ? "sandbox" : "www";
+                o.ApiKey = Configuration[$"Flow:{flowEnv}:ApiKey"];
+                o.SecretKey = Configuration[$"Flow:{flowEnv}:SecretKey"];
                 o.Currency = "UF";
-                //var sufix = Development ? "sandbox" : "www";
-                var sufix = "sandbox";
-                o.EndPoint = new Uri($"https://{sufix}.flow.cl/api");
+                o.EndPoint = new Uri($"https://{preffix}.flow.cl/api");
             });
             services.AddScoped<IFlow, FlowService>();
 
@@ -105,7 +99,7 @@ namespace ConsultaMD
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false; //!!!!CAMBIAR A TRUE
+                options.CheckConsentNeeded = context => true; //!!!!CAMBIAR A TRUE
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.ConfigureApplicationCookie(options =>
@@ -136,7 +130,7 @@ namespace ConsultaMD
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
             })
-                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
                 .AddErrorDescriber<SpanishIdentityErrorDescriber>();
@@ -195,9 +189,10 @@ namespace ConsultaMD
                 //var index = o.ModelBinderProviders.IndexOf(underlyingModelBinder);
                 //o.ModelBinderProviders.Insert(index, new CustomValidationModelBinderProvider(underlyingModelBinder));
             )
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .SetCompatibilityVersion(CompatibilityVersion.Latest)
                 .AddViewLocalization()
-                .AddDataAnnotationsLocalization();
+                .AddDataAnnotationsLocalization()
+                .AddNewtonsoftJson();
 
             services.AddHsts(options =>
             {
@@ -209,7 +204,7 @@ namespace ConsultaMD
             services.AddHttpsRedirection(options =>
             options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect);
 
-            services.AddNodeServices(o => o.InvocationTimeoutMilliseconds = 600_000);
+            //services.AddNodeServices(o => o.InvocationTimeoutMilliseconds = 600_000);
 
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
@@ -237,7 +232,7 @@ namespace ConsultaMD
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (app == null || env == null) return;
             if (env.IsDevelopment())
@@ -270,11 +265,7 @@ namespace ConsultaMD
 
                 app.UseWebMarkupMin();
             }
-
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<FeedBackHub>("/feedbackHub");
-            });
+            app.UseRouting();
 
             app.UseDefaultImage(defaultImagePath: Configuration.GetSection($"{_os}defaultImagePath").Value);
 
@@ -310,16 +301,43 @@ namespace ConsultaMD
             });
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
-            app.UseMvc(routes =>
+            app.UseCors();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "Areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
+                //endpoints.MapControllers().RequireAuthorization();
+                endpoints.MapRazorPages().RequireAuthorization();
+                endpoints.MapHub<FeedBackHub>("/feedbackHub");
+                // need route and attribute on controller: [Area("Blogs")]
+                endpoints.MapControllerRoute(name: "mvcAreaRoute",
+                                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}")
+                .RequireAuthorization();
+                // default route for non-areas
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=Patients}/{controller=Search}/{action=Map}")
+                .RequireAuthorization();
+                //endpoints.MapDefaultControllerRoute().RequireAuthorization();
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}").RequireAuthorization();
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{area:exists=Patients}/{controller=Home}/{action=Index}/{id?}").RequireAuthorization();
+                //endpoints.MapAreaControllerRoute(
+                //    name: "users",
+                //    areaName: "Patients",
+                //    pattern: "{area}/{controller}/{action}/{id?}",
+                //    defaults: new { area = "Patients", controller = "Search", action = "Map" })
+                //.RequireAuthorization();
+                //endpoints.MapAreaControllerRoute(
+                //    name: "doctors",
+                //    areaName: "MDs",
+                //    pattern: "{area}/{controller}/{action}/{id?}",
+                //    defaults: new { area = "MDs", controller = "MDash", action = "Agenda" })
+                //.RequireAuthorization();
             });
         }
     }

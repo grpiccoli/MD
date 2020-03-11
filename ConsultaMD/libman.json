@@ -4,17 +4,17 @@
   "libraries": [
     {
       "library": "materialize-css@1.0.0",
-      "destination": "wwwroot/lib/materialize-css/",
+      "destination": "wwwroot/lib/materialize-css",
       "files": [
-        "dist/js/materialize.min.js",
         "dist/css/materialize.min.css",
-        "extras/noUiSlider/nouislider.css",
-        "extras/noUiSlider/nouislider.min.js"
+        "dist/js/materialize.min.js",
+        "extras/noUiSlider/nouislider.min.js",
+        "extras/noUiSlider/nouislider.css"
       ]
     },
     {
       "library": "parsleyjs@2.9.2",
-      "destination": "wwwroot/lib/parsleyjs/",
+      "destination": "wwwroot/lib/parsleyjs",
       "files": [
         "dist/parsley.min.js",
         "dist/i18n/es.js"
@@ -22,7 +22,7 @@
     },
     {
       "library": "owl.carousel@2.3.4",
-      "destination": "wwwroot/lib/owl.carousel/",
+      "destination": "wwwroot/lib/owl.carousel",
       "files": [
         "dist/assets/owl.carousel.min.css",
         "dist/assets/owl.theme.default.min.css",
@@ -31,7 +31,7 @@
     },
     //{
     //  "library": "anypicker@2.0.9",
-    //  "destination": "wwwroot/lib/anypicker/",
+    //  "destination": "wwwroot/lib/anypicker",
     //  "files": [
     //    "dist/anypicker-all.min.css",
     //    "dist/anypicker.min.js",
@@ -40,7 +40,7 @@
     //},
     //{
     //  "library": "@ionic-native/wheel-selector@5.15.1",
-    //  "destination": "wwwroot/lib/@ionic-native/wheel-selector/",
+    //  "destination": "wwwroot/lib/@ionic-native/wheel-selector",
     //  "files": [
     //    "index.js",
     //    "ngx/index.js"
@@ -48,7 +48,7 @@
     //},
     //{
     //  "library": "air-datepicker@2.2.3",
-    //  "destination": "wwwroot/lib/air-datepicker/",
+    //  "destination": "wwwroot/lib/air-datepicker",
     //  "files": [
     //    "dist/css/datepicker.min.css",
     //    "dist/js/datepicker.min.js",
@@ -57,19 +57,19 @@
     //},
     {
       "library": "materialize-social@1.0.3",
-      "destination": "wwwroot/lib/materialize-social/",
+      "destination": "wwwroot/lib/materialize-social",
       "files": [
         "materialize-social.css"
       ]
     },
     {
       "library": "cleave.js@1.5.3",
-      "destination": "wwwroot/lib/cleave.js/",
+      "destination": "wwwroot/lib/cleave.js",
       "files": [ "dist/cleave.min.js" ]
     },
     {
       "library": "select2@4.0.12",
-      "destination": "wwwroot/lib/select2/",
+      "destination": "wwwroot/lib/select2",
       "files": [
         "dist/js/select2.full.min.js",
         "dist/css/select2.min.css",
@@ -79,12 +79,12 @@
     },
     {
       "library": "jquery-mousewheel@3.1.13",
-      "destination": "wwwroot/lib/jquery-mousewheel/",
+      "destination": "wwwroot/lib/jquery-mousewheel",
       "files": [ "jquery.mousewheel.js" ]
     },
     {
       "library": "nouislider@14.1.0",
-      "destination": "wwwroot/lib/nouislider/",
+      "destination": "wwwroot/lib/nouislider",
       "files": [
         "distribute/nouislider.min.css",
         "distribute/nouislider.min.js"
@@ -92,21 +92,21 @@
     },
     {
       "library": "wnumb@1.2.0",
-      "destination": "wwwroot/lib/wnumb/",
+      "destination": "wwwroot/lib/wnumb",
       "files": [
         "wNumb.js"
       ]
     },
     {
       "library": "normalize.css@8.0.1",
-      "destination": "wwwroot/lib/normalize.css/",
+      "destination": "wwwroot/lib/normalize.css",
       "files": [
         "normalize.css"
       ]
     },
     {
       "library": "@fortawesome/fontawesome-free@5.12.0",
-      "destination": "wwwroot/lib/@fortawesome/fontawesome-free/",
+      "destination": "wwwroot/lib/@fortawesome/fontawesome-free",
       "files": [
         "css/all.min.css",
         "webfonts/fa-solid-900.woff2",
@@ -122,47 +122,47 @@
     },
     //{
     //  "library": "datatables.net@2.1.1",
-    //  "destination": "wwwroot/lib/datatables.net/",
+    //  "destination": "wwwroot/lib/datatables.net",
     //  "files": [
     //    "js/jquery.dataTables.js"
     //  ]
     //},
     {
       "library": "jquery.rut@1.1.2",
-      "destination": "wwwroot/lib/jquery.rut/",
+      "destination": "wwwroot/lib/jquery.rut",
       "files": [ "jquery.rut.min.js" ]
     },
     {
       "library": "jquery@3.4.1",
-      "destination": "wwwroot/lib/jquery/",
+      "destination": "wwwroot/lib/jquery",
       "files": [ "dist/jquery.min.js" ]
     },
     {
       "library": "hammerjs@2.0.8",
-      "destination": "wwwroot/lib/hammerjs/",
+      "destination": "wwwroot/lib/hammerjs",
       "files": [ "hammer.min.js" ]
     },
     {
       "library": "jquery-hammerjs@2.0.0",
-      "destination": "wwwroot/lib/jquery-hammerjs/",
+      "destination": "wwwroot/lib/jquery-hammerjs",
       "files": [ "jquery.hammer.js" ]
     },
     //{
     //  "library": "jquery-mobile@1.5.0-alpha.1",
-    //  "destination": "wwwroot/lib/jquery-mobile/",
+    //  "destination": "wwwroot/lib/jquery-mobile",
     //  "files": [ "jquery.mobile.", "jquery.mobile.min.js" ]
     //},
     //Google Maps Utilities
     //{
     //  "library": "@google/markerclusterer@2.0.0",
-    //  "destination": "wwwroot/lib/@google/markerclusterer/",
+    //  "destination": "wwwroot/lib/@google/markerclusterer",
     //  "files": [
     //    "src/markerclusterer.js"
     //  ]
     //},
     //{
     //  "library": "@google/markerclustererplus@3.0.1",
-    //  "destination": "wwwroot/lib/@google/markerclustererplus/",
+    //  "destination": "wwwroot/lib/@google/markerclustererplus",
     //  "files": [
     //    "src/markerclusterer.js"
     //  ]
@@ -170,7 +170,7 @@
     // FULL CALENDAR
     //{
     //  "library": "@fullcalendar/core@4.3.1",
-    //  "destination": "wwwroot/lib/fullcalendar/core/",
+    //  "destination": "wwwroot/lib/fullcalendar/core",
     //  "files": [
     //    "main.min.js",
     //    "main.min.css",
@@ -179,7 +179,7 @@
     //},
     //{
     //  "library": "@fullcalendar/daygrid@4.3.0",
-    //  "destination": "wwwroot/lib/fullcalendar/daygrid/",
+    //  "destination": "wwwroot/lib/fullcalendar/daygrid",
     //  "files": [
     //    "main.min.js",
     //    "main.min.css"
@@ -187,7 +187,7 @@
     //},
     //{
     //  "library": "@fullcalendar/timegrid@4.3.0",
-    //  "destination": "wwwroot/lib/fullcalendar/timegrid/",
+    //  "destination": "wwwroot/lib/fullcalendar/timegrid",
     //  "files": [
     //    "main.min.js",
     //    "main.min.css"
@@ -195,7 +195,7 @@
     //},
     //{
     //  "library": "@fullcalendar/list@4.3.0",
-    //  "destination": "wwwroot/lib/fullcalendar/list/",
+    //  "destination": "wwwroot/lib/fullcalendar/list",
     //  "files": [
     //    "main.min.js",
     //    "main.min.css"
@@ -203,14 +203,14 @@
     //},
     //{
     //  "library": "@fullcalendar/moment@4.3.0",
-    //  "destination": "wwwroot/lib/fullcalendar/moment/",
+    //  "destination": "wwwroot/lib/fullcalendar/moment",
     //  "files": [
     //    "main.min.js"
     //  ]
     //},
     {
       "library": "moment@2.24.0",
-      "destination": "wwwroot/lib/moment/",
+      "destination": "wwwroot/lib/moment",
       "files": [
         "min/moment.min.js",
         "locale/es.js"
@@ -219,7 +219,7 @@
     // TUI CALENDAR
     //{
     //  "library": "tui-calendar@1.12.6",
-    //  "destination": "wwwroot/lib/tui-calendar/",
+    //  "destination": "wwwroot/lib/tui-calendar",
     //  "files": [
     //    "dist/tui-calendar.min.css",
     //    "dist/tui-calendar.min.js"
@@ -227,7 +227,7 @@
     //},
     //{
     //  "library": "tui-date-picker@4.0.2",
-    //  "destination": "wwwroot/lib/tui-date-picker/",
+    //  "destination": "wwwroot/lib/tui-date-picker",
     //  "files": [
     //    "dist/tui-date-picker.css",
     //    "dist/tui-date-picker.min.js"
@@ -244,23 +244,23 @@
     // GOOGLE PHONE
     {
       "library": "libphonenumber-js@1.7.29",
-      "destination": "wwwroot/lib/libphonenumber-js/",
+      "destination": "wwwroot/lib/libphonenumber-js",
       "files": [ "bundle/libphonenumber-max.js" ]
     },
     {
       "library": "simplebar@5.0.7",
-      "destination": "wwwroot/lib/simplebar/",
+      "destination": "wwwroot/lib/simplebar",
       "files": [ "dist/simplebar.min.css", "dist/simplebar.min.js" ]
     },
     {
       "library": "animate.css@3.7.2",
-      "destination": "wwwroot/lib/animate.css/",
+      "destination": "wwwroot/lib/animate.css",
       "files": [ "animate.min.css" ]
     },
     // JS VALIDATION
     {
       "library": "jquery-validation@1.19.1",
-      "destination": "wwwroot/lib/jquery-validation/",
+      "destination": "wwwroot/lib/jquery-validation",
       "files": [
         "dist/jquery.validate.min.js",
         "dist/additional-methods.min.js",
@@ -269,26 +269,26 @@
     },
     {
       "library": "jquery-validation-unobtrusive@3.2.11",
-      "destination": "wwwroot/lib/jquery-validation-unobtrusive/",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive",
       "files": [ "dist/jquery.validate.unobtrusive.min.js" ]
     },
     {
       "library": "jquery-validation-unobtrusive-extensions@1.0.4",
-      "destination": "wwwroot/lib/jquery-validation-unobtrusive-extensions/",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive-extensions",
       "files": [ "jquery.validate.unobtrusive.globalize.min.js" ]
     },
     {
       "library": "jquery-ajax-unobtrusive@3.2.6",
-      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive",
       "files": [ "dist/jquery.unobtrusive-ajax.min.js" ]
     },
     {
       "library": "cldr-data@36.0.0",
-      "destination": "wwwroot/lib/cldr-data/"
+      "destination": "wwwroot/lib/cldr-data"
     },
     {
       "library": "cldrjs@0.5.1",
-      "destination": "wwwroot/lib/cldrjs/",
+      "destination": "wwwroot/lib/cldrjs",
       "files": [
         "dist/cldr.js",
         "dist/cldr/event.js",
@@ -297,7 +297,7 @@
     },
     {
       "library": "globalize@1.4.2",
-      "destination": "wwwroot/lib/globalize/",
+      "destination": "wwwroot/lib/globalize",
       "files": [
         "dist/globalize.js",
         "dist/globalize/number.js",
@@ -306,7 +306,7 @@
     },
     {
       "library": "@aspnet/signalr@1.1.4",
-      "destination": "wwwroot/lib/@aspnet/signalr/",
+      "destination": "wwwroot/lib/@aspnet/signalr",
       "files": [
         "dist/browser/signalr.min.js"
       ]

@@ -16,9 +16,9 @@
                 <span asp-validation-for="Input.RUTJ" class="text-danger"></span>
             </div>*@
             <div class="input-field col s12">
-                <input asp-for="Input.RUT" class="validate" autocomplete="tel-national" disabled/>
+                <input asp-for="Input.RUT" disabled/>
                 <label asp-for="Input.RUT"></label>
-                <span asp-validation-for="Input.RUT" class="text-danger"></span>
+                @*<span asp-validation-for="Input.RUT" class="text-danger"></span>*@
             </div>
             <div class="input-field col s12">
                 <input asp-for="Input.Password" class="validate" autocomplete="new-password" />

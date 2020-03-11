@@ -9,18 +9,16 @@ namespace ConsultaMD.Services
 {
     public static class Bundler
     {
-        private static List<Bundle> Bundles { get; } = new List<Bundle>();
-        public static List<Bundle> LoadJson()
+        private static List<BundleConfig> Bundles { get; } = new List<BundleConfig>();
+        public static List<BundleConfig> LoadJson()
         {
-            using (StreamReader r = new StreamReader("bundleconfig.json"))
-            {
-                string json = r.ReadToEnd();
-                Bundles.Clear();
-                Bundles.AddRange(JsonConvert.DeserializeObject<List<Bundle>>(json));
-                return Bundles;
-            }
+            using StreamReader r = new StreamReader("bundleconfig.json");
+            string json = r.ReadToEnd();
+            Bundles.Clear();
+            Bundles.AddRange(JsonConvert.DeserializeObject<List<BundleConfig>>(json));
+            return Bundles;
         }
-        public static IEnumerable<Bundle> GetBundles(string lib) {
+        public static IEnumerable<BundleConfig> GetBundles(string lib) {
             return Bundles.Where(m => m.OutputFileName.Contains($"/{lib}.", StringComparison.InvariantCulture));
         }
     }

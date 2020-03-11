@@ -12,12 +12,10 @@ namespace ConsultaMD.Services
 
         public static Libs LoadJson()
         {
-            using (StreamReader r = new StreamReader("libman.json"))
-            {
-                string json = r.ReadToEnd();
-                Libs = JsonConvert.DeserializeObject<Libs>(json);
-                return Libs;
-            }
+            using StreamReader r = new StreamReader("libman.json");
+            string json = r.ReadToEnd();
+            Libs = JsonConvert.DeserializeObject<Libs>(json);
+            return Libs;
         }
 
         public static LibManLibrary GetLibs(string lib)
