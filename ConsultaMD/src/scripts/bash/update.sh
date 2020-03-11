@@ -20,7 +20,7 @@ echo 'unset GREETER_LANGUAGE' >> ~/.profile
 sudo add-apt-repository universe
 #sudo apt update
 #sudo apt upgrade
-sudo apt install -y zlib1g zlib1g-dev apt-transport-https
+sudo apt install -y apt-transport-https g++ make build-essential zlibc zlib1g zlib1g-dev
 #sudo apt purge aspnetcore-runtime-2.2 dotnet-runtime-2.2 dotnet-hostfxr-2.2 dotnet-host dotnet-runtime-deps-2.2 dotnet-sdk-2.2
 #sudo apt install aspnetcore-runtime-2.2=2.2.5-1 dotnet-runtime-2.2=2.2.5-1 dotnet-hostfxr-2.2=2.2.5-1 dotnet-host=2.2.5-1 dotnet-runtime-deps-2.2=2.2.5-1 dotnet-sdk-2.2=2.2.300-1
 #sudo apt-mark hold aspnetcore-runtime-2.2=2.2.5-1 dotnet-runtime-2.2=2.2.5-1 dotnet-hostfxr-2.2=2.2.5-1 dotnet-host=2.2.5-1 dotnet-runtime-deps-2.2=2.2.5-1 dotnet-sdk-2.2=2.2.300-1
@@ -63,7 +63,11 @@ systemctl restart mssql-server
 
 #ONE TIME INSTALL LIBMAN
 dotnet tool install -g Microsoft.Web.LibraryManager.Cli
-
+echo 'export PATH="/root/.dotnet/tools:$PATH"' >> ~/.bash_profile
+echo 'export PATH="/root/.dotnet/tools:$PATH"' >> ~/.bashrc
+echo 'export DOTNET_ROOT="/home/user01/.dotnet"' >> ~/.bash_profile
+echo 'export DOTNET_ROOT="/home/user01/.dotnet"' >> ~/.bashrc
+source ~/.bashrc
 #ONE TIME INSTAL EF
 #for core 2
 #dotnet add package Microsoft.EntityFrameworkCore.Design

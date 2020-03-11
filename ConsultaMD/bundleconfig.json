@@ -95,13 +95,13 @@
   {
     "outputFileName": "wwwroot/js/Register.min.js",
     "inputFiles": [
-      "src/scripts/Register.cshtml.js"
+      "Areas/Identity/Pages/Account/Register.cshtml.js"
     ]
   },
   {
     "outputFileName": "wwwroot/js/InsuranceDetails.min.js",
     "inputFiles": [
-      "src/scripts/InsuranceDetails.cshtml.js"
+      "Areas/Identity/Pages/Account/InsuranceDetails.cshtml.js"
     ]
   },
   {
